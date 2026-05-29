@@ -59,11 +59,14 @@ h1 {
 
 .controls {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
+  gap: 12px;
   margin: 0 0 24px;
 }
 
-.answer-button {
+.answer-button,
+.secondary-button {
   border: 0;
   border-radius: 999px;
   padding: 14px 24px;
@@ -76,6 +79,12 @@ h1 {
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
+.secondary-button {
+  color: var(--accent-dark);
+  background: #fff1eb;
+  box-shadow: none;
+}
+
 .answer-button:hover,
 .answer-button:focus-visible {
   background: var(--accent-dark);
@@ -83,7 +92,16 @@ h1 {
   transform: translateY(-2px);
 }
 
-.answer-button:focus-visible {
+.secondary-button:hover,
+.secondary-button:focus-visible {
+  color: #ffffff;
+  background: var(--accent-dark);
+  box-shadow: 0 12px 30px rgba(189, 84, 59, 0.2);
+  transform: translateY(-2px);
+}
+
+.answer-button:focus-visible,
+.secondary-button:focus-visible {
   outline: 3px solid rgba(220, 107, 79, 0.32);
   outline-offset: 4px;
 }
@@ -151,6 +169,19 @@ h1 {
 
 .answer-row strong {
   color: var(--text);
+  text-align: right;
+}
+
+.status-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  color: var(--muted);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  line-height: 1.7;
 }
 
 @media (max-width: 640px) {
@@ -163,7 +194,8 @@ h1 {
     justify-content: stretch;
   }
 
-  .answer-button {
+  .answer-button,
+  .secondary-button {
     width: 100%;
   }
 }

@@ -1,19 +1,37 @@
-const vocabulary = [
-  { japanese: "私", kana: "わたし", meaning: "我", partOfSpeech: "代名詞" },
-  { japanese: "学生", kana: "がくせい", meaning: "學生", partOfSpeech: "名詞" },
-  { japanese: "先生", kana: "せんせい", meaning: "老師；醫生", partOfSpeech: "名詞" },
-  { japanese: "水", kana: "みず", meaning: "水", partOfSpeech: "名詞" },
-  { japanese: "本", kana: "ほん", meaning: "書", partOfSpeech: "名詞" },
-  { japanese: "行く", kana: "いく", meaning: "去", partOfSpeech: "動詞" },
-  { japanese: "食べる", kana: "たべる", meaning: "吃", partOfSpeech: "動詞" },
-  { japanese: "大きい", kana: "おおきい", meaning: "大的", partOfSpeech: "い形容詞" },
-  { japanese: "静か", kana: "しずか", meaning: "安靜的", partOfSpeech: "な形容詞" },
-  { japanese: "今日", kana: "きょう", meaning: "今天", partOfSpeech: "名詞" }
-];
+const CARD_COUNT = 10;
+const VOCABULARY_URL = "vocabulary.json";
 
 const cardsContainer = document.querySelector("#vocabularyCards");
 const toggleButton = document.querySelector("#toggleAnswers");
+const shuffleButton = document.querySelector("#shuffleWords");
+
+let vocabulary = [];
+let currentWords = [];
 let answersVisible = false;
+
+function shuffleWords(words) {
+  const shuffledWords = [...words];
+
+  for (let index = shuffledWords.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffledWords[index], shuffledWords[randomIndex]] = [shuffledWords[randomIndex], shuffledWords[index]];
+  }
+
+  return shuffledWords;
+}
+
+function getRandomWords(words, count) {
+  return shuffleWords(words).slice(0, count);
+}
+
+function createDetailRow(label, value) {
+  return `
+    <div class="answer-row">
+      <span>${label}</span>
+      <strong>${value}</strong>
+    </div>
+  `;
+}
 
 function createCard(word, index) {
   const card = document.createElement("article");
@@ -22,21 +40,32 @@ function createCard(word, index) {
   card.innerHTML = `
     <div>
       <span class="card-number">單字 ${index + 1}</span>
-      <h2 class="japanese-word">${word.japanese}</h2>
+      <h2 class="japanese-word">${word.word}</h2>
       <p class="kana">${word.kana}</p>
     </div>
     <div class="answer" hidden>
-      <div class="answer-row"><span>中文意思</span><strong>${word.meaning}</strong></div>
-      <div class="answer-row"><span>詞性</span><strong>${word.partOfSpeech}</strong></div>
+      ${createDetailRow("中文意思", word.meaning)}
+      ${createDetailRow("詞性", word.partOfSpeech)}
+      ${createDetailRow("例句", word.example)}
+      ${createDetailRow("例句假名", word.exampleKana)}
+      ${createDetailRow("中文翻譯", word.exampleMeaning)}
     </div>
   `;
 
   return card;
 }
 
-function renderCards() {
-  const cards = vocabulary.map((word, index) => createCard(word, index));
+function renderCards(words) {
+  const cards = words.map((word, index) => createCard(word, index));
   cardsContainer.replaceChildren(...cards);
+  updateAnswersVisibility();
+}
+
+function renderStatus(message) {
+  const status = document.createElement("p");
+  status.className = "status-message";
+  status.textContent = message;
+  cardsContainer.replaceChildren(status);
 }
 
 function updateAnswersVisibility() {
@@ -48,9 +77,35 @@ function updateAnswersVisibility() {
   toggleButton.setAttribute("aria-pressed", String(answersVisible));
 }
 
+function showNewWordSet() {
+  answersVisible = false;
+  currentWords = getRandomWords(vocabulary, CARD_COUNT);
+  renderCards(currentWords);
+}
+
+async function loadVocabulary() {
+  try {
+    const response = await fetch(VOCABULARY_URL);
+
+    if (!response.ok) {
+      throw new Error(`無法讀取單字資料：${response.status}`);
+    }
+
+    vocabulary = await response.json();
+    showNewWordSet();
+  } catch (error) {
+    console.error(error);
+    renderStatus("目前無法載入單字資料，請確認 vocabulary.json 是否存在且格式正確。");
+    toggleButton.disabled = true;
+    shuffleButton.disabled = true;
+  }
+}
+
 toggleButton.addEventListener("click", () => {
   answersVisible = !answersVisible;
   updateAnswersVisibility();
 });
 
-renderCards();
+shuffleButton.addEventListener("click", showNewWordSet);
+
+loadVocabulary();
