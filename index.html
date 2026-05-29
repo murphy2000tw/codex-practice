@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N5 日文單字卡</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Japanese N5 Vocabulary</p>
+      <h1 id="page-title">日文 N5 單字卡</h1>
+      <p class="hero-text">每天練習 10 個基礎單字，先看日文與假名，再按下按鈕確認中文意思和詞性。</p>
+    </section>
+
+    <section class="controls" aria-label="答案控制">
+      <button id="toggleAnswers" class="answer-button" type="button" aria-pressed="false">顯示答案</button>
+    </section>
+
+    <section class="cards-grid" id="vocabularyCards" aria-live="polite"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
