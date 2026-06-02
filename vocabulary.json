@@ -2173,11 +2173,11 @@
     "id": 218,
     "word": "取る",
     "kana": "とる",
-    "meaning": "拿取；拍攝",
+    "meaning": "拿取；取得",
     "partOfSpeech": "動詞",
-    "example": "写真を取ります。",
-    "exampleKana": "しゃしんをとります。",
-    "exampleMeaning": "拍照。"
+    "example": "資料を取ります。",
+    "exampleKana": "しりょうをとります。",
+    "exampleMeaning": "取得資料。"
   },
   {
     "id": 219,
@@ -6615,9 +6615,9 @@
     "kana": "ひとり",
     "meaning": "一個人",
     "partOfSpeech": "數量詞",
-    "example": "一人人がいます。",
-    "exampleKana": "ひとり人がいます。",
-    "exampleMeaning": "一個人人が。"
+    "example": "一人がいます。",
+    "exampleKana": "ひとりがいます。",
+    "exampleMeaning": "有一個人。"
   },
   {
     "id": 663,
@@ -6625,9 +6625,9 @@
     "kana": "ふたり",
     "meaning": "兩個人",
     "partOfSpeech": "數量詞",
-    "example": "二人人がいます。",
-    "exampleKana": "ふたり人がいます。",
-    "exampleMeaning": "兩個人人が。"
+    "example": "二人がいます。",
+    "exampleKana": "ふたりがいます。",
+    "exampleMeaning": "有兩個人。"
   },
   {
     "id": 664,
@@ -6635,9 +6635,9 @@
     "kana": "さんにん",
     "meaning": "三個人",
     "partOfSpeech": "數量詞",
-    "example": "三人人がいます。",
-    "exampleKana": "さんにん人がいます。",
-    "exampleMeaning": "三個人人が。"
+    "example": "三人がいます。",
+    "exampleKana": "さんにんがいます。",
+    "exampleMeaning": "有三個人。"
   },
   {
     "id": 665,
@@ -6645,9 +6645,9 @@
     "kana": "よにん",
     "meaning": "四個人",
     "partOfSpeech": "數量詞",
-    "example": "四人人がいます。",
-    "exampleKana": "よにん人がいます。",
-    "exampleMeaning": "四個人人が。"
+    "example": "四人がいます。",
+    "exampleKana": "よにんがいます。",
+    "exampleMeaning": "有四個人。"
   },
   {
     "id": 666,
@@ -6655,9 +6655,9 @@
     "kana": "ごにん",
     "meaning": "五個人",
     "partOfSpeech": "數量詞",
-    "example": "五人人がいます。",
-    "exampleKana": "ごにん人がいます。",
-    "exampleMeaning": "五個人人が。"
+    "example": "五人がいます。",
+    "exampleKana": "ごにんがいます。",
+    "exampleMeaning": "有五個人。"
   },
   {
     "id": 667,
@@ -6665,9 +6665,9 @@
     "kana": "ろくにん",
     "meaning": "六個人",
     "partOfSpeech": "數量詞",
-    "example": "六人人がいます。",
-    "exampleKana": "ろくにん人がいます。",
-    "exampleMeaning": "六個人人が。"
+    "example": "六人がいます。",
+    "exampleKana": "ろくにんがいます。",
+    "exampleMeaning": "有六個人。"
   },
   {
     "id": 668,
@@ -6675,9 +6675,9 @@
     "kana": "ななにん",
     "meaning": "七個人",
     "partOfSpeech": "數量詞",
-    "example": "七人人がいます。",
-    "exampleKana": "ななにん人がいます。",
-    "exampleMeaning": "七個人人が。"
+    "example": "七人がいます。",
+    "exampleKana": "ななにんがいます。",
+    "exampleMeaning": "有七個人。"
   },
   {
     "id": 669,
@@ -6685,9 +6685,9 @@
     "kana": "はちにん",
     "meaning": "八個人",
     "partOfSpeech": "數量詞",
-    "example": "八人人がいます。",
-    "exampleKana": "はちにん人がいます。",
-    "exampleMeaning": "八個人人が。"
+    "example": "八人がいます。",
+    "exampleKana": "はちにんがいます。",
+    "exampleMeaning": "有八個人。"
   },
   {
     "id": 670,
@@ -6695,9 +6695,9 @@
     "kana": "きゅうにん",
     "meaning": "九個人",
     "partOfSpeech": "數量詞",
-    "example": "九人人がいます。",
-    "exampleKana": "きゅうにん人がいます。",
-    "exampleMeaning": "九個人人が。"
+    "example": "九人がいます。",
+    "exampleKana": "きゅうにんがいます。",
+    "exampleMeaning": "有九個人。"
   },
   {
     "id": 671,
@@ -6705,9 +6705,9 @@
     "kana": "じゅうにん",
     "meaning": "十個人",
     "partOfSpeech": "數量詞",
-    "example": "十人人がいます。",
-    "exampleKana": "じゅうにん人がいます。",
-    "exampleMeaning": "十個人人が。"
+    "example": "十人がいます。",
+    "exampleKana": "じゅうにんがいます。",
+    "exampleMeaning": "有十個人。"
   },
   {
     "id": 672,
@@ -6715,9 +6715,9 @@
     "kana": "じゅういちにん",
     "meaning": "十一個人",
     "partOfSpeech": "數量詞",
-    "example": "十一人人がいます。",
-    "exampleKana": "じゅういちにん人がいます。",
-    "exampleMeaning": "十一個人人が。"
+    "example": "十一人がいます。",
+    "exampleKana": "じゅういちにんがいます。",
+    "exampleMeaning": "有十一個人。"
   },
   {
     "id": 673,
@@ -6725,9 +6725,9 @@
     "kana": "じゅうににん",
     "meaning": "十二個人",
     "partOfSpeech": "數量詞",
-    "example": "十二人人がいます。",
-    "exampleKana": "じゅうににん人がいます。",
-    "exampleMeaning": "十二個人人が。"
+    "example": "十二人がいます。",
+    "exampleKana": "じゅうににんがいます。",
+    "exampleMeaning": "有十二個人。"
   },
   {
     "id": 674,
@@ -6735,9 +6735,9 @@
     "kana": "じゅうさんにん",
     "meaning": "十三個人",
     "partOfSpeech": "數量詞",
-    "example": "十三人人がいます。",
-    "exampleKana": "じゅうさんにん人がいます。",
-    "exampleMeaning": "十三個人人が。"
+    "example": "十三人がいます。",
+    "exampleKana": "じゅうさんにんがいます。",
+    "exampleMeaning": "有十三個人。"
   },
   {
     "id": 675,
@@ -6745,9 +6745,9 @@
     "kana": "じゅうよんにん",
     "meaning": "十四個人",
     "partOfSpeech": "數量詞",
-    "example": "十四人人がいます。",
-    "exampleKana": "じゅうよんにん人がいます。",
-    "exampleMeaning": "十四個人人が。"
+    "example": "十四人がいます。",
+    "exampleKana": "じゅうよんにんがいます。",
+    "exampleMeaning": "有十四個人。"
   },
   {
     "id": 676,
@@ -6755,9 +6755,9 @@
     "kana": "じゅうごにん",
     "meaning": "十五個人",
     "partOfSpeech": "數量詞",
-    "example": "十五人人がいます。",
-    "exampleKana": "じゅうごにん人がいます。",
-    "exampleMeaning": "十五個人人が。"
+    "example": "十五人がいます。",
+    "exampleKana": "じゅうごにんがいます。",
+    "exampleMeaning": "有十五個人。"
   },
   {
     "id": 677,
@@ -6765,9 +6765,9 @@
     "kana": "じゅうろくにん",
     "meaning": "十六個人",
     "partOfSpeech": "數量詞",
-    "example": "十六人人がいます。",
-    "exampleKana": "じゅうろくにん人がいます。",
-    "exampleMeaning": "十六個人人が。"
+    "example": "十六人がいます。",
+    "exampleKana": "じゅうろくにんがいます。",
+    "exampleMeaning": "有十六個人。"
   },
   {
     "id": 678,
@@ -6775,9 +6775,9 @@
     "kana": "じゅうななにん",
     "meaning": "十七個人",
     "partOfSpeech": "數量詞",
-    "example": "十七人人がいます。",
-    "exampleKana": "じゅうななにん人がいます。",
-    "exampleMeaning": "十七個人人が。"
+    "example": "十七人がいます。",
+    "exampleKana": "じゅうななにんがいます。",
+    "exampleMeaning": "有十七個人。"
   },
   {
     "id": 679,
@@ -6785,9 +6785,9 @@
     "kana": "じゅうはちにん",
     "meaning": "十八個人",
     "partOfSpeech": "數量詞",
-    "example": "十八人人がいます。",
-    "exampleKana": "じゅうはちにん人がいます。",
-    "exampleMeaning": "十八個人人が。"
+    "example": "十八人がいます。",
+    "exampleKana": "じゅうはちにんがいます。",
+    "exampleMeaning": "有十八個人。"
   },
   {
     "id": 680,
@@ -6795,9 +6795,9 @@
     "kana": "じゅうきゅうにん",
     "meaning": "十九個人",
     "partOfSpeech": "數量詞",
-    "example": "十九人人がいます。",
-    "exampleKana": "じゅうきゅうにん人がいます。",
-    "exampleMeaning": "十九個人人が。"
+    "example": "十九人がいます。",
+    "exampleKana": "じゅうきゅうにんがいます。",
+    "exampleMeaning": "有十九個人。"
   },
   {
     "id": 681,
@@ -6805,9 +6805,9 @@
     "kana": "にじゅうにん",
     "meaning": "二十個人",
     "partOfSpeech": "數量詞",
-    "example": "二十人人がいます。",
-    "exampleKana": "にじゅうにん人がいます。",
-    "exampleMeaning": "二十個人人が。"
+    "example": "二十人がいます。",
+    "exampleKana": "にじゅうにんがいます。",
+    "exampleMeaning": "有二十個人。"
   },
   {
     "id": 682,
@@ -6816,8 +6816,8 @@
     "meaning": "一個",
     "partOfSpeech": "數量詞",
     "example": "一個りんごを買います。",
-    "exampleKana": "いちこりんごを買います。",
-    "exampleMeaning": "一個りんごを買。"
+    "exampleKana": "いちこりんごをかいます。",
+    "exampleMeaning": "買一個蘋果。"
   },
   {
     "id": 683,
@@ -6826,8 +6826,8 @@
     "meaning": "二個",
     "partOfSpeech": "數量詞",
     "example": "二個りんごを買います。",
-    "exampleKana": "にこりんごを買います。",
-    "exampleMeaning": "二個りんごを買。"
+    "exampleKana": "にこりんごをかいます。",
+    "exampleMeaning": "買兩個蘋果。"
   },
   {
     "id": 684,
@@ -6836,8 +6836,8 @@
     "meaning": "三個",
     "partOfSpeech": "數量詞",
     "example": "三個りんごを買います。",
-    "exampleKana": "さんこりんごを買います。",
-    "exampleMeaning": "三個りんごを買。"
+    "exampleKana": "さんこりんごをかいます。",
+    "exampleMeaning": "買三個蘋果。"
   },
   {
     "id": 685,
@@ -6846,8 +6846,8 @@
     "meaning": "四個",
     "partOfSpeech": "數量詞",
     "example": "四個りんごを買います。",
-    "exampleKana": "よんこりんごを買います。",
-    "exampleMeaning": "四個りんごを買。"
+    "exampleKana": "よんこりんごをかいます。",
+    "exampleMeaning": "買四個蘋果。"
   },
   {
     "id": 686,
@@ -6856,8 +6856,8 @@
     "meaning": "五個",
     "partOfSpeech": "數量詞",
     "example": "五個りんごを買います。",
-    "exampleKana": "ごこりんごを買います。",
-    "exampleMeaning": "五個りんごを買。"
+    "exampleKana": "ごこりんごをかいます。",
+    "exampleMeaning": "買五個蘋果。"
   },
   {
     "id": 687,
@@ -6866,8 +6866,8 @@
     "meaning": "六個",
     "partOfSpeech": "數量詞",
     "example": "六個りんごを買います。",
-    "exampleKana": "ろくこりんごを買います。",
-    "exampleMeaning": "六個りんごを買。"
+    "exampleKana": "ろくこりんごをかいます。",
+    "exampleMeaning": "買六個蘋果。"
   },
   {
     "id": 688,
@@ -6876,8 +6876,8 @@
     "meaning": "七個",
     "partOfSpeech": "數量詞",
     "example": "七個りんごを買います。",
-    "exampleKana": "ななこりんごを買います。",
-    "exampleMeaning": "七個りんごを買。"
+    "exampleKana": "ななこりんごをかいます。",
+    "exampleMeaning": "買七個蘋果。"
   },
   {
     "id": 689,
@@ -6886,8 +6886,8 @@
     "meaning": "八個",
     "partOfSpeech": "數量詞",
     "example": "八個りんごを買います。",
-    "exampleKana": "はちこりんごを買います。",
-    "exampleMeaning": "八個りんごを買。"
+    "exampleKana": "はちこりんごをかいます。",
+    "exampleMeaning": "買八個蘋果。"
   },
   {
     "id": 690,
@@ -6896,8 +6896,8 @@
     "meaning": "九個",
     "partOfSpeech": "數量詞",
     "example": "九個りんごを買います。",
-    "exampleKana": "きゅうこりんごを買います。",
-    "exampleMeaning": "九個りんごを買。"
+    "exampleKana": "きゅうこりんごをかいます。",
+    "exampleMeaning": "買九個蘋果。"
   },
   {
     "id": 691,
@@ -6906,8 +6906,8 @@
     "meaning": "十個",
     "partOfSpeech": "數量詞",
     "example": "十個りんごを買います。",
-    "exampleKana": "じゅうこりんごを買います。",
-    "exampleMeaning": "十個りんごを買。"
+    "exampleKana": "じゅうこりんごをかいます。",
+    "exampleMeaning": "買十個蘋果。"
   },
   {
     "id": 692,
@@ -6916,8 +6916,8 @@
     "meaning": "十一個",
     "partOfSpeech": "數量詞",
     "example": "十一個りんごを買います。",
-    "exampleKana": "じゅういちこりんごを買います。",
-    "exampleMeaning": "十一個りんごを買。"
+    "exampleKana": "じゅういちこりんごをかいます。",
+    "exampleMeaning": "買十一個蘋果。"
   },
   {
     "id": 693,
@@ -6926,8 +6926,8 @@
     "meaning": "十二個",
     "partOfSpeech": "數量詞",
     "example": "十二個りんごを買います。",
-    "exampleKana": "じゅうにこりんごを買います。",
-    "exampleMeaning": "十二個りんごを買。"
+    "exampleKana": "じゅうにこりんごをかいます。",
+    "exampleMeaning": "買十二個蘋果。"
   },
   {
     "id": 694,
@@ -6936,8 +6936,8 @@
     "meaning": "十三個",
     "partOfSpeech": "數量詞",
     "example": "十三個りんごを買います。",
-    "exampleKana": "じゅうさんこりんごを買います。",
-    "exampleMeaning": "十三個りんごを買。"
+    "exampleKana": "じゅうさんこりんごをかいます。",
+    "exampleMeaning": "買十三個蘋果。"
   },
   {
     "id": 695,
@@ -6946,8 +6946,8 @@
     "meaning": "十四個",
     "partOfSpeech": "數量詞",
     "example": "十四個りんごを買います。",
-    "exampleKana": "じゅうよんこりんごを買います。",
-    "exampleMeaning": "十四個りんごを買。"
+    "exampleKana": "じゅうよんこりんごをかいます。",
+    "exampleMeaning": "買十四個蘋果。"
   },
   {
     "id": 696,
@@ -6956,8 +6956,8 @@
     "meaning": "十五個",
     "partOfSpeech": "數量詞",
     "example": "十五個りんごを買います。",
-    "exampleKana": "じゅうごこりんごを買います。",
-    "exampleMeaning": "十五個りんごを買。"
+    "exampleKana": "じゅうごこりんごをかいます。",
+    "exampleMeaning": "買十五個蘋果。"
   },
   {
     "id": 697,
@@ -6966,8 +6966,8 @@
     "meaning": "十六個",
     "partOfSpeech": "數量詞",
     "example": "十六個りんごを買います。",
-    "exampleKana": "じゅうろくこりんごを買います。",
-    "exampleMeaning": "十六個りんごを買。"
+    "exampleKana": "じゅうろくこりんごをかいます。",
+    "exampleMeaning": "買十六個蘋果。"
   },
   {
     "id": 698,
@@ -6976,8 +6976,8 @@
     "meaning": "十七個",
     "partOfSpeech": "數量詞",
     "example": "十七個りんごを買います。",
-    "exampleKana": "じゅうななこりんごを買います。",
-    "exampleMeaning": "十七個りんごを買。"
+    "exampleKana": "じゅうななこりんごをかいます。",
+    "exampleMeaning": "買十七個蘋果。"
   },
   {
     "id": 699,
@@ -6986,8 +6986,8 @@
     "meaning": "十八個",
     "partOfSpeech": "數量詞",
     "example": "十八個りんごを買います。",
-    "exampleKana": "じゅうはちこりんごを買います。",
-    "exampleMeaning": "十八個りんごを買。"
+    "exampleKana": "じゅうはちこりんごをかいます。",
+    "exampleMeaning": "買十八個蘋果。"
   },
   {
     "id": 700,
@@ -6996,8 +6996,8 @@
     "meaning": "十九個",
     "partOfSpeech": "數量詞",
     "example": "十九個りんごを買います。",
-    "exampleKana": "じゅうきゅうこりんごを買います。",
-    "exampleMeaning": "十九個りんごを買。"
+    "exampleKana": "じゅうきゅうこりんごをかいます。",
+    "exampleMeaning": "買十九個蘋果。"
   },
   {
     "id": 701,
@@ -7006,8 +7006,8 @@
     "meaning": "二十個",
     "partOfSpeech": "數量詞",
     "example": "二十個りんごを買います。",
-    "exampleKana": "にじゅうこりんごを買います。",
-    "exampleMeaning": "二十個りんごを買。"
+    "exampleKana": "にじゅうこりんごをかいます。",
+    "exampleMeaning": "買二十個蘋果。"
   },
   {
     "id": 702,
@@ -7016,8 +7016,8 @@
     "meaning": "一支",
     "partOfSpeech": "數量詞",
     "example": "一本鉛筆があります。",
-    "exampleKana": "いっぽん鉛筆があります。",
-    "exampleMeaning": "一支鉛筆が。"
+    "exampleKana": "いっぽんえんぴつがあります。",
+    "exampleMeaning": "有一支鉛筆。"
   },
   {
     "id": 703,
@@ -7026,8 +7026,8 @@
     "meaning": "二支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "二本鉛筆があります。",
-    "exampleKana": "にほん鉛筆があります。",
-    "exampleMeaning": "二支；條；瓶鉛筆が。"
+    "exampleKana": "にほんえんぴつがあります。",
+    "exampleMeaning": "有兩支鉛筆。"
   },
   {
     "id": 704,
@@ -7036,8 +7036,8 @@
     "meaning": "三支",
     "partOfSpeech": "數量詞",
     "example": "三本鉛筆があります。",
-    "exampleKana": "さんぼん鉛筆があります。",
-    "exampleMeaning": "三支鉛筆が。"
+    "exampleKana": "さんぼんえんぴつがあります。",
+    "exampleMeaning": "有三支鉛筆。"
   },
   {
     "id": 705,
@@ -7046,8 +7046,8 @@
     "meaning": "四支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "四本鉛筆があります。",
-    "exampleKana": "よんほん鉛筆があります。",
-    "exampleMeaning": "四支；條；瓶鉛筆が。"
+    "exampleKana": "よんほんえんぴつがあります。",
+    "exampleMeaning": "有四支鉛筆。"
   },
   {
     "id": 706,
@@ -7056,8 +7056,8 @@
     "meaning": "五支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "五本鉛筆があります。",
-    "exampleKana": "ごほん鉛筆があります。",
-    "exampleMeaning": "五支；條；瓶鉛筆が。"
+    "exampleKana": "ごほんえんぴつがあります。",
+    "exampleMeaning": "有五支鉛筆。"
   },
   {
     "id": 707,
@@ -7066,8 +7066,8 @@
     "meaning": "六支",
     "partOfSpeech": "數量詞",
     "example": "六本鉛筆があります。",
-    "exampleKana": "ろっぽん鉛筆があります。",
-    "exampleMeaning": "六支鉛筆が。"
+    "exampleKana": "ろっぽんえんぴつがあります。",
+    "exampleMeaning": "有六支鉛筆。"
   },
   {
     "id": 708,
@@ -7076,8 +7076,8 @@
     "meaning": "七支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "七本鉛筆があります。",
-    "exampleKana": "ななほん鉛筆があります。",
-    "exampleMeaning": "七支；條；瓶鉛筆が。"
+    "exampleKana": "ななほんえんぴつがあります。",
+    "exampleMeaning": "有七支鉛筆。"
   },
   {
     "id": 709,
@@ -7086,8 +7086,8 @@
     "meaning": "八支",
     "partOfSpeech": "數量詞",
     "example": "八本鉛筆があります。",
-    "exampleKana": "はっぽん鉛筆があります。",
-    "exampleMeaning": "八支鉛筆が。"
+    "exampleKana": "はっぽんえんぴつがあります。",
+    "exampleMeaning": "有八支鉛筆。"
   },
   {
     "id": 710,
@@ -7096,8 +7096,8 @@
     "meaning": "九支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "九本鉛筆があります。",
-    "exampleKana": "きゅうほん鉛筆があります。",
-    "exampleMeaning": "九支；條；瓶鉛筆が。"
+    "exampleKana": "きゅうほんえんぴつがあります。",
+    "exampleMeaning": "有九支鉛筆。"
   },
   {
     "id": 711,
@@ -7106,8 +7106,8 @@
     "meaning": "十支",
     "partOfSpeech": "數量詞",
     "example": "十本鉛筆があります。",
-    "exampleKana": "じゅっぽん鉛筆があります。",
-    "exampleMeaning": "十支鉛筆が。"
+    "exampleKana": "じゅっぽんえんぴつがあります。",
+    "exampleMeaning": "有十支鉛筆。"
   },
   {
     "id": 712,
@@ -7116,8 +7116,8 @@
     "meaning": "十一支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "十一本鉛筆があります。",
-    "exampleKana": "じゅういちほん鉛筆があります。",
-    "exampleMeaning": "十一支；條；瓶鉛筆が。"
+    "exampleKana": "じゅういちほんえんぴつがあります。",
+    "exampleMeaning": "有十一支鉛筆。"
   },
   {
     "id": 713,
@@ -7126,8 +7126,8 @@
     "meaning": "十二支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "十二本鉛筆があります。",
-    "exampleKana": "じゅうにほん鉛筆があります。",
-    "exampleMeaning": "十二支；條；瓶鉛筆が。"
+    "exampleKana": "じゅうにほんえんぴつがあります。",
+    "exampleMeaning": "有十二支鉛筆。"
   },
   {
     "id": 714,
@@ -7136,8 +7136,8 @@
     "meaning": "十三支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "十三本鉛筆があります。",
-    "exampleKana": "じゅうさんほん鉛筆があります。",
-    "exampleMeaning": "十三支；條；瓶鉛筆が。"
+    "exampleKana": "じゅうさんほんえんぴつがあります。",
+    "exampleMeaning": "有十三支鉛筆。"
   },
   {
     "id": 715,
@@ -7146,8 +7146,8 @@
     "meaning": "十四支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "十四本鉛筆があります。",
-    "exampleKana": "じゅうよんほん鉛筆があります。",
-    "exampleMeaning": "十四支；條；瓶鉛筆が。"
+    "exampleKana": "じゅうよんほんえんぴつがあります。",
+    "exampleMeaning": "有十四支鉛筆。"
   },
   {
     "id": 716,
@@ -7156,8 +7156,8 @@
     "meaning": "十五支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "十五本鉛筆があります。",
-    "exampleKana": "じゅうごほん鉛筆があります。",
-    "exampleMeaning": "十五支；條；瓶鉛筆が。"
+    "exampleKana": "じゅうごほんえんぴつがあります。",
+    "exampleMeaning": "有十五支鉛筆。"
   },
   {
     "id": 717,
@@ -7166,8 +7166,8 @@
     "meaning": "十六支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "十六本鉛筆があります。",
-    "exampleKana": "じゅうろくほん鉛筆があります。",
-    "exampleMeaning": "十六支；條；瓶鉛筆が。"
+    "exampleKana": "じゅうろくほんえんぴつがあります。",
+    "exampleMeaning": "有十六支鉛筆。"
   },
   {
     "id": 718,
@@ -7176,8 +7176,8 @@
     "meaning": "十七支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "十七本鉛筆があります。",
-    "exampleKana": "じゅうななほん鉛筆があります。",
-    "exampleMeaning": "十七支；條；瓶鉛筆が。"
+    "exampleKana": "じゅうななほんえんぴつがあります。",
+    "exampleMeaning": "有十七支鉛筆。"
   },
   {
     "id": 719,
@@ -7186,8 +7186,8 @@
     "meaning": "十八支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "十八本鉛筆があります。",
-    "exampleKana": "じゅうはちほん鉛筆があります。",
-    "exampleMeaning": "十八支；條；瓶鉛筆が。"
+    "exampleKana": "じゅうはちほんえんぴつがあります。",
+    "exampleMeaning": "有十八支鉛筆。"
   },
   {
     "id": 720,
@@ -7196,8 +7196,8 @@
     "meaning": "十九支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "十九本鉛筆があります。",
-    "exampleKana": "じゅうきゅうほん鉛筆があります。",
-    "exampleMeaning": "十九支；條；瓶鉛筆が。"
+    "exampleKana": "じゅうきゅうほんえんぴつがあります。",
+    "exampleMeaning": "有十九支鉛筆。"
   },
   {
     "id": 721,
@@ -7206,8 +7206,8 @@
     "meaning": "二十支；條；瓶",
     "partOfSpeech": "數量詞",
     "example": "二十本鉛筆があります。",
-    "exampleKana": "にじゅうほん鉛筆があります。",
-    "exampleMeaning": "二十支；條；瓶鉛筆が。"
+    "exampleKana": "にじゅうほんえんぴつがあります。",
+    "exampleMeaning": "有二十支鉛筆。"
   },
   {
     "id": 722,
@@ -7216,8 +7216,8 @@
     "meaning": "一張",
     "partOfSpeech": "數量詞",
     "example": "一枚切手を買います。",
-    "exampleKana": "いちまい切手を買います。",
-    "exampleMeaning": "一張切手を買。"
+    "exampleKana": "いちまいきってをかいます。",
+    "exampleMeaning": "買一張郵票。"
   },
   {
     "id": 723,
@@ -7226,8 +7226,8 @@
     "meaning": "二張",
     "partOfSpeech": "數量詞",
     "example": "二枚切手を買います。",
-    "exampleKana": "にまい切手を買います。",
-    "exampleMeaning": "二張切手を買。"
+    "exampleKana": "にまいきってをかいます。",
+    "exampleMeaning": "買兩張郵票。"
   },
   {
     "id": 724,
@@ -7236,8 +7236,8 @@
     "meaning": "三張",
     "partOfSpeech": "數量詞",
     "example": "三枚切手を買います。",
-    "exampleKana": "さんまい切手を買います。",
-    "exampleMeaning": "三張切手を買。"
+    "exampleKana": "さんまいきってをかいます。",
+    "exampleMeaning": "買三張郵票。"
   },
   {
     "id": 725,
@@ -7246,8 +7246,8 @@
     "meaning": "四張",
     "partOfSpeech": "數量詞",
     "example": "四枚切手を買います。",
-    "exampleKana": "よんまい切手を買います。",
-    "exampleMeaning": "四張切手を買。"
+    "exampleKana": "よんまいきってをかいます。",
+    "exampleMeaning": "買四張郵票。"
   },
   {
     "id": 726,
@@ -7256,8 +7256,8 @@
     "meaning": "五張",
     "partOfSpeech": "數量詞",
     "example": "五枚切手を買います。",
-    "exampleKana": "ごまい切手を買います。",
-    "exampleMeaning": "五張切手を買。"
+    "exampleKana": "ごまいきってをかいます。",
+    "exampleMeaning": "買五張郵票。"
   },
   {
     "id": 727,
@@ -7266,8 +7266,8 @@
     "meaning": "六張",
     "partOfSpeech": "數量詞",
     "example": "六枚切手を買います。",
-    "exampleKana": "ろくまい切手を買います。",
-    "exampleMeaning": "六張切手を買。"
+    "exampleKana": "ろくまいきってをかいます。",
+    "exampleMeaning": "買六張郵票。"
   },
   {
     "id": 728,
@@ -7276,8 +7276,8 @@
     "meaning": "七張",
     "partOfSpeech": "數量詞",
     "example": "七枚切手を買います。",
-    "exampleKana": "ななまい切手を買います。",
-    "exampleMeaning": "七張切手を買。"
+    "exampleKana": "ななまいきってをかいます。",
+    "exampleMeaning": "買七張郵票。"
   },
   {
     "id": 729,
@@ -7286,8 +7286,8 @@
     "meaning": "八張",
     "partOfSpeech": "數量詞",
     "example": "八枚切手を買います。",
-    "exampleKana": "はちまい切手を買います。",
-    "exampleMeaning": "八張切手を買。"
+    "exampleKana": "はちまいきってをかいます。",
+    "exampleMeaning": "買八張郵票。"
   },
   {
     "id": 730,
@@ -7296,8 +7296,8 @@
     "meaning": "九張",
     "partOfSpeech": "數量詞",
     "example": "九枚切手を買います。",
-    "exampleKana": "きゅうまい切手を買います。",
-    "exampleMeaning": "九張切手を買。"
+    "exampleKana": "きゅうまいきってをかいます。",
+    "exampleMeaning": "買九張郵票。"
   },
   {
     "id": 731,
@@ -7306,8 +7306,8 @@
     "meaning": "十張",
     "partOfSpeech": "數量詞",
     "example": "十枚切手を買います。",
-    "exampleKana": "じゅうまい切手を買います。",
-    "exampleMeaning": "十張切手を買。"
+    "exampleKana": "じゅうまいきってをかいます。",
+    "exampleMeaning": "買十張郵票。"
   },
   {
     "id": 732,
@@ -7316,8 +7316,8 @@
     "meaning": "十一張",
     "partOfSpeech": "數量詞",
     "example": "十一枚切手を買います。",
-    "exampleKana": "じゅういちまい切手を買います。",
-    "exampleMeaning": "十一張切手を買。"
+    "exampleKana": "じゅういちまいきってをかいます。",
+    "exampleMeaning": "買十一張郵票。"
   },
   {
     "id": 733,
@@ -7326,8 +7326,8 @@
     "meaning": "十二張",
     "partOfSpeech": "數量詞",
     "example": "十二枚切手を買います。",
-    "exampleKana": "じゅうにまい切手を買います。",
-    "exampleMeaning": "十二張切手を買。"
+    "exampleKana": "じゅうにまいきってをかいます。",
+    "exampleMeaning": "買十二張郵票。"
   },
   {
     "id": 734,
@@ -7336,8 +7336,8 @@
     "meaning": "十三張",
     "partOfSpeech": "數量詞",
     "example": "十三枚切手を買います。",
-    "exampleKana": "じゅうさんまい切手を買います。",
-    "exampleMeaning": "十三張切手を買。"
+    "exampleKana": "じゅうさんまいきってをかいます。",
+    "exampleMeaning": "買十三張郵票。"
   },
   {
     "id": 735,
@@ -7346,8 +7346,8 @@
     "meaning": "十四張",
     "partOfSpeech": "數量詞",
     "example": "十四枚切手を買います。",
-    "exampleKana": "じゅうよんまい切手を買います。",
-    "exampleMeaning": "十四張切手を買。"
+    "exampleKana": "じゅうよんまいきってをかいます。",
+    "exampleMeaning": "買十四張郵票。"
   },
   {
     "id": 736,
@@ -7356,8 +7356,8 @@
     "meaning": "十五張",
     "partOfSpeech": "數量詞",
     "example": "十五枚切手を買います。",
-    "exampleKana": "じゅうごまい切手を買います。",
-    "exampleMeaning": "十五張切手を買。"
+    "exampleKana": "じゅうごまいきってをかいます。",
+    "exampleMeaning": "買十五張郵票。"
   },
   {
     "id": 737,
@@ -7366,8 +7366,8 @@
     "meaning": "十六張",
     "partOfSpeech": "數量詞",
     "example": "十六枚切手を買います。",
-    "exampleKana": "じゅうろくまい切手を買います。",
-    "exampleMeaning": "十六張切手を買。"
+    "exampleKana": "じゅうろくまいきってをかいます。",
+    "exampleMeaning": "買十六張郵票。"
   },
   {
     "id": 738,
@@ -7376,8 +7376,8 @@
     "meaning": "十七張",
     "partOfSpeech": "數量詞",
     "example": "十七枚切手を買います。",
-    "exampleKana": "じゅうななまい切手を買います。",
-    "exampleMeaning": "十七張切手を買。"
+    "exampleKana": "じゅうななまいきってをかいます。",
+    "exampleMeaning": "買十七張郵票。"
   },
   {
     "id": 739,
@@ -7386,8 +7386,8 @@
     "meaning": "十八張",
     "partOfSpeech": "數量詞",
     "example": "十八枚切手を買います。",
-    "exampleKana": "じゅうはちまい切手を買います。",
-    "exampleMeaning": "十八張切手を買。"
+    "exampleKana": "じゅうはちまいきってをかいます。",
+    "exampleMeaning": "買十八張郵票。"
   },
   {
     "id": 740,
@@ -7396,8 +7396,8 @@
     "meaning": "十九張",
     "partOfSpeech": "數量詞",
     "example": "十九枚切手を買います。",
-    "exampleKana": "じゅうきゅうまい切手を買います。",
-    "exampleMeaning": "十九張切手を買。"
+    "exampleKana": "じゅうきゅうまいきってをかいます。",
+    "exampleMeaning": "買十九張郵票。"
   },
   {
     "id": 741,
@@ -7406,8 +7406,8 @@
     "meaning": "二十張",
     "partOfSpeech": "數量詞",
     "example": "二十枚切手を買います。",
-    "exampleKana": "にじゅうまい切手を買います。",
-    "exampleMeaning": "二十張切手を買。"
+    "exampleKana": "にじゅうまいきってをかいます。",
+    "exampleMeaning": "買二十張郵票。"
   },
   {
     "id": 742,
@@ -7416,8 +7416,8 @@
     "meaning": "一本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "一冊本を読みます。",
-    "exampleKana": "いちさつ本を読みます。",
-    "exampleMeaning": "一本（書籍）本を読みます。"
+    "exampleKana": "いちさつほんをよみます。",
+    "exampleMeaning": "讀一本書。"
   },
   {
     "id": 743,
@@ -7426,8 +7426,8 @@
     "meaning": "二本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "二冊本を読みます。",
-    "exampleKana": "にさつ本を読みます。",
-    "exampleMeaning": "二本（書籍）本を読みます。"
+    "exampleKana": "にさつほんをよみます。",
+    "exampleMeaning": "讀兩本書。"
   },
   {
     "id": 744,
@@ -7436,8 +7436,8 @@
     "meaning": "三本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "三冊本を読みます。",
-    "exampleKana": "さんさつ本を読みます。",
-    "exampleMeaning": "三本（書籍）本を読みます。"
+    "exampleKana": "さんさつほんをよみます。",
+    "exampleMeaning": "讀三本書。"
   },
   {
     "id": 745,
@@ -7446,8 +7446,8 @@
     "meaning": "四本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "四冊本を読みます。",
-    "exampleKana": "よんさつ本を読みます。",
-    "exampleMeaning": "四本（書籍）本を読みます。"
+    "exampleKana": "よんさつほんをよみます。",
+    "exampleMeaning": "讀四本書。"
   },
   {
     "id": 746,
@@ -7456,8 +7456,8 @@
     "meaning": "五本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "五冊本を読みます。",
-    "exampleKana": "ごさつ本を読みます。",
-    "exampleMeaning": "五本（書籍）本を読みます。"
+    "exampleKana": "ごさつほんをよみます。",
+    "exampleMeaning": "讀五本書。"
   },
   {
     "id": 747,
@@ -7466,8 +7466,8 @@
     "meaning": "六本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "六冊本を読みます。",
-    "exampleKana": "ろくさつ本を読みます。",
-    "exampleMeaning": "六本（書籍）本を読みます。"
+    "exampleKana": "ろくさつほんをよみます。",
+    "exampleMeaning": "讀六本書。"
   },
   {
     "id": 748,
@@ -7476,8 +7476,8 @@
     "meaning": "七本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "七冊本を読みます。",
-    "exampleKana": "ななさつ本を読みます。",
-    "exampleMeaning": "七本（書籍）本を読みます。"
+    "exampleKana": "ななさつほんをよみます。",
+    "exampleMeaning": "讀七本書。"
   },
   {
     "id": 749,
@@ -7486,8 +7486,8 @@
     "meaning": "八本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "八冊本を読みます。",
-    "exampleKana": "はちさつ本を読みます。",
-    "exampleMeaning": "八本（書籍）本を読みます。"
+    "exampleKana": "はちさつほんをよみます。",
+    "exampleMeaning": "讀八本書。"
   },
   {
     "id": 750,
@@ -7496,8 +7496,8 @@
     "meaning": "九本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "九冊本を読みます。",
-    "exampleKana": "きゅうさつ本を読みます。",
-    "exampleMeaning": "九本（書籍）本を読みます。"
+    "exampleKana": "きゅうさつほんをよみます。",
+    "exampleMeaning": "讀九本書。"
   },
   {
     "id": 751,
@@ -7506,8 +7506,8 @@
     "meaning": "十本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "十冊本を読みます。",
-    "exampleKana": "じゅうさつ本を読みます。",
-    "exampleMeaning": "十本（書籍）本を読みます。"
+    "exampleKana": "じゅうさつほんをよみます。",
+    "exampleMeaning": "讀十本書。"
   },
   {
     "id": 752,
@@ -7516,8 +7516,8 @@
     "meaning": "十一本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "十一冊本を読みます。",
-    "exampleKana": "じゅういちさつ本を読みます。",
-    "exampleMeaning": "十一本（書籍）本を読みます。"
+    "exampleKana": "じゅういちさつほんをよみます。",
+    "exampleMeaning": "讀十一本書。"
   },
   {
     "id": 753,
@@ -7526,8 +7526,8 @@
     "meaning": "十二本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "十二冊本を読みます。",
-    "exampleKana": "じゅうにさつ本を読みます。",
-    "exampleMeaning": "十二本（書籍）本を読みます。"
+    "exampleKana": "じゅうにさつほんをよみます。",
+    "exampleMeaning": "讀十二本書。"
   },
   {
     "id": 754,
@@ -7536,8 +7536,8 @@
     "meaning": "十三本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "十三冊本を読みます。",
-    "exampleKana": "じゅうさんさつ本を読みます。",
-    "exampleMeaning": "十三本（書籍）本を読みます。"
+    "exampleKana": "じゅうさんさつほんをよみます。",
+    "exampleMeaning": "讀十三本書。"
   },
   {
     "id": 755,
@@ -7546,8 +7546,8 @@
     "meaning": "十四本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "十四冊本を読みます。",
-    "exampleKana": "じゅうよんさつ本を読みます。",
-    "exampleMeaning": "十四本（書籍）本を読みます。"
+    "exampleKana": "じゅうよんさつほんをよみます。",
+    "exampleMeaning": "讀十四本書。"
   },
   {
     "id": 756,
@@ -7556,8 +7556,8 @@
     "meaning": "十五本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "十五冊本を読みます。",
-    "exampleKana": "じゅうごさつ本を読みます。",
-    "exampleMeaning": "十五本（書籍）本を読みます。"
+    "exampleKana": "じゅうごさつほんをよみます。",
+    "exampleMeaning": "讀十五本書。"
   },
   {
     "id": 757,
@@ -7566,8 +7566,8 @@
     "meaning": "十六本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "十六冊本を読みます。",
-    "exampleKana": "じゅうろくさつ本を読みます。",
-    "exampleMeaning": "十六本（書籍）本を読みます。"
+    "exampleKana": "じゅうろくさつほんをよみます。",
+    "exampleMeaning": "讀十六本書。"
   },
   {
     "id": 758,
@@ -7576,8 +7576,8 @@
     "meaning": "十七本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "十七冊本を読みます。",
-    "exampleKana": "じゅうななさつ本を読みます。",
-    "exampleMeaning": "十七本（書籍）本を読みます。"
+    "exampleKana": "じゅうななさつほんをよみます。",
+    "exampleMeaning": "讀十七本書。"
   },
   {
     "id": 759,
@@ -7586,8 +7586,8 @@
     "meaning": "十八本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "十八冊本を読みます。",
-    "exampleKana": "じゅうはちさつ本を読みます。",
-    "exampleMeaning": "十八本（書籍）本を読みます。"
+    "exampleKana": "じゅうはちさつほんをよみます。",
+    "exampleMeaning": "讀十八本書。"
   },
   {
     "id": 760,
@@ -7596,8 +7596,8 @@
     "meaning": "十九本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "十九冊本を読みます。",
-    "exampleKana": "じゅうきゅうさつ本を読みます。",
-    "exampleMeaning": "十九本（書籍）本を読みます。"
+    "exampleKana": "じゅうきゅうさつほんをよみます。",
+    "exampleMeaning": "讀十九本書。"
   },
   {
     "id": 761,
@@ -7606,8 +7606,8 @@
     "meaning": "二十本（書籍）",
     "partOfSpeech": "數量詞",
     "example": "二十冊本を読みます。",
-    "exampleKana": "にじゅうさつ本を読みます。",
-    "exampleMeaning": "二十本（書籍）本を読みます。"
+    "exampleKana": "にじゅうさつほんをよみます。",
+    "exampleMeaning": "讀二十本書。"
   },
   {
     "id": 762,
@@ -7616,8 +7616,8 @@
     "meaning": "一台",
     "partOfSpeech": "數量詞",
     "example": "一台車があります。",
-    "exampleKana": "いちだい車があります。",
-    "exampleMeaning": "一台車が。"
+    "exampleKana": "いちだいくるまがあります。",
+    "exampleMeaning": "有一台車。"
   },
   {
     "id": 763,
@@ -7626,8 +7626,8 @@
     "meaning": "二台",
     "partOfSpeech": "數量詞",
     "example": "二台車があります。",
-    "exampleKana": "にだい車があります。",
-    "exampleMeaning": "二台車が。"
+    "exampleKana": "にだいくるまがあります。",
+    "exampleMeaning": "有兩台車。"
   },
   {
     "id": 764,
@@ -7636,8 +7636,8 @@
     "meaning": "三台",
     "partOfSpeech": "數量詞",
     "example": "三台車があります。",
-    "exampleKana": "さんだい車があります。",
-    "exampleMeaning": "三台車が。"
+    "exampleKana": "さんだいくるまがあります。",
+    "exampleMeaning": "有三台車。"
   },
   {
     "id": 765,
@@ -7646,8 +7646,8 @@
     "meaning": "四台",
     "partOfSpeech": "數量詞",
     "example": "四台車があります。",
-    "exampleKana": "よんだい車があります。",
-    "exampleMeaning": "四台車が。"
+    "exampleKana": "よんだいくるまがあります。",
+    "exampleMeaning": "有四台車。"
   },
   {
     "id": 766,
@@ -7656,8 +7656,8 @@
     "meaning": "五台",
     "partOfSpeech": "數量詞",
     "example": "五台車があります。",
-    "exampleKana": "ごだい車があります。",
-    "exampleMeaning": "五台車が。"
+    "exampleKana": "ごだいくるまがあります。",
+    "exampleMeaning": "有五台車。"
   },
   {
     "id": 767,
@@ -7666,8 +7666,8 @@
     "meaning": "六台",
     "partOfSpeech": "數量詞",
     "example": "六台車があります。",
-    "exampleKana": "ろくだい車があります。",
-    "exampleMeaning": "六台車が。"
+    "exampleKana": "ろくだいくるまがあります。",
+    "exampleMeaning": "有六台車。"
   },
   {
     "id": 768,
@@ -7676,8 +7676,8 @@
     "meaning": "七台",
     "partOfSpeech": "數量詞",
     "example": "七台車があります。",
-    "exampleKana": "ななだい車があります。",
-    "exampleMeaning": "七台車が。"
+    "exampleKana": "ななだいくるまがあります。",
+    "exampleMeaning": "有七台車。"
   },
   {
     "id": 769,
@@ -7686,8 +7686,8 @@
     "meaning": "八台",
     "partOfSpeech": "數量詞",
     "example": "八台車があります。",
-    "exampleKana": "はちだい車があります。",
-    "exampleMeaning": "八台車が。"
+    "exampleKana": "はちだいくるまがあります。",
+    "exampleMeaning": "有八台車。"
   },
   {
     "id": 770,
@@ -7696,8 +7696,8 @@
     "meaning": "九台",
     "partOfSpeech": "數量詞",
     "example": "九台車があります。",
-    "exampleKana": "きゅうだい車があります。",
-    "exampleMeaning": "九台車が。"
+    "exampleKana": "きゅうだいくるまがあります。",
+    "exampleMeaning": "有九台車。"
   },
   {
     "id": 771,
@@ -7706,8 +7706,8 @@
     "meaning": "十台",
     "partOfSpeech": "數量詞",
     "example": "十台車があります。",
-    "exampleKana": "じゅうだい車があります。",
-    "exampleMeaning": "十台車が。"
+    "exampleKana": "じゅうだいくるまがあります。",
+    "exampleMeaning": "有十台車。"
   },
   {
     "id": 772,
@@ -7716,8 +7716,8 @@
     "meaning": "十一台",
     "partOfSpeech": "數量詞",
     "example": "十一台車があります。",
-    "exampleKana": "じゅういちだい車があります。",
-    "exampleMeaning": "十一台車が。"
+    "exampleKana": "じゅういちだいくるまがあります。",
+    "exampleMeaning": "有十一台車。"
   },
   {
     "id": 773,
@@ -7726,8 +7726,8 @@
     "meaning": "十二台",
     "partOfSpeech": "數量詞",
     "example": "十二台車があります。",
-    "exampleKana": "じゅうにだい車があります。",
-    "exampleMeaning": "十二台車が。"
+    "exampleKana": "じゅうにだいくるまがあります。",
+    "exampleMeaning": "有十二台車。"
   },
   {
     "id": 774,
@@ -7736,8 +7736,8 @@
     "meaning": "十三台",
     "partOfSpeech": "數量詞",
     "example": "十三台車があります。",
-    "exampleKana": "じゅうさんだい車があります。",
-    "exampleMeaning": "十三台車が。"
+    "exampleKana": "じゅうさんだいくるまがあります。",
+    "exampleMeaning": "有十三台車。"
   },
   {
     "id": 775,
@@ -7746,8 +7746,8 @@
     "meaning": "十四台",
     "partOfSpeech": "數量詞",
     "example": "十四台車があります。",
-    "exampleKana": "じゅうよんだい車があります。",
-    "exampleMeaning": "十四台車が。"
+    "exampleKana": "じゅうよんだいくるまがあります。",
+    "exampleMeaning": "有十四台車。"
   },
   {
     "id": 776,
@@ -7756,8 +7756,8 @@
     "meaning": "十五台",
     "partOfSpeech": "數量詞",
     "example": "十五台車があります。",
-    "exampleKana": "じゅうごだい車があります。",
-    "exampleMeaning": "十五台車が。"
+    "exampleKana": "じゅうごだいくるまがあります。",
+    "exampleMeaning": "有十五台車。"
   },
   {
     "id": 777,
@@ -7766,8 +7766,8 @@
     "meaning": "十六台",
     "partOfSpeech": "數量詞",
     "example": "十六台車があります。",
-    "exampleKana": "じゅうろくだい車があります。",
-    "exampleMeaning": "十六台車が。"
+    "exampleKana": "じゅうろくだいくるまがあります。",
+    "exampleMeaning": "有十六台車。"
   },
   {
     "id": 778,
@@ -7776,8 +7776,8 @@
     "meaning": "十七台",
     "partOfSpeech": "數量詞",
     "example": "十七台車があります。",
-    "exampleKana": "じゅうななだい車があります。",
-    "exampleMeaning": "十七台車が。"
+    "exampleKana": "じゅうななだいくるまがあります。",
+    "exampleMeaning": "有十七台車。"
   },
   {
     "id": 779,
@@ -7786,8 +7786,8 @@
     "meaning": "十八台",
     "partOfSpeech": "數量詞",
     "example": "十八台車があります。",
-    "exampleKana": "じゅうはちだい車があります。",
-    "exampleMeaning": "十八台車が。"
+    "exampleKana": "じゅうはちだいくるまがあります。",
+    "exampleMeaning": "有十八台車。"
   },
   {
     "id": 780,
@@ -7796,8 +7796,8 @@
     "meaning": "十九台",
     "partOfSpeech": "數量詞",
     "example": "十九台車があります。",
-    "exampleKana": "じゅうきゅうだい車があります。",
-    "exampleMeaning": "十九台車が。"
+    "exampleKana": "じゅうきゅうだいくるまがあります。",
+    "exampleMeaning": "有十九台車。"
   },
   {
     "id": 781,
@@ -7806,8 +7806,8 @@
     "meaning": "二十台",
     "partOfSpeech": "數量詞",
     "example": "二十台車があります。",
-    "exampleKana": "にじゅうだい車があります。",
-    "exampleMeaning": "二十台車が。"
+    "exampleKana": "にじゅうだいくるまがあります。",
+    "exampleMeaning": "有二十台車。"
   },
   {
     "id": 782,
@@ -7816,8 +7816,8 @@
     "meaning": "一隻",
     "partOfSpeech": "數量詞",
     "example": "一匹犬がいます。",
-    "exampleKana": "いっぴき犬がいます。",
-    "exampleMeaning": "一隻犬が。"
+    "exampleKana": "いっぴきいぬがいます。",
+    "exampleMeaning": "有一隻狗。"
   },
   {
     "id": 783,
@@ -7826,8 +7826,8 @@
     "meaning": "二隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "二匹犬がいます。",
-    "exampleKana": "にひき犬がいます。",
-    "exampleMeaning": "二隻（小動物）犬が。"
+    "exampleKana": "にひきいぬがいます。",
+    "exampleMeaning": "有兩隻狗。"
   },
   {
     "id": 784,
@@ -7836,8 +7836,8 @@
     "meaning": "三隻",
     "partOfSpeech": "數量詞",
     "example": "三匹犬がいます。",
-    "exampleKana": "さんびき犬がいます。",
-    "exampleMeaning": "三隻犬が。"
+    "exampleKana": "さんびきいぬがいます。",
+    "exampleMeaning": "有三隻狗。"
   },
   {
     "id": 785,
@@ -7846,8 +7846,8 @@
     "meaning": "四隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "四匹犬がいます。",
-    "exampleKana": "よんひき犬がいます。",
-    "exampleMeaning": "四隻（小動物）犬が。"
+    "exampleKana": "よんひきいぬがいます。",
+    "exampleMeaning": "有四隻狗。"
   },
   {
     "id": 786,
@@ -7856,8 +7856,8 @@
     "meaning": "五隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "五匹犬がいます。",
-    "exampleKana": "ごひき犬がいます。",
-    "exampleMeaning": "五隻（小動物）犬が。"
+    "exampleKana": "ごひきいぬがいます。",
+    "exampleMeaning": "有五隻狗。"
   },
   {
     "id": 787,
@@ -7866,8 +7866,8 @@
     "meaning": "六隻",
     "partOfSpeech": "數量詞",
     "example": "六匹犬がいます。",
-    "exampleKana": "ろっぴき犬がいます。",
-    "exampleMeaning": "六隻犬が。"
+    "exampleKana": "ろっぴきいぬがいます。",
+    "exampleMeaning": "有六隻狗。"
   },
   {
     "id": 788,
@@ -7876,8 +7876,8 @@
     "meaning": "七隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "七匹犬がいます。",
-    "exampleKana": "ななひき犬がいます。",
-    "exampleMeaning": "七隻（小動物）犬が。"
+    "exampleKana": "ななひきいぬがいます。",
+    "exampleMeaning": "有七隻狗。"
   },
   {
     "id": 789,
@@ -7886,8 +7886,8 @@
     "meaning": "八隻",
     "partOfSpeech": "數量詞",
     "example": "八匹犬がいます。",
-    "exampleKana": "はっぴき犬がいます。",
-    "exampleMeaning": "八隻犬が。"
+    "exampleKana": "はっぴきいぬがいます。",
+    "exampleMeaning": "有八隻狗。"
   },
   {
     "id": 790,
@@ -7896,8 +7896,8 @@
     "meaning": "九隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "九匹犬がいます。",
-    "exampleKana": "きゅうひき犬がいます。",
-    "exampleMeaning": "九隻（小動物）犬が。"
+    "exampleKana": "きゅうひきいぬがいます。",
+    "exampleMeaning": "有九隻狗。"
   },
   {
     "id": 791,
@@ -7906,8 +7906,8 @@
     "meaning": "十隻",
     "partOfSpeech": "數量詞",
     "example": "十匹犬がいます。",
-    "exampleKana": "じゅっぴき犬がいます。",
-    "exampleMeaning": "十隻犬が。"
+    "exampleKana": "じゅっぴきいぬがいます。",
+    "exampleMeaning": "有十隻狗。"
   },
   {
     "id": 792,
@@ -7916,8 +7916,8 @@
     "meaning": "十一隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "十一匹犬がいます。",
-    "exampleKana": "じゅういちひき犬がいます。",
-    "exampleMeaning": "十一隻（小動物）犬が。"
+    "exampleKana": "じゅういちひきいぬがいます。",
+    "exampleMeaning": "有十一隻狗。"
   },
   {
     "id": 793,
@@ -7926,8 +7926,8 @@
     "meaning": "十二隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "十二匹犬がいます。",
-    "exampleKana": "じゅうにひき犬がいます。",
-    "exampleMeaning": "十二隻（小動物）犬が。"
+    "exampleKana": "じゅうにひきいぬがいます。",
+    "exampleMeaning": "有十二隻狗。"
   },
   {
     "id": 794,
@@ -7936,8 +7936,8 @@
     "meaning": "十三隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "十三匹犬がいます。",
-    "exampleKana": "じゅうさんひき犬がいます。",
-    "exampleMeaning": "十三隻（小動物）犬が。"
+    "exampleKana": "じゅうさんひきいぬがいます。",
+    "exampleMeaning": "有十三隻狗。"
   },
   {
     "id": 795,
@@ -7946,8 +7946,8 @@
     "meaning": "十四隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "十四匹犬がいます。",
-    "exampleKana": "じゅうよんひき犬がいます。",
-    "exampleMeaning": "十四隻（小動物）犬が。"
+    "exampleKana": "じゅうよんひきいぬがいます。",
+    "exampleMeaning": "有十四隻狗。"
   },
   {
     "id": 796,
@@ -7956,8 +7956,8 @@
     "meaning": "十五隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "十五匹犬がいます。",
-    "exampleKana": "じゅうごひき犬がいます。",
-    "exampleMeaning": "十五隻（小動物）犬が。"
+    "exampleKana": "じゅうごひきいぬがいます。",
+    "exampleMeaning": "有十五隻狗。"
   },
   {
     "id": 797,
@@ -7966,8 +7966,8 @@
     "meaning": "十六隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "十六匹犬がいます。",
-    "exampleKana": "じゅうろくひき犬がいます。",
-    "exampleMeaning": "十六隻（小動物）犬が。"
+    "exampleKana": "じゅうろくひきいぬがいます。",
+    "exampleMeaning": "有十六隻狗。"
   },
   {
     "id": 798,
@@ -7976,8 +7976,8 @@
     "meaning": "十七隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "十七匹犬がいます。",
-    "exampleKana": "じゅうななひき犬がいます。",
-    "exampleMeaning": "十七隻（小動物）犬が。"
+    "exampleKana": "じゅうななひきいぬがいます。",
+    "exampleMeaning": "有十七隻狗。"
   },
   {
     "id": 799,
@@ -7986,8 +7986,8 @@
     "meaning": "十八隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "十八匹犬がいます。",
-    "exampleKana": "じゅうはちひき犬がいます。",
-    "exampleMeaning": "十八隻（小動物）犬が。"
+    "exampleKana": "じゅうはちひきいぬがいます。",
+    "exampleMeaning": "有十八隻狗。"
   },
   {
     "id": 800,
@@ -7996,8 +7996,8 @@
     "meaning": "十九隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "十九匹犬がいます。",
-    "exampleKana": "じゅうきゅうひき犬がいます。",
-    "exampleMeaning": "十九隻（小動物）犬が。"
+    "exampleKana": "じゅうきゅうひきいぬがいます。",
+    "exampleMeaning": "有十九隻狗。"
   },
   {
     "id": 801,
@@ -8006,8 +8006,8 @@
     "meaning": "二十隻（小動物）",
     "partOfSpeech": "數量詞",
     "example": "二十匹犬がいます。",
-    "exampleKana": "にじゅうひき犬がいます。",
-    "exampleMeaning": "二十隻（小動物）犬が。"
+    "exampleKana": "にじゅうひきいぬがいます。",
+    "exampleMeaning": "有二十隻狗。"
   },
   {
     "id": 802,
@@ -8016,8 +8016,8 @@
     "meaning": "一次",
     "partOfSpeech": "數量詞",
     "example": "一回練習します。",
-    "exampleKana": "いちかい練習します。",
-    "exampleMeaning": "一次練習します。"
+    "exampleKana": "いちかいれんしゅうします。",
+    "exampleMeaning": "練習一次。"
   },
   {
     "id": 803,
@@ -8026,8 +8026,8 @@
     "meaning": "二次",
     "partOfSpeech": "數量詞",
     "example": "二回練習します。",
-    "exampleKana": "にかい練習します。",
-    "exampleMeaning": "二次練習します。"
+    "exampleKana": "にかいれんしゅうします。",
+    "exampleMeaning": "練習兩次。"
   },
   {
     "id": 804,
@@ -8036,8 +8036,8 @@
     "meaning": "三次",
     "partOfSpeech": "數量詞",
     "example": "三回練習します。",
-    "exampleKana": "さんかい練習します。",
-    "exampleMeaning": "三次練習します。"
+    "exampleKana": "さんかいれんしゅうします。",
+    "exampleMeaning": "練習三次。"
   },
   {
     "id": 805,
@@ -8046,8 +8046,8 @@
     "meaning": "四次",
     "partOfSpeech": "數量詞",
     "example": "四回練習します。",
-    "exampleKana": "よんかい練習します。",
-    "exampleMeaning": "四次練習します。"
+    "exampleKana": "よんかいれんしゅうします。",
+    "exampleMeaning": "練習四次。"
   },
   {
     "id": 806,
@@ -8056,8 +8056,8 @@
     "meaning": "五次",
     "partOfSpeech": "數量詞",
     "example": "五回練習します。",
-    "exampleKana": "ごかい練習します。",
-    "exampleMeaning": "五次練習します。"
+    "exampleKana": "ごかいれんしゅうします。",
+    "exampleMeaning": "練習五次。"
   },
   {
     "id": 807,
@@ -8066,8 +8066,8 @@
     "meaning": "六次",
     "partOfSpeech": "數量詞",
     "example": "六回練習します。",
-    "exampleKana": "ろくかい練習します。",
-    "exampleMeaning": "六次練習します。"
+    "exampleKana": "ろくかいれんしゅうします。",
+    "exampleMeaning": "練習六次。"
   },
   {
     "id": 808,
@@ -8076,8 +8076,8 @@
     "meaning": "七次",
     "partOfSpeech": "數量詞",
     "example": "七回練習します。",
-    "exampleKana": "ななかい練習します。",
-    "exampleMeaning": "七次練習します。"
+    "exampleKana": "ななかいれんしゅうします。",
+    "exampleMeaning": "練習七次。"
   },
   {
     "id": 809,
@@ -8086,8 +8086,8 @@
     "meaning": "八次",
     "partOfSpeech": "數量詞",
     "example": "八回練習します。",
-    "exampleKana": "はちかい練習します。",
-    "exampleMeaning": "八次練習します。"
+    "exampleKana": "はちかいれんしゅうします。",
+    "exampleMeaning": "練習八次。"
   },
   {
     "id": 810,
@@ -8096,8 +8096,8 @@
     "meaning": "九次",
     "partOfSpeech": "數量詞",
     "example": "九回練習します。",
-    "exampleKana": "きゅうかい練習します。",
-    "exampleMeaning": "九次練習します。"
+    "exampleKana": "きゅうかいれんしゅうします。",
+    "exampleMeaning": "練習九次。"
   },
   {
     "id": 811,
@@ -8106,8 +8106,8 @@
     "meaning": "十次",
     "partOfSpeech": "數量詞",
     "example": "十回練習します。",
-    "exampleKana": "じゅうかい練習します。",
-    "exampleMeaning": "十次練習します。"
+    "exampleKana": "じゅうかいれんしゅうします。",
+    "exampleMeaning": "練習十次。"
   },
   {
     "id": 812,
@@ -8116,8 +8116,8 @@
     "meaning": "十一次",
     "partOfSpeech": "數量詞",
     "example": "十一回練習します。",
-    "exampleKana": "じゅういちかい練習します。",
-    "exampleMeaning": "十一次練習します。"
+    "exampleKana": "じゅういちかいれんしゅうします。",
+    "exampleMeaning": "練習十一次。"
   },
   {
     "id": 813,
@@ -8126,8 +8126,8 @@
     "meaning": "十二次",
     "partOfSpeech": "數量詞",
     "example": "十二回練習します。",
-    "exampleKana": "じゅうにかい練習します。",
-    "exampleMeaning": "十二次練習します。"
+    "exampleKana": "じゅうにかいれんしゅうします。",
+    "exampleMeaning": "練習十二次。"
   },
   {
     "id": 814,
@@ -8136,8 +8136,8 @@
     "meaning": "十三次",
     "partOfSpeech": "數量詞",
     "example": "十三回練習します。",
-    "exampleKana": "じゅうさんかい練習します。",
-    "exampleMeaning": "十三次練習します。"
+    "exampleKana": "じゅうさんかいれんしゅうします。",
+    "exampleMeaning": "練習十三次。"
   },
   {
     "id": 815,
@@ -8146,8 +8146,8 @@
     "meaning": "十四次",
     "partOfSpeech": "數量詞",
     "example": "十四回練習します。",
-    "exampleKana": "じゅうよんかい練習します。",
-    "exampleMeaning": "十四次練習します。"
+    "exampleKana": "じゅうよんかいれんしゅうします。",
+    "exampleMeaning": "練習十四次。"
   },
   {
     "id": 816,
@@ -8156,8 +8156,8 @@
     "meaning": "十五次",
     "partOfSpeech": "數量詞",
     "example": "十五回練習します。",
-    "exampleKana": "じゅうごかい練習します。",
-    "exampleMeaning": "十五次練習します。"
+    "exampleKana": "じゅうごかいれんしゅうします。",
+    "exampleMeaning": "練習十五次。"
   },
   {
     "id": 817,
@@ -8166,8 +8166,8 @@
     "meaning": "十六次",
     "partOfSpeech": "數量詞",
     "example": "十六回練習します。",
-    "exampleKana": "じゅうろくかい練習します。",
-    "exampleMeaning": "十六次練習します。"
+    "exampleKana": "じゅうろくかいれんしゅうします。",
+    "exampleMeaning": "練習十六次。"
   },
   {
     "id": 818,
@@ -8176,8 +8176,8 @@
     "meaning": "十七次",
     "partOfSpeech": "數量詞",
     "example": "十七回練習します。",
-    "exampleKana": "じゅうななかい練習します。",
-    "exampleMeaning": "十七次練習します。"
+    "exampleKana": "じゅうななかいれんしゅうします。",
+    "exampleMeaning": "練習十七次。"
   },
   {
     "id": 819,
@@ -8186,8 +8186,8 @@
     "meaning": "十八次",
     "partOfSpeech": "數量詞",
     "example": "十八回練習します。",
-    "exampleKana": "じゅうはちかい練習します。",
-    "exampleMeaning": "十八次練習します。"
+    "exampleKana": "じゅうはちかいれんしゅうします。",
+    "exampleMeaning": "練習十八次。"
   },
   {
     "id": 820,
@@ -8196,8 +8196,8 @@
     "meaning": "十九次",
     "partOfSpeech": "數量詞",
     "example": "十九回練習します。",
-    "exampleKana": "じゅうきゅうかい練習します。",
-    "exampleMeaning": "十九次練習します。"
+    "exampleKana": "じゅうきゅうかいれんしゅうします。",
+    "exampleMeaning": "練習十九次。"
   },
   {
     "id": 821,
@@ -8206,8 +8206,8 @@
     "meaning": "二十次",
     "partOfSpeech": "數量詞",
     "example": "二十回練習します。",
-    "exampleKana": "にじゅうかい練習します。",
-    "exampleMeaning": "二十次練習します。"
+    "exampleKana": "にじゅうかいれんしゅうします。",
+    "exampleMeaning": "練習二十次。"
   },
   {
     "id": 822,
@@ -8216,8 +8216,8 @@
     "meaning": "一日圓",
     "partOfSpeech": "數量詞",
     "example": "一円払います。",
-    "exampleKana": "いちえん払います。",
-    "exampleMeaning": "一日圓払。"
+    "exampleKana": "いちえんはらいます。",
+    "exampleMeaning": "支付一日圓。"
   },
   {
     "id": 823,
@@ -8226,8 +8226,8 @@
     "meaning": "二日圓",
     "partOfSpeech": "數量詞",
     "example": "二円払います。",
-    "exampleKana": "にえん払います。",
-    "exampleMeaning": "二日圓払。"
+    "exampleKana": "にえんはらいます。",
+    "exampleMeaning": "支付二日圓。"
   },
   {
     "id": 824,
@@ -8236,8 +8236,8 @@
     "meaning": "三日圓",
     "partOfSpeech": "數量詞",
     "example": "三円払います。",
-    "exampleKana": "さんえん払います。",
-    "exampleMeaning": "三日圓払。"
+    "exampleKana": "さんえんはらいます。",
+    "exampleMeaning": "支付三日圓。"
   },
   {
     "id": 825,
@@ -8246,8 +8246,8 @@
     "meaning": "四日圓",
     "partOfSpeech": "數量詞",
     "example": "四円払います。",
-    "exampleKana": "よんえん払います。",
-    "exampleMeaning": "四日圓払。"
+    "exampleKana": "よんえんはらいます。",
+    "exampleMeaning": "支付四日圓。"
   },
   {
     "id": 826,
@@ -8256,8 +8256,8 @@
     "meaning": "五日圓",
     "partOfSpeech": "數量詞",
     "example": "五円払います。",
-    "exampleKana": "ごえん払います。",
-    "exampleMeaning": "五日圓払。"
+    "exampleKana": "ごえんはらいます。",
+    "exampleMeaning": "支付五日圓。"
   },
   {
     "id": 827,
@@ -8266,8 +8266,8 @@
     "meaning": "六日圓",
     "partOfSpeech": "數量詞",
     "example": "六円払います。",
-    "exampleKana": "ろくえん払います。",
-    "exampleMeaning": "六日圓払。"
+    "exampleKana": "ろくえんはらいます。",
+    "exampleMeaning": "支付六日圓。"
   },
   {
     "id": 828,
@@ -8276,8 +8276,8 @@
     "meaning": "七日圓",
     "partOfSpeech": "數量詞",
     "example": "七円払います。",
-    "exampleKana": "ななえん払います。",
-    "exampleMeaning": "七日圓払。"
+    "exampleKana": "ななえんはらいます。",
+    "exampleMeaning": "支付七日圓。"
   },
   {
     "id": 829,
@@ -8286,8 +8286,8 @@
     "meaning": "八日圓",
     "partOfSpeech": "數量詞",
     "example": "八円払います。",
-    "exampleKana": "はちえん払います。",
-    "exampleMeaning": "八日圓払。"
+    "exampleKana": "はちえんはらいます。",
+    "exampleMeaning": "支付八日圓。"
   },
   {
     "id": 830,
@@ -8296,8 +8296,8 @@
     "meaning": "九日圓",
     "partOfSpeech": "數量詞",
     "example": "九円払います。",
-    "exampleKana": "きゅうえん払います。",
-    "exampleMeaning": "九日圓払。"
+    "exampleKana": "きゅうえんはらいます。",
+    "exampleMeaning": "支付九日圓。"
   },
   {
     "id": 831,
@@ -8306,8 +8306,8 @@
     "meaning": "十日圓",
     "partOfSpeech": "數量詞",
     "example": "十円払います。",
-    "exampleKana": "じゅうえん払います。",
-    "exampleMeaning": "十日圓払。"
+    "exampleKana": "じゅうえんはらいます。",
+    "exampleMeaning": "支付十日圓。"
   },
   {
     "id": 832,
@@ -8316,8 +8316,8 @@
     "meaning": "十一日圓",
     "partOfSpeech": "數量詞",
     "example": "十一円払います。",
-    "exampleKana": "じゅういちえん払います。",
-    "exampleMeaning": "十一日圓払。"
+    "exampleKana": "じゅういちえんはらいます。",
+    "exampleMeaning": "支付十一日圓。"
   },
   {
     "id": 833,
@@ -8326,8 +8326,8 @@
     "meaning": "十二日圓",
     "partOfSpeech": "數量詞",
     "example": "十二円払います。",
-    "exampleKana": "じゅうにえん払います。",
-    "exampleMeaning": "十二日圓払。"
+    "exampleKana": "じゅうにえんはらいます。",
+    "exampleMeaning": "支付十二日圓。"
   },
   {
     "id": 834,
@@ -8336,8 +8336,8 @@
     "meaning": "十三日圓",
     "partOfSpeech": "數量詞",
     "example": "十三円払います。",
-    "exampleKana": "じゅうさんえん払います。",
-    "exampleMeaning": "十三日圓払。"
+    "exampleKana": "じゅうさんえんはらいます。",
+    "exampleMeaning": "支付十三日圓。"
   },
   {
     "id": 835,
@@ -8346,8 +8346,8 @@
     "meaning": "十四日圓",
     "partOfSpeech": "數量詞",
     "example": "十四円払います。",
-    "exampleKana": "じゅうよんえん払います。",
-    "exampleMeaning": "十四日圓払。"
+    "exampleKana": "じゅうよんえんはらいます。",
+    "exampleMeaning": "支付十四日圓。"
   },
   {
     "id": 836,
@@ -8356,8 +8356,8 @@
     "meaning": "十五日圓",
     "partOfSpeech": "數量詞",
     "example": "十五円払います。",
-    "exampleKana": "じゅうごえん払います。",
-    "exampleMeaning": "十五日圓払。"
+    "exampleKana": "じゅうごえんはらいます。",
+    "exampleMeaning": "支付十五日圓。"
   },
   {
     "id": 837,
@@ -8366,8 +8366,8 @@
     "meaning": "十六日圓",
     "partOfSpeech": "數量詞",
     "example": "十六円払います。",
-    "exampleKana": "じゅうろくえん払います。",
-    "exampleMeaning": "十六日圓払。"
+    "exampleKana": "じゅうろくえんはらいます。",
+    "exampleMeaning": "支付十六日圓。"
   },
   {
     "id": 838,
@@ -8376,8 +8376,8 @@
     "meaning": "十七日圓",
     "partOfSpeech": "數量詞",
     "example": "十七円払います。",
-    "exampleKana": "じゅうななえん払います。",
-    "exampleMeaning": "十七日圓払。"
+    "exampleKana": "じゅうななえんはらいます。",
+    "exampleMeaning": "支付十七日圓。"
   },
   {
     "id": 839,
@@ -8386,8 +8386,8 @@
     "meaning": "十八日圓",
     "partOfSpeech": "數量詞",
     "example": "十八円払います。",
-    "exampleKana": "じゅうはちえん払います。",
-    "exampleMeaning": "十八日圓払。"
+    "exampleKana": "じゅうはちえんはらいます。",
+    "exampleMeaning": "支付十八日圓。"
   },
   {
     "id": 840,
@@ -8396,8 +8396,8 @@
     "meaning": "十九日圓",
     "partOfSpeech": "數量詞",
     "example": "十九円払います。",
-    "exampleKana": "じゅうきゅうえん払います。",
-    "exampleMeaning": "十九日圓払。"
+    "exampleKana": "じゅうきゅうえんはらいます。",
+    "exampleMeaning": "支付十九日圓。"
   },
   {
     "id": 841,
@@ -8406,8 +8406,8 @@
     "meaning": "二十日圓",
     "partOfSpeech": "數量詞",
     "example": "二十円払います。",
-    "exampleKana": "にじゅうえん払います。",
-    "exampleMeaning": "二十日圓払。"
+    "exampleKana": "にじゅうえんはらいます。",
+    "exampleMeaning": "支付二十日圓。"
   },
   {
     "id": 842,
@@ -8417,7 +8417,7 @@
     "partOfSpeech": "數量詞",
     "example": "一歳です。",
     "exampleKana": "いっさいです。",
-    "exampleMeaning": "一歲です。"
+    "exampleMeaning": "一歲。"
   },
   {
     "id": 843,
@@ -8427,7 +8427,7 @@
     "partOfSpeech": "數量詞",
     "example": "二歳です。",
     "exampleKana": "にさいです。",
-    "exampleMeaning": "二歲です。"
+    "exampleMeaning": "兩歲。"
   },
   {
     "id": 844,
@@ -8437,7 +8437,7 @@
     "partOfSpeech": "數量詞",
     "example": "三歳です。",
     "exampleKana": "さんさいです。",
-    "exampleMeaning": "三歲です。"
+    "exampleMeaning": "三歲。"
   },
   {
     "id": 845,
@@ -8447,7 +8447,7 @@
     "partOfSpeech": "數量詞",
     "example": "四歳です。",
     "exampleKana": "よんさいです。",
-    "exampleMeaning": "四歲です。"
+    "exampleMeaning": "四歲。"
   },
   {
     "id": 846,
@@ -8457,7 +8457,7 @@
     "partOfSpeech": "數量詞",
     "example": "五歳です。",
     "exampleKana": "ごさいです。",
-    "exampleMeaning": "五歲です。"
+    "exampleMeaning": "五歲。"
   },
   {
     "id": 847,
@@ -8467,7 +8467,7 @@
     "partOfSpeech": "數量詞",
     "example": "六歳です。",
     "exampleKana": "ろくさいです。",
-    "exampleMeaning": "六歲です。"
+    "exampleMeaning": "六歲。"
   },
   {
     "id": 848,
@@ -8477,7 +8477,7 @@
     "partOfSpeech": "數量詞",
     "example": "七歳です。",
     "exampleKana": "ななさいです。",
-    "exampleMeaning": "七歲です。"
+    "exampleMeaning": "七歲。"
   },
   {
     "id": 849,
@@ -8487,7 +8487,7 @@
     "partOfSpeech": "數量詞",
     "example": "八歳です。",
     "exampleKana": "はっさいです。",
-    "exampleMeaning": "八歲です。"
+    "exampleMeaning": "八歲。"
   },
   {
     "id": 850,
@@ -8497,7 +8497,7 @@
     "partOfSpeech": "數量詞",
     "example": "九歳です。",
     "exampleKana": "きゅうさいです。",
-    "exampleMeaning": "九歲です。"
+    "exampleMeaning": "九歲。"
   },
   {
     "id": 851,
@@ -8507,7 +8507,7 @@
     "partOfSpeech": "數量詞",
     "example": "十歳です。",
     "exampleKana": "じゅっさいです。",
-    "exampleMeaning": "十歲です。"
+    "exampleMeaning": "十歲。"
   },
   {
     "id": 852,
@@ -8517,7 +8517,7 @@
     "partOfSpeech": "數量詞",
     "example": "十一歳です。",
     "exampleKana": "じゅういちさいです。",
-    "exampleMeaning": "十一歲です。"
+    "exampleMeaning": "十一歲。"
   },
   {
     "id": 853,
@@ -8527,7 +8527,7 @@
     "partOfSpeech": "數量詞",
     "example": "十二歳です。",
     "exampleKana": "じゅうにさいです。",
-    "exampleMeaning": "十二歲です。"
+    "exampleMeaning": "十二歲。"
   },
   {
     "id": 854,
@@ -8537,7 +8537,7 @@
     "partOfSpeech": "數量詞",
     "example": "十三歳です。",
     "exampleKana": "じゅうさんさいです。",
-    "exampleMeaning": "十三歲です。"
+    "exampleMeaning": "十三歲。"
   },
   {
     "id": 855,
@@ -8547,7 +8547,7 @@
     "partOfSpeech": "數量詞",
     "example": "十四歳です。",
     "exampleKana": "じゅうよんさいです。",
-    "exampleMeaning": "十四歲です。"
+    "exampleMeaning": "十四歲。"
   },
   {
     "id": 856,
@@ -8557,7 +8557,7 @@
     "partOfSpeech": "數量詞",
     "example": "十五歳です。",
     "exampleKana": "じゅうごさいです。",
-    "exampleMeaning": "十五歲です。"
+    "exampleMeaning": "十五歲。"
   },
   {
     "id": 857,
@@ -8567,7 +8567,7 @@
     "partOfSpeech": "數量詞",
     "example": "十六歳です。",
     "exampleKana": "じゅうろくさいです。",
-    "exampleMeaning": "十六歲です。"
+    "exampleMeaning": "十六歲。"
   },
   {
     "id": 858,
@@ -8577,7 +8577,7 @@
     "partOfSpeech": "數量詞",
     "example": "十七歳です。",
     "exampleKana": "じゅうななさいです。",
-    "exampleMeaning": "十七歲です。"
+    "exampleMeaning": "十七歲。"
   },
   {
     "id": 859,
@@ -8587,7 +8587,7 @@
     "partOfSpeech": "數量詞",
     "example": "十八歳です。",
     "exampleKana": "じゅうはちさいです。",
-    "exampleMeaning": "十八歲です。"
+    "exampleMeaning": "十八歲。"
   },
   {
     "id": 860,
@@ -8597,7 +8597,7 @@
     "partOfSpeech": "數量詞",
     "example": "十九歳です。",
     "exampleKana": "じゅうきゅうさいです。",
-    "exampleMeaning": "十九歲です。"
+    "exampleMeaning": "十九歲。"
   },
   {
     "id": 861,
@@ -8607,7 +8607,7 @@
     "partOfSpeech": "數量詞",
     "example": "二十歳です。",
     "exampleKana": "はたちです。",
-    "exampleMeaning": "二十歲です。"
+    "exampleMeaning": "二十歲。"
   },
   {
     "id": 862,
@@ -8617,7 +8617,7 @@
     "partOfSpeech": "數量詞",
     "example": "一階にあります。",
     "exampleKana": "いっかいにあります。",
-    "exampleMeaning": "一樓に。"
+    "exampleMeaning": "在一樓。"
   },
   {
     "id": 863,
@@ -8627,7 +8627,7 @@
     "partOfSpeech": "數量詞",
     "example": "二階にあります。",
     "exampleKana": "にかいにあります。",
-    "exampleMeaning": "二樓に。"
+    "exampleMeaning": "在二樓。"
   },
   {
     "id": 864,
@@ -8637,7 +8637,7 @@
     "partOfSpeech": "數量詞",
     "example": "三階にあります。",
     "exampleKana": "さんがいにあります。",
-    "exampleMeaning": "三樓に。"
+    "exampleMeaning": "在三樓。"
   },
   {
     "id": 865,
@@ -8647,7 +8647,7 @@
     "partOfSpeech": "數量詞",
     "example": "四階にあります。",
     "exampleKana": "よんかいにあります。",
-    "exampleMeaning": "四樓に。"
+    "exampleMeaning": "在四樓。"
   },
   {
     "id": 866,
@@ -8657,7 +8657,7 @@
     "partOfSpeech": "數量詞",
     "example": "五階にあります。",
     "exampleKana": "ごかいにあります。",
-    "exampleMeaning": "五樓に。"
+    "exampleMeaning": "在五樓。"
   },
   {
     "id": 867,
@@ -8667,7 +8667,7 @@
     "partOfSpeech": "數量詞",
     "example": "六階にあります。",
     "exampleKana": "ろっかいにあります。",
-    "exampleMeaning": "六樓に。"
+    "exampleMeaning": "在六樓。"
   },
   {
     "id": 868,
@@ -8677,7 +8677,7 @@
     "partOfSpeech": "數量詞",
     "example": "七階にあります。",
     "exampleKana": "ななかいにあります。",
-    "exampleMeaning": "七樓に。"
+    "exampleMeaning": "在七樓。"
   },
   {
     "id": 869,
@@ -8687,7 +8687,7 @@
     "partOfSpeech": "數量詞",
     "example": "八階にあります。",
     "exampleKana": "はっかいにあります。",
-    "exampleMeaning": "八樓に。"
+    "exampleMeaning": "在八樓。"
   },
   {
     "id": 870,
@@ -8697,7 +8697,7 @@
     "partOfSpeech": "數量詞",
     "example": "九階にあります。",
     "exampleKana": "きゅうかいにあります。",
-    "exampleMeaning": "九樓に。"
+    "exampleMeaning": "在九樓。"
   },
   {
     "id": 871,
@@ -8707,7 +8707,7 @@
     "partOfSpeech": "數量詞",
     "example": "十階にあります。",
     "exampleKana": "じゅっかいにあります。",
-    "exampleMeaning": "十樓に。"
+    "exampleMeaning": "在十樓。"
   },
   {
     "id": 872,
@@ -8717,7 +8717,7 @@
     "partOfSpeech": "數量詞",
     "example": "十一階にあります。",
     "exampleKana": "じゅういちかいにあります。",
-    "exampleMeaning": "十一樓に。"
+    "exampleMeaning": "在十一樓。"
   },
   {
     "id": 873,
@@ -8727,7 +8727,7 @@
     "partOfSpeech": "數量詞",
     "example": "十二階にあります。",
     "exampleKana": "じゅうにかいにあります。",
-    "exampleMeaning": "十二樓に。"
+    "exampleMeaning": "在十二樓。"
   },
   {
     "id": 874,
@@ -8737,7 +8737,7 @@
     "partOfSpeech": "數量詞",
     "example": "十三階にあります。",
     "exampleKana": "じゅうさんかいにあります。",
-    "exampleMeaning": "十三樓に。"
+    "exampleMeaning": "在十三樓。"
   },
   {
     "id": 875,
@@ -8747,7 +8747,7 @@
     "partOfSpeech": "數量詞",
     "example": "十四階にあります。",
     "exampleKana": "じゅうよんかいにあります。",
-    "exampleMeaning": "十四樓に。"
+    "exampleMeaning": "在十四樓。"
   },
   {
     "id": 876,
@@ -8757,7 +8757,7 @@
     "partOfSpeech": "數量詞",
     "example": "十五階にあります。",
     "exampleKana": "じゅうごかいにあります。",
-    "exampleMeaning": "十五樓に。"
+    "exampleMeaning": "在十五樓。"
   },
   {
     "id": 877,
@@ -8767,7 +8767,7 @@
     "partOfSpeech": "數量詞",
     "example": "十六階にあります。",
     "exampleKana": "じゅうろくかいにあります。",
-    "exampleMeaning": "十六樓に。"
+    "exampleMeaning": "在十六樓。"
   },
   {
     "id": 878,
@@ -8777,7 +8777,7 @@
     "partOfSpeech": "數量詞",
     "example": "十七階にあります。",
     "exampleKana": "じゅうななかいにあります。",
-    "exampleMeaning": "十七樓に。"
+    "exampleMeaning": "在十七樓。"
   },
   {
     "id": 879,
@@ -8787,7 +8787,7 @@
     "partOfSpeech": "數量詞",
     "example": "十八階にあります。",
     "exampleKana": "じゅうはちかいにあります。",
-    "exampleMeaning": "十八樓に。"
+    "exampleMeaning": "在十八樓。"
   },
   {
     "id": 880,
@@ -8797,7 +8797,7 @@
     "partOfSpeech": "數量詞",
     "example": "十九階にあります。",
     "exampleKana": "じゅうきゅうかいにあります。",
-    "exampleMeaning": "十九樓に。"
+    "exampleMeaning": "在十九樓。"
   },
   {
     "id": 881,
@@ -8807,7 +8807,7 @@
     "partOfSpeech": "數量詞",
     "example": "二十階にあります。",
     "exampleKana": "にじゅうかいにあります。",
-    "exampleMeaning": "二十樓に。"
+    "exampleMeaning": "在二十樓。"
   },
   {
     "id": 882,
@@ -8817,7 +8817,7 @@
     "partOfSpeech": "數量詞",
     "example": "一番です。",
     "exampleKana": "いちばんです。",
-    "exampleMeaning": "一號です。"
+    "exampleMeaning": "一號。"
   },
   {
     "id": 883,
@@ -8827,7 +8827,7 @@
     "partOfSpeech": "數量詞",
     "example": "二番です。",
     "exampleKana": "にばんです。",
-    "exampleMeaning": "二號です。"
+    "exampleMeaning": "二號。"
   },
   {
     "id": 884,
@@ -8837,7 +8837,7 @@
     "partOfSpeech": "數量詞",
     "example": "三番です。",
     "exampleKana": "さんばんです。",
-    "exampleMeaning": "三號です。"
+    "exampleMeaning": "三號。"
   },
   {
     "id": 885,
@@ -8847,7 +8847,7 @@
     "partOfSpeech": "數量詞",
     "example": "四番です。",
     "exampleKana": "よんばんです。",
-    "exampleMeaning": "四號です。"
+    "exampleMeaning": "四號。"
   },
   {
     "id": 886,
@@ -8857,7 +8857,7 @@
     "partOfSpeech": "數量詞",
     "example": "五番です。",
     "exampleKana": "ごばんです。",
-    "exampleMeaning": "五號です。"
+    "exampleMeaning": "五號。"
   },
   {
     "id": 887,
@@ -8867,7 +8867,7 @@
     "partOfSpeech": "數量詞",
     "example": "六番です。",
     "exampleKana": "ろくばんです。",
-    "exampleMeaning": "六號です。"
+    "exampleMeaning": "六號。"
   },
   {
     "id": 888,
@@ -8877,7 +8877,7 @@
     "partOfSpeech": "數量詞",
     "example": "七番です。",
     "exampleKana": "ななばんです。",
-    "exampleMeaning": "七號です。"
+    "exampleMeaning": "七號。"
   },
   {
     "id": 889,
@@ -8887,7 +8887,7 @@
     "partOfSpeech": "數量詞",
     "example": "八番です。",
     "exampleKana": "はちばんです。",
-    "exampleMeaning": "八號です。"
+    "exampleMeaning": "八號。"
   },
   {
     "id": 890,
@@ -8897,7 +8897,7 @@
     "partOfSpeech": "數量詞",
     "example": "九番です。",
     "exampleKana": "きゅうばんです。",
-    "exampleMeaning": "九號です。"
+    "exampleMeaning": "九號。"
   },
   {
     "id": 891,
@@ -8907,7 +8907,7 @@
     "partOfSpeech": "數量詞",
     "example": "十番です。",
     "exampleKana": "じゅうばんです。",
-    "exampleMeaning": "十號です。"
+    "exampleMeaning": "十號。"
   },
   {
     "id": 892,
@@ -8917,7 +8917,7 @@
     "partOfSpeech": "數量詞",
     "example": "十一番です。",
     "exampleKana": "じゅういちばんです。",
-    "exampleMeaning": "十一號です。"
+    "exampleMeaning": "十一號。"
   },
   {
     "id": 893,
@@ -8927,7 +8927,7 @@
     "partOfSpeech": "數量詞",
     "example": "十二番です。",
     "exampleKana": "じゅうにばんです。",
-    "exampleMeaning": "十二號です。"
+    "exampleMeaning": "十二號。"
   },
   {
     "id": 894,
@@ -8937,7 +8937,7 @@
     "partOfSpeech": "數量詞",
     "example": "十三番です。",
     "exampleKana": "じゅうさんばんです。",
-    "exampleMeaning": "十三號です。"
+    "exampleMeaning": "十三號。"
   },
   {
     "id": 895,
@@ -8947,7 +8947,7 @@
     "partOfSpeech": "數量詞",
     "example": "十四番です。",
     "exampleKana": "じゅうよんばんです。",
-    "exampleMeaning": "十四號です。"
+    "exampleMeaning": "十四號。"
   },
   {
     "id": 896,
@@ -8957,7 +8957,7 @@
     "partOfSpeech": "數量詞",
     "example": "十五番です。",
     "exampleKana": "じゅうごばんです。",
-    "exampleMeaning": "十五號です。"
+    "exampleMeaning": "十五號。"
   },
   {
     "id": 897,
@@ -8967,7 +8967,7 @@
     "partOfSpeech": "數量詞",
     "example": "十六番です。",
     "exampleKana": "じゅうろくばんです。",
-    "exampleMeaning": "十六號です。"
+    "exampleMeaning": "十六號。"
   },
   {
     "id": 898,
@@ -8977,7 +8977,7 @@
     "partOfSpeech": "數量詞",
     "example": "十七番です。",
     "exampleKana": "じゅうななばんです。",
-    "exampleMeaning": "十七號です。"
+    "exampleMeaning": "十七號。"
   },
   {
     "id": 899,
@@ -8987,7 +8987,7 @@
     "partOfSpeech": "數量詞",
     "example": "十八番です。",
     "exampleKana": "じゅうはちばんです。",
-    "exampleMeaning": "十八號です。"
+    "exampleMeaning": "十八號。"
   },
   {
     "id": 900,
@@ -8997,7 +8997,7 @@
     "partOfSpeech": "數量詞",
     "example": "十九番です。",
     "exampleKana": "じゅうきゅうばんです。",
-    "exampleMeaning": "十九號です。"
+    "exampleMeaning": "十九號。"
   },
   {
     "id": 901,
@@ -9007,7 +9007,7 @@
     "partOfSpeech": "數量詞",
     "example": "二十番です。",
     "exampleKana": "にじゅうばんです。",
-    "exampleMeaning": "二十號です。"
+    "exampleMeaning": "二十號。"
   },
   {
     "id": 902,
@@ -9016,8 +9016,8 @@
     "meaning": "一杯",
     "partOfSpeech": "數量詞",
     "example": "一杯水を飲みます。",
-    "exampleKana": "いっぱい水を飲みます。",
-    "exampleMeaning": "一杯水を飲みます。"
+    "exampleKana": "いっぱいみずをのみます。",
+    "exampleMeaning": "喝一杯水。"
   },
   {
     "id": 903,
@@ -9026,8 +9026,8 @@
     "meaning": "二杯",
     "partOfSpeech": "數量詞",
     "example": "二杯水を飲みます。",
-    "exampleKana": "にはい水を飲みます。",
-    "exampleMeaning": "二杯水を飲みます。"
+    "exampleKana": "にはいみずをのみます。",
+    "exampleMeaning": "喝兩杯水。"
   },
   {
     "id": 904,
@@ -9036,8 +9036,8 @@
     "meaning": "三杯",
     "partOfSpeech": "數量詞",
     "example": "三杯水を飲みます。",
-    "exampleKana": "さんばい水を飲みます。",
-    "exampleMeaning": "三杯水を飲みます。"
+    "exampleKana": "さんばいみずをのみます。",
+    "exampleMeaning": "喝三杯水。"
   },
   {
     "id": 905,
@@ -9046,8 +9046,8 @@
     "meaning": "四杯",
     "partOfSpeech": "數量詞",
     "example": "四杯水を飲みます。",
-    "exampleKana": "よんはい水を飲みます。",
-    "exampleMeaning": "四杯水を飲みます。"
+    "exampleKana": "よんはいみずをのみます。",
+    "exampleMeaning": "喝四杯水。"
   },
   {
     "id": 906,
@@ -9056,8 +9056,8 @@
     "meaning": "五杯",
     "partOfSpeech": "數量詞",
     "example": "五杯水を飲みます。",
-    "exampleKana": "ごはい水を飲みます。",
-    "exampleMeaning": "五杯水を飲みます。"
+    "exampleKana": "ごはいみずをのみます。",
+    "exampleMeaning": "喝五杯水。"
   },
   {
     "id": 907,
@@ -9066,8 +9066,8 @@
     "meaning": "六杯",
     "partOfSpeech": "數量詞",
     "example": "六杯水を飲みます。",
-    "exampleKana": "ろっぱい水を飲みます。",
-    "exampleMeaning": "六杯水を飲みます。"
+    "exampleKana": "ろっぱいみずをのみます。",
+    "exampleMeaning": "喝六杯水。"
   },
   {
     "id": 908,
@@ -9076,8 +9076,8 @@
     "meaning": "七杯",
     "partOfSpeech": "數量詞",
     "example": "七杯水を飲みます。",
-    "exampleKana": "ななはい水を飲みます。",
-    "exampleMeaning": "七杯水を飲みます。"
+    "exampleKana": "ななはいみずをのみます。",
+    "exampleMeaning": "喝七杯水。"
   },
   {
     "id": 909,
@@ -9086,8 +9086,8 @@
     "meaning": "八杯",
     "partOfSpeech": "數量詞",
     "example": "八杯水を飲みます。",
-    "exampleKana": "はっぱい水を飲みます。",
-    "exampleMeaning": "八杯水を飲みます。"
+    "exampleKana": "はっぱいみずをのみます。",
+    "exampleMeaning": "喝八杯水。"
   },
   {
     "id": 910,
@@ -9096,8 +9096,8 @@
     "meaning": "九杯",
     "partOfSpeech": "數量詞",
     "example": "九杯水を飲みます。",
-    "exampleKana": "きゅうはい水を飲みます。",
-    "exampleMeaning": "九杯水を飲みます。"
+    "exampleKana": "きゅうはいみずをのみます。",
+    "exampleMeaning": "喝九杯水。"
   },
   {
     "id": 911,
@@ -9106,8 +9106,8 @@
     "meaning": "十杯",
     "partOfSpeech": "數量詞",
     "example": "十杯水を飲みます。",
-    "exampleKana": "じゅっぱい水を飲みます。",
-    "exampleMeaning": "十杯水を飲みます。"
+    "exampleKana": "じゅっぱいみずをのみます。",
+    "exampleMeaning": "喝十杯水。"
   },
   {
     "id": 912,
@@ -9116,8 +9116,8 @@
     "meaning": "十一杯",
     "partOfSpeech": "數量詞",
     "example": "十一杯水を飲みます。",
-    "exampleKana": "じゅういちはい水を飲みます。",
-    "exampleMeaning": "十一杯水を飲みます。"
+    "exampleKana": "じゅういちはいみずをのみます。",
+    "exampleMeaning": "喝十一杯水。"
   },
   {
     "id": 913,
@@ -9126,8 +9126,8 @@
     "meaning": "十二杯",
     "partOfSpeech": "數量詞",
     "example": "十二杯水を飲みます。",
-    "exampleKana": "じゅうにはい水を飲みます。",
-    "exampleMeaning": "十二杯水を飲みます。"
+    "exampleKana": "じゅうにはいみずをのみます。",
+    "exampleMeaning": "喝十二杯水。"
   },
   {
     "id": 914,
@@ -9136,8 +9136,8 @@
     "meaning": "十三杯",
     "partOfSpeech": "數量詞",
     "example": "十三杯水を飲みます。",
-    "exampleKana": "じゅうさんはい水を飲みます。",
-    "exampleMeaning": "十三杯水を飲みます。"
+    "exampleKana": "じゅうさんはいみずをのみます。",
+    "exampleMeaning": "喝十三杯水。"
   },
   {
     "id": 915,
@@ -9146,8 +9146,8 @@
     "meaning": "十四杯",
     "partOfSpeech": "數量詞",
     "example": "十四杯水を飲みます。",
-    "exampleKana": "じゅうよんはい水を飲みます。",
-    "exampleMeaning": "十四杯水を飲みます。"
+    "exampleKana": "じゅうよんはいみずをのみます。",
+    "exampleMeaning": "喝十四杯水。"
   },
   {
     "id": 916,
@@ -9156,8 +9156,8 @@
     "meaning": "十五杯",
     "partOfSpeech": "數量詞",
     "example": "十五杯水を飲みます。",
-    "exampleKana": "じゅうごはい水を飲みます。",
-    "exampleMeaning": "十五杯水を飲みます。"
+    "exampleKana": "じゅうごはいみずをのみます。",
+    "exampleMeaning": "喝十五杯水。"
   },
   {
     "id": 917,
@@ -9166,8 +9166,8 @@
     "meaning": "十六杯",
     "partOfSpeech": "數量詞",
     "example": "十六杯水を飲みます。",
-    "exampleKana": "じゅうろくはい水を飲みます。",
-    "exampleMeaning": "十六杯水を飲みます。"
+    "exampleKana": "じゅうろくはいみずをのみます。",
+    "exampleMeaning": "喝十六杯水。"
   },
   {
     "id": 918,
@@ -9176,8 +9176,8 @@
     "meaning": "十七杯",
     "partOfSpeech": "數量詞",
     "example": "十七杯水を飲みます。",
-    "exampleKana": "じゅうななはい水を飲みます。",
-    "exampleMeaning": "十七杯水を飲みます。"
+    "exampleKana": "じゅうななはいみずをのみます。",
+    "exampleMeaning": "喝十七杯水。"
   },
   {
     "id": 919,
@@ -9186,8 +9186,8 @@
     "meaning": "十八杯",
     "partOfSpeech": "數量詞",
     "example": "十八杯水を飲みます。",
-    "exampleKana": "じゅうはちはい水を飲みます。",
-    "exampleMeaning": "十八杯水を飲みます。"
+    "exampleKana": "じゅうはちはいみずをのみます。",
+    "exampleMeaning": "喝十八杯水。"
   },
   {
     "id": 920,
@@ -9196,8 +9196,8 @@
     "meaning": "十九杯",
     "partOfSpeech": "數量詞",
     "example": "十九杯水を飲みます。",
-    "exampleKana": "じゅうきゅうはい水を飲みます。",
-    "exampleMeaning": "十九杯水を飲みます。"
+    "exampleKana": "じゅうきゅうはいみずをのみます。",
+    "exampleMeaning": "喝十九杯水。"
   },
   {
     "id": 921,
@@ -9206,8 +9206,8 @@
     "meaning": "二十杯",
     "partOfSpeech": "數量詞",
     "example": "二十杯水を飲みます。",
-    "exampleKana": "にじゅうはい水を飲みます。",
-    "exampleMeaning": "二十杯水を飲みます。"
+    "exampleKana": "にじゅうはいみずをのみます。",
+    "exampleMeaning": "喝二十杯水。"
   },
   {
     "id": 922,
@@ -9215,9 +9215,9 @@
     "kana": "はる",
     "meaning": "春天",
     "partOfSpeech": "名詞",
-    "example": "春があります。",
-    "exampleKana": "はるがあります。",
-    "exampleMeaning": "有春天。"
+    "example": "春が好きです。",
+    "exampleKana": "はるがすきです。",
+    "exampleMeaning": "我喜歡春天。"
   },
   {
     "id": 923,
@@ -9225,9 +9225,9 @@
     "kana": "なつ",
     "meaning": "夏天",
     "partOfSpeech": "名詞",
-    "example": "夏があります。",
-    "exampleKana": "なつがあります。",
-    "exampleMeaning": "有夏天。"
+    "example": "夏は暑いです。",
+    "exampleKana": "なつはあついです。",
+    "exampleMeaning": "夏天很熱。"
   },
   {
     "id": 924,
@@ -9235,9 +9235,9 @@
     "kana": "あき",
     "meaning": "秋天",
     "partOfSpeech": "名詞",
-    "example": "秋があります。",
-    "exampleKana": "あきがあります。",
-    "exampleMeaning": "有秋天。"
+    "example": "秋に本を読みます。",
+    "exampleKana": "あきにほんをよみます。",
+    "exampleMeaning": "秋天讀書。"
   },
   {
     "id": 925,
@@ -9245,9 +9245,9 @@
     "kana": "ふゆ",
     "meaning": "冬天",
     "partOfSpeech": "名詞",
-    "example": "冬があります。",
-    "exampleKana": "ふゆがあります。",
-    "exampleMeaning": "有冬天。"
+    "example": "冬は寒いです。",
+    "exampleKana": "ふゆはさむいです。",
+    "exampleMeaning": "冬天很冷。"
   },
   {
     "id": 926,
@@ -9255,9 +9255,9 @@
     "kana": "たんじょうび",
     "meaning": "生日",
     "partOfSpeech": "名詞",
-    "example": "誕生日があります。",
-    "exampleKana": "たんじょうびがあります。",
-    "exampleMeaning": "有生日。"
+    "example": "今日は誕生日です。",
+    "exampleKana": "きょうはたんじょうびです。",
+    "exampleMeaning": "今天是生日。"
   },
   {
     "id": 927,
@@ -9275,9 +9275,9 @@
     "kana": "はん",
     "meaning": "半",
     "partOfSpeech": "名詞",
-    "example": "半があります。",
-    "exampleKana": "はんがあります。",
-    "exampleMeaning": "有半。"
+    "example": "三時半です。",
+    "exampleKana": "さんじはんです。",
+    "exampleMeaning": "三點半。"
   },
   {
     "id": 929,
@@ -9285,9 +9285,9 @@
     "kana": "いま",
     "meaning": "現在",
     "partOfSpeech": "名詞",
-    "example": "今があります。",
-    "exampleKana": "いまがあります。",
-    "exampleMeaning": "有現在。"
+    "example": "今行きます。",
+    "exampleKana": "いまいきます。",
+    "exampleMeaning": "現在去。"
   },
   {
     "id": 930,
@@ -9295,9 +9295,9 @@
     "kana": "さき",
     "meaning": "前方；先",
     "partOfSpeech": "名詞",
-    "example": "先があります。",
-    "exampleKana": "さきがあります。",
-    "exampleMeaning": "有前方。"
+    "example": "この先に学校があります。",
+    "exampleKana": "このさきにがっこうがあります。",
+    "exampleMeaning": "前面有學校。"
   },
   {
     "id": 931,
@@ -9305,9 +9305,9 @@
     "kana": "つぎ",
     "meaning": "下一個",
     "partOfSpeech": "名詞",
-    "example": "次があります。",
-    "exampleKana": "つぎがあります。",
-    "exampleMeaning": "有下一個。"
+    "example": "次は私です。",
+    "exampleKana": "つぎはわたしです。",
+    "exampleMeaning": "下一個是我。"
   },
   {
     "id": 932,
@@ -9315,9 +9315,9 @@
     "kana": "さいご",
     "meaning": "最後",
     "partOfSpeech": "名詞",
-    "example": "最後があります。",
-    "exampleKana": "さいごがあります。",
-    "exampleMeaning": "有最後。"
+    "example": "これが最後です。",
+    "exampleKana": "これがさいごです。",
+    "exampleMeaning": "這是最後。"
   },
   {
     "id": 933,
@@ -9325,9 +9325,9 @@
     "kana": "さいしょ",
     "meaning": "最初",
     "partOfSpeech": "名詞",
-    "example": "最初があります。",
-    "exampleKana": "さいしょがあります。",
-    "exampleMeaning": "有最初。"
+    "example": "最初に名前を書きます。",
+    "exampleKana": "さいしょになまえをかきます。",
+    "exampleMeaning": "一開始先寫名字。"
   },
   {
     "id": 934,
@@ -9335,9 +9335,9 @@
     "kana": "ぜんぶ",
     "meaning": "全部",
     "partOfSpeech": "名詞",
-    "example": "全部があります。",
-    "exampleKana": "ぜんぶがあります。",
-    "exampleMeaning": "有全部。"
+    "example": "全部食べました。",
+    "exampleKana": "ぜんぶたべました。",
+    "exampleMeaning": "全部吃完了。"
   },
   {
     "id": 935,
@@ -9345,9 +9345,9 @@
     "kana": "はんぶん",
     "meaning": "一半",
     "partOfSpeech": "名詞",
-    "example": "半分があります。",
-    "exampleKana": "はんぶんがあります。",
-    "exampleMeaning": "有一半。"
+    "example": "半分食べました。",
+    "exampleKana": "はんぶんたべました。",
+    "exampleMeaning": "吃了一半。"
   },
   {
     "id": 936,
@@ -9455,9 +9455,9 @@
     "kana": "おおぜい",
     "meaning": "許多人",
     "partOfSpeech": "名詞",
-    "example": "大勢があります。",
-    "exampleKana": "おおぜいがあります。",
-    "exampleMeaning": "有許多人。"
+    "example": "大勢の人がいます。",
+    "exampleKana": "おおぜいのひとがいます。",
+    "exampleMeaning": "有很多人。"
   },
   {
     "id": 947,
@@ -9465,9 +9465,9 @@
     "kana": "みんな",
     "meaning": "大家",
     "partOfSpeech": "名詞",
-    "example": "皆があります。",
-    "exampleKana": "みんながあります。",
-    "exampleMeaning": "有大家。"
+    "example": "皆で行きましょう。",
+    "exampleKana": "みんなでいきましょう。",
+    "exampleMeaning": "大家一起去吧。"
   },
   {
     "id": 948,
@@ -9475,9 +9475,9 @@
     "kana": "じぶん",
     "meaning": "自己",
     "partOfSpeech": "名詞",
-    "example": "自分があります。",
-    "exampleKana": "じぶんがあります。",
-    "exampleMeaning": "有自己。"
+    "example": "自分で作りました。",
+    "exampleKana": "じぶんでつくりました。",
+    "exampleMeaning": "自己做的。"
   },
   {
     "id": 949,
@@ -9485,9 +9485,9 @@
     "kana": "おなじ",
     "meaning": "相同",
     "partOfSpeech": "な形容詞",
-    "example": "これは同じです。",
-    "exampleKana": "これはおなじです。",
-    "exampleMeaning": "這個很相同。"
+    "example": "これはあれと同じです。",
+    "exampleKana": "これはあれとおなじです。",
+    "exampleMeaning": "這個和那個一樣。"
   },
   {
     "id": 950,
@@ -9507,7 +9507,7 @@
     "partOfSpeech": "な形容詞",
     "example": "これは本当です。",
     "exampleKana": "これはほんとうです。",
-    "exampleMeaning": "這個很真的。"
+    "exampleMeaning": "這是真的。"
   },
   {
     "id": 952,
@@ -9515,9 +9515,9 @@
     "kana": "うそ",
     "meaning": "謊言",
     "partOfSpeech": "名詞",
-    "example": "嘘があります。",
-    "exampleKana": "うそがあります。",
-    "exampleMeaning": "有謊言。"
+    "example": "嘘をつきました。",
+    "exampleKana": "うそをつきました。",
+    "exampleMeaning": "說了謊。"
   },
   {
     "id": 953,
@@ -9535,9 +9535,9 @@
     "kana": "いたい",
     "meaning": "痛的",
     "partOfSpeech": "い形容詞",
-    "example": "これは痛いです。",
-    "exampleKana": "これはいたいです。",
-    "exampleMeaning": "這個很痛。"
+    "example": "頭が痛いです。",
+    "exampleKana": "あたまがいたいです。",
+    "exampleMeaning": "頭痛。"
   },
   {
     "id": 955,
@@ -9545,9 +9545,9 @@
     "kana": "ねむい",
     "meaning": "想睡的",
     "partOfSpeech": "い形容詞",
-    "example": "これは眠いです。",
-    "exampleKana": "これはねむいです。",
-    "exampleMeaning": "這個很想睡。"
+    "example": "私は眠いです。",
+    "exampleKana": "わたしはねむいです。",
+    "exampleMeaning": "我想睡。"
   },
   {
     "id": 956,
@@ -9575,9 +9575,9 @@
     "kana": "つよい",
     "meaning": "強的",
     "partOfSpeech": "い形容詞",
-    "example": "これは強いです。",
-    "exampleKana": "これはつよいです。",
-    "exampleMeaning": "這個很強。"
+    "example": "風が強いです。",
+    "exampleKana": "かぜがつよいです。",
+    "exampleMeaning": "風很強。"
   },
   {
     "id": 959,
@@ -9585,9 +9585,9 @@
     "kana": "よわい",
     "meaning": "弱的",
     "partOfSpeech": "い形容詞",
-    "example": "これは弱いです。",
-    "exampleKana": "これはよわいです。",
-    "exampleMeaning": "這個很弱。"
+    "example": "体が弱いです。",
+    "exampleKana": "からだがよわいです。",
+    "exampleMeaning": "身體虛弱。"
   },
   {
     "id": 960,
@@ -9597,7 +9597,7 @@
     "partOfSpeech": "い形容詞",
     "example": "広い部屋です。",
     "exampleKana": "ひろいへやです。",
-    "exampleMeaning": "這個很寬廣。"
+    "exampleMeaning": "房間很寬敞。"
   },
   {
     "id": 961,
@@ -9607,7 +9607,7 @@
     "partOfSpeech": "い形容詞",
     "example": "狭い部屋です。",
     "exampleKana": "せまいへやです。",
-    "exampleMeaning": "這個很狹窄。"
+    "exampleMeaning": "房間很狹窄。"
   },
   {
     "id": 962,
@@ -9635,9 +9635,9 @@
     "kana": "はやい",
     "meaning": "早的；快的",
     "partOfSpeech": "い形容詞",
-    "example": "これは早いです。",
-    "exampleKana": "これははやいです。",
-    "exampleMeaning": "這個很早的；快。"
+    "example": "朝が早いです。",
+    "exampleKana": "あさがはやいです。",
+    "exampleMeaning": "早上很早。"
   },
   {
     "id": 965,
@@ -9655,9 +9655,9 @@
     "kana": "おそい",
     "meaning": "慢的；晚的",
     "partOfSpeech": "い形容詞",
-    "example": "これは遅いです。",
-    "exampleKana": "これはおそいです。",
-    "exampleMeaning": "這個很慢的；晚。"
+    "example": "バスが遅いです。",
+    "exampleKana": "バスがおそいです。",
+    "exampleMeaning": "公車很慢。"
   },
   {
     "id": 967,
@@ -9665,9 +9665,9 @@
     "kana": "おおい",
     "meaning": "多的",
     "partOfSpeech": "い形容詞",
-    "example": "これは多いです。",
-    "exampleKana": "これはおおいです。",
-    "exampleMeaning": "這個很多。"
+    "example": "人が多いです。",
+    "exampleKana": "ひとがおおいです。",
+    "exampleMeaning": "人很多。"
   },
   {
     "id": 968,
@@ -9675,9 +9675,9 @@
     "kana": "すくない",
     "meaning": "少的",
     "partOfSpeech": "い形容詞",
-    "example": "これは少ないです。",
-    "exampleKana": "これはすくないです。",
-    "exampleMeaning": "這個很少。"
+    "example": "人が少ないです。",
+    "exampleKana": "ひとがすくないです。",
+    "exampleMeaning": "人很少。"
   },
   {
     "id": 969,
@@ -9695,9 +9695,9 @@
     "kana": "わるい",
     "meaning": "壞的",
     "partOfSpeech": "い形容詞",
-    "example": "これは悪いです。",
-    "exampleKana": "これはわるいです。",
-    "exampleMeaning": "這個很壞。"
+    "example": "天気が悪いです。",
+    "exampleKana": "てんきがわるいです。",
+    "exampleMeaning": "天氣不好。"
   },
   {
     "id": 971,
