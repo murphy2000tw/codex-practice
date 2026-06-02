@@ -1,18 +1,44 @@
 const CARD_COUNT = 10;
 const VOCABULARY_URL = "vocabulary.json";
+const CATEGORY_FILTERS = [
+  { id: "all", label: "全部", matches: null },
+  { id: "noun", label: "名詞", matches: ["名詞", "代名詞", "疑問詞", "連體詞"] },
+  { id: "verb", label: "動詞", matches: ["動詞"] },
+  { id: "i-adjective", label: "い形容詞", matches: ["い形容詞"] },
+  { id: "na-adjective", label: "な形容詞", matches: ["な形容詞"] },
+  { id: "adverb", label: "副詞", matches: ["副詞"] },
+  { id: "number-counter", label: "數字／量詞", matches: ["數詞", "數量詞"] },
+  { id: "expression", label: "表達句型", matches: ["感嘆詞"] },
+];
 
 const cardsContainer = document.querySelector("#vocabularyCards");
+const categoryFilters = document.querySelector("#categoryFilters");
+const categoryCount = document.querySelector("#categoryCount");
 const toggleButton = document.querySelector("#toggleAnswers");
 const shuffleButton = document.querySelector("#shuffleWords");
 const wordSetStatus = document.querySelector("#wordSetStatus");
 
 let vocabulary = [];
+let filteredVocabulary = [];
 let wordDeck = [];
 let currentWords = [];
 let previousWordIds = new Set();
 let answersVisible = false;
 let currentGroupNumber = 0;
 let reshuffleNotice = "";
+let activeCategoryId = "all";
+
+function getActiveCategory() {
+  return CATEGORY_FILTERS.find((category) => category.id === activeCategoryId) ?? CATEGORY_FILTERS[0];
+}
+
+function getWordsForCategory(category) {
+  if (!category.matches) {
+    return vocabulary;
+  }
+
+  return vocabulary.filter((word) => category.matches.includes(word.partOfSpeech));
+}
 
 function shuffleWords(words) {
   const shuffledWords = [...words];
@@ -26,11 +52,11 @@ function shuffleWords(words) {
 }
 
 function getTotalGroups() {
-  return Math.ceil(vocabulary.length / CARD_COUNT);
+  return Math.max(1, Math.ceil(filteredVocabulary.length / CARD_COUNT));
 }
 
 function buildFreshDeck() {
-  const shuffledVocabulary = shuffleWords(vocabulary);
+  const shuffledVocabulary = shuffleWords(filteredVocabulary);
 
   if (previousWordIds.size === 0) {
     return shuffledVocabulary;
@@ -42,8 +68,14 @@ function buildFreshDeck() {
   return [...wordsNotInPreviousSet, ...wordsInPreviousSet];
 }
 
+function resetDeck() {
+  wordDeck = buildFreshDeck();
+  currentGroupNumber = 0;
+  reshuffleNotice = "";
+}
+
 function refreshDeckIfNeeded() {
-  if (wordDeck.length >= CARD_COUNT) {
+  if (wordDeck.length > 0) {
     reshuffleNotice = "";
     return;
   }
@@ -56,8 +88,9 @@ function refreshDeckIfNeeded() {
 function getNextWordSet() {
   refreshDeckIfNeeded();
 
-  const nextWords = wordDeck.slice(0, CARD_COUNT);
-  wordDeck = wordDeck.slice(CARD_COUNT);
+  const cardsToShow = Math.min(CARD_COUNT, wordDeck.length);
+  const nextWords = wordDeck.slice(0, cardsToShow);
+  wordDeck = wordDeck.slice(cardsToShow);
   currentGroupNumber += 1;
 
   return nextWords;
@@ -107,6 +140,19 @@ function renderStatus(message) {
   cardsContainer.replaceChildren(status);
 }
 
+function updateCategoryCount() {
+  const activeCategory = getActiveCategory();
+  categoryCount.textContent = `目前分類「${activeCategory.label}」共有 ${filteredVocabulary.length} 個單字`;
+}
+
+function updateCategoryButtons() {
+  categoryFilters.querySelectorAll(".category-button").forEach((button) => {
+    const isActive = button.dataset.categoryId === activeCategoryId;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
 function updateWordSetStatus() {
   const totalGroups = getTotalGroups();
   const groupText = `目前顯示第 ${currentGroupNumber} 組 / 共 ${totalGroups} 組`;
@@ -130,6 +176,41 @@ function showNewWordSet() {
   updateWordSetStatus();
 }
 
+function applyCategory(categoryId) {
+  activeCategoryId = categoryId;
+  filteredVocabulary = getWordsForCategory(getActiveCategory());
+  previousWordIds = new Set();
+  resetDeck();
+  updateCategoryButtons();
+  updateCategoryCount();
+
+  if (filteredVocabulary.length === 0) {
+    currentWords = [];
+    currentGroupNumber = 0;
+    renderStatus("這個分類目前沒有單字。");
+    updateWordSetStatus();
+    return;
+  }
+
+  showNewWordSet();
+}
+
+function renderCategoryFilters() {
+  const buttons = CATEGORY_FILTERS.map((category) => {
+    const button = document.createElement("button");
+    button.className = "category-button";
+    button.type = "button";
+    button.dataset.categoryId = category.id;
+    button.textContent = category.label;
+    button.setAttribute("aria-pressed", "false");
+    button.addEventListener("click", () => applyCategory(category.id));
+    return button;
+  });
+
+  categoryFilters.replaceChildren(...buttons);
+  updateCategoryButtons();
+}
+
 async function loadVocabulary() {
   try {
     const response = await fetch(VOCABULARY_URL);
@@ -139,11 +220,13 @@ async function loadVocabulary() {
     }
 
     vocabulary = await response.json();
-    showNewWordSet();
+    renderCategoryFilters();
+    applyCategory(activeCategoryId);
   } catch (error) {
     console.error(error);
     renderStatus("目前無法載入單字資料，請確認 vocabulary.json 是否存在且格式正確。");
     wordSetStatus.textContent = "單字資料載入失敗。";
+    categoryCount.textContent = "分類資料載入失敗。";
     toggleButton.disabled = true;
     shuffleButton.disabled = true;
   }
