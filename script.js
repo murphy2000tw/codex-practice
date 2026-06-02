@@ -17,6 +17,8 @@ const categoryCount = document.querySelector("#categoryCount");
 const toggleButton = document.querySelector("#toggleAnswers");
 const shuffleButton = document.querySelector("#shuffleWords");
 const wordSetStatus = document.querySelector("#wordSetStatus");
+const wordSearchInput = document.querySelector("#wordSearch");
+const clearSearchButton = document.querySelector("#clearSearch");
 
 let vocabulary = [];
 let filteredVocabulary = [];
@@ -27,6 +29,7 @@ let answersVisible = false;
 let currentGroupNumber = 0;
 let reshuffleNotice = "";
 let activeCategoryId = "all";
+let searchQuery = "";
 
 function getActiveCategory() {
   return CATEGORY_FILTERS.find((category) => category.id === activeCategoryId) ?? CATEGORY_FILTERS[0];
@@ -38,6 +41,32 @@ function getWordsForCategory(category) {
   }
 
   return vocabulary.filter((word) => category.matches.includes(word.partOfSpeech));
+}
+
+function normalizeSearchText(value) {
+  return String(value ?? "").trim().toLocaleLowerCase();
+}
+
+function wordMatchesSearch(word, query) {
+  if (!query) {
+    return true;
+  }
+
+  const searchableFields = [
+    word.word,
+    word.kana,
+    word.meaning,
+    word.partOfSpeech,
+    word.example,
+    word.exampleKana,
+    word.exampleMeaning,
+  ];
+
+  return searchableFields.some((field) => normalizeSearchText(field).includes(query));
+}
+
+function getFilteredVocabulary() {
+  return getWordsForCategory(getActiveCategory()).filter((word) => wordMatchesSearch(word, searchQuery));
 }
 
 function shuffleWords(words) {
@@ -142,7 +171,14 @@ function renderStatus(message) {
 
 function updateCategoryCount() {
   const activeCategory = getActiveCategory();
-  categoryCount.textContent = `目前分類「${activeCategory.label}」共有 ${filteredVocabulary.length} 個單字`;
+  const categoryTotal = getWordsForCategory(activeCategory).length;
+
+  if (searchQuery) {
+    categoryCount.textContent = `目前分類「${activeCategory.label}」共有 ${categoryTotal} 個單字；搜尋「${searchQuery}」共有 ${filteredVocabulary.length} 個單字`;
+    return;
+  }
+
+  categoryCount.textContent = `目前分類「${activeCategory.label}」共有 ${categoryTotal} 個單字`;
 }
 
 function updateCategoryButtons() {
@@ -154,6 +190,11 @@ function updateCategoryButtons() {
 }
 
 function updateWordSetStatus() {
+  if (filteredVocabulary.length === 0) {
+    wordSetStatus.textContent = searchQuery ? "沒有符合搜尋條件的單字。" : "目前沒有可顯示的單字。";
+    return;
+  }
+
   const totalGroups = getTotalGroups();
   const groupText = `目前顯示第 ${currentGroupNumber} 組 / 共 ${totalGroups} 組`;
   wordSetStatus.textContent = reshuffleNotice ? `${reshuffleNotice} ${groupText}` : groupText;
@@ -169,6 +210,14 @@ function updateAnswersVisibility() {
 }
 
 function showNewWordSet() {
+  if (filteredVocabulary.length === 0) {
+    currentWords = [];
+    currentGroupNumber = 0;
+    renderStatus(searchQuery ? "找不到符合的單字，請試試其他關鍵字。" : "這個分類目前沒有單字。");
+    updateWordSetStatus();
+    return;
+  }
+
   answersVisible = false;
   currentWords = getNextWordSet();
   previousWordIds = new Set(currentWords.map((word) => word.id));
@@ -176,23 +225,24 @@ function showNewWordSet() {
   updateWordSetStatus();
 }
 
-function applyCategory(categoryId) {
-  activeCategoryId = categoryId;
-  filteredVocabulary = getWordsForCategory(getActiveCategory());
+function refreshFilteredVocabulary() {
+  filteredVocabulary = getFilteredVocabulary();
   previousWordIds = new Set();
   resetDeck();
   updateCategoryButtons();
   updateCategoryCount();
-
-  if (filteredVocabulary.length === 0) {
-    currentWords = [];
-    currentGroupNumber = 0;
-    renderStatus("這個分類目前沒有單字。");
-    updateWordSetStatus();
-    return;
-  }
-
+  clearSearchButton.disabled = searchQuery.length === 0;
   showNewWordSet();
+}
+
+function applyCategory(categoryId) {
+  activeCategoryId = categoryId;
+  refreshFilteredVocabulary();
+}
+
+function applySearch(query) {
+  searchQuery = normalizeSearchText(query);
+  refreshFilteredVocabulary();
 }
 
 function renderCategoryFilters() {
@@ -229,6 +279,8 @@ async function loadVocabulary() {
     categoryCount.textContent = "分類資料載入失敗。";
     toggleButton.disabled = true;
     shuffleButton.disabled = true;
+    wordSearchInput.disabled = true;
+    clearSearchButton.disabled = true;
   }
 }
 
@@ -238,5 +290,17 @@ toggleButton.addEventListener("click", () => {
 });
 
 shuffleButton.addEventListener("click", showNewWordSet);
+
+wordSearchInput.addEventListener("input", (event) => {
+  applySearch(event.target.value);
+});
+
+clearSearchButton.addEventListener("click", () => {
+  wordSearchInput.value = "";
+  applySearch("");
+  wordSearchInput.focus();
+});
+
+clearSearchButton.disabled = true;
 
 loadVocabulary();
