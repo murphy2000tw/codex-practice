@@ -3,14 +3,14 @@
 ## 檢查範圍
 
 - 檢查檔案：`vocabulary.json`。
-- 總筆數：1000。
+- 總筆數：1300。
 - 必要欄位：`id`、`level`、`word`、`kana`、`meaning`、`partOfSpeech`、`example`、`exampleKana`、`exampleMeaning`。
 - 本報告記錄發現的可疑或需修正項目；本次已依「已修正項目」區塊更新 `vocabulary.json`。
 
 ## 整體檢查結果
 
 - 缺少欄位：未發現。
-- `level` 欄位：已為全部 1000 筆單字新增 `"level": "N5"`，尚未新增任何 N4 單字。
+- `level` 欄位：既有 1000 筆單字維持 `"level": "N5"`，本次已新增 300 筆 `"level": "N4"` 單字。
 - 空白欄位：未發現。
 - `word` 重複：未發現。
 - `id` 重複：未發現。
@@ -29,6 +29,7 @@
 - 已新增 `level` 欄位，全部 1000 筆現有單字皆標記為 `N5`，以便未來加入 N4 單字時可共用資料結構。
 - 已更新網站篩選功能，新增「程度篩選」按鈕（全部程度／N5／N4），並讓搜尋可比對 `level` 欄位；N4 目前無資料時會顯示「這個分類目前沒有單字」。
 - 修正後已確認 `vocabulary.json` 仍為合法 JSON，總筆數仍為 1000 筆，id 仍為 1–1000 連續，`word` 沒有重複，必要欄位皆存在且沒有空白欄位。
+- N4 第 1 批新增後已再次確認 `vocabulary.json` 為合法 JSON，總筆數為 1300 筆，id 為 1–1300 連續且不重複，`word` 沒有重複，必要欄位皆存在且沒有空白欄位，所有 `exampleKana` 皆不含漢字。
 
 ## 數量詞例句自然度修正紀錄
 
@@ -340,3 +341,14 @@
 | 967 | 多い | おおい | example 主語/搭配不自然；exampleMeaning 不夠自然或不精確 | example: これは多いです。 / exampleKana: これはおおいです。 / exampleMeaning: 這個很多。 | example: 人が多いです。 / exampleMeaning: 人很多。 |
 | 968 | 少ない | すくない | example 主語/搭配不自然；exampleMeaning 不夠自然或不精確 | example: これは少ないです。 / exampleKana: これはすくないです。 / exampleMeaning: 這個很少。 | example: 人が少ないです。 / exampleMeaning: 人很少。 |
 | 970 | 悪い | わるい | example 主語/搭配不自然；exampleMeaning 不夠自然或不精確 | example: これは悪いです。 / exampleKana: これはわるいです。 / exampleMeaning: 這個很壞。 | example: 天気が悪いです。 / exampleMeaning: 天氣不好。 |
+
+
+## N4 第 1 批 300 個單字新增紀錄
+
+- 新增範圍：id 1001–1300，共 300 筆 JLPT N4 常見單字。
+- `level` 欄位：新增資料皆設定為 `"N4"`，既有 id 1–1000 的 N5 資料內容未修改。
+- 欄位完整性：每筆新增資料皆包含 `id`、`level`、`word`、`kana`、`meaning`、`partOfSpeech`、`example`、`exampleKana`、`exampleMeaning`。
+- 詞性分類：新增資料使用網站既有分類為主，包含「名詞」「動詞」「い形容詞」「な形容詞」「副詞」「數量詞」。
+- 例句規則：新增例句以自然、簡單、適合 N4 程度的日文為主；`exampleKana` 已確認為完整假名且不含漢字；`exampleMeaning` 使用繁體中文。
+- 重複檢查：已確認新增單字未與既有 `vocabulary.json` 的 `word` 重複，新增後全檔 `word` 也沒有重複。
+- 結構檢查：已確認新增後 `vocabulary.json` 是合法 JSON，總筆數為 1300 筆，id 由 1 到 1300 連續且不重複，所有必要欄位皆存在且無空白欄位。
