@@ -10,9 +10,15 @@ const CATEGORY_FILTERS = [
   { id: "number-counter", label: "數字／量詞", matches: ["數詞", "數量詞"] },
   { id: "expression", label: "表達句型", matches: ["感嘆詞"] },
 ];
+const LEVEL_FILTERS = [
+  { id: "all", label: "全部程度", level: null },
+  { id: "n5", label: "N5", level: "N5" },
+  { id: "n4", label: "N4", level: "N4" },
+];
 
 const cardsContainer = document.querySelector("#vocabularyCards");
 const categoryFilters = document.querySelector("#categoryFilters");
+const levelFilters = document.querySelector("#levelFilters");
 const categoryCount = document.querySelector("#categoryCount");
 const toggleButton = document.querySelector("#toggleAnswers");
 const shuffleButton = document.querySelector("#shuffleWords");
@@ -29,10 +35,15 @@ let answersVisible = false;
 let currentGroupNumber = 0;
 let reshuffleNotice = "";
 let activeCategoryId = "all";
+let activeLevelId = "all";
 let searchQuery = "";
 
 function getActiveCategory() {
   return CATEGORY_FILTERS.find((category) => category.id === activeCategoryId) ?? CATEGORY_FILTERS[0];
+}
+
+function getActiveLevel() {
+  return LEVEL_FILTERS.find((level) => level.id === activeLevelId) ?? LEVEL_FILTERS[0];
 }
 
 function getWordsForCategory(category) {
@@ -41,6 +52,18 @@ function getWordsForCategory(category) {
   }
 
   return vocabulary.filter((word) => category.matches.includes(word.partOfSpeech));
+}
+
+function getWordsForLevel(words, level) {
+  if (!level.level) {
+    return words;
+  }
+
+  return words.filter((word) => word.level === level.level);
+}
+
+function getWordsForActiveFilters() {
+  return getWordsForLevel(getWordsForCategory(getActiveCategory()), getActiveLevel());
 }
 
 function normalizeSearchText(value) {
@@ -57,6 +80,7 @@ function wordMatchesSearch(word, query) {
     word.kana,
     word.meaning,
     word.partOfSpeech,
+    word.level,
     word.example,
     word.exampleKana,
     word.exampleMeaning,
@@ -66,7 +90,7 @@ function wordMatchesSearch(word, query) {
 }
 
 function getFilteredVocabulary() {
-  return getWordsForCategory(getActiveCategory()).filter((word) => wordMatchesSearch(word, searchQuery));
+  return getWordsForActiveFilters().filter((word) => wordMatchesSearch(word, searchQuery));
 }
 
 function shuffleWords(words) {
@@ -147,6 +171,7 @@ function createCard(word, index) {
     <div class="answer" hidden>
       ${createDetailRow("中文意思", word.meaning)}
       ${createDetailRow("詞性", word.partOfSpeech)}
+      ${createDetailRow("程度", word.level)}
       ${createDetailRow("例句", word.example)}
       ${createDetailRow("例句假名", word.exampleKana)}
       ${createDetailRow("中文翻譯", word.exampleMeaning)}
@@ -171,19 +196,27 @@ function renderStatus(message) {
 
 function updateCategoryCount() {
   const activeCategory = getActiveCategory();
-  const categoryTotal = getWordsForCategory(activeCategory).length;
+  const activeLevel = getActiveLevel();
+  const filterTotal = getWordsForActiveFilters().length;
+  const filterDescription = `分類「${activeCategory.label}」／程度「${activeLevel.label}」`;
 
   if (searchQuery) {
-    categoryCount.textContent = `目前分類「${activeCategory.label}」共有 ${categoryTotal} 個單字；搜尋「${searchQuery}」共有 ${filteredVocabulary.length} 個單字`;
+    categoryCount.textContent = `目前${filterDescription}共有 ${filterTotal} 個單字；搜尋「${searchQuery}」共有 ${filteredVocabulary.length} 個單字`;
     return;
   }
 
-  categoryCount.textContent = `目前分類「${activeCategory.label}」共有 ${categoryTotal} 個單字`;
+  categoryCount.textContent = `目前${filterDescription}共有 ${filterTotal} 個單字`;
 }
 
-function updateCategoryButtons() {
-  categoryFilters.querySelectorAll(".category-button").forEach((button) => {
+function updateFilterButtons() {
+  categoryFilters.querySelectorAll(".filter-button").forEach((button) => {
     const isActive = button.dataset.categoryId === activeCategoryId;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  levelFilters.querySelectorAll(".filter-button").forEach((button) => {
+    const isActive = button.dataset.levelId === activeLevelId;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
@@ -229,7 +262,7 @@ function refreshFilteredVocabulary() {
   filteredVocabulary = getFilteredVocabulary();
   previousWordIds = new Set();
   resetDeck();
-  updateCategoryButtons();
+  updateFilterButtons();
   updateCategoryCount();
   clearSearchButton.disabled = searchQuery.length === 0;
   showNewWordSet();
@@ -240,25 +273,42 @@ function applyCategory(categoryId) {
   refreshFilteredVocabulary();
 }
 
+function applyLevel(levelId) {
+  activeLevelId = levelId;
+  refreshFilteredVocabulary();
+}
+
 function applySearch(query) {
   searchQuery = normalizeSearchText(query);
   refreshFilteredVocabulary();
 }
 
+function createFilterButton(label, onClick) {
+  const button = document.createElement("button");
+  button.className = "filter-button";
+  button.type = "button";
+  button.textContent = label;
+  button.setAttribute("aria-pressed", "false");
+  button.addEventListener("click", onClick);
+  return button;
+}
+
 function renderCategoryFilters() {
-  const buttons = CATEGORY_FILTERS.map((category) => {
-    const button = document.createElement("button");
-    button.className = "category-button";
-    button.type = "button";
+  const categoryButtons = CATEGORY_FILTERS.map((category) => {
+    const button = createFilterButton(category.label, () => applyCategory(category.id));
     button.dataset.categoryId = category.id;
-    button.textContent = category.label;
-    button.setAttribute("aria-pressed", "false");
-    button.addEventListener("click", () => applyCategory(category.id));
     return button;
   });
 
-  categoryFilters.replaceChildren(...buttons);
-  updateCategoryButtons();
+  const levelButtons = LEVEL_FILTERS.map((level) => {
+    const button = createFilterButton(level.label, () => applyLevel(level.id));
+    button.dataset.levelId = level.id;
+    return button;
+  });
+
+  categoryFilters.replaceChildren(...categoryButtons);
+  levelFilters.replaceChildren(...levelButtons);
+  updateFilterButtons();
 }
 
 async function loadVocabulary() {
