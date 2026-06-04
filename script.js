@@ -25,6 +25,16 @@ const shuffleButton = document.querySelector("#shuffleWords");
 const wordSetStatus = document.querySelector("#wordSetStatus");
 const wordSearchInput = document.querySelector("#wordSearch");
 const clearSearchButton = document.querySelector("#clearSearch");
+const cardModeButton = document.querySelector("#cardModeButton");
+const quizModeButton = document.querySelector("#quizModeButton");
+const controlsPanel = document.querySelector(".controls");
+const quizPanel = document.querySelector("#quizPanel");
+const quizContent = document.querySelector("#quizContent");
+const nextQuizQuestionButton = document.querySelector("#nextQuizQuestion");
+const restartQuizButton = document.querySelector("#restartQuiz");
+const quizAnsweredCount = document.querySelector("#quizAnsweredCount");
+const quizCorrectCount = document.querySelector("#quizCorrectCount");
+const quizAccuracy = document.querySelector("#quizAccuracy");
 
 let vocabulary = [];
 let filteredVocabulary = [];
@@ -37,6 +47,11 @@ let reshuffleNotice = "";
 let activeCategoryId = "all";
 let activeLevelId = "all";
 let searchQuery = "";
+let activeMode = "cards";
+let currentQuizQuestion = null;
+let quizAnsweredCountValue = 0;
+let quizCorrectCountValue = 0;
+let quizHasAnsweredCurrentQuestion = false;
 
 function getActiveCategory() {
   return CATEGORY_FILTERS.find((category) => category.id === activeCategoryId) ?? CATEGORY_FILTERS[0];
@@ -102,6 +117,26 @@ function shuffleWords(words) {
   }
 
   return shuffledWords;
+}
+
+function getRandomWord(words) {
+  return words[Math.floor(Math.random() * words.length)];
+}
+
+function updateQuizStats() {
+  const accuracy = quizAnsweredCountValue === 0
+    ? 0
+    : Math.round((quizCorrectCountValue / quizAnsweredCountValue) * 100);
+
+  quizAnsweredCount.textContent = String(quizAnsweredCountValue);
+  quizCorrectCount.textContent = String(quizCorrectCountValue);
+  quizAccuracy.textContent = `${accuracy}%`;
+}
+
+function resetQuizStats() {
+  quizAnsweredCountValue = 0;
+  quizCorrectCountValue = 0;
+  updateQuizStats();
 }
 
 function getTotalGroups() {
@@ -194,6 +229,133 @@ function renderStatus(message) {
   cardsContainer.replaceChildren(status);
 }
 
+function renderQuizStatus(message) {
+  const status = document.createElement("p");
+  status.className = "status-message quiz-status-message";
+  status.textContent = message;
+  quizContent.replaceChildren(status);
+  nextQuizQuestionButton.hidden = true;
+}
+
+function createQuizQuestion() {
+  if (filteredVocabulary.length < 4) {
+    currentQuizQuestion = null;
+    quizHasAnsweredCurrentQuestion = false;
+    renderQuizStatus("目前篩選結果不足 4 個單字，請調整分類或搜尋條件。");
+    return;
+  }
+
+  const questionWord = getRandomWord(filteredVocabulary);
+  const wrongOptions = shuffleWords(
+    filteredVocabulary.filter((word) => word.id !== questionWord.id),
+  ).slice(0, 3);
+  const options = shuffleWords([
+    { meaning: questionWord.meaning, isCorrect: true },
+    ...wrongOptions.map((word) => ({ meaning: word.meaning, isCorrect: false })),
+  ]);
+
+  currentQuizQuestion = {
+    word: questionWord,
+    options,
+  };
+  quizHasAnsweredCurrentQuestion = false;
+  nextQuizQuestionButton.hidden = true;
+  renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+  if (!currentQuizQuestion) {
+    return;
+  }
+
+  const question = document.createElement("article");
+  question.className = "quiz-card";
+
+  const prompt = document.createElement("div");
+  prompt.className = "quiz-prompt";
+  prompt.innerHTML = `
+    <p class="quiz-prompt-label">這個單字的中文意思是？</p>
+    <h3 class="japanese-word">${currentQuizQuestion.word.word}</h3>
+    <p class="kana">${currentQuizQuestion.word.kana}</p>
+  `;
+
+  const optionsGroup = document.createElement("div");
+  optionsGroup.className = "quiz-options";
+  optionsGroup.setAttribute("role", "group");
+  optionsGroup.setAttribute("aria-label", "測驗選項");
+
+  const feedback = document.createElement("p");
+  feedback.className = "quiz-feedback";
+  feedback.setAttribute("aria-live", "polite");
+
+  const optionButtons = currentQuizQuestion.options.map((option) => {
+    const button = document.createElement("button");
+    button.className = "quiz-option";
+    button.type = "button";
+    button.textContent = option.meaning;
+    button.addEventListener("click", () => handleQuizAnswer(option, optionButtons, feedback));
+    return button;
+  });
+
+  optionsGroup.replaceChildren(...optionButtons);
+  question.replaceChildren(prompt, optionsGroup, feedback);
+  quizContent.replaceChildren(question);
+}
+
+function handleQuizAnswer(selectedOption, optionButtons, feedback) {
+  if (quizHasAnsweredCurrentQuestion || !currentQuizQuestion) {
+    return;
+  }
+
+  quizHasAnsweredCurrentQuestion = true;
+  quizAnsweredCountValue += 1;
+
+  if (selectedOption.isCorrect) {
+    quizCorrectCountValue += 1;
+    feedback.textContent = "答對了！";
+    feedback.classList.add("is-correct");
+  } else {
+    feedback.textContent = `答錯了，正確答案是：${currentQuizQuestion.word.meaning}`;
+    feedback.classList.add("is-wrong");
+  }
+
+  optionButtons.forEach((button, index) => {
+    const option = currentQuizQuestion.options[index];
+    button.disabled = true;
+    button.classList.toggle("is-correct", option.isCorrect);
+    button.classList.toggle("is-wrong", button.textContent === selectedOption.meaning && !selectedOption.isCorrect);
+  });
+
+  updateQuizStats();
+  nextQuizQuestionButton.hidden = false;
+}
+
+function restartQuiz() {
+  resetQuizStats();
+  createQuizQuestion();
+}
+
+function switchMode(mode) {
+  activeMode = mode;
+  const isQuizMode = activeMode === "quiz";
+
+  cardModeButton.classList.toggle("is-active", !isQuizMode);
+  cardModeButton.setAttribute("aria-pressed", String(!isQuizMode));
+  quizModeButton.classList.toggle("is-active", isQuizMode);
+  quizModeButton.setAttribute("aria-pressed", String(isQuizMode));
+
+  controlsPanel.hidden = isQuizMode;
+  cardsContainer.hidden = isQuizMode;
+  quizPanel.hidden = !isQuizMode;
+
+  if (isQuizMode) {
+    createQuizQuestion();
+  } else {
+    updateWordSetStatus();
+    updateAnswersVisibility();
+  }
+}
+
 function updateCategoryCount() {
   const activeCategory = getActiveCategory();
   const activeLevel = getActiveLevel();
@@ -265,7 +427,12 @@ function refreshFilteredVocabulary() {
   updateFilterButtons();
   updateCategoryCount();
   clearSearchButton.disabled = searchQuery.length === 0;
-  showNewWordSet();
+
+  if (activeMode === "quiz") {
+    createQuizQuestion();
+  } else {
+    showNewWordSet();
+  }
 }
 
 function applyCategory(categoryId) {
@@ -331,6 +498,10 @@ async function loadVocabulary() {
     shuffleButton.disabled = true;
     wordSearchInput.disabled = true;
     clearSearchButton.disabled = true;
+    cardModeButton.disabled = true;
+    quizModeButton.disabled = true;
+    nextQuizQuestionButton.disabled = true;
+    restartQuizButton.disabled = true;
   }
 }
 
@@ -351,6 +522,12 @@ clearSearchButton.addEventListener("click", () => {
   wordSearchInput.focus();
 });
 
+cardModeButton.addEventListener("click", () => switchMode("cards"));
+quizModeButton.addEventListener("click", () => switchMode("quiz"));
+nextQuizQuestionButton.addEventListener("click", createQuizQuestion);
+restartQuizButton.addEventListener("click", restartQuiz);
+
 clearSearchButton.disabled = true;
+updateQuizStats();
 
 loadVocabulary();
