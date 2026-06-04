@@ -16,6 +16,16 @@ const LEVEL_FILTERS = [
   { id: "n4", label: "N4", level: "N4" },
 ];
 
+const PART_OF_SPEECH_GROUPS = [
+  { id: "verb", matches: ["動詞"] },
+  { id: "i-adjective", matches: ["い形容詞"] },
+  { id: "na-adjective", matches: ["な形容詞"] },
+  { id: "adverb", matches: ["副詞"] },
+  { id: "number-counter", matches: ["數詞", "數量詞", "數量詞相關"] },
+  { id: "noun", matches: ["名詞", "代名詞", "疑問詞"] },
+  { id: "other", matches: ["連體詞", "接続詞", "感嘆詞", "表達句型"] },
+];
+
 const cardsContainer = document.querySelector("#vocabularyCards");
 const categoryFilters = document.querySelector("#categoryFilters");
 const levelFilters = document.querySelector("#levelFilters");
@@ -121,6 +131,61 @@ function shuffleWords(words) {
 
 function getRandomWord(words) {
   return words[Math.floor(Math.random() * words.length)];
+}
+
+function getPartOfSpeechGroup(partOfSpeech) {
+  return PART_OF_SPEECH_GROUPS.find((group) => group.matches.includes(partOfSpeech))?.id ?? "other";
+}
+
+function hasSamePartOfSpeechGroup(word, referenceWord) {
+  return getPartOfSpeechGroup(word.partOfSpeech) === getPartOfSpeechGroup(referenceWord.partOfSpeech);
+}
+
+function getQuizOptionCandidates(words, questionWord, usedMeanings, usedWordIds) {
+  return shuffleWords(words).filter((word) => {
+    if (word.id === questionWord.id || usedWordIds.has(word.id)) {
+      return false;
+    }
+
+    return !usedMeanings.has(word.meaning);
+  });
+}
+
+function addWrongQuizOptionsFromSource(options, sourceWords, questionWord, usedMeanings, usedWordIds) {
+  const candidates = getQuizOptionCandidates(sourceWords, questionWord, usedMeanings, usedWordIds);
+
+  candidates.some((word) => {
+    options.push({ meaning: word.meaning, isCorrect: false });
+    usedMeanings.add(word.meaning);
+    usedWordIds.add(word.id);
+
+    return options.length === 3;
+  });
+}
+
+function createWrongQuizOptions(questionWord) {
+  const wrongOptions = [];
+  const usedMeanings = new Set([questionWord.meaning]);
+  const usedWordIds = new Set([questionWord.id]);
+  const filteredSameGroupWords = filteredVocabulary.filter((word) => hasSamePartOfSpeechGroup(word, questionWord));
+  const sameLevelSameGroupWords = vocabulary.filter((word) => (
+    word.level === questionWord.level && hasSamePartOfSpeechGroup(word, questionWord)
+  ));
+  const sameGroupWords = vocabulary.filter((word) => hasSamePartOfSpeechGroup(word, questionWord));
+
+  [
+    filteredSameGroupWords,
+    sameLevelSameGroupWords,
+    sameGroupWords,
+    filteredVocabulary,
+    vocabulary,
+  ].some((sourceWords) => {
+    addWrongQuizOptionsFromSource(wrongOptions, sourceWords, questionWord, usedMeanings, usedWordIds);
+
+    return wrongOptions.length === 3;
+  });
+
+  return wrongOptions;
 }
 
 function updateQuizStats() {
@@ -246,12 +311,18 @@ function createQuizQuestion() {
   }
 
   const questionWord = getRandomWord(filteredVocabulary);
-  const wrongOptions = shuffleWords(
-    filteredVocabulary.filter((word) => word.id !== questionWord.id),
-  ).slice(0, 3);
+  const wrongOptions = createWrongQuizOptions(questionWord);
+
+  if (wrongOptions.length < 3) {
+    currentQuizQuestion = null;
+    quizHasAnsweredCurrentQuestion = false;
+    renderQuizStatus("目前可用的選項不足 4 個，請調整分類或搜尋條件。");
+    return;
+  }
+
   const options = shuffleWords([
     { meaning: questionWord.meaning, isCorrect: true },
-    ...wrongOptions.map((word) => ({ meaning: word.meaning, isCorrect: false })),
+    ...wrongOptions,
   ]);
 
   currentQuizQuestion = {
