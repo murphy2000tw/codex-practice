@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>N5 日文單字卡</title>
-  <link rel="stylesheet" href="style.css?v=1.2">
+  <link rel="stylesheet" href="style.css?v=1.3">
 </head>
 <body>
   <main class="page-shell">
@@ -42,15 +42,45 @@
       </div>
     </section>
 
+    <section class="mode-panel" aria-labelledby="mode-title">
+      <div>
+        <p class="filter-label" id="mode-title">模式切換</p>
+        <p class="mode-description">選擇用單字卡複習，或用選擇題測驗目前篩選出的單字。</p>
+      </div>
+      <div class="mode-switch" role="group" aria-label="選擇練習模式">
+        <button id="cardModeButton" class="mode-button is-active" type="button" aria-pressed="true">單字卡模式</button>
+        <button id="quizModeButton" class="mode-button" type="button" aria-pressed="false">測驗模式</button>
+      </div>
+    </section>
+
     <section class="controls" aria-label="單字卡控制">
       <p id="wordSetStatus" class="set-status" aria-live="polite">正在載入單字資料…</p>
       <button id="shuffleWords" class="secondary-button" type="button">換一組單字</button>
       <button id="toggleAnswers" class="answer-button" type="button" aria-pressed="false">顯示答案</button>
     </section>
 
+    <section class="quiz-panel" id="quizPanel" aria-live="polite" hidden>
+      <div class="quiz-header">
+        <div>
+          <span class="card-number">測驗題目</span>
+          <h2 class="quiz-title">請選出正確的中文意思</h2>
+        </div>
+        <div class="quiz-stats" aria-label="測驗分數統計">
+          <span>已答題數：<strong id="quizAnsweredCount">0</strong></span>
+          <span>答對題數：<strong id="quizCorrectCount">0</strong></span>
+          <span>正確率：<strong id="quizAccuracy">0%</strong></span>
+        </div>
+      </div>
+      <div id="quizContent" class="quiz-content"></div>
+      <div class="quiz-actions">
+        <button id="nextQuizQuestion" class="answer-button" type="button" hidden>下一題</button>
+        <button id="restartQuiz" class="secondary-button" type="button">重新開始測驗</button>
+      </div>
+    </section>
+
     <section class="cards-grid" id="vocabularyCards" aria-live="polite"></section>
   </main>
 
-  <script src="script.js?v=1.2"></script>
+  <script src="script.js?v=1.3"></script>
 </body>
 </html>
