@@ -84,6 +84,7 @@ function renderCurrentWord() {
   const details = document.createElement("div");
   details.className = "vocabulary-details";
   details.append(
+    createVocabularyDetail("分類", currentWord.category),
     createVocabularyDetail("中文意思", currentWord.meaning, "js-chinese-detail"),
     createVocabularyDetail("英文例句", currentWord.example),
     createVocabularyDetail("中文翻譯", currentWord.translation, "js-chinese-detail"),
