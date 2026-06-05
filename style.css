@@ -714,3 +714,130 @@ h1 {
 .quiz-grammar-meta {
   justify-content: center;
 }
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 30px;
+}
+
+.site-nav-link {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 12px 18px;
+  color: var(--accent-dark);
+  background: #fff1eb;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.site-nav-link:hover,
+.site-nav-link:focus-visible,
+.site-nav-link.is-active {
+  border-color: var(--accent);
+  color: #ffffff;
+  background: var(--accent);
+  box-shadow: 0 10px 24px rgba(220, 107, 79, 0.26);
+  transform: translateY(-2px);
+}
+
+.site-nav-link:focus-visible {
+  outline: 3px solid rgba(220, 107, 79, 0.32);
+  outline-offset: 4px;
+}
+
+.entry-section {
+  margin: 0 0 22px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 14px 36px rgba(67, 52, 40, 0.08);
+}
+
+.entry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.entry-card {
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.entry-card:hover,
+.entry-card:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 22px 48px rgba(189, 84, 59, 0.18);
+  transform: translateY(-4px);
+}
+
+.entry-card:focus-visible {
+  outline: 3px solid rgba(220, 107, 79, 0.32);
+  outline-offset: 4px;
+}
+
+.entry-card-title {
+  margin: 22px 0 10px;
+  font-size: clamp(1.45rem, 4vw, 2rem);
+  line-height: 1.25;
+}
+
+.entry-card-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.entry-card-action {
+  align-self: flex-start;
+  border-radius: 999px;
+  margin-top: 24px;
+  padding: 10px 16px;
+  color: #ffffff;
+  background: var(--accent);
+  box-shadow: 0 10px 24px rgba(220, 107, 79, 0.22);
+  font-weight: 800;
+}
+
+.subpage-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.subpage-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.back-link {
+  justify-self: start;
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .site-nav,
+  .entry-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .site-nav-link,
+  .back-link {
+    width: 100%;
+    text-align: center;
+  }
+
+  .entry-section {
+    padding: 18px;
+  }
+}
