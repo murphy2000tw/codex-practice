@@ -2209,5 +2209,1365 @@
     "similar": [
       "疑問詞 + か：例如「いつ行くか」，不可加どうか。"
     ]
+  },
+  {
+    "id": "n4-grammar-131",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜るところ",
+    "kana": "るところ",
+    "meaning": "正要……；即將……。",
+    "structure": "動詞辞書形 + ところ",
+    "usage": "表示動作正要開始，常和「これから」「今から」一起用。",
+    "example": "これから昼ご飯を食べるところです。",
+    "exampleKana": "これからひるごはんをたべるところです。",
+    "exampleMeaning": "我接下來正要吃午餐。",
+    "note": "重點在動作開始前。",
+    "similar": [
+      "〜ているところ：表示正在做。"
+    ]
+  },
+  {
+    "id": "n4-grammar-132",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜ているところ",
+    "kana": "ているところ",
+    "meaning": "正在……。",
+    "structure": "動詞て形 + いるところ",
+    "usage": "表示動作現在正好在進行中。",
+    "example": "今、宿題をしているところです。",
+    "exampleKana": "いま、しゅくだいをしているところです。",
+    "exampleMeaning": "我現在正在寫作業。",
+    "note": "常用來回答現在正在做什麼。",
+    "similar": [
+      "〜たところ：表示剛做完。"
+    ]
+  },
+  {
+    "id": "n4-grammar-133",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜たところ",
+    "kana": "たところ",
+    "meaning": "剛剛……。",
+    "structure": "動詞た形 + ところ",
+    "usage": "表示某動作剛完成不久。",
+    "example": "今、駅に着いたところです。",
+    "exampleKana": "いま、えきについたところです。",
+    "exampleMeaning": "我現在剛到車站。",
+    "note": "比「〜たばかり」更強調剛剛完成的時間點。",
+    "similar": [
+      "〜たばかり：可表示主觀覺得剛發生。"
+    ]
+  },
+  {
+    "id": "n4-grammar-134",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜ようとする",
+    "kana": "ようとする",
+    "meaning": "正要……；試著要……。",
+    "structure": "動詞意向形 + とする",
+    "usage": "表示準備開始某動作，或努力嘗試做某事。",
+    "example": "家を出ようとした時、電話が鳴りました。",
+    "exampleKana": "いえをでようとしたとき、でんわがなりました。",
+    "exampleMeaning": "我正要出門時，電話響了。",
+    "note": "常見「〜ようとした時」。",
+    "similar": [
+      "〜ようと思う：表示打算；〜ようとする：表示快開始或嘗試。"
+    ]
+  },
+  {
+    "id": "n4-grammar-135",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜かける",
+    "kana": "かける",
+    "meaning": "做到一半；開始……。",
+    "structure": "動詞ます形去ます + かける",
+    "usage": "表示動作開始但尚未完成，或做到一半。",
+    "example": "読みかけの本を机に置きました。",
+    "exampleKana": "よみかけのほんをつくえにおきました。",
+    "exampleMeaning": "我把讀到一半的書放在桌上。",
+    "note": "常用「〜かけの名詞」。",
+    "similar": [
+      "〜始める：只表示開始；〜かける：可表示未完成。"
+    ]
+  },
+  {
+    "id": "n4-grammar-136",
+    "level": "N4",
+    "category": "義務・許可",
+    "grammar": "〜ないといけない",
+    "kana": "ないといけない",
+    "meaning": "必須……；不……不行。",
+    "structure": "動詞ない形去い + いといけない",
+    "usage": "表示有必要或義務做某事，口語常見。",
+    "example": "明日早いので、もう寝ないといけません。",
+    "exampleKana": "あしたはやいので、もうねないといけません。",
+    "exampleMeaning": "明天很早，所以我必須睡了。",
+    "note": "口語常省略成「〜ないと」。",
+    "similar": [
+      "〜なければならない：較正式。"
+    ]
+  },
+  {
+    "id": "n4-grammar-137",
+    "level": "N4",
+    "category": "義務・許可",
+    "grammar": "〜なくちゃ",
+    "kana": "なくちゃ",
+    "meaning": "得……；必須……。",
+    "structure": "動詞ない形去い + くちゃ",
+    "usage": "「〜なくてはいけない」的口語縮短說法。",
+    "example": "もう行かなくちゃ。",
+    "exampleKana": "もういかなくちゃ。",
+    "exampleMeaning": "我得走了。",
+    "note": "正式文章中較少使用。",
+    "similar": [
+      "〜なきゃ：意思幾乎相同。"
+    ]
+  },
+  {
+    "id": "n4-grammar-138",
+    "level": "N4",
+    "category": "義務・許可",
+    "grammar": "〜なきゃ",
+    "kana": "なきゃ",
+    "meaning": "得……；必須……。",
+    "structure": "動詞ない形去い + きゃ",
+    "usage": "「〜なければいけない」的口語縮短說法。",
+    "example": "宿題をしなきゃ。",
+    "exampleKana": "しゅくだいをしなきゃ。",
+    "exampleMeaning": "我得寫作業。",
+    "note": "句尾常省略「いけない」。",
+    "similar": [
+      "〜なくちゃ：同樣是口語必須。"
+    ]
+  },
+  {
+    "id": "n4-grammar-139",
+    "level": "N4",
+    "category": "義務・許可",
+    "grammar": "〜てもよろしい",
+    "kana": "てもよろしい",
+    "meaning": "可以……；允許……。",
+    "structure": "動詞て形 + もよろしい",
+    "usage": "表示許可，是「〜てもいい」較禮貌的說法。",
+    "example": "ここに座ってもよろしいですか。",
+    "exampleKana": "ここにすわってもよろしいですか。",
+    "exampleMeaning": "我可以坐在這裡嗎？",
+    "note": "常用於正式場合。",
+    "similar": [
+      "〜てもいい：較普通。"
+    ]
+  },
+  {
+    "id": "n4-grammar-140",
+    "level": "N4",
+    "category": "義務・許可",
+    "grammar": "〜なくてもかまいません",
+    "kana": "なくてもかまいません",
+    "meaning": "不……也沒關係。",
+    "structure": "動詞ない形去い + くてもかまいません",
+    "usage": "表示沒有必要做某事，或不做也可以。",
+    "example": "名前を書かなくてもかまいません。",
+    "exampleKana": "なまえをかかなくてもかまいません。",
+    "exampleMeaning": "不寫名字也沒關係。",
+    "note": "比「〜なくてもいい」更客氣。",
+    "similar": [
+      "〜なくてもいい：較口語。"
+    ]
+  },
+  {
+    "id": "n4-grammar-141",
+    "level": "N4",
+    "category": "禁止・命令",
+    "grammar": "〜てはだめ",
+    "kana": "てはだめ",
+    "meaning": "不可以……。",
+    "structure": "動詞て形 + はだめ",
+    "usage": "表示禁止某個動作，口語中常用。",
+    "example": "ここで写真を撮ってはだめです。",
+    "exampleKana": "ここでしゃしんをとってはだめです。",
+    "exampleMeaning": "不可以在這裡拍照。",
+    "note": "「では」口語常變成「じゃ」。",
+    "similar": [
+      "〜てはいけない：較標準。"
+    ]
+  },
+  {
+    "id": "n4-grammar-142",
+    "level": "N4",
+    "category": "禁止・命令",
+    "grammar": "〜ちゃいけない",
+    "kana": "ちゃいけない",
+    "meaning": "不可以……。",
+    "structure": "動詞て形變化 + ちゃいけない",
+    "usage": "是「〜てはいけない」的口語縮短說法。",
+    "example": "授業中に話しちゃいけません。",
+    "exampleKana": "じゅぎょうちゅうにはなしちゃいけません。",
+    "exampleMeaning": "上課時不可以說話。",
+    "note": "「飲んでは」會變成「飲んじゃ」。",
+    "similar": [
+      "〜てはいけない：較正式。"
+    ]
+  },
+  {
+    "id": "n4-grammar-143",
+    "level": "N4",
+    "category": "禁止・命令",
+    "grammar": "〜てごらん",
+    "kana": "てごらん",
+    "meaning": "試著……看看。",
+    "structure": "動詞て形 + ごらん",
+    "usage": "用於對晚輩或親近的人溫和地叫對方試做。",
+    "example": "分からなかったら、先生に聞いてごらん。",
+    "exampleKana": "わからなかったら、せんせいにきいてごらん。",
+    "exampleMeaning": "如果不懂，就試著問老師看看。",
+    "note": "不可對上司或不熟的人使用。",
+    "similar": [
+      "〜てみてください：較禮貌。"
+    ]
+  },
+  {
+    "id": "n4-grammar-144",
+    "level": "N4",
+    "category": "禁止・命令",
+    "grammar": "〜こと",
+    "kana": "こと",
+    "meaning": "要……；必須……。",
+    "structure": "動詞辞書形／ない形 + こと",
+    "usage": "用在規則或注意事項中，表示命令或要求。",
+    "example": "テスト中は話さないこと。",
+    "exampleKana": "てすとちゅうははなさないこと。",
+    "exampleMeaning": "考試時不得說話。",
+    "note": "常見於公告和學校規定。",
+    "similar": [
+      "命令形：語氣更直接。"
+    ]
+  },
+  {
+    "id": "n4-grammar-145",
+    "level": "N4",
+    "category": "禁止・命令",
+    "grammar": "〜べきだ",
+    "kana": "べきだ",
+    "meaning": "應該……。",
+    "structure": "動詞辞書形 + べきだ",
+    "usage": "表示根據常識或責任認為應該做某事。",
+    "example": "約束は守るべきです。",
+    "exampleKana": "やくそくはまもるべきです。",
+    "exampleMeaning": "應該遵守約定。",
+    "note": "語氣比建議更強。",
+    "similar": [
+      "〜たほうがいい：較像建議。"
+    ]
+  },
+  {
+    "id": "n4-grammar-146",
+    "level": "N4",
+    "category": "可能・能力",
+    "grammar": "〜られる（可能）",
+    "kana": "られる",
+    "meaning": "能……；會……。",
+    "structure": "一段動詞ない形去ない + られる",
+    "usage": "表示一段動詞的可能形。",
+    "example": "私は朝早く起きられます。",
+    "exampleKana": "わたしはあさはやくおきられます。",
+    "exampleMeaning": "我能早起。",
+    "note": "一段動詞常把「る」改成「られる」。",
+    "similar": [
+      "〜ことができる：較完整、書面。"
+    ]
+  },
+  {
+    "id": "n4-grammar-147",
+    "level": "N4",
+    "category": "可能・能力",
+    "grammar": "〜える（可能）",
+    "kana": "える",
+    "meaning": "能……；會……。",
+    "structure": "五段動詞語尾變え段 + る",
+    "usage": "表示五段動詞的可能形。",
+    "example": "この漢字が読めます。",
+    "exampleKana": "このかんじがよめます。",
+    "exampleMeaning": "我能讀這個漢字。",
+    "note": "「行く」的可能形是「行ける」。",
+    "similar": [
+      "〜られる（可能）：用於一段動詞。"
+    ]
+  },
+  {
+    "id": "n4-grammar-148",
+    "level": "N4",
+    "category": "可能・能力",
+    "grammar": "〜ようになる",
+    "kana": "ようになる",
+    "meaning": "變得會……；變成能……。",
+    "structure": "動詞辞書形／ない形 + ようになる",
+    "usage": "表示能力、習慣或狀態的變化。",
+    "example": "毎日練習して、泳げるようになりました。",
+    "exampleKana": "まいにちれんしゅうして、およげるようになりました。",
+    "exampleMeaning": "每天練習後，我變得會游泳了。",
+    "note": "常和可能形一起使用。",
+    "similar": [
+      "〜ようにする：表示努力養成習慣。"
+    ]
+  },
+  {
+    "id": "n4-grammar-149",
+    "level": "N4",
+    "category": "可能・能力",
+    "grammar": "〜ことができない",
+    "kana": "ことができない",
+    "meaning": "不能……；無法……。",
+    "structure": "動詞辞書形 + ことができない",
+    "usage": "表示沒有能力、條件或不被允許做某事。",
+    "example": "今日は忙しくて、買い物に行くことができません。",
+    "exampleKana": "きょうはいそがしくて、かいものにいくことができません。",
+    "exampleMeaning": "今天很忙，不能去買東西。",
+    "note": "比可能形否定更完整。",
+    "similar": [
+      "可能形否定：較口語。"
+    ]
+  },
+  {
+    "id": "n4-grammar-150",
+    "level": "N4",
+    "category": "可能・能力",
+    "grammar": "〜のが得意だ／苦手だ",
+    "kana": "のがとくいだ／にがてだ",
+    "meaning": "擅長……／不擅長……。",
+    "structure": "動詞辞書形 + のが得意だ／苦手だ",
+    "usage": "表示對某件事的能力高低。",
+    "example": "私は人の前で話すのが苦手です。",
+    "exampleKana": "わたしはひとのまえではなすのがにがてです。",
+    "exampleMeaning": "我不擅長在人前說話。",
+    "note": "動詞要先用「の」名詞化。",
+    "similar": [
+      "〜ことができる：表示能不能做。"
+    ]
+  },
+  {
+    "id": "n4-grammar-151",
+    "level": "N4",
+    "category": "經驗",
+    "grammar": "〜た経験がある",
+    "kana": "たけいけんがある",
+    "meaning": "有……的經驗。",
+    "structure": "動詞た形 + 経験がある",
+    "usage": "表示曾經有過某種經驗。",
+    "example": "私は一度だけ山に登った経験があります。",
+    "exampleKana": "わたしはいちどだけやまにのぼったけいけんがあります。",
+    "exampleMeaning": "我有一次爬山的經驗。",
+    "note": "較常用於正式說明。",
+    "similar": [
+      "〜たことがある：較一般。"
+    ]
+  },
+  {
+    "id": "n4-grammar-152",
+    "level": "N4",
+    "category": "經驗",
+    "grammar": "〜たこともある",
+    "kana": "たこともある",
+    "meaning": "也曾經……。",
+    "structure": "動詞た形 + こともある",
+    "usage": "表示在各種經驗中，也有過某經驗。",
+    "example": "子どもの時、外国に住んだこともあります。",
+    "exampleKana": "こどものとき、がいこくにすんだこともあります。",
+    "exampleMeaning": "小時候我也曾經住過國外。",
+    "note": "「も」帶有補充經驗的感覺。",
+    "similar": [
+      "〜たことがある：單純表示曾經。"
+    ]
+  },
+  {
+    "id": "n4-grammar-153",
+    "level": "N4",
+    "category": "經驗",
+    "grammar": "〜覚えがある",
+    "kana": "おぼえがある",
+    "meaning": "記得曾經……。",
+    "structure": "動詞た形 + 覚えがある",
+    "usage": "表示記得有做過某事或有某種印象。",
+    "example": "この道を通った覚えがあります。",
+    "exampleKana": "このみちをとおったおぼえがあります。",
+    "exampleMeaning": "我記得曾經走過這條路。",
+    "note": "重點在記憶中有印象。",
+    "similar": [
+      "〜たことがある：重點在經驗。"
+    ]
+  },
+  {
+    "id": "n4-grammar-154",
+    "level": "N4",
+    "category": "經驗",
+    "grammar": "〜ものだ（過去習慣）",
+    "kana": "ものだ",
+    "meaning": "以前常常……。",
+    "structure": "動詞た形 + ものだ",
+    "usage": "回想過去常做的事，帶有懷念語氣。",
+    "example": "子どものころ、よく川で遊んだものです。",
+    "exampleKana": "こどものころ、よくかわであそんだものです。",
+    "exampleMeaning": "小時候，我常常在河邊玩。",
+    "note": "常和「昔」「子どものころ」一起使用。",
+    "similar": [
+      "〜ことがある：表示曾經；〜ものだ：表示過去常常。"
+    ]
+  },
+  {
+    "id": "n4-grammar-155",
+    "level": "N4",
+    "category": "經驗",
+    "grammar": "〜たことはない",
+    "kana": "たことはない",
+    "meaning": "從未……。",
+    "structure": "動詞た形 + ことはない",
+    "usage": "表示沒有過某種經驗，較強調否定。",
+    "example": "私はまだ飛行機に乗ったことはありません。",
+    "exampleKana": "わたしはまだひこうきにのったことはありません。",
+    "exampleMeaning": "我還沒有搭過飛機。",
+    "note": "「は」有對比或強調感。",
+    "similar": [
+      "〜たことがない：一般否定經驗。"
+    ]
+  },
+  {
+    "id": "n4-grammar-156",
+    "level": "N4",
+    "category": "希望",
+    "grammar": "〜たいと思う",
+    "kana": "たいとおもう",
+    "meaning": "想要……。",
+    "structure": "動詞ます形去ます + たいと思う",
+    "usage": "委婉表達自己的願望或打算。",
+    "example": "夏休みに北海道へ行きたいと思います。",
+    "exampleKana": "なつやすみにほっかいどうへいきたいとおもいます。",
+    "exampleMeaning": "暑假我想去北海道。",
+    "note": "比直接說「〜たいです」更委婉。",
+    "similar": [
+      "〜たいです：較直接。"
+    ]
+  },
+  {
+    "id": "n4-grammar-157",
+    "level": "N4",
+    "category": "希望",
+    "grammar": "〜たらいい",
+    "kana": "たらいい",
+    "meaning": "要是……就好了；該……才好。",
+    "structure": "動詞た形 + らいい",
+    "usage": "表示願望，也可用來詢問或提出建議。",
+    "example": "明日晴れたらいいですね。",
+    "exampleKana": "あしたはれたらいいですね。",
+    "exampleMeaning": "明天要是放晴就好了。",
+    "note": "「どうしたらいいですか」是詢問做法。",
+    "similar": [
+      "〜といい：也表示希望。"
+    ]
+  },
+  {
+    "id": "n4-grammar-158",
+    "level": "N4",
+    "category": "希望",
+    "grammar": "〜ばいい",
+    "kana": "ばいい",
+    "meaning": "只要……就好。",
+    "structure": "動詞ば形 + いい",
+    "usage": "表示希望某事實現，也可提出做法。",
+    "example": "分からなければ、先生に聞けばいいです。",
+    "exampleKana": "わからなければ、せんせいにきけばいいです。",
+    "exampleMeaning": "如果不懂，問老師就好。",
+    "note": "用於建議時語氣可能較直接。",
+    "similar": [
+      "〜たらいい：較柔和。"
+    ]
+  },
+  {
+    "id": "n4-grammar-159",
+    "level": "N4",
+    "category": "希望",
+    "grammar": "〜ないでほしい",
+    "kana": "ないでほしい",
+    "meaning": "希望不要……。",
+    "structure": "動詞ない形 + でほしい",
+    "usage": "表示希望別人不要做某事。",
+    "example": "ここでたばこを吸わないでほしいです。",
+    "exampleKana": "ここでたばこをすわないでほしいです。",
+    "exampleMeaning": "希望你不要在這裡抽菸。",
+    "note": "直接對上司使用可能不夠禮貌。",
+    "similar": [
+      "〜てほしい：希望對方做。"
+    ]
+  },
+  {
+    "id": "n4-grammar-160",
+    "level": "N4",
+    "category": "希望",
+    "grammar": "〜がほしい",
+    "kana": "がほしい",
+    "meaning": "想要……。",
+    "structure": "名詞 + がほしい",
+    "usage": "表示說話者想要某個東西。",
+    "example": "新しいかばんがほしいです。",
+    "exampleKana": "あたらしいかばんがほしいです。",
+    "exampleMeaning": "我想要新的包包。",
+    "note": "通常用於第一人稱。",
+    "similar": [
+      "〜たい：想做某動作。"
+    ]
+  },
+  {
+    "id": "n4-grammar-161",
+    "level": "N4",
+    "category": "推量・樣態",
+    "grammar": "〜はずがない",
+    "kana": "はずがない",
+    "meaning": "不可能……；照理說不會……。",
+    "structure": "普通形 + はずがない",
+    "usage": "表示根據理由強烈判斷某事不可能。",
+    "example": "田中さんはまじめだから、遅れるはずがありません。",
+    "exampleKana": "たなかさんはまじめだから、おくれるはずがありません。",
+    "exampleMeaning": "田中先生很認真，所以不可能遲到。",
+    "note": "是「〜はずだ」的強烈否定。",
+    "similar": [
+      "〜かもしれない：可能性較不確定。"
+    ]
+  },
+  {
+    "id": "n4-grammar-162",
+    "level": "N4",
+    "category": "推量・樣態",
+    "grammar": "〜だろう",
+    "kana": "だろう",
+    "meaning": "大概……吧。",
+    "structure": "普通形 + だろう",
+    "usage": "表示推測，語氣比「でしょう」較普通。",
+    "example": "午後から雨が降るだろう。",
+    "exampleKana": "ごごからあめがふるだろう。",
+    "exampleMeaning": "下午大概會下雨吧。",
+    "note": "禮貌說法是「でしょう」。",
+    "similar": [
+      "〜でしょう：較禮貌。"
+    ]
+  },
+  {
+    "id": "n4-grammar-163",
+    "level": "N4",
+    "category": "推量・樣態",
+    "grammar": "〜かしら",
+    "kana": "かしら",
+    "meaning": "不知道是否……；會不會……呢。",
+    "structure": "普通形 + かしら",
+    "usage": "表示不確定或自言自語式疑問。",
+    "example": "明日は暑いかしら。",
+    "exampleKana": "あしたはあついかしら。",
+    "exampleMeaning": "明天會不會很熱呢？",
+    "note": "語氣柔和。",
+    "similar": [
+      "〜かな：更常見的口語自問。"
+    ]
+  },
+  {
+    "id": "n4-grammar-164",
+    "level": "N4",
+    "category": "推量・樣態",
+    "grammar": "〜に違いない",
+    "kana": "にちがいない",
+    "meaning": "一定……；肯定……。",
+    "structure": "普通形 + に違いない",
+    "usage": "表示說話者有相當把握的判斷。",
+    "example": "あの人は毎日練習しているから、上手に違いありません。",
+    "exampleKana": "あのひとはまいにちれんしゅうしているから、じょうずにちがいありません。",
+    "exampleMeaning": "那個人每天練習，所以一定很拿手。",
+    "note": "把握程度高。",
+    "similar": [
+      "〜はずだ：根據理應如此判斷。"
+    ]
+  },
+  {
+    "id": "n4-grammar-165",
+    "level": "N4",
+    "category": "推量・樣態",
+    "grammar": "〜ように見える",
+    "kana": "ようにみえる",
+    "meaning": "看起來像……。",
+    "structure": "普通形 + ように見える",
+    "usage": "根據外觀或狀態判斷看起來如何。",
+    "example": "この部屋は広いように見えます。",
+    "exampleKana": "このへやはひろいようにみえます。",
+    "exampleMeaning": "這個房間看起來很寬敞。",
+    "note": "重點在視覺上的判斷。",
+    "similar": [
+      "〜そうだ（樣態）：看起來快要或似乎。"
+    ]
+  },
+  {
+    "id": "n4-grammar-166",
+    "level": "N4",
+    "category": "條件",
+    "grammar": "〜場合は",
+    "kana": "ばあいは",
+    "meaning": "在……情況下。",
+    "structure": "普通形 + 場合は",
+    "usage": "用於說明某情況發生時該怎麼做。",
+    "example": "雨の場合は、試合はありません。",
+    "exampleKana": "あめのばあいは、しあいはありません。",
+    "exampleMeaning": "下雨的情況下，比賽會取消。",
+    "note": "常見於通知和規則。",
+    "similar": [
+      "〜たら：一般條件。"
+    ]
+  },
+  {
+    "id": "n4-grammar-167",
+    "level": "N4",
+    "category": "條件",
+    "grammar": "〜ても〜なくても",
+    "kana": "てもなくても",
+    "meaning": "不管……或不……都……。",
+    "structure": "動詞て形 + も + 動詞ない形去い + くても",
+    "usage": "表示兩種相反情況結果都一樣。",
+    "example": "行っても行かなくても、連絡してください。",
+    "exampleKana": "いってもいかなくても、れんらくしてください。",
+    "exampleMeaning": "不管去不去，都請聯絡我。",
+    "note": "常用同一動詞的肯定與否定。",
+    "similar": [
+      "〜ても：只提出一種讓步條件。"
+    ]
+  },
+  {
+    "id": "n4-grammar-168",
+    "level": "N4",
+    "category": "條件",
+    "grammar": "〜ないと",
+    "kana": "ないと",
+    "meaning": "如果不……就……。",
+    "structure": "動詞ない形去い + いと",
+    "usage": "表示若不做某事，就會有某結果。",
+    "example": "早く出ないと、電車に遅れます。",
+    "exampleKana": "はやくでないと、でんしゃにおくれます。",
+    "exampleMeaning": "如果不早點出門，就會趕不上電車。",
+    "note": "後句常是不好的結果。",
+    "similar": [
+      "〜ないといけない：表示必須。"
+    ]
+  },
+  {
+    "id": "n4-grammar-169",
+    "level": "N4",
+    "category": "條件",
+    "grammar": "〜ときは",
+    "kana": "ときは",
+    "meaning": "當……的時候。",
+    "structure": "普通形 + ときは",
+    "usage": "提出某個時間或情況，說明那時要做什麼。",
+    "example": "困ったときは、友だちに相談します。",
+    "exampleKana": "こまったときは、ともだちにそうだんします。",
+    "exampleMeaning": "遇到困難時，我會和朋友商量。",
+    "note": "比「〜とき」更有提示主題感。",
+    "similar": [
+      "〜場合は：較正式。"
+    ]
+  },
+  {
+    "id": "n4-grammar-170",
+    "level": "N4",
+    "category": "條件",
+    "grammar": "〜ならば",
+    "kana": "ならば",
+    "meaning": "如果是……的話。",
+    "structure": "普通形 + ならば",
+    "usage": "根據某個前提提出判斷或建議。",
+    "example": "日本へ行くならば、京都も見てください。",
+    "exampleKana": "にほんへいくならば、きょうともみてください。",
+    "exampleMeaning": "如果要去日本，也請看看京都。",
+    "note": "比「なら」稍正式。",
+    "similar": [
+      "〜なら：較口語。"
+    ]
+  },
+  {
+    "id": "n4-grammar-171",
+    "level": "N4",
+    "category": "授受",
+    "grammar": "〜ていただけませんか",
+    "kana": "ていただけませんか",
+    "meaning": "能否請您……。",
+    "structure": "動詞て形 + いただけませんか",
+    "usage": "非常禮貌地請求對方為自己做某事。",
+    "example": "もう一度説明していただけませんか。",
+    "exampleKana": "もういちどせつめいしていただけませんか。",
+    "exampleMeaning": "能否請您再說明一次？",
+    "note": "常用於對老師或上司請求。",
+    "similar": [
+      "〜てください：一般請求。"
+    ]
+  },
+  {
+    "id": "n4-grammar-172",
+    "level": "N4",
+    "category": "授受",
+    "grammar": "〜てくれませんか",
+    "kana": "てくれませんか",
+    "meaning": "可以幫我……嗎？",
+    "structure": "動詞て形 + くれませんか",
+    "usage": "請求對方為自己或自己這邊的人做某事。",
+    "example": "窓を開けてくれませんか。",
+    "exampleKana": "まどをあけてくれませんか。",
+    "exampleMeaning": "可以幫我開窗嗎？",
+    "note": "帶有請對方幫忙的感覺。",
+    "similar": [
+      "〜ていただけませんか：更禮貌。"
+    ]
+  },
+  {
+    "id": "n4-grammar-173",
+    "level": "N4",
+    "category": "授受",
+    "grammar": "〜てもらえませんか",
+    "kana": "てもらえませんか",
+    "meaning": "能請你幫我……嗎？",
+    "structure": "動詞て形 + もらえませんか",
+    "usage": "禮貌地請求對方做某事。",
+    "example": "この荷物を持ってもらえませんか。",
+    "exampleKana": "このにもつをもってもらえませんか。",
+    "exampleMeaning": "能請你幫我拿這個行李嗎？",
+    "note": "重點在自己得到幫助。",
+    "similar": [
+      "〜てくれませんか：請對方做。"
+    ]
+  },
+  {
+    "id": "n4-grammar-174",
+    "level": "N4",
+    "category": "授受",
+    "grammar": "〜させてください",
+    "kana": "させてください",
+    "meaning": "請讓我……。",
+    "structure": "動詞使役形て形 + ください",
+    "usage": "請求對方允許自己做某事。",
+    "example": "少し考えさせてください。",
+    "exampleKana": "すこしかんがえさせてください。",
+    "exampleMeaning": "請讓我稍微想一下。",
+    "note": "不是請對方做，而是請對方讓自己做。",
+    "similar": [
+      "〜てもいいですか：詢問可不可以。"
+    ]
+  },
+  {
+    "id": "n4-grammar-175",
+    "level": "N4",
+    "category": "授受",
+    "grammar": "〜ていただきたい",
+    "kana": "ていただきたい",
+    "meaning": "希望您能……。",
+    "structure": "動詞て形 + いただきたい",
+    "usage": "禮貌地表達希望對方為自己做某事。",
+    "example": "来週までに返事をしていただきたいです。",
+    "exampleKana": "らいしゅうまでにへんじをしていただきたいです。",
+    "exampleMeaning": "希望您能在下週前回覆。",
+    "note": "常用於工作或通知。",
+    "similar": [
+      "〜てほしい：普通希望。"
+    ]
+  },
+  {
+    "id": "n4-grammar-176",
+    "level": "N4",
+    "category": "並列・例示",
+    "grammar": "〜とか",
+    "kana": "とか",
+    "meaning": "……之類的。",
+    "structure": "名詞 + とか；普通形 + とか",
+    "usage": "舉出一個或幾個例子，語氣較口語。",
+    "example": "休みの日は映画とか見ます。",
+    "exampleKana": "やすみのひはえいがとかみます。",
+    "exampleMeaning": "休假日我會看電影之類的。",
+    "note": "可只列一個例子。",
+    "similar": [
+      "〜や〜など：較標準。"
+    ]
+  },
+  {
+    "id": "n4-grammar-177",
+    "level": "N4",
+    "category": "並列・例示",
+    "grammar": "〜やら〜やら",
+    "kana": "やらやら",
+    "meaning": "又是……又是……；……等等。",
+    "structure": "名詞 + やら + 名詞 + やら",
+    "usage": "列舉多個例子，常帶有事情很多的感覺。",
+    "example": "引っ越しで、掃除やら買い物やら忙しいです。",
+    "exampleKana": "ひっこしで、そうじやらかいものやらいそがしいです。",
+    "exampleMeaning": "因為搬家，又要打掃又要買東西，很忙。",
+    "note": "比單純列舉更有忙亂感。",
+    "similar": [
+      "〜たり〜たりする：中性列舉動作。"
+    ]
+  },
+  {
+    "id": "n4-grammar-178",
+    "level": "N4",
+    "category": "並列・例示",
+    "grammar": "〜も〜し〜も",
+    "kana": "もしも",
+    "meaning": "既……也……。",
+    "structure": "名詞 + も + 普通形 + し、名詞 + も + 普通形",
+    "usage": "列出兩個以上理由或特徵。",
+    "example": "この店は味もいいし、値段も安いです。",
+    "exampleKana": "このみせはあじもいいし、ねだんもやすいです。",
+    "exampleMeaning": "這家店味道好，價格也便宜。",
+    "note": "常用來列理由稱讚或說明。",
+    "similar": [
+      "〜し〜し：列舉理由。"
+    ]
+  },
+  {
+    "id": "n4-grammar-179",
+    "level": "N4",
+    "category": "並列・例示",
+    "grammar": "〜も〜ば〜も",
+    "kana": "もばも",
+    "meaning": "既……也……。",
+    "structure": "名詞 + も + ば形、名詞 + も + 普通形",
+    "usage": "並列兩個相同方向的性質或情況。",
+    "example": "あの人は歌も歌えば、ピアノも弾きます。",
+    "exampleKana": "あのひとはうたもうたえば、ぴあのもひきます。",
+    "exampleMeaning": "那個人既會唱歌，也會彈鋼琴。",
+    "note": "常用於列舉能力或特徵。",
+    "similar": [
+      "〜だけでなく〜も：表示不只。"
+    ]
+  },
+  {
+    "id": "n4-grammar-180",
+    "level": "N4",
+    "category": "並列・例示",
+    "grammar": "〜に加えて",
+    "kana": "にくわえて",
+    "meaning": "加上……；再加上……。",
+    "structure": "名詞 + に加えて",
+    "usage": "表示在原有內容之外再增加另一項。",
+    "example": "雨に加えて、風も強くなりました。",
+    "exampleKana": "あめにくわえて、かぜもつよくなりました。",
+    "exampleMeaning": "除了下雨之外，風也變強了。",
+    "note": "多用於較正式說明。",
+    "similar": [
+      "〜だけでなく〜も：表示不只。"
+    ]
+  },
+  {
+    "id": "n4-grammar-181",
+    "level": "N4",
+    "category": "目的・理由",
+    "grammar": "〜ように（祈願）",
+    "kana": "ように",
+    "meaning": "希望……；願……。",
+    "structure": "普通形 + ように",
+    "usage": "表示祈願或希望某件事實現。",
+    "example": "試験に合格しますように。",
+    "exampleKana": "しけんにごうかくしますように。",
+    "exampleMeaning": "希望能考試及格。",
+    "note": "句尾常直接用「〜ように」。",
+    "similar": [
+      "〜ように（目的）：表示為了達成目的。"
+    ]
+  },
+  {
+    "id": "n4-grammar-182",
+    "level": "N4",
+    "category": "目的・理由",
+    "grammar": "〜おかげで",
+    "kana": "おかげで",
+    "meaning": "多虧……；幸虧……。",
+    "structure": "普通形 + おかげで；名詞 + のおかげで",
+    "usage": "表示因為某原因帶來好的結果。",
+    "example": "友だちのおかげで、宿題が早く終わりました。",
+    "exampleKana": "ともだちのおかげで、しゅくだいがはやくおわりました。",
+    "exampleMeaning": "多虧朋友，作業很快就寫完了。",
+    "note": "通常用於好的結果。",
+    "similar": [
+      "〜せいで：表示壞結果的原因。"
+    ]
+  },
+  {
+    "id": "n4-grammar-183",
+    "level": "N4",
+    "category": "目的・理由",
+    "grammar": "〜せいで",
+    "kana": "せいで",
+    "meaning": "都怪……；因為……而造成壞結果。",
+    "structure": "普通形 + せいで；名詞 + のせいで",
+    "usage": "表示某原因造成不好的結果。",
+    "example": "寝坊したせいで、バスに乗れませんでした。",
+    "exampleKana": "ねぼうしたせいで、ばすにのれませんでした。",
+    "exampleMeaning": "因為睡過頭，所以沒搭上公車。",
+    "note": "常帶有責怪語氣。",
+    "similar": [
+      "〜おかげで：多用於好結果。"
+    ]
+  },
+  {
+    "id": "n4-grammar-184",
+    "level": "N4",
+    "category": "目的・理由",
+    "grammar": "〜ものだから",
+    "kana": "ものだから",
+    "meaning": "因為……所以……。",
+    "structure": "普通形 + ものだから",
+    "usage": "用來解釋理由，常帶有辯解語氣。",
+    "example": "道が込んでいたものだから、遅れました。",
+    "exampleKana": "みちがこんでいたものだから、おくれました。",
+    "exampleMeaning": "因為路上很塞，所以遲到了。",
+    "note": "比「から」更像不得已的理由。",
+    "similar": [
+      "〜ので：較客觀說明理由。"
+    ]
+  },
+  {
+    "id": "n4-grammar-185",
+    "level": "N4",
+    "category": "目的・理由",
+    "grammar": "〜によって（原因）",
+    "kana": "によって",
+    "meaning": "因為……；由於……。",
+    "structure": "名詞 + によって",
+    "usage": "表示造成結果的原因，多用於較正式說明。",
+    "example": "台風によって、電車が止まりました。",
+    "exampleKana": "たいふうによって、でんしゃがとまりました。",
+    "exampleMeaning": "因為颱風，電車停駛了。",
+    "note": "常用於新聞、通知。",
+    "similar": [
+      "〜ので：日常理由。"
+    ]
+  },
+  {
+    "id": "n4-grammar-186",
+    "level": "N4",
+    "category": "時間表現",
+    "grammar": "〜ところだった",
+    "kana": "ところだった",
+    "meaning": "差點就……；正要……。",
+    "structure": "動詞辞書形 + ところだった",
+    "usage": "表示某事幾乎要發生。",
+    "example": "もう少しで転ぶところでした。",
+    "exampleKana": "もうすこしでころぶところでした。",
+    "exampleMeaning": "我差一點就跌倒了。",
+    "note": "常和「もう少しで」一起使用。",
+    "similar": [
+      "〜るところ：正要做。"
+    ]
+  },
+  {
+    "id": "n4-grammar-187",
+    "level": "N4",
+    "category": "時間表現",
+    "grammar": "〜ているうちに",
+    "kana": "ているうちに",
+    "meaning": "趁著……期間；在……之中。",
+    "structure": "動詞て形 + いるうちに",
+    "usage": "表示在某狀態持續期間內發生變化或做某事。",
+    "example": "音楽を聞いているうちに、眠くなりました。",
+    "exampleKana": "おんがくをきいているうちに、ねむくなりました。",
+    "exampleMeaning": "聽著音樂時，我變得想睡了。",
+    "note": "後句常是自然發生的變化。",
+    "similar": [
+      "〜間に：強調某期間內做了某事。"
+    ]
+  },
+  {
+    "id": "n4-grammar-188",
+    "level": "N4",
+    "category": "時間表現",
+    "grammar": "〜ないうちに",
+    "kana": "ないうちに",
+    "meaning": "趁還沒……的時候。",
+    "structure": "動詞ない形 + うちに",
+    "usage": "表示在某事尚未發生前先做另一件事。",
+    "example": "雨が降らないうちに帰りましょう。",
+    "exampleKana": "あめがふらないうちにかえりましょう。",
+    "exampleMeaning": "趁還沒下雨先回去吧。",
+    "note": "常用於提醒要趁早行動。",
+    "similar": [
+      "〜前に：單純表示之前。"
+    ]
+  },
+  {
+    "id": "n4-grammar-189",
+    "level": "N4",
+    "category": "時間表現",
+    "grammar": "〜までに",
+    "kana": "までに",
+    "meaning": "在……之前；截止到……。",
+    "structure": "時間名詞 + までに；動詞辞書形 + までに",
+    "usage": "表示動作必須在某時間點以前完成。",
+    "example": "金曜日までにレポートを出してください。",
+    "exampleKana": "きんようびまでにれぽーとをだしてください。",
+    "exampleMeaning": "請在星期五以前交報告。",
+    "note": "注意和表示持續的「まで」不同。",
+    "similar": [
+      "〜まで：表示持續到某時。"
+    ]
+  },
+  {
+    "id": "n4-grammar-190",
+    "level": "N4",
+    "category": "時間表現",
+    "grammar": "〜たびに",
+    "kana": "たびに",
+    "meaning": "每當……就……。",
+    "structure": "動詞辞書形 + たびに；名詞 + のたびに",
+    "usage": "表示每次發生前項，後項也會發生。",
+    "example": "この歌を聞くたびに、家族を思い出します。",
+    "exampleKana": "このうたをきくたびに、かぞくをおもいだします。",
+    "exampleMeaning": "每次聽這首歌，我都會想起家人。",
+    "note": "後句多為反覆出現的結果。",
+    "similar": [
+      "〜と：可表示自然結果。"
+    ]
+  },
+  {
+    "id": "n4-grammar-191",
+    "level": "N4",
+    "category": "比較・程度",
+    "grammar": "〜ほど〜だ",
+    "kana": "ほどだ",
+    "meaning": "越……越……；到……程度。",
+    "structure": "普通形 + ほど + 評價",
+    "usage": "表示程度很高，或隨前項增加後項也增加。",
+    "example": "考えれば考えるほど難しくなります。",
+    "exampleKana": "かんがえればかんがえるほどむずかしくなります。",
+    "exampleMeaning": "越想越覺得困難。",
+    "note": "可和「〜ば〜ほど」一起用。",
+    "similar": [
+      "〜ば〜ほど：完整表示越……越……。"
+    ]
+  },
+  {
+    "id": "n4-grammar-192",
+    "level": "N4",
+    "category": "比較・程度",
+    "grammar": "〜ほどではない",
+    "kana": "ほどではない",
+    "meaning": "不到……程度；沒有那麼……。",
+    "structure": "名詞／普通形 + ほどではない",
+    "usage": "表示程度沒有達到某個基準。",
+    "example": "この問題は思ったほどではありません。",
+    "exampleKana": "このもんだいはおもったほどではありません。",
+    "exampleMeaning": "這個問題沒有想像中那麼嚴重。",
+    "note": "常用於修正對方想像。",
+    "similar": [
+      "〜ほど〜ない：用來比較兩者。"
+    ]
+  },
+  {
+    "id": "n4-grammar-193",
+    "level": "N4",
+    "category": "比較・程度",
+    "grammar": "〜くらいなら",
+    "kana": "くらいなら",
+    "meaning": "與其……不如……。",
+    "structure": "動詞辞書形 + くらいなら",
+    "usage": "表示不想做前項，因此寧可選後項。",
+    "example": "一人で悩むくらいなら、友だちに相談します。",
+    "exampleKana": "ひとりでなやむくらいなら、ともだちにそうだんします。",
+    "exampleMeaning": "與其一個人煩惱，不如和朋友商量。",
+    "note": "後項常是較好的選擇。",
+    "similar": [
+      "〜より：一般比較。"
+    ]
+  },
+  {
+    "id": "n4-grammar-194",
+    "level": "N4",
+    "category": "比較・程度",
+    "grammar": "〜だけ",
+    "kana": "だけ",
+    "meaning": "只有……；只……。",
+    "structure": "名詞 + だけ；普通形 + だけ",
+    "usage": "表示範圍或數量限定在某一項。",
+    "example": "今日は水だけ飲みました。",
+    "exampleKana": "きょうはみずだけのみました。",
+    "exampleMeaning": "今天我只喝了水。",
+    "note": "可用於名詞或句子後。",
+    "similar": [
+      "〜しか〜ない：必須搭配否定。"
+    ]
+  },
+  {
+    "id": "n4-grammar-195",
+    "level": "N4",
+    "category": "比較・程度",
+    "grammar": "〜しか〜ない",
+    "kana": "しかない",
+    "meaning": "只有……；只……。",
+    "structure": "名詞 + しか + 否定形",
+    "usage": "表示除此之外沒有其他，必須和否定搭配。",
+    "example": "財布に五百円しかありません。",
+    "exampleKana": "さいふにごひゃくえんしかありません。",
+    "exampleMeaning": "錢包裡只有五百日圓。",
+    "note": "形式是否定，中文常譯為只有。",
+    "similar": [
+      "〜だけ：可用肯定句。"
+    ]
+  },
+  {
+    "id": "n4-grammar-196",
+    "level": "N4",
+    "category": "逆接・讓步",
+    "grammar": "〜けれども",
+    "kana": "けれども",
+    "meaning": "雖然……但是……。",
+    "structure": "普通形 + けれども",
+    "usage": "連接兩個相反或轉折的內容。",
+    "example": "この店は安いけれども、少し遠いです。",
+    "exampleKana": "このみせはやすいけれども、すこしとおいです。",
+    "exampleMeaning": "這家店雖然便宜，但是有點遠。",
+    "note": "比「けど」正式一些。",
+    "similar": [
+      "〜が（但是）：較書面。"
+    ]
+  },
+  {
+    "id": "n4-grammar-197",
+    "level": "N4",
+    "category": "逆接・讓步",
+    "grammar": "〜けど",
+    "kana": "けど",
+    "meaning": "雖然……但是……。",
+    "structure": "普通形 + けど",
+    "usage": "表示轉折，是「けれども」的口語說法。",
+    "example": "行きたいけど、時間がありません。",
+    "exampleKana": "いきたいけど、じかんがありません。",
+    "exampleMeaning": "我想去，但是沒有時間。",
+    "note": "日常會話中非常常見。",
+    "similar": [
+      "〜けれども：較完整。"
+    ]
+  },
+  {
+    "id": "n4-grammar-198",
+    "level": "N4",
+    "category": "逆接・讓步",
+    "grammar": "〜ながら（逆接）",
+    "kana": "ながら",
+    "meaning": "雖然……卻……。",
+    "structure": "動詞ます形去ます + ながら",
+    "usage": "表示前後內容不一致。",
+    "example": "彼は知っていながら、何も言いませんでした。",
+    "exampleKana": "かれはしっていながら、なにもいいませんでした。",
+    "exampleMeaning": "他明明知道，卻什麼都沒說。",
+    "note": "和同時動作的「〜ながら」不同。",
+    "similar": [
+      "〜ながら：也可表示一邊……一邊……。"
+    ]
+  },
+  {
+    "id": "n4-grammar-199",
+    "level": "N4",
+    "category": "逆接・讓步",
+    "grammar": "〜たって",
+    "kana": "たって",
+    "meaning": "即使……也……。",
+    "structure": "動詞た形 + って",
+    "usage": "是「〜ても」的口語說法，表示讓步條件。",
+    "example": "今から急いだって、間に合いません。",
+    "exampleKana": "いまからいそいだって、まにあいません。",
+    "exampleMeaning": "即使現在趕，也來不及。",
+    "note": "正式場合可用「〜ても」。",
+    "similar": [
+      "〜ても：標準說法。"
+    ]
+  },
+  {
+    "id": "n4-grammar-200",
+    "level": "N4",
+    "category": "逆接・讓步",
+    "grammar": "〜とはいえ",
+    "kana": "とはいえ",
+    "meaning": "雖說……但是……。",
+    "structure": "普通形 + とはいえ；名詞 + とはいえ",
+    "usage": "承認前項事實，再提出相反或補充內容。",
+    "example": "春とはいえ、まだ寒い日があります。",
+    "exampleKana": "はるとはいえ、まださむいひがあります。",
+    "exampleMeaning": "雖說是春天，還是有寒冷的日子。",
+    "note": "比「けど」更偏書面。",
+    "similar": [
+      "〜けれども：一般轉折。"
+    ]
+  },
+  {
+    "id": "n4-grammar-201",
+    "level": "N4",
+    "category": "傳聞・引用",
+    "grammar": "〜と言う",
+    "kana": "という",
+    "meaning": "說……。",
+    "structure": "普通形 + と言う",
+    "usage": "引用別人說的話或內容。",
+    "example": "母は明日来ると言いました。",
+    "exampleKana": "はははあしたくるといいました。",
+    "exampleMeaning": "媽媽說她明天會來。",
+    "note": "引用內容放在「と」前。",
+    "similar": [
+      "〜そうだ（傳聞）：轉述聽到的消息。"
+    ]
+  },
+  {
+    "id": "n4-grammar-202",
+    "level": "N4",
+    "category": "傳聞・引用",
+    "grammar": "〜と思う",
+    "kana": "とおもう",
+    "meaning": "我想……；我認為……。",
+    "structure": "普通形 + と思う",
+    "usage": "表達自己的想法、判斷或推測。",
+    "example": "この映画はおもしろいと思います。",
+    "exampleKana": "このえいがはおもしろいとおもいます。",
+    "exampleMeaning": "我覺得這部電影很有趣。",
+    "note": "主語多為第一人稱。",
+    "similar": [
+      "〜でしょう：表示推測。"
+    ]
+  },
+  {
+    "id": "n4-grammar-203",
+    "level": "N4",
+    "category": "傳聞・引用",
+    "grammar": "〜と聞く",
+    "kana": "ときく",
+    "meaning": "聽說……；聽到……。",
+    "structure": "普通形 + と聞く／聞いた",
+    "usage": "表示從別人或消息來源聽到某件事。",
+    "example": "駅前に新しい店ができたと聞きました。",
+    "exampleKana": "えきまえにあたらしいみせができたとききました。",
+    "exampleMeaning": "我聽說車站前開了新店。",
+    "note": "可用「〜と聞いています」。",
+    "similar": [
+      "〜そうだ（傳聞）：轉述資訊。"
+    ]
+  },
+  {
+    "id": "n4-grammar-204",
+    "level": "N4",
+    "category": "傳聞・引用",
+    "grammar": "〜によると",
+    "kana": "によると",
+    "meaning": "根據……；據……說。",
+    "structure": "名詞 + によると",
+    "usage": "表示資訊來源，後面常接傳聞或推測。",
+    "example": "天気予報によると、明日は雨だそうです。",
+    "exampleKana": "てんきよほうによると、あしたはあめだそうです。",
+    "exampleMeaning": "根據天氣預報，明天好像會下雨。",
+    "note": "常和「〜そうだ」「〜らしい」一起使用。",
+    "similar": [
+      "〜と聞く：表示聽到。"
+    ]
+  },
+  {
+    "id": "n4-grammar-205",
+    "level": "N4",
+    "category": "傳聞・引用",
+    "grammar": "〜という",
+    "kana": "という",
+    "meaning": "叫做……；所謂……。",
+    "structure": "名詞 + という + 名詞；普通形 + という",
+    "usage": "用來介紹名稱、稱呼或引用內容。",
+    "example": "これはたこ焼きという食べ物です。",
+    "exampleKana": "これはたこやきというたべものです。",
+    "exampleMeaning": "這是叫做章魚燒的食物。",
+    "note": "常用於說明不熟悉的名稱。",
+    "similar": [
+      "〜と言う：強調說這個動作。"
+    ]
+  },
+  {
+    "id": "n4-grammar-206",
+    "level": "N4",
+    "category": "其他 N4 常見文法",
+    "grammar": "〜んです",
+    "kana": "んです",
+    "meaning": "是因為……；其實是……。",
+    "structure": "普通形 + んです",
+    "usage": "用來說明原因、背景，或帶出想詢問的事。",
+    "example": "頭が痛いんです。",
+    "exampleKana": "あたまがいたいんです。",
+    "exampleMeaning": "我是頭痛。",
+    "note": "比普通句子更有解釋感。",
+    "similar": [
+      "〜のです：較正式。"
+    ]
+  },
+  {
+    "id": "n4-grammar-207",
+    "level": "N4",
+    "category": "其他 N4 常見文法",
+    "grammar": "〜のです",
+    "kana": "のです",
+    "meaning": "是因為……；其實是……。",
+    "structure": "普通形 + のです",
+    "usage": "較正式地說明原因、背景或情況。",
+    "example": "電車が遅れたのです。",
+    "exampleKana": "でんしゃがおくれたのです。",
+    "exampleMeaning": "是因為電車誤點了。",
+    "note": "口語常變成「〜んです」。",
+    "similar": [
+      "〜んです：較口語。"
+    ]
+  },
+  {
+    "id": "n4-grammar-208",
+    "level": "N4",
+    "category": "其他 N4 常見文法",
+    "grammar": "〜まま",
+    "kana": "まま",
+    "meaning": "保持……狀態。",
+    "structure": "動詞た形／ない形 + まま；名詞 + のまま",
+    "usage": "表示某狀態沒有改變就做後面的事。",
+    "example": "電気をつけたまま寝てしまいました。",
+    "exampleKana": "でんきをつけたままねてしまいました。",
+    "exampleMeaning": "我開著燈就睡著了。",
+    "note": "常表示忘了改變狀態。",
+    "similar": [
+      "〜ながら：表示同時做兩個動作。"
+    ]
+  },
+  {
+    "id": "n4-grammar-209",
+    "level": "N4",
+    "category": "其他 N4 常見文法",
+    "grammar": "〜わけではない",
+    "kana": "わけではない",
+    "meaning": "並不是……；並非……。",
+    "structure": "普通形 + わけではない",
+    "usage": "用來部分否定對方可能的理解。",
+    "example": "日本語が嫌いなわけではありません。",
+    "exampleKana": "にほんごがきらいなわけではありません。",
+    "exampleMeaning": "我並不是討厭日文。",
+    "note": "常用來委婉修正誤解。",
+    "similar": [
+      "〜ではない：直接否定。"
+    ]
+  },
+  {
+    "id": "n4-grammar-210",
+    "level": "N4",
+    "category": "其他 N4 常見文法",
+    "grammar": "〜のは〜だ",
+    "kana": "のはだ",
+    "meaning": "……的是……。",
+    "structure": "動詞普通形 + のは + 名詞／形容詞 + だ",
+    "usage": "把動作或句子名詞化後拿來說明主題。",
+    "example": "私が好きなのは静かな場所です。",
+    "exampleKana": "わたしがすきなのはしずかなばしょです。",
+    "exampleMeaning": "我喜歡的是安靜的地方。",
+    "note": "「の」可把前面句子變成名詞性內容。",
+    "similar": [
+      "〜こと：也可名詞化。"
+    ]
   }
 ]
