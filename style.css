@@ -288,6 +288,31 @@ h1 {
   font-size: 1.15rem;
 }
 
+.grammar-card {
+  min-height: 320px;
+}
+
+.grammar-title {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+.grammar-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.grammar-meta span {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: var(--accent-dark);
+  background: #fff8f5;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
 .answer {
   display: grid;
   gap: 8px;
@@ -311,6 +336,24 @@ h1 {
 .answer-row strong {
   color: var(--text);
   text-align: right;
+}
+
+.grammar-answer .answer-row {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 5px;
+  border-bottom: 1px solid rgba(234, 223, 212, 0.72);
+  padding-bottom: 10px;
+  line-height: 1.65;
+}
+
+.grammar-answer .answer-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.grammar-answer .answer-row strong {
+  text-align: left;
 }
 
 .status-message {

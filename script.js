@@ -1,5 +1,7 @@
-const CARD_COUNT = 10;
+const VOCABULARY_CARD_COUNT = 10;
+const GRAMMAR_CARD_COUNT = 5;
 const VOCABULARY_URL = "vocabulary.json";
+const GRAMMAR_URL = "grammar.json";
 const CATEGORY_FILTERS = [
   { id: "all", label: "全部", matches: null },
   { id: "noun", label: "名詞", matches: ["名詞", "代名詞", "疑問詞", "連體詞"] },
@@ -14,6 +16,20 @@ const LEVEL_FILTERS = [
   { id: "all", label: "全部程度", level: null },
   { id: "n5", label: "N5", level: "N5" },
   { id: "n4", label: "N4", level: "N4" },
+];
+const GRAMMAR_CATEGORY_FILTERS = [
+  { id: "all", label: "全部分類", category: null },
+  { id: "particle", label: "助詞", category: "助詞" },
+  { id: "verb-change", label: "動詞變化", category: "動詞變化" },
+  { id: "desire", label: "希望", category: "希望" },
+  { id: "obligation-permission", label: "義務・許可", category: "義務・許可" },
+  { id: "experience", label: "經驗", category: "經驗" },
+  { id: "condition", label: "條件", category: "條件" },
+  { id: "giving-receiving", label: "授受", category: "授受" },
+  { id: "conjecture-appearance", label: "推量・樣態", category: "推量・樣態" },
+  { id: "parallel-example", label: "並列・例示", category: "並列・例示" },
+  { id: "purpose-reason", label: "目的・理由", category: "目的・理由" },
+  { id: "other", label: "其他", category: "其他" },
 ];
 
 const PART_OF_SPEECH_GROUPS = [
@@ -30,13 +46,17 @@ const cardsContainer = document.querySelector("#vocabularyCards");
 const categoryFilters = document.querySelector("#categoryFilters");
 const levelFilters = document.querySelector("#levelFilters");
 const categoryCount = document.querySelector("#categoryCount");
+const categoryFilterLabel = document.querySelector("#categoryFilterLabel");
+const levelFilterLabel = document.querySelector("#levelFilterLabel");
 const toggleButton = document.querySelector("#toggleAnswers");
 const shuffleButton = document.querySelector("#shuffleWords");
 const wordSetStatus = document.querySelector("#wordSetStatus");
 const wordSearchInput = document.querySelector("#wordSearch");
+const searchLabel = document.querySelector("#searchLabel");
 const clearSearchButton = document.querySelector("#clearSearch");
 const cardModeButton = document.querySelector("#cardModeButton");
 const quizModeButton = document.querySelector("#quizModeButton");
+const grammarModeButton = document.querySelector("#grammarModeButton");
 const controlsPanel = document.querySelector(".controls");
 const quizPanel = document.querySelector("#quizPanel");
 const quizContent = document.querySelector("#quizContent");
@@ -51,17 +71,33 @@ let filteredVocabulary = [];
 let wordDeck = [];
 let currentWords = [];
 let previousWordIds = new Set();
+let grammarItems = [];
+let filteredGrammar = [];
+let grammarDeck = [];
+let currentGrammarItems = [];
+let previousGrammarIds = new Set();
 let answersVisible = false;
 let currentGroupNumber = 0;
+let currentGrammarGroupNumber = 0;
 let reshuffleNotice = "";
+let grammarReshuffleNotice = "";
 let activeCategoryId = "all";
 let activeLevelId = "all";
+let activeGrammarCategoryId = "all";
+let activeGrammarLevelId = "all";
 let searchQuery = "";
+let grammarSearchQuery = "";
 let activeMode = "cards";
 let currentQuizQuestion = null;
 let quizAnsweredCountValue = 0;
 let quizCorrectCountValue = 0;
 let quizHasAnsweredCurrentQuestion = false;
+let grammarHasLoaded = false;
+let grammarIsLoading = false;
+
+function isGrammarMode() {
+  return activeMode === "grammar";
+}
 
 function getActiveCategory() {
   return CATEGORY_FILTERS.find((category) => category.id === activeCategoryId) ?? CATEGORY_FILTERS[0];
@@ -69,6 +105,14 @@ function getActiveCategory() {
 
 function getActiveLevel() {
   return LEVEL_FILTERS.find((level) => level.id === activeLevelId) ?? LEVEL_FILTERS[0];
+}
+
+function getActiveGrammarCategory() {
+  return GRAMMAR_CATEGORY_FILTERS.find((category) => category.id === activeGrammarCategoryId) ?? GRAMMAR_CATEGORY_FILTERS[0];
+}
+
+function getActiveGrammarLevel() {
+  return LEVEL_FILTERS.find((level) => level.id === activeGrammarLevelId) ?? LEVEL_FILTERS[0];
 }
 
 function getWordsForCategory(category) {
@@ -89,6 +133,26 @@ function getWordsForLevel(words, level) {
 
 function getWordsForActiveFilters() {
   return getWordsForLevel(getWordsForCategory(getActiveCategory()), getActiveLevel());
+}
+
+function getGrammarForCategory(category) {
+  if (!category.category) {
+    return grammarItems;
+  }
+
+  return grammarItems.filter((grammar) => grammar.category === category.category);
+}
+
+function getGrammarForLevel(items, level) {
+  if (!level.level) {
+    return items;
+  }
+
+  return items.filter((grammar) => grammar.level === level.level);
+}
+
+function getGrammarForActiveFilters() {
+  return getGrammarForLevel(getGrammarForCategory(getActiveGrammarCategory()), getActiveGrammarLevel());
 }
 
 function normalizeSearchText(value) {
@@ -114,19 +178,46 @@ function wordMatchesSearch(word, query) {
   return searchableFields.some((field) => normalizeSearchText(field).includes(query));
 }
 
+function grammarMatchesSearch(grammar, query) {
+  if (!query) {
+    return true;
+  }
+
+  const searchableFields = [
+    grammar.grammar,
+    grammar.kana,
+    grammar.meaning,
+    grammar.structure,
+    grammar.usage,
+    grammar.example,
+    grammar.exampleKana,
+    grammar.exampleMeaning,
+    grammar.note,
+    Array.isArray(grammar.similar) ? grammar.similar.join("、") : grammar.similar,
+    grammar.category,
+    grammar.level,
+  ];
+
+  return searchableFields.some((field) => normalizeSearchText(field).includes(query));
+}
+
 function getFilteredVocabulary() {
   return getWordsForActiveFilters().filter((word) => wordMatchesSearch(word, searchQuery));
 }
 
-function shuffleWords(words) {
-  const shuffledWords = [...words];
+function getFilteredGrammar() {
+  return getGrammarForActiveFilters().filter((grammar) => grammarMatchesSearch(grammar, grammarSearchQuery));
+}
 
-  for (let index = shuffledWords.length - 1; index > 0; index -= 1) {
+function shuffleItems(items) {
+  const shuffledItems = [...items];
+
+  for (let index = shuffledItems.length - 1; index > 0; index -= 1) {
     const randomIndex = Math.floor(Math.random() * (index + 1));
-    [shuffledWords[index], shuffledWords[randomIndex]] = [shuffledWords[randomIndex], shuffledWords[index]];
+    [shuffledItems[index], shuffledItems[randomIndex]] = [shuffledItems[randomIndex], shuffledItems[index]];
   }
 
-  return shuffledWords;
+  return shuffledItems;
 }
 
 function getRandomWord(words) {
@@ -142,7 +233,7 @@ function hasSamePartOfSpeechGroup(word, referenceWord) {
 }
 
 function getQuizOptionCandidates(words, questionWord, usedMeanings, usedWordIds) {
-  return shuffleWords(words).filter((word) => {
+  return shuffleItems(words).filter((word) => {
     if (word.id === questionWord.id || usedWordIds.has(word.id)) {
       return false;
     }
@@ -205,26 +296,36 @@ function resetQuizStats() {
 }
 
 function getTotalGroups() {
-  return Math.max(1, Math.ceil(filteredVocabulary.length / CARD_COUNT));
+  return Math.max(1, Math.ceil(filteredVocabulary.length / VOCABULARY_CARD_COUNT));
 }
 
-function buildFreshDeck() {
-  const shuffledVocabulary = shuffleWords(filteredVocabulary);
+function getTotalGrammarGroups() {
+  return Math.max(1, Math.ceil(filteredGrammar.length / GRAMMAR_CARD_COUNT));
+}
 
-  if (previousWordIds.size === 0) {
-    return shuffledVocabulary;
+function buildFreshDeck(items, previousIds) {
+  const shuffledItems = shuffleItems(items);
+
+  if (previousIds.size === 0) {
+    return shuffledItems;
   }
 
-  const wordsNotInPreviousSet = shuffledVocabulary.filter((word) => !previousWordIds.has(word.id));
-  const wordsInPreviousSet = shuffledVocabulary.filter((word) => previousWordIds.has(word.id));
+  const itemsNotInPreviousSet = shuffledItems.filter((item) => !previousIds.has(item.id));
+  const itemsInPreviousSet = shuffledItems.filter((item) => previousIds.has(item.id));
 
-  return [...wordsNotInPreviousSet, ...wordsInPreviousSet];
+  return [...itemsNotInPreviousSet, ...itemsInPreviousSet];
 }
 
 function resetDeck() {
-  wordDeck = buildFreshDeck();
+  wordDeck = buildFreshDeck(filteredVocabulary, previousWordIds);
   currentGroupNumber = 0;
   reshuffleNotice = "";
+}
+
+function resetGrammarDeck() {
+  grammarDeck = buildFreshDeck(filteredGrammar, previousGrammarIds);
+  currentGrammarGroupNumber = 0;
+  grammarReshuffleNotice = "";
 }
 
 function refreshDeckIfNeeded() {
@@ -233,15 +334,26 @@ function refreshDeckIfNeeded() {
     return;
   }
 
-  wordDeck = buildFreshDeck();
+  wordDeck = buildFreshDeck(filteredVocabulary, previousWordIds);
   currentGroupNumber = 0;
   reshuffleNotice = "已重新洗牌。";
+}
+
+function refreshGrammarDeckIfNeeded() {
+  if (grammarDeck.length > 0) {
+    grammarReshuffleNotice = "";
+    return;
+  }
+
+  grammarDeck = buildFreshDeck(filteredGrammar, previousGrammarIds);
+  currentGrammarGroupNumber = 0;
+  grammarReshuffleNotice = "已重新洗牌。";
 }
 
 function getNextWordSet() {
   refreshDeckIfNeeded();
 
-  const cardsToShow = Math.min(CARD_COUNT, wordDeck.length);
+  const cardsToShow = Math.min(VOCABULARY_CARD_COUNT, wordDeck.length);
   const nextWords = wordDeck.slice(0, cardsToShow);
   wordDeck = wordDeck.slice(cardsToShow);
   currentGroupNumber += 1;
@@ -249,11 +361,36 @@ function getNextWordSet() {
   return nextWords;
 }
 
+function getNextGrammarSet() {
+  refreshGrammarDeckIfNeeded();
+
+  const cardsToShow = Math.min(GRAMMAR_CARD_COUNT, grammarDeck.length);
+  const nextGrammarItems = grammarDeck.slice(0, cardsToShow);
+  grammarDeck = grammarDeck.slice(cardsToShow);
+  currentGrammarGroupNumber += 1;
+
+  return nextGrammarItems;
+}
+
+function formatSimilarValue(value) {
+  if (Array.isArray(value)) {
+    return value.join("、");
+  }
+
+  return value;
+}
+
 function createDetailRow(label, value) {
+  const normalizedValue = formatSimilarValue(value);
+
+  if (!normalizedValue) {
+    return "";
+  }
+
   return `
     <div class="answer-row">
       <span>${label}</span>
-      <strong>${value}</strong>
+      <strong>${normalizedValue}</strong>
     </div>
   `;
 }
@@ -281,8 +418,43 @@ function createCard(word, index) {
   return card;
 }
 
+function createGrammarCard(grammar, index) {
+  const card = document.createElement("article");
+  card.className = "word-card grammar-card";
+
+  card.innerHTML = `
+    <div>
+      <span class="card-number">文法 ${index + 1}</span>
+      <h2 class="japanese-word grammar-title">${grammar.grammar}</h2>
+      <p class="kana">${grammar.kana}</p>
+      <div class="grammar-meta" aria-label="文法基本資訊">
+        <span>${grammar.level}</span>
+        <span>${grammar.category}</span>
+      </div>
+    </div>
+    <div class="answer grammar-answer" hidden>
+      ${createDetailRow("中文意思", grammar.meaning)}
+      ${createDetailRow("接續／結構", grammar.structure)}
+      ${createDetailRow("用法說明", grammar.usage)}
+      ${createDetailRow("日文例句", grammar.example)}
+      ${createDetailRow("例句假名", grammar.exampleKana)}
+      ${createDetailRow("中文翻譯", grammar.exampleMeaning)}
+      ${createDetailRow("補充說明", grammar.note)}
+      ${createDetailRow("相似用法差異", grammar.similar)}
+    </div>
+  `;
+
+  return card;
+}
+
 function renderCards(words) {
   const cards = words.map((word, index) => createCard(word, index));
+  cardsContainer.replaceChildren(...cards);
+  updateAnswersVisibility();
+}
+
+function renderGrammarCards(items) {
+  const cards = items.map((grammar, index) => createGrammarCard(grammar, index));
   cardsContainer.replaceChildren(...cards);
   updateAnswersVisibility();
 }
@@ -320,7 +492,7 @@ function createQuizQuestion() {
     return;
   }
 
-  const options = shuffleWords([
+  const options = shuffleItems([
     { meaning: questionWord.meaning, isCorrect: true },
     ...wrongOptions,
   ]);
@@ -406,28 +578,68 @@ function restartQuiz() {
   createQuizQuestion();
 }
 
-function switchMode(mode) {
+async function switchMode(mode) {
   activeMode = mode;
-  const isQuizMode = activeMode === "quiz";
+  const isQuizModeValue = activeMode === "quiz";
+  const isGrammarModeValue = isGrammarMode();
 
-  cardModeButton.classList.toggle("is-active", !isQuizMode);
-  cardModeButton.setAttribute("aria-pressed", String(!isQuizMode));
-  quizModeButton.classList.toggle("is-active", isQuizMode);
-  quizModeButton.setAttribute("aria-pressed", String(isQuizMode));
+  cardModeButton.classList.toggle("is-active", activeMode === "cards");
+  cardModeButton.setAttribute("aria-pressed", String(activeMode === "cards"));
+  quizModeButton.classList.toggle("is-active", isQuizModeValue);
+  quizModeButton.setAttribute("aria-pressed", String(isQuizModeValue));
+  grammarModeButton.classList.toggle("is-active", isGrammarModeValue);
+  grammarModeButton.setAttribute("aria-pressed", String(isGrammarModeValue));
 
-  controlsPanel.hidden = isQuizMode;
-  cardsContainer.hidden = isQuizMode;
-  quizPanel.hidden = !isQuizMode;
+  controlsPanel.hidden = isQuizModeValue;
+  cardsContainer.hidden = isQuizModeValue;
+  quizPanel.hidden = !isQuizModeValue;
+  shuffleButton.textContent = isGrammarModeValue ? "換一組文法" : "換一組單字";
+  searchLabel.textContent = isGrammarModeValue ? "搜尋文法" : "搜尋單字";
+  wordSearchInput.placeholder = isGrammarModeValue
+    ? "搜尋文法、假名、意思、結構、用法、例句、分類或程度"
+    : "搜尋日文、假名、中文、詞性、程度或例句";
+  wordSearchInput.value = isGrammarModeValue ? grammarSearchQuery : searchQuery;
 
-  if (isQuizMode) {
+  renderCategoryFilters();
+
+  if (isQuizModeValue) {
     createQuizQuestion();
+  } else if (isGrammarModeValue) {
+    await ensureGrammarLoaded();
+    refreshFilteredGrammar();
   } else {
+    if (currentWords.length > 0) {
+      renderCards(currentWords);
+    } else {
+      showNewWordSet();
+    }
+
     updateWordSetStatus();
     updateAnswersVisibility();
   }
 }
 
 function updateCategoryCount() {
+  if (isGrammarMode()) {
+    const activeCategory = getActiveGrammarCategory();
+    const activeLevel = getActiveGrammarLevel();
+    const filterTotal = getGrammarForActiveFilters().length;
+    const filterDescription = `分類「${activeCategory.label}」／程度「${activeLevel.label}」`;
+
+    if (grammarIsLoading) {
+      categoryCount.textContent = "正在載入文法資料…";
+      return;
+    }
+
+    if (grammarSearchQuery) {
+      categoryCount.textContent = `目前${filterDescription}共有 ${filterTotal} 條文法；搜尋「${grammarSearchQuery}」共有 ${filteredGrammar.length} 條文法`;
+      return;
+    }
+
+    categoryCount.textContent = `目前${filterDescription}共有 ${filterTotal} 條文法`;
+    return;
+  }
+
   const activeCategory = getActiveCategory();
   const activeLevel = getActiveLevel();
   const filterTotal = getWordsForActiveFilters().length;
@@ -443,19 +655,40 @@ function updateCategoryCount() {
 
 function updateFilterButtons() {
   categoryFilters.querySelectorAll(".filter-button").forEach((button) => {
-    const isActive = button.dataset.categoryId === activeCategoryId;
+    const isActive = isGrammarMode()
+      ? button.dataset.grammarCategoryId === activeGrammarCategoryId
+      : button.dataset.categoryId === activeCategoryId;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
 
   levelFilters.querySelectorAll(".filter-button").forEach((button) => {
-    const isActive = button.dataset.levelId === activeLevelId;
+    const isActive = isGrammarMode()
+      ? button.dataset.grammarLevelId === activeGrammarLevelId
+      : button.dataset.levelId === activeLevelId;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
 }
 
 function updateWordSetStatus() {
+  if (isGrammarMode()) {
+    if (grammarIsLoading) {
+      wordSetStatus.textContent = "正在載入文法資料…";
+      return;
+    }
+
+    if (filteredGrammar.length === 0) {
+      wordSetStatus.textContent = "找不到符合的文法，請調整分類或搜尋條件。";
+      return;
+    }
+
+    const totalGroups = getTotalGrammarGroups();
+    const groupText = `目前顯示第 ${currentGrammarGroupNumber} 組 / 共 ${totalGroups} 組`;
+    wordSetStatus.textContent = grammarReshuffleNotice ? `${grammarReshuffleNotice} ${groupText}` : groupText;
+    return;
+  }
+
   if (filteredVocabulary.length === 0) {
     wordSetStatus.textContent = searchQuery ? "沒有符合搜尋條件的單字。" : "目前沒有可顯示的單字。";
     return;
@@ -491,6 +724,22 @@ function showNewWordSet() {
   updateWordSetStatus();
 }
 
+function showNewGrammarSet() {
+  if (filteredGrammar.length === 0) {
+    currentGrammarItems = [];
+    currentGrammarGroupNumber = 0;
+    renderStatus("找不到符合的文法，請調整分類或搜尋條件。");
+    updateWordSetStatus();
+    return;
+  }
+
+  answersVisible = false;
+  currentGrammarItems = getNextGrammarSet();
+  previousGrammarIds = new Set(currentGrammarItems.map((grammar) => grammar.id));
+  renderGrammarCards(currentGrammarItems);
+  updateWordSetStatus();
+}
+
 function refreshFilteredVocabulary() {
   filteredVocabulary = getFilteredVocabulary();
   previousWordIds = new Set();
@@ -501,8 +750,21 @@ function refreshFilteredVocabulary() {
 
   if (activeMode === "quiz") {
     createQuizQuestion();
-  } else {
+  } else if (activeMode === "cards") {
     showNewWordSet();
+  }
+}
+
+function refreshFilteredGrammar() {
+  filteredGrammar = getFilteredGrammar();
+  previousGrammarIds = new Set();
+  resetGrammarDeck();
+  updateFilterButtons();
+  updateCategoryCount();
+  clearSearchButton.disabled = grammarSearchQuery.length === 0;
+
+  if (isGrammarMode()) {
+    showNewGrammarSet();
   }
 }
 
@@ -516,7 +778,23 @@ function applyLevel(levelId) {
   refreshFilteredVocabulary();
 }
 
+function applyGrammarCategory(categoryId) {
+  activeGrammarCategoryId = categoryId;
+  refreshFilteredGrammar();
+}
+
+function applyGrammarLevel(levelId) {
+  activeGrammarLevelId = levelId;
+  refreshFilteredGrammar();
+}
+
 function applySearch(query) {
+  if (isGrammarMode()) {
+    grammarSearchQuery = normalizeSearchText(query);
+    refreshFilteredGrammar();
+    return;
+  }
+
   searchQuery = normalizeSearchText(query);
   refreshFilteredVocabulary();
 }
@@ -532,6 +810,36 @@ function createFilterButton(label, onClick) {
 }
 
 function renderCategoryFilters() {
+  if (isGrammarMode()) {
+    categoryFilterLabel.textContent = "文法分類";
+    levelFilterLabel.textContent = "程度篩選";
+    categoryFilters.setAttribute("aria-label", "選擇文法分類");
+    levelFilters.setAttribute("aria-label", "選擇文法程度");
+
+    const grammarCategoryButtons = GRAMMAR_CATEGORY_FILTERS.map((category) => {
+      const button = createFilterButton(category.label, () => applyGrammarCategory(category.id));
+      button.dataset.grammarCategoryId = category.id;
+      return button;
+    });
+
+    const grammarLevelButtons = LEVEL_FILTERS.map((level) => {
+      const button = createFilterButton(level.label, () => applyGrammarLevel(level.id));
+      button.dataset.grammarLevelId = level.id;
+      return button;
+    });
+
+    categoryFilters.replaceChildren(...grammarCategoryButtons);
+    levelFilters.replaceChildren(...grammarLevelButtons);
+    updateFilterButtons();
+    updateCategoryCount();
+    return;
+  }
+
+  categoryFilterLabel.textContent = "詞性分類";
+  levelFilterLabel.textContent = "程度篩選";
+  categoryFilters.setAttribute("aria-label", "選擇單字分類");
+  levelFilters.setAttribute("aria-label", "選擇單字程度");
+
   const categoryButtons = CATEGORY_FILTERS.map((category) => {
     const button = createFilterButton(category.label, () => applyCategory(category.id));
     button.dataset.categoryId = category.id;
@@ -547,6 +855,7 @@ function renderCategoryFilters() {
   categoryFilters.replaceChildren(...categoryButtons);
   levelFilters.replaceChildren(...levelButtons);
   updateFilterButtons();
+  updateCategoryCount();
 }
 
 async function loadVocabulary() {
@@ -571,8 +880,42 @@ async function loadVocabulary() {
     clearSearchButton.disabled = true;
     cardModeButton.disabled = true;
     quizModeButton.disabled = true;
+    grammarModeButton.disabled = true;
     nextQuizQuestionButton.disabled = true;
     restartQuizButton.disabled = true;
+  }
+}
+
+async function ensureGrammarLoaded() {
+  if (grammarHasLoaded || grammarIsLoading) {
+    return;
+  }
+
+  grammarIsLoading = true;
+  renderStatus("正在載入文法資料…");
+  updateCategoryCount();
+  updateWordSetStatus();
+
+  try {
+    const response = await fetch(GRAMMAR_URL);
+
+    if (!response.ok) {
+      throw new Error(`無法讀取文法資料：${response.status}`);
+    }
+
+    grammarItems = await response.json();
+    grammarHasLoaded = true;
+  } catch (error) {
+    console.error(error);
+    renderStatus("目前無法載入文法資料，請確認 grammar.json 是否存在且格式正確。");
+    wordSetStatus.textContent = "文法資料載入失敗。";
+    categoryCount.textContent = "文法分類資料載入失敗。";
+    toggleButton.disabled = true;
+    shuffleButton.disabled = true;
+    wordSearchInput.disabled = true;
+    clearSearchButton.disabled = true;
+  } finally {
+    grammarIsLoading = false;
   }
 }
 
@@ -581,7 +924,14 @@ toggleButton.addEventListener("click", () => {
   updateAnswersVisibility();
 });
 
-shuffleButton.addEventListener("click", showNewWordSet);
+shuffleButton.addEventListener("click", () => {
+  if (isGrammarMode()) {
+    showNewGrammarSet();
+    return;
+  }
+
+  showNewWordSet();
+});
 
 wordSearchInput.addEventListener("input", (event) => {
   applySearch(event.target.value);
@@ -595,6 +945,7 @@ clearSearchButton.addEventListener("click", () => {
 
 cardModeButton.addEventListener("click", () => switchMode("cards"));
 quizModeButton.addEventListener("click", () => switchMode("quiz"));
+grammarModeButton.addEventListener("click", () => switchMode("grammar"));
 nextQuizQuestionButton.addEventListener("click", createQuizQuestion);
 restartQuizButton.addEventListener("click", restartQuiz);
 
