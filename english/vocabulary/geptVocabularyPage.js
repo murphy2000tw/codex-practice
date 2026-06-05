@@ -3,6 +3,7 @@ const currentProgress = document.querySelector("#currentProgress");
 const previousWordButton = document.querySelector("#previousWord");
 const nextWordButton = document.querySelector("#nextWord");
 const toggleChineseButton = document.querySelector("#toggleChinese");
+const reshuffleVocabularyButton = document.querySelector("#reshuffleVocabulary");
 const categoryFilters = document.querySelector("#geptCategoryFilters");
 const vocabulary = Array.isArray(geptVocabulary) ? geptVocabulary : [];
 const allCategoriesLabel = "全部";
@@ -10,7 +11,7 @@ const allCategoriesLabel = "全部";
 let currentWordIndex = 0;
 let chineseVisible = false;
 let selectedCategory = allCategoriesLabel;
-let filteredVocabulary = [...vocabulary];
+let filteredVocabulary = [];
 
 function getAvailableCategories() {
   return [...new Set(vocabulary.map((word) => word.category).filter(Boolean))];
@@ -22,6 +23,23 @@ function getFilteredVocabulary() {
   }
 
   return vocabulary.filter((word) => word.category === selectedCategory);
+}
+
+function shuffleVocabulary(words) {
+  const shuffledWords = [...words];
+
+  for (let i = shuffledWords.length - 1; i > 0; i -= 1) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [shuffledWords[i], shuffledWords[randomIndex]] = [shuffledWords[randomIndex], shuffledWords[i]];
+  }
+
+  return shuffledWords;
+}
+
+function resetCurrentVocabulary() {
+  filteredVocabulary = shuffleVocabulary(getFilteredVocabulary());
+  currentWordIndex = 0;
+  chineseVisible = false;
 }
 
 function createCategoryFilterButton(category) {
@@ -42,9 +60,7 @@ function createCategoryFilterButton(category) {
     }
 
     selectedCategory = category;
-    currentWordIndex = 0;
-    chineseVisible = false;
-    filteredVocabulary = getFilteredVocabulary();
+    resetCurrentVocabulary();
     updateCategoryFilterButtons();
     renderCurrentWord();
   });
@@ -120,6 +136,7 @@ function renderEmptyVocabularyMessage(message, progressText = "0 / 0") {
   previousWordButton.disabled = true;
   nextWordButton.disabled = true;
   toggleChineseButton.disabled = true;
+  reshuffleVocabularyButton.disabled = true;
 }
 
 function renderCurrentWord() {
@@ -170,6 +187,7 @@ function renderCurrentWord() {
   previousWordButton.disabled = currentWordIndex === 0;
   nextWordButton.disabled = currentWordIndex === filteredVocabulary.length - 1;
   toggleChineseButton.disabled = false;
+  reshuffleVocabularyButton.disabled = false;
   updateChineseVisibility();
 }
 
@@ -194,5 +212,11 @@ toggleChineseButton.addEventListener("click", () => {
   updateChineseVisibility();
 });
 
+reshuffleVocabularyButton.addEventListener("click", () => {
+  resetCurrentVocabulary();
+  renderCurrentWord();
+});
+
+resetCurrentVocabulary();
 renderCategoryFilters();
 renderCurrentWord();
