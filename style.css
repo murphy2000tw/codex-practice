@@ -841,3 +841,89 @@ h1 {
     padding: 18px;
   }
 }
+
+.gept-vocabulary-card {
+  gap: 22px;
+  min-height: 360px;
+}
+
+.english-word {
+  margin: 22px 0 8px;
+  font-size: clamp(2.8rem, 8vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.english-part-of-speech {
+  text-transform: lowercase;
+}
+
+.vocabulary-details {
+  display: grid;
+  gap: 12px;
+  margin-top: 4px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border);
+}
+
+.vocabulary-detail {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.vocabulary-detail-label {
+  color: var(--accent-dark);
+  font-weight: 800;
+}
+
+.vocabulary-detail strong {
+  color: var(--text);
+  font-size: 1.12rem;
+  text-align: left;
+}
+
+.gept-vocabulary-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.answer-button:disabled,
+.secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .gept-vocabulary-controls {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .gept-vocabulary-controls .answer-button,
+  .gept-vocabulary-controls .secondary-button {
+    width: 100%;
+  }
+}
+
+.answer-button:disabled:hover,
+.answer-button:disabled:focus-visible {
+  color: #ffffff;
+  background: var(--accent);
+  box-shadow: none;
+  transform: none;
+}
+
+.secondary-button:disabled:hover,
+.secondary-button:disabled:focus-visible {
+  color: var(--accent-dark);
+  background: #fff1eb;
+  box-shadow: none;
+  transform: none;
+}
