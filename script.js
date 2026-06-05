@@ -57,9 +57,11 @@ const clearSearchButton = document.querySelector("#clearSearch");
 const cardModeButton = document.querySelector("#cardModeButton");
 const quizModeButton = document.querySelector("#quizModeButton");
 const grammarModeButton = document.querySelector("#grammarModeButton");
+const grammarQuizModeButton = document.querySelector("#grammarQuizModeButton");
 const controlsPanel = document.querySelector(".controls");
 const quizPanel = document.querySelector("#quizPanel");
 const quizContent = document.querySelector("#quizContent");
+const quizTitle = document.querySelector(".quiz-title");
 const nextQuizQuestionButton = document.querySelector("#nextQuizQuestion");
 const restartQuizButton = document.querySelector("#restartQuiz");
 const quizAnsweredCount = document.querySelector("#quizAnsweredCount");
@@ -92,11 +94,23 @@ let currentQuizQuestion = null;
 let quizAnsweredCountValue = 0;
 let quizCorrectCountValue = 0;
 let quizHasAnsweredCurrentQuestion = false;
+let currentGrammarQuizQuestion = null;
+let grammarQuizAnsweredCountValue = 0;
+let grammarQuizCorrectCountValue = 0;
+let grammarQuizHasAnsweredCurrentQuestion = false;
 let grammarHasLoaded = false;
 let grammarIsLoading = false;
 
 function isGrammarMode() {
-  return activeMode === "grammar";
+  return activeMode === "grammar" || activeMode === "grammar-quiz";
+}
+
+function isQuizMode() {
+  return activeMode === "quiz" || activeMode === "grammar-quiz";
+}
+
+function isGrammarQuizMode() {
+  return activeMode === "grammar-quiz";
 }
 
 function getActiveCategory() {
@@ -220,8 +234,12 @@ function shuffleItems(items) {
   return shuffledItems;
 }
 
+function getRandomItem(items) {
+  return items[Math.floor(Math.random() * items.length)];
+}
+
 function getRandomWord(words) {
-  return words[Math.floor(Math.random() * words.length)];
+  return getRandomItem(words);
 }
 
 function getPartOfSpeechGroup(partOfSpeech) {
@@ -279,19 +297,69 @@ function createWrongQuizOptions(questionWord) {
   return wrongOptions;
 }
 
-function updateQuizStats() {
-  const accuracy = quizAnsweredCountValue === 0
-    ? 0
-    : Math.round((quizCorrectCountValue / quizAnsweredCountValue) * 100);
+function getGrammarQuizOptionCandidates(items, questionGrammar, usedMeanings, usedGrammarIds) {
+  return shuffleItems(items).filter((grammar) => {
+    if (grammar.id === questionGrammar.id || usedGrammarIds.has(grammar.id)) {
+      return false;
+    }
 
-  quizAnsweredCount.textContent = String(quizAnsweredCountValue);
-  quizCorrectCount.textContent = String(quizCorrectCountValue);
+    return grammar.meaning !== questionGrammar.meaning && !usedMeanings.has(grammar.meaning);
+  });
+}
+
+function addWrongGrammarQuizOptionsFromSource(options, sourceGrammarItems, questionGrammar, usedMeanings, usedGrammarIds) {
+  const candidates = getGrammarQuizOptionCandidates(sourceGrammarItems, questionGrammar, usedMeanings, usedGrammarIds);
+
+  candidates.some((grammar) => {
+    options.push({ meaning: grammar.meaning, isCorrect: false });
+    usedMeanings.add(grammar.meaning);
+    usedGrammarIds.add(grammar.id);
+
+    return options.length === 3;
+  });
+}
+
+function createWrongGrammarQuizOptions(questionGrammar) {
+  const wrongOptions = [];
+  const usedMeanings = new Set([questionGrammar.meaning]);
+  const usedGrammarIds = new Set([questionGrammar.id]);
+  const sameLevelGrammarItems = grammarItems.filter((grammar) => grammar.level === questionGrammar.level);
+  const sameCategoryGrammarItems = grammarItems.filter((grammar) => grammar.category === questionGrammar.category);
+
+  [
+    sameLevelGrammarItems,
+    sameCategoryGrammarItems,
+    grammarItems,
+  ].some((sourceGrammarItems) => {
+    addWrongGrammarQuizOptionsFromSource(wrongOptions, sourceGrammarItems, questionGrammar, usedMeanings, usedGrammarIds);
+
+    return wrongOptions.length === 3;
+  });
+
+  return wrongOptions;
+}
+
+function updateQuizStats() {
+  const answeredCount = isGrammarQuizMode() ? grammarQuizAnsweredCountValue : quizAnsweredCountValue;
+  const correctCount = isGrammarQuizMode() ? grammarQuizCorrectCountValue : quizCorrectCountValue;
+  const accuracy = answeredCount === 0
+    ? 0
+    : Math.round((correctCount / answeredCount) * 100);
+
+  quizAnsweredCount.textContent = String(answeredCount);
+  quizCorrectCount.textContent = String(correctCount);
   quizAccuracy.textContent = `${accuracy}%`;
 }
 
 function resetQuizStats() {
-  quizAnsweredCountValue = 0;
-  quizCorrectCountValue = 0;
+  if (isGrammarQuizMode()) {
+    grammarQuizAnsweredCountValue = 0;
+    grammarQuizCorrectCountValue = 0;
+  } else {
+    quizAnsweredCountValue = 0;
+    quizCorrectCountValue = 0;
+  }
+
   updateQuizStats();
 }
 
@@ -506,8 +574,49 @@ function createQuizQuestion() {
   renderQuizQuestion();
 }
 
+function createGrammarQuizQuestion() {
+  if (grammarIsLoading) {
+    currentGrammarQuizQuestion = null;
+    grammarQuizHasAnsweredCurrentQuestion = false;
+    renderQuizStatus("正在載入文法資料…");
+    return;
+  }
+
+  if (filteredGrammar.length < 4) {
+    currentGrammarQuizQuestion = null;
+    grammarQuizHasAnsweredCurrentQuestion = false;
+    renderQuizStatus("目前篩選結果不足 4 條文法，請調整分類或搜尋條件。");
+    return;
+  }
+
+  const questionGrammar = getRandomItem(filteredGrammar);
+  const wrongOptions = createWrongGrammarQuizOptions(questionGrammar);
+
+  if (wrongOptions.length < 3) {
+    currentGrammarQuizQuestion = null;
+    grammarQuizHasAnsweredCurrentQuestion = false;
+    renderQuizStatus("目前可用的文法選項不足 4 個，請調整分類或搜尋條件。");
+    return;
+  }
+
+  const options = shuffleItems([
+    { meaning: questionGrammar.meaning, isCorrect: true },
+    ...wrongOptions,
+  ]);
+
+  currentGrammarQuizQuestion = {
+    grammar: questionGrammar,
+    options,
+  };
+  grammarQuizHasAnsweredCurrentQuestion = false;
+  nextQuizQuestionButton.hidden = true;
+  renderQuizQuestion();
+}
+
 function renderQuizQuestion() {
-  if (!currentQuizQuestion) {
+  const activeQuestion = isGrammarQuizMode() ? currentGrammarQuizQuestion : currentQuizQuestion;
+
+  if (!activeQuestion) {
     return;
   }
 
@@ -516,11 +625,24 @@ function renderQuizQuestion() {
 
   const prompt = document.createElement("div");
   prompt.className = "quiz-prompt";
-  prompt.innerHTML = `
-    <p class="quiz-prompt-label">這個單字的中文意思是？</p>
-    <h3 class="japanese-word">${currentQuizQuestion.word.word}</h3>
-    <p class="kana">${currentQuizQuestion.word.kana}</p>
-  `;
+
+  if (isGrammarQuizMode()) {
+    prompt.innerHTML = `
+      <p class="quiz-prompt-label">這個文法的中文意思是？</p>
+      <h3 class="japanese-word grammar-title">${activeQuestion.grammar.grammar}</h3>
+      <p class="kana">${activeQuestion.grammar.kana}</p>
+      <div class="grammar-meta quiz-grammar-meta" aria-label="文法題目資訊">
+        <span>程度：${activeQuestion.grammar.level}</span>
+        <span>分類：${activeQuestion.grammar.category}</span>
+      </div>
+    `;
+  } else {
+    prompt.innerHTML = `
+      <p class="quiz-prompt-label">這個單字的中文意思是？</p>
+      <h3 class="japanese-word">${activeQuestion.word.word}</h3>
+      <p class="kana">${activeQuestion.word.kana}</p>
+    `;
+  }
 
   const optionsGroup = document.createElement("div");
   optionsGroup.className = "quiz-options";
@@ -531,7 +653,7 @@ function renderQuizQuestion() {
   feedback.className = "quiz-feedback";
   feedback.setAttribute("aria-live", "polite");
 
-  const optionButtons = currentQuizQuestion.options.map((option) => {
+  const optionButtons = activeQuestion.options.map((option) => {
     const button = document.createElement("button");
     button.className = "quiz-option";
     button.type = "button";
@@ -546,24 +668,40 @@ function renderQuizQuestion() {
 }
 
 function handleQuizAnswer(selectedOption, optionButtons, feedback) {
-  if (quizHasAnsweredCurrentQuestion || !currentQuizQuestion) {
+  const activeQuestion = isGrammarQuizMode() ? currentGrammarQuizQuestion : currentQuizQuestion;
+  const hasAnsweredCurrentQuestion = isGrammarQuizMode()
+    ? grammarQuizHasAnsweredCurrentQuestion
+    : quizHasAnsweredCurrentQuestion;
+
+  if (hasAnsweredCurrentQuestion || !activeQuestion) {
     return;
   }
 
-  quizHasAnsweredCurrentQuestion = true;
-  quizAnsweredCountValue += 1;
+  if (isGrammarQuizMode()) {
+    grammarQuizHasAnsweredCurrentQuestion = true;
+    grammarQuizAnsweredCountValue += 1;
+  } else {
+    quizHasAnsweredCurrentQuestion = true;
+    quizAnsweredCountValue += 1;
+  }
 
   if (selectedOption.isCorrect) {
-    quizCorrectCountValue += 1;
+    if (isGrammarQuizMode()) {
+      grammarQuizCorrectCountValue += 1;
+    } else {
+      quizCorrectCountValue += 1;
+    }
+
     feedback.textContent = "答對了！";
     feedback.classList.add("is-correct");
   } else {
-    feedback.textContent = `答錯了，正確答案是：${currentQuizQuestion.word.meaning}`;
+    const correctMeaning = isGrammarQuizMode() ? activeQuestion.grammar.meaning : activeQuestion.word.meaning;
+    feedback.textContent = `答錯了，正確答案是：${correctMeaning}`;
     feedback.classList.add("is-wrong");
   }
 
   optionButtons.forEach((button, index) => {
-    const option = currentQuizQuestion.options[index];
+    const option = activeQuestion.options[index];
     button.disabled = true;
     button.classList.toggle("is-correct", option.isCorrect);
     button.classList.toggle("is-wrong", button.textContent === selectedOption.meaning && !selectedOption.isCorrect);
@@ -573,26 +711,41 @@ function handleQuizAnswer(selectedOption, optionButtons, feedback) {
   nextQuizQuestionButton.hidden = false;
 }
 
+function createActiveQuizQuestion() {
+  if (isGrammarQuizMode()) {
+    createGrammarQuizQuestion();
+    return;
+  }
+
+  createQuizQuestion();
+}
+
 function restartQuiz() {
   resetQuizStats();
-  createQuizQuestion();
+  createActiveQuizQuestion();
 }
 
 async function switchMode(mode) {
   activeMode = mode;
-  const isQuizModeValue = activeMode === "quiz";
+  const isQuizModeValue = isQuizMode();
+  const isWordQuizModeValue = activeMode === "quiz";
   const isGrammarModeValue = isGrammarMode();
+  const isGrammarCardModeValue = activeMode === "grammar";
+  const isGrammarQuizModeValue = isGrammarQuizMode();
 
   cardModeButton.classList.toggle("is-active", activeMode === "cards");
   cardModeButton.setAttribute("aria-pressed", String(activeMode === "cards"));
-  quizModeButton.classList.toggle("is-active", isQuizModeValue);
-  quizModeButton.setAttribute("aria-pressed", String(isQuizModeValue));
-  grammarModeButton.classList.toggle("is-active", isGrammarModeValue);
-  grammarModeButton.setAttribute("aria-pressed", String(isGrammarModeValue));
+  quizModeButton.classList.toggle("is-active", isWordQuizModeValue);
+  quizModeButton.setAttribute("aria-pressed", String(isWordQuizModeValue));
+  grammarModeButton.classList.toggle("is-active", isGrammarCardModeValue);
+  grammarModeButton.setAttribute("aria-pressed", String(isGrammarCardModeValue));
+  grammarQuizModeButton.classList.toggle("is-active", isGrammarQuizModeValue);
+  grammarQuizModeButton.setAttribute("aria-pressed", String(isGrammarQuizModeValue));
 
   controlsPanel.hidden = isQuizModeValue;
   cardsContainer.hidden = isQuizModeValue;
   quizPanel.hidden = !isQuizModeValue;
+  quizTitle.textContent = isGrammarQuizModeValue ? "請選出正確的文法中文意思" : "請選出正確的中文意思";
   shuffleButton.textContent = isGrammarModeValue ? "換一組文法" : "換一組單字";
   searchLabel.textContent = isGrammarModeValue ? "搜尋文法" : "搜尋單字";
   wordSearchInput.placeholder = isGrammarModeValue
@@ -602,9 +755,14 @@ async function switchMode(mode) {
 
   renderCategoryFilters();
 
-  if (isQuizModeValue) {
+  if (isGrammarQuizModeValue) {
+    await ensureGrammarLoaded();
+    refreshFilteredGrammar();
+    updateQuizStats();
+  } else if (isWordQuizModeValue) {
     createQuizQuestion();
-  } else if (isGrammarModeValue) {
+    updateQuizStats();
+  } else if (isGrammarCardModeValue) {
     await ensureGrammarLoaded();
     refreshFilteredGrammar();
   } else {
@@ -763,7 +921,9 @@ function refreshFilteredGrammar() {
   updateCategoryCount();
   clearSearchButton.disabled = grammarSearchQuery.length === 0;
 
-  if (isGrammarMode()) {
+  if (isGrammarQuizMode()) {
+    createGrammarQuizQuestion();
+  } else if (isGrammarMode()) {
     showNewGrammarSet();
   }
 }
@@ -881,6 +1041,7 @@ async function loadVocabulary() {
     cardModeButton.disabled = true;
     quizModeButton.disabled = true;
     grammarModeButton.disabled = true;
+    grammarQuizModeButton.disabled = true;
     nextQuizQuestionButton.disabled = true;
     restartQuizButton.disabled = true;
   }
@@ -914,6 +1075,7 @@ async function ensureGrammarLoaded() {
     shuffleButton.disabled = true;
     wordSearchInput.disabled = true;
     clearSearchButton.disabled = true;
+    grammarQuizModeButton.disabled = true;
   } finally {
     grammarIsLoading = false;
   }
@@ -946,7 +1108,8 @@ clearSearchButton.addEventListener("click", () => {
 cardModeButton.addEventListener("click", () => switchMode("cards"));
 quizModeButton.addEventListener("click", () => switchMode("quiz"));
 grammarModeButton.addEventListener("click", () => switchMode("grammar"));
-nextQuizQuestionButton.addEventListener("click", createQuizQuestion);
+grammarQuizModeButton.addEventListener("click", () => switchMode("grammar-quiz"));
+nextQuizQuestionButton.addEventListener("click", createActiveQuizQuestion);
 restartQuizButton.addEventListener("click", restartQuiz);
 
 clearSearchButton.disabled = true;
