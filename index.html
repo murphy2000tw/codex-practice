@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>N5 日文單字卡</title>
-  <link rel="stylesheet" href="style.css?v=1.5">
+  <link rel="stylesheet" href="style.css?v=1.6">
 </head>
 <body>
   <main class="page-shell">
@@ -73,6 +73,10 @@
           <span>正確率：<strong id="quizAccuracy">0%</strong></span>
         </div>
       </div>
+      <div id="grammarQuizTypeControls" class="quiz-type-controls" role="group" aria-label="選擇文法測驗題型" hidden>
+        <button id="grammarMeaningQuizTypeButton" class="quiz-type-button is-active" type="button" aria-pressed="true">文法意思測驗</button>
+        <button id="grammarClozeQuizTypeButton" class="quiz-type-button" type="button" aria-pressed="false">文法填空測驗</button>
+      </div>
       <div id="quizContent" class="quiz-content"></div>
       <div class="quiz-actions">
         <button id="nextQuizQuestion" class="answer-button" type="button" hidden>下一題</button>
@@ -83,6 +87,6 @@
     <section class="cards-grid" id="vocabularyCards" aria-live="polite"></section>
   </main>
 
-  <script src="script.js?v=1.5"></script>
+  <script src="script.js?v=1.6"></script>
 </body>
 </html>
