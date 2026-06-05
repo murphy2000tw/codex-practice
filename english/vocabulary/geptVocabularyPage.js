@@ -6,7 +6,7 @@ const toggleChineseButton = document.querySelector("#toggleChinese");
 const vocabulary = Array.isArray(geptVocabulary) ? geptVocabulary : [];
 
 let currentWordIndex = 0;
-let chineseVisible = true;
+let chineseVisible = false;
 
 function createVocabularyDetail(label, value, extraClass = "") {
   const row = document.createElement("div");
@@ -23,10 +23,30 @@ function createVocabularyDetail(label, value, extraClass = "") {
   return row;
 }
 
+function createHiddenChineseHint() {
+  const row = document.createElement("div");
+  row.className = "vocabulary-detail js-chinese-hint";
+
+  const labelElement = document.createElement("span");
+  labelElement.className = "vocabulary-detail-label";
+  labelElement.textContent = "中文已隱藏";
+
+  const valueElement = document.createElement("strong");
+  valueElement.textContent = "請先自己回想答案。";
+
+  row.append(labelElement, valueElement);
+  return row;
+}
+
 function updateChineseVisibility() {
   const chineseDetails = vocabularyCard.querySelectorAll(".js-chinese-detail");
   chineseDetails.forEach((detail) => {
     detail.hidden = !chineseVisible;
+  });
+
+  const chineseHints = vocabularyCard.querySelectorAll(".js-chinese-hint");
+  chineseHints.forEach((hint) => {
+    hint.hidden = chineseVisible;
   });
 
   toggleChineseButton.textContent = chineseVisible ? "隱藏中文" : "顯示中文";
@@ -67,6 +87,7 @@ function renderCurrentWord() {
     createVocabularyDetail("中文意思", currentWord.meaning, "js-chinese-detail"),
     createVocabularyDetail("英文例句", currentWord.example),
     createVocabularyDetail("中文翻譯", currentWord.translation, "js-chinese-detail"),
+    createHiddenChineseHint(),
   );
 
   vocabularyCard.classList.remove("status-message");
@@ -82,6 +103,7 @@ function renderCurrentWord() {
 previousWordButton.addEventListener("click", () => {
   if (currentWordIndex > 0) {
     currentWordIndex -= 1;
+    chineseVisible = false;
     renderCurrentWord();
   }
 });
@@ -89,6 +111,7 @@ previousWordButton.addEventListener("click", () => {
 nextWordButton.addEventListener("click", () => {
   if (currentWordIndex < vocabulary.length - 1) {
     currentWordIndex += 1;
+    chineseVisible = false;
     renderCurrentWord();
   }
 });
