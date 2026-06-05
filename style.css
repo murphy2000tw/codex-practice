@@ -874,6 +874,10 @@ h1 {
   line-height: 1.7;
 }
 
+.vocabulary-detail[hidden] {
+  display: none;
+}
+
 .vocabulary-detail-label {
   color: var(--accent-dark);
   font-weight: 800;
