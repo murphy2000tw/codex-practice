@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GEPT 初級單字｜英文學習</title>
-  <link rel="stylesheet" href="../../style.css?v=1.7">
+  <link rel="stylesheet" href="../../style.css?v=1.8">
 </head>
 <body>
   <main class="page-shell">
@@ -21,12 +21,24 @@
 
     <section class="category-panel subpage-panel" aria-labelledby="subpage-title">
       <div class="category-header">
-        <h2 id="subpage-title">內容準備中</h2>
-        <p class="category-count">GEPT 初級學習專區</p>
+        <h2 id="subpage-title">單字卡學習</h2>
+        <p id="currentProgress" class="category-count" aria-live="polite">1 / 30</p>
       </div>
-      <p class="subpage-text">這裡已預留為「GEPT 初級單字」頁面，未來可以加入完整教材、互動題目與學習進度。</p>
+      <p class="subpage-text">使用上一個／下一個按鈕依序練習 GEPT 初級常見單字，先熟悉單字、詞性與例句，再確認中文意思與翻譯。</p>
+
+      <article id="vocabularyCard" class="word-card gept-vocabulary-card" aria-live="polite"></article>
+
+      <div class="gept-vocabulary-controls" aria-label="GEPT 初級單字控制">
+        <button id="previousWord" class="secondary-button" type="button">上一個單字</button>
+        <button id="toggleChinese" class="secondary-button" type="button" aria-pressed="true">隱藏中文</button>
+        <button id="nextWord" class="answer-button" type="button">下一個單字</button>
+      </div>
+
       <a class="secondary-button back-link" href="../">返回英文學習</a>
     </section>
   </main>
+
+  <script src="geptVocabulary.js?v=1.0"></script>
+  <script src="geptVocabularyPage.js?v=1.0"></script>
 </body>
 </html>
