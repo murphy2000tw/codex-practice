@@ -652,3 +652,7 @@ h1 {
     padding: 18px;
   }
 }
+
+.quiz-grammar-meta {
+  justify-content: center;
+}

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>N5 日文單字卡</title>
-  <link rel="stylesheet" href="style.css?v=1.4">
+  <link rel="stylesheet" href="style.css?v=1.5">
 </head>
 <body>
   <main class="page-shell">
@@ -45,12 +45,13 @@
     <section class="mode-panel" aria-labelledby="mode-title">
       <div>
         <p class="filter-label" id="mode-title">模式切換</p>
-        <p class="mode-description">選擇用單字卡複習、文法卡整理句型，或用選擇題測驗目前篩選出的單字。</p>
+        <p class="mode-description">選擇用單字卡複習、文法卡整理句型，或用選擇題測驗目前篩選出的單字與文法。</p>
       </div>
       <div class="mode-switch" role="group" aria-label="選擇練習模式">
         <button id="cardModeButton" class="mode-button is-active" type="button" aria-pressed="true">單字卡模式</button>
         <button id="quizModeButton" class="mode-button" type="button" aria-pressed="false">單字測驗模式</button>
         <button id="grammarModeButton" class="mode-button" type="button" aria-pressed="false">文法卡模式</button>
+        <button id="grammarQuizModeButton" class="mode-button" type="button" aria-pressed="false">文法測驗模式</button>
       </div>
     </section>
 
@@ -82,6 +83,6 @@
     <section class="cards-grid" id="vocabularyCards" aria-live="polite"></section>
   </main>
 
-  <script src="script.js?v=1.4"></script>
+  <script src="script.js?v=1.5"></script>
 </body>
 </html>
