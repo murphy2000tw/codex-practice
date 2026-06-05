@@ -4219,5 +4219,2405 @@
     "similar": [
       "〜こと：也可名詞化。"
     ]
+  },
+  {
+    "id": "n5-grammar-211",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "を（通過）",
+    "kana": "を",
+    "meaning": "通過、經過某處",
+    "structure": "場所名詞 + を + 移動動詞",
+    "usage": "表示走過、飛過、經過某個地方。",
+    "example": "公園を歩きます。",
+    "exampleKana": "こうえんをあるきます。",
+    "exampleMeaning": "我在公園裡走路。",
+    "note": "常和「歩く、渡る、出る」等移動動詞一起用。",
+    "similar": [
+      "「で」表示動作發生場所；「を」可表示通過路線。"
+    ],
+    "quiz": {
+      "clozePrompt": "毎朝、公園＿＿走ります。",
+      "clozePromptKana": "まいあさ、こうえん＿＿はしります。",
+      "clozeMeaning": "每天早上，我在公園裡跑步。",
+      "choices": [
+        "を",
+        "で",
+        "に",
+        "へ"
+      ],
+      "answer": "を",
+      "explanation": "表示通過或經過的場所時，用助詞「を」。"
+    }
+  },
+  {
+    "id": "n5-grammar-212",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "に（存在位置）",
+    "kana": "に",
+    "meaning": "在……；存在於……",
+    "structure": "場所名詞 + に + あります／います",
+    "usage": "表示人、動物或物品存在的位置。",
+    "example": "机の上に本があります。",
+    "exampleKana": "つくえのうえにほんがあります。",
+    "exampleMeaning": "桌上有書。",
+    "note": "存在句的位置通常用「に」。",
+    "similar": [
+      "「で」表示做動作的場所；「に」表示存在位置。"
+    ],
+    "quiz": {
+      "clozePrompt": "駅の前＿＿銀行があります。",
+      "clozePromptKana": "えきのまえ＿＿ぎんこうがあります。",
+      "clozeMeaning": "車站前有銀行。",
+      "choices": [
+        "に",
+        "で",
+        "を",
+        "が"
+      ],
+      "answer": "に",
+      "explanation": "表示存在的位置時，要用「に」。"
+    }
+  },
+  {
+    "id": "n5-grammar-213",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "に（對象）",
+    "kana": "に",
+    "meaning": "向……；對……",
+    "structure": "人名詞 + に + 動詞",
+    "usage": "表示動作的對象，例如見面、給予、打電話。",
+    "example": "友だちに電話します。",
+    "exampleKana": "ともだちにでんわします。",
+    "exampleMeaning": "我打電話給朋友。",
+    "note": "常見動詞有「会う、聞く、電話する、あげる」。",
+    "similar": [
+      "「と会う」強調一起見面；「に会う」強調見的對象。"
+    ],
+    "quiz": {
+      "clozePrompt": "先生＿＿質問します。",
+      "clozePromptKana": "せんせい＿＿しつもんします。",
+      "clozeMeaning": "我向老師提問。",
+      "choices": [
+        "に",
+        "を",
+        "で",
+        "へ"
+      ],
+      "answer": "に",
+      "explanation": "「質問する」的對象用「に」表示。"
+    }
+  },
+  {
+    "id": "n5-grammar-214",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "で（範圍）",
+    "kana": "で",
+    "meaning": "在……之中",
+    "structure": "範圍名詞 + で + いちばん／形容詞",
+    "usage": "表示比較或判斷的範圍。",
+    "example": "日本で富士山がいちばん高いです。",
+    "exampleKana": "にほんでふじさんがいちばんたかいです。",
+    "exampleMeaning": "在日本，富士山最高。",
+    "note": "常和「いちばん」一起出現。",
+    "similar": [
+      "「に」表示位置；「で」可表示範圍。"
+    ],
+    "quiz": {
+      "clozePrompt": "クラス＿＿だれがいちばん元気ですか。",
+      "clozePromptKana": "くらす＿＿だれがいちばんげんきですか。",
+      "clozeMeaning": "班上誰最有精神？",
+      "choices": [
+        "で",
+        "に",
+        "を",
+        "へ"
+      ],
+      "answer": "で",
+      "explanation": "表示「在某範圍中」比較時用「で」。"
+    }
+  },
+  {
+    "id": "n5-grammar-215",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "は（對比）",
+    "kana": "は",
+    "meaning": "提示對比",
+    "structure": "名詞 + は",
+    "usage": "把兩件事拿來對比，常暗示另一項不同。",
+    "example": "コーヒーは飲みますが、お酒は飲みません。",
+    "exampleKana": "こーひーはのみますが、おさけはのみません。",
+    "exampleMeaning": "咖啡我喝，但酒我不喝。",
+    "note": "對比時「は」可取代「を、が」。",
+    "similar": [
+      "主題「は」只是提出話題；對比「は」有比較意味。"
+    ],
+    "quiz": {
+      "clozePrompt": "肉＿＿食べますが、魚は食べません。",
+      "clozePromptKana": "にく＿＿たべますが、さかなはたべません。",
+      "clozeMeaning": "肉我吃，但魚我不吃。",
+      "choices": [
+        "は",
+        "が",
+        "を",
+        "に"
+      ],
+      "answer": "は",
+      "explanation": "前後對比時，用「は」提示不同項目。"
+    }
+  },
+  {
+    "id": "n5-grammar-216",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "が（新情報）",
+    "kana": "が",
+    "meaning": "提示新資訊的主語",
+    "structure": "疑問詞／新資訊 + が",
+    "usage": "回答「誰、何」等疑問時，未知的新資訊常用「が」。",
+    "example": "だれが来ますか。田中さんが来ます。",
+    "exampleKana": "だれがきますか。たなかさんがきます。",
+    "exampleMeaning": "誰要來？田中先生要來。",
+    "note": "疑問詞作主語時不用「は」。",
+    "similar": [
+      "「は」提示已知話題；「が」常提示新資訊。"
+    ],
+    "quiz": {
+      "clozePrompt": "だれ＿＿窓を開けましたか。",
+      "clozePromptKana": "だれ＿＿まどをあけましたか。",
+      "clozeMeaning": "誰開了窗戶？",
+      "choices": [
+        "が",
+        "は",
+        "を",
+        "に"
+      ],
+      "answer": "が",
+      "explanation": "疑問詞「だれ」作主語時，用「が」。"
+    }
+  },
+  {
+    "id": "n5-grammar-217",
+    "level": "N5",
+    "category": "其他",
+    "grammar": "どこ",
+    "kana": "どこ",
+    "meaning": "哪裡",
+    "structure": "どこ + 助詞／ですか",
+    "usage": "詢問地點。",
+    "example": "トイレはどこですか。",
+    "exampleKana": "といれはどこですか。",
+    "exampleMeaning": "廁所在哪裡？",
+    "note": "依句子需要可接「に、へ、で」。",
+    "similar": [
+      "「どちら」較禮貌，也可問方向。"
+    ],
+    "quiz": {
+      "clozePrompt": "駅は＿＿ですか。",
+      "clozePromptKana": "えきは＿＿ですか。",
+      "clozeMeaning": "車站在哪裡？",
+      "choices": [
+        "どこ",
+        "だれ",
+        "いつ",
+        "なに"
+      ],
+      "answer": "どこ",
+      "explanation": "詢問地點時用「どこ」。"
+    }
+  },
+  {
+    "id": "n5-grammar-218",
+    "level": "N5",
+    "category": "其他",
+    "grammar": "だれ",
+    "kana": "だれ",
+    "meaning": "誰",
+    "structure": "だれ + 助詞／ですか",
+    "usage": "詢問人。",
+    "example": "あの人はだれですか。",
+    "exampleKana": "あのひとはだれですか。",
+    "exampleMeaning": "那個人是誰？",
+    "note": "禮貌說法是「どなた」。",
+    "similar": [
+      "「何」問事物；「だれ」問人。"
+    ],
+    "quiz": {
+      "clozePrompt": "このかばんは＿＿のですか。",
+      "clozePromptKana": "このかばんは＿＿のですか。",
+      "clozeMeaning": "這個包包是誰的？",
+      "choices": [
+        "だれ",
+        "どこ",
+        "いつ",
+        "なに"
+      ],
+      "answer": "だれ",
+      "explanation": "詢問人或所有者時用「だれ」。"
+    }
+  },
+  {
+    "id": "n5-grammar-219",
+    "level": "N5",
+    "category": "其他",
+    "grammar": "いつ",
+    "kana": "いつ",
+    "meaning": "什麼時候",
+    "structure": "いつ + 動詞／ですか",
+    "usage": "詢問時間。",
+    "example": "いつ日本へ行きますか。",
+    "exampleKana": "いつにほんへいきますか。",
+    "exampleMeaning": "你什麼時候去日本？",
+    "note": "「いつに」通常不用，直接用「いつ」。",
+    "similar": [
+      "「何時」問幾點；「いつ」問較廣的時間。"
+    ],
+    "quiz": {
+      "clozePrompt": "テストは＿＿ありますか。",
+      "clozePromptKana": "てすとは＿＿ありますか。",
+      "clozeMeaning": "考試什麼時候舉行？",
+      "choices": [
+        "いつ",
+        "どこ",
+        "だれ",
+        "いくら"
+      ],
+      "answer": "いつ",
+      "explanation": "詢問時間時用「いつ」。"
+    }
+  },
+  {
+    "id": "n5-grammar-220",
+    "level": "N5",
+    "category": "其他",
+    "grammar": "何",
+    "kana": "なに／なん",
+    "meaning": "什麼",
+    "structure": "何 + 助詞／名詞／ですか",
+    "usage": "詢問事物或內容，讀音依後面音而變。",
+    "example": "朝ご飯に何を食べましたか。",
+    "exampleKana": "あさごはんになにをたべましたか。",
+    "exampleMeaning": "早餐你吃了什麼？",
+    "note": "「何ですか」通常讀「なんですか」。",
+    "similar": [
+      "「どれ」問多個選項中的哪一個。"
+    ],
+    "quiz": {
+      "clozePrompt": "週末に＿＿をしますか。",
+      "clozePromptKana": "しゅうまつに＿＿をしますか。",
+      "clozeMeaning": "週末你要做什麼？",
+      "choices": [
+        "何",
+        "だれ",
+        "どこ",
+        "いつ"
+      ],
+      "answer": "何",
+      "explanation": "詢問要做的事情或物品時用「何」。"
+    }
+  },
+  {
+    "id": "n5-grammar-221",
+    "level": "N5",
+    "category": "其他",
+    "grammar": "どう",
+    "kana": "どう",
+    "meaning": "如何；怎麼樣",
+    "structure": "どう + ですか／動詞",
+    "usage": "詢問狀態、方法或感想。",
+    "example": "日本語の勉強はどうですか。",
+    "exampleKana": "にほんごのべんきょうはどうですか。",
+    "exampleMeaning": "日文學習怎麼樣？",
+    "note": "「どうやって」特別問方法。",
+    "similar": [
+      "「どんな」後面接名詞；「どう」多問狀態。"
+    ],
+    "quiz": {
+      "clozePrompt": "新しい仕事は＿＿ですか。",
+      "clozePromptKana": "あたらしいしごとは＿＿ですか。",
+      "clozeMeaning": "新工作怎麼樣？",
+      "choices": [
+        "どう",
+        "どんな",
+        "どれ",
+        "なに"
+      ],
+      "answer": "どう",
+      "explanation": "詢問狀況或感想時用「どう」。"
+    }
+  },
+  {
+    "id": "n5-grammar-222",
+    "level": "N5",
+    "category": "其他",
+    "grammar": "どんな",
+    "kana": "どんな",
+    "meaning": "什麼樣的",
+    "structure": "どんな + 名詞",
+    "usage": "詢問性質、種類或樣子。",
+    "example": "どんな音楽が好きですか。",
+    "exampleKana": "どんなおんがくがすきですか。",
+    "exampleMeaning": "你喜歡什麼樣的音樂？",
+    "note": "後面一定要接名詞。",
+    "similar": [
+      "「どう」問狀態；「どんな」修飾名詞。"
+    ],
+    "quiz": {
+      "clozePrompt": "＿＿映画を見ますか。",
+      "clozePromptKana": "＿＿えいがをみますか。",
+      "clozeMeaning": "你看什麼樣的電影？",
+      "choices": [
+        "どんな",
+        "どう",
+        "どこ",
+        "いつ"
+      ],
+      "answer": "どんな",
+      "explanation": "後面接名詞「映画」時，要用「どんな」。"
+    }
+  },
+  {
+    "id": "n5-grammar-223",
+    "level": "N5",
+    "category": "其他",
+    "grammar": "いくら",
+    "kana": "いくら",
+    "meaning": "多少錢",
+    "structure": "いくら + ですか",
+    "usage": "詢問價格。",
+    "example": "このシャツはいくらですか。",
+    "exampleKana": "このしゃつはいくらですか。",
+    "exampleMeaning": "這件襯衫多少錢？",
+    "note": "問數量時不用「いくら」，多用「いくつ」。",
+    "similar": [
+      "「いくつ」問數量或年齡；「いくら」問價格。"
+    ],
+    "quiz": {
+      "clozePrompt": "この切符は＿＿ですか。",
+      "clozePromptKana": "このきっぷは＿＿ですか。",
+      "clozeMeaning": "這張票多少錢？",
+      "choices": [
+        "いくら",
+        "いつ",
+        "だれ",
+        "どこ"
+      ],
+      "answer": "いくら",
+      "explanation": "詢問價格時用「いくら」。"
+    }
+  },
+  {
+    "id": "n5-grammar-224",
+    "level": "N5",
+    "category": "時間表現",
+    "grammar": "何時",
+    "kana": "なんじ",
+    "meaning": "幾點",
+    "structure": "何時 + に／ですか",
+    "usage": "詢問具體時刻。",
+    "example": "授業は何時に始まりますか。",
+    "exampleKana": "じゅぎょうはなんじにはじまりますか。",
+    "exampleMeaning": "課幾點開始？",
+    "note": "具體時刻後常接「に」。",
+    "similar": [
+      "「いつ」問時間較廣；「何時」問幾點。"
+    ],
+    "quiz": {
+      "clozePrompt": "会議は＿＿に終わりますか。",
+      "clozePromptKana": "かいぎは＿＿におわりますか。",
+      "clozeMeaning": "會議幾點結束？",
+      "choices": [
+        "何時",
+        "何人",
+        "何枚",
+        "何本"
+      ],
+      "answer": "何時",
+      "explanation": "詢問幾點時用「何時」。"
+    }
+  },
+  {
+    "id": "n5-grammar-225",
+    "level": "N5",
+    "category": "時間表現",
+    "grammar": "何曜日",
+    "kana": "なんようび",
+    "meaning": "星期幾",
+    "structure": "何曜日 + ですか",
+    "usage": "詢問星期。",
+    "example": "今日は何曜日ですか。",
+    "exampleKana": "きょうはなんようびですか。",
+    "exampleMeaning": "今天星期幾？",
+    "note": "曜日可搭配「に」表示時間。",
+    "similar": [
+      "「何日」問幾號；「何曜日」問星期幾。"
+    ],
+    "quiz": {
+      "clozePrompt": "休みは＿＿ですか。",
+      "clozePromptKana": "やすみは＿＿ですか。",
+      "clozeMeaning": "休息日是星期幾？",
+      "choices": [
+        "何曜日",
+        "何時",
+        "何日",
+        "何月"
+      ],
+      "answer": "何曜日",
+      "explanation": "詢問星期幾時用「何曜日」。"
+    }
+  },
+  {
+    "id": "n5-grammar-226",
+    "level": "N5",
+    "category": "時間表現",
+    "grammar": "何月何日",
+    "kana": "なんがつなんにち",
+    "meaning": "幾月幾日",
+    "structure": "何月何日 + ですか",
+    "usage": "詢問日期。",
+    "example": "試験は何月何日ですか。",
+    "exampleKana": "しけんはなんがつなんにちですか。",
+    "exampleMeaning": "考試是幾月幾日？",
+    "note": "日期後可接「に」表示動作時間。",
+    "similar": [
+      "「何曜日」問星期；「何月何日」問日期。"
+    ],
+    "quiz": {
+      "clozePrompt": "旅行は＿＿ですか。",
+      "clozePromptKana": "りょこうは＿＿ですか。",
+      "clozeMeaning": "旅行是幾月幾日？",
+      "choices": [
+        "何月何日",
+        "何時",
+        "何曜日",
+        "何人"
+      ],
+      "answer": "何月何日",
+      "explanation": "詢問日期時用「何月何日」。"
+    }
+  },
+  {
+    "id": "n5-grammar-227",
+    "level": "N5",
+    "category": "時間表現",
+    "grammar": "〜から〜まで（時間）",
+    "kana": "からまで",
+    "meaning": "從……到……",
+    "structure": "時間名詞 + から + 時間名詞 + まで",
+    "usage": "表示動作或狀態的開始與結束時間。",
+    "example": "学校は九時から三時までです。",
+    "exampleKana": "がっこうはくじからさんじまでです。",
+    "exampleMeaning": "學校從九點到三點。",
+    "note": "也可用於地點的起點到終點。",
+    "similar": [
+      "單獨「から」是起點；「まで」是終點。"
+    ],
+    "quiz": {
+      "clozePrompt": "図書館は十時＿＿六時までです。",
+      "clozePromptKana": "としょかんはじゅうじ＿＿ろくじまでです。",
+      "clozeMeaning": "圖書館從十點到六點。",
+      "choices": [
+        "から",
+        "まで",
+        "に",
+        "で"
+      ],
+      "answer": "から",
+      "explanation": "表示開始時間要用「から」。"
+    }
+  },
+  {
+    "id": "n5-grammar-228",
+    "level": "N5",
+    "category": "時間表現",
+    "grammar": "〜ごろ",
+    "kana": "ごろ",
+    "meaning": "大約……點；……左右",
+    "structure": "時間點 + ごろ",
+    "usage": "表示大約的時間點。",
+    "example": "七時ごろ家を出ます。",
+    "exampleKana": "しちじごろいえをでます。",
+    "exampleMeaning": "我大約七點出門。",
+    "note": "「ごろ」接時間點，不接時間長度。",
+    "similar": [
+      "「ぐらい」可表示大約的數量或時間長度。"
+    ],
+    "quiz": {
+      "clozePrompt": "昨日、十時＿＿寝ました。",
+      "clozePromptKana": "きのう、じゅうじ＿＿ねました。",
+      "clozeMeaning": "昨天大約十點睡覺。",
+      "choices": [
+        "ごろ",
+        "まで",
+        "から",
+        "だけ"
+      ],
+      "answer": "ごろ",
+      "explanation": "表示大約的時間點時，用「ごろ」。"
+    }
+  },
+  {
+    "id": "n5-grammar-229",
+    "level": "N5",
+    "category": "比較・程度",
+    "grammar": "〜ぐらい（數量）",
+    "kana": "ぐらい",
+    "meaning": "大約……",
+    "structure": "數量詞 + ぐらい",
+    "usage": "表示大約的數量、時間長度或程度。",
+    "example": "駅まで十分ぐらいかかります。",
+    "exampleKana": "えきまでじゅっぷんぐらいかかります。",
+    "exampleMeaning": "到車站大約要十分鐘。",
+    "note": "口語也常說「くらい」。",
+    "similar": [
+      "「ごろ」用於時間點；「ぐらい」用於數量或長度。"
+    ],
+    "quiz": {
+      "clozePrompt": "毎日一時間＿＿勉強します。",
+      "clozePromptKana": "まいにちいちじかん＿＿べんきょうします。",
+      "clozeMeaning": "我每天大約讀一小時。",
+      "choices": [
+        "ぐらい",
+        "ごろ",
+        "まで",
+        "から"
+      ],
+      "answer": "ぐらい",
+      "explanation": "「一時間」是時間長度，所以用「ぐらい」。"
+    }
+  },
+  {
+    "id": "n5-grammar-230",
+    "level": "N5",
+    "category": "位置表現",
+    "grammar": "ここ／そこ／あそこ",
+    "kana": "ここそこあそこ",
+    "meaning": "這裡／那裡／那邊",
+    "structure": "ここ／そこ／あそこ + は／に／で",
+    "usage": "表示離說話者近、中、遠的場所。",
+    "example": "ここで写真を撮りましょう。",
+    "exampleKana": "ここでしゃしんをとりましょう。",
+    "exampleMeaning": "在這裡拍照吧。",
+    "note": "「ここ」近說話者，「そこ」近聽話者，「あそこ」離雙方都遠。",
+    "similar": [
+      "「こちら」較禮貌，也可表示方向。"
+    ],
+    "quiz": {
+      "clozePrompt": "＿＿に座ってください。",
+      "clozePromptKana": "＿＿にすわってください。",
+      "clozeMeaning": "請坐在這裡。",
+      "choices": [
+        "ここ",
+        "これ",
+        "この",
+        "こう"
+      ],
+      "answer": "ここ",
+      "explanation": "表示「這裡」的地點時用「ここ」。"
+    }
+  },
+  {
+    "id": "n5-grammar-231",
+    "level": "N5",
+    "category": "位置表現",
+    "grammar": "こちら／そちら／あちら",
+    "kana": "こちらそちらあちら",
+    "meaning": "這邊／那邊／那一邊",
+    "structure": "こちら／そちら／あちら + です",
+    "usage": "禮貌地表示方向、場所或人物。",
+    "example": "受付はこちらです。",
+    "exampleKana": "うけつけはこちらです。",
+    "exampleMeaning": "櫃台在這邊。",
+    "note": "比「ここ、そこ、あそこ」更禮貌。",
+    "similar": [
+      "「これ」指物品；「こちら」指方向、場所或人。"
+    ],
+    "quiz": {
+      "clozePrompt": "出口は＿＿です。",
+      "clozePromptKana": "でぐちは＿＿です。",
+      "clozeMeaning": "出口在這邊。",
+      "choices": [
+        "こちら",
+        "これ",
+        "この",
+        "ここ"
+      ],
+      "answer": "こちら",
+      "explanation": "禮貌表示「這邊」時用「こちら」。"
+    }
+  },
+  {
+    "id": "n5-grammar-232",
+    "level": "N5",
+    "category": "位置表現",
+    "grammar": "上／下／中／外",
+    "kana": "うえしたなかそと",
+    "meaning": "上／下／裡面／外面",
+    "structure": "名詞 + の + 上／下／中／外",
+    "usage": "表示基本位置。",
+    "example": "箱の中に猫がいます。",
+    "exampleKana": "はこのなかにねこがいます。",
+    "exampleMeaning": "箱子裡有貓。",
+    "note": "位置名詞前通常要加「の」。",
+    "similar": [
+      "存在位置後常接「に」。"
+    ],
+    "quiz": {
+      "clozePrompt": "かばんの＿＿に鍵があります。",
+      "clozePromptKana": "かばんの＿＿にかぎがあります。",
+      "clozeMeaning": "包包裡有鑰匙。",
+      "choices": [
+        "中",
+        "何",
+        "どこ",
+        "だれ"
+      ],
+      "answer": "中",
+      "explanation": "表示在包包裡面時用「中」。"
+    }
+  },
+  {
+    "id": "n5-grammar-233",
+    "level": "N5",
+    "category": "位置表現",
+    "grammar": "右／左／前／後ろ",
+    "kana": "みぎひだりまえうしろ",
+    "meaning": "右／左／前／後",
+    "structure": "名詞 + の + 右／左／前／後ろ",
+    "usage": "表示方向或相對位置。",
+    "example": "銀行は郵便局の右にあります。",
+    "exampleKana": "ぎんこうはゆうびんきょくのみぎにあります。",
+    "exampleMeaning": "銀行在郵局右邊。",
+    "note": "「前」是前方，「後ろ」是後方。",
+    "similar": [
+      "位置名詞前多用「の」。"
+    ],
+    "quiz": {
+      "clozePrompt": "学校の＿＿に公園があります。",
+      "clozePromptKana": "がっこうの＿＿にこうえんがあります。",
+      "clozeMeaning": "學校前面有公園。",
+      "choices": [
+        "前",
+        "だれ",
+        "いつ",
+        "なに"
+      ],
+      "answer": "前",
+      "explanation": "表示在學校前面時用「前」。"
+    }
+  },
+  {
+    "id": "n5-grammar-234",
+    "level": "N5",
+    "category": "目的・理由",
+    "grammar": "〜に行く（目的）",
+    "kana": "にいく",
+    "meaning": "去做……",
+    "structure": "動詞ます形語幹 + に + 行く／来る／帰る",
+    "usage": "表示移動的目的。",
+    "example": "友だちに会いに行きます。",
+    "exampleKana": "ともだちにあいにいきます。",
+    "exampleMeaning": "我去見朋友。",
+    "note": "動詞要用ます形去掉「ます」的語幹。",
+    "similar": [
+      "「へ／に行く」只表示方向；「動詞ます形語幹に行く」表示目的。"
+    ],
+    "quiz": {
+      "clozePrompt": "図書館へ本を借り＿＿行きます。",
+      "clozePromptKana": "としょかんへほんをかり＿＿いきます。",
+      "clozeMeaning": "我去圖書館借書。",
+      "choices": [
+        "に",
+        "へ",
+        "で",
+        "を"
+      ],
+      "answer": "に",
+      "explanation": "表示去做某事的目的時，用「動詞ます形語幹 + に行く」。"
+    }
+  },
+  {
+    "id": "n5-grammar-235",
+    "level": "N5",
+    "category": "其他",
+    "grammar": "〜をください",
+    "kana": "をください",
+    "meaning": "請給我……",
+    "structure": "名詞 + を + ください",
+    "usage": "向店員或對方請求某物。",
+    "example": "水をください。",
+    "exampleKana": "みずをください。",
+    "exampleMeaning": "請給我水。",
+    "note": "比直接說名詞更自然有禮貌。",
+    "similar": [
+      "「〜てください」請求動作；「〜をください」請求物品。"
+    ],
+    "quiz": {
+      "clozePrompt": "このパン＿＿ください。",
+      "clozePromptKana": "このぱん＿＿ください。",
+      "clozeMeaning": "請給我這個麵包。",
+      "choices": [
+        "を",
+        "に",
+        "で",
+        "が"
+      ],
+      "answer": "を",
+      "explanation": "請求某物時，用「名詞 + をください」。"
+    }
+  },
+  {
+    "id": "n5-grammar-236",
+    "level": "N5",
+    "category": "其他",
+    "grammar": "〜はどうですか",
+    "kana": "はどうですか",
+    "meaning": "……怎麼樣？",
+    "structure": "名詞 + は + どうですか",
+    "usage": "詢問對方對某事物的感想或狀況。",
+    "example": "新しい部屋はどうですか。",
+    "exampleKana": "あたらしいへやはどうですか。",
+    "exampleMeaning": "新房間怎麼樣？",
+    "note": "常用於日常寒暄與確認狀況。",
+    "similar": [
+      "「どんな」後接名詞；「どうですか」問感想。"
+    ],
+    "quiz": {
+      "clozePrompt": "日本の生活＿＿どうですか。",
+      "clozePromptKana": "にほんのせいかつ＿＿どうですか。",
+      "clozeMeaning": "日本的生活怎麼樣？",
+      "choices": [
+        "は",
+        "が",
+        "を",
+        "に"
+      ],
+      "answer": "は",
+      "explanation": "提出要詢問的主題時，用「は」。"
+    }
+  },
+  {
+    "id": "n5-grammar-237",
+    "level": "N5",
+    "category": "希望",
+    "grammar": "〜が好きだ",
+    "kana": "がすきだ",
+    "meaning": "喜歡……",
+    "structure": "名詞 + が + 好きです",
+    "usage": "表示喜歡的對象。",
+    "example": "私は犬が好きです。",
+    "exampleKana": "わたしはいぬがすきです。",
+    "exampleMeaning": "我喜歡狗。",
+    "note": "喜歡的對象不用「を」，通常用「が」。",
+    "similar": [
+      "「ほしい」也用「が」表示想要的東西。"
+    ],
+    "quiz": {
+      "clozePrompt": "私は甘い物＿＿好きです。",
+      "clozePromptKana": "わたしはあまいもの＿＿すきです。",
+      "clozeMeaning": "我喜歡甜食。",
+      "choices": [
+        "が",
+        "を",
+        "に",
+        "で"
+      ],
+      "answer": "が",
+      "explanation": "「好き」的對象用「が」。"
+    }
+  },
+  {
+    "id": "n5-grammar-238",
+    "level": "N5",
+    "category": "可能・能力",
+    "grammar": "〜が上手だ",
+    "kana": "がじょうずだ",
+    "meaning": "擅長……",
+    "structure": "名詞／動詞辞書形 + の + が + 上手です",
+    "usage": "表示某人擅長的事情。",
+    "example": "姉は料理が上手です。",
+    "exampleKana": "あねはりょうりがじょうずです。",
+    "exampleMeaning": "姊姊很會做菜。",
+    "note": "說自己擅長時用「得意」較自然，「上手」常稱讚別人。",
+    "similar": [
+      "「下手」表示不擅長。"
+    ],
+    "quiz": {
+      "clozePrompt": "田中さんは歌＿＿上手です。",
+      "clozePromptKana": "たなかさんはうた＿＿じょうずです。",
+      "clozeMeaning": "田中先生很會唱歌。",
+      "choices": [
+        "が",
+        "を",
+        "に",
+        "で"
+      ],
+      "answer": "が",
+      "explanation": "「上手」的對象用「が」。"
+    }
+  },
+  {
+    "id": "n5-grammar-239",
+    "level": "N5",
+    "category": "可能・能力",
+    "grammar": "〜が下手だ",
+    "kana": "がへただ",
+    "meaning": "不擅長……",
+    "structure": "名詞／動詞辞書形 + の + が + 下手です",
+    "usage": "表示不擅長的事情。",
+    "example": "私は絵が下手です。",
+    "exampleKana": "わたしはえがへたです。",
+    "exampleMeaning": "我不擅長畫畫。",
+    "note": "可用於自己或他人的能力，但要注意語氣。",
+    "similar": [
+      "「苦手」也表示不擅長，語氣較委婉。"
+    ],
+    "quiz": {
+      "clozePrompt": "弟は掃除＿＿下手です。",
+      "clozePromptKana": "おとうとはそうじ＿＿へたです。",
+      "clozeMeaning": "弟弟不擅長打掃。",
+      "choices": [
+        "が",
+        "を",
+        "に",
+        "で"
+      ],
+      "answer": "が",
+      "explanation": "「下手」的對象用「が」。"
+    }
+  },
+  {
+    "id": "n5-grammar-240",
+    "level": "N5",
+    "category": "比較・程度",
+    "grammar": "〜より〜のほうが",
+    "kana": "よりのほうが",
+    "meaning": "比起……，……更……",
+    "structure": "名詞A + より + 名詞B + のほうが + 形容詞",
+    "usage": "比較兩者，表示後者程度更高。",
+    "example": "バスより電車のほうが速いです。",
+    "exampleKana": "ばすよりでんしゃのほうがはやいです。",
+    "exampleMeaning": "比起公車，電車比較快。",
+    "note": "被比較的對象放在「より」前面。",
+    "similar": [
+      "單獨「より」標示比較基準；「のほうが」標示程度較高的一方。"
+    ],
+    "quiz": {
+      "clozePrompt": "昨日＿＿今日のほうが寒いです。",
+      "clozePromptKana": "きのう＿＿きょうのほうがさむいです。",
+      "clozeMeaning": "比起昨天，今天比較冷。",
+      "choices": [
+        "より",
+        "から",
+        "まで",
+        "ほど"
+      ],
+      "answer": "より",
+      "explanation": "比較基準用「より」，較高的一方用「のほうが」。"
+    }
+  },
+  {
+    "id": "n4-grammar-241",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜てみる",
+    "kana": "てみる",
+    "meaning": "試著……",
+    "structure": "動詞て形 + みる",
+    "usage": "表示先試做看看。",
+    "example": "新しい靴を履いてみます。",
+    "exampleKana": "あたらしいくつをはいてみます。",
+    "exampleMeaning": "我試穿新鞋。",
+    "note": "重點是「試做」，不一定已經知道結果。",
+    "similar": [
+      "「〜ようとする」表示正要做或嘗試做。"
+    ],
+    "quiz": {
+      "clozePrompt": "この料理を少し食べ＿＿。",
+      "clozePromptKana": "このりょうりをすこしたべ＿＿。",
+      "clozeMeaning": "我試著吃一點這道菜。",
+      "choices": [
+        "てみます",
+        "ています",
+        "てあります",
+        "ていきます"
+      ],
+      "answer": "てみます",
+      "explanation": "表示試著做某事，用「動詞て形 + みる」。"
+    }
+  },
+  {
+    "id": "n4-grammar-242",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜ていく",
+    "kana": "ていく",
+    "meaning": "……下去；漸漸離開",
+    "structure": "動詞て形 + いく",
+    "usage": "表示動作往遠方移動，或狀態從現在往未來變化。",
+    "example": "これからも日本語を勉強していきます。",
+    "exampleKana": "これからもにほんごをべんきょうしていきます。",
+    "exampleMeaning": "今後也會繼續學日文。",
+    "note": "常用於「從現在開始持續下去」。",
+    "similar": [
+      "「〜てくる」表示朝現在或說話者方向變化。"
+    ],
+    "quiz": {
+      "clozePrompt": "町はこれからもっと便利になっ＿＿でしょう。",
+      "clozePromptKana": "まちはこれからもっとべんりになっ＿＿でしょう。",
+      "clozeMeaning": "這個城鎮今後會變得更方便吧。",
+      "choices": [
+        "ていく",
+        "てくる",
+        "てみる",
+        "てある"
+      ],
+      "answer": "ていく",
+      "explanation": "從現在往未來變化時，用「〜ていく」。"
+    }
+  },
+  {
+    "id": "n4-grammar-243",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜てくる",
+    "kana": "てくる",
+    "meaning": "……起來；漸漸過來",
+    "structure": "動詞て形 + くる",
+    "usage": "表示動作朝說話者方向來，或變化延續到現在。",
+    "example": "雨が降ってきました。",
+    "exampleKana": "あめがふってきました。",
+    "exampleMeaning": "雨開始下起來了。",
+    "note": "常表示某變化出現並接近現在。",
+    "similar": [
+      "「〜ていく」表示往未來或遠方發展。"
+    ],
+    "quiz": {
+      "clozePrompt": "少し寒くなっ＿＿ました。",
+      "clozePromptKana": "すこしさむくなっ＿＿ました。",
+      "clozeMeaning": "天氣變得有點冷了。",
+      "choices": [
+        "てき",
+        "ていき",
+        "てみ",
+        "てあり"
+      ],
+      "answer": "てき",
+      "explanation": "「なってきました」表示變化到現在逐漸出現。"
+    }
+  },
+  {
+    "id": "n4-grammar-244",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜ている（結果状態）",
+    "kana": "ている",
+    "meaning": "已經……著；處於……狀態",
+    "structure": "自動詞て形 + いる",
+    "usage": "表示動作結果留下來的狀態。",
+    "example": "窓が開いています。",
+    "exampleKana": "まどがあいています。",
+    "exampleMeaning": "窗戶開著。",
+    "note": "常和自動詞搭配，如「開く、閉まる、消える」。",
+    "similar": [
+      "進行中的「〜ている」表示正在做；結果狀態表示已成為某狀態。"
+    ],
+    "quiz": {
+      "clozePrompt": "電気が消え＿＿。",
+      "clozePromptKana": "でんきがきえ＿＿。",
+      "clozeMeaning": "電燈關著。",
+      "choices": [
+        "ています",
+        "てみます",
+        "ていきます",
+        "てください"
+      ],
+      "answer": "ています",
+      "explanation": "「消えている」表示燈已關並維持該狀態。"
+    }
+  },
+  {
+    "id": "n4-grammar-245",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜ている（習慣）",
+    "kana": "ている",
+    "meaning": "經常……；從事……",
+    "structure": "動詞て形 + いる",
+    "usage": "表示反覆習慣或職業狀態。",
+    "example": "父は病院で働いています。",
+    "exampleKana": "ちちはびょういんではたらいています。",
+    "exampleMeaning": "父親在醫院工作。",
+    "note": "不是此刻正在做，而是長期狀態。",
+    "similar": [
+      "進行中用法表示現在正在做某動作。"
+    ],
+    "quiz": {
+      "clozePrompt": "兄は大学で日本語を教え＿＿。",
+      "clozePromptKana": "あにはだいがくでにほんごをおしえ＿＿。",
+      "clozeMeaning": "哥哥在大學教日文。",
+      "choices": [
+        "ています",
+        "てみます",
+        "てあります",
+        "てください"
+      ],
+      "answer": "ています",
+      "explanation": "表示長期從事某工作時，用「〜ている」。"
+    }
+  },
+  {
+    "id": "n4-grammar-246",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜ずに",
+    "kana": "ずに",
+    "meaning": "不……就……",
+    "structure": "動詞ない形去い + ずに／する→せずに",
+    "usage": "表示不做前項而做後項。",
+    "example": "朝ご飯を食べずに出かけました。",
+    "exampleKana": "あさごはんをたべずにでかけました。",
+    "exampleMeaning": "我沒吃早餐就出門了。",
+    "note": "「する」變成「せずに」。",
+    "similar": [
+      "「〜ないで」較口語；「〜ずに」較書面。"
+    ],
+    "quiz": {
+      "clozePrompt": "傘を持た＿＿出ました。",
+      "clozePromptKana": "かさをもた＿＿でました。",
+      "clozeMeaning": "我沒帶傘就出門了。",
+      "choices": [
+        "ずに",
+        "ないと",
+        "ながら",
+        "ために"
+      ],
+      "answer": "ずに",
+      "explanation": "表示不做「持つ」就出門，用「持たずに」。"
+    }
+  },
+  {
+    "id": "n4-grammar-247",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜ないで",
+    "kana": "ないで",
+    "meaning": "不要……而……；不……就……",
+    "structure": "動詞ない形 + で",
+    "usage": "表示不做前項，直接做後項。",
+    "example": "電気を消さないで寝ました。",
+    "exampleKana": "でんきをけさないでねました。",
+    "exampleMeaning": "我沒關燈就睡了。",
+    "note": "也可用於請求「〜ないでください」。",
+    "similar": [
+      "「〜ずに」較書面，「〜ないで」較口語。"
+    ],
+    "quiz": {
+      "clozePrompt": "朝、何も食べ＿＿学校へ行きました。",
+      "clozePromptKana": "あさ、なにもたべ＿＿がっこうへいきました。",
+      "clozeMeaning": "早上我什麼都沒吃就去學校了。",
+      "choices": [
+        "ないで",
+        "なくて",
+        "ないと",
+        "ずつ"
+      ],
+      "answer": "ないで",
+      "explanation": "表示不吃就去學校時，用「食べないで」。"
+    }
+  },
+  {
+    "id": "n4-grammar-248",
+    "level": "N4",
+    "category": "希望",
+    "grammar": "〜つもりだ",
+    "kana": "つもりだ",
+    "meaning": "打算……",
+    "structure": "動詞辞書形／ない形 + つもりだ",
+    "usage": "表示說話者已經有的計畫或打算。",
+    "example": "週末は家で休むつもりです。",
+    "exampleKana": "しゅうまつはいえでやすむつもりです。",
+    "exampleMeaning": "週末我打算在家休息。",
+    "note": "比「〜ようと思う」更像已決定的計畫。",
+    "similar": [
+      "「予定だ」多用於客觀行程。"
+    ],
+    "quiz": {
+      "clozePrompt": "来年、日本へ留学する＿＿です。",
+      "clozePromptKana": "らいねん、にほんへりゅうがくする＿＿です。",
+      "clozeMeaning": "明年我打算去日本留學。",
+      "choices": [
+        "つもり",
+        "ため",
+        "ところ",
+        "はず"
+      ],
+      "answer": "つもり",
+      "explanation": "表示自己的打算時，用「〜つもりです」。"
+    }
+  },
+  {
+    "id": "n4-grammar-249",
+    "level": "N4",
+    "category": "時間表現",
+    "grammar": "〜予定だ",
+    "kana": "よていだ",
+    "meaning": "預定……",
+    "structure": "動詞辞書形／名詞 + の + 予定だ",
+    "usage": "表示已安排好的計畫或行程。",
+    "example": "来月、京都へ行く予定です。",
+    "exampleKana": "らいげつ、きょうとへいくよていです。",
+    "exampleMeaning": "下個月預定去京都。",
+    "note": "常用於較客觀的日程。",
+    "similar": [
+      "「つもり」偏個人打算；「予定」偏已安排的計畫。"
+    ],
+    "quiz": {
+      "clozePrompt": "会議は三時に始まる＿＿です。",
+      "clozePromptKana": "かいぎはさんじにはじまる＿＿です。",
+      "clozeMeaning": "會議預定三點開始。",
+      "choices": [
+        "予定",
+        "つもり",
+        "ため",
+        "ところ"
+      ],
+      "answer": "予定",
+      "explanation": "已安排的行程用「予定です」。"
+    }
+  },
+  {
+    "id": "n4-grammar-250",
+    "level": "N4",
+    "category": "決定・結果",
+    "grammar": "〜ことにしている",
+    "kana": "ことにしている",
+    "meaning": "習慣上決定……",
+    "structure": "動詞辞書形／ない形 + ことにしている",
+    "usage": "表示自己長期決定並持續做某事。",
+    "example": "毎朝、散歩することにしています。",
+    "exampleKana": "まいあさ、さんぽすることにしています。",
+    "exampleMeaning": "我決定每天早上散步，並一直這樣做。",
+    "note": "強調由自己決定形成習慣。",
+    "similar": [
+      "「ことになる」表示外在決定。"
+    ],
+    "quiz": {
+      "clozePrompt": "健康のために、夜遅く食べない＿＿。",
+      "clozePromptKana": "けんこうのために、よるおそくたべない＿＿。",
+      "clozeMeaning": "為了健康，我決定晚上不晚吃。",
+      "choices": [
+        "ことにしています",
+        "ことになります",
+        "ことができます",
+        "ことがあります"
+      ],
+      "answer": "ことにしています",
+      "explanation": "自己決定並持續實行時，用「〜ことにしている」。"
+    }
+  },
+  {
+    "id": "n4-grammar-251",
+    "level": "N4",
+    "category": "決定・結果",
+    "grammar": "〜ことになっている",
+    "kana": "ことになっている",
+    "meaning": "規定；安排成……",
+    "structure": "動詞辞書形／ない形 + ことになっている",
+    "usage": "表示規則、安排或社會上已決定的事。",
+    "example": "この部屋ではたばこを吸わないことになっています。",
+    "exampleKana": "このへやではたばこをすわないことになっています。",
+    "exampleMeaning": "這個房間規定不能抽菸。",
+    "note": "常用於規定，不一定是自己決定。",
+    "similar": [
+      "「ことにしている」是自己決定的習慣。"
+    ],
+    "quiz": {
+      "clozePrompt": "明日は九時に集まる＿＿。",
+      "clozePromptKana": "あしたはくじにあつまる＿＿。",
+      "clozeMeaning": "明天安排九點集合。",
+      "choices": [
+        "ことになっています",
+        "ことにしています",
+        "ことができます",
+        "ことがあります"
+      ],
+      "answer": "ことになっています",
+      "explanation": "表示既定安排或規定時，用「〜ことになっている」。"
+    }
+  },
+  {
+    "id": "n4-grammar-252",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜ようとしている",
+    "kana": "ようとしている",
+    "meaning": "正要……",
+    "structure": "動詞意向形 + としている",
+    "usage": "表示某動作即將開始。",
+    "example": "電車が出発しようとしています。",
+    "exampleKana": "でんしゃがしゅっぱつしようとしています。",
+    "exampleMeaning": "電車正要出發。",
+    "note": "常用於事情快要發生的瞬間。",
+    "similar": [
+      "「〜ところ」也可表示動作階段。"
+    ],
+    "quiz": {
+      "clozePrompt": "赤ちゃんが寝＿＿います。",
+      "clozePromptKana": "あかちゃんがね＿＿います。",
+      "clozeMeaning": "嬰兒正要睡著。",
+      "choices": [
+        "ようとして",
+        "ながら",
+        "ばかり",
+        "ために"
+      ],
+      "answer": "ようとして",
+      "explanation": "表示正要睡著，用「寝ようとしている」。"
+    }
+  },
+  {
+    "id": "n4-grammar-253",
+    "level": "N4",
+    "category": "時間表現",
+    "grammar": "〜ところに",
+    "kana": "ところに",
+    "meaning": "正在……的時候",
+    "structure": "動詞普通形 + ところに",
+    "usage": "表示某動作階段中，另一件事發生。",
+    "example": "出かけるところに友だちが来ました。",
+    "exampleKana": "でかけるところにともだちがきました。",
+    "exampleMeaning": "正要出門時，朋友來了。",
+    "note": "常帶有事情剛好發生的語感。",
+    "similar": [
+      "「ところで」常表示在某時間點發生轉折。"
+    ],
+    "quiz": {
+      "clozePrompt": "勉強している＿＿電話が鳴りました。",
+      "clozePromptKana": "べんきょうしている＿＿でんわがなりました。",
+      "clozeMeaning": "正在讀書時，電話響了。",
+      "choices": [
+        "ところに",
+        "ところを",
+        "ところへ",
+        "ところで"
+      ],
+      "answer": "ところに",
+      "explanation": "表示正在某動作階段時發生另一件事，用「ところに」。"
+    }
+  },
+  {
+    "id": "n4-grammar-254",
+    "level": "N4",
+    "category": "時間表現",
+    "grammar": "〜ところで",
+    "kana": "ところで",
+    "meaning": "即使……也；剛……時",
+    "structure": "動詞た形 + ところで",
+    "usage": "表示即使完成前項，也未必有期待結果；N4 常見於時間點也可理解為剛做完。",
+    "example": "今から急いだところで、間に合いません。",
+    "exampleKana": "いまからいそいだところで、まにあいません。",
+    "exampleMeaning": "現在趕過去也來不及。",
+    "note": "後句常是否定或不好的結果。",
+    "similar": [
+      "「〜ても」也表示即使，但「ところで」語氣較強。"
+    ],
+    "quiz": {
+      "clozePrompt": "今さら謝った＿＿、許してもらえないでしょう。",
+      "clozePromptKana": "いまさらあやまった＿＿、ゆるしてもらえないでしょう。",
+      "clozeMeaning": "事到如今就算道歉，也不會被原諒吧。",
+      "choices": [
+        "ところで",
+        "ところに",
+        "ところへ",
+        "ところが"
+      ],
+      "answer": "ところで",
+      "explanation": "「た形 + ところで」表示即使做了也沒有好結果。"
+    }
+  },
+  {
+    "id": "n4-grammar-255",
+    "level": "N4",
+    "category": "比較・程度",
+    "grammar": "〜ばかり",
+    "kana": "ばかり",
+    "meaning": "光是……；盡是……",
+    "structure": "名詞 + ばかり／動詞て形 + ばかり",
+    "usage": "表示同樣的事很多，常有不滿語氣。",
+    "example": "弟はゲームばかりしています。",
+    "exampleKana": "おとうとはげーむばかりしています。",
+    "exampleMeaning": "弟弟老是在玩遊戲。",
+    "note": "常帶有「太偏向某事」的感覺。",
+    "similar": [
+      "「だけ」中性表示限定；「ばかり」常有偏多語氣。"
+    ],
+    "quiz": {
+      "clozePrompt": "甘い物＿＿食べないでください。",
+      "clozePromptKana": "あまいもの＿＿たべないでください。",
+      "clozeMeaning": "請不要只吃甜食。",
+      "choices": [
+        "ばかり",
+        "だけに",
+        "しか",
+        "ほど"
+      ],
+      "answer": "ばかり",
+      "explanation": "表示過度偏向甜食時，用「ばかり」。"
+    }
+  },
+  {
+    "id": "n4-grammar-256",
+    "level": "N4",
+    "category": "動詞變化",
+    "grammar": "〜てばかりいる",
+    "kana": "てばかりいる",
+    "meaning": "老是……",
+    "structure": "動詞て形 + ばかりいる",
+    "usage": "表示一直做同一件事，常含責備或不滿。",
+    "example": "休みの日は寝てばかりいます。",
+    "exampleKana": "やすみのひはねてばかりいます。",
+    "exampleMeaning": "休假日我老是在睡覺。",
+    "note": "比單純「〜ている」更強調反覆與偏重。",
+    "similar": [
+      "「〜ながら」表示同時做兩件事。"
+    ],
+    "quiz": {
+      "clozePrompt": "子どもはテレビを見＿＿います。",
+      "clozePromptKana": "こどもはてれびをみ＿＿います。",
+      "clozeMeaning": "孩子老是在看電視。",
+      "choices": [
+        "てばかり",
+        "ながら",
+        "てから",
+        "てみて"
+      ],
+      "answer": "てばかり",
+      "explanation": "表示老是做同一動作用「て形 + ばかりいる」。"
+    }
+  },
+  {
+    "id": "n4-grammar-257",
+    "level": "N4",
+    "category": "其他",
+    "grammar": "〜ほうがいい",
+    "kana": "ほうがいい",
+    "meaning": "最好……",
+    "structure": "動詞た形 + ほうがいい",
+    "usage": "給對方建議做某事。",
+    "example": "早く寝たほうがいいです。",
+    "exampleKana": "はやくねたほうがいいです。",
+    "exampleMeaning": "最好早點睡。",
+    "note": "肯定建議常用た形。",
+    "similar": [
+      "否定建議用「ないほうがいい」。"
+    ],
+    "quiz": {
+      "clozePrompt": "熱がありますから、病院へ行った＿＿です。",
+      "clozePromptKana": "ねつがありますから、びょういんへいった＿＿です。",
+      "clozeMeaning": "因為發燒，最好去醫院。",
+      "choices": [
+        "ほうがいい",
+        "ことがある",
+        "つもりです",
+        "予定です"
+      ],
+      "answer": "ほうがいい",
+      "explanation": "給建議時用「動詞た形 + ほうがいい」。"
+    }
+  },
+  {
+    "id": "n4-grammar-258",
+    "level": "N4",
+    "category": "其他",
+    "grammar": "〜ないほうがいい",
+    "kana": "ないほうがいい",
+    "meaning": "最好不要……",
+    "structure": "動詞ない形 + ほうがいい",
+    "usage": "建議對方不要做某事。",
+    "example": "夜遅くコーヒーを飲まないほうがいいです。",
+    "exampleKana": "よるおそくこーひーをのまないほうがいいです。",
+    "exampleMeaning": "晚上晚一點最好不要喝咖啡。",
+    "note": "否定建議不用た形。",
+    "similar": [
+      "肯定建議多用「たほうがいい」。"
+    ],
+    "quiz": {
+      "clozePrompt": "今日は無理をし＿＿。",
+      "clozePromptKana": "きょうはむりをし＿＿。",
+      "clozeMeaning": "今天最好不要勉強自己。",
+      "choices": [
+        "ないほうがいいです",
+        "たほうがいいです",
+        "てもいいです",
+        "なければなりません"
+      ],
+      "answer": "ないほうがいいです",
+      "explanation": "建議不要做時，用「ない形 + ほうがいい」。"
+    }
+  },
+  {
+    "id": "n4-grammar-259",
+    "level": "N4",
+    "category": "義務・許可",
+    "grammar": "〜ても大丈夫",
+    "kana": "てもだいじょうぶ",
+    "meaning": "……也沒關係",
+    "structure": "動詞て形 + も大丈夫",
+    "usage": "表示做某事沒有問題，語氣口語。",
+    "example": "ここに荷物を置いても大丈夫です。",
+    "exampleKana": "ここににもつをおいてもだいじょうぶです。",
+    "exampleMeaning": "把行李放在這裡也沒關係。",
+    "note": "意思接近「てもいい」。",
+    "similar": [
+      "「てもいい」較標準；「ても大丈夫」較口語。"
+    ],
+    "quiz": {
+      "clozePrompt": "この写真を送っ＿＿ですか。",
+      "clozePromptKana": "このしゃしんをおくっ＿＿ですか。",
+      "clozeMeaning": "可以寄這張照片嗎？",
+      "choices": [
+        "ても大丈夫",
+        "てはいけない",
+        "なくてはいけない",
+        "ないほうがいい"
+      ],
+      "answer": "ても大丈夫",
+      "explanation": "詢問是否可以做某事時，可用「ても大丈夫ですか」。"
+    }
+  },
+  {
+    "id": "n4-grammar-260",
+    "level": "N4",
+    "category": "義務・許可",
+    "grammar": "〜なくても大丈夫",
+    "kana": "なくてもだいじょうぶ",
+    "meaning": "不……也沒關係",
+    "structure": "動詞ない形 + くても大丈夫",
+    "usage": "表示不做某事也沒有問題。",
+    "example": "予約しなくても大丈夫です。",
+    "exampleKana": "よやくしなくてもだいじょうぶです。",
+    "exampleMeaning": "不用預約也沒關係。",
+    "note": "口語常用，意思接近「なくてもいい」。",
+    "similar": [
+      "「なくてもいい」較標準；「なくても大丈夫」較口語。"
+    ],
+    "quiz": {
+      "clozePrompt": "明日は早く来＿＿です。",
+      "clozePromptKana": "あしたははやくこ＿＿です。",
+      "clozeMeaning": "明天不用早點來也沒關係。",
+      "choices": [
+        "なくても大丈夫",
+        "なければならない",
+        "ても大丈夫",
+        "ないでください"
+      ],
+      "answer": "なくても大丈夫",
+      "explanation": "表示不必早來也沒問題，用「なくても大丈夫」。"
+    }
+  },
+  {
+    "id": "n4-grammar-261",
+    "level": "N4",
+    "category": "授受",
+    "grammar": "〜てくれてありがとう",
+    "kana": "てくれてありがとう",
+    "meaning": "謝謝你為我……",
+    "structure": "動詞て形 + くれてありがとう",
+    "usage": "感謝對方為自己或自己這方做某事。",
+    "example": "手伝ってくれてありがとう。",
+    "exampleKana": "てつだってくれてありがとう。",
+    "exampleMeaning": "謝謝你幫忙。",
+    "note": "受益者通常是說話者或自己這方。",
+    "similar": [
+      "「てあげる」是我為別人做。"
+    ],
+    "quiz": {
+      "clozePrompt": "待っ＿＿ありがとう。",
+      "clozePromptKana": "まっ＿＿ありがとう。",
+      "clozeMeaning": "謝謝你等我。",
+      "choices": [
+        "てくれて",
+        "てあげて",
+        "てもらって",
+        "てみて"
+      ],
+      "answer": "てくれて",
+      "explanation": "感謝對方為自己做某事，用「てくれてありがとう」。"
+    }
+  },
+  {
+    "id": "n4-grammar-262",
+    "level": "N4",
+    "category": "授受",
+    "grammar": "〜てもらいたい",
+    "kana": "てもらいたい",
+    "meaning": "想請別人……",
+    "structure": "人に + 動詞て形 + もらいたい",
+    "usage": "表示希望別人為自己做某事。",
+    "example": "先生に作文を見てもらいたいです。",
+    "exampleKana": "せんせいにさくぶんをみてもらいたいです。",
+    "exampleMeaning": "我想請老師看作文。",
+    "note": "比直接命令柔和。",
+    "similar": [
+      "「てほしい」也表示希望別人做，語氣較直接。"
+    ],
+    "quiz": {
+      "clozePrompt": "友だちに駅まで来＿＿です。",
+      "clozePromptKana": "ともだちにえきまでき＿＿です。",
+      "clozeMeaning": "我想請朋友來車站。",
+      "choices": [
+        "てもらいたい",
+        "てあげたい",
+        "てしまいたい",
+        "てみたい"
+      ],
+      "answer": "てもらいたい",
+      "explanation": "想請別人為自己做事時，用「〜てもらいたい」。"
+    }
+  },
+  {
+    "id": "n4-grammar-263",
+    "level": "N4",
+    "category": "授受",
+    "grammar": "〜てあげたい",
+    "kana": "てあげたい",
+    "meaning": "想為別人……",
+    "structure": "人に + 動詞て形 + あげたい",
+    "usage": "表示想為別人做某事。",
+    "example": "妹に本を買ってあげたいです。",
+    "exampleKana": "いもうとにほんをかってあげたいです。",
+    "exampleMeaning": "我想買書給妹妹。",
+    "note": "對上位者使用要小心，可能顯得失禮。",
+    "similar": [
+      "「てもらいたい」是想請別人為自己做。"
+    ],
+    "quiz": {
+      "clozePrompt": "祖母に料理を作っ＿＿です。",
+      "clozePromptKana": "そぼにりょうりをつくっ＿＿です。",
+      "clozeMeaning": "我想做料理給祖母。",
+      "choices": [
+        "てあげたい",
+        "てもらいたい",
+        "てくれたい",
+        "てみたい"
+      ],
+      "answer": "てあげたい",
+      "explanation": "想為別人做某事時，用「てあげたい」。"
+    }
+  },
+  {
+    "id": "n4-grammar-264",
+    "level": "N4",
+    "category": "授受",
+    "grammar": "〜てくれている",
+    "kana": "てくれている",
+    "meaning": "正在／一直為我……",
+    "structure": "動詞て形 + くれている",
+    "usage": "表示別人持續為自己做某事。",
+    "example": "友だちが犬の世話をしてくれています。",
+    "exampleKana": "ともだちがいぬのせわをしてくれています。",
+    "exampleMeaning": "朋友正在幫我照顧狗。",
+    "note": "含有感謝或受惠的感覺。",
+    "similar": [
+      "「てもらっている」強調自己請對方做。"
+    ],
+    "quiz": {
+      "clozePrompt": "母が部屋を掃除し＿＿。",
+      "clozePromptKana": "ははがへやをそうじし＿＿。",
+      "clozeMeaning": "媽媽正在幫我打掃房間。",
+      "choices": [
+        "てくれています",
+        "てもらっています",
+        "てあげています",
+        "てみています"
+      ],
+      "answer": "てくれています",
+      "explanation": "別人為我做且動作持續時，用「てくれている」。"
+    }
+  },
+  {
+    "id": "n4-grammar-265",
+    "level": "N4",
+    "category": "授受",
+    "grammar": "〜てもらっている",
+    "kana": "てもらっている",
+    "meaning": "請別人持續為我……",
+    "structure": "人に + 動詞て形 + もらっている",
+    "usage": "表示自己請別人做某事，且狀態持續。",
+    "example": "先生に日本語を教えてもらっています。",
+    "exampleKana": "せんせいににほんごをおしえてもらっています。",
+    "exampleMeaning": "我請老師教我日文。",
+    "note": "強調自己接受幫助。",
+    "similar": [
+      "「てくれている」強調對方主動為我做。"
+    ],
+    "quiz": {
+      "clozePrompt": "友だちに宿題を手伝っ＿＿。",
+      "clozePromptKana": "ともだちにしゅくだいをてつだっ＿＿。",
+      "clozeMeaning": "我請朋友幫我做作業。",
+      "choices": [
+        "てもらっています",
+        "てくれています",
+        "てあげています",
+        "てしまっています"
+      ],
+      "answer": "てもらっています",
+      "explanation": "接受別人的幫助時，用「てもらっている」。"
+    }
+  },
+  {
+    "id": "n4-grammar-266",
+    "level": "N4",
+    "category": "條件",
+    "grammar": "〜ばよかった",
+    "kana": "ばよかった",
+    "meaning": "要是……就好了",
+    "structure": "動詞ば形 + よかった",
+    "usage": "表示對過去沒做某事感到後悔。",
+    "example": "もっと早く起きればよかったです。",
+    "exampleKana": "もっとはやくおきればよかったです。",
+    "exampleMeaning": "要是更早起床就好了。",
+    "note": "常用於後悔或遺憾。",
+    "similar": [
+      "「たらよかった」意思相近，口語常用。"
+    ],
+    "quiz": {
+      "clozePrompt": "昨日、傘を持って行け＿＿。",
+      "clozePromptKana": "きのう、かさをもっていけ＿＿。",
+      "clozeMeaning": "昨天要是帶傘去就好了。",
+      "choices": [
+        "ばよかった",
+        "ばいい",
+        "てもいい",
+        "ことになった"
+      ],
+      "answer": "ばよかった",
+      "explanation": "對過去的選擇後悔時，用「ばよかった」。"
+    }
+  },
+  {
+    "id": "n4-grammar-267",
+    "level": "N4",
+    "category": "條件",
+    "grammar": "〜なければよかった",
+    "kana": "なければよかった",
+    "meaning": "要是沒……就好了",
+    "structure": "動詞ない形 + ければよかった",
+    "usage": "表示對過去做了某事感到後悔。",
+    "example": "あんなことを言わなければよかったです。",
+    "exampleKana": "あんなことをいわなければよかったです。",
+    "exampleMeaning": "要是沒說那種話就好了。",
+    "note": "用於後悔已經做過的事。",
+    "similar": [
+      "「ばよかった」後悔沒做；「なければよかった」後悔做了。"
+    ],
+    "quiz": {
+      "clozePrompt": "昨日、夜更かしし＿＿。",
+      "clozePromptKana": "きのう、よふかしし＿＿。",
+      "clozeMeaning": "昨天要是沒熬夜就好了。",
+      "choices": [
+        "なければよかった",
+        "ばよかった",
+        "なければならない",
+        "なくてもいい"
+      ],
+      "answer": "なければよかった",
+      "explanation": "後悔做了某事時，用「なければよかった」。"
+    }
+  },
+  {
+    "id": "n4-grammar-268",
+    "level": "N4",
+    "category": "推量・樣態",
+    "grammar": "〜そうにない",
+    "kana": "そうにない",
+    "meaning": "看起來不會……",
+    "structure": "動詞ます形語幹 + そうにない",
+    "usage": "表示從情況判斷不太可能發生。",
+    "example": "雨はすぐには止みそうにないです。",
+    "exampleKana": "あめはすぐにはやみそうにないです。",
+    "exampleMeaning": "雨看起來不會馬上停。",
+    "note": "常用於可能性低的判斷。",
+    "similar": [
+      "「〜そうだ」表示看起來會；「そうにない」是否定。"
+    ],
+    "quiz": {
+      "clozePrompt": "この仕事は今日中に終わり＿＿。",
+      "clozePromptKana": "このしごとはきょうじゅうにおわり＿＿。",
+      "clozeMeaning": "這工作看起來今天內不會結束。",
+      "choices": [
+        "そうにない",
+        "そうです",
+        "ようです",
+        "はずです"
+      ],
+      "answer": "そうにない",
+      "explanation": "從情況看不會結束，用「終わりそうにない」。"
+    }
+  },
+  {
+    "id": "n4-grammar-269",
+    "level": "N4",
+    "category": "推量・樣態",
+    "grammar": "〜そうになる",
+    "kana": "そうになる",
+    "meaning": "差點……；快要……",
+    "structure": "動詞ます形語幹 + そうになる",
+    "usage": "表示某事差點發生。",
+    "example": "駅の階段で転びそうになりました。",
+    "exampleKana": "えきのかいだんでころびそうになりました。",
+    "exampleMeaning": "我在車站樓梯差點跌倒。",
+    "note": "常用於危險或意外快發生時。",
+    "similar": [
+      "「〜ようとする」表示正要做，不一定有差點的意思。"
+    ],
+    "quiz": {
+      "clozePrompt": "眠くて、授業中に寝＿＿。",
+      "clozePromptKana": "ねむくて、じゅぎょうちゅうにね＿＿。",
+      "clozeMeaning": "太想睡，差點在上課中睡著。",
+      "choices": [
+        "そうになりました",
+        "ようになりました",
+        "ことになりました",
+        "ところでした"
+      ],
+      "answer": "そうになりました",
+      "explanation": "表示差點睡著，用「寝そうになりました」。"
+    }
+  },
+  {
+    "id": "n4-grammar-270",
+    "level": "N4",
+    "category": "推量・樣態",
+    "grammar": "〜はずだった",
+    "kana": "はずだった",
+    "meaning": "原本應該……",
+    "structure": "普通形 + はずだった",
+    "usage": "表示原本預期如此，但結果常不同。",
+    "example": "電車は九時に着くはずでした。",
+    "exampleKana": "でんしゃはくじにつくはずでした。",
+    "exampleMeaning": "電車原本應該九點到。",
+    "note": "常暗示實際結果和預期不同。",
+    "similar": [
+      "「はずだ」表示現在的推測；「はずだった」表示過去預期。"
+    ],
+    "quiz": {
+      "clozePrompt": "荷物は昨日届く＿＿。",
+      "clozePromptKana": "にもつはきのうとどく＿＿。",
+      "clozeMeaning": "包裹原本應該昨天送到。",
+      "choices": [
+        "はずでした",
+        "つもりでした",
+        "予定でした",
+        "ところでした"
+      ],
+      "answer": "はずでした",
+      "explanation": "表示原本應該如此時，用「はずでした」。"
+    }
+  },
+  {
+    "id": "n4-grammar-271",
+    "level": "N4",
+    "category": "推量・樣態",
+    "grammar": "〜はずなのに",
+    "kana": "はずなのに",
+    "meaning": "明明應該……卻……",
+    "structure": "普通形 + はずなのに",
+    "usage": "表示預期與實際不一致。",
+    "example": "今日は休みのはずなのに、店が開いています。",
+    "exampleKana": "きょうはやすみのはずなのに、みせがあいています。",
+    "exampleMeaning": "今天明明應該休息，店卻開著。",
+    "note": "後句常出現意外結果。",
+    "similar": [
+      "「のに」表示逆接；「はずなのに」強調與預期不同。"
+    ],
+    "quiz": {
+      "clozePrompt": "彼は来る＿＿、まだ来ません。",
+      "clozePromptKana": "かれはくる＿＿、まだきません。",
+      "clozeMeaning": "他明明應該會來，卻還沒來。",
+      "choices": [
+        "はずなのに",
+        "つもりなのに",
+        "予定だから",
+        "ところなのに"
+      ],
+      "answer": "はずなのに",
+      "explanation": "表示預期和實際不同時，用「はずなのに」。"
+    }
+  },
+  {
+    "id": "n4-grammar-272",
+    "level": "N4",
+    "category": "傳聞・引用",
+    "grammar": "〜と言っている",
+    "kana": "といっている",
+    "meaning": "說……",
+    "structure": "普通形 + と言っている",
+    "usage": "引用他人正在說或曾說的內容。",
+    "example": "母は少し遅れると言っています。",
+    "exampleKana": "はははすこしおくれるといっています。",
+    "exampleMeaning": "媽媽說會晚一點。",
+    "note": "引用句子時前面用普通形。",
+    "similar": [
+      "「と思う」是自己的想法；「と言っている」是他人的話。"
+    ],
+    "quiz": {
+      "clozePrompt": "先生は明日テストがある＿＿。",
+      "clozePromptKana": "せんせいはあしたてすとがある＿＿。",
+      "clozeMeaning": "老師說明天有考試。",
+      "choices": [
+        "と言っています",
+        "と思っています",
+        "と聞いています",
+        "によっています"
+      ],
+      "answer": "と言っています",
+      "explanation": "引用老師說的內容時，用「と言っています」。"
+    }
+  },
+  {
+    "id": "n4-grammar-273",
+    "level": "N4",
+    "category": "傳聞・引用",
+    "grammar": "〜と言われている",
+    "kana": "といわれている",
+    "meaning": "據說被認為……",
+    "structure": "普通形 + と言われている",
+    "usage": "表示一般人常這樣說或認為。",
+    "example": "この町は住みやすいと言われています。",
+    "exampleKana": "このまちはすみやすいといわれています。",
+    "exampleMeaning": "據說這個城鎮很好住。",
+    "note": "常用於一般評價或傳聞。",
+    "similar": [
+      "「そうだ」可表示聽說；「と言われている」較客觀。"
+    ],
+    "quiz": {
+      "clozePrompt": "この水は体にいい＿＿。",
+      "clozePromptKana": "このみずはからだにいい＿＿。",
+      "clozeMeaning": "據說這種水對身體好。",
+      "choices": [
+        "と言われています",
+        "と思っています",
+        "と言っています",
+        "と見えています"
+      ],
+      "answer": "と言われています",
+      "explanation": "表示一般傳聞或評價時，用「と言われています」。"
+    }
+  },
+  {
+    "id": "n4-grammar-274",
+    "level": "N4",
+    "category": "傳聞・引用",
+    "grammar": "〜ということ",
+    "kana": "ということ",
+    "meaning": "也就是說……；所謂……",
+    "structure": "普通形 + ということ",
+    "usage": "整理或說明前面內容的意思。",
+    "example": "明日は休みということです。",
+    "exampleKana": "あしたはやすみということです。",
+    "exampleMeaning": "也就是說明天放假。",
+    "note": "可用於確認聽到的資訊。",
+    "similar": [
+      "「という」可修飾名詞；「ということ」把內容名詞化。"
+    ],
+    "quiz": {
+      "clozePrompt": "つまり、今日は行かなくてもいい＿＿ですね。",
+      "clozePromptKana": "つまり、きょうはいかなくてもいい＿＿ですね。",
+      "clozeMeaning": "也就是說，今天不用去也可以，對吧？",
+      "choices": [
+        "ということ",
+        "というもの",
+        "という人",
+        "という時"
+      ],
+      "answer": "ということ",
+      "explanation": "整理整句內容時，用「ということ」。"
+    }
+  },
+  {
+    "id": "n4-grammar-275",
+    "level": "N4",
+    "category": "其他",
+    "grammar": "〜について",
+    "kana": "について",
+    "meaning": "關於……",
+    "structure": "名詞 + について",
+    "usage": "表示談論、學習或調查的主題。",
+    "example": "日本の文化について調べます。",
+    "exampleKana": "にほんのぶんかについてしらべます。",
+    "exampleMeaning": "我調查關於日本文化的事。",
+    "note": "後面常接「話す、調べる、勉強する」。",
+    "similar": [
+      "「にとって」表示立場；「について」表示主題。"
+    ],
+    "quiz": {
+      "clozePrompt": "環境問題＿＿話しましょう。",
+      "clozePromptKana": "かんきょうもんだい＿＿はなしましょう。",
+      "clozeMeaning": "來談談環境問題吧。",
+      "choices": [
+        "について",
+        "にとって",
+        "として",
+        "によって"
+      ],
+      "answer": "について",
+      "explanation": "表示談論主題時，用「について」。"
+    }
+  },
+  {
+    "id": "n4-grammar-276",
+    "level": "N4",
+    "category": "其他",
+    "grammar": "〜についての",
+    "kana": "についての",
+    "meaning": "關於……的",
+    "structure": "名詞 + についての + 名詞",
+    "usage": "修飾後面的名詞，表示其主題。",
+    "example": "旅行についての本を読みました。",
+    "exampleKana": "りょこうについてのほんをよみました。",
+    "exampleMeaning": "我讀了關於旅行的書。",
+    "note": "後面一定接名詞。",
+    "similar": [
+      "「について」後接動詞；「についての」後接名詞。"
+    ],
+    "quiz": {
+      "clozePrompt": "日本語＿＿資料を集めています。",
+      "clozePromptKana": "にほんご＿＿しりょうをあつめています。",
+      "clozeMeaning": "我正在收集關於日文的資料。",
+      "choices": [
+        "についての",
+        "について",
+        "にとっての",
+        "としての"
+      ],
+      "answer": "についての",
+      "explanation": "修飾名詞「資料」時，用「についての」。"
+    }
+  },
+  {
+    "id": "n4-grammar-277",
+    "level": "N4",
+    "category": "其他",
+    "grammar": "〜にとって",
+    "kana": "にとって",
+    "meaning": "對……來說",
+    "structure": "名詞 + にとって",
+    "usage": "表示從某人的立場或角度來看。",
+    "example": "私にとって家族がいちばん大切です。",
+    "exampleKana": "わたしにとってかぞくがいちばんたいせつです。",
+    "exampleMeaning": "對我來說，家人最重要。",
+    "note": "常用於價值判斷或感受。",
+    "similar": [
+      "「について」表示主題；「にとって」表示立場。"
+    ],
+    "quiz": {
+      "clozePrompt": "子ども＿＿遊ぶ時間は大切です。",
+      "clozePromptKana": "こども＿＿あそぶじかんはたいせつです。",
+      "clozeMeaning": "對孩子來說，玩耍時間很重要。",
+      "choices": [
+        "にとって",
+        "について",
+        "として",
+        "によって"
+      ],
+      "answer": "にとって",
+      "explanation": "表示從孩子立場看時，用「にとって」。"
+    }
+  },
+  {
+    "id": "n4-grammar-278",
+    "level": "N4",
+    "category": "其他",
+    "grammar": "〜として",
+    "kana": "として",
+    "meaning": "作為……",
+    "structure": "名詞 + として",
+    "usage": "表示身分、資格或立場。",
+    "example": "田中さんは医者として働いています。",
+    "exampleKana": "たなかさんはいしゃとしてはたらいています。",
+    "exampleMeaning": "田中先生以醫生的身分工作。",
+    "note": "後面常接工作、活動或評價。",
+    "similar": [
+      "「にとって」表示觀點；「として」表示身分。"
+    ],
+    "quiz": {
+      "clozePrompt": "兄は教師＿＿学校で働いています。",
+      "clozePromptKana": "あにはきょうし＿＿がっこうではたらいています。",
+      "clozeMeaning": "哥哥以教師的身分在學校工作。",
+      "choices": [
+        "として",
+        "にとって",
+        "について",
+        "によって"
+      ],
+      "answer": "として",
+      "explanation": "表示身分或資格時，用「として」。"
+    }
+  },
+  {
+    "id": "n4-grammar-279",
+    "level": "N4",
+    "category": "並列・例示",
+    "grammar": "〜やすくする",
+    "kana": "やすくする",
+    "meaning": "讓……容易……",
+    "structure": "動詞ます形語幹 + やすくする",
+    "usage": "表示使某事變得容易做。",
+    "example": "字を大きくして、読みやすくします。",
+    "exampleKana": "じをおおきくして、よみやすくします。",
+    "exampleMeaning": "把字放大，讓它容易閱讀。",
+    "note": "重點是人為地讓狀態變容易。",
+    "similar": [
+      "「やすい」描述容易；「やすくする」表示使它容易。"
+    ],
+    "quiz": {
+      "clozePrompt": "説明を短くして、わかり＿＿します。",
+      "clozePromptKana": "せつめいをみじかくして、わかり＿＿します。",
+      "clozeMeaning": "把說明縮短，讓它容易理解。",
+      "choices": [
+        "やすく",
+        "にくく",
+        "そうに",
+        "ながら"
+      ],
+      "answer": "やすく",
+      "explanation": "表示使它容易理解，用「わかりやすくする」。"
+    }
+  },
+  {
+    "id": "n4-grammar-280",
+    "level": "N4",
+    "category": "比較・程度",
+    "grammar": "〜にくくなる",
+    "kana": "にくくなる",
+    "meaning": "變得難以……",
+    "structure": "動詞ます形語幹 + にくくなる",
+    "usage": "表示某動作變得不容易做。",
+    "example": "このペンは書きにくくなりました。",
+    "exampleKana": "このぺんはかきにくくなりました。",
+    "exampleMeaning": "這支筆變得不好寫了。",
+    "note": "「なる」表示狀態變化。",
+    "similar": [
+      "「にくい」是難做；「にくくなる」是變難做。"
+    ],
+    "quiz": {
+      "clozePrompt": "夜になると、道が見え＿＿なります。",
+      "clozePromptKana": "よるになると、みちがみえ＿＿なります。",
+      "clozeMeaning": "到了晚上，道路會變得難以看清。",
+      "choices": [
+        "にくく",
+        "やすく",
+        "そうに",
+        "らしく"
+      ],
+      "answer": "にくく",
+      "explanation": "表示變得難以看見，用「見えにくくなる」。"
+    }
+  },
+  {
+    "id": "n4-grammar-281",
+    "level": "N4",
+    "category": "狀態變化",
+    "grammar": "〜くなる",
+    "kana": "くなる",
+    "meaning": "變得……",
+    "structure": "い形容詞去い + くなる",
+    "usage": "表示い形容詞的狀態變化。",
+    "example": "部屋が明るくなりました。",
+    "exampleKana": "へやがあかるくなりました。",
+    "exampleMeaning": "房間變亮了。",
+    "note": "い形容詞變化時去掉「い」加「くなる」。",
+    "similar": [
+      "な形容詞用「に なる」。"
+    ],
+    "quiz": {
+      "clozePrompt": "だんだん暖か＿＿なりました。",
+      "clozePromptKana": "だんだんあたたか＿＿なりました。",
+      "clozeMeaning": "漸漸變暖了。",
+      "choices": [
+        "く",
+        "に",
+        "で",
+        "な"
+      ],
+      "answer": "く",
+      "explanation": "い形容詞「暖かい」變成「暖かくなる」。"
+    }
+  },
+  {
+    "id": "n4-grammar-282",
+    "level": "N4",
+    "category": "狀態變化",
+    "grammar": "〜になる",
+    "kana": "になる",
+    "meaning": "變成……",
+    "structure": "な形容詞／名詞 + に + なる",
+    "usage": "表示名詞或な形容詞的狀態變化。",
+    "example": "町が静かになりました。",
+    "exampleKana": "まちがしずかになりました。",
+    "exampleMeaning": "城鎮變安靜了。",
+    "note": "名詞和な形容詞用「に」。",
+    "similar": [
+      "い形容詞用「くなる」。"
+    ],
+    "quiz": {
+      "clozePrompt": "弟は来年、大学生＿＿なります。",
+      "clozePromptKana": "おとうとはらいねん、だいがくせい＿＿なります。",
+      "clozeMeaning": "弟弟明年會成為大學生。",
+      "choices": [
+        "に",
+        "く",
+        "で",
+        "を"
+      ],
+      "answer": "に",
+      "explanation": "名詞「大学生」變化時，用「になる」。"
+    }
+  },
+  {
+    "id": "n4-grammar-283",
+    "level": "N4",
+    "category": "狀態變化",
+    "grammar": "〜くする",
+    "kana": "くする",
+    "meaning": "把……弄成……",
+    "structure": "い形容詞去い + くする",
+    "usage": "表示人為地改變い形容詞狀態。",
+    "example": "音を小さくしてください。",
+    "exampleKana": "おとをちいさくしてください。",
+    "exampleMeaning": "請把聲音調小。",
+    "note": "重點是人為改變。",
+    "similar": [
+      "「くなる」是自然變化；「くする」是使其變化。"
+    ],
+    "quiz": {
+      "clozePrompt": "部屋を明る＿＿してください。",
+      "clozePromptKana": "へやをあかる＿＿してください。",
+      "clozeMeaning": "請把房間弄亮。",
+      "choices": [
+        "く",
+        "に",
+        "で",
+        "な"
+      ],
+      "answer": "く",
+      "explanation": "い形容詞「明るい」使役式變化為「明るくする」。"
+    }
+  },
+  {
+    "id": "n4-grammar-284",
+    "level": "N4",
+    "category": "狀態變化",
+    "grammar": "〜にする",
+    "kana": "にする",
+    "meaning": "把……弄成……；決定選……",
+    "structure": "な形容詞／名詞 + に + する",
+    "usage": "表示人為改變狀態，或從選項中決定。",
+    "example": "部屋をきれいにします。",
+    "exampleKana": "へやをきれいにします。",
+    "exampleMeaning": "把房間打掃乾淨。",
+    "note": "點餐時「これにします」表示決定選這個。",
+    "similar": [
+      "「になる」是變成；「にする」是使其變成或決定。"
+    ],
+    "quiz": {
+      "clozePrompt": "飲み物はお茶＿＿します。",
+      "clozePromptKana": "のみものはおちゃ＿＿します。",
+      "clozeMeaning": "飲料我決定選茶。",
+      "choices": [
+        "に",
+        "く",
+        "で",
+        "を"
+      ],
+      "answer": "に",
+      "explanation": "名詞作為選擇結果時，用「にする」。"
+    }
+  },
+  {
+    "id": "n4-grammar-285",
+    "level": "N4",
+    "category": "條件",
+    "grammar": "〜といいです",
+    "kana": "といいです",
+    "meaning": "……就好了",
+    "structure": "普通形 + といいです",
+    "usage": "表示願望或祝福。",
+    "example": "明日晴れるといいですね。",
+    "exampleKana": "あしたはれるといいですね。",
+    "exampleMeaning": "明天放晴就好了。",
+    "note": "常用於希望事情順利。",
+    "similar": [
+      "「たらいい」也可表示建議或願望。"
+    ],
+    "quiz": {
+      "clozePrompt": "試験に合格する＿＿ですね。",
+      "clozePromptKana": "しけんにごうかくする＿＿ですね。",
+      "clozeMeaning": "希望考試合格就好了。",
+      "choices": [
+        "といい",
+        "ために",
+        "はずだ",
+        "ところだ"
+      ],
+      "answer": "といい",
+      "explanation": "表示希望某事發生時，用「〜といい」。"
+    }
+  },
+  {
+    "id": "n4-grammar-286",
+    "level": "N4",
+    "category": "逆接・讓步",
+    "grammar": "〜てもいいが",
+    "kana": "てもいいが",
+    "meaning": "雖然可以……但是……",
+    "structure": "動詞て形 + もいいが",
+    "usage": "先承認可行，再提出限制或不同意見。",
+    "example": "行ってもいいですが、早く帰ってください。",
+    "exampleKana": "いってもいいですが、はやくかえってください。",
+    "exampleMeaning": "可以去，但是請早點回來。",
+    "note": "後句常有條件或提醒。",
+    "similar": [
+      "「てもいい」單純表示允許。"
+    ],
+    "quiz": {
+      "clozePrompt": "使っ＿＿、後で返してください。",
+      "clozePromptKana": "つかっ＿＿、あとでかえしてください。",
+      "clozeMeaning": "可以使用，但是之後請歸還。",
+      "choices": [
+        "てもいいですが",
+        "てはいけませんが",
+        "なくてもいいですが",
+        "なければなりませんが"
+      ],
+      "answer": "てもいいですが",
+      "explanation": "先允許再提醒時，用「てもいいですが」。"
+    }
+  },
+  {
+    "id": "n4-grammar-287",
+    "level": "N4",
+    "category": "逆接・讓步",
+    "grammar": "〜なくてもいいが",
+    "kana": "なくてもいいが",
+    "meaning": "雖然不必……但是……",
+    "structure": "動詞ない形 + くてもいいが",
+    "usage": "表示不做也可以，但後面補充條件或提醒。",
+    "example": "全部読まなくてもいいですが、要点は見てください。",
+    "exampleKana": "ぜんぶよまなくてもいいですが、ようてんはみてください。",
+    "exampleMeaning": "不用全部讀，但請看重點。",
+    "note": "常和提醒、最低要求一起用。",
+    "similar": [
+      "「なくてもいい」表示不必做。"
+    ],
+    "quiz": {
+      "clozePrompt": "来＿＿、連絡してください。",
+      "clozePromptKana": "こ＿＿、れんらくしてください。",
+      "clozeMeaning": "不來也可以，但請聯絡。",
+      "choices": [
+        "なくてもいいですが",
+        "てもいいですが",
+        "なければなりませんが",
+        "てはいけませんが"
+      ],
+      "answer": "なくてもいいですが",
+      "explanation": "表示不必來但有條件時，用「来なくてもいいですが」。"
+    }
+  },
+  {
+    "id": "n4-grammar-288",
+    "level": "N4",
+    "category": "目的・理由",
+    "grammar": "〜ためには",
+    "kana": "ためには",
+    "meaning": "為了……",
+    "structure": "動詞辞書形／名詞 + の + ためには",
+    "usage": "表示要達成目的所需要的條件。",
+    "example": "日本語が上手になるためには、毎日練習が必要です。",
+    "exampleKana": "にほんごがじょうずになるためには、まいにちれんしゅうがひつようです。",
+    "exampleMeaning": "為了讓日文變好，每天練習是必要的。",
+    "note": "後句常說必要事項。",
+    "similar": [
+      "「ために」表示目的；「ためには」強調達成目的的條件。"
+    ],
+    "quiz": {
+      "clozePrompt": "健康でいる＿＿、睡眠が大切です。",
+      "clozePromptKana": "けんこうでいる＿＿、すいみんがたいせつです。",
+      "clozeMeaning": "為了保持健康，睡眠很重要。",
+      "choices": [
+        "ためには",
+        "ためで",
+        "ためを",
+        "ためが"
+      ],
+      "answer": "ためには",
+      "explanation": "說明達成目的所需條件時，用「ためには」。"
+    }
+  },
+  {
+    "id": "n4-grammar-289",
+    "level": "N4",
+    "category": "目的・理由",
+    "grammar": "〜ように言う",
+    "kana": "ようにいう",
+    "meaning": "叫……要……",
+    "structure": "動詞辞書形／ない形 + ように言う",
+    "usage": "間接轉述命令、請求或提醒。",
+    "example": "母は早く帰るように言いました。",
+    "exampleKana": "ははははやくかえるようにいいました。",
+    "exampleMeaning": "媽媽叫我早點回家。",
+    "note": "前面常是非直接命令句。",
+    "similar": [
+      "直接引用可用「『帰って』と言う」。"
+    ],
+    "quiz": {
+      "clozePrompt": "先生は名前を書く＿＿言いました。",
+      "clozePromptKana": "せんせいはなまえをかく＿＿いいました。",
+      "clozeMeaning": "老師叫大家寫名字。",
+      "choices": [
+        "ように",
+        "ために",
+        "そうに",
+        "ながら"
+      ],
+      "answer": "ように",
+      "explanation": "間接轉述要求時，用「ように言う」。"
+    }
+  },
+  {
+    "id": "n4-grammar-290",
+    "level": "N4",
+    "category": "目的・理由",
+    "grammar": "〜ように頼む",
+    "kana": "ようにたのむ",
+    "meaning": "拜託……要……",
+    "structure": "動詞辞書形／ない形 + ように頼む",
+    "usage": "表示拜託對方做或不要做某事。",
+    "example": "友だちに写真を送るように頼みました。",
+    "exampleKana": "ともだちにしゃしんをおくるようにたのみました。",
+    "exampleMeaning": "我拜託朋友寄照片。",
+    "note": "比直接命令委婉。",
+    "similar": [
+      "「ように言う」是叫對方；「ように頼む」是拜託。"
+    ],
+    "quiz": {
+      "clozePrompt": "弟に部屋を掃除する＿＿頼みました。",
+      "clozePromptKana": "おとうとにへやをそうじする＿＿たのみました。",
+      "clozeMeaning": "我拜託弟弟打掃房間。",
+      "choices": [
+        "ように",
+        "ために",
+        "そうに",
+        "ほどに"
+      ],
+      "answer": "ように",
+      "explanation": "拜託某人做事時，用「ように頼む」。"
+    }
   }
 ]
