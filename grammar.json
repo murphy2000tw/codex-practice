@@ -1,0 +1,853 @@
+[
+  {
+    "id": "n5-grammar-001",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "は",
+    "kana": "は",
+    "meaning": "提示主題，表示接下來要說明的是什麼。",
+    "structure": "名詞 + は + 說明",
+    "usage": "用來提出句子的主題，常譯為「至於……」。讀音為「わ」。",
+    "example": "私は学生です。",
+    "exampleKana": "わたしはがくせいです。",
+    "exampleMeaning": "我是學生。",
+    "note": "初學時可先把它看成標記主題的助詞。",
+    "similar": [
+      "が"
+    ]
+  },
+  {
+    "id": "n5-grammar-002",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "が",
+    "kana": "が",
+    "meaning": "標示主語，或用來強調新資訊。",
+    "structure": "名詞 + が + 動詞／形容詞",
+    "usage": "常用在第一次提到的人事物、存在句，或回答「誰、什麼」的問題。",
+    "example": "雨が降っています。",
+    "exampleKana": "あめがふっています。",
+    "exampleMeaning": "正在下雨。",
+    "note": "和「は」相比，「が」更容易聚焦在前面的名詞。",
+    "similar": [
+      "は"
+    ]
+  },
+  {
+    "id": "n5-grammar-003",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "を",
+    "kana": "を",
+    "meaning": "標示動作的受詞。",
+    "structure": "名詞 + を + 他動詞",
+    "usage": "表示動作直接影響的對象。讀音通常為「お」。",
+    "example": "水を飲みます。",
+    "exampleKana": "みずをのみます。",
+    "exampleMeaning": "我喝水。",
+    "note": "多和需要受詞的動詞一起使用。",
+    "similar": [
+      "が"
+    ]
+  },
+  {
+    "id": "n5-grammar-004",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "に（時間）",
+    "kana": "に",
+    "meaning": "表示動作發生的具體時間。",
+    "structure": "時間名詞 + に + 動詞",
+    "usage": "用在幾點、星期幾、日期等明確時間後面。",
+    "example": "七時に起きます。",
+    "exampleKana": "しちじにおきます。",
+    "exampleMeaning": "我七點起床。",
+    "note": "像「今日、明日、毎日」通常不加「に」。",
+    "similar": [
+      "で"
+    ]
+  },
+  {
+    "id": "n5-grammar-005",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "に（目的地）",
+    "kana": "に",
+    "meaning": "表示移動的目的地或到達點。",
+    "structure": "地點 + に + 行きます／来ます／帰ります",
+    "usage": "說明人或物移動到哪裡。",
+    "example": "学校に行きます。",
+    "exampleKana": "がっこうにいきます。",
+    "exampleMeaning": "我去學校。",
+    "note": "移動動詞常見搭配有「行く、来る、帰る」。",
+    "similar": [
+      "へ"
+    ]
+  },
+  {
+    "id": "n5-grammar-006",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "へ",
+    "kana": "へ",
+    "meaning": "表示移動方向。",
+    "structure": "地點 + へ + 行きます／来ます／帰ります",
+    "usage": "強調朝某方向或目的地移動。讀音為「え」。",
+    "example": "日本へ行きます。",
+    "exampleKana": "にほんへいきます。",
+    "exampleMeaning": "我去日本。",
+    "note": "「へ」偏方向，「に」偏到達點；N5 可先都理解為去某處。",
+    "similar": [
+      "に"
+    ]
+  },
+  {
+    "id": "n5-grammar-007",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "で（場所）",
+    "kana": "で",
+    "meaning": "表示動作進行的場所。",
+    "structure": "地點 + で + 動作動詞",
+    "usage": "說明動作在哪裡發生。",
+    "example": "図書館で勉強します。",
+    "exampleKana": "としょかんでべんきょうします。",
+    "exampleMeaning": "我在圖書館讀書。",
+    "note": "存在句的地點通常用「に」，動作發生地通常用「で」。",
+    "similar": [
+      "に"
+    ]
+  },
+  {
+    "id": "n5-grammar-008",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "で（手段）",
+    "kana": "で",
+    "meaning": "表示方法、工具或交通手段。",
+    "structure": "工具／方法／交通工具 + で + 動詞",
+    "usage": "說明用什麼方式完成動作。",
+    "example": "電車で会社へ行きます。",
+    "exampleKana": "でんしゃでかいしゃへいきます。",
+    "exampleMeaning": "我搭電車去公司。",
+    "note": "可以用於交通工具、語言、工具等。",
+    "similar": [
+      "に"
+    ]
+  },
+  {
+    "id": "n5-grammar-009",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "と（並列）",
+    "kana": "と",
+    "meaning": "連接名詞，表示「和」。",
+    "structure": "名詞 + と + 名詞",
+    "usage": "列舉兩個或多個名詞。",
+    "example": "パンと卵を食べます。",
+    "exampleKana": "ぱんとたまごをたべます。",
+    "exampleMeaning": "我吃麵包和蛋。",
+    "note": "「と」列舉的項目較完整，不像「や」有省略感。",
+    "similar": [
+      "や"
+    ]
+  },
+  {
+    "id": "n5-grammar-010",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "と（一緒に）",
+    "kana": "と",
+    "meaning": "表示一起做動作的對象。",
+    "structure": "人 + と + 動詞",
+    "usage": "說明和誰一起做某事。",
+    "example": "友だちと映画を見ます。",
+    "exampleKana": "ともだちとえいがをみます。",
+    "exampleMeaning": "我和朋友看電影。",
+    "note": "若要強調「一起」，可加「一緒に」。",
+    "similar": [
+      "に"
+    ]
+  },
+  {
+    "id": "n5-grammar-011",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "も",
+    "kana": "も",
+    "meaning": "表示「也」。",
+    "structure": "名詞 + も + 說明",
+    "usage": "用來表示前後項目有相同情況。",
+    "example": "私も行きます。",
+    "exampleKana": "わたしもいきます。",
+    "exampleMeaning": "我也去。",
+    "note": "「も」會取代「は、が、を」的位置。",
+    "similar": [
+      "は"
+    ]
+  },
+  {
+    "id": "n5-grammar-012",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "の（所屬）",
+    "kana": "の",
+    "meaning": "表示所屬、關係或修飾。",
+    "structure": "名詞 + の + 名詞",
+    "usage": "用來說明後面名詞屬於誰，或和前面名詞有關。",
+    "example": "これは私の本です。",
+    "exampleKana": "これはわたしのほんです。",
+    "exampleMeaning": "這是我的書。",
+    "note": "相當於中文的「的」，但用法不完全相同。",
+    "similar": [
+      "な"
+    ]
+  },
+  {
+    "id": "n5-grammar-013",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "から（起點）",
+    "kana": "から",
+    "meaning": "表示時間或地點的起點。",
+    "structure": "時間／地點 + から",
+    "usage": "說明從何時或何處開始。",
+    "example": "授業は九時からです。",
+    "exampleKana": "じゅぎょうはくじからです。",
+    "exampleMeaning": "課從九點開始。",
+    "note": "常和「まで」一起使用。",
+    "similar": [
+      "まで"
+    ]
+  },
+  {
+    "id": "n5-grammar-014",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "まで",
+    "kana": "まで",
+    "meaning": "表示時間或地點的終點。",
+    "structure": "時間／地點 + まで",
+    "usage": "說明到何時或何處為止。",
+    "example": "五時まで働きます。",
+    "exampleKana": "ごじまではたらきます。",
+    "exampleMeaning": "我工作到五點。",
+    "note": "「から」是起點，「まで」是終點。",
+    "similar": [
+      "から"
+    ]
+  },
+  {
+    "id": "n5-grammar-015",
+    "level": "N5",
+    "category": "助詞",
+    "grammar": "や",
+    "kana": "や",
+    "meaning": "列舉部分例子，表示「……和……等」。",
+    "structure": "名詞 + や + 名詞",
+    "usage": "用於不完整列舉，暗示還有其他同類項目。",
+    "example": "机の上に本や鉛筆があります。",
+    "exampleKana": "つくえのうえにほんやえんぴつがあります。",
+    "exampleMeaning": "桌上有書和鉛筆等東西。",
+    "note": "若要完整列舉，常用「と」。",
+    "similar": [
+      "と"
+    ]
+  },
+  {
+    "id": "n5-grammar-016",
+    "level": "N5",
+    "category": "句型",
+    "grammar": "です",
+    "kana": "です",
+    "meaning": "禮貌地說明名詞或形容詞的狀態。",
+    "structure": "名詞／な形容詞 + です；い形容詞 + です",
+    "usage": "用於禮貌句尾，表示肯定。",
+    "example": "今日は暑いです。",
+    "exampleKana": "きょうはあついです。",
+    "exampleMeaning": "今天很熱。",
+    "note": "口語中比普通形更禮貌，初學者常先學這種形式。",
+    "similar": [
+      "だ"
+    ]
+  },
+  {
+    "id": "n5-grammar-017",
+    "level": "N5",
+    "category": "句型",
+    "grammar": "ではありません",
+    "kana": "ではありません",
+    "meaning": "名詞句或な形容詞句的禮貌否定。",
+    "structure": "名詞／な形容詞 + ではありません",
+    "usage": "用來表示「不是……」。口語也常說「じゃありません」。",
+    "example": "田中さんは先生ではありません。",
+    "exampleKana": "たなかさんはせんせいではありません。",
+    "exampleMeaning": "田中先生不是老師。",
+    "note": "「ではありません」比「じゃありません」正式。",
+    "similar": [
+      "じゃありません"
+    ]
+  },
+  {
+    "id": "n5-grammar-018",
+    "level": "N5",
+    "category": "疑問句",
+    "grammar": "か",
+    "kana": "か",
+    "meaning": "放在句尾形成疑問句。",
+    "structure": "句子 + か",
+    "usage": "禮貌句中常用，不一定需要問號。",
+    "example": "これはあなたの傘ですか。",
+    "exampleKana": "これはあなたのかさですか。",
+    "exampleMeaning": "這是你的傘嗎？",
+    "note": "句尾語調通常上揚。",
+    "similar": [
+      "でしょうか"
+    ]
+  },
+  {
+    "id": "n5-grammar-019",
+    "level": "N5",
+    "category": "存在句",
+    "grammar": "あります",
+    "kana": "あります",
+    "meaning": "表示無生命物品、植物或事情的存在。",
+    "structure": "地點 + に + 名詞 + が + あります",
+    "usage": "用於說「有某物」或「某物在某處」。",
+    "example": "部屋に椅子があります。",
+    "exampleKana": "へやにいすがあります。",
+    "exampleMeaning": "房間裡有椅子。",
+    "note": "人和動物的存在通常用「います」。",
+    "similar": [
+      "います"
+    ]
+  },
+  {
+    "id": "n5-grammar-020",
+    "level": "N5",
+    "category": "存在句",
+    "grammar": "います",
+    "kana": "います",
+    "meaning": "表示人或動物的存在。",
+    "structure": "地點 + に + 人／動物 + が + います",
+    "usage": "用於說「有人或動物」或「人在某處」。",
+    "example": "公園に子どもがいます。",
+    "exampleKana": "こうえんにこどもがいます。",
+    "exampleMeaning": "公園裡有小孩。",
+    "note": "物品和植物的存在通常用「あります」。",
+    "similar": [
+      "あります"
+    ]
+  },
+  {
+    "id": "n5-grammar-021",
+    "level": "N5",
+    "category": "存在句",
+    "grammar": "場所に名詞があります／います",
+    "kana": "ばしょにめいしがあります／います",
+    "meaning": "表示某處有某物或某人。",
+    "structure": "地點 + に + 名詞 + が + あります／います",
+    "usage": "先說地點，再說那裡有什麼。",
+    "example": "教室に学生がいます。",
+    "exampleKana": "きょうしつにがくせいがいます。",
+    "exampleMeaning": "教室裡有學生。",
+    "note": "地點後面的「に」標示存在的位置。",
+    "similar": [
+      "名詞は場所にあります／います"
+    ]
+  },
+  {
+    "id": "n5-grammar-022",
+    "level": "N5",
+    "category": "存在句",
+    "grammar": "名詞は場所にあります／います",
+    "kana": "めいしはばしょにあります／います",
+    "meaning": "表示某物或某人在某處。",
+    "structure": "名詞 + は + 地點 + に + あります／います",
+    "usage": "先提出人或物，再說位置。",
+    "example": "猫は椅子の下にいます。",
+    "exampleKana": "ねこはいすのしたにいます。",
+    "exampleMeaning": "貓在椅子下面。",
+    "note": "主題是前面的名詞，所以用「は」。",
+    "similar": [
+      "場所に名詞があります／います"
+    ]
+  },
+  {
+    "id": "n5-grammar-023",
+    "level": "N5",
+    "category": "形容詞",
+    "grammar": "い形容詞現在肯定",
+    "kana": "いけいようしげんざいこうてい",
+    "meaning": "描述現在或一般狀態的い形容詞肯定句。",
+    "structure": "い形容詞 + です",
+    "usage": "用來禮貌地描述人事物的性質。",
+    "example": "この店は安いです。",
+    "exampleKana": "このみせはやすいです。",
+    "exampleMeaning": "這家店很便宜。",
+    "note": "い形容詞本身以「い」結尾。",
+    "similar": [
+      "な形容詞現在肯定"
+    ]
+  },
+  {
+    "id": "n5-grammar-024",
+    "level": "N5",
+    "category": "形容詞",
+    "grammar": "い形容詞否定",
+    "kana": "いけいようしひてい",
+    "meaning": "表示い形容詞的否定。",
+    "structure": "い形容詞去い + くないです",
+    "usage": "用來禮貌地說「不……」。",
+    "example": "この靴は高くないです。",
+    "exampleKana": "このくつはたかくないです。",
+    "exampleMeaning": "這雙鞋不貴。",
+    "note": "「いい」的否定是「よくないです」。",
+    "similar": [
+      "な形容詞否定"
+    ]
+  },
+  {
+    "id": "n5-grammar-025",
+    "level": "N5",
+    "category": "形容詞",
+    "grammar": "い形容詞過去肯定",
+    "kana": "いけいようしかここうてい",
+    "meaning": "表示過去曾經是某種狀態。",
+    "structure": "い形容詞去い + かったです",
+    "usage": "描述過去的感受、天氣、狀態等。",
+    "example": "昨日は寒かったです。",
+    "exampleKana": "きのうはさむかったです。",
+    "exampleMeaning": "昨天很冷。",
+    "note": "「いい」的過去肯定是「よかったです」。",
+    "similar": [
+      "な形容詞過去肯定"
+    ]
+  },
+  {
+    "id": "n5-grammar-026",
+    "level": "N5",
+    "category": "形容詞",
+    "grammar": "い形容詞過去否定",
+    "kana": "いけいようしかこひてい",
+    "meaning": "表示過去不是某種狀態。",
+    "structure": "い形容詞去い + くなかったです",
+    "usage": "描述過去的否定狀態。",
+    "example": "試験は難しくなかったです。",
+    "exampleKana": "しけんはむずかしくなかったです。",
+    "exampleMeaning": "考試不難。",
+    "note": "也可說「難しくありませんでした」，較正式。",
+    "similar": [
+      "な形容詞過去否定"
+    ]
+  },
+  {
+    "id": "n5-grammar-027",
+    "level": "N5",
+    "category": "形容詞",
+    "grammar": "な形容詞現在肯定",
+    "kana": "なけいようしげんざいこうてい",
+    "meaning": "描述現在或一般狀態的な形容詞肯定句。",
+    "structure": "な形容詞語幹 + です",
+    "usage": "用來禮貌地描述性質或狀態。",
+    "example": "この町は静かです。",
+    "exampleKana": "このまちはしずかです。",
+    "exampleMeaning": "這個城鎮很安靜。",
+    "note": "接名詞時要加「な」，句尾直接接「です」。",
+    "similar": [
+      "い形容詞現在肯定"
+    ]
+  },
+  {
+    "id": "n5-grammar-028",
+    "level": "N5",
+    "category": "形容詞",
+    "grammar": "な形容詞否定",
+    "kana": "なけいようしひてい",
+    "meaning": "表示な形容詞的否定。",
+    "structure": "な形容詞語幹 + ではありません",
+    "usage": "用來禮貌地說「不……」。",
+    "example": "この部屋はきれいではありません。",
+    "exampleKana": "このへやはきれいではありません。",
+    "exampleMeaning": "這個房間不乾淨。",
+    "note": "口語中也常用「じゃありません」。",
+    "similar": [
+      "い形容詞否定"
+    ]
+  },
+  {
+    "id": "n5-grammar-029",
+    "level": "N5",
+    "category": "形容詞",
+    "grammar": "な形容詞過去肯定",
+    "kana": "なけいようしかここうてい",
+    "meaning": "表示過去曾經是某種狀態。",
+    "structure": "な形容詞語幹 + でした",
+    "usage": "描述過去的狀態或感想。",
+    "example": "昨日の町は静かでした。",
+    "exampleKana": "きのうのまちはしずかでした。",
+    "exampleMeaning": "昨天的城鎮很安靜。",
+    "note": "「でした」是「です」的過去形。",
+    "similar": [
+      "い形容詞過去肯定"
+    ]
+  },
+  {
+    "id": "n5-grammar-030",
+    "level": "N5",
+    "category": "形容詞",
+    "grammar": "な形容詞過去否定",
+    "kana": "なけいようしかこひてい",
+    "meaning": "表示過去不是某種狀態。",
+    "structure": "な形容詞語幹 + ではありませんでした",
+    "usage": "描述過去否定狀態。",
+    "example": "ホテルは便利ではありませんでした。",
+    "exampleKana": "ほてるはべんりではありませんでした。",
+    "exampleMeaning": "那間飯店不方便。",
+    "note": "口語可用「じゃありませんでした」。",
+    "similar": [
+      "い形容詞過去否定"
+    ]
+  },
+  {
+    "id": "n5-grammar-031",
+    "level": "N5",
+    "category": "動詞",
+    "grammar": "ます形",
+    "kana": "ますけい",
+    "meaning": "動詞的禮貌現在或未來肯定形。",
+    "structure": "動詞ます形",
+    "usage": "用來禮貌地描述習慣、現在或未來的動作。",
+    "example": "毎朝コーヒーを飲みます。",
+    "exampleKana": "まいあさこーひーをのみます。",
+    "exampleMeaning": "我每天早上喝咖啡。",
+    "note": "初學者常先學「ます形」來說禮貌句。",
+    "similar": [
+      "辞書形"
+    ]
+  },
+  {
+    "id": "n5-grammar-032",
+    "level": "N5",
+    "category": "動詞",
+    "grammar": "ません",
+    "kana": "ません",
+    "meaning": "動詞ます形的現在或未來否定。",
+    "structure": "動詞ます形去ます + ません",
+    "usage": "用來禮貌地表示不做某動作。",
+    "example": "今日はテレビを見ません。",
+    "exampleKana": "きょうはてれびをみません。",
+    "exampleMeaning": "我今天不看電視。",
+    "note": "也可表示未來不打算做某事。",
+    "similar": [
+      "ない形"
+    ]
+  },
+  {
+    "id": "n5-grammar-033",
+    "level": "N5",
+    "category": "動詞",
+    "grammar": "ました",
+    "kana": "ました",
+    "meaning": "動詞ます形的過去肯定。",
+    "structure": "動詞ます形去ます + ました",
+    "usage": "用來禮貌地表示已經做了某動作。",
+    "example": "昨日映画を見ました。",
+    "exampleKana": "きのうえいがをみました。",
+    "exampleMeaning": "我昨天看了電影。",
+    "note": "表示過去發生的動作。",
+    "similar": [
+      "た形"
+    ]
+  },
+  {
+    "id": "n5-grammar-034",
+    "level": "N5",
+    "category": "動詞",
+    "grammar": "ませんでした",
+    "kana": "ませんでした",
+    "meaning": "動詞ます形的過去否定。",
+    "structure": "動詞ます形去ます + ませんでした",
+    "usage": "用來禮貌地表示過去沒有做某動作。",
+    "example": "昨日宿題をしませんでした。",
+    "exampleKana": "きのうしゅくだいをしませんでした。",
+    "exampleMeaning": "我昨天沒有寫作業。",
+    "note": "是「ません」的過去形。",
+    "similar": [
+      "なかったです"
+    ]
+  },
+  {
+    "id": "n5-grammar-035",
+    "level": "N5",
+    "category": "動詞",
+    "grammar": "ましょう",
+    "kana": "ましょう",
+    "meaning": "表示提議一起做某事。",
+    "structure": "動詞ます形去ます + ましょう",
+    "usage": "常譯為「一起……吧」。",
+    "example": "一緒に昼ご飯を食べましょう。",
+    "exampleKana": "いっしょにひるごはんをたべましょう。",
+    "exampleMeaning": "一起吃午餐吧。",
+    "note": "語氣禮貌且積極。",
+    "similar": [
+      "ませんか"
+    ]
+  },
+  {
+    "id": "n5-grammar-036",
+    "level": "N5",
+    "category": "動詞",
+    "grammar": "ませんか",
+    "kana": "ませんか",
+    "meaning": "表示禮貌邀請或建議。",
+    "structure": "動詞ます形去ます + ませんか",
+    "usage": "用否定疑問形式提出邀請，語氣柔和。",
+    "example": "明日一緒に行きませんか。",
+    "exampleKana": "あしたいっしょにいきませんか。",
+    "exampleMeaning": "明天要不要一起去？",
+    "note": "比直接說「行きましょう」更像邀請對方決定。",
+    "similar": [
+      "ましょう"
+    ]
+  },
+  {
+    "id": "n5-grammar-037",
+    "level": "N5",
+    "category": "動詞",
+    "grammar": "たいです",
+    "kana": "たいです",
+    "meaning": "表示自己想做某事。",
+    "structure": "動詞ます形去ます + たいです",
+    "usage": "用於說話者的願望；問句可詢問對方想做什麼。",
+    "example": "日本語を勉強したいです。",
+    "exampleKana": "にほんごをべんきょうしたいです。",
+    "exampleMeaning": "我想學日文。",
+    "note": "「たい」像い形容詞一樣變化。",
+    "similar": [
+      "ほしいです"
+    ]
+  },
+  {
+    "id": "n5-grammar-038",
+    "level": "N5",
+    "category": "動詞",
+    "grammar": "たくないです",
+    "kana": "たくないです",
+    "meaning": "表示不想做某事。",
+    "structure": "動詞ます形去ます + たくないです",
+    "usage": "用來表達自己的否定願望。",
+    "example": "今日は外へ出たくないです。",
+    "exampleKana": "きょうはそとへでたくないです。",
+    "exampleMeaning": "我今天不想出門。",
+    "note": "直接用於別人的願望時要小心，通常需要上下文。",
+    "similar": [
+      "たいです"
+    ]
+  },
+  {
+    "id": "n5-grammar-039",
+    "level": "N5",
+    "category": "動詞",
+    "grammar": "て形",
+    "kana": "てけい",
+    "meaning": "連接句子、提出請求或形成其他句型的基本動詞形。",
+    "structure": "動詞て形",
+    "usage": "常用來連接動作，也會出現在「ください、います」等句型前。",
+    "example": "朝ご飯を食べて、学校へ行きます。",
+    "exampleKana": "あさごはんをたべて、がっこうへいきます。",
+    "exampleMeaning": "我吃早餐後去學校。",
+    "note": "て形本身用途很多，是 N5 重要基礎。",
+    "similar": [
+      "た形"
+    ]
+  },
+  {
+    "id": "n5-grammar-040",
+    "level": "N5",
+    "category": "請求",
+    "grammar": "てください",
+    "kana": "てください",
+    "meaning": "請對方做某事。",
+    "structure": "動詞て形 + ください",
+    "usage": "用來提出禮貌請求或指示。",
+    "example": "ここに名前を書いてください。",
+    "exampleKana": "ここになまえをかいてください。",
+    "exampleMeaning": "請在這裡寫名字。",
+    "note": "語氣仍可能像指示，對長輩可再加上更委婉說法。",
+    "similar": [
+      "ないでください"
+    ]
+  },
+  {
+    "id": "n5-grammar-041",
+    "level": "N5",
+    "category": "請求",
+    "grammar": "ないでください",
+    "kana": "ないでください",
+    "meaning": "請對方不要做某事。",
+    "structure": "動詞ない形 + でください",
+    "usage": "用來提出禁止或請求不要做某動作。",
+    "example": "ここで写真を撮らないでください。",
+    "exampleKana": "ここでしゃしんをとらないでください。",
+    "exampleMeaning": "請不要在這裡拍照。",
+    "note": "比命令形柔和，常見於規則提醒。",
+    "similar": [
+      "てください"
+    ]
+  },
+  {
+    "id": "n5-grammar-042",
+    "level": "N5",
+    "category": "進行／狀態",
+    "grammar": "ています",
+    "kana": "ています",
+    "meaning": "表示正在進行的動作或持續中的狀態。",
+    "structure": "動詞て形 + います",
+    "usage": "可表示「正在……」，也可表示結果狀態。",
+    "example": "母は料理をしています。",
+    "exampleKana": "はははりょうりをしています。",
+    "exampleMeaning": "媽媽正在做菜。",
+    "note": "判斷是進行還是狀態，要看動詞和上下文。",
+    "similar": [
+      "ていました"
+    ]
+  },
+  {
+    "id": "n5-grammar-043",
+    "level": "N5",
+    "category": "經驗／完成",
+    "grammar": "もう",
+    "kana": "もう",
+    "meaning": "表示已經。",
+    "structure": "もう + 動詞ました",
+    "usage": "常和過去形一起用，表示動作已完成。",
+    "example": "もう昼ご飯を食べました。",
+    "exampleKana": "もうひるごはんをたべました。",
+    "exampleMeaning": "我已經吃午餐了。",
+    "note": "回答可用「はい、もう」或「いいえ、まだ」。",
+    "similar": [
+      "まだ"
+    ]
+  },
+  {
+    "id": "n5-grammar-044",
+    "level": "N5",
+    "category": "經驗／完成",
+    "grammar": "まだ",
+    "kana": "まだ",
+    "meaning": "表示還沒或仍然。",
+    "structure": "まだ + 動詞ていません／否定形",
+    "usage": "在 N5 常用來表示某動作尚未完成。",
+    "example": "宿題はまだ終わっていません。",
+    "exampleKana": "しゅくだいはまだおわっていません。",
+    "exampleMeaning": "作業還沒有完成。",
+    "note": "「まだです」也可簡短回答「還沒」。",
+    "similar": [
+      "もう"
+    ]
+  },
+  {
+    "id": "n5-grammar-045",
+    "level": "N5",
+    "category": "原因理由",
+    "grammar": "から（理由）",
+    "kana": "から",
+    "meaning": "表示原因或理由。",
+    "structure": "句子 + から",
+    "usage": "放在理由句後面，表示「因為……」。",
+    "example": "暑いですから、窓を開けます。",
+    "exampleKana": "あついですから、まどをあけます。",
+    "exampleMeaning": "因為很熱，所以我要開窗。",
+    "note": "N5 可先用「理由 + から + 結果」的順序練習。",
+    "similar": [
+      "ので"
+    ]
+  },
+  {
+    "id": "n5-grammar-046",
+    "level": "N5",
+    "category": "轉折",
+    "grammar": "が（但是）",
+    "kana": "が",
+    "meaning": "連接兩句，表示轉折或鋪陳。",
+    "structure": "句子 + が + 句子",
+    "usage": "常譯為「但是」，也可用來先提出背景。",
+    "example": "この本は高いですが、おもしろいです。",
+    "exampleKana": "このほんはたかいですが、おもしろいです。",
+    "exampleMeaning": "這本書很貴，但是很有趣。",
+    "note": "禮貌句中常直接接在「です、ます」後。",
+    "similar": [
+      "でも"
+    ]
+  },
+  {
+    "id": "n5-grammar-047",
+    "level": "N5",
+    "category": "比較",
+    "grammar": "より",
+    "kana": "より",
+    "meaning": "表示比較的基準。",
+    "structure": "名詞A + は + 名詞B + より + 形容詞です",
+    "usage": "說明 A 比 B 更如何。",
+    "example": "東京は大阪より大きいです。",
+    "exampleKana": "とうきょうはおおさかよりおおきいです。",
+    "exampleMeaning": "東京比大阪大。",
+    "note": "「より」後面是被比較的基準。",
+    "similar": [
+      "のほうが"
+    ]
+  },
+  {
+    "id": "n5-grammar-048",
+    "level": "N5",
+    "category": "比較",
+    "grammar": "のほうが",
+    "kana": "のほうが",
+    "meaning": "表示兩者相比時較為……的一方。",
+    "structure": "名詞A + のほうが + 名詞B + より + 形容詞です",
+    "usage": "用來明確指出哪一方更符合形容詞。",
+    "example": "犬のほうが猫より好きです。",
+    "exampleKana": "いぬのほうがねこよりすきです。",
+    "exampleMeaning": "比起貓，我比較喜歡狗。",
+    "note": "口語中也常省略比較基準。",
+    "similar": [
+      "より"
+    ]
+  },
+  {
+    "id": "n5-grammar-049",
+    "level": "N5",
+    "category": "最高級",
+    "grammar": "いちばん",
+    "kana": "いちばん",
+    "meaning": "表示最……。",
+    "structure": "範圍 + で + 名詞 + が + いちばん + 形容詞です",
+    "usage": "在某個範圍內選出程度最高的人事物。",
+    "example": "クラスで山田さんがいちばん元気です。",
+    "exampleKana": "くらすでやまださんがいちばんげんきです。",
+    "exampleMeaning": "班上山田同學最有精神。",
+    "note": "常和表示範圍的「で」一起使用。",
+    "similar": [
+      "より"
+    ]
+  },
+  {
+    "id": "n5-grammar-050",
+    "level": "N5",
+    "category": "頻率",
+    "grammar": "ときどき",
+    "kana": "ときどき",
+    "meaning": "表示有時候。",
+    "structure": "ときどき + 動詞／句子",
+    "usage": "用來描述不固定、偶爾發生的行為或狀態。",
+    "example": "日曜日にときどき泳ぎます。",
+    "exampleKana": "にちようびにときどきおよぎます。",
+    "exampleMeaning": "我星期日有時候游泳。",
+    "note": "頻率比「いつも」低，比「あまり」高。",
+    "similar": [
+      "いつも",
+      "あまり"
+    ]
+  }
+]
