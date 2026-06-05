@@ -14,7 +14,20 @@
     "note": "初學時可先把它看成標記主題的助詞。",
     "similar": [
       "が"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "私＿＿学生です。",
+      "clozePromptKana": "わたし＿＿がくせいです。",
+      "clozeMeaning": "我是學生。",
+      "choices": [
+        "は",
+        "が",
+        "を",
+        "に"
+      ],
+      "answer": "は",
+      "explanation": "「は」用來提示主題，這裡是在說明「我」是學生。"
+    }
   },
   {
     "id": "n5-grammar-002",
@@ -31,7 +44,20 @@
     "note": "和「は」相比，「が」更容易聚焦在前面的名詞。",
     "similar": [
       "は"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "雨＿＿降っています。",
+      "clozePromptKana": "あめ＿＿ふっています。",
+      "clozeMeaning": "正在下雨。",
+      "choices": [
+        "が",
+        "は",
+        "を",
+        "で"
+      ],
+      "answer": "が",
+      "explanation": "「が」標示主語，這裡表示下雨的主體是「雨」。"
+    }
   },
   {
     "id": "n5-grammar-003",
@@ -48,7 +74,20 @@
     "note": "多和需要受詞的動詞一起使用。",
     "similar": [
       "が"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "水＿＿飲みます。",
+      "clozePromptKana": "みず＿＿のみます。",
+      "clozeMeaning": "我喝水。",
+      "choices": [
+        "を",
+        "が",
+        "に",
+        "へ"
+      ],
+      "answer": "を",
+      "explanation": "「を」標示動作的受詞，喝的對象是「水」。"
+    }
   },
   {
     "id": "n5-grammar-004",
@@ -65,7 +104,20 @@
     "note": "像「今日、明日、毎日」通常不加「に」。",
     "similar": [
       "で"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "七時＿＿起きます。",
+      "clozePromptKana": "しちじ＿＿おきます。",
+      "clozeMeaning": "我七點起床。",
+      "choices": [
+        "に",
+        "で",
+        "へ",
+        "から"
+      ],
+      "answer": "に",
+      "explanation": "具體時間後面常接「に」，表示動作發生的時間。"
+    }
   },
   {
     "id": "n5-grammar-005",
@@ -82,7 +134,20 @@
     "note": "移動動詞常見搭配有「行く、来る、帰る」。",
     "similar": [
       "へ"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "学校＿＿行きます。",
+      "clozePromptKana": "がっこう＿＿いきます。",
+      "clozeMeaning": "我去學校。",
+      "choices": [
+        "に",
+        "で",
+        "を",
+        "から"
+      ],
+      "answer": "に",
+      "explanation": "移動的目的地或到達點可用「に」表示。"
+    }
   },
   {
     "id": "n5-grammar-006",
@@ -99,7 +164,20 @@
     "note": "「へ」偏方向，「に」偏到達點；N5 可先都理解為去某處。",
     "similar": [
       "に"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "日本＿＿行きます。",
+      "clozePromptKana": "にほん＿＿いきます。",
+      "clozeMeaning": "我去日本。",
+      "choices": [
+        "へ",
+        "を",
+        "で",
+        "が"
+      ],
+      "answer": "へ",
+      "explanation": "「へ」表示移動方向，這裡表示往日本去。"
+    }
   },
   {
     "id": "n5-grammar-007",
@@ -116,7 +194,20 @@
     "note": "存在句的地點通常用「に」，動作發生地通常用「で」。",
     "similar": [
       "に"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "図書館＿＿勉強します。",
+      "clozePromptKana": "としょかん＿＿べんきょうします。",
+      "clozeMeaning": "我在圖書館讀書。",
+      "choices": [
+        "で",
+        "に",
+        "へ",
+        "を"
+      ],
+      "answer": "で",
+      "explanation": "動作進行的場所用「で」，讀書發生在圖書館。"
+    }
   },
   {
     "id": "n5-grammar-008",
@@ -133,7 +224,20 @@
     "note": "可以用於交通工具、語言、工具等。",
     "similar": [
       "に"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "電車＿＿会社へ行きます。",
+      "clozePromptKana": "でんしゃ＿＿かいしゃへいきます。",
+      "clozeMeaning": "我搭電車去公司。",
+      "choices": [
+        "で",
+        "に",
+        "を",
+        "と"
+      ],
+      "answer": "で",
+      "explanation": "交通工具或手段用「で」，表示搭電車。"
+    }
   },
   {
     "id": "n5-grammar-009",
@@ -150,7 +254,20 @@
     "note": "「と」列舉的項目較完整，不像「や」有省略感。",
     "similar": [
       "や"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "パン＿＿卵を食べます。",
+      "clozePromptKana": "ぱん＿＿たまごをたべます。",
+      "clozeMeaning": "我吃麵包和蛋。",
+      "choices": [
+        "と",
+        "や",
+        "も",
+        "の"
+      ],
+      "answer": "と",
+      "explanation": "列舉完整項目時用「と」，表示麵包和蛋。"
+    }
   },
   {
     "id": "n5-grammar-010",
@@ -167,7 +284,20 @@
     "note": "若要強調「一起」，可加「一緒に」。",
     "similar": [
       "に"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "友だち＿＿映画を見ます。",
+      "clozePromptKana": "ともだち＿＿えいがをみます。",
+      "clozeMeaning": "我和朋友看電影。",
+      "choices": [
+        "と",
+        "に",
+        "で",
+        "や"
+      ],
+      "answer": "と",
+      "explanation": "和某人一起做動作用「人＋と」。"
+    }
   },
   {
     "id": "n5-grammar-011",
@@ -184,7 +314,20 @@
     "note": "「も」會取代「は、が、を」的位置。",
     "similar": [
       "は"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "私＿＿行きます。",
+      "clozePromptKana": "わたし＿＿いきます。",
+      "clozeMeaning": "我也去。",
+      "choices": [
+        "も",
+        "は",
+        "が",
+        "の"
+      ],
+      "answer": "も",
+      "explanation": "「も」表示「也」，這裡表示我也去。"
+    }
   },
   {
     "id": "n5-grammar-012",
@@ -201,7 +344,20 @@
     "note": "相當於中文的「的」，但用法不完全相同。",
     "similar": [
       "な"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "これは私＿＿本です。",
+      "clozePromptKana": "これはわたし＿＿ほんです。",
+      "clozeMeaning": "這是我的書。",
+      "choices": [
+        "の",
+        "な",
+        "と",
+        "が"
+      ],
+      "answer": "の",
+      "explanation": "「の」表示所屬，私の本就是我的書。"
+    }
   },
   {
     "id": "n5-grammar-013",
@@ -218,7 +374,20 @@
     "note": "常和「まで」一起使用。",
     "similar": [
       "まで"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "授業は九時＿＿です。",
+      "clozePromptKana": "じゅぎょうはくじ＿＿です。",
+      "clozeMeaning": "課從九點開始。",
+      "choices": [
+        "から",
+        "まで",
+        "より",
+        "に"
+      ],
+      "answer": "から",
+      "explanation": "起點或開始時間用「から」。"
+    }
   },
   {
     "id": "n5-grammar-014",
@@ -235,7 +404,20 @@
     "note": "「から」是起點，「まで」是終點。",
     "similar": [
       "から"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "五時＿＿働きます。",
+      "clozePromptKana": "ごじ＿＿はたらきます。",
+      "clozeMeaning": "我工作到五點。",
+      "choices": [
+        "まで",
+        "から",
+        "より",
+        "で"
+      ],
+      "answer": "まで",
+      "explanation": "終點或截止時間用「まで」。"
+    }
   },
   {
     "id": "n5-grammar-015",
@@ -252,7 +434,20 @@
     "note": "若要完整列舉，常用「と」。",
     "similar": [
       "と"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "机の上に本＿＿鉛筆があります。",
+      "clozePromptKana": "つくえのうえにほん＿＿えんぴつがあります。",
+      "clozeMeaning": "桌上有書和鉛筆等東西。",
+      "choices": [
+        "や",
+        "と",
+        "も",
+        "の"
+      ],
+      "answer": "や",
+      "explanation": "「や」列舉部分例子，含有「等等」的意思。"
+    }
   },
   {
     "id": "n5-grammar-016",
@@ -269,7 +464,20 @@
     "note": "口語中比普通形更禮貌，初學者常先學這種形式。",
     "similar": [
       "だ"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "今日は暑い＿＿。",
+      "clozePromptKana": "きょうはあつい＿＿。",
+      "clozeMeaning": "今天很熱。",
+      "choices": [
+        "です",
+        "でした",
+        "ではありません",
+        "くないです"
+      ],
+      "answer": "です",
+      "explanation": "現在肯定句用「です」讓句子變禮貌。"
+    }
   },
   {
     "id": "n5-grammar-017",
@@ -286,7 +494,20 @@
     "note": "「ではありません」比「じゃありません」正式。",
     "similar": [
       "じゃありません"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "田中さんは先生＿＿。",
+      "clozePromptKana": "たなかさんはせんせい＿＿。",
+      "clozeMeaning": "田中先生不是老師。",
+      "choices": [
+        "ではありません",
+        "です",
+        "でした",
+        "ではありませんでした"
+      ],
+      "answer": "ではありません",
+      "explanation": "名詞句的現在否定用「ではありません」。"
+    }
   },
   {
     "id": "n5-grammar-018",
@@ -303,7 +524,20 @@
     "note": "句尾語調通常上揚。",
     "similar": [
       "でしょうか"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "これはあなたの傘です＿＿。",
+      "clozePromptKana": "これはあなたのかさです＿＿。",
+      "clozeMeaning": "這是你的傘嗎？",
+      "choices": [
+        "か",
+        "ね",
+        "よ",
+        "も"
+      ],
+      "answer": "か",
+      "explanation": "句尾加「か」可形成疑問句。"
+    }
   },
   {
     "id": "n5-grammar-019",
@@ -320,7 +554,20 @@
     "note": "人和動物的存在通常用「います」。",
     "similar": [
       "います"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "部屋に椅子が＿＿。",
+      "clozePromptKana": "へやにいすが＿＿。",
+      "clozeMeaning": "房間裡有椅子。",
+      "choices": [
+        "あります",
+        "います",
+        "です",
+        "します"
+      ],
+      "answer": "あります",
+      "explanation": "無生命物品的存在用「あります」。"
+    }
   },
   {
     "id": "n5-grammar-020",
@@ -337,7 +584,20 @@
     "note": "物品和植物的存在通常用「あります」。",
     "similar": [
       "あります"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "公園に子どもが＿＿。",
+      "clozePromptKana": "こうえんにこどもが＿＿。",
+      "clozeMeaning": "公園裡有小孩。",
+      "choices": [
+        "います",
+        "あります",
+        "です",
+        "します"
+      ],
+      "answer": "います",
+      "explanation": "人或動物的存在用「います」。"
+    }
   },
   {
     "id": "n5-grammar-021",
@@ -354,7 +614,20 @@
     "note": "地點後面的「に」標示存在的位置。",
     "similar": [
       "名詞は場所にあります／います"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "教室＿＿学生がいます。",
+      "clozePromptKana": "きょうしつ＿＿がくせいがいます。",
+      "clozeMeaning": "教室裡有學生。",
+      "choices": [
+        "に",
+        "で",
+        "へ",
+        "を"
+      ],
+      "answer": "に",
+      "explanation": "存在句中場所後用「に」表示存在的位置。"
+    }
   },
   {
     "id": "n5-grammar-022",
@@ -371,7 +644,20 @@
     "note": "主題是前面的名詞，所以用「は」。",
     "similar": [
       "場所に名詞があります／います"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "猫は椅子の下＿＿います。",
+      "clozePromptKana": "ねこはいすのした＿＿います。",
+      "clozeMeaning": "貓在椅子下面。",
+      "choices": [
+        "に",
+        "で",
+        "へ",
+        "から"
+      ],
+      "answer": "に",
+      "explanation": "名詞所在的位置用「場所＋にあります／います」。"
+    }
   },
   {
     "id": "n5-grammar-023",
@@ -388,7 +674,20 @@
     "note": "い形容詞本身以「い」結尾。",
     "similar": [
       "な形容詞現在肯定"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "この店は＿＿です。",
+      "clozePromptKana": "このみせは＿＿です。",
+      "clozeMeaning": "這家店很便宜。",
+      "choices": [
+        "安い",
+        "安くない",
+        "安かった",
+        "安くなかった"
+      ],
+      "answer": "安い",
+      "explanation": "い形容詞現在肯定直接用原形接「です」。"
+    }
   },
   {
     "id": "n5-grammar-024",
@@ -405,7 +704,20 @@
     "note": "「いい」的否定是「よくないです」。",
     "similar": [
       "な形容詞否定"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "この靴は＿＿です。",
+      "clozePromptKana": "このくつは＿＿です。",
+      "clozeMeaning": "這雙鞋不貴。",
+      "choices": [
+        "高くない",
+        "高い",
+        "高かった",
+        "高くなかった"
+      ],
+      "answer": "高くない",
+      "explanation": "い形容詞現在否定要把「い」改成「くない」。"
+    }
   },
   {
     "id": "n5-grammar-025",
@@ -422,7 +734,20 @@
     "note": "「いい」的過去肯定是「よかったです」。",
     "similar": [
       "な形容詞過去肯定"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "昨日は＿＿です。",
+      "clozePromptKana": "きのうは＿＿です。",
+      "clozeMeaning": "昨天很冷。",
+      "choices": [
+        "寒かった",
+        "寒い",
+        "寒くない",
+        "寒くなかった"
+      ],
+      "answer": "寒かった",
+      "explanation": "い形容詞過去肯定把「い」改成「かった」。"
+    }
   },
   {
     "id": "n5-grammar-026",
@@ -439,7 +764,20 @@
     "note": "也可說「難しくありませんでした」，較正式。",
     "similar": [
       "な形容詞過去否定"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "試験は＿＿です。",
+      "clozePromptKana": "しけんは＿＿です。",
+      "clozeMeaning": "考試不難。",
+      "choices": [
+        "難しくなかった",
+        "難しい",
+        "難しくない",
+        "難しかった"
+      ],
+      "answer": "難しくなかった",
+      "explanation": "い形容詞過去否定用「くなかった」。"
+    }
   },
   {
     "id": "n5-grammar-027",
@@ -456,7 +794,20 @@
     "note": "接名詞時要加「な」，句尾直接接「です」。",
     "similar": [
       "い形容詞現在肯定"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "この町は＿＿です。",
+      "clozePromptKana": "このまちは＿＿です。",
+      "clozeMeaning": "這個城鎮很安靜。",
+      "choices": [
+        "静か",
+        "静かではありません",
+        "静かでした",
+        "静かではありませんでした"
+      ],
+      "answer": "静か",
+      "explanation": "な形容詞現在肯定可直接接「です」。"
+    }
   },
   {
     "id": "n5-grammar-028",
@@ -473,7 +824,20 @@
     "note": "口語中也常用「じゃありません」。",
     "similar": [
       "い形容詞否定"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "この部屋は＿＿。",
+      "clozePromptKana": "このへやは＿＿。",
+      "clozeMeaning": "這個房間不乾淨。",
+      "choices": [
+        "きれいではありません",
+        "きれいです",
+        "きれいでした",
+        "きれいではありませんでした"
+      ],
+      "answer": "きれいではありません",
+      "explanation": "な形容詞現在否定用「ではありません」。"
+    }
   },
   {
     "id": "n5-grammar-029",
@@ -490,7 +854,20 @@
     "note": "「でした」是「です」的過去形。",
     "similar": [
       "い形容詞過去肯定"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "昨日の町は＿＿。",
+      "clozePromptKana": "きのうのまちは＿＿。",
+      "clozeMeaning": "昨天的城鎮很安靜。",
+      "choices": [
+        "静かでした",
+        "静かです",
+        "静かではありません",
+        "静かではありませんでした"
+      ],
+      "answer": "静かでした",
+      "explanation": "な形容詞過去肯定用「でした」。"
+    }
   },
   {
     "id": "n5-grammar-030",
@@ -507,7 +884,20 @@
     "note": "口語可用「じゃありませんでした」。",
     "similar": [
       "い形容詞過去否定"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "ホテルは＿＿。",
+      "clozePromptKana": "ほてるは＿＿。",
+      "clozeMeaning": "那間飯店不方便。",
+      "choices": [
+        "便利ではありませんでした",
+        "便利です",
+        "便利でした",
+        "便利ではありません"
+      ],
+      "answer": "便利ではありませんでした",
+      "explanation": "な形容詞過去否定用「ではありませんでした」。"
+    }
   },
   {
     "id": "n5-grammar-031",
@@ -524,7 +914,20 @@
     "note": "初學者常先學「ます形」來說禮貌句。",
     "similar": [
       "辞書形"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "毎朝コーヒーを＿＿。",
+      "clozePromptKana": "まいあさこーひーを＿＿。",
+      "clozeMeaning": "我每天早上喝咖啡。",
+      "choices": [
+        "飲みます",
+        "飲みません",
+        "飲みました",
+        "飲みませんでした"
+      ],
+      "answer": "飲みます",
+      "explanation": "習慣或現在肯定的禮貌動詞用「ます形」。"
+    }
   },
   {
     "id": "n5-grammar-032",
@@ -541,7 +944,20 @@
     "note": "也可表示未來不打算做某事。",
     "similar": [
       "ない形"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "今日はテレビを＿＿。",
+      "clozePromptKana": "きょうはてれびを＿＿。",
+      "clozeMeaning": "我今天不看電視。",
+      "choices": [
+        "見ません",
+        "見ます",
+        "見ました",
+        "見ませんでした"
+      ],
+      "answer": "見ません",
+      "explanation": "動詞現在或未來否定的禮貌形是「ません」。"
+    }
   },
   {
     "id": "n5-grammar-033",
@@ -558,7 +974,20 @@
     "note": "表示過去發生的動作。",
     "similar": [
       "た形"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "昨日映画を＿＿。",
+      "clozePromptKana": "きのうえいがを＿＿。",
+      "clozeMeaning": "我昨天看了電影。",
+      "choices": [
+        "見ました",
+        "見ます",
+        "見ません",
+        "見ませんでした"
+      ],
+      "answer": "見ました",
+      "explanation": "過去肯定的禮貌動詞用「ました」。"
+    }
   },
   {
     "id": "n5-grammar-034",
@@ -575,7 +1004,20 @@
     "note": "是「ません」的過去形。",
     "similar": [
       "なかったです"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "昨日宿題を＿＿。",
+      "clozePromptKana": "きのうしゅくだいを＿＿。",
+      "clozeMeaning": "我昨天沒有寫作業。",
+      "choices": [
+        "しませんでした",
+        "します",
+        "しません",
+        "しました"
+      ],
+      "answer": "しませんでした",
+      "explanation": "過去否定的禮貌動詞用「ませんでした」。"
+    }
   },
   {
     "id": "n5-grammar-035",
@@ -592,7 +1034,20 @@
     "note": "語氣禮貌且積極。",
     "similar": [
       "ませんか"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "一緒に昼ご飯を＿＿。",
+      "clozePromptKana": "いっしょにひるごはんを＿＿。",
+      "clozeMeaning": "一起吃午餐吧。",
+      "choices": [
+        "食べましょう",
+        "食べませんか",
+        "食べました",
+        "食べませんでした"
+      ],
+      "answer": "食べましょう",
+      "explanation": "邀請一起做某事時可用「ましょう」。"
+    }
   },
   {
     "id": "n5-grammar-036",
@@ -609,7 +1064,20 @@
     "note": "比直接說「行きましょう」更像邀請對方決定。",
     "similar": [
       "ましょう"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "明日一緒に＿＿。",
+      "clozePromptKana": "あしたいっしょに＿＿。",
+      "clozeMeaning": "明天要不要一起去？",
+      "choices": [
+        "行きませんか",
+        "行きましょう",
+        "行きます",
+        "行きました"
+      ],
+      "answer": "行きませんか",
+      "explanation": "「ませんか」常用來委婉邀請或提議。"
+    }
   },
   {
     "id": "n5-grammar-037",
@@ -626,7 +1094,20 @@
     "note": "「たい」像い形容詞一樣變化。",
     "similar": [
       "ほしいです"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "日本語を勉強＿＿です。",
+      "clozePromptKana": "にほんごをべんきょう＿＿です。",
+      "clozeMeaning": "我想學日文。",
+      "choices": [
+        "したい",
+        "します",
+        "して",
+        "しない"
+      ],
+      "answer": "したい",
+      "explanation": "表示自己的願望用動詞ます形去ます加「たい」。"
+    }
   },
   {
     "id": "n5-grammar-038",
@@ -643,7 +1124,20 @@
     "note": "直接用於別人的願望時要小心，通常需要上下文。",
     "similar": [
       "たいです"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "今日は外へ＿＿です。",
+      "clozePromptKana": "きょうはそとへ＿＿です。",
+      "clozeMeaning": "我今天不想出門。",
+      "choices": [
+        "出たくない",
+        "出たい",
+        "出ます",
+        "出ました"
+      ],
+      "answer": "出たくない",
+      "explanation": "「たい」的否定形是「たくない」。"
+    }
   },
   {
     "id": "n5-grammar-039",
@@ -660,7 +1154,20 @@
     "note": "て形本身用途很多，是 N5 重要基礎。",
     "similar": [
       "た形"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "朝ご飯を＿＿、学校へ行きます。",
+      "clozePromptKana": "あさごはんを＿＿、がっこうへいきます。",
+      "clozeMeaning": "我吃早餐後去學校。",
+      "choices": [
+        "食べて",
+        "食べます",
+        "食べた",
+        "食べない"
+      ],
+      "answer": "食べて",
+      "explanation": "連接動作順序時可用動詞て形。"
+    }
   },
   {
     "id": "n5-grammar-040",
@@ -677,7 +1184,20 @@
     "note": "語氣仍可能像指示，對長輩可再加上更委婉說法。",
     "similar": [
       "ないでください"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "ここに名前を＿＿。",
+      "clozePromptKana": "ここになまえを＿＿。",
+      "clozeMeaning": "請在這裡寫名字。",
+      "choices": [
+        "書いてください",
+        "書かないでください",
+        "書きましょう",
+        "書きませんか"
+      ],
+      "answer": "書いてください",
+      "explanation": "請求對方做某事用「てください」。"
+    }
   },
   {
     "id": "n5-grammar-041",
@@ -694,7 +1214,20 @@
     "note": "比命令形柔和，常見於規則提醒。",
     "similar": [
       "てください"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "ここで写真を＿＿。",
+      "clozePromptKana": "ここでしゃしんを＿＿。",
+      "clozeMeaning": "請不要在這裡拍照。",
+      "choices": [
+        "撮らないでください",
+        "撮ってください",
+        "撮りましょう",
+        "撮ります"
+      ],
+      "answer": "撮らないでください",
+      "explanation": "請對方不要做某事用「ないでください」。"
+    }
   },
   {
     "id": "n5-grammar-042",
@@ -711,7 +1244,20 @@
     "note": "判斷是進行還是狀態，要看動詞和上下文。",
     "similar": [
       "ていました"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "母は料理を＿＿。",
+      "clozePromptKana": "はははりょうりを＿＿。",
+      "clozeMeaning": "媽媽正在做菜。",
+      "choices": [
+        "しています",
+        "しました",
+        "しません",
+        "します"
+      ],
+      "answer": "しています",
+      "explanation": "正在進行的動作用「ています」。"
+    }
   },
   {
     "id": "n5-grammar-043",
@@ -728,7 +1274,20 @@
     "note": "回答可用「はい、もう」或「いいえ、まだ」。",
     "similar": [
       "まだ"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "＿＿昼ご飯を食べました。",
+      "clozePromptKana": "＿＿ひるごはんをたべました。",
+      "clozeMeaning": "我已經吃午餐了。",
+      "choices": [
+        "もう",
+        "まだ",
+        "ときどき",
+        "いちばん"
+      ],
+      "answer": "もう",
+      "explanation": "「もう」表示動作已經完成。"
+    }
   },
   {
     "id": "n5-grammar-044",
@@ -745,7 +1304,20 @@
     "note": "「まだです」也可簡短回答「還沒」。",
     "similar": [
       "もう"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "宿題は＿＿終わっていません。",
+      "clozePromptKana": "しゅくだいは＿＿おわっていません。",
+      "clozeMeaning": "作業還沒有完成。",
+      "choices": [
+        "まだ",
+        "もう",
+        "よく",
+        "すぐ"
+      ],
+      "answer": "まだ",
+      "explanation": "「まだ」搭配否定表示「還沒」。"
+    }
   },
   {
     "id": "n5-grammar-045",
@@ -762,7 +1334,20 @@
     "note": "N5 可先用「理由 + から + 結果」的順序練習。",
     "similar": [
       "ので"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "暑いです＿＿、窓を開けます。",
+      "clozePromptKana": "あついです＿＿、まどをあけます。",
+      "clozeMeaning": "因為很熱，所以我要開窗。",
+      "choices": [
+        "から",
+        "が",
+        "より",
+        "まで"
+      ],
+      "answer": "から",
+      "explanation": "句子後加「から」表示原因理由。"
+    }
   },
   {
     "id": "n5-grammar-046",
@@ -779,7 +1364,20 @@
     "note": "禮貌句中常直接接在「です、ます」後。",
     "similar": [
       "でも"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "この本は高い＿＿、おもしろいです。",
+      "clozePromptKana": "このほんはたかい＿＿、おもしろいです。",
+      "clozeMeaning": "這本書很貴，但是很有趣。",
+      "choices": [
+        "ですが",
+        "ですから",
+        "より",
+        "まで"
+      ],
+      "answer": "ですが",
+      "explanation": "「が」接在句尾可表示轉折，相當於「但是」。"
+    }
   },
   {
     "id": "n5-grammar-047",
@@ -796,7 +1394,20 @@
     "note": "「より」後面是被比較的基準。",
     "similar": [
       "のほうが"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "東京は大阪＿＿大きいです。",
+      "clozePromptKana": "とうきょうはおおさか＿＿おおきいです。",
+      "clozeMeaning": "東京比大阪大。",
+      "choices": [
+        "より",
+        "のほうが",
+        "から",
+        "まで"
+      ],
+      "answer": "より",
+      "explanation": "比較基準後接「より」，表示「比……」。"
+    }
   },
   {
     "id": "n5-grammar-048",
@@ -813,7 +1424,20 @@
     "note": "口語中也常省略比較基準。",
     "similar": [
       "より"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "犬＿＿猫より好きです。",
+      "clozePromptKana": "いぬ＿＿ねこよりすきです。",
+      "clozeMeaning": "比起貓，我比較喜歡狗。",
+      "choices": [
+        "のほうが",
+        "より",
+        "いちばん",
+        "まで"
+      ],
+      "answer": "のほうが",
+      "explanation": "「AのほうがBより」表示比起B，A更……。"
+    }
   },
   {
     "id": "n5-grammar-049",
@@ -830,7 +1454,20 @@
     "note": "常和表示範圍的「で」一起使用。",
     "similar": [
       "より"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "クラスで山田さんが＿＿元気です。",
+      "clozePromptKana": "くらすでやまださんが＿＿げんきです。",
+      "clozeMeaning": "班上山田同學最有精神。",
+      "choices": [
+        "いちばん",
+        "より",
+        "ときどき",
+        "まだ"
+      ],
+      "answer": "いちばん",
+      "explanation": "「いちばん」表示最高程度，也就是「最」。"
+    }
   },
   {
     "id": "n5-grammar-050",
@@ -848,7 +1485,20 @@
     "similar": [
       "いつも",
       "あまり"
-    ]
+    ],
+    "quiz": {
+      "clozePrompt": "日曜日に＿＿泳ぎます。",
+      "clozePromptKana": "にちようびに＿＿およぎます。",
+      "clozeMeaning": "我星期日有時候游泳。",
+      "choices": [
+        "ときどき",
+        "いちばん",
+        "もう",
+        "まだ"
+      ],
+      "answer": "ときどき",
+      "explanation": "「ときどき」表示頻率，有「有時候」的意思。"
+    }
   },
   {
     "id": "n4-grammar-051",

@@ -514,6 +514,62 @@ h1 {
   color: var(--accent-dark);
 }
 
+.quiz-type-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -6px 0 20px;
+}
+
+.quiz-type-controls[hidden] {
+  display: none;
+}
+
+.quiz-type-button {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 16px;
+  color: var(--accent-dark);
+  background: #fff8f5;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quiz-type-button:hover,
+.quiz-type-button:focus-visible,
+.quiz-type-button.is-active {
+  border-color: var(--accent);
+  color: #ffffff;
+  background: var(--accent);
+  box-shadow: 0 10px 24px rgba(220, 107, 79, 0.22);
+  transform: translateY(-2px);
+}
+
+.quiz-type-button:focus-visible {
+  outline: 3px solid rgba(220, 107, 79, 0.28);
+  outline-offset: 3px;
+}
+
+.cloze-prompt {
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+}
+
+.cloze-meaning {
+  margin: 14px 0 0;
+  color: var(--text);
+  font-size: 1.08rem;
+  font-weight: 800;
+}
+
+.quiz-explanation {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
 .quiz-content {
   display: grid;
   gap: 18px;
@@ -635,6 +691,7 @@ h1 {
   }
 
   .mode-switch,
+  .quiz-type-controls,
   .quiz-options,
   .quiz-actions {
     display: grid;
@@ -642,6 +699,7 @@ h1 {
   }
 
   .mode-button,
+  .quiz-type-button,
   .quiz-actions .answer-button,
   .quiz-actions .secondary-button {
     width: 100%;

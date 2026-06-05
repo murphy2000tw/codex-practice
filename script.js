@@ -67,6 +67,9 @@ const restartQuizButton = document.querySelector("#restartQuiz");
 const quizAnsweredCount = document.querySelector("#quizAnsweredCount");
 const quizCorrectCount = document.querySelector("#quizCorrectCount");
 const quizAccuracy = document.querySelector("#quizAccuracy");
+const grammarQuizTypeControls = document.querySelector("#grammarQuizTypeControls");
+const grammarMeaningQuizTypeButton = document.querySelector("#grammarMeaningQuizTypeButton");
+const grammarClozeQuizTypeButton = document.querySelector("#grammarClozeQuizTypeButton");
 
 let vocabulary = [];
 let filteredVocabulary = [];
@@ -95,6 +98,7 @@ let quizAnsweredCountValue = 0;
 let quizCorrectCountValue = 0;
 let quizHasAnsweredCurrentQuestion = false;
 let currentGrammarQuizQuestion = null;
+let activeGrammarQuizType = "meaning";
 let grammarQuizAnsweredCountValue = 0;
 let grammarQuizCorrectCountValue = 0;
 let grammarQuizHasAnsweredCurrentQuestion = false;
@@ -111,6 +115,10 @@ function isQuizMode() {
 
 function isGrammarQuizMode() {
   return activeMode === "grammar-quiz";
+}
+
+function isGrammarClozeQuizType() {
+  return isGrammarQuizMode() && activeGrammarQuizType === "cloze";
 }
 
 function getActiveCategory() {
@@ -210,6 +218,12 @@ function grammarMatchesSearch(grammar, query) {
     Array.isArray(grammar.similar) ? grammar.similar.join("、") : grammar.similar,
     grammar.category,
     grammar.level,
+    grammar.quiz?.clozePrompt,
+    grammar.quiz?.clozePromptKana,
+    grammar.quiz?.clozeMeaning,
+    grammar.quiz?.answer,
+    grammar.quiz?.explanation,
+    Array.isArray(grammar.quiz?.choices) ? grammar.quiz.choices.join("、") : "",
   ];
 
   return searchableFields.some((field) => normalizeSearchText(field).includes(query));
@@ -574,7 +588,30 @@ function createQuizQuestion() {
   renderQuizQuestion();
 }
 
-function createGrammarQuizQuestion() {
+
+function hasUsableGrammarClozeQuiz(grammar) {
+  const quiz = grammar.quiz;
+
+  return Boolean(
+    quiz
+      && quiz.clozePrompt
+      && quiz.clozePromptKana
+      && quiz.clozeMeaning
+      && quiz.answer
+      && quiz.explanation
+      && Array.isArray(quiz.choices)
+      && quiz.choices.length === 4
+      && new Set(quiz.choices).size === 4
+      && quiz.choices.includes(quiz.answer),
+  );
+}
+
+function getFilteredGrammarWithClozeQuiz() {
+  return filteredGrammar.filter(hasUsableGrammarClozeQuiz);
+}
+
+function createGrammarMeaningQuizQuestion() {
+
   if (grammarIsLoading) {
     currentGrammarQuizQuestion = null;
     grammarQuizHasAnsweredCurrentQuestion = false;
@@ -613,6 +650,47 @@ function createGrammarQuizQuestion() {
   renderQuizQuestion();
 }
 
+function createGrammarClozeQuizQuestion() {
+  if (grammarIsLoading) {
+    currentGrammarQuizQuestion = null;
+    grammarQuizHasAnsweredCurrentQuestion = false;
+    renderQuizStatus("正在載入文法資料…");
+    return;
+  }
+
+  const clozeGrammarItems = getFilteredGrammarWithClozeQuiz();
+
+  if (clozeGrammarItems.length === 0) {
+    currentGrammarQuizQuestion = null;
+    grammarQuizHasAnsweredCurrentQuestion = false;
+    renderQuizStatus("目前篩選結果沒有可用的填空題，請調整分類或搜尋條件。");
+    return;
+  }
+
+  const questionGrammar = getRandomItem(clozeGrammarItems);
+  const options = shuffleItems(questionGrammar.quiz.choices.map((choice) => ({
+    meaning: choice,
+    isCorrect: choice === questionGrammar.quiz.answer,
+  })));
+
+  currentGrammarQuizQuestion = {
+    grammar: questionGrammar,
+    options,
+  };
+  grammarQuizHasAnsweredCurrentQuestion = false;
+  nextQuizQuestionButton.hidden = true;
+  renderQuizQuestion();
+}
+
+function createGrammarQuizQuestion() {
+  if (isGrammarClozeQuizType()) {
+    createGrammarClozeQuizQuestion();
+    return;
+  }
+
+  createGrammarMeaningQuizQuestion();
+}
+
 function renderQuizQuestion() {
   const activeQuestion = isGrammarQuizMode() ? currentGrammarQuizQuestion : currentQuizQuestion;
 
@@ -626,7 +704,18 @@ function renderQuizQuestion() {
   const prompt = document.createElement("div");
   prompt.className = "quiz-prompt";
 
-  if (isGrammarQuizMode()) {
+  if (isGrammarClozeQuizType()) {
+    prompt.innerHTML = `
+      <p class="quiz-prompt-label">請選出最適合放入空格「＿＿」的文法片段</p>
+      <h3 class="japanese-word grammar-title cloze-prompt">${activeQuestion.grammar.quiz.clozePrompt}</h3>
+      <p class="kana">${activeQuestion.grammar.quiz.clozePromptKana}</p>
+      <p class="cloze-meaning">中文提示：${activeQuestion.grammar.quiz.clozeMeaning}</p>
+      <div class="grammar-meta quiz-grammar-meta" aria-label="文法題目資訊">
+        <span>程度：${activeQuestion.grammar.level}</span>
+        <span>分類：${activeQuestion.grammar.category}</span>
+      </div>
+    `;
+  } else if (isGrammarQuizMode()) {
     prompt.innerHTML = `
       <p class="quiz-prompt-label">這個文法的中文意思是？</p>
       <h3 class="japanese-word grammar-title">${activeQuestion.grammar.grammar}</h3>
@@ -695,9 +784,18 @@ function handleQuizAnswer(selectedOption, optionButtons, feedback) {
     feedback.textContent = "答對了！";
     feedback.classList.add("is-correct");
   } else {
-    const correctMeaning = isGrammarQuizMode() ? activeQuestion.grammar.meaning : activeQuestion.word.meaning;
+    const correctMeaning = isGrammarClozeQuizType()
+      ? activeQuestion.grammar.quiz.answer
+      : isGrammarQuizMode() ? activeQuestion.grammar.meaning : activeQuestion.word.meaning;
     feedback.textContent = `答錯了，正確答案是：${correctMeaning}`;
     feedback.classList.add("is-wrong");
+  }
+
+  if (isGrammarClozeQuizType()) {
+    const explanation = document.createElement("span");
+    explanation.className = "quiz-explanation";
+    explanation.textContent = `解釋：${activeQuestion.grammar.quiz.explanation}`;
+    feedback.appendChild(explanation);
   }
 
   optionButtons.forEach((button, index) => {
@@ -725,6 +823,33 @@ function restartQuiz() {
   createActiveQuizQuestion();
 }
 
+function getQuizTitle() {
+  if (!isGrammarQuizMode()) {
+    return "請選出正確的中文意思";
+  }
+
+  return isGrammarClozeQuizType() ? "請選出正確的文法填空答案" : "請選出正確的文法中文意思";
+}
+
+function updateGrammarQuizTypeButtons() {
+  const isMeaningType = activeGrammarQuizType === "meaning";
+  grammarMeaningQuizTypeButton.classList.toggle("is-active", isMeaningType);
+  grammarMeaningQuizTypeButton.setAttribute("aria-pressed", String(isMeaningType));
+  grammarClozeQuizTypeButton.classList.toggle("is-active", !isMeaningType);
+  grammarClozeQuizTypeButton.setAttribute("aria-pressed", String(!isMeaningType));
+}
+
+function switchGrammarQuizType(type) {
+  if (activeGrammarQuizType === type) {
+    return;
+  }
+
+  activeGrammarQuizType = type;
+  quizTitle.textContent = getQuizTitle();
+  updateGrammarQuizTypeButtons();
+  restartQuiz();
+}
+
 async function switchMode(mode) {
   activeMode = mode;
   const isQuizModeValue = isQuizMode();
@@ -745,11 +870,13 @@ async function switchMode(mode) {
   controlsPanel.hidden = isQuizModeValue;
   cardsContainer.hidden = isQuizModeValue;
   quizPanel.hidden = !isQuizModeValue;
-  quizTitle.textContent = isGrammarQuizModeValue ? "請選出正確的文法中文意思" : "請選出正確的中文意思";
+  grammarQuizTypeControls.hidden = !isGrammarQuizModeValue;
+  updateGrammarQuizTypeButtons();
+  quizTitle.textContent = getQuizTitle();
   shuffleButton.textContent = isGrammarModeValue ? "換一組文法" : "換一組單字";
   searchLabel.textContent = isGrammarModeValue ? "搜尋文法" : "搜尋單字";
   wordSearchInput.placeholder = isGrammarModeValue
-    ? "搜尋文法、假名、意思、結構、用法、例句、分類或程度"
+    ? "搜尋文法、假名、意思、結構、用法、例句、填空題、分類或程度"
     : "搜尋日文、假名、中文、詞性、程度或例句";
   wordSearchInput.value = isGrammarModeValue ? grammarSearchQuery : searchQuery;
 
@@ -1111,6 +1238,8 @@ grammarModeButton.addEventListener("click", () => switchMode("grammar"));
 grammarQuizModeButton.addEventListener("click", () => switchMode("grammar-quiz"));
 nextQuizQuestionButton.addEventListener("click", createActiveQuizQuestion);
 restartQuizButton.addEventListener("click", restartQuiz);
+grammarMeaningQuizTypeButton.addEventListener("click", () => switchGrammarQuizType("meaning"));
+grammarClozeQuizTypeButton.addEventListener("click", () => switchGrammarQuizType("cloze"));
 
 clearSearchButton.disabled = true;
 updateQuizStats();
