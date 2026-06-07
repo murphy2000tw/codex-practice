@@ -5,12 +5,16 @@ const nextWordButton = document.querySelector("#nextWord");
 const toggleChineseButton = document.querySelector("#toggleChinese");
 const reshuffleVocabularyButton = document.querySelector("#reshuffleVocabulary");
 const categoryFilters = document.querySelector("#geptCategoryFilters");
+const vocabularySearchInput = document.querySelector("#geptVocabularySearch");
+const clearSearchButton = document.querySelector("#clearGeptSearch");
 const vocabulary = Array.isArray(geptVocabulary) ? geptVocabulary : [];
 const allCategoriesLabel = "全部";
 
 let currentWordIndex = 0;
 let chineseVisible = false;
 let selectedCategory = allCategoriesLabel;
+let searchQuery = "";
+let categoryVocabulary = [];
 let filteredVocabulary = [];
 
 function getAvailableCategories() {
@@ -25,6 +29,26 @@ function getFilteredVocabulary() {
   return vocabulary.filter((word) => word.category === selectedCategory);
 }
 
+function normalizeSearchText(value) {
+  return String(value ?? "").trim().toLocaleLowerCase();
+}
+
+function wordMatchesSearch(word, query) {
+  if (!query) {
+    return true;
+  }
+
+  const searchableFields = [
+    word.word,
+    word.meaning,
+    word.category,
+    word.example,
+    word.translation,
+  ];
+
+  return searchableFields.some((field) => normalizeSearchText(field).includes(query));
+}
+
 function shuffleVocabulary(words) {
   const shuffledWords = [...words];
 
@@ -36,10 +60,33 @@ function shuffleVocabulary(words) {
   return shuffledWords;
 }
 
-function resetCurrentVocabulary() {
-  filteredVocabulary = shuffleVocabulary(getFilteredVocabulary());
+function updateSearchControls() {
+  clearSearchButton.disabled = !searchQuery;
+}
+
+function resetCurrentPosition() {
   currentWordIndex = 0;
   chineseVisible = false;
+}
+
+function applySearchToCategoryVocabulary() {
+  filteredVocabulary = categoryVocabulary.filter((word) => wordMatchesSearch(word, searchQuery));
+  resetCurrentPosition();
+}
+
+function resetCurrentVocabulary() {
+  categoryVocabulary = shuffleVocabulary(getFilteredVocabulary());
+  applySearchToCategoryVocabulary();
+}
+
+function reshuffleCurrentVocabulary() {
+  if (searchQuery) {
+    filteredVocabulary = shuffleVocabulary(categoryVocabulary.filter((word) => wordMatchesSearch(word, searchQuery)));
+    resetCurrentPosition();
+    return;
+  }
+
+  resetCurrentVocabulary();
 }
 
 function createCategoryFilterButton(category) {
@@ -137,6 +184,7 @@ function renderEmptyVocabularyMessage(message, progressText = "0 / 0") {
   nextWordButton.disabled = true;
   toggleChineseButton.disabled = true;
   reshuffleVocabularyButton.disabled = true;
+  updateSearchControls();
 }
 
 function renderCurrentWord() {
@@ -145,8 +193,16 @@ function renderCurrentWord() {
     return;
   }
 
-  if (!filteredVocabulary.length) {
+  if (!categoryVocabulary.length && !searchQuery) {
     renderEmptyVocabularyMessage("此分類目前沒有單字。");
+    return;
+  }
+
+  if (!filteredVocabulary.length) {
+    const emptyMessage = searchQuery
+      ? "找不到符合條件的單字，請換個關鍵字試試。"
+      : "此分類目前沒有單字。";
+    renderEmptyVocabularyMessage(emptyMessage);
     return;
   }
 
@@ -188,6 +244,7 @@ function renderCurrentWord() {
   nextWordButton.disabled = currentWordIndex === filteredVocabulary.length - 1;
   toggleChineseButton.disabled = false;
   reshuffleVocabularyButton.disabled = false;
+  updateSearchControls();
   updateChineseVisibility();
 }
 
@@ -208,11 +265,28 @@ nextWordButton.addEventListener("click", () => {
 });
 
 toggleChineseButton.addEventListener("click", () => {
+  if (toggleChineseButton.disabled) {
+    return;
+  }
+
   chineseVisible = !chineseVisible;
   updateChineseVisibility();
 });
 
 reshuffleVocabularyButton.addEventListener("click", () => {
+  reshuffleCurrentVocabulary();
+  renderCurrentWord();
+});
+
+vocabularySearchInput.addEventListener("input", () => {
+  searchQuery = normalizeSearchText(vocabularySearchInput.value);
+  applySearchToCategoryVocabulary();
+  renderCurrentWord();
+});
+
+clearSearchButton.addEventListener("click", () => {
+  vocabularySearchInput.value = "";
+  searchQuery = "";
   resetCurrentVocabulary();
   renderCurrentWord();
 });
