@@ -26,6 +26,20 @@
       </div>
       <p class="subpage-text">使用上一個／下一個按鈕依序練習 GEPT 初級常見單字，先熟悉單字、詞性與例句，再確認中文意思與翻譯。</p>
 
+      <div class="search-controls gept-search-controls">
+        <label id="geptSearchLabel" class="search-label" for="geptVocabularySearch">單字搜尋</label>
+        <div class="search-row">
+          <input
+            id="geptVocabularySearch"
+            class="search-input"
+            type="search"
+            autocomplete="off"
+            placeholder="搜尋英文單字、中文意思或分類"
+          >
+          <button id="clearGeptSearch" class="secondary-button clear-search-button" type="button">清除搜尋</button>
+        </div>
+      </div>
+
       <div class="filter-group gept-category-filter-group">
         <p id="geptCategoryFilterLabel" class="filter-label">分類篩選</p>
         <div
@@ -50,6 +64,6 @@
   </main>
 
   <script src="geptVocabulary.js?v=1.2"></script>
-  <script src="geptVocabularyPage.js?v=1.4"></script>
+  <script src="geptVocabularyPage.js?v=1.5"></script>
 </body>
 </html>
