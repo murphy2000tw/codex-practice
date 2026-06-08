@@ -12,6 +12,8 @@ const cardModeButton = document.querySelector("#geptCardModeButton");
 const quizModeButton = document.querySelector("#geptQuizModeButton");
 const quizPanel = document.querySelector("#geptQuizPanel");
 const quizContent = document.querySelector("#geptQuizContent");
+const quizTitle = document.querySelector("#geptQuizTitle");
+const quizTypeButtons = document.querySelectorAll("[data-gept-quiz-type]");
 const quizScore = document.querySelector("#geptQuizScore");
 const quizProgress = document.querySelector("#geptQuizProgress");
 const nextQuizQuestionButton = document.querySelector("#nextGeptQuizQuestion");
@@ -21,6 +23,22 @@ const vocabulary = Array.isArray(geptVocabulary) ? geptVocabulary : [];
 const allCategoriesLabel = "全部";
 const cardMode = "card";
 const quizMode = "quiz";
+const englishToChineseQuizType = "english-to-chinese";
+const chineseToEnglishQuizType = "chinese-to-english";
+const quizTypeSettings = {
+  [englishToChineseQuizType]: {
+    title: "看英文選中文",
+    promptField: "word",
+    answerField: "meaning",
+    instruction: "請選出正確中文意思：",
+  },
+  [chineseToEnglishQuizType]: {
+    title: "看中文選英文",
+    promptField: "meaning",
+    answerField: "word",
+    instruction: "請選出正確英文單字：",
+  },
+};
 
 let currentMode = cardMode;
 let currentWordIndex = 0;
@@ -34,6 +52,7 @@ let quizCorrectCount = 0;
 let quizAnsweredCount = 0;
 let quizAnsweredCurrentQuestion = false;
 let quizCurrentOptions = [];
+let currentQuizType = englishToChineseQuizType;
 
 function getAvailableCategories() {
   return [...new Set(vocabulary.map((word) => word.category).filter(Boolean))];
@@ -331,18 +350,30 @@ function renderCurrentWord() {
   updateChineseVisibility();
 }
 
-function getQuizOptionMeanings(currentWord) {
-  const correctMeaning = currentWord.meaning;
-  const filteredWrongMeanings = filteredVocabulary
-    .filter((word) => word !== currentWord && word.meaning && word.meaning !== correctMeaning)
-    .map((word) => word.meaning);
-  const backupWrongMeanings = vocabulary
-    .filter((word) => word !== currentWord && word.meaning && word.meaning !== correctMeaning)
-    .map((word) => word.meaning);
-  const wrongMeanings = [...new Set([...shuffleVocabulary(filteredWrongMeanings), ...shuffleVocabulary(backupWrongMeanings)])]
+function getCurrentQuizTypeSetting() {
+  return quizTypeSettings[currentQuizType] || quizTypeSettings[englishToChineseQuizType];
+}
+
+function updateQuizTypeButtons() {
+  quizTypeButtons.forEach((button) => {
+    const isActive = button.dataset.geptQuizType === currentQuizType;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function getQuizOptionValues(currentWord, answerField) {
+  const correctAnswer = currentWord[answerField];
+  const filteredWrongAnswers = filteredVocabulary
+    .filter((word) => word !== currentWord && word[answerField] && word[answerField] !== correctAnswer)
+    .map((word) => word[answerField]);
+  const backupWrongAnswers = vocabulary
+    .filter((word) => word !== currentWord && word[answerField] && word[answerField] !== correctAnswer)
+    .map((word) => word[answerField]);
+  const wrongAnswers = [...new Set([...shuffleVocabulary(filteredWrongAnswers), ...shuffleVocabulary(backupWrongAnswers)])]
     .slice(0, 3);
 
-  return shuffleVocabulary([correctMeaning, ...wrongMeanings]);
+  return shuffleVocabulary([correctAnswer, ...wrongAnswers].filter(Boolean));
 }
 
 function updateQuizScoreDisplay() {
@@ -368,6 +399,10 @@ function renderEmptyQuizMessage(message) {
 }
 
 function renderQuizQuestion() {
+  const quizTypeSetting = getCurrentQuizTypeSetting();
+  quizTitle.textContent = quizTypeSetting.title;
+  updateQuizTypeButtons();
+
   if (!vocabulary.length) {
     renderEmptyQuizMessage("目前沒有可顯示的 GEPT 初級單字資料。");
     return;
@@ -383,8 +418,9 @@ function renderQuizQuestion() {
   }
 
   const currentWord = filteredVocabulary[quizQuestionIndex];
+  const correctAnswer = currentWord[quizTypeSetting.answerField];
   quizAnsweredCurrentQuestion = false;
-  quizCurrentOptions = getQuizOptionMeanings(currentWord);
+  quizCurrentOptions = getQuizOptionValues(currentWord, quizTypeSetting.answerField);
 
   const quizCard = document.createElement("article");
   quizCard.className = "quiz-card gept-quiz-card";
@@ -398,24 +434,24 @@ function renderQuizQuestion() {
 
   const wordTitle = document.createElement("h3");
   wordTitle.className = "english-word gept-quiz-word";
-  wordTitle.textContent = currentWord.word || "—";
+  wordTitle.textContent = currentWord[quizTypeSetting.promptField] || "—";
 
   const promptText = document.createElement("p");
   promptText.className = "gept-quiz-instruction";
-  promptText.textContent = "請選出正確中文意思：";
+  promptText.textContent = quizTypeSetting.instruction;
 
   prompt.append(promptLabel, wordTitle, promptText);
 
   const options = document.createElement("div");
   options.className = "quiz-options gept-quiz-options";
 
-  quizCurrentOptions.forEach((meaning, index) => {
+  quizCurrentOptions.forEach((answer, index) => {
     const optionButton = document.createElement("button");
     optionButton.className = "quiz-option gept-quiz-option";
     optionButton.type = "button";
-    optionButton.textContent = `${String.fromCharCode(65 + index)}. ${meaning}`;
-    optionButton.dataset.meaning = meaning;
-    optionButton.addEventListener("click", () => handleQuizAnswer(optionButton, currentWord.meaning));
+    optionButton.textContent = `${String.fromCharCode(65 + index)}. ${answer}`;
+    optionButton.dataset.answer = answer;
+    optionButton.addEventListener("click", () => handleQuizAnswer(optionButton, correctAnswer));
     options.append(optionButton);
   });
 
@@ -436,10 +472,10 @@ function renderQuizQuestion() {
   updateSearchControls();
 }
 
-function handleQuizAnswer(selectedButton, correctMeaning) {
+function handleQuizAnswer(selectedButton, correctAnswer) {
   const feedback = document.querySelector("#geptQuizFeedback");
   const optionButtons = quizContent.querySelectorAll(".gept-quiz-option");
-  const isCorrect = selectedButton.dataset.meaning === correctMeaning;
+  const isCorrect = selectedButton.dataset.answer === correctAnswer;
 
   if (!quizAnsweredCurrentQuestion) {
     quizAnsweredCurrentQuestion = true;
@@ -451,7 +487,7 @@ function handleQuizAnswer(selectedButton, correctMeaning) {
   }
 
   optionButtons.forEach((button) => {
-    const buttonIsCorrect = button.dataset.meaning === correctMeaning;
+    const buttonIsCorrect = button.dataset.answer === correctAnswer;
     button.classList.toggle("is-correct", buttonIsCorrect);
     button.classList.toggle("is-wrong", button === selectedButton && !buttonIsCorrect);
     button.disabled = true;
@@ -459,7 +495,7 @@ function handleQuizAnswer(selectedButton, correctMeaning) {
 
   feedback.classList.toggle("is-correct", isCorrect);
   feedback.classList.toggle("is-wrong", !isCorrect);
-  feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${correctMeaning}`;
+  feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${correctAnswer}`;
   updateQuizScoreDisplay();
 }
 
@@ -523,6 +559,18 @@ quizModeButton.addEventListener("click", () => {
   currentMode = quizMode;
   resetQuizState();
   renderCurrentMode();
+});
+
+quizTypeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (currentQuizType === button.dataset.geptQuizType) {
+      return;
+    }
+
+    currentQuizType = button.dataset.geptQuizType;
+    resetQuizState();
+    renderQuizQuestion();
+  });
 });
 
 reshuffleQuizVocabularyButton.addEventListener("click", () => {
