@@ -19,7 +19,7 @@
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">English Learning</p>
       <h1 id="page-title">冠詞練習</h1>
-      <p class="hero-text">練習 a、an、the，以及不使用冠詞的基本用法。</p>
+      <p class="hero-text">練習 a、an、the，以及不使用冠詞的不同使用情境。</p>
     </section>
 
     <section class="category-panel subpage-panel article-guide-panel" aria-labelledby="article-guide-title">
@@ -32,7 +32,7 @@
         <article class="word-card article-guide-card">
           <span class="card-number">a</span>
           <h3>a</h3>
-          <p>用在第一次提到的單數可數名詞前，且發音不是母音開頭。</p>
+          <p>單數可數名詞，第一次提到、表示職業身分或一個物品，且子音音開頭。</p>
           <p class="article-example">I have a book.</p>
         </article>
 
@@ -46,16 +46,19 @@
         <article class="word-card article-guide-card">
           <span class="card-number">the</span>
           <h3>the</h3>
-          <p>用在特定的人、事、物，或前面已經提過的名詞。</p>
+          <p>用在特定的人事物、前面提過的名詞，或世界上獨一無二的事物。</p>
           <p class="article-example">I see a dog. The dog is black.</p>
         </article>
 
         <article class="word-card article-guide-card">
           <span class="card-number">不填</span>
           <h3>不用冠詞</h3>
-          <p>複數名詞或不可數名詞在泛指時，常常不用冠詞。</p>
+          <p>泛指複數、泛指不可數、運動、語言、科目、餐點等常不用冠詞。</p>
           <p class="article-example">I like music. Dogs are friendly.</p>
         </article>
+      </div>
+      <div class="article-core-note" aria-label="冠詞核心練習重點">
+        <p>核心練習：a 用於第一次提到的單數可數名詞與子音音開頭；an 用於母音音開頭；the 用於特定、前面提過、獨一無二；不填用於泛指複數、泛指不可數、運動、語言、餐點等。</p>
       </div>
     </section>
 
@@ -68,6 +71,18 @@
         <div class="quiz-stats" aria-label="冠詞練習分數與進度">
           <span>目前分數：<strong id="articleScore">0 / 0</strong></span>
           <span>題目進度：<strong id="articleProgress">0 / 0</strong></span>
+        </div>
+      </div>
+
+
+      <div class="article-filter-panel" aria-label="冠詞用法分類篩選">
+        <span class="quiz-prompt-label">用法分類篩選：</span>
+        <div class="article-filter-buttons">
+          <button class="secondary-button article-filter-button js-article-filter is-active" type="button" data-category="all" aria-pressed="true">全部</button>
+          <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="a" aria-pressed="false">a</button>
+          <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="an" aria-pressed="false">an</button>
+          <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="the" aria-pressed="false">the</button>
+          <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="不填" aria-pressed="false">不填</button>
         </div>
       </div>
 
@@ -130,7 +145,7 @@
     </section>
   </main>
 
-  <script src="articleQuestions.js?v=1.0"></script>
-  <script src="articlePracticePage.js?v=1.0"></script>
+  <script src="articleQuestions.js?v=1.1"></script>
+  <script src="articlePracticePage.js?v=1.1"></script>
 </body>
 </html>
