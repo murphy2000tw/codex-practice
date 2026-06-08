@@ -16,7 +16,7 @@ const requiredFields = [
   "translation",
 ];
 const expectedCurrentLevel = "初級";
-const expectedVocabularyCount = 300;
+const expectedVocabularyCount = 500;
 
 function loadVocabulary() {
   const source = fs.readFileSync(vocabularyPath, "utf8");
