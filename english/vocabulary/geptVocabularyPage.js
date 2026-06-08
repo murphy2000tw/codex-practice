@@ -16,6 +16,10 @@ const quizTitle = document.querySelector("#geptQuizTitle");
 const quizTypeButtons = document.querySelectorAll("[data-gept-quiz-type]");
 const quizScore = document.querySelector("#geptQuizScore");
 const quizProgress = document.querySelector("#geptQuizProgress");
+const wrongQuestionCount = document.querySelector("#geptWrongQuestionCount");
+const reviewWrongQuestionsButton = document.querySelector("#reviewGeptWrongQuestions");
+const returnQuizButton = document.querySelector("#returnGeptQuiz");
+const clearWrongQuestionsButton = document.querySelector("#clearGeptWrongQuestions");
 const nextQuizQuestionButton = document.querySelector("#nextGeptQuizQuestion");
 const reshuffleQuizVocabularyButton = document.querySelector("#reshuffleGeptQuizVocabulary");
 const vocabularyControls = document.querySelector("#geptVocabularyControls");
@@ -52,7 +56,11 @@ let quizCorrectCount = 0;
 let quizAnsweredCount = 0;
 let quizAnsweredCurrentQuestion = false;
 let quizCurrentOptions = [];
+let quizCurrentQuestionRemoved = false;
 let currentQuizType = englishToChineseQuizType;
+let wrongQuestions = [];
+let wrongReviewQuestions = [];
+let isWrongReviewMode = false;
 
 function getAvailableCategories() {
   return [...new Set(vocabulary.map((word) => word.category).filter(Boolean))];
@@ -138,6 +146,7 @@ function resetQuizState() {
   quizAnsweredCount = 0;
   quizAnsweredCurrentQuestion = false;
   quizCurrentOptions = [];
+  quizCurrentQuestionRemoved = false;
 }
 
 function applySearchToCategoryVocabulary() {
@@ -354,18 +363,72 @@ function getCurrentQuizTypeSetting() {
   return quizTypeSettings[currentQuizType] || quizTypeSettings[englishToChineseQuizType];
 }
 
-function updateQuizTypeButtons() {
+function getWrongQuestionKey(word, quizType) {
+  return `${quizType}::${word.word}`;
+}
+
+function getWrongQuestionRecordKey(record) {
+  return `${record.quizTypeKey}::${record.word}`;
+}
+
+function updateWrongQuestionControls() {
+  wrongQuestionCount.textContent = `${wrongQuestions.length} 題`;
+  reviewWrongQuestionsButton.disabled = !wrongQuestions.length;
+  clearWrongQuestionsButton.disabled = !wrongQuestions.length;
+  returnQuizButton.hidden = !isWrongReviewMode;
+}
+
+function recordWrongQuestion(word, quizType, selectedAnswer, correctAnswer) {
+  const wrongQuestionKey = getWrongQuestionKey(word, quizType);
+  const alreadyRecorded = wrongQuestions.some((record) => getWrongQuestionRecordKey(record) === wrongQuestionKey);
+
+  if (alreadyRecorded) {
+    return;
+  }
+
+  const quizTypeSetting = quizTypeSettings[quizType] || quizTypeSettings[englishToChineseQuizType];
+  wrongQuestions.push({
+    word: word.word,
+    meaning: word.meaning,
+    category: word.category,
+    quizType: quizTypeSetting.title,
+    quizTypeKey: quizType,
+    question: word[quizTypeSetting.promptField],
+    selectedAnswer,
+    correctAnswer,
+  });
+  updateWrongQuestionControls();
+}
+
+function removeWrongQuestion(record) {
+  const recordKey = getWrongQuestionRecordKey(record);
+  wrongQuestions = wrongQuestions.filter((wrongQuestion) => getWrongQuestionRecordKey(wrongQuestion) !== recordKey);
+  wrongReviewQuestions = wrongReviewQuestions.filter((wrongQuestion) => getWrongQuestionRecordKey(wrongQuestion) !== recordKey);
+  updateWrongQuestionControls();
+}
+
+function getActiveQuizQuestions() {
+  return isWrongReviewMode ? wrongReviewQuestions : filteredVocabulary;
+}
+
+function getQuizTypeForQuestion(question) {
+  return isWrongReviewMode ? question.quizTypeKey : currentQuizType;
+}
+
+function updateQuizTypeButtons(activeQuizType = currentQuizType) {
   quizTypeButtons.forEach((button) => {
-    const isActive = button.dataset.geptQuizType === currentQuizType;
+    const isActive = button.dataset.geptQuizType === activeQuizType;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
+    button.disabled = isWrongReviewMode;
   });
 }
 
 function getQuizOptionValues(currentWord, answerField) {
   const correctAnswer = currentWord[answerField];
-  const filteredWrongAnswers = filteredVocabulary
-    .filter((word) => word !== currentWord && word[answerField] && word[answerField] !== correctAnswer)
+  const optionSource = isWrongReviewMode ? vocabulary : filteredVocabulary;
+  const filteredWrongAnswers = optionSource
+    .filter((word) => word.word !== currentWord.word && word[answerField] && word[answerField] !== correctAnswer)
     .map((word) => word[answerField]);
   const backupWrongAnswers = vocabulary
     .filter((word) => word !== currentWord && word[answerField] && word[answerField] !== correctAnswer)
@@ -377,10 +440,12 @@ function getQuizOptionValues(currentWord, answerField) {
 }
 
 function updateQuizScoreDisplay() {
+  const activeQuestions = getActiveQuizQuestions();
   quizScore.textContent = `${quizCorrectCount} / ${quizAnsweredCount}`;
-  quizProgress.textContent = filteredVocabulary.length
-    ? `${quizQuestionIndex + 1} / ${filteredVocabulary.length}`
+  quizProgress.textContent = activeQuestions.length
+    ? `${Math.min(quizQuestionIndex + 1, activeQuestions.length)} / ${activeQuestions.length}`
     : "0 / 0";
+  updateWrongQuestionControls();
 }
 
 function renderEmptyQuizMessage(message) {
@@ -391,35 +456,46 @@ function renderEmptyQuizMessage(message) {
   quizContent.append(statusMessage);
   quizScore.textContent = "0 / 0";
   quizProgress.textContent = "0 / 0";
-  currentProgress.textContent = "測驗模式：0 / 0";
+  currentProgress.textContent = isWrongReviewMode ? "錯題複習：0 / 0" : "測驗模式：0 / 0";
   nextQuizQuestionButton.disabled = true;
   reshuffleQuizVocabularyButton.disabled = true;
   updateRandomStatus();
   updateSearchControls();
+  updateWrongQuestionControls();
 }
 
 function renderQuizQuestion() {
-  const quizTypeSetting = getCurrentQuizTypeSetting();
-  quizTitle.textContent = quizTypeSetting.title;
-  updateQuizTypeButtons();
+  const activeQuestions = getActiveQuizQuestions();
+  const currentQuestion = activeQuestions[quizQuestionIndex];
+  const activeQuizType = currentQuestion ? getQuizTypeForQuestion(currentQuestion) : currentQuizType;
+  const quizTypeSetting = quizTypeSettings[activeQuizType] || getCurrentQuizTypeSetting();
+  quizTitle.textContent = isWrongReviewMode ? `錯題複習：${quizTypeSetting.title}` : quizTypeSetting.title;
+  updateQuizTypeButtons(activeQuizType);
+  updateWrongQuestionControls();
 
   if (!vocabulary.length) {
     renderEmptyQuizMessage("目前沒有可顯示的 GEPT 初級單字資料。");
     return;
   }
 
-  if (!filteredVocabulary.length) {
+  if (isWrongReviewMode && !activeQuestions.length) {
+    renderEmptyQuizMessage("目前沒有錯題。");
+    return;
+  }
+
+  if (!isWrongReviewMode && !filteredVocabulary.length) {
     renderEmptyQuizMessage("目前沒有符合條件的單字，請調整分類或搜尋關鍵字。");
     return;
   }
 
-  if (quizQuestionIndex >= filteredVocabulary.length) {
-    quizQuestionIndex = filteredVocabulary.length - 1;
+  if (quizQuestionIndex >= activeQuestions.length) {
+    quizQuestionIndex = activeQuestions.length - 1;
   }
 
-  const currentWord = filteredVocabulary[quizQuestionIndex];
+  const currentWord = activeQuestions[quizQuestionIndex];
   const correctAnswer = currentWord[quizTypeSetting.answerField];
   quizAnsweredCurrentQuestion = false;
+  quizCurrentQuestionRemoved = false;
   quizCurrentOptions = getQuizOptionValues(currentWord, quizTypeSetting.answerField);
 
   const quizCard = document.createElement("article");
@@ -463,10 +539,13 @@ function renderQuizQuestion() {
   quizCard.append(prompt, options, feedback);
   quizContent.replaceChildren(quizCard);
 
-  nextQuizQuestionButton.disabled = quizQuestionIndex >= filteredVocabulary.length - 1;
+  nextQuizQuestionButton.disabled = quizQuestionIndex >= activeQuestions.length - 1;
   reshuffleQuizVocabularyButton.disabled = false;
-  nextQuizQuestionButton.textContent = quizQuestionIndex >= filteredVocabulary.length - 1 ? "已完成目前題組" : "下一題";
-  currentProgress.textContent = `測驗模式：${quizQuestionIndex + 1} / ${filteredVocabulary.length}`;
+  reshuffleQuizVocabularyButton.textContent = isWrongReviewMode ? "重新隨機錯題" : "重新隨機";
+  nextQuizQuestionButton.textContent = quizQuestionIndex >= activeQuestions.length - 1 ? "已完成目前題組" : "下一題";
+  currentProgress.textContent = isWrongReviewMode
+    ? `錯題複習：${quizQuestionIndex + 1} / ${activeQuestions.length}`
+    : `測驗模式：${quizQuestionIndex + 1} / ${activeQuestions.length}`;
   updateQuizScoreDisplay();
   updateRandomStatus();
   updateSearchControls();
@@ -475,6 +554,9 @@ function renderQuizQuestion() {
 function handleQuizAnswer(selectedButton, correctAnswer) {
   const feedback = document.querySelector("#geptQuizFeedback");
   const optionButtons = quizContent.querySelectorAll(".gept-quiz-option");
+  const activeQuestions = getActiveQuizQuestions();
+  const currentQuestion = activeQuestions[quizQuestionIndex];
+  const activeQuizType = getQuizTypeForQuestion(currentQuestion);
   const isCorrect = selectedButton.dataset.answer === correctAnswer;
 
   if (!quizAnsweredCurrentQuestion) {
@@ -483,6 +565,13 @@ function handleQuizAnswer(selectedButton, correctAnswer) {
 
     if (isCorrect) {
       quizCorrectCount += 1;
+
+      if (isWrongReviewMode) {
+        removeWrongQuestion(currentQuestion);
+        quizCurrentQuestionRemoved = true;
+      }
+    } else if (!isWrongReviewMode) {
+      recordWrongQuestion(currentQuestion, activeQuizType, selectedButton.dataset.answer, correctAnswer);
     }
   }
 
@@ -496,6 +585,18 @@ function handleQuizAnswer(selectedButton, correctAnswer) {
   feedback.classList.toggle("is-correct", isCorrect);
   feedback.classList.toggle("is-wrong", !isCorrect);
   feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${correctAnswer}`;
+
+  if (isCorrect && isWrongReviewMode) {
+    if (!wrongReviewQuestions.length) {
+      feedback.textContent = "答對了！本次錯題已全部完成。";
+      nextQuizQuestionButton.disabled = true;
+      nextQuizQuestionButton.textContent = "已完成錯題複習";
+    } else {
+      nextQuizQuestionButton.disabled = false;
+      nextQuizQuestionButton.textContent = "下一題";
+    }
+  }
+
   updateQuizScoreDisplay();
 }
 
@@ -548,6 +649,7 @@ cardModeButton.addEventListener("click", () => {
   }
 
   currentMode = cardMode;
+  isWrongReviewMode = false;
   renderCurrentMode();
 });
 
@@ -557,13 +659,14 @@ quizModeButton.addEventListener("click", () => {
   }
 
   currentMode = quizMode;
+  isWrongReviewMode = false;
   resetQuizState();
   renderCurrentMode();
 });
 
 quizTypeButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (currentQuizType === button.dataset.geptQuizType) {
+    if (isWrongReviewMode || currentQuizType === button.dataset.geptQuizType) {
       return;
     }
 
@@ -574,12 +677,26 @@ quizTypeButtons.forEach((button) => {
 });
 
 reshuffleQuizVocabularyButton.addEventListener("click", () => {
+  if (isWrongReviewMode) {
+    wrongReviewQuestions = shuffleVocabulary(wrongQuestions);
+    resetQuizState();
+    renderCurrentMode();
+    return;
+  }
+
   reshuffleCurrentVocabulary();
   renderCurrentMode();
 });
 
 nextQuizQuestionButton.addEventListener("click", () => {
-  if (quizQuestionIndex >= filteredVocabulary.length - 1) {
+  const activeQuestions = getActiveQuizQuestions();
+
+  if (quizCurrentQuestionRemoved) {
+    renderQuizQuestion();
+    return;
+  }
+
+  if (quizQuestionIndex >= activeQuestions.length - 1) {
     return;
   }
 
@@ -587,6 +704,43 @@ nextQuizQuestionButton.addEventListener("click", () => {
   renderQuizQuestion();
 });
 
+reviewWrongQuestionsButton.addEventListener("click", () => {
+  if (!wrongQuestions.length) {
+    renderEmptyQuizMessage("目前沒有錯題。");
+    return;
+  }
+
+  currentMode = quizMode;
+  isWrongReviewMode = true;
+  wrongReviewQuestions = shuffleVocabulary(wrongQuestions);
+  resetQuizState();
+  renderCurrentMode();
+});
+
+returnQuizButton.addEventListener("click", () => {
+  isWrongReviewMode = false;
+  reshuffleQuizVocabularyButton.textContent = "重新隨機";
+  resetQuizState();
+  renderCurrentMode();
+});
+
+clearWrongQuestionsButton.addEventListener("click", () => {
+  wrongQuestions = [];
+  wrongReviewQuestions = [];
+
+  if (isWrongReviewMode) {
+    isWrongReviewMode = false;
+    resetQuizState();
+    renderCurrentMode();
+    updateWrongQuestionControls();
+    return;
+  }
+
+  updateWrongQuestionControls();
+  updateQuizScoreDisplay();
+});
+
 resetCurrentVocabulary();
 renderCategoryFilters();
+updateWrongQuestionControls();
 renderCurrentMode();
