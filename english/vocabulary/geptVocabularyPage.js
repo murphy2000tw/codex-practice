@@ -23,6 +23,9 @@ const clearWrongQuestionsButton = document.querySelector("#clearGeptWrongQuestio
 const nextQuizQuestionButton = document.querySelector("#nextGeptQuizQuestion");
 const reshuffleQuizVocabularyButton = document.querySelector("#reshuffleGeptQuizVocabulary");
 const vocabularyControls = document.querySelector("#geptVocabularyControls");
+const vocabularyTotalText = document.querySelector("#geptVocabularyTotalText");
+const vocabularyTotalInline = document.querySelector("#geptVocabularyTotalInline");
+const vocabularyTotalValue = document.querySelector("#geptVocabularyTotalValue");
 const vocabulary = Array.isArray(geptVocabulary) ? geptVocabulary : [];
 const allCategoriesLabel = "全部";
 const allLevelsLabel = "全部級數";
@@ -64,6 +67,22 @@ let currentQuizType = englishToChineseQuizType;
 let wrongQuestions = [];
 let wrongReviewQuestions = [];
 let isWrongReviewMode = false;
+
+function renderVocabularyTotalText() {
+  const totalText = `${vocabulary.length} 個 GEPT 初級單字`;
+
+  if (vocabularyTotalText) {
+    vocabularyTotalText.textContent = totalText;
+  }
+
+  if (vocabularyTotalInline) {
+    vocabularyTotalInline.textContent = totalText;
+  }
+
+  if (vocabularyTotalValue) {
+    vocabularyTotalValue.textContent = vocabulary.length;
+  }
+}
 
 function getAvailableCategories() {
   return [...new Set(vocabulary.map((word) => word.category).filter(Boolean))];
@@ -757,6 +776,7 @@ clearWrongQuestionsButton.addEventListener("click", () => {
   updateQuizScoreDisplay();
 });
 
+renderVocabularyTotalText();
 resetCurrentVocabulary();
 renderCategoryFilters();
 updateWrongQuestionControls();

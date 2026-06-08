@@ -16,6 +16,7 @@ const requiredFields = [
   "translation",
 ];
 const expectedCurrentLevel = "初級";
+const expectedVocabularyCount = 300;
 
 function loadVocabulary() {
   const source = fs.readFileSync(vocabularyPath, "utf8");
@@ -55,7 +56,17 @@ function findDuplicates(items, field) {
 function validateVocabulary(vocabulary) {
   const errors = [];
 
-  vocabulary.forEach((item, index) => {
+  if (vocabulary.length !== expectedVocabularyCount) {
+    errors.push(`總單字數應為 ${expectedVocabularyCount}，目前為 ${vocabulary.length}。`);
+  }
+
+  for (let index = 0; index < vocabulary.length; index += 1) {
+    const item = vocabulary[index];
+
+    if (!item || typeof item !== "object") {
+      errors.push(`第 ${index + 1} 筆資料不是有效物件。`);
+      continue;
+    }
     requiredFields.forEach((field) => {
       if (!normalizeValue(item[field])) {
         errors.push(`第 ${index + 1} 筆資料缺少或留空欄位：${field}`);
@@ -65,7 +76,7 @@ function validateVocabulary(vocabulary) {
     if (item.level !== expectedCurrentLevel) {
       errors.push(`第 ${index + 1} 筆資料 level 應為「${expectedCurrentLevel}」，目前為「${item.level}」。`);
     }
-  });
+  }
 
   const duplicateIds = findDuplicates(vocabulary, "id");
   const duplicateWords = findDuplicates(vocabulary, "word");
