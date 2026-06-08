@@ -1,0 +1,16 @@
+{
+  "name": "N5 日文單字卡與 GEPT 初級學習",
+  "short_name": "語言學習",
+  "icons": [
+    {
+      "src": "app-icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb"
+}
