@@ -7,6 +7,7 @@ const reshuffleVocabularyButton = document.querySelector("#reshuffleVocabulary")
 const categoryFilters = document.querySelector("#geptCategoryFilters");
 const vocabularySearchInput = document.querySelector("#geptVocabularySearch");
 const clearSearchButton = document.querySelector("#clearGeptSearch");
+const randomStatus = document.querySelector("#geptRandomStatus");
 const vocabulary = Array.isArray(geptVocabulary) ? geptVocabulary : [];
 const allCategoriesLabel = "全部";
 
@@ -64,6 +65,32 @@ function updateSearchControls() {
   clearSearchButton.disabled = !searchQuery;
 }
 
+function getCurrentModeText() {
+  const modeParts = [];
+
+  if (selectedCategory !== allCategoriesLabel) {
+    modeParts.push(`分類：${selectedCategory}`);
+  }
+
+  if (searchQuery) {
+    modeParts.push(`搜尋：${vocabularySearchInput.value.trim()}`);
+  }
+
+  return modeParts.length ? modeParts.join("，") : "全部分類";
+}
+
+function updateRandomStatus() {
+  if (!randomStatus) {
+    return;
+  }
+
+  const modeText = getCurrentModeText();
+  const resultText = filteredVocabulary.length
+    ? `目前以隨機順序顯示 ${filteredVocabulary.length} 個單字。`
+    : "目前沒有符合條件的單字。";
+  randomStatus.textContent = `${resultText}（${modeText}）`;
+}
+
 function resetCurrentPosition() {
   currentWordIndex = 0;
   chineseVisible = false;
@@ -91,9 +118,12 @@ function reshuffleCurrentVocabulary() {
 
 function createCategoryFilterButton(category) {
   const button = document.createElement("button");
+  const categoryCount = category === allCategoriesLabel
+    ? vocabulary.length
+    : vocabulary.filter((word) => word.category === category).length;
   button.className = "filter-button";
   button.type = "button";
-  button.textContent = category;
+  button.textContent = `${category} (${categoryCount})`;
   button.dataset.category = category;
   button.setAttribute("aria-pressed", String(category === selectedCategory));
 
@@ -180,6 +210,7 @@ function renderEmptyVocabularyMessage(message, progressText = "0 / 0") {
   vocabularyCard.classList.add("status-message");
   vocabularyCard.textContent = message;
   currentProgress.textContent = progressText;
+  updateRandomStatus();
   previousWordButton.disabled = true;
   nextWordButton.disabled = true;
   toggleChineseButton.disabled = true;
@@ -214,7 +245,7 @@ function renderCurrentWord() {
   const cardHeader = document.createElement("div");
   const cardNumber = document.createElement("span");
   cardNumber.className = "card-number";
-  cardNumber.textContent = `單字 ${currentWordIndex + 1}`;
+  cardNumber.textContent = `隨機顯示 ${currentWordIndex + 1}`;
 
   const wordTitle = document.createElement("h2");
   wordTitle.className = "english-word";
@@ -239,12 +270,13 @@ function renderCurrentWord() {
   vocabularyCard.classList.remove("status-message");
   vocabularyCard.replaceChildren(cardHeader, details);
 
-  currentProgress.textContent = `${currentWordIndex + 1} / ${filteredVocabulary.length}`;
+  currentProgress.textContent = `隨機顯示：${currentWordIndex + 1} / ${filteredVocabulary.length}`;
   previousWordButton.disabled = currentWordIndex === 0;
   nextWordButton.disabled = currentWordIndex === filteredVocabulary.length - 1;
   toggleChineseButton.disabled = false;
   reshuffleVocabularyButton.disabled = false;
   updateSearchControls();
+  updateRandomStatus();
   updateChineseVisibility();
 }
 
