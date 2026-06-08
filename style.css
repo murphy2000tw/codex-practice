@@ -1046,3 +1046,97 @@ h1 {
   transform: none;
   box-shadow: none;
 }
+
+.article-guide-panel,
+.article-practice-section {
+  margin-bottom: 22px;
+}
+
+.article-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.article-guide-card {
+  min-height: 230px;
+  gap: 14px;
+}
+
+.article-guide-card h3 {
+  margin: 8px 0 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.article-guide-card p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.article-guide-card .article-example {
+  border-top: 1px dashed var(--border);
+  margin-top: auto;
+  padding-top: 14px;
+  color: var(--text);
+  font-weight: 900;
+}
+
+.article-question-sentence {
+  margin-top: 14px;
+  font-size: clamp(1.7rem, 5vw, 2.5rem);
+  line-height: 1.35;
+}
+
+.article-feedback-area {
+  display: grid;
+  gap: 10px;
+}
+
+.article-explanation {
+  min-height: 1.7em;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.article-complete-panel[hidden],
+.article-practice-panel[hidden] {
+  display: none;
+}
+
+.article-result-card {
+  gap: 18px;
+}
+
+.article-result-summary {
+  margin-top: 6px;
+}
+
+.article-actions a {
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .article-guide-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .article-question-sentence,
+  .article-explanation {
+    text-align: left;
+  }
+}
+
+.article-actions .answer-button:disabled,
+.article-actions .secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+  transform: none;
+  box-shadow: none;
+}
