@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GEPT 初級單字｜英文學習</title>
-  <link rel="stylesheet" href="../../style.css?v=1.9">
+  <link rel="stylesheet" href="../../style.css?v=2.0">
 </head>
 <body>
   <main class="page-shell">
@@ -25,6 +25,17 @@
         <p id="currentProgress" class="category-count" aria-live="polite">載入中</p>
       </div>
       <p class="subpage-text">從 100 個 GEPT 初級單字中隨機顯示單字卡；可依 category／分類篩選、搜尋英文或中文，並使用上一個／下一個快速複習。</p>
+
+      <div class="mode-panel gept-mode-panel" aria-labelledby="geptModeTitle">
+        <div>
+          <p class="filter-label" id="geptModeTitle">模式切換</p>
+          <p class="mode-description">可用單字卡複習，也可以切換成看英文選中文的四選一測驗。</p>
+        </div>
+        <div class="mode-switch" role="group" aria-label="選擇 GEPT 初級單字練習模式">
+          <button id="geptCardModeButton" class="mode-button is-active" type="button" aria-pressed="true">單字卡模式</button>
+          <button id="geptQuizModeButton" class="mode-button" type="button" aria-pressed="false">測驗模式</button>
+        </div>
+      </div>
 
       <div class="vocabulary-summary" aria-label="GEPT 初級單字功能摘要">
         <div class="summary-item">
@@ -69,7 +80,25 @@
 
       <article id="vocabularyCard" class="word-card gept-vocabulary-card" aria-live="polite"></article>
 
-      <div class="gept-vocabulary-controls" aria-label="GEPT 初級單字控制">
+      <section id="geptQuizPanel" class="quiz-panel gept-quiz-panel" aria-live="polite" hidden>
+        <div class="quiz-header">
+          <div>
+            <span class="card-number">測驗題目</span>
+            <h2 class="quiz-title">看英文選中文</h2>
+          </div>
+          <div class="quiz-stats" aria-label="GEPT 測驗分數統計">
+            <span>目前分數：<strong id="geptQuizScore">0 / 0</strong></span>
+            <span>題目進度：<strong id="geptQuizProgress">0 / 0</strong></span>
+          </div>
+        </div>
+        <div id="geptQuizContent" class="quiz-content"></div>
+        <div class="quiz-actions">
+          <button id="reshuffleGeptQuizVocabulary" class="secondary-button" type="button">重新隨機</button>
+          <button id="nextGeptQuizQuestion" class="answer-button" type="button">下一題</button>
+        </div>
+      </section>
+
+      <div id="geptVocabularyControls" class="gept-vocabulary-controls" aria-label="GEPT 初級單字控制">
         <button id="previousWord" class="secondary-button" type="button">上一個</button>
         <button id="toggleChinese" class="secondary-button" type="button" aria-pressed="false" aria-controls="vocabularyCard">顯示中文</button>
         <button id="reshuffleVocabulary" class="secondary-button" type="button">重新隨機</button>
@@ -81,6 +110,6 @@
   </main>
 
   <script src="geptVocabulary.js?v=1.2"></script>
-  <script src="geptVocabularyPage.js?v=1.6"></script>
+  <script src="geptVocabularyPage.js?v=2.0"></script>
 </body>
 </html>

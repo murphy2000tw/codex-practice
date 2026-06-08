@@ -8,15 +8,32 @@ const categoryFilters = document.querySelector("#geptCategoryFilters");
 const vocabularySearchInput = document.querySelector("#geptVocabularySearch");
 const clearSearchButton = document.querySelector("#clearGeptSearch");
 const randomStatus = document.querySelector("#geptRandomStatus");
+const cardModeButton = document.querySelector("#geptCardModeButton");
+const quizModeButton = document.querySelector("#geptQuizModeButton");
+const quizPanel = document.querySelector("#geptQuizPanel");
+const quizContent = document.querySelector("#geptQuizContent");
+const quizScore = document.querySelector("#geptQuizScore");
+const quizProgress = document.querySelector("#geptQuizProgress");
+const nextQuizQuestionButton = document.querySelector("#nextGeptQuizQuestion");
+const reshuffleQuizVocabularyButton = document.querySelector("#reshuffleGeptQuizVocabulary");
+const vocabularyControls = document.querySelector("#geptVocabularyControls");
 const vocabulary = Array.isArray(geptVocabulary) ? geptVocabulary : [];
 const allCategoriesLabel = "全部";
+const cardMode = "card";
+const quizMode = "quiz";
 
+let currentMode = cardMode;
 let currentWordIndex = 0;
 let chineseVisible = false;
 let selectedCategory = allCategoriesLabel;
 let searchQuery = "";
 let categoryVocabulary = [];
 let filteredVocabulary = [];
+let quizQuestionIndex = 0;
+let quizCorrectCount = 0;
+let quizAnsweredCount = 0;
+let quizAnsweredCurrentQuestion = false;
+let quizCurrentOptions = [];
 
 function getAvailableCategories() {
   return [...new Set(vocabulary.map((word) => word.category).filter(Boolean))];
@@ -96,9 +113,18 @@ function resetCurrentPosition() {
   chineseVisible = false;
 }
 
+function resetQuizState() {
+  quizQuestionIndex = 0;
+  quizCorrectCount = 0;
+  quizAnsweredCount = 0;
+  quizAnsweredCurrentQuestion = false;
+  quizCurrentOptions = [];
+}
+
 function applySearchToCategoryVocabulary() {
   filteredVocabulary = categoryVocabulary.filter((word) => wordMatchesSearch(word, searchQuery));
   resetCurrentPosition();
+  resetQuizState();
 }
 
 function resetCurrentVocabulary() {
@@ -110,10 +136,35 @@ function reshuffleCurrentVocabulary() {
   if (searchQuery) {
     filteredVocabulary = shuffleVocabulary(categoryVocabulary.filter((word) => wordMatchesSearch(word, searchQuery)));
     resetCurrentPosition();
+    resetQuizState();
     return;
   }
 
   resetCurrentVocabulary();
+}
+
+function updateModeButtons() {
+  const isCardMode = currentMode === cardMode;
+  cardModeButton.classList.toggle("is-active", isCardMode);
+  cardModeButton.setAttribute("aria-pressed", String(isCardMode));
+  quizModeButton.classList.toggle("is-active", !isCardMode);
+  quizModeButton.setAttribute("aria-pressed", String(!isCardMode));
+}
+
+function renderCurrentMode() {
+  updateModeButtons();
+
+  const isQuizMode = currentMode === quizMode;
+  vocabularyCard.hidden = isQuizMode;
+  vocabularyControls.hidden = isQuizMode;
+  quizPanel.hidden = !isQuizMode;
+
+  if (isQuizMode) {
+    renderQuizQuestion();
+    return;
+  }
+
+  renderCurrentWord();
 }
 
 function createCategoryFilterButton(category) {
@@ -139,7 +190,7 @@ function createCategoryFilterButton(category) {
     selectedCategory = category;
     resetCurrentVocabulary();
     updateCategoryFilterButtons();
-    renderCurrentWord();
+    renderCurrentMode();
   });
 
   return button;
@@ -280,6 +331,138 @@ function renderCurrentWord() {
   updateChineseVisibility();
 }
 
+function getQuizOptionMeanings(currentWord) {
+  const correctMeaning = currentWord.meaning;
+  const filteredWrongMeanings = filteredVocabulary
+    .filter((word) => word !== currentWord && word.meaning && word.meaning !== correctMeaning)
+    .map((word) => word.meaning);
+  const backupWrongMeanings = vocabulary
+    .filter((word) => word !== currentWord && word.meaning && word.meaning !== correctMeaning)
+    .map((word) => word.meaning);
+  const wrongMeanings = [...new Set([...shuffleVocabulary(filteredWrongMeanings), ...shuffleVocabulary(backupWrongMeanings)])]
+    .slice(0, 3);
+
+  return shuffleVocabulary([correctMeaning, ...wrongMeanings]);
+}
+
+function updateQuizScoreDisplay() {
+  quizScore.textContent = `${quizCorrectCount} / ${quizAnsweredCount}`;
+  quizProgress.textContent = filteredVocabulary.length
+    ? `${quizQuestionIndex + 1} / ${filteredVocabulary.length}`
+    : "0 / 0";
+}
+
+function renderEmptyQuizMessage(message) {
+  quizContent.replaceChildren();
+  const statusMessage = document.createElement("p");
+  statusMessage.className = "status-message quiz-status-message";
+  statusMessage.textContent = message;
+  quizContent.append(statusMessage);
+  quizScore.textContent = "0 / 0";
+  quizProgress.textContent = "0 / 0";
+  currentProgress.textContent = "測驗模式：0 / 0";
+  nextQuizQuestionButton.disabled = true;
+  reshuffleQuizVocabularyButton.disabled = true;
+  updateRandomStatus();
+  updateSearchControls();
+}
+
+function renderQuizQuestion() {
+  if (!vocabulary.length) {
+    renderEmptyQuizMessage("目前沒有可顯示的 GEPT 初級單字資料。");
+    return;
+  }
+
+  if (!filteredVocabulary.length) {
+    renderEmptyQuizMessage("目前沒有符合條件的單字，請調整分類或搜尋關鍵字。");
+    return;
+  }
+
+  if (quizQuestionIndex >= filteredVocabulary.length) {
+    quizQuestionIndex = filteredVocabulary.length - 1;
+  }
+
+  const currentWord = filteredVocabulary[quizQuestionIndex];
+  quizAnsweredCurrentQuestion = false;
+  quizCurrentOptions = getQuizOptionMeanings(currentWord);
+
+  const quizCard = document.createElement("article");
+  quizCard.className = "quiz-card gept-quiz-card";
+
+  const prompt = document.createElement("div");
+  prompt.className = "quiz-prompt";
+
+  const promptLabel = document.createElement("p");
+  promptLabel.className = "quiz-prompt-label";
+  promptLabel.textContent = "題目：";
+
+  const wordTitle = document.createElement("h3");
+  wordTitle.className = "english-word gept-quiz-word";
+  wordTitle.textContent = currentWord.word || "—";
+
+  const promptText = document.createElement("p");
+  promptText.className = "gept-quiz-instruction";
+  promptText.textContent = "請選出正確中文意思：";
+
+  prompt.append(promptLabel, wordTitle, promptText);
+
+  const options = document.createElement("div");
+  options.className = "quiz-options gept-quiz-options";
+
+  quizCurrentOptions.forEach((meaning, index) => {
+    const optionButton = document.createElement("button");
+    optionButton.className = "quiz-option gept-quiz-option";
+    optionButton.type = "button";
+    optionButton.textContent = `${String.fromCharCode(65 + index)}. ${meaning}`;
+    optionButton.dataset.meaning = meaning;
+    optionButton.addEventListener("click", () => handleQuizAnswer(optionButton, currentWord.meaning));
+    options.append(optionButton);
+  });
+
+  const feedback = document.createElement("p");
+  feedback.id = "geptQuizFeedback";
+  feedback.className = "quiz-feedback";
+  feedback.setAttribute("aria-live", "polite");
+
+  quizCard.append(prompt, options, feedback);
+  quizContent.replaceChildren(quizCard);
+
+  nextQuizQuestionButton.disabled = quizQuestionIndex >= filteredVocabulary.length - 1;
+  reshuffleQuizVocabularyButton.disabled = false;
+  nextQuizQuestionButton.textContent = quizQuestionIndex >= filteredVocabulary.length - 1 ? "已完成目前題組" : "下一題";
+  currentProgress.textContent = `測驗模式：${quizQuestionIndex + 1} / ${filteredVocabulary.length}`;
+  updateQuizScoreDisplay();
+  updateRandomStatus();
+  updateSearchControls();
+}
+
+function handleQuizAnswer(selectedButton, correctMeaning) {
+  const feedback = document.querySelector("#geptQuizFeedback");
+  const optionButtons = quizContent.querySelectorAll(".gept-quiz-option");
+  const isCorrect = selectedButton.dataset.meaning === correctMeaning;
+
+  if (!quizAnsweredCurrentQuestion) {
+    quizAnsweredCurrentQuestion = true;
+    quizAnsweredCount += 1;
+
+    if (isCorrect) {
+      quizCorrectCount += 1;
+    }
+  }
+
+  optionButtons.forEach((button) => {
+    const buttonIsCorrect = button.dataset.meaning === correctMeaning;
+    button.classList.toggle("is-correct", buttonIsCorrect);
+    button.classList.toggle("is-wrong", button === selectedButton && !buttonIsCorrect);
+    button.disabled = true;
+  });
+
+  feedback.classList.toggle("is-correct", isCorrect);
+  feedback.classList.toggle("is-wrong", !isCorrect);
+  feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${correctMeaning}`;
+  updateQuizScoreDisplay();
+}
+
 previousWordButton.addEventListener("click", () => {
   if (currentWordIndex > 0) {
     currentWordIndex -= 1;
@@ -307,22 +490,55 @@ toggleChineseButton.addEventListener("click", () => {
 
 reshuffleVocabularyButton.addEventListener("click", () => {
   reshuffleCurrentVocabulary();
-  renderCurrentWord();
+  renderCurrentMode();
 });
 
 vocabularySearchInput.addEventListener("input", () => {
   searchQuery = normalizeSearchText(vocabularySearchInput.value);
   applySearchToCategoryVocabulary();
-  renderCurrentWord();
+  renderCurrentMode();
 });
 
 clearSearchButton.addEventListener("click", () => {
   vocabularySearchInput.value = "";
   searchQuery = "";
   resetCurrentVocabulary();
-  renderCurrentWord();
+  renderCurrentMode();
+});
+
+cardModeButton.addEventListener("click", () => {
+  if (currentMode === cardMode) {
+    return;
+  }
+
+  currentMode = cardMode;
+  renderCurrentMode();
+});
+
+quizModeButton.addEventListener("click", () => {
+  if (currentMode === quizMode) {
+    return;
+  }
+
+  currentMode = quizMode;
+  resetQuizState();
+  renderCurrentMode();
+});
+
+reshuffleQuizVocabularyButton.addEventListener("click", () => {
+  reshuffleCurrentVocabulary();
+  renderCurrentMode();
+});
+
+nextQuizQuestionButton.addEventListener("click", () => {
+  if (quizQuestionIndex >= filteredVocabulary.length - 1) {
+    return;
+  }
+
+  quizQuestionIndex += 1;
+  renderQuizQuestion();
 });
 
 resetCurrentVocabulary();
 renderCategoryFilters();
-renderCurrentWord();
+renderCurrentMode();

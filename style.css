@@ -978,3 +978,38 @@ h1 {
   box-shadow: none;
   transform: none;
 }
+
+.gept-mode-panel {
+  margin: 18px 0 20px;
+  box-shadow: none;
+}
+
+.gept-vocabulary-controls[hidden],
+.gept-vocabulary-card[hidden],
+.gept-quiz-panel[hidden] {
+  display: none;
+}
+
+.gept-quiz-panel {
+  margin-bottom: 18px;
+}
+
+.gept-quiz-card {
+  min-height: 0;
+}
+
+.gept-quiz-word {
+  margin: 8px 0 10px;
+}
+
+.gept-quiz-instruction {
+  margin: 0;
+  color: var(--text);
+  font-weight: 800;
+}
+
+@media (max-width: 640px) {
+  .gept-mode-panel {
+    margin-top: 16px;
+  }
+}
