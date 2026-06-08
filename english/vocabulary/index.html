@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GEPT 初級單字｜英文學習</title>
-  <link rel="stylesheet" href="../../style.css?v=2.0">
+  <link rel="stylesheet" href="../../style.css?v=2.1">
 </head>
 <body>
   <main class="page-shell">
@@ -84,12 +84,17 @@
         <div class="quiz-header">
           <div>
             <span class="card-number">測驗題目</span>
-            <h2 class="quiz-title">看英文選中文</h2>
+            <h2 id="geptQuizTitle" class="quiz-title">看英文選中文</h2>
           </div>
           <div class="quiz-stats" aria-label="GEPT 測驗分數統計">
             <span>目前分數：<strong id="geptQuizScore">0 / 0</strong></span>
             <span>題目進度：<strong id="geptQuizProgress">0 / 0</strong></span>
           </div>
+        </div>
+        <div class="quiz-type-controls gept-quiz-type-controls" role="group" aria-label="選擇 GEPT 測驗類型">
+          <span class="filter-label gept-quiz-type-label">測驗類型：</span>
+          <button id="geptEnglishToChineseQuiz" class="quiz-type-button is-active" type="button" data-gept-quiz-type="english-to-chinese" aria-pressed="true">看英文選中文</button>
+          <button id="geptChineseToEnglishQuiz" class="quiz-type-button" type="button" data-gept-quiz-type="chinese-to-english" aria-pressed="false">看中文選英文</button>
         </div>
         <div id="geptQuizContent" class="quiz-content"></div>
         <div class="quiz-actions">
@@ -110,6 +115,6 @@
   </main>
 
   <script src="geptVocabulary.js?v=1.2"></script>
-  <script src="geptVocabularyPage.js?v=2.0"></script>
+  <script src="geptVocabularyPage.js?v=2.1"></script>
 </body>
 </html>

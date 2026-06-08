@@ -994,6 +994,15 @@ h1 {
   margin-bottom: 18px;
 }
 
+.gept-quiz-type-controls {
+  align-items: center;
+  margin-top: 0;
+}
+
+.gept-quiz-type-label {
+  margin: 0 4px 0 0;
+}
+
 .gept-quiz-card {
   min-height: 0;
 }
