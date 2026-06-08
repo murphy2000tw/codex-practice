@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../../app-icon.png">
   <link rel="manifest" href="../../manifest.webmanifest">
   <title>閱讀測驗｜英文學習</title>
-  <link rel="stylesheet" href="../../style.css?v=1.7">
+  <link rel="stylesheet" href="../../style.css?v=2.3">
 </head>
 <body>
   <main class="page-shell">
@@ -19,17 +19,95 @@
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">English Learning</p>
       <h1 id="page-title">閱讀測驗</h1>
-      <p class="hero-text">短篇英文文章閱讀與理解題。</p>
+      <p class="hero-text">閱讀 GEPT 初級短文，練習理解文章重點與細節。</p>
     </section>
 
-    <section class="category-panel subpage-panel" aria-labelledby="subpage-title">
-      <div class="category-header">
-        <h2 id="subpage-title">內容準備中</h2>
-        <p class="category-count">GEPT 初級學習專區</p>
+    <section class="quiz-panel reading-practice-section" aria-labelledby="reading-practice-title">
+      <div class="quiz-header">
+        <div>
+          <span class="card-number">GEPT 初級閱讀</span>
+          <h2 id="reading-practice-title" class="quiz-title">短文閱讀與四選一練習</h2>
+        </div>
+        <div class="quiz-stats" aria-label="閱讀測驗分數與進度">
+          <span>目前分數：<strong id="readingScore">0 / 0</strong></span>
+          <span>題目進度：<strong id="readingProgress">0 / 0</strong></span>
+          <span><strong id="readingArticleProgress">第 1 篇：1 / 3</strong></span>
+        </div>
       </div>
-      <p class="subpage-text">這裡已預留為「閱讀測驗」頁面，未來可以加入完整教材、互動題目與學習進度。</p>
-      <a class="secondary-button back-link" href="../">返回英文學習</a>
+
+      <div id="readingPracticePanel" class="quiz-content reading-practice-panel" aria-live="polite">
+        <article class="quiz-card reading-passage-card" aria-labelledby="readingArticleTitle">
+          <div class="reading-passage-header">
+            <div>
+              <p id="readingArticleMeta" class="quiz-prompt-label">初級｜—</p>
+              <h3 id="readingArticleTitle" class="reading-article-title">載入中</h3>
+            </div>
+            <button id="toggleReadingTranslation" class="secondary-button reading-translation-toggle" type="button" aria-expanded="false">顯示中文翻譯</button>
+          </div>
+          <p id="readingPassage" class="reading-passage-text">載入中</p>
+          <p id="readingTranslation" class="reading-translation-text" hidden></p>
+        </article>
+
+        <article class="quiz-card reading-question-card">
+          <div class="quiz-prompt reading-question-prompt">
+            <p class="quiz-prompt-label">目前題目</p>
+            <p id="readingQuestion" class="quiz-title reading-question-text">載入中</p>
+          </div>
+
+          <div
+            id="readingOptions"
+            class="quiz-options reading-options"
+            role="group"
+            aria-label="選擇閱讀測驗答案"
+          ></div>
+
+          <div class="article-feedback-area" aria-live="polite">
+            <p id="readingFeedback" class="quiz-feedback reading-feedback"></p>
+            <p id="readingExplanation" class="article-explanation reading-explanation"></p>
+          </div>
+        </article>
+
+        <div class="quiz-actions article-actions reading-actions">
+          <button id="restartReadingPractice" class="secondary-button js-restart-reading-practice" type="button">重新開始</button>
+          <button id="nextReadingQuestion" class="answer-button" type="button">下一題</button>
+          <button id="nextReadingArticle" class="answer-button" type="button">下一篇文章</button>
+        </div>
+      </div>
+
+      <div id="readingCompletePanel" class="article-complete-panel reading-complete-panel" aria-live="polite" hidden>
+        <article class="quiz-card article-result-card">
+          <span class="card-number">完成</span>
+          <h2 class="quiz-title">閱讀測驗完成！</h2>
+          <div class="vocabulary-summary article-result-summary" aria-label="閱讀測驗完成結果">
+            <div class="summary-item">
+              <span id="readingTotalAnswered" class="summary-value">0 題</span>
+              <span class="summary-label">總作答</span>
+            </div>
+            <div class="summary-item">
+              <span id="readingTotalCorrect" class="summary-value">0 題</span>
+              <span class="summary-label">答對</span>
+            </div>
+            <div class="summary-item">
+              <span id="readingTotalWrong" class="summary-value">0 題</span>
+              <span class="summary-label">答錯</span>
+            </div>
+            <div class="summary-item">
+              <span id="readingAccuracy" class="summary-value">0%</span>
+              <span class="summary-label">正確率</span>
+            </div>
+          </div>
+          <div class="quiz-actions article-actions">
+            <button class="answer-button js-restart-reading-practice" type="button">再練一次</button>
+            <a class="secondary-button" href="../">返回英文學習</a>
+          </div>
+        </article>
+      </div>
+
+      <a class="secondary-button back-link" href="../">返回英文學習首頁</a>
     </section>
   </main>
+
+  <script src="readingQuestions.js?v=1.0"></script>
+  <script src="readingPracticePage.js?v=1.0"></script>
 </body>
 </html>
