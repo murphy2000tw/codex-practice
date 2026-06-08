@@ -1222,3 +1222,65 @@ h1 {
     text-align: left;
   }
 }
+
+.fill-blank-guide-panel,
+.fill-blank-practice-section {
+  margin-bottom: 22px;
+}
+
+.fill-blank-practice-panel[hidden],
+.fill-blank-complete-panel[hidden],
+.fill-blank-hint[hidden] {
+  display: none;
+}
+
+.fill-blank-summary .summary-value {
+  white-space: nowrap;
+}
+
+.fill-blank-question-card {
+  gap: 18px;
+}
+
+.fill-blank-question-sentence {
+  margin-top: 14px;
+  font-size: clamp(1.7rem, 5vw, 2.5rem);
+  line-height: 1.35;
+}
+
+.fill-blank-answer-area {
+  display: grid;
+  gap: 10px;
+}
+
+.fill-blank-answer-input {
+  width: 100%;
+  flex-basis: auto;
+}
+
+.fill-blank-check-actions {
+  justify-content: flex-start;
+  margin-top: 0;
+}
+
+.fill-blank-feedback-area {
+  display: grid;
+  gap: 10px;
+}
+
+.fill-blank-explanation,
+.fill-blank-translation {
+  min-height: 0;
+}
+
+.fill-blank-hint {
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .fill-blank-question-sentence,
+  .fill-blank-explanation,
+  .fill-blank-translation {
+    text-align: left;
+  }
+}
