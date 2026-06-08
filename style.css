@@ -1140,3 +1140,85 @@ h1 {
   transform: none;
   box-shadow: none;
 }
+
+.reading-practice-section {
+  margin-bottom: 22px;
+}
+
+.reading-practice-panel[hidden],
+.reading-complete-panel[hidden] {
+  display: none;
+}
+
+.reading-passage-card,
+.reading-question-card {
+  gap: 18px;
+}
+
+.reading-passage-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.reading-article-title {
+  margin: 8px 0 0;
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  line-height: 1.25;
+}
+
+.reading-passage-text,
+.reading-translation-text {
+  margin: 0;
+  border-radius: 20px;
+  padding: 18px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.9;
+}
+
+.reading-passage-text {
+  color: var(--text);
+  background: #fff8f5;
+}
+
+.reading-translation-text {
+  color: var(--muted);
+  background: #ffffff;
+  border: 1px dashed var(--border);
+}
+
+.reading-question-text {
+  margin-top: 14px;
+  font-size: clamp(1.35rem, 4vw, 2rem);
+  line-height: 1.45;
+}
+
+.reading-explanation {
+  min-height: 1.7em;
+}
+
+.reading-actions .answer-button:disabled,
+.reading-actions .secondary-button:disabled,
+.reading-translation-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .reading-passage-header,
+  .reading-translation-toggle {
+    width: 100%;
+  }
+
+  .reading-passage-text,
+  .reading-translation-text,
+  .reading-question-prompt,
+  .reading-explanation {
+    text-align: left;
+  }
+}
