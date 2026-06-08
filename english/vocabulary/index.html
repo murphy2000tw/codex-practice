@@ -89,6 +89,7 @@
           <div class="quiz-stats" aria-label="GEPT 測驗分數統計">
             <span>目前分數：<strong id="geptQuizScore">0 / 0</strong></span>
             <span>題目進度：<strong id="geptQuizProgress">0 / 0</strong></span>
+            <span>本次錯題：<strong id="geptWrongQuestionCount">0 題</strong></span>
           </div>
         </div>
         <div class="quiz-type-controls gept-quiz-type-controls" role="group" aria-label="選擇 GEPT 測驗類型">
@@ -97,6 +98,11 @@
           <button id="geptChineseToEnglishQuiz" class="quiz-type-button" type="button" data-gept-quiz-type="chinese-to-english" aria-pressed="false">看中文選英文</button>
         </div>
         <div id="geptQuizContent" class="quiz-content"></div>
+        <div class="quiz-actions gept-wrong-question-actions">
+          <button id="reviewGeptWrongQuestions" class="secondary-button" type="button" disabled>錯題複習</button>
+          <button id="returnGeptQuiz" class="secondary-button" type="button" hidden>返回一般測驗</button>
+          <button id="clearGeptWrongQuestions" class="secondary-button" type="button" disabled>清除錯題</button>
+        </div>
         <div class="quiz-actions">
           <button id="reshuffleGeptQuizVocabulary" class="secondary-button" type="button">重新隨機</button>
           <button id="nextGeptQuizQuestion" class="answer-button" type="button">下一題</button>
@@ -115,6 +121,6 @@
   </main>
 
   <script src="geptVocabulary.js?v=1.2"></script>
-  <script src="geptVocabularyPage.js?v=2.1"></script>
+  <script src="geptVocabularyPage.js?v=2.2"></script>
 </body>
 </html>
