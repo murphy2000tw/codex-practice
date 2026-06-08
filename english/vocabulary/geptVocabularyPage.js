@@ -25,6 +25,8 @@ const reshuffleQuizVocabularyButton = document.querySelector("#reshuffleGeptQuiz
 const vocabularyControls = document.querySelector("#geptVocabularyControls");
 const vocabulary = Array.isArray(geptVocabulary) ? geptVocabulary : [];
 const allCategoriesLabel = "全部";
+const allLevelsLabel = "全部級數";
+const availableLevels = [allLevelsLabel, "初級", "中級", "中高級"];
 const cardMode = "card";
 const quizMode = "quiz";
 const englishToChineseQuizType = "english-to-chinese";
@@ -48,6 +50,7 @@ let currentMode = cardMode;
 let currentWordIndex = 0;
 let chineseVisible = false;
 let selectedCategory = allCategoriesLabel;
+let selectedLevel = allLevelsLabel;
 let searchQuery = "";
 let categoryVocabulary = [];
 let filteredVocabulary = [];
@@ -67,11 +70,12 @@ function getAvailableCategories() {
 }
 
 function getFilteredVocabulary() {
-  if (selectedCategory === allCategoriesLabel) {
-    return [...vocabulary];
-  }
+  return vocabulary.filter((word) => {
+    const matchesCategory = selectedCategory === allCategoriesLabel || word.category === selectedCategory;
+    const matchesLevel = selectedLevel === allLevelsLabel || word.level === selectedLevel;
 
-  return vocabulary.filter((word) => word.category === selectedCategory);
+    return matchesCategory && matchesLevel;
+  });
 }
 
 function normalizeSearchText(value) {
@@ -116,11 +120,15 @@ function getCurrentModeText() {
     modeParts.push(`分類：${selectedCategory}`);
   }
 
+  if (selectedLevel !== allLevelsLabel) {
+    modeParts.push(`級數：${selectedLevel}`);
+  }
+
   if (searchQuery) {
     modeParts.push(`搜尋：${vocabularySearchInput.value.trim()}`);
   }
 
-  return modeParts.length ? modeParts.join("，") : "全部分類";
+  return modeParts.length ? modeParts.join("，") : "全部分類、全部級數";
 }
 
 function updateRandomStatus() {
@@ -326,6 +334,15 @@ function renderCurrentWord() {
   cardNumber.className = "card-number";
   cardNumber.textContent = `隨機顯示 ${currentWordIndex + 1}`;
 
+  const wordMeta = document.createElement("div");
+  wordMeta.className = "vocabulary-card-meta";
+
+  const levelBadge = document.createElement("span");
+  levelBadge.className = "vocabulary-level-badge";
+  levelBadge.textContent = currentWord.level || "—";
+
+  wordMeta.append(cardNumber, levelBadge);
+
   const wordTitle = document.createElement("h2");
   wordTitle.className = "english-word";
   wordTitle.textContent = currentWord.word || "—";
@@ -334,7 +351,7 @@ function renderCurrentWord() {
   partOfSpeech.className = "kana english-part-of-speech";
   partOfSpeech.textContent = currentWord.partOfSpeech || "—";
 
-  cardHeader.append(cardNumber, wordTitle, partOfSpeech);
+  cardHeader.append(wordMeta, wordTitle, partOfSpeech);
 
   const details = document.createElement("div");
   details.className = "vocabulary-details";
