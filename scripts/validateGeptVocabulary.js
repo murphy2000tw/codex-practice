@@ -2,7 +2,13 @@ const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
 
-const vocabularyPath = path.join(__dirname, "..", "english", "vocabulary", "geptVocabulary.js");
+const vocabularyRoot = path.join(__dirname, "..", "english", "vocabulary");
+const vocabularyBatchPaths = [
+  path.join(vocabularyRoot, "data", "geptVocabularyBeginner001.js"),
+  path.join(vocabularyRoot, "data", "geptVocabularyBeginner002.js"),
+];
+const vocabularyEntryPath = path.join(vocabularyRoot, "geptVocabulary.js");
+const vocabularyScriptPaths = [...vocabularyBatchPaths, vocabularyEntryPath];
 const requiredFields = [
   "id",
   "word",
@@ -17,12 +23,20 @@ const requiredFields = [
 ];
 const expectedCurrentLevel = "初級";
 const expectedVocabularyCount = 1000;
+const batchPattern = /^beginner-\d{3}$/;
 
 function loadVocabulary() {
-  const source = fs.readFileSync(vocabularyPath, "utf8");
   const context = {};
-  vm.runInNewContext(`${source}\nthis.geptVocabulary = geptVocabulary;`, context, {
-    filename: vocabularyPath,
+
+  vocabularyScriptPaths.forEach((scriptPath) => {
+    const source = fs.readFileSync(scriptPath, "utf8");
+    vm.runInNewContext(source, context, {
+      filename: scriptPath,
+    });
+  });
+
+  vm.runInNewContext("this.geptVocabulary = geptVocabulary;", context, {
+    filename: vocabularyEntryPath,
   });
 
   if (!Array.isArray(context.geptVocabulary)) {
@@ -75,6 +89,10 @@ function validateVocabulary(vocabulary) {
 
     if (item.level !== expectedCurrentLevel) {
       errors.push(`第 ${index + 1} 筆資料 level 應為「${expectedCurrentLevel}」，目前為「${item.level}」。`);
+    }
+
+    if (!batchPattern.test(normalizeValue(item.batch))) {
+      errors.push(`第 ${index + 1} 筆資料 batch 格式不正確，目前為「${item.batch}」。`);
     }
   }
 
