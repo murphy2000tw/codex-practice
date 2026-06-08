@@ -7,6 +7,7 @@ const vocabularyBatchPaths = [
   path.join(vocabularyRoot, "data", "geptVocabularyBeginner001.js"),
   path.join(vocabularyRoot, "data", "geptVocabularyBeginner002.js"),
   path.join(vocabularyRoot, "data", "geptVocabularyBeginner003.js"),
+  path.join(vocabularyRoot, "data", "geptVocabularyBeginner004.js"),
 ];
 const vocabularyEntryPath = path.join(vocabularyRoot, "geptVocabulary.js");
 const vocabularyScriptPaths = [...vocabularyBatchPaths, vocabularyEntryPath];
@@ -23,7 +24,7 @@ const requiredFields = [
   "translation",
 ];
 const expectedCurrentLevel = "初級";
-const expectedVocabularyCount = 1500;
+const expectedVocabularyCount = 2000;
 const batchPattern = /^beginner-\d{3}$/;
 
 function loadVocabulary() {
