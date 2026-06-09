@@ -1,6 +1,8 @@
 const questions = Array.isArray(window.fillBlankQuestions) ? window.fillBlankQuestions : [];
 
 const progressText = document.querySelector("#fillBlankProgress");
+const questionTotalText = document.querySelector("#fillBlankQuestionTotal");
+const categoryTotalText = document.querySelector("#fillBlankCategoryTotal");
 const scoreText = document.querySelector("#fillBlankScore");
 const modeButtons = document.querySelectorAll(".fill-blank-mode-button");
 const modeDescription = document.querySelector("#fillBlankModeDescription");
@@ -30,6 +32,17 @@ let answeredCount = 0;
 let hasAnsweredCurrentQuestion = false;
 let wasCurrentAnswerCorrect = false;
 let currentFillBlankMode = "practice";
+
+function updateQuestionSummary() {
+  if (questionTotalText) {
+    questionTotalText.textContent = `${questions.length} 題`;
+  }
+
+  if (categoryTotalText) {
+    const categoryCount = new Set(questions.map((question) => question.category).filter(Boolean)).size;
+    categoryTotalText.textContent = `${categoryCount} 類`;
+  }
+}
 
 function shuffleQuestions(sourceQuestions) {
   const shuffled = [...sourceQuestions];
@@ -247,4 +260,5 @@ answerInput.addEventListener("keydown", (event) => {
 });
 restartButtons.forEach((button) => button.addEventListener("click", restartPractice));
 
+updateQuestionSummary();
 restartPractice();
