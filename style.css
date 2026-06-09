@@ -1215,6 +1215,20 @@ h1 {
   .article-explanation {
     text-align: left;
   }
+
+  .article-practice-section {
+    padding-bottom: max(32px, env(safe-area-inset-bottom));
+  }
+
+  .article-practice-panel {
+    margin-bottom: 24px;
+  }
+
+  .article-practice-section > .back-link {
+    display: block;
+    margin-top: 24px;
+    text-align: center;
+  }
 }
 
 .article-actions .answer-button:disabled,
