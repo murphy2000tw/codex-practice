@@ -53,6 +53,7 @@
         <div class="quiz-stats" aria-label="填空題分數與進度">
           <span>目前分數：<strong id="fillBlankScore">0 / 0</strong></span>
           <span>題目進度：<strong id="fillBlankProgress">0 / 0</strong></span>
+          <span>本次錯題：<strong id="fillBlankWrongCount">0 題</strong></span>
         </div>
       </div>
 
@@ -62,6 +63,11 @@
           <button class="mode-button fill-blank-mode-button" type="button" data-fill-blank-mode="test" aria-pressed="false">測試模式</button>
         </div>
         <p id="fillBlankModeDescription" class="mode-description fill-blank-mode-description">練習模式：可以查看提示、解釋與中文翻譯，適合學習。</p>
+        <div class="quiz-actions fill-blank-review-actions" aria-label="填空錯題操作">
+          <button id="startFillBlankWrongReview" class="secondary-button" type="button" disabled>錯題複習</button>
+          <button id="clearFillBlankWrongQuestions" class="secondary-button" type="button" disabled>清除錯題</button>
+          <button id="exitFillBlankWrongReview" class="secondary-button" type="button" hidden>返回一般填空練習</button>
+        </div>
       </div>
 
       <div id="fillBlankPracticePanel" class="quiz-content fill-blank-practice-panel" aria-live="polite">
@@ -105,8 +111,9 @@
       <div id="fillBlankCompletePanel" class="article-complete-panel fill-blank-complete-panel" aria-live="polite" hidden>
         <article class="quiz-card article-result-card">
           <span class="card-number">完成</span>
-          <h2 class="quiz-title">填空題練習完成！</h2>
+          <h2 id="fillBlankCompleteTitle" class="quiz-title">填空題練習完成！</h2>
           <p id="fillBlankResultMode" class="article-result-message fill-blank-result-mode">模式：練習模式</p>
+          <p id="fillBlankWrongResultMessage" class="article-result-message fill-blank-result-mode">本次錯題：0 題</p>
           <div class="vocabulary-summary article-result-summary" aria-label="填空題完成結果">
             <div class="summary-item">
               <span id="fillBlankTotalAnswered" class="summary-value">0 題</span>
@@ -124,8 +131,13 @@
               <span id="fillBlankAccuracy" class="summary-value">0%</span>
               <span class="summary-label">正確率</span>
             </div>
+            <div class="summary-item">
+              <span id="fillBlankRemainingWrong" class="summary-value">0 題</span>
+              <span class="summary-label">剩餘錯題</span>
+            </div>
           </div>
           <div class="quiz-actions article-actions">
+            <button id="reviewWrongFromFillBlankResult" class="answer-button" type="button" disabled>錯題複習</button>
             <button class="answer-button js-restart-fill-blank-practice" type="button">再練一次</button>
             <a class="secondary-button" href="../">返回英文學習</a>
           </div>
@@ -137,6 +149,6 @@
   </main>
 
   <script src="fillBlankQuestions.js?v=1.0"></script>
-  <script src="fillBlankPracticePage.js?v=1.1"></script>
+  <script src="fillBlankPracticePage.js?v=1.2"></script>
 </body>
 </html>
