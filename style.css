@@ -1100,9 +1100,7 @@ h1 {
 }
 
 .article-filter-panel {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
   gap: 12px;
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -1111,10 +1109,31 @@ h1 {
   background: var(--card);
 }
 
-.article-filter-buttons {
+.article-filter-row,
+.article-filter-buttons,
+.article-review-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
+}
+
+.article-review-actions {
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+
+.article-review-message,
+.article-result-message {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+.article-result-message {
+  text-align: center;
 }
 
 .article-filter-button {
@@ -1125,6 +1144,12 @@ h1 {
   color: #ffffff;
   background: var(--accent);
   box-shadow: 0 10px 24px rgba(220, 107, 79, 0.22);
+}
+
+.article-filter-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+  transform: none;
 }
 
 .article-question-sentence {
@@ -1175,11 +1200,14 @@ h1 {
     align-items: stretch;
   }
 
-  .article-filter-buttons {
+  .article-filter-row,
+  .article-filter-buttons,
+  .article-review-actions {
     width: 100%;
   }
 
-  .article-filter-button {
+  .article-filter-button,
+  .article-review-actions .secondary-button {
     flex: 1 1 88px;
   }
 
