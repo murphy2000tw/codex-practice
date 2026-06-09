@@ -1353,6 +1353,26 @@ h1 {
   .reading-explanation {
     text-align: left;
   }
+
+  .reading-practice-section {
+    padding-bottom: max(40px, calc(env(safe-area-inset-bottom) + 32px));
+  }
+
+  .reading-practice-panel,
+  .reading-complete-panel {
+    margin-bottom: 28px;
+  }
+
+  .reading-actions {
+    margin-bottom: 18px;
+  }
+
+  .reading-practice-section > .back-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    text-align: center;
+  }
 }
 
 .fill-blank-guide-panel,
@@ -1414,5 +1434,25 @@ h1 {
   .fill-blank-explanation,
   .fill-blank-translation {
     text-align: left;
+  }
+
+  .fill-blank-practice-section {
+    padding-bottom: max(40px, calc(env(safe-area-inset-bottom) + 32px));
+  }
+
+  .fill-blank-practice-panel,
+  .fill-blank-complete-panel {
+    margin-bottom: 28px;
+  }
+
+  .fill-blank-actions {
+    margin-bottom: 18px;
+  }
+
+  .fill-blank-practice-section > .back-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    text-align: center;
   }
 }
