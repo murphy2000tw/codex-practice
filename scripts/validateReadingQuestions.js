@@ -3,9 +3,9 @@ const path = require("path");
 const vm = require("vm");
 
 const questionFilePath = path.join(__dirname, "..", "english", "reading", "readingQuestions.js");
-const expectedArticleTotal = 40;
+const expectedArticleTotal = 50;
 const expectedQuestionsPerArticle = 4;
-const expectedQuestionTotal = 160;
+const expectedQuestionTotal = 200;
 const requiredArticleFields = ["id", "title", "level", "category", "passage", "translation", "questions"];
 const requiredQuestionFields = ["id", "question", "options", "answer", "explanation", "questionType"];
 const requiredQuestionTypes = ["主旨題", "細節題", "單字意思題", "推論題", "時間順序題", "代名詞指代題", "訊息理解題", "表格資訊題", "目的題", "對象題"];

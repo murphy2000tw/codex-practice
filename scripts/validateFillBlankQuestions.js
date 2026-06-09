@@ -3,7 +3,7 @@ const path = require("path");
 const vm = require("vm");
 
 const questionFilePath = path.join(__dirname, "..", "english", "fill-in-the-blank", "fillBlankQuestions.js");
-const expectedTotal = 120;
+const expectedTotal = 200;
 const requiredFields = [
   "id",
   "sentence",
