@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../../app-icon.png">
   <link rel="manifest" href="../../manifest.webmanifest">
   <title>閱讀測驗｜英文學習</title>
-  <link rel="stylesheet" href="../../style.css?v=2.5">
+  <link rel="stylesheet" href="../../style.css?v=2.6">
 </head>
 <body>
   <main class="page-shell">
@@ -34,6 +34,14 @@
           <span>題目進度：<strong id="readingProgress">0 / 0</strong></span>
           <span><strong id="readingArticleProgress">第 1 篇：1 / 3</strong></span>
         </div>
+      </div>
+
+      <div class="reading-mode-panel" aria-label="閱讀測驗模式切換">
+        <div class="mode-switch reading-mode-switch" role="group" aria-label="選擇閱讀測驗模式">
+          <button class="mode-button reading-mode-button is-active" type="button" data-reading-mode="practice" aria-pressed="true">練習模式</button>
+          <button class="mode-button reading-mode-button" type="button" data-reading-mode="test" aria-pressed="false">測試模式</button>
+        </div>
+        <p id="readingModeDescription" class="mode-description reading-mode-description">練習模式：可以查看中文翻譯，適合學習理解。</p>
       </div>
 
       <div class="quiz-actions article-actions reading-review-controls" aria-label="閱讀錯題操作">
@@ -109,6 +117,7 @@
               <span id="readingResultWrongLabel" class="summary-label">本次錯題</span>
             </div>
           </div>
+          <p id="readingResultMode" class="article-result-message reading-result-mode">模式：練習模式</p>
           <p id="readingResultMessage" class="article-result-message reading-result-message"></p>
           <div class="quiz-actions article-actions">
             <button id="reviewReadingWrongFromResult" class="answer-button" type="button">錯題複習</button>
@@ -124,6 +133,6 @@
   </main>
 
   <script src="readingQuestions.js?v=1.0"></script>
-  <script src="readingPracticePage.js?v=1.0"></script>
+  <script src="readingPracticePage.js?v=1.1"></script>
 </body>
 </html>
