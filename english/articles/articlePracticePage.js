@@ -9,6 +9,8 @@ const questions = Array.isArray(window.articleQuestions) ? window.articleQuestio
 
 const progressText = document.querySelector("#articleProgress");
 const scoreText = document.querySelector("#articleScore");
+const scoreLabel = document.querySelector("#articleScoreLabel");
+const wrongCountText = document.querySelector("#articleWrongCount");
 const questionCategory = document.querySelector("#articleQuestionCategory");
 const questionSentence = document.querySelector("#articleQuestionSentence");
 const optionList = document.querySelector("#articleOptions");
@@ -23,6 +25,15 @@ const totalAnsweredText = document.querySelector("#articleTotalAnswered");
 const totalCorrectText = document.querySelector("#articleTotalCorrect");
 const totalWrongText = document.querySelector("#articleTotalWrong");
 const accuracyText = document.querySelector("#articleAccuracy");
+const remainingWrongText = document.querySelector("#articleRemainingWrong");
+const completeBadge = document.querySelector("#articleCompleteBadge");
+const completeTitle = document.querySelector("#articleCompleteTitle");
+const completeMessage = document.querySelector("#articleCompleteMessage");
+const startReviewButton = document.querySelector("#startArticleReview");
+const completeReviewButton = document.querySelector("#completeArticleReview");
+const backToPracticeButton = document.querySelector("#backToArticlePractice");
+const clearWrongQuestionsButton = document.querySelector("#clearArticleWrongQuestions");
+const reviewMessage = document.querySelector("#articleReviewMessage");
 
 let shuffledQuestions = [];
 let currentQuestionIndex = 0;
@@ -31,6 +42,9 @@ let answeredCount = 0;
 let hasAnsweredCurrentQuestion = false;
 let selectedAnswer = "";
 let activeCategory = "all";
+let currentMode = "practice";
+let wrongQuestions = [];
+let reviewQuestionTotal = 0;
 
 function shuffleQuestions(sourceQuestions) {
   const shuffled = [...sourceQuestions];
@@ -55,16 +69,57 @@ function getCurrentQuestion() {
   return shuffledQuestions[currentQuestionIndex];
 }
 
+function isReviewMode() {
+  return currentMode === "review";
+}
+
+function updateReviewControls() {
+  const hasWrongQuestions = wrongQuestions.length > 0;
+
+  wrongCountText.textContent = `${wrongQuestions.length} 題`;
+  startReviewButton.disabled = !hasWrongQuestions;
+  completeReviewButton.disabled = !hasWrongQuestions;
+  backToPracticeButton.hidden = !isReviewMode();
+  scoreLabel.textContent = isReviewMode() ? "錯題複習分數" : "目前分數";
+}
+
 function updateScoreAndProgress() {
   scoreText.textContent = `${correctCount} / ${answeredCount}`;
   const currentProgress = shuffledQuestions.length ? Math.min(currentQuestionIndex + 1, shuffledQuestions.length) : 0;
   progressText.textContent = `${currentProgress} / ${shuffledQuestions.length}`;
+  updateReviewControls();
 }
 
 function clearFeedback() {
   feedback.className = "quiz-feedback article-feedback";
   feedback.textContent = "";
   explanation.textContent = "";
+}
+
+function createWrongQuestion(question, answer) {
+  return {
+    id: question.id,
+    blankSentence: question.blankSentence,
+    sentence: question.sentence,
+    answer: question.answer,
+    selectedAnswer: answer,
+    explanation: question.explanation,
+    category: question.category,
+    usageType: question.usageType,
+    options: question.options,
+  };
+}
+
+function addWrongQuestion(question, answer) {
+  const hasWrongQuestion = wrongQuestions.some((wrongQuestion) => wrongQuestion.id === question.id);
+
+  if (!hasWrongQuestion) {
+    wrongQuestions = [...wrongQuestions, createWrongQuestion(question, answer)];
+  }
+}
+
+function removeWrongQuestion(questionId) {
+  wrongQuestions = wrongQuestions.filter((wrongQuestion) => wrongQuestion.id !== questionId);
 }
 
 function renderOptions(question) {
@@ -93,7 +148,20 @@ function updateFilterButtons() {
     const isActive = button.dataset.category === activeCategory;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
+    button.disabled = isReviewMode();
   });
+}
+
+function showReviewMessage(message) {
+  reviewMessage.textContent = message;
+}
+
+function resetCounters() {
+  currentQuestionIndex = 0;
+  correctCount = 0;
+  answeredCount = 0;
+  hasAnsweredCurrentQuestion = false;
+  selectedAnswer = "";
 }
 
 function renderQuestion() {
@@ -102,8 +170,8 @@ function renderQuestion() {
   if (!question) {
     practicePanel.hidden = false;
     completePanel.hidden = true;
-    questionCategory.textContent = "分類：沒有題目";
-    questionSentence.textContent = "這個分類目前沒有可練習的題目。";
+    questionCategory.textContent = isReviewMode() ? "錯題複習：目前沒有錯題" : "分類：沒有題目";
+    questionSentence.textContent = isReviewMode() ? "目前沒有錯題可以複習。" : "這個分類目前沒有可練習的題目。";
     optionList.replaceChildren();
     clearFeedback();
     updateScoreAndProgress();
@@ -113,7 +181,9 @@ function renderQuestion() {
 
   practicePanel.hidden = false;
   completePanel.hidden = true;
-  questionCategory.textContent = `分類：${question.category}｜用法：${question.usageType || "基本用法"}`;
+  questionCategory.textContent = isReviewMode()
+    ? `錯題複習｜分類：${question.category}｜用法：${question.usageType || "基本用法"}`
+    : `分類：${question.category}｜用法：${question.usageType || "基本用法"}`;
   questionSentence.textContent = question.blankSentence;
   selectedAnswer = "";
   hasAnsweredCurrentQuestion = false;
@@ -132,18 +202,24 @@ function handleAnswer(answer) {
   }
 
   selectedAnswer = answer;
+  const isCorrect = answer === question.answer;
 
   if (!hasAnsweredCurrentQuestion) {
     answeredCount += 1;
 
-    if (answer === question.answer) {
+    if (isCorrect) {
       correctCount += 1;
+
+      if (isReviewMode()) {
+        removeWrongQuestion(question.id);
+      }
+    } else if (!isReviewMode()) {
+      addWrongQuestion(question, answer);
     }
   }
 
   hasAnsweredCurrentQuestion = true;
 
-  const isCorrect = answer === question.answer;
   feedback.className = `quiz-feedback article-feedback ${isCorrect ? "is-correct" : "is-wrong"}`;
   feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${question.answer}`;
   explanation.textContent = question.explanation;
@@ -162,10 +238,24 @@ function renderCompletePanel(hidePractice = true) {
 
   practicePanel.hidden = hidePractice;
   completePanel.hidden = false;
-  totalAnsweredText.textContent = `${answeredCount} 題`;
+  completeBadge.textContent = isReviewMode() ? "複習完成" : "完成";
+  completeTitle.textContent = isReviewMode() ? "錯題複習完成！" : "冠詞練習完成！";
+  totalAnsweredText.textContent = `${isReviewMode() ? reviewQuestionTotal : answeredCount} 題`;
   totalCorrectText.textContent = `${correctCount} 題`;
   totalWrongText.textContent = `${wrongCount} 題`;
   accuracyText.textContent = `${accuracy}%`;
+  remainingWrongText.textContent = `${wrongQuestions.length} 題`;
+
+  if (isReviewMode()) {
+    completeMessage.textContent = wrongQuestions.length
+      ? `剩餘 ${wrongQuestions.length} 題錯題，可繼續複習或返回一般練習。`
+      : "太好了，本次錯題已全部完成！";
+  } else {
+    completeMessage.textContent = wrongQuestions.length
+      ? `本次錯題：${wrongQuestions.length} 題，可點選「錯題複習」加強。`
+      : "太好了，本輪沒有錯題！";
+  }
+
   updateScoreAndProgress();
 }
 
@@ -180,14 +270,61 @@ function goToNextQuestion() {
 }
 
 function restartPractice() {
+  currentMode = "practice";
   shuffledQuestions = shuffleQuestions(getFilteredQuestions());
-  currentQuestionIndex = 0;
-  correctCount = 0;
-  answeredCount = 0;
-  hasAnsweredCurrentQuestion = false;
-  selectedAnswer = "";
+  reviewQuestionTotal = 0;
+  resetCounters();
+  showReviewMessage("");
   updateFilterButtons();
   renderQuestion();
+}
+
+function restartCurrentPractice() {
+  if (isReviewMode()) {
+    startWrongQuestionReview();
+    return;
+  }
+
+  restartPractice();
+}
+
+function startWrongQuestionReview() {
+  if (!wrongQuestions.length) {
+    showReviewMessage("目前沒有錯題");
+    updateReviewControls();
+    return;
+  }
+
+  currentMode = "review";
+  shuffledQuestions = shuffleQuestions(wrongQuestions);
+  reviewQuestionTotal = shuffledQuestions.length;
+  resetCounters();
+  showReviewMessage("");
+  updateFilterButtons();
+  renderQuestion();
+}
+
+function returnToPractice() {
+  restartPractice();
+}
+
+function clearWrongQuestions() {
+  wrongQuestions = [];
+  showReviewMessage("本次錯題已清除");
+
+  if (isReviewMode()) {
+    restartPractice();
+    showReviewMessage("本次錯題已清除，已返回一般練習。");
+    return;
+  }
+
+  updateScoreAndProgress();
+  if (!practicePanel.hidden && getCurrentQuestion()) {
+    renderOptions(getCurrentQuestion());
+  }
+  if (!completePanel.hidden) {
+    renderCompletePanel(practicePanel.hidden);
+  }
 }
 
 function changeCategoryFilter(category) {
@@ -196,9 +333,13 @@ function changeCategoryFilter(category) {
 }
 
 nextButton.addEventListener("click", goToNextQuestion);
-restartButtons.forEach((button) => button.addEventListener("click", restartPractice));
+restartButtons.forEach((button) => button.addEventListener("click", restartCurrentPractice));
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => changeCategoryFilter(button.dataset.category || "all"));
 });
+startReviewButton.addEventListener("click", startWrongQuestionReview);
+completeReviewButton.addEventListener("click", startWrongQuestionReview);
+backToPracticeButton.addEventListener("click", returnToPractice);
+clearWrongQuestionsButton.addEventListener("click", clearWrongQuestions);
 
 restartPractice();

@@ -69,21 +69,30 @@
           <h2 id="article-practice-title" class="quiz-title">題目練習區</h2>
         </div>
         <div class="quiz-stats" aria-label="冠詞練習分數與進度">
-          <span>目前分數：<strong id="articleScore">0 / 0</strong></span>
+          <span><span id="articleScoreLabel">目前分數</span>：<strong id="articleScore">0 / 0</strong></span>
           <span>題目進度：<strong id="articleProgress">0 / 0</strong></span>
+          <span>本次錯題：<strong id="articleWrongCount">0 題</strong></span>
         </div>
       </div>
 
 
-      <div class="article-filter-panel" aria-label="冠詞用法分類篩選">
-        <span class="quiz-prompt-label">用法分類篩選：</span>
-        <div class="article-filter-buttons">
-          <button class="secondary-button article-filter-button js-article-filter is-active" type="button" data-category="all" aria-pressed="true">全部</button>
-          <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="a" aria-pressed="false">a</button>
-          <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="an" aria-pressed="false">an</button>
-          <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="the" aria-pressed="false">the</button>
-          <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="不填" aria-pressed="false">不填</button>
+      <div class="article-filter-panel" aria-label="冠詞用法分類篩選與錯題操作">
+        <div class="article-filter-row">
+          <span class="quiz-prompt-label">用法分類篩選：</span>
+          <div class="article-filter-buttons">
+            <button class="secondary-button article-filter-button js-article-filter is-active" type="button" data-category="all" aria-pressed="true">全部</button>
+            <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="a" aria-pressed="false">a</button>
+            <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="an" aria-pressed="false">an</button>
+            <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="the" aria-pressed="false">the</button>
+            <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="不填" aria-pressed="false">不填</button>
+          </div>
         </div>
+        <div class="article-review-actions" aria-label="本次冠詞錯題複習操作">
+          <button id="startArticleReview" class="secondary-button" type="button">錯題複習</button>
+          <button id="backToArticlePractice" class="secondary-button" type="button" hidden>返回一般練習</button>
+          <button id="clearArticleWrongQuestions" class="secondary-button" type="button">清除錯題</button>
+        </div>
+        <p id="articleReviewMessage" class="article-review-message" aria-live="polite"></p>
       </div>
 
       <div id="articlePracticePanel" class="quiz-content article-practice-panel" aria-live="polite">
@@ -114,8 +123,8 @@
 
       <div id="articleCompletePanel" class="article-complete-panel" aria-live="polite" hidden>
         <article class="quiz-card article-result-card">
-          <span class="card-number">完成</span>
-          <h2 class="quiz-title">冠詞練習完成！</h2>
+          <span id="articleCompleteBadge" class="card-number">完成</span>
+          <h2 id="articleCompleteTitle" class="quiz-title">冠詞練習完成！</h2>
           <div class="vocabulary-summary article-result-summary" aria-label="冠詞練習完成結果">
             <div class="summary-item">
               <span id="articleTotalAnswered" class="summary-value">0 題</span>
@@ -133,9 +142,15 @@
               <span id="articleAccuracy" class="summary-value">0%</span>
               <span class="summary-label">正確率</span>
             </div>
+            <div class="summary-item">
+              <span id="articleRemainingWrong" class="summary-value">0 題</span>
+              <span class="summary-label">本次錯題</span>
+            </div>
           </div>
+          <p id="articleCompleteMessage" class="article-result-message"></p>
           <div class="quiz-actions article-actions">
             <button class="answer-button js-restart-article-practice" type="button">再練一次</button>
+            <button id="completeArticleReview" class="secondary-button" type="button">錯題複習</button>
             <a class="secondary-button" href="../">返回英文學習</a>
           </div>
         </article>
