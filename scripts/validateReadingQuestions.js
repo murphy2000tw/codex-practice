@@ -3,12 +3,12 @@ const path = require("path");
 const vm = require("vm");
 
 const questionFilePath = path.join(__dirname, "..", "english", "reading", "readingQuestions.js");
-const expectedArticleTotal = 20;
+const expectedArticleTotal = 40;
 const expectedQuestionsPerArticle = 4;
-const expectedQuestionTotal = 80;
+const expectedQuestionTotal = 160;
 const requiredArticleFields = ["id", "title", "level", "category", "passage", "translation", "questions"];
 const requiredQuestionFields = ["id", "question", "options", "answer", "explanation", "questionType"];
-const requiredQuestionTypes = ["主旨題", "細節題", "單字意思題", "推論題", "時間順序題", "代名詞指代題", "訊息理解題"];
+const requiredQuestionTypes = ["主旨題", "細節題", "單字意思題", "推論題", "時間順序題", "代名詞指代題", "訊息理解題", "表格資訊題", "目的題", "對象題"];
 
 const code = fs.readFileSync(questionFilePath, "utf8");
 const sandbox = { window: {} };
@@ -26,6 +26,7 @@ if (!Array.isArray(articles)) {
   errors.push("window.readingQuestions must be an array.");
 } else {
   const seenIds = new Set();
+  const seenPassages = new Map();
   const questionTypeCounts = Object.fromEntries(requiredQuestionTypes.map((type) => [type, 0]));
   const totalQuestions = articles.reduce((total, article) => total + (Array.isArray(article.questions) ? article.questions.length : 0), 0);
 
@@ -63,6 +64,16 @@ if (!Array.isArray(articles)) {
         errors.push(`Duplicate id: ${article.id}.`);
       }
       seenIds.add(article.id);
+    }
+
+    if (hasText(article.passage)) {
+      const normalizedPassage = article.passage.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+
+      if (seenPassages.has(normalizedPassage)) {
+        errors.push(`${articleLabel} has duplicate passage content with ${seenPassages.get(normalizedPassage)}.`);
+      }
+
+      seenPassages.set(normalizedPassage, articleLabel);
     }
 
     if (!Array.isArray(article.questions)) {
