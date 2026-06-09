@@ -2079,6 +2079,427 @@ const readingQuestions = [
       }
     ]
   },
+
+  {
+    "id": "reading-041",
+    "title": "Lost Water Bottle",
+    "level": "初級",
+    "category": "失物招領",
+    "passage": "Lost and Found Notice: A blue water bottle was found in the school gym after basketball practice on Monday. It has a small bear sticker on the side. The bottle is now at the school office. If it is yours, please tell Ms. Lin your name and class. Please come before Friday afternoon.",
+    "translation": "失物招領通知：星期一籃球練習後，在學校體育館找到一個藍色水壺。水壺側邊有一張小熊貼紙。水壺現在在學校辦公室。如果它是你的，請告訴林老師你的姓名和班級。請在星期五下午以前來領取。",
+    "questions": [
+      {
+        "id": "reading-041-q1",
+        "question": "What is the notice mainly about?",
+        "options": ["A lost water bottle", "A new basketball team", "A Friday class", "A bear in the gym"],
+        "answer": "A lost water bottle",
+        "questionType": "主旨題",
+        "explanation": "通知開頭說 Lost and Found Notice，內容說找到一個藍色水壺，所以主旨是失物招領水壺。"
+      },
+      {
+        "id": "reading-041-q2",
+        "question": "Where was the bottle found?",
+        "options": ["In the school gym", "In the library", "At the bus stop", "In Ms. Lin's home"],
+        "answer": "In the school gym",
+        "questionType": "細節題",
+        "explanation": "文章說 the bottle was found in the school gym。"
+      },
+      {
+        "id": "reading-041-q3",
+        "question": "What does “sticker” mean here?",
+        "options": ["A small picture put on something", "A kind of drink", "A school sport", "A teacher's desk"],
+        "answer": "A small picture put on something",
+        "questionType": "單字意思題",
+        "explanation": "文中說水壺旁邊有 a small bear sticker，表示貼在物品上的小圖案。"
+      },
+      {
+        "id": "reading-041-q4",
+        "question": "Who should go to the school office?",
+        "options": ["The owner of the bottle", "All basketball players", "Ms. Lin's class", "The gym teacher"],
+        "answer": "The owner of the bottle",
+        "questionType": "對象題",
+        "explanation": "通知說 If it is yours，要去找林老師，因此應該去的是水壺的主人。"
+      }
+    ]
+  },
+  {
+    "id": "reading-042",
+    "title": "Train to Green Town",
+    "level": "初級",
+    "category": "交通時刻",
+    "passage": "Green Town Train Timetable: The morning train leaves East Station at 8:10 and gets to Green Town at 8:45. The next train leaves at 9:30 and gets there at 10:05. A student ticket is 30 dollars. Please buy your ticket before you get on the train. No food is sold on the train.",
+    "translation": "綠鎮火車時刻表：早上的火車 8:10 從東站出發，8:45 到達綠鎮。下一班火車 9:30 出發，10:05 到達那裡。學生票 30 元。請在上火車前買票。火車上不販售食物。",
+    "questions": [
+      {
+        "id": "reading-042-q1",
+        "question": "What kind of information is this?",
+        "options": ["A train timetable", "A restaurant menu", "A birthday card", "A weather report"],
+        "answer": "A train timetable",
+        "questionType": "訊息理解題",
+        "explanation": "標題是 Green Town Train Timetable，內容列出火車出發與到達時間。"
+      },
+      {
+        "id": "reading-042-q2",
+        "question": "When does the first morning train get to Green Town?",
+        "options": ["8:45", "8:10", "9:30", "10:05"],
+        "answer": "8:45",
+        "questionType": "表格資訊題",
+        "explanation": "時刻表說第一班 8:10 出發，gets to Green Town at 8:45。"
+      },
+      {
+        "id": "reading-042-q3",
+        "question": "What does “ticket” mean?",
+        "options": ["Something you buy to ride", "A kind of lunch", "A school bag", "A train driver"],
+        "answer": "Something you buy to ride",
+        "questionType": "單字意思題",
+        "explanation": "文中提到學生票 30 元，且上車前要買，所以 ticket 是搭車需要買的票。"
+      },
+      {
+        "id": "reading-042-q4",
+        "question": "What should students do before getting on the train?",
+        "options": ["Buy a ticket", "Buy food on the train", "Call Green Town", "Clean East Station"],
+        "answer": "Buy a ticket",
+        "questionType": "時間順序題",
+        "explanation": "文章說 Please buy your ticket before you get on the train，所以上車前要先買票。"
+      }
+    ]
+  },
+  {
+    "id": "reading-043",
+    "title": "Email from Ben",
+    "level": "初級",
+    "category": "簡短 email",
+    "passage": "Dear Nina, I am sorry I cannot meet you at the park today. My little brother has a cold, and I need to stay home with him. Can we meet tomorrow after school? We can read our English book together and then play tennis. Please write back when you have time. Your friend, Ben",
+    "translation": "親愛的 Nina：很抱歉我今天不能在公園和你見面。我的弟弟感冒了，我需要在家陪他。我們可以明天放學後見面嗎？我們可以一起讀英文書，然後打網球。有空時請回信。你的朋友，Ben。",
+    "questions": [
+      {
+        "id": "reading-043-q1",
+        "question": "Why does Ben write the email?",
+        "options": ["To change a meeting time", "To sell a tennis ball", "To invite Nina to dinner", "To ask about a cold drink"],
+        "answer": "To change a meeting time",
+        "questionType": "目的題",
+        "explanation": "Ben 說今天不能見面，詢問明天放學後是否可以見面，因此目的是改見面時間。"
+      },
+      {
+        "id": "reading-043-q2",
+        "question": "Why must Ben stay home today?",
+        "options": ["His little brother is sick", "He lost his English book", "The park is closed", "Nina has tennis class"],
+        "answer": "His little brother is sick",
+        "questionType": "細節題",
+        "explanation": "信中說 My little brother has a cold, and I need to stay home with him。"
+      },
+      {
+        "id": "reading-043-q3",
+        "question": "What does “him” mean in the email?",
+        "options": ["Ben's little brother", "Ben", "Nina", "The tennis teacher"],
+        "answer": "Ben's little brother",
+        "questionType": "代名詞指代題",
+        "explanation": "前面提到 My little brother has a cold，接著說 stay home with him，所以 him 指 Ben 的弟弟。"
+      },
+      {
+        "id": "reading-043-q4",
+        "question": "What will Ben and Nina probably do tomorrow?",
+        "options": ["Read and play tennis", "Cook dinner", "Go to a doctor", "Buy a new park"],
+        "answer": "Read and play tennis",
+        "questionType": "推論題",
+        "explanation": "Ben 建議明天一起讀英文書，然後打網球，所以他們可能會閱讀和打網球。"
+      }
+    ]
+  },
+  {
+    "id": "reading-044",
+    "title": "School Clean Day",
+    "level": "初級",
+    "category": "學校活動公告",
+    "passage": "School Announcement: Clean Day is this Friday afternoon from 2:00 to 3:30. All students will help clean their classrooms and the garden. Please bring a small towel and wear old shoes. Class leaders will get bags from the office before the activity starts. Students can go home after the teachers check the rooms.",
+    "translation": "學校公告：清潔日是在這個星期五下午 2:00 到 3:30。所有學生將幫忙打掃教室和花園。請帶一條小毛巾並穿舊鞋。活動開始前，班級幹部要到辦公室拿袋子。老師檢查教室後，學生可以回家。",
+    "questions": [
+      {
+        "id": "reading-044-q1",
+        "question": "What is the announcement about?",
+        "options": ["A school cleaning activity", "A music test", "A new garden shop", "A Friday movie"],
+        "answer": "A school cleaning activity",
+        "questionType": "主旨題",
+        "explanation": "公告標題與內容都在說 Clean Day，學生要打掃教室和花園。"
+      },
+      {
+        "id": "reading-044-q2",
+        "question": "How long is Clean Day?",
+        "options": ["One and a half hours", "Thirty minutes", "All morning", "Two full days"],
+        "answer": "One and a half hours",
+        "questionType": "細節題",
+        "explanation": "活動時間是 2:00 到 3:30，共一個半小時，題目只需看懂時間資訊。"
+      },
+      {
+        "id": "reading-044-q3",
+        "question": "What should students bring?",
+        "options": ["A small towel", "A new desk", "A lunch box", "A music book"],
+        "answer": "A small towel",
+        "questionType": "訊息理解題",
+        "explanation": "公告說 Please bring a small towel and wear old shoes。"
+      },
+      {
+        "id": "reading-044-q4",
+        "question": "What happens before students go home?",
+        "options": ["Teachers check the rooms", "Students buy old shoes", "Leaders clean a bus", "The garden closes"],
+        "answer": "Teachers check the rooms",
+        "questionType": "時間順序題",
+        "explanation": "文章最後說老師檢查教室後，學生可以回家。"
+      }
+    ]
+  },
+  {
+    "id": "reading-045",
+    "title": "Sunny Cafe Menu",
+    "level": "初級",
+    "category": "菜單資訊",
+    "passage": "Sunny Cafe Menu: Egg sandwich 45 dollars. Chicken rice 70 dollars. Vegetable noodles 60 dollars. Apple juice 25 dollars. Hot tea 20 dollars. Today, students can get one free banana with any lunch before 1:00 p.m. The cafe is closed every Tuesday. Please order at the front desk.",
+    "translation": "陽光咖啡店菜單：蛋三明治 45 元。雞肉飯 70 元。蔬菜麵 60 元。蘋果汁 25 元。熱茶 20 元。今天學生在下午 1 點以前點任何午餐，都可以得到一根免費香蕉。咖啡店每星期二公休。請在櫃台點餐。",
+    "questions": [
+      {
+        "id": "reading-045-q1",
+        "question": "What is this passage?",
+        "options": ["A cafe menu", "A train ticket", "A library rule", "A party invitation"],
+        "answer": "A cafe menu",
+        "questionType": "訊息理解題",
+        "explanation": "文章列出餐點和飲料價格，並說 Sunny Cafe Menu，所以是咖啡店菜單。"
+      },
+      {
+        "id": "reading-045-q2",
+        "question": "How much is vegetable noodles?",
+        "options": ["60 dollars", "70 dollars", "45 dollars", "25 dollars"],
+        "answer": "60 dollars",
+        "questionType": "表格資訊題",
+        "explanation": "菜單中 Vegetable noodles 旁邊標示 60 dollars。"
+      },
+      {
+        "id": "reading-045-q3",
+        "question": "What does “free” mean here?",
+        "options": ["You do not need to pay", "Very hot", "Open every day", "Hard to order"],
+        "answer": "You do not need to pay",
+        "questionType": "單字意思題",
+        "explanation": "學生點午餐可得到 one free banana，表示香蕉不用付錢。"
+      },
+      {
+        "id": "reading-045-q4",
+        "question": "When can students get a free banana?",
+        "options": ["Before 1:00 p.m. today", "Every Tuesday", "After the cafe closes", "Before breakfast"],
+        "answer": "Before 1:00 p.m. today",
+        "questionType": "細節題",
+        "explanation": "文章說 Today, students can get one free banana with any lunch before 1:00 p.m.。"
+      }
+    ]
+  },
+  {
+    "id": "reading-046",
+    "title": "Mia's Birthday Party",
+    "level": "初級",
+    "category": "生日派對邀請",
+    "passage": "You are invited! Mia's birthday party is on Saturday, June 12, from 3:00 to 5:00 p.m. The party is at her home, 18 River Road. We will play card games, eat fruit cake, and take photos. Please do not bring gifts. Call Mia's mother before Thursday if you can come.",
+    "translation": "歡迎受邀參加！Mia 的生日派對在 6 月 12 日星期六下午 3 點到 5 點。派對地點在她家，河路 18 號。我們會玩紙牌遊戲、吃水果蛋糕，並拍照。請不要帶禮物。如果你能來，請在星期四前打電話給 Mia 的媽媽。",
+    "questions": [
+      {
+        "id": "reading-046-q1",
+        "question": "What is the purpose of this passage?",
+        "options": ["To invite people to a birthday party", "To teach people to take photos", "To show a bus schedule", "To ask for gifts"],
+        "answer": "To invite people to a birthday party",
+        "questionType": "目的題",
+        "explanation": "開頭說 You are invited，並介紹生日派對時間與地點，所以目的是邀請參加生日派對。"
+      },
+      {
+        "id": "reading-046-q2",
+        "question": "Where is the party?",
+        "options": ["At Mia's home", "At school", "In a park", "At a photo shop"],
+        "answer": "At Mia's home",
+        "questionType": "細節題",
+        "explanation": "邀請函說 The party is at her home, 18 River Road。"
+      },
+      {
+        "id": "reading-046-q3",
+        "question": "What does “her” mean in “her home”?",
+        "options": ["Mia's", "Mia's mother's", "A friend's", "The teacher's"],
+        "answer": "Mia's",
+        "questionType": "代名詞指代題",
+        "explanation": "前一句提到 Mia 的生日派對，接著說 her home，因此 her 指 Mia 的。"
+      },
+      {
+        "id": "reading-046-q4",
+        "question": "What should guests NOT bring?",
+        "options": ["Gifts", "Smiles", "Phones", "Photos"],
+        "answer": "Gifts",
+        "questionType": "訊息理解題",
+        "explanation": "邀請函明確寫著 Please do not bring gifts。"
+      }
+    ]
+  },
+  {
+    "id": "reading-047",
+    "title": "Rainy Week Forecast",
+    "level": "初級",
+    "category": "天氣預報",
+    "passage": "Weather Forecast: Monday will be cloudy in the morning and rainy after lunch. Tuesday will be rainy and cool. On Wednesday, the sun will come out, but the street may still be wet. Please wear rain shoes this week. The school baseball game will move from Tuesday to Wednesday afternoon.",
+    "translation": "天氣預報：星期一早上多雲，午餐後下雨。星期二會下雨且涼爽。星期三太陽會出來，但街道可能仍然潮濕。這星期請穿雨鞋。學校棒球賽將從星期二改到星期三下午。",
+    "questions": [
+      {
+        "id": "reading-047-q1",
+        "question": "What is the forecast mainly about?",
+        "options": ["The weather this week", "A new baseball team", "A shoe store", "Lunch at school"],
+        "answer": "The weather this week",
+        "questionType": "主旨題",
+        "explanation": "文章列出星期一到星期三的天氣，主要是在說這星期的天氣。"
+      },
+      {
+        "id": "reading-047-q2",
+        "question": "When will it rain on Monday?",
+        "options": ["After lunch", "Before school", "On Wednesday", "At night only"],
+        "answer": "After lunch",
+        "questionType": "細節題",
+        "explanation": "天氣預報說 Monday will be cloudy in the morning and rainy after lunch。"
+      },
+      {
+        "id": "reading-047-q3",
+        "question": "What does “wet” mean?",
+        "options": ["Not dry", "Very old", "Full of people", "Easy to read"],
+        "answer": "Not dry",
+        "questionType": "單字意思題",
+        "explanation": "下雨後街道可能 wet，表示濕的、不是乾的。"
+      },
+      {
+        "id": "reading-047-q4",
+        "question": "When will the baseball game be held?",
+        "options": ["Wednesday afternoon", "Tuesday morning", "Monday after lunch", "Friday night"],
+        "answer": "Wednesday afternoon",
+        "questionType": "時間順序題",
+        "explanation": "文章說棒球賽 will move from Tuesday to Wednesday afternoon，所以改到星期三下午。"
+      }
+    ]
+  },
+  {
+    "id": "reading-048",
+    "title": "Library Book Rules",
+    "level": "初級",
+    "category": "圖書館規則",
+    "passage": "Library Notice: Students can borrow two books at one time. Please keep the books for no more than fourteen days. Bring your student card when you borrow books. Do not eat or drink in the library. If a book is late, please talk to the librarian before you borrow another book.",
+    "translation": "圖書館通知：學生一次可以借兩本書。請借書不要超過十四天。借書時請帶學生證。不要在圖書館吃喝。如果書逾期，借另一本書之前請先和圖書館員說明。",
+    "questions": [
+      {
+        "id": "reading-048-q1",
+        "question": "What is this notice about?",
+        "options": ["Rules for borrowing library books", "A new book story", "A lunch menu", "A student card game"],
+        "answer": "Rules for borrowing library books",
+        "questionType": "主旨題",
+        "explanation": "通知說明一次可借幾本、可借多久和借書需要學生證，是圖書館借書規則。"
+      },
+      {
+        "id": "reading-048-q2",
+        "question": "How many books can a student borrow at one time?",
+        "options": ["Two", "Fourteen", "One", "No books"],
+        "answer": "Two",
+        "questionType": "細節題",
+        "explanation": "文章說 Students can borrow two books at one time。"
+      },
+      {
+        "id": "reading-048-q3",
+        "question": "What does “librarian” mean?",
+        "options": ["A person who works in a library", "A student card", "A kind of book bag", "A late day"],
+        "answer": "A person who works in a library",
+        "questionType": "單字意思題",
+        "explanation": "在圖書館通知中，librarian 是可協助借書的人，也就是圖書館員。"
+      },
+      {
+        "id": "reading-048-q4",
+        "question": "What can we learn from the notice?",
+        "options": ["Students need a student card to borrow books", "Students can eat snacks in the library", "Books can be kept all year", "Late books are not a problem"],
+        "answer": "Students need a student card to borrow books",
+        "questionType": "推論題",
+        "explanation": "文章說借書時要帶學生證，可知學生借書需要學生證。"
+      }
+    ]
+  },
+  {
+    "id": "reading-049",
+    "title": "Zoo Field Trip",
+    "level": "初級",
+    "category": "校外教學通知",
+    "passage": "Field Trip Notice: Class 7A will visit the city zoo next Thursday. Please meet in front of the school gate at 8:20 a.m. The bus will leave at 8:30. Bring water, a hat, and a simple lunch. We will see birds first, then monkeys, and finally elephants. We will come back to school at 3:00 p.m.",
+    "translation": "校外教學通知：7A 班下星期四將參觀市立動物園。請在早上 8:20 到學校大門前集合。巴士 8:30 出發。請帶水、帽子和簡單的午餐。我們會先看鳥，然後看猴子，最後看大象。下午 3:00 回到學校。",
+    "questions": [
+      {
+        "id": "reading-049-q1",
+        "question": "What is the notice about?",
+        "options": ["A class trip to the zoo", "A new school gate", "A lunch sale", "An animal hospital"],
+        "answer": "A class trip to the zoo",
+        "questionType": "主旨題",
+        "explanation": "通知說 Class 7A will visit the city zoo，所以是班級去動物園的校外教學。"
+      },
+      {
+        "id": "reading-049-q2",
+        "question": "When will the bus leave?",
+        "options": ["8:30 a.m.", "8:20 a.m.", "3:00 p.m.", "Next Friday"],
+        "answer": "8:30 a.m.",
+        "questionType": "細節題",
+        "explanation": "文章明確寫 The bus will leave at 8:30。"
+      },
+      {
+        "id": "reading-049-q3",
+        "question": "Which animals will students see first?",
+        "options": ["Birds", "Monkeys", "Elephants", "Tigers"],
+        "answer": "Birds",
+        "questionType": "時間順序題",
+        "explanation": "通知說 We will see birds first, then monkeys, and finally elephants。"
+      },
+      {
+        "id": "reading-049-q4",
+        "question": "What should students bring?",
+        "options": ["Water, a hat, and lunch", "A computer and shoes", "A library card", "A birthday gift"],
+        "answer": "Water, a hat, and lunch",
+        "questionType": "訊息理解題",
+        "explanation": "文章說 Bring water, a hat, and a simple lunch。"
+      }
+    ]
+  },
+  {
+    "id": "reading-050",
+    "title": "Happy Mart Hours",
+    "level": "初級",
+    "category": "商店營業時間",
+    "passage": "Happy Mart Store Hours: Monday to Friday, 9:00 a.m. to 8:00 p.m. Saturday, 10:00 a.m. to 6:00 p.m. Sunday, closed. Fresh bread comes at 10:30 every morning. The store sells fruit, milk, bread, and school things. If you need help, please ask the worker near the door.",
+    "translation": "快樂商店營業時間：星期一到星期五，早上 9 點到晚上 8 點。星期六，早上 10 點到下午 6 點。星期日公休。新鮮麵包每天早上 10:30 到店。商店販售水果、牛奶、麵包和學用品。如果你需要幫忙，請詢問門口附近的店員。",
+    "questions": [
+      {
+        "id": "reading-050-q1",
+        "question": "What information does the passage give?",
+        "options": ["Store hours and items", "A school test", "A train trip", "A weather plan"],
+        "answer": "Store hours and items",
+        "questionType": "訊息理解題",
+        "explanation": "文章列出 Happy Mart 的營業時間和販售物品，所以提供商店營業與商品資訊。"
+      },
+      {
+        "id": "reading-050-q2",
+        "question": "When is Happy Mart closed?",
+        "options": ["Sunday", "Monday morning", "Friday night", "Saturday afternoon"],
+        "answer": "Sunday",
+        "questionType": "細節題",
+        "explanation": "營業時間中寫 Sunday, closed，表示星期日公休。"
+      },
+      {
+        "id": "reading-050-q3",
+        "question": "What does “worker” mean here?",
+        "options": ["A person working at the store", "A kind of bread", "A school subject", "A closed day"],
+        "answer": "A person working at the store",
+        "questionType": "單字意思題",
+        "explanation": "如果需要幫忙可詢問門口附近的 worker，這裡指在商店工作的店員。"
+      },
+      {
+        "id": "reading-050-q4",
+        "question": "What can people buy at Happy Mart?",
+        "options": ["Fruit and milk", "Train tickets", "Zoo animals", "Tennis lessons"],
+        "answer": "Fruit and milk",
+        "questionType": "表格資訊題",
+        "explanation": "文章說商店 sells fruit, milk, bread, and school things，因此可以買水果和牛奶。"
+      }
+    ]
+  },
 ];
 
 window.readingQuestions = readingQuestions;
