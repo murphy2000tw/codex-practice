@@ -5,6 +5,8 @@ const articleMeta = document.querySelector("#readingArticleMeta");
 const passageText = document.querySelector("#readingPassage");
 const translationToggle = document.querySelector("#toggleReadingTranslation");
 const translationText = document.querySelector("#readingTranslation");
+const modeButtons = document.querySelectorAll(".reading-mode-button");
+const modeDescription = document.querySelector("#readingModeDescription");
 const questionText = document.querySelector("#readingQuestion");
 const questionTypeText = document.querySelector("#readingQuestionType");
 const optionList = document.querySelector("#readingOptions");
@@ -26,6 +28,7 @@ const restartButtons = document.querySelectorAll(".js-restart-reading-practice")
 const practicePanel = document.querySelector("#readingPracticePanel");
 const completePanel = document.querySelector("#readingCompletePanel");
 const resultTitle = document.querySelector("#readingResultTitle");
+const resultModeText = document.querySelector("#readingResultMode");
 const resultMessage = document.querySelector("#readingResultMessage");
 const totalAnsweredText = document.querySelector("#readingTotalAnswered");
 const totalCorrectText = document.querySelector("#readingTotalCorrect");
@@ -47,6 +50,7 @@ let answeredCount = 0;
 let selectedAnswer = "";
 let hasAnsweredCurrentQuestion = false;
 let isTranslationVisible = false;
+let currentReadingMode = "practice";
 let readingWrongQuestions = [];
 let isWrongReviewMode = false;
 let shuffledWrongReviewQuestions = [];
@@ -139,13 +143,36 @@ function updateWrongReviewControls() {
   returnPracticeButton.hidden = !isWrongReviewMode;
 }
 
+function getReadingModeLabel() {
+  return currentReadingMode === "test" ? "測試模式" : "練習模式";
+}
+
+function updateReadingModeControls() {
+  modeButtons.forEach((button) => {
+    const isActive = button.dataset.readingMode === currentReadingMode;
+
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  modeDescription.textContent = currentReadingMode === "test"
+    ? "測試模式：不提供中文翻譯，適合測驗閱讀能力。"
+    : "練習模式：可以查看中文翻譯，適合學習理解。";
+}
+
 function updateTranslation() {
   const article = getCurrentArticle();
+  const canShowTranslation = currentReadingMode === "practice";
 
+  if (!canShowTranslation) {
+    isTranslationVisible = false;
+  }
+
+  translationToggle.hidden = !canShowTranslation;
   translationToggle.textContent = isTranslationVisible ? "隱藏中文翻譯" : "顯示中文翻譯";
-  translationToggle.setAttribute("aria-expanded", String(isTranslationVisible));
-  translationText.hidden = !isTranslationVisible;
-  translationText.textContent = article && isTranslationVisible ? article.translation : "";
+  translationToggle.setAttribute("aria-expanded", String(canShowTranslation && isTranslationVisible));
+  translationText.hidden = !canShowTranslation || !isTranslationVisible;
+  translationText.textContent = article && canShowTranslation && isTranslationVisible ? article.translation : "";
 }
 
 function updateScoreAndProgress() {
@@ -327,6 +354,8 @@ function renderNormalCompletePanel() {
   const accuracy = answeredCount ? Math.round((correctCount / answeredCount) * 100) : 0;
 
   resultTitle.textContent = "閱讀測驗完成！";
+  resultModeText.textContent = `模式：${getReadingModeLabel()}`;
+  resultModeText.hidden = false;
   totalAnsweredLabel.textContent = "總作答";
   totalCorrectLabel.textContent = "答對";
   totalWrongLabel.textContent = "答錯";
@@ -347,6 +376,8 @@ function renderWrongReviewCompletePanel() {
   const wrongReviewWrongCount = wrongReviewAnsweredCount - wrongReviewCorrectCount;
 
   resultTitle.textContent = "閱讀錯題複習完成！";
+  resultModeText.textContent = `模式：${getReadingModeLabel()}`;
+  resultModeText.hidden = false;
   totalAnsweredLabel.textContent = "本次複習題數";
   totalCorrectLabel.textContent = "答對題數";
   totalWrongLabel.textContent = "答錯題數";
@@ -474,10 +505,29 @@ function restartPractice() {
   hasAnsweredCurrentQuestion = false;
   isTranslationVisible = false;
   wrongMessage.textContent = "";
+  updateReadingModeControls();
   renderQuestion();
 }
 
+function changeReadingMode(nextMode) {
+  if (!nextMode || nextMode === currentReadingMode) {
+    return;
+  }
+
+  currentReadingMode = nextMode;
+  isTranslationVisible = false;
+  restartPractice();
+}
+
+modeButtons.forEach((button) => {
+  button.addEventListener("click", () => changeReadingMode(button.dataset.readingMode));
+});
+
 translationToggle.addEventListener("click", () => {
+  if (currentReadingMode !== "practice") {
+    return;
+  }
+
   isTranslationVisible = !isTranslationVisible;
   updateTranslation();
 });

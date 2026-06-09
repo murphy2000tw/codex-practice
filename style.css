@@ -1253,6 +1253,16 @@ h1 {
   gap: 18px;
 }
 
+.reading-mode-panel {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.reading-mode-description {
+  margin: 0;
+}
+
 .reading-review-controls {
   justify-content: flex-start;
   margin: 0 0 18px;
@@ -1340,12 +1350,14 @@ h1 {
     width: 100%;
   }
 
+  .reading-mode-switch,
   .reading-review-controls {
     display: grid;
     grid-template-columns: 1fr;
     gap: 14px;
   }
 
+  .reading-mode-description,
   .reading-passage-text,
   .reading-translation-text,
   .reading-question-prompt,
