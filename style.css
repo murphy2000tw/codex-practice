@@ -827,6 +827,26 @@ h1 {
   font-weight: 800;
 }
 
+.home-shell {
+  padding-bottom: calc(72px + env(safe-area-inset-bottom));
+}
+
+.home-hero {
+  max-width: 840px;
+}
+
+.home-entry-section {
+  max-width: 980px;
+}
+
+.home-entry-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.home-entry-card {
+  min-height: 280px;
+}
+
 .subpage-panel {
   display: grid;
   gap: 18px;
