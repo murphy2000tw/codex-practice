@@ -1253,6 +1253,19 @@ h1 {
   gap: 18px;
 }
 
+.reading-review-controls {
+  justify-content: flex-start;
+  margin: 0 0 18px;
+}
+
+.reading-wrong-message {
+  margin: 0 0 18px;
+}
+
+.reading-actions {
+  margin-bottom: 10px;
+}
+
 .reading-passage-header {
   display: flex;
   flex-wrap: wrap;
@@ -1312,6 +1325,7 @@ h1 {
 
 .reading-actions .answer-button:disabled,
 .reading-actions .secondary-button:disabled,
+.reading-review-controls .secondary-button:disabled,
 .reading-translation-toggle:disabled {
   cursor: not-allowed;
   opacity: 0.58;
@@ -1321,8 +1335,15 @@ h1 {
 
 @media (max-width: 640px) {
   .reading-passage-header,
-  .reading-translation-toggle {
+  .reading-translation-toggle,
+  .reading-review-controls .secondary-button {
     width: 100%;
+  }
+
+  .reading-review-controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .reading-passage-text,
