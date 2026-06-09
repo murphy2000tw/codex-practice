@@ -75,6 +75,13 @@
         </div>
       </div>
 
+      <div class="article-mode-panel" aria-label="冠詞練習模式切換">
+        <div class="mode-switch article-mode-switch" role="group" aria-label="選擇冠詞練習模式">
+          <button class="mode-button article-mode-button is-active" type="button" data-article-mode="practice" aria-pressed="true">練習模式</button>
+          <button class="mode-button article-mode-button" type="button" data-article-mode="test" aria-pressed="false">測試模式</button>
+        </div>
+        <p id="articleModeDescription" class="mode-description article-mode-description">練習模式：答題後會顯示解釋，適合學習文法觀念。</p>
+      </div>
 
       <div class="article-filter-panel" aria-label="冠詞用法分類篩選與錯題操作">
         <div class="article-filter-row">
@@ -125,6 +132,7 @@
         <article class="quiz-card article-result-card">
           <span id="articleCompleteBadge" class="card-number">完成</span>
           <h2 id="articleCompleteTitle" class="quiz-title">冠詞練習完成！</h2>
+          <p id="articleResultMode" class="article-result-message article-result-mode">模式：練習模式</p>
           <div class="vocabulary-summary article-result-summary" aria-label="冠詞練習完成結果">
             <div class="summary-item">
               <span id="articleTotalAnswered" class="summary-value">0 題</span>
@@ -161,6 +169,6 @@
   </main>
 
   <script src="articleQuestions.js?v=1.2"></script>
-  <script src="articlePracticePage.js?v=1.1"></script>
+  <script src="articlePracticePage.js?v=1.2"></script>
 </body>
 </html>

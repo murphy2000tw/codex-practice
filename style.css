@@ -1099,6 +1099,16 @@ h1 {
   line-height: 1.7;
 }
 
+.article-mode-panel {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.article-mode-description {
+  margin: 0;
+}
+
 .article-filter-panel {
   display: grid;
   gap: 12px;
@@ -1194,6 +1204,16 @@ h1 {
   .article-guide-grid {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .article-mode-switch {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .article-mode-description {
+    text-align: left;
   }
 
   .article-filter-panel {
@@ -1398,6 +1418,16 @@ h1 {
   display: none;
 }
 
+.fill-blank-mode-panel {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.fill-blank-mode-description {
+  margin: 0;
+}
+
 .fill-blank-summary .summary-value {
   white-space: nowrap;
 }
@@ -1442,6 +1472,16 @@ h1 {
 }
 
 @media (max-width: 640px) {
+  .fill-blank-mode-switch {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .fill-blank-mode-description {
+    text-align: left;
+  }
+
   .fill-blank-question-sentence,
   .fill-blank-explanation,
   .fill-blank-translation {

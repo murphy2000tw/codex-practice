@@ -11,6 +11,8 @@ const progressText = document.querySelector("#articleProgress");
 const scoreText = document.querySelector("#articleScore");
 const scoreLabel = document.querySelector("#articleScoreLabel");
 const wrongCountText = document.querySelector("#articleWrongCount");
+const modeButtons = document.querySelectorAll(".article-mode-button");
+const modeDescription = document.querySelector("#articleModeDescription");
 const questionCategory = document.querySelector("#articleQuestionCategory");
 const questionSentence = document.querySelector("#articleQuestionSentence");
 const optionList = document.querySelector("#articleOptions");
@@ -26,6 +28,7 @@ const totalCorrectText = document.querySelector("#articleTotalCorrect");
 const totalWrongText = document.querySelector("#articleTotalWrong");
 const accuracyText = document.querySelector("#articleAccuracy");
 const remainingWrongText = document.querySelector("#articleRemainingWrong");
+const resultModeText = document.querySelector("#articleResultMode");
 const completeBadge = document.querySelector("#articleCompleteBadge");
 const completeTitle = document.querySelector("#articleCompleteTitle");
 const completeMessage = document.querySelector("#articleCompleteMessage");
@@ -43,6 +46,7 @@ let hasAnsweredCurrentQuestion = false;
 let selectedAnswer = "";
 let activeCategory = "all";
 let currentMode = "practice";
+let currentArticleMode = "practice";
 let wrongQuestions = [];
 let reviewQuestionTotal = 0;
 
@@ -71,6 +75,23 @@ function getCurrentQuestion() {
 
 function isReviewMode() {
   return currentMode === "review";
+}
+
+function getArticleModeLabel() {
+  return currentArticleMode === "test" ? "測試模式" : "練習模式";
+}
+
+function updateArticleModeControls() {
+  modeButtons.forEach((button) => {
+    const isActive = button.dataset.articleMode === currentArticleMode;
+
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  modeDescription.textContent = currentArticleMode === "test"
+    ? "測試模式：不顯示解釋，適合檢查自己是否真的會用冠詞。"
+    : "練習模式：答題後會顯示解釋，適合學習文法觀念。";
 }
 
 function updateReviewControls() {
@@ -222,7 +243,7 @@ function handleAnswer(answer) {
 
   feedback.className = `quiz-feedback article-feedback ${isCorrect ? "is-correct" : "is-wrong"}`;
   feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${question.answer}`;
-  explanation.textContent = question.explanation;
+  explanation.textContent = currentArticleMode === "practice" ? question.explanation : "";
   renderOptions(question);
   updateScoreAndProgress();
   nextButton.disabled = currentQuestionIndex >= shuffledQuestions.length - 1;
@@ -240,6 +261,7 @@ function renderCompletePanel(hidePractice = true) {
   completePanel.hidden = false;
   completeBadge.textContent = isReviewMode() ? "複習完成" : "完成";
   completeTitle.textContent = isReviewMode() ? "錯題複習完成！" : "冠詞練習完成！";
+  resultModeText.textContent = `模式：${getArticleModeLabel()}`;
   totalAnsweredText.textContent = `${isReviewMode() ? reviewQuestionTotal : answeredCount} 題`;
   totalCorrectText.textContent = `${correctCount} 題`;
   totalWrongText.textContent = `${wrongCount} 題`;
@@ -275,6 +297,7 @@ function restartPractice() {
   reviewQuestionTotal = 0;
   resetCounters();
   showReviewMessage("");
+  updateArticleModeControls();
   updateFilterButtons();
   renderQuestion();
 }
@@ -332,10 +355,22 @@ function changeCategoryFilter(category) {
   restartPractice();
 }
 
+function changeArticleMode(nextMode) {
+  if (!nextMode || nextMode === currentArticleMode) {
+    return;
+  }
+
+  currentArticleMode = nextMode;
+  restartPractice();
+}
+
 nextButton.addEventListener("click", goToNextQuestion);
 restartButtons.forEach((button) => button.addEventListener("click", restartCurrentPractice));
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => changeCategoryFilter(button.dataset.category || "all"));
+});
+modeButtons.forEach((button) => {
+  button.addEventListener("click", () => changeArticleMode(button.dataset.articleMode));
 });
 startReviewButton.addEventListener("click", startWrongQuestionReview);
 completeReviewButton.addEventListener("click", startWrongQuestionReview);
