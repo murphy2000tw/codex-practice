@@ -6,6 +6,7 @@ const passageText = document.querySelector("#readingPassage");
 const translationToggle = document.querySelector("#toggleReadingTranslation");
 const translationText = document.querySelector("#readingTranslation");
 const questionText = document.querySelector("#readingQuestion");
+const questionTypeText = document.querySelector("#readingQuestionType");
 const optionList = document.querySelector("#readingOptions");
 const feedback = document.querySelector("#readingFeedback");
 const explanation = document.querySelector("#readingExplanation");
@@ -130,6 +131,7 @@ function renderQuestion() {
   articleTitle.textContent = article.title;
   articleMeta.textContent = `${article.level}｜${article.category}`;
   passageText.textContent = article.passage;
+  questionTypeText.textContent = question.questionType ? `題型：${question.questionType}` : "題型：—";
   questionText.textContent = question.question;
   selectedAnswer = "";
   hasAnsweredCurrentQuestion = false;
