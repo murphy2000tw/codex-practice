@@ -4,6 +4,7 @@ const progressText = document.querySelector("#fillBlankProgress");
 const questionTotalText = document.querySelector("#fillBlankQuestionTotal");
 const categoryTotalText = document.querySelector("#fillBlankCategoryTotal");
 const scoreText = document.querySelector("#fillBlankScore");
+const wrongCountText = document.querySelector("#fillBlankWrongCount");
 const modeButtons = document.querySelectorAll(".fill-blank-mode-button");
 const modeDescription = document.querySelector("#fillBlankModeDescription");
 const questionCategory = document.querySelector("#fillBlankQuestionCategory");
@@ -19,11 +20,18 @@ const nextButton = document.querySelector("#nextFillBlankQuestion");
 const restartButtons = document.querySelectorAll(".js-restart-fill-blank-practice");
 const practicePanel = document.querySelector("#fillBlankPracticePanel");
 const completePanel = document.querySelector("#fillBlankCompletePanel");
+const completeTitle = document.querySelector("#fillBlankCompleteTitle");
 const resultModeText = document.querySelector("#fillBlankResultMode");
+const wrongResultMessage = document.querySelector("#fillBlankWrongResultMessage");
 const totalAnsweredText = document.querySelector("#fillBlankTotalAnswered");
 const totalCorrectText = document.querySelector("#fillBlankTotalCorrect");
 const totalWrongText = document.querySelector("#fillBlankTotalWrong");
 const accuracyText = document.querySelector("#fillBlankAccuracy");
+const remainingWrongText = document.querySelector("#fillBlankRemainingWrong");
+const startWrongReviewButton = document.querySelector("#startFillBlankWrongReview");
+const clearWrongQuestionsButton = document.querySelector("#clearFillBlankWrongQuestions");
+const exitWrongReviewButton = document.querySelector("#exitFillBlankWrongReview");
+const resultWrongReviewButton = document.querySelector("#reviewWrongFromFillBlankResult");
 
 let shuffledQuestions = [];
 let currentQuestionIndex = 0;
@@ -32,6 +40,9 @@ let answeredCount = 0;
 let hasAnsweredCurrentQuestion = false;
 let wasCurrentAnswerCorrect = false;
 let currentFillBlankMode = "practice";
+let wrongQuestions = [];
+let isWrongReviewMode = false;
+let wrongReviewSessionTotal = 0;
 
 function updateQuestionSummary() {
   if (questionTotalText) {
@@ -80,6 +91,34 @@ function getFillBlankModeLabel() {
   return currentFillBlankMode === "test" ? "測試模式" : "練習模式";
 }
 
+function getModeDescriptionText() {
+  return currentFillBlankMode === "test"
+    ? "測試模式：不提供提示、解釋與中文翻譯，適合測驗作答能力。"
+    : "練習模式：可以查看提示、解釋與中文翻譯，適合學習。";
+}
+
+function updateWrongQuestionControls() {
+  const wrongCount = wrongQuestions.length;
+
+  if (wrongCountText) {
+    wrongCountText.textContent = `${wrongCount} 題`;
+  }
+
+  [startWrongReviewButton, resultWrongReviewButton].forEach((button) => {
+    if (button) {
+      button.disabled = wrongCount === 0;
+    }
+  });
+
+  if (clearWrongQuestionsButton) {
+    clearWrongQuestionsButton.disabled = wrongCount === 0;
+  }
+
+  if (exitWrongReviewButton) {
+    exitWrongReviewButton.hidden = !isWrongReviewMode;
+  }
+}
+
 function updateFillBlankModeControls() {
   modeButtons.forEach((button) => {
     const isActive = button.dataset.fillBlankMode === currentFillBlankMode;
@@ -88,14 +127,16 @@ function updateFillBlankModeControls() {
     button.setAttribute("aria-pressed", String(isActive));
   });
 
-  modeDescription.textContent = currentFillBlankMode === "test"
-    ? "測試模式：不提供提示、解釋與中文翻譯，適合測驗作答能力。"
-    : "練習模式：可以查看提示、解釋與中文翻譯，適合學習。";
+  modeDescription.textContent = isWrongReviewMode
+    ? `錯題複習：${getModeDescriptionText()}`
+    : getModeDescriptionText();
+  updateWrongQuestionControls();
 }
 
 function updateScoreAndProgress() {
   scoreText.textContent = `${correctCount} / ${answeredCount}`;
   progressText.textContent = `${Math.min(currentQuestionIndex + 1, shuffledQuestions.length)} / ${shuffledQuestions.length}`;
+  updateWrongQuestionControls();
 }
 
 function clearFeedback() {
@@ -130,24 +171,78 @@ function showHint() {
   hintButton.setAttribute("aria-expanded", "true");
 }
 
+function createWrongQuestionRecord(question, selectedAnswer) {
+  return {
+    id: question.id,
+    sentence: question.sentence,
+    blankSentence: question.blankSentence,
+    answer: question.answer,
+    acceptableAnswers: Array.isArray(question.acceptableAnswers) ? [...question.acceptableAnswers] : [],
+    selectedAnswer,
+    translation: question.translation,
+    explanation: question.explanation,
+    category: question.category,
+    hint: question.hint,
+    practiceMode: getFillBlankModeLabel(),
+  };
+}
+
+function addWrongQuestion(question, selectedAnswer) {
+  if (!question || wrongQuestions.some((wrongQuestion) => wrongQuestion.id === question.id)) {
+    return;
+  }
+
+  wrongQuestions.push(createWrongQuestionRecord(question, selectedAnswer));
+  updateWrongQuestionControls();
+}
+
+function removeWrongQuestion(questionId) {
+  wrongQuestions = wrongQuestions.filter((wrongQuestion) => wrongQuestion.id !== questionId);
+  updateWrongQuestionControls();
+}
+
+function renderEmptyWrongReviewMessage() {
+  isWrongReviewMode = false;
+  practicePanel.hidden = false;
+  completePanel.hidden = true;
+  questionCategory.textContent = "錯題複習";
+  questionSentence.textContent = "目前沒有錯題";
+  answerInput.value = "";
+  answerInput.disabled = true;
+  checkButton.disabled = true;
+  nextButton.disabled = true;
+  nextButton.textContent = "下一題";
+  clearFeedback();
+  hideHint();
+  updateFillBlankModeControls();
+  updateScoreAndProgress();
+}
+
 function renderQuestion() {
   const question = getCurrentQuestion();
 
   if (!question) {
+    if (isWrongReviewMode && wrongQuestions.length === 0 && wrongReviewSessionTotal === 0) {
+      renderEmptyWrongReviewMessage();
+      return;
+    }
+
     renderCompletePanel();
     return;
   }
 
   practicePanel.hidden = false;
   completePanel.hidden = true;
-  questionCategory.textContent = `分類：${question.category}`;
+  questionCategory.textContent = isWrongReviewMode ? `錯題複習｜分類：${question.category}` : `分類：${question.category}`;
   questionSentence.textContent = question.blankSentence;
   answerInput.value = "";
   answerInput.disabled = false;
+  checkButton.disabled = false;
   hasAnsweredCurrentQuestion = false;
   wasCurrentAnswerCorrect = false;
   clearFeedback();
   hideHint();
+  updateFillBlankModeControls();
   updateHintButtonVisibility();
   updateScoreAndProgress();
   nextButton.disabled = true;
@@ -184,6 +279,12 @@ function handleCheckAnswer() {
 
     if (isCorrect) {
       correctCount += 1;
+
+      if (isWrongReviewMode) {
+        removeWrongQuestion(question.id);
+      }
+    } else {
+      addWrongQuestion(question, userAnswer.trim());
     }
 
     wasCurrentAnswerCorrect = isCorrect;
@@ -205,11 +306,25 @@ function renderCompletePanel() {
 
   practicePanel.hidden = true;
   completePanel.hidden = false;
-  resultModeText.textContent = `模式：${getFillBlankModeLabel()}`;
+  completeTitle.textContent = isWrongReviewMode ? "填空錯題複習完成！" : "填空題練習完成！";
+  resultModeText.textContent = isWrongReviewMode ? `錯題複習模式：${getFillBlankModeLabel()}` : `模式：${getFillBlankModeLabel()}`;
   totalAnsweredText.textContent = `${answeredCount} 題`;
   totalCorrectText.textContent = `${correctCount} 題`;
   totalWrongText.textContent = `${wrongCount} 題`;
   accuracyText.textContent = `${accuracy}%`;
+  remainingWrongText.textContent = `${wrongQuestions.length} 題`;
+
+  if (isWrongReviewMode) {
+    wrongResultMessage.textContent = wrongQuestions.length === 0
+      ? `本次複習題數：${wrongReviewSessionTotal} 題。太好了，本次填空錯題已全部完成！`
+      : `本次複習題數：${wrongReviewSessionTotal} 題，剩餘錯題：${wrongQuestions.length} 題。`;
+  } else {
+    wrongResultMessage.textContent = wrongQuestions.length === 0
+      ? "太好了，本輪沒有錯題！"
+      : `本次錯題：${wrongQuestions.length} 題`;
+  }
+
+  updateFillBlankModeControls();
   updateScoreAndProgress();
 }
 
@@ -227,8 +342,8 @@ function goToNextQuestion() {
   renderQuestion();
 }
 
-function restartPractice() {
-  shuffledQuestions = shuffleQuestions(questions);
+function resetPracticeState(nextQuestions) {
+  shuffledQuestions = shuffleQuestions(nextQuestions);
   currentQuestionIndex = 0;
   correctCount = 0;
   answeredCount = 0;
@@ -236,6 +351,51 @@ function restartPractice() {
   wasCurrentAnswerCorrect = false;
   updateFillBlankModeControls();
   renderQuestion();
+}
+
+function restartPractice() {
+  if (isWrongReviewMode) {
+    wrongReviewSessionTotal = wrongQuestions.length;
+    resetPracticeState(wrongQuestions);
+    return;
+  }
+
+  wrongReviewSessionTotal = 0;
+  resetPracticeState(questions);
+}
+
+function startWrongReview() {
+  if (wrongQuestions.length === 0) {
+    renderEmptyWrongReviewMessage();
+    return;
+  }
+
+  isWrongReviewMode = true;
+  wrongReviewSessionTotal = wrongQuestions.length;
+  resetPracticeState(wrongQuestions);
+}
+
+function exitWrongReview() {
+  isWrongReviewMode = false;
+  wrongReviewSessionTotal = 0;
+  resetPracticeState(questions);
+}
+
+function clearWrongQuestions() {
+  wrongQuestions = [];
+  updateWrongQuestionControls();
+
+  if (isWrongReviewMode) {
+    renderEmptyWrongReviewMessage();
+    return;
+  }
+
+  if (completePanel.hidden) {
+    feedback.className = "quiz-feedback fill-blank-feedback";
+    feedback.textContent = "已清除本次填空錯題。";
+  } else {
+    renderCompletePanel();
+  }
 }
 
 function changeFillBlankMode(nextMode) {
@@ -259,6 +419,10 @@ answerInput.addEventListener("keydown", (event) => {
   }
 });
 restartButtons.forEach((button) => button.addEventListener("click", restartPractice));
+startWrongReviewButton.addEventListener("click", startWrongReview);
+resultWrongReviewButton.addEventListener("click", startWrongReview);
+clearWrongQuestionsButton.addEventListener("click", clearWrongQuestions);
+exitWrongReviewButton.addEventListener("click", exitWrongReview);
 
 updateQuestionSummary();
 restartPractice();
