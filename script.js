@@ -1,7 +1,7 @@
 const VOCABULARY_CARD_COUNT = 10;
 const GRAMMAR_CARD_COUNT = 5;
-const VOCABULARY_URL = "vocabulary.json";
-const GRAMMAR_URL = "grammar.json";
+const VOCABULARY_URL = window.JAPANESE_VOCABULARY_URL || "vocabulary.json";
+const GRAMMAR_URL = window.JAPANESE_GRAMMAR_URL || "grammar.json";
 const CATEGORY_FILTERS = [
   { id: "all", label: "全部", matches: null },
   { id: "noun", label: "名詞", matches: ["名詞", "代名詞", "疑問詞", "連體詞"] },
