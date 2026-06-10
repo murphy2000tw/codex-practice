@@ -112,6 +112,21 @@ h1 {
   gap: 10px;
 }
 
+.site-nav-link,
+.entry-card-action,
+.filter-button,
+.answer-button,
+.secondary-button,
+.mode-button,
+.quiz-type-button,
+.article-filter-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  text-align: center;
+}
+
 .filter-button {
   border: 1px solid var(--border);
   border-radius: 999px;
