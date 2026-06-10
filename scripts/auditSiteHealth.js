@@ -72,8 +72,14 @@ function auditLinks() {
       }
     }
 
-    if (htmlFile !== "index.html" && !/<a\b[^>]*href=["'](?:\.\.\/|\.\.\/\.\.\/)["'][^>]*>\s*首頁\s*<\/a>/u.test(html)) {
-      missingHomeLinks.push(htmlFile);
+    if (htmlFile !== "index.html") {
+      const hasRootHomeLink = /<a\b[^>]*href=["'](?:\.\.\/|\.\.\/\.\.\/)["'][^>]*>\s*首頁\s*<\/a>/u.test(html);
+      const isEnglishSubpage = htmlFile.startsWith("english/") && htmlFile !== "english/index.html";
+      const hasEnglishHomeLink = /<a\b[^>]*href=["']\.\.\/["'][^>]*>\s*返回英文學習首頁\s*<\/a>/u.test(html);
+
+      if (!hasRootHomeLink && !(isEnglishSubpage && hasEnglishHomeLink)) {
+        missingHomeLinks.push(htmlFile);
+      }
     }
   }
 
