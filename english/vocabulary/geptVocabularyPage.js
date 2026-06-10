@@ -26,10 +26,34 @@ const vocabularyControls = document.querySelector("#geptVocabularyControls");
 const vocabularyTotalText = document.querySelector("#geptVocabularyTotalText");
 const vocabularyTotalInline = document.querySelector("#geptVocabularyTotalInline");
 const vocabularyTotalValue = document.querySelector("#geptVocabularyTotalValue");
+const englishProgressTotal = document.querySelector("#englishProgressTotal");
+const englishProgressKnown = document.querySelector("#englishProgressKnown");
+const englishProgressLearning = document.querySelector("#englishProgressLearning");
+const englishProgressNew = document.querySelector("#englishProgressNew");
+const englishProgressCompletion = document.querySelector("#englishProgressCompletion");
+const englishProgressFilters = document.querySelector("#englishProgressFilters");
+const resetEnglishProgressButton = document.querySelector("#resetEnglishProgress");
 const vocabulary = Array.isArray(geptVocabulary) ? geptVocabulary : [];
 const allCategoriesLabel = "全部";
 const allLevelsLabel = "全部級數";
 const availableLevels = [allLevelsLabel, "初級", "中級", "中高級"];
+const STORAGE_KEY = "englishVocabProgress_v1";
+const progressVersion = 1;
+const progressStatusAll = "all";
+const progressStatusNew = "new";
+const progressStatusLearning = "learning";
+const progressStatusKnown = "known";
+const progressStatusLabels = {
+  [progressStatusNew]: "尚未學習",
+  [progressStatusLearning]: "學習中",
+  [progressStatusKnown]: "已熟悉",
+};
+const progressFilterOptions = [
+  { status: progressStatusAll, label: "全部" },
+  { status: progressStatusNew, label: progressStatusLabels[progressStatusNew] },
+  { status: progressStatusLearning, label: progressStatusLabels[progressStatusLearning] },
+  { status: progressStatusKnown, label: progressStatusLabels[progressStatusKnown] },
+];
 const cardMode = "card";
 const quizMode = "quiz";
 const englishToChineseQuizType = "english-to-chinese";
@@ -54,6 +78,7 @@ let currentWordIndex = 0;
 let chineseVisible = false;
 let selectedCategory = allCategoriesLabel;
 let selectedLevel = allLevelsLabel;
+let selectedProgressStatus = progressStatusAll;
 let searchQuery = "";
 let categoryVocabulary = [];
 let filteredVocabulary = [];
@@ -67,6 +92,166 @@ let currentQuizType = englishToChineseQuizType;
 let wrongQuestions = [];
 let wrongReviewQuestions = [];
 let isWrongReviewMode = false;
+let englishVocabProgress = loadEnglishVocabProgress();
+
+function createEmptyEnglishVocabProgress() {
+  return {
+    version: progressVersion,
+    updatedAt: new Date().toISOString(),
+    words: {},
+  };
+}
+
+function canUseLocalStorage() {
+  try {
+    const testKey = `${STORAGE_KEY}_test`;
+    window.localStorage.setItem(testKey, testKey);
+    window.localStorage.removeItem(testKey);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+function loadEnglishVocabProgress() {
+  const emptyProgress = createEmptyEnglishVocabProgress();
+
+  if (!canUseLocalStorage()) {
+    return emptyProgress;
+  }
+
+  try {
+    const storedProgress = window.localStorage.getItem(STORAGE_KEY);
+
+    if (!storedProgress) {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(emptyProgress));
+      return emptyProgress;
+    }
+
+    const parsedProgress = JSON.parse(storedProgress);
+
+    if (
+      !parsedProgress
+      || parsedProgress.version !== progressVersion
+      || typeof parsedProgress.words !== "object"
+      || Array.isArray(parsedProgress.words)
+    ) {
+      throw new Error("Invalid English vocabulary progress data");
+    }
+
+    return {
+      version: progressVersion,
+      updatedAt: parsedProgress.updatedAt || emptyProgress.updatedAt,
+      words: parsedProgress.words,
+    };
+  } catch (error) {
+    saveEnglishVocabProgress(emptyProgress);
+    return emptyProgress;
+  }
+}
+
+function saveEnglishVocabProgress(progress) {
+  progress.updatedAt = new Date().toISOString();
+
+  if (!canUseLocalStorage()) {
+    return;
+  }
+
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+  } catch (error) {
+    // Progress is optional; the page should keep working even if saving fails.
+  }
+}
+
+function getWordKey(wordId, wordText) {
+  return String(wordId || wordText || "").trim();
+}
+
+function getWordProgress(wordId, wordText) {
+  const wordKey = getWordKey(wordId, wordText);
+  const savedProgress = englishVocabProgress.words[wordKey];
+
+  if (savedProgress && progressStatusLabels[savedProgress.status]) {
+    return savedProgress;
+  }
+
+  return {
+    word: wordText || wordKey,
+    status: progressStatusNew,
+    studyCount: 0,
+    correctCount: 0,
+    wrongCount: 0,
+    firstStudiedAt: null,
+    lastStudiedAt: null,
+  };
+}
+
+function markWordProgress(wordId, wordText, status) {
+  const wordKey = getWordKey(wordId, wordText);
+
+  if (!wordKey) {
+    return;
+  }
+
+  const currentProgress = getWordProgress(wordId, wordText);
+  const studiedAt = new Date().toISOString();
+  const nextProgress = {
+    ...currentProgress,
+    word: wordText || currentProgress.word || wordKey,
+    status,
+    studyCount: (currentProgress.studyCount || 0) + 1,
+    correctCount: currentProgress.correctCount || 0,
+    wrongCount: currentProgress.wrongCount || 0,
+    firstStudiedAt: currentProgress.firstStudiedAt || studiedAt,
+    lastStudiedAt: studiedAt,
+  };
+
+  if (status === progressStatusKnown) {
+    nextProgress.correctCount += 1;
+  }
+
+  if (status === progressStatusLearning) {
+    nextProgress.wrongCount += 1;
+  }
+
+  englishVocabProgress.words[wordKey] = nextProgress;
+  saveEnglishVocabProgress(englishVocabProgress);
+}
+
+function markWordKnown(wordId, wordText) {
+  markWordProgress(wordId, wordText, progressStatusKnown);
+}
+
+function markWordLearning(wordId, wordText) {
+  markWordProgress(wordId, wordText, progressStatusLearning);
+}
+
+function resetEnglishVocabProgress() {
+  englishVocabProgress = createEmptyEnglishVocabProgress();
+
+  if (!canUseLocalStorage()) {
+    return;
+  }
+
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    // Reset is optional; keep the page usable if storage access fails.
+  }
+}
+
+function getVocabularyWordKey(word) {
+  return getWordKey(word.id, word.word);
+}
+
+function getVocabularyWordStatus(word) {
+  return getWordProgress(word.id, word.word).status;
+}
+
+function wordMatchesProgressFilter(word) {
+  return selectedProgressStatus === progressStatusAll || getVocabularyWordStatus(word) === selectedProgressStatus;
+}
 
 function renderVocabularyTotalText() {
   const totalText = `${vocabulary.length} 個 GEPT 初級單字`;
@@ -143,11 +328,15 @@ function getCurrentModeText() {
     modeParts.push(`級數：${selectedLevel}`);
   }
 
+  if (selectedProgressStatus !== progressStatusAll) {
+    modeParts.push(`進度：${progressStatusLabels[selectedProgressStatus]}`);
+  }
+
   if (searchQuery) {
     modeParts.push(`搜尋：${vocabularySearchInput.value.trim()}`);
   }
 
-  return modeParts.length ? modeParts.join("，") : "全部分類、全部級數";
+  return modeParts.length ? modeParts.join("，") : "全部分類、全部級數、全部進度";
 }
 
 function updateRandomStatus() {
@@ -176,8 +365,23 @@ function resetQuizState() {
   quizCurrentQuestionRemoved = false;
 }
 
-function applySearchToCategoryVocabulary() {
-  filteredVocabulary = categoryVocabulary.filter((word) => wordMatchesSearch(word, searchQuery));
+function applySearchToCategoryVocabulary(options = {}) {
+  const preserveWordKey = options.preserveWordKey || "";
+  filteredVocabulary = categoryVocabulary.filter((word) => (
+    wordMatchesSearch(word, searchQuery) && wordMatchesProgressFilter(word)
+  ));
+
+  if (preserveWordKey) {
+    const preservedIndex = filteredVocabulary.findIndex((word) => getVocabularyWordKey(word) === preserveWordKey);
+
+    if (preservedIndex >= 0) {
+      currentWordIndex = preservedIndex;
+      chineseVisible = false;
+      resetQuizState();
+      return;
+    }
+  }
+
   resetCurrentPosition();
   resetQuizState();
 }
@@ -189,7 +393,9 @@ function resetCurrentVocabulary() {
 
 function reshuffleCurrentVocabulary() {
   if (searchQuery) {
-    filteredVocabulary = shuffleVocabulary(categoryVocabulary.filter((word) => wordMatchesSearch(word, searchQuery)));
+    filteredVocabulary = shuffleVocabulary(categoryVocabulary.filter((word) => (
+      wordMatchesSearch(word, searchQuery) && wordMatchesProgressFilter(word)
+    )));
     resetCurrentPosition();
     resetQuizState();
     return;
@@ -264,6 +470,123 @@ function renderCategoryFilters() {
   const availableCategories = getAvailableCategories();
   const filterButtons = [allCategoriesLabel, ...availableCategories].map(createCategoryFilterButton);
   categoryFilters.replaceChildren(...filterButtons);
+}
+
+function getEnglishProgressSummary() {
+  const summary = {
+    total: vocabulary.length,
+    known: 0,
+    learning: 0,
+    new: 0,
+  };
+
+  vocabulary.forEach((word) => {
+    const status = getVocabularyWordStatus(word);
+
+    if (status === progressStatusKnown) {
+      summary.known += 1;
+    } else if (status === progressStatusLearning) {
+      summary.learning += 1;
+    } else {
+      summary.new += 1;
+    }
+  });
+
+  summary.completionRate = summary.total ? Math.round((summary.known / summary.total) * 100) : 0;
+  return summary;
+}
+
+function renderEnglishProgressSummary() {
+  const summary = getEnglishProgressSummary();
+
+  englishProgressTotal.textContent = summary.total;
+  englishProgressKnown.textContent = summary.known;
+  englishProgressLearning.textContent = summary.learning;
+  englishProgressNew.textContent = summary.new;
+  englishProgressCompletion.textContent = `${summary.completionRate}%`;
+}
+
+function createProgressFilterButton(option) {
+  const button = document.createElement("button");
+  button.className = "filter-button";
+  button.type = "button";
+  button.textContent = option.label;
+  button.dataset.progressStatus = option.status;
+  button.setAttribute("aria-pressed", String(option.status === selectedProgressStatus));
+
+  if (option.status === selectedProgressStatus) {
+    button.classList.add("is-active");
+  }
+
+  button.addEventListener("click", () => {
+    if (selectedProgressStatus === option.status) {
+      return;
+    }
+
+    selectedProgressStatus = option.status;
+    applySearchToCategoryVocabulary();
+    updateProgressFilterButtons();
+    renderCurrentMode();
+  });
+
+  return button;
+}
+
+function updateProgressFilterButtons() {
+  const filterButtons = englishProgressFilters.querySelectorAll(".filter-button");
+  filterButtons.forEach((button) => {
+    const isActive = button.dataset.progressStatus === selectedProgressStatus;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function renderProgressFilters() {
+  const filterButtons = progressFilterOptions.map(createProgressFilterButton);
+  englishProgressFilters.replaceChildren(...filterButtons);
+}
+
+function createStudyActionButton(label, action) {
+  const button = document.createElement("button");
+  button.className = label === "我會了" ? "answer-button" : "secondary-button";
+  button.type = "button";
+  button.textContent = label;
+  button.addEventListener("click", action);
+  return button;
+}
+
+function renderProgressAfterWordAction(wordKey) {
+  renderEnglishProgressSummary();
+  applySearchToCategoryVocabulary({ preserveWordKey: wordKey });
+  renderCurrentMode();
+}
+
+function createWordProgressControls(word) {
+  const progress = getWordProgress(word.id, word.word);
+  const wrapper = document.createElement("div");
+  wrapper.className = "english-word-progress-controls";
+
+  const statusText = document.createElement("p");
+  statusText.className = "english-word-status";
+  statusText.textContent = `目前學習狀態：${progressStatusLabels[progress.status] || progressStatusLabels[progressStatusNew]}`;
+
+  const actions = document.createElement("div");
+  actions.className = "english-word-progress-actions";
+  actions.append(
+    createStudyActionButton("我會了", () => {
+      const wordKey = getVocabularyWordKey(word);
+      markWordKnown(word.id, word.word);
+      renderProgressAfterWordAction(wordKey);
+    }),
+    createStudyActionButton("還不熟", () => {
+      const wordKey = getVocabularyWordKey(word);
+      markWordLearning(word.id, word.word);
+      renderProgressAfterWordAction(wordKey);
+    }),
+  );
+
+  wrapper.append(statusText, actions);
+  return wrapper;
 }
 
 function createVocabularyDetail(label, value, extraClass = "") {
@@ -382,8 +705,10 @@ function renderCurrentWord() {
     createHiddenChineseHint(),
   );
 
+  const progressControls = createWordProgressControls(currentWord);
+
   vocabularyCard.classList.remove("status-message");
-  vocabularyCard.replaceChildren(cardHeader, details);
+  vocabularyCard.replaceChildren(cardHeader, details, progressControls);
 
   currentProgress.textContent = `隨機顯示：${currentWordIndex + 1} / ${filteredVocabulary.length}`;
   previousWordButton.disabled = currentWordIndex === 0;
@@ -776,7 +1101,22 @@ clearWrongQuestionsButton.addEventListener("click", () => {
   updateQuizScoreDisplay();
 });
 
+resetEnglishProgressButton.addEventListener("click", () => {
+  const confirmed = window.confirm("確定要清除英文單字學習進度嗎？這不會影響日文資料。");
+
+  if (!confirmed) {
+    return;
+  }
+
+  resetEnglishVocabProgress();
+  renderEnglishProgressSummary();
+  applySearchToCategoryVocabulary();
+  renderCurrentMode();
+});
+
 renderVocabularyTotalText();
+renderEnglishProgressSummary();
+renderProgressFilters();
 resetCurrentVocabulary();
 renderCategoryFilters();
 updateWrongQuestionControls();

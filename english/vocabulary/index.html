@@ -50,6 +50,32 @@
         </div>
       </div>
 
+      <section class="english-progress-panel" aria-labelledby="englishProgressTitle">
+        <div class="english-progress-header">
+          <div>
+            <p class="filter-label" id="englishProgressTitle">英文單字進度</p>
+            <p class="progress-storage-note">進度只儲存在此瀏覽器，並且不會影響日文資料。</p>
+          </div>
+          <button id="resetEnglishProgress" class="secondary-button" type="button">重設英文單字進度</button>
+        </div>
+        <div class="english-progress-stats" aria-live="polite">
+          <span>總單字數：<strong id="englishProgressTotal">0</strong></span>
+          <span>已熟悉：<strong id="englishProgressKnown">0</strong></span>
+          <span>學習中：<strong id="englishProgressLearning">0</strong></span>
+          <span>尚未學習：<strong id="englishProgressNew">0</strong></span>
+          <span>完成率：<strong id="englishProgressCompletion">0%</strong></span>
+        </div>
+        <div class="filter-group english-progress-filter-group">
+          <p id="englishProgressFilterLabel" class="filter-label">進度篩選</p>
+          <div
+            id="englishProgressFilters"
+            class="category-filters english-progress-filters"
+            role="group"
+            aria-labelledby="englishProgressFilterLabel"
+          ></div>
+        </div>
+      </section>
+
       <p id="geptRandomStatus" class="random-status" aria-live="polite">單字將以隨機順序顯示。</p>
 
       <div class="search-controls gept-search-controls">
@@ -123,6 +149,6 @@
   <script src="data/geptVocabularyBeginner003.js?v=1.0"></script>
   <script src="data/geptVocabularyBeginner004.js?v=1.0"></script>
   <script src="geptVocabulary.js?v=1.6"></script>
-  <script src="geptVocabularyPage.js?v=2.3"></script>
+  <script src="geptVocabularyPage.js?v=2.4"></script>
 </body>
 </html>
