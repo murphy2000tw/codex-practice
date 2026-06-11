@@ -1,4 +1,7 @@
-const questions = Array.isArray(window.fillBlankQuestions) ? window.fillBlankQuestions : [];
+const CLOZE_QUIZ_CATEGORY = "cloze";
+const CLOZE_QUIZ_TITLE = "填空測驗";
+const allFillBlankQuestions = Array.isArray(window.fillBlankQuestions) ? window.fillBlankQuestions : [];
+let quizQuestions = selectEnglishQuizQuestions(allFillBlankQuestions, CLOZE_QUIZ_CATEGORY);
 
 const progressText = document.querySelector("#fillBlankProgress");
 const questionTotalText = document.querySelector("#fillBlankQuestionTotal");
@@ -33,45 +36,20 @@ const clearWrongQuestionsButton = document.querySelector("#clearFillBlankWrongQu
 const exitWrongReviewButton = document.querySelector("#exitFillBlankWrongReview");
 const resultWrongReviewButton = document.querySelector("#reviewWrongFromFillBlankResult");
 
-let shuffledQuestions = [];
 let currentQuestionIndex = 0;
 let correctCount = 0;
-let answeredCount = 0;
+let timeoutCount = 0;
 let hasAnsweredCurrentQuestion = false;
-let wasCurrentAnswerCorrect = false;
-let currentFillBlankMode = "practice";
-let wrongQuestions = [];
-let isWrongReviewMode = false;
-let wrongReviewSessionTotal = 0;
+let currentTimer = null;
+let remainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
+let quizResults = [];
 
-function updateQuestionSummary() {
-  if (questionTotalText) {
-    questionTotalText.textContent = `${questions.length} 題`;
-  }
-
-  if (categoryTotalText) {
-    const categoryCount = new Set(questions.map((question) => question.category).filter(Boolean)).size;
-    categoryTotalText.textContent = `${categoryCount} 類`;
-  }
-}
-
-function shuffleQuestions(sourceQuestions) {
-  const shuffled = [...sourceQuestions];
-
-  for (let i = shuffled.length - 1; i > 0; i -= 1) {
-    const randomIndex = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[i]];
-  }
-
-  return shuffled;
-}
-
-function getCurrentQuestion() {
-  return shuffledQuestions[currentQuestionIndex];
-}
+const timerText = document.createElement("span");
+timerText.innerHTML = `剩餘：<strong id="fillBlankTimer">${ENGLISH_QUIZ_TIME_LIMIT_SECONDS}</strong> 秒`;
+progressText.closest(".quiz-stats")?.append(timerText);
 
 function normalizeAnswer(answer) {
-  return answer
+  return String(answer)
     .trim()
     .replace(/[。．.！？!?，,；;：:]+$/g, "")
     .trim()
@@ -83,60 +61,39 @@ function isCorrectAnswer(userAnswer, question) {
   const acceptableAnswers = Array.isArray(question.acceptableAnswers) && question.acceptableAnswers.length
     ? question.acceptableAnswers
     : [question.answer];
-
   return acceptableAnswers.some((acceptableAnswer) => normalizeAnswer(String(acceptableAnswer)) === normalizedUserAnswer);
 }
 
-function getFillBlankModeLabel() {
-  return currentFillBlankMode === "test" ? "測試模式" : "練習模式";
+function updateQuestionSummary() {
+  if (questionTotalText) questionTotalText.textContent = `${allFillBlankQuestions.length} 題`;
+  if (categoryTotalText) categoryTotalText.textContent = `${new Set(allFillBlankQuestions.map((question) => question.category).filter(Boolean)).size} 類`;
 }
 
-function getModeDescriptionText() {
-  return currentFillBlankMode === "test"
-    ? "測試模式：不提供提示、解釋與中文翻譯，適合測驗作答能力。"
-    : "練習模式：可以查看提示、解釋與中文翻譯，適合學習。";
+function getCurrentQuestion() {
+  return quizQuestions[currentQuestionIndex];
 }
 
-function updateWrongQuestionControls() {
-  const wrongCount = wrongQuestions.length;
-
-  if (wrongCountText) {
-    wrongCountText.textContent = `${wrongCount} 題`;
-  }
-
-  [startWrongReviewButton, resultWrongReviewButton].forEach((button) => {
-    if (button) {
-      button.disabled = wrongCount === 0;
-    }
-  });
-
-  if (clearWrongQuestionsButton) {
-    clearWrongQuestionsButton.disabled = wrongCount === 0;
-  }
-
-  if (exitWrongReviewButton) {
-    exitWrongReviewButton.hidden = !isWrongReviewMode;
+function clearTimer() {
+  if (currentTimer) {
+    window.clearInterval(currentTimer);
+    currentTimer = null;
   }
 }
 
-function updateFillBlankModeControls() {
-  modeButtons.forEach((button) => {
-    const isActive = button.dataset.fillBlankMode === currentFillBlankMode;
-
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
-
-  modeDescription.textContent = isWrongReviewMode
-    ? `錯題複習：${getModeDescriptionText()}`
-    : getModeDescriptionText();
-  updateWrongQuestionControls();
+function updateTimerText() {
+  const timer = document.querySelector("#fillBlankTimer");
+  if (timer) timer.textContent = String(remainingSeconds);
 }
 
-function updateScoreAndProgress() {
-  scoreText.textContent = `${correctCount} / ${answeredCount}`;
-  progressText.textContent = `${Math.min(currentQuestionIndex + 1, shuffledQuestions.length)} / ${shuffledQuestions.length}`;
-  updateWrongQuestionControls();
+function startTimer() {
+  clearTimer();
+  remainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
+  updateTimerText();
+  currentTimer = window.setInterval(() => {
+    remainingSeconds -= 1;
+    updateTimerText();
+    if (remainingSeconds <= 0) handleTimeout();
+  }, 1000);
 }
 
 function clearFeedback() {
@@ -144,285 +101,173 @@ function clearFeedback() {
   feedback.textContent = "";
   explanation.textContent = "";
   translation.textContent = "";
-}
-
-function hideHint() {
   hintText.hidden = true;
   hintText.textContent = "";
-  hintButton.setAttribute("aria-expanded", "false");
 }
 
-function updateHintButtonVisibility() {
-  const isPracticeMode = currentFillBlankMode === "practice";
-
-  hintButton.hidden = !isPracticeMode;
-  hintButton.disabled = !isPracticeMode;
+function updateScoreAndProgress() {
+  scoreText.textContent = `${correctCount} / ${quizResults.length}`;
+  progressText.textContent = quizQuestions.length ? `${currentQuestionIndex + 1} / ${quizQuestions.length}` : "0 / 0";
+  wrongCountText.textContent = `${quizResults.filter((result) => result.result !== "correct").length} 題`;
 }
 
-function showHint() {
-  const question = getCurrentQuestion();
+function scheduleNextQuestion() {
+  window.setTimeout(() => {
+    if (currentQuestionIndex >= quizQuestions.length - 1) {
+      renderCompletePanel();
+      return;
+    }
+    currentQuestionIndex += 1;
+    renderQuestion();
+  }, 650);
+}
 
-  if (currentFillBlankMode !== "practice" || !question) {
-    return;
+function recordResult(question, userAnswer, result) {
+  if (!question || hasAnsweredCurrentQuestion) return;
+  hasAnsweredCurrentQuestion = true;
+  clearTimer();
+  const isCorrect = result === "correct";
+
+  if (result === "timeout") {
+    timeoutCount += 1;
+    recordQuestionTimeout(question.questionId, CLOZE_QUIZ_CATEGORY);
+  } else {
+    recordQuestionAnswer(question.questionId, CLOZE_QUIZ_CATEGORY, isCorrect);
   }
+  if (isCorrect) correctCount += 1;
 
-  hintText.textContent = `提示：${question.hint}`;
-  hintText.hidden = false;
-  hintButton.setAttribute("aria-expanded", "true");
-}
-
-function createWrongQuestionRecord(question, selectedAnswer) {
-  return {
-    id: question.id,
-    sentence: question.sentence,
-    blankSentence: question.blankSentence,
-    answer: question.answer,
-    acceptableAnswers: Array.isArray(question.acceptableAnswers) ? [...question.acceptableAnswers] : [],
-    selectedAnswer,
-    translation: question.translation,
-    explanation: question.explanation,
-    category: question.category,
-    hint: question.hint,
-    practiceMode: getFillBlankModeLabel(),
-  };
-}
-
-function addWrongQuestion(question, selectedAnswer) {
-  if (!question || wrongQuestions.some((wrongQuestion) => wrongQuestion.id === question.id)) {
-    return;
-  }
-
-  wrongQuestions.push(createWrongQuestionRecord(question, selectedAnswer));
-  updateWrongQuestionControls();
-}
-
-function removeWrongQuestion(questionId) {
-  wrongQuestions = wrongQuestions.filter((wrongQuestion) => wrongQuestion.id !== questionId);
-  updateWrongQuestionControls();
-}
-
-function renderEmptyWrongReviewMessage() {
-  isWrongReviewMode = false;
-  practicePanel.hidden = false;
-  completePanel.hidden = true;
-  questionCategory.textContent = "錯題複習";
-  questionSentence.textContent = "目前沒有錯題";
-  answerInput.value = "";
-  answerInput.disabled = true;
-  checkButton.disabled = true;
-  nextButton.disabled = true;
-  nextButton.textContent = "下一題";
-  clearFeedback();
-  hideHint();
-  updateFillBlankModeControls();
+  quizResults.push({
+    order: currentQuestionIndex + 1,
+    question: question.blankSentence || question.sentence,
+    userAnswer: result === "timeout" ? "未作答" : userAnswer,
+    correctAnswer: question.answer,
+    result,
+  });
   updateScoreAndProgress();
 }
 
 function renderQuestion() {
   const question = getCurrentQuestion();
+  clearTimer();
 
   if (!question) {
-    if (isWrongReviewMode && wrongQuestions.length === 0 && wrongReviewSessionTotal === 0) {
-      renderEmptyWrongReviewMessage();
-      return;
-    }
-
-    renderCompletePanel();
+    practicePanel.hidden = false;
+    completePanel.hidden = true;
+    questionCategory.textContent = `${CLOZE_QUIZ_TITLE}｜目前沒有題目`;
+    questionSentence.textContent = "這個分類目前沒有可測驗的題目。";
+    answerInput.value = "";
+    answerInput.disabled = true;
+    checkButton.disabled = true;
+    nextButton.disabled = true;
+    clearFeedback();
+    updateScoreAndProgress();
     return;
   }
 
   practicePanel.hidden = false;
   completePanel.hidden = true;
-  questionCategory.textContent = isWrongReviewMode ? `錯題複習｜分類：${question.category}` : `分類：${question.category}`;
+  questionCategory.textContent = `${CLOZE_QUIZ_TITLE}｜第 ${currentQuestionIndex + 1} / ${quizQuestions.length} 題`;
   questionSentence.textContent = question.blankSentence;
   answerInput.value = "";
   answerInput.disabled = false;
   checkButton.disabled = false;
   hasAnsweredCurrentQuestion = false;
-  wasCurrentAnswerCorrect = false;
   clearFeedback();
-  hideHint();
-  updateFillBlankModeControls();
-  updateHintButtonVisibility();
   updateScoreAndProgress();
+  modeDescription.textContent = "分類測驗：只抽填空題，每題 10 秒，完成後顯示總表。";
+  modeButtons.forEach((button) => { button.disabled = true; });
+  hintButton.hidden = true;
+  hintButton.disabled = true;
   nextButton.disabled = true;
-  nextButton.textContent = currentQuestionIndex >= shuffledQuestions.length - 1 ? "查看結果" : "下一題";
+  nextButton.textContent = "答題後自動下一題";
+  recordQuestionSeen(question.questionId, CLOZE_QUIZ_CATEGORY);
+  startTimer();
   answerInput.focus();
-}
-
-function renderAnswerResult(question, isCorrect) {
-  feedback.className = `quiz-feedback fill-blank-feedback ${isCorrect ? "is-correct" : "is-wrong"}`;
-  feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${question.answer}`;
-
-  if (currentFillBlankMode === "practice") {
-    explanation.textContent = `解釋：${question.explanation}`;
-    translation.textContent = `中文：${question.translation}`;
-    return;
-  }
-
-  explanation.textContent = "";
-  translation.textContent = "";
 }
 
 function handleCheckAnswer() {
   const question = getCurrentQuestion();
+  if (!question || hasAnsweredCurrentQuestion) return;
 
-  if (!question) {
-    return;
-  }
-
-  const userAnswer = answerInput.value;
+  const userAnswer = answerInput.value.trim();
   const isCorrect = isCorrectAnswer(userAnswer, question);
+  recordResult(question, userAnswer, isCorrect ? "correct" : "wrong");
+  answerInput.disabled = true;
+  checkButton.disabled = true;
+  feedback.className = `quiz-feedback fill-blank-feedback ${isCorrect ? "is-correct" : "is-wrong"}`;
+  feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${question.answer}`;
+  scheduleNextQuestion();
+}
 
-  if (!hasAnsweredCurrentQuestion) {
-    answeredCount += 1;
+function handleTimeout() {
+  const question = getCurrentQuestion();
+  if (!question || hasAnsweredCurrentQuestion) return;
+  recordResult(question, "未作答", "timeout");
+  answerInput.disabled = true;
+  checkButton.disabled = true;
+  feedback.className = "quiz-feedback fill-blank-feedback is-wrong";
+  feedback.textContent = `逾時，正確答案是：${question.answer}`;
+  scheduleNextQuestion();
+}
 
-    if (isCorrect) {
-      correctCount += 1;
-
-      if (isWrongReviewMode) {
-        removeWrongQuestion(question.id);
-      }
-    } else {
-      addWrongQuestion(question, userAnswer.trim());
-    }
-
-    wasCurrentAnswerCorrect = isCorrect;
-  }
-
-  hasAnsweredCurrentQuestion = true;
-  renderAnswerResult(question, wasCurrentAnswerCorrect);
-  updateScoreAndProgress();
-  nextButton.disabled = false;
-
-  if (currentQuestionIndex >= shuffledQuestions.length - 1) {
-    nextButton.textContent = "查看結果";
-  }
+function createResultList() {
+  const list = document.createElement("ol");
+  list.className = "quiz-result-list";
+  quizResults.forEach((result) => {
+    const item = document.createElement("li");
+    item.textContent = `第 ${result.order} 題｜${result.question}｜你的答案：${result.userAnswer}｜正確答案：${result.correctAnswer}｜結果：${result.result === "correct" ? "答對" : result.result === "timeout" ? "逾時" : "答錯"}`;
+    list.append(item);
+  });
+  return list;
 }
 
 function renderCompletePanel() {
-  const wrongCount = answeredCount - correctCount;
-  const accuracy = answeredCount ? Math.round((correctCount / answeredCount) * 100) : 0;
-
+  clearTimer();
+  const total = quizResults.length;
+  const wrongCount = total - correctCount;
+  const accuracy = total ? Math.round((correctCount / total) * 100) : 0;
   practicePanel.hidden = true;
   completePanel.hidden = false;
-  completeTitle.textContent = isWrongReviewMode ? "填空錯題複習完成！" : "填空題練習完成！";
-  resultModeText.textContent = isWrongReviewMode ? `錯題複習模式：${getFillBlankModeLabel()}` : `模式：${getFillBlankModeLabel()}`;
-  totalAnsweredText.textContent = `${answeredCount} 題`;
+  completeTitle.textContent = `${CLOZE_QUIZ_TITLE}完成！`;
+  resultModeText.textContent = `測驗類型：${CLOZE_QUIZ_TITLE}`;
+  wrongResultMessage.textContent = `本次共 ${total} 題，答錯 ${wrongCount} 題，其中逾時 ${timeoutCount} 題。`;
+  totalAnsweredText.textContent = `${total} 題`;
   totalCorrectText.textContent = `${correctCount} 題`;
   totalWrongText.textContent = `${wrongCount} 題`;
   accuracyText.textContent = `${accuracy}%`;
-  remainingWrongText.textContent = `${wrongQuestions.length} 題`;
-
-  if (isWrongReviewMode) {
-    wrongResultMessage.textContent = wrongQuestions.length === 0
-      ? `本次複習題數：${wrongReviewSessionTotal} 題。太好了，本次填空錯題已全部完成！`
-      : `本次複習題數：${wrongReviewSessionTotal} 題，剩餘錯題：${wrongQuestions.length} 題。`;
-  } else {
-    wrongResultMessage.textContent = wrongQuestions.length === 0
-      ? "太好了，本輪沒有錯題！"
-      : `本次錯題：${wrongQuestions.length} 題`;
-  }
-
-  updateFillBlankModeControls();
-  updateScoreAndProgress();
-}
-
-function goToNextQuestion() {
-  if (!hasAnsweredCurrentQuestion) {
-    return;
-  }
-
-  if (currentQuestionIndex >= shuffledQuestions.length - 1) {
-    renderCompletePanel();
-    return;
-  }
-
-  currentQuestionIndex += 1;
-  renderQuestion();
-}
-
-function resetPracticeState(nextQuestions) {
-  shuffledQuestions = shuffleQuestions(nextQuestions);
-  currentQuestionIndex = 0;
-  correctCount = 0;
-  answeredCount = 0;
-  hasAnsweredCurrentQuestion = false;
-  wasCurrentAnswerCorrect = false;
-  updateFillBlankModeControls();
-  renderQuestion();
+  remainingWrongText.textContent = `${timeoutCount} 題`;
+  remainingWrongText.nextElementSibling.textContent = "逾時";
+  resultWrongReviewButton.hidden = true;
+  completePanel.querySelector(".quiz-result-list")?.remove();
+  completePanel.querySelector(".article-result-card")?.append(createResultList());
 }
 
 function restartPractice() {
-  if (isWrongReviewMode) {
-    wrongReviewSessionTotal = wrongQuestions.length;
-    resetPracticeState(wrongQuestions);
-    return;
-  }
-
-  wrongReviewSessionTotal = 0;
-  resetPracticeState(questions);
-}
-
-function startWrongReview() {
-  if (wrongQuestions.length === 0) {
-    renderEmptyWrongReviewMessage();
-    return;
-  }
-
-  isWrongReviewMode = true;
-  wrongReviewSessionTotal = wrongQuestions.length;
-  resetPracticeState(wrongQuestions);
-}
-
-function exitWrongReview() {
-  isWrongReviewMode = false;
-  wrongReviewSessionTotal = 0;
-  resetPracticeState(questions);
-}
-
-function clearWrongQuestions() {
-  wrongQuestions = [];
-  updateWrongQuestionControls();
-
-  if (isWrongReviewMode) {
-    renderEmptyWrongReviewMessage();
-    return;
-  }
-
-  if (completePanel.hidden) {
-    feedback.className = "quiz-feedback fill-blank-feedback";
-    feedback.textContent = "已清除本次填空錯題。";
-  } else {
-    renderCompletePanel();
-  }
-}
-
-function changeFillBlankMode(nextMode) {
-  if (!nextMode || nextMode === currentFillBlankMode) {
-    return;
-  }
-
-  currentFillBlankMode = nextMode;
-  restartPractice();
+  clearTimer();
+  quizQuestions = selectEnglishQuizQuestions(allFillBlankQuestions, CLOZE_QUIZ_CATEGORY);
+  currentQuestionIndex = 0;
+  correctCount = 0;
+  timeoutCount = 0;
+  hasAnsweredCurrentQuestion = false;
+  quizResults = [];
+  startWrongReviewButton.disabled = true;
+  clearWrongQuestionsButton.disabled = true;
+  exitWrongReviewButton.hidden = true;
+  renderQuestion();
 }
 
 checkButton.addEventListener("click", handleCheckAnswer);
-hintButton.addEventListener("click", showHint);
-modeButtons.forEach((button) => {
-  button.addEventListener("click", () => changeFillBlankMode(button.dataset.fillBlankMode));
-});
-nextButton.addEventListener("click", goToNextQuestion);
+hintButton.addEventListener("click", () => {});
+nextButton.addEventListener("click", () => {});
 answerInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    handleCheckAnswer();
-  }
+  if (event.key === "Enter") handleCheckAnswer();
 });
 restartButtons.forEach((button) => button.addEventListener("click", restartPractice));
-startWrongReviewButton.addEventListener("click", startWrongReview);
-resultWrongReviewButton.addEventListener("click", startWrongReview);
-clearWrongQuestionsButton.addEventListener("click", clearWrongQuestions);
-exitWrongReviewButton.addEventListener("click", exitWrongReview);
+startWrongReviewButton.addEventListener("click", () => {});
+resultWrongReviewButton.addEventListener("click", () => {});
+clearWrongQuestionsButton.addEventListener("click", () => {});
+exitWrongReviewButton.addEventListener("click", () => {});
+window.addEventListener("beforeunload", clearTimer);
 
 updateQuestionSummary();
 restartPractice();

@@ -33,6 +33,7 @@ const englishProgressNew = document.querySelector("#englishProgressNew");
 const englishProgressCompletion = document.querySelector("#englishProgressCompletion");
 const englishProgressFilters = document.querySelector("#englishProgressFilters");
 const resetEnglishProgressButton = document.querySelector("#resetEnglishProgress");
+const resetEnglishQuizProgressButton = document.querySelector("#resetEnglishQuizProgress");
 const vocabulary = Array.isArray(geptVocabulary) ? geptVocabulary : [];
 const allCategoriesLabel = "全部";
 const allLevelsLabel = "全部級數";
@@ -92,6 +93,11 @@ let currentQuizType = englishToChineseQuizType;
 let wrongQuestions = [];
 let wrongReviewQuestions = [];
 let isWrongReviewMode = false;
+let categoryQuizQuestions = [];
+let vocabularyQuizResults = [];
+let vocabularyQuizTimeoutCount = 0;
+let vocabularyQuizTimer = null;
+let vocabularyQuizRemainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
 let englishVocabProgress = loadEnglishVocabProgress();
 
 function createEmptyEnglishVocabProgress() {
@@ -433,13 +439,44 @@ function resetCurrentPosition() {
   chineseVisible = false;
 }
 
+function clearVocabularyQuizTimer() {
+  if (vocabularyQuizTimer) {
+    window.clearInterval(vocabularyQuizTimer);
+    vocabularyQuizTimer = null;
+  }
+}
+
+function updateVocabularyQuizTimerText() {
+  const timer = document.querySelector("#geptQuizTimer");
+  if (timer) {
+    timer.textContent = String(vocabularyQuizRemainingSeconds);
+  }
+}
+
+function startVocabularyQuizTimer() {
+  clearVocabularyQuizTimer();
+  vocabularyQuizRemainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
+  updateVocabularyQuizTimerText();
+  vocabularyQuizTimer = window.setInterval(() => {
+    vocabularyQuizRemainingSeconds -= 1;
+    updateVocabularyQuizTimerText();
+    if (vocabularyQuizRemainingSeconds <= 0) {
+      handleQuizTimeout();
+    }
+  }, 1000);
+}
+
 function resetQuizState() {
+  clearVocabularyQuizTimer();
   quizQuestionIndex = 0;
   quizCorrectCount = 0;
   quizAnsweredCount = 0;
   quizAnsweredCurrentQuestion = false;
   quizCurrentOptions = [];
   quizCurrentQuestionRemoved = false;
+  vocabularyQuizResults = [];
+  vocabularyQuizTimeoutCount = 0;
+  categoryQuizQuestions = selectEnglishQuizQuestions(filteredVocabulary, "vocabulary");
 }
 
 function applySearchToCategoryVocabulary(options = {}) {
@@ -834,7 +871,7 @@ function removeWrongQuestion(record) {
 }
 
 function getActiveQuizQuestions() {
-  return isWrongReviewMode ? wrongReviewQuestions : filteredVocabulary;
+  return isWrongReviewMode ? wrongReviewQuestions : categoryQuizQuestions;
 }
 
 function getQuizTypeForQuestion(question) {
@@ -890,12 +927,73 @@ function renderEmptyQuizMessage(message) {
   updateWrongQuestionControls();
 }
 
+
+function createVocabularyQuizResultList() {
+  const list = document.createElement("ol");
+  list.className = "quiz-result-list";
+  vocabularyQuizResults.forEach((result) => {
+    const item = document.createElement("li");
+    item.textContent = `第 ${result.order} 題｜${result.question}｜你的答案：${result.userAnswer}｜正確答案：${result.correctAnswer}｜結果：${result.result === "correct" ? "答對" : result.result === "timeout" ? "逾時" : "答錯"}`;
+    list.append(item);
+  });
+  return list;
+}
+
+function renderVocabularyQuizCompletePanel() {
+  clearVocabularyQuizTimer();
+  const total = vocabularyQuizResults.length;
+  const wrongCount = total - quizCorrectCount;
+  const accuracy = total ? Math.round((quizCorrectCount / total) * 100) : 0;
+  const card = document.createElement("article");
+  card.className = "quiz-card gept-quiz-card";
+  const title = document.createElement("h3");
+  title.className = "quiz-title";
+  title.textContent = "單字測驗完成！";
+  const summary = document.createElement("p");
+  summary.className = "article-result-message";
+  summary.textContent = `測驗類型：單字測驗｜總題數：${total} 題｜答對：${quizCorrectCount} 題｜答錯：${wrongCount} 題｜逾時：${vocabularyQuizTimeoutCount} 題｜正確率：${accuracy}%`;
+  const actions = document.createElement("div");
+  actions.className = "quiz-actions";
+  const retryButton = document.createElement("button");
+  retryButton.className = "answer-button";
+  retryButton.type = "button";
+  retryButton.textContent = "再測一次";
+  retryButton.addEventListener("click", () => {
+    resetQuizState();
+    renderQuizQuestion();
+  });
+  const homeLink = document.createElement("a");
+  homeLink.className = "secondary-button";
+  homeLink.href = "../";
+  homeLink.textContent = "回英文學習首頁";
+  actions.append(retryButton, homeLink);
+  card.append(title, summary, createVocabularyQuizResultList(), actions);
+  quizContent.replaceChildren(card);
+  nextQuizQuestionButton.disabled = true;
+  reshuffleQuizVocabularyButton.disabled = false;
+  quizProgress.textContent = `${total} / ${total}`;
+  currentProgress.textContent = `單字測驗完成：${total} / ${total}`;
+  updateQuizScoreDisplay();
+
+  if (!isWrongReviewMode) {
+    clearVocabularyQuizTimer();
+    window.setTimeout(() => {
+      if (quizQuestionIndex >= activeQuestions.length - 1) {
+        renderVocabularyQuizCompletePanel();
+        return;
+      }
+      quizQuestionIndex += 1;
+      renderQuizQuestion();
+    }, 650);
+  }
+}
+
 function renderQuizQuestion() {
   const activeQuestions = getActiveQuizQuestions();
   const currentQuestion = activeQuestions[quizQuestionIndex];
   const activeQuizType = currentQuestion ? getQuizTypeForQuestion(currentQuestion) : currentQuizType;
   const quizTypeSetting = quizTypeSettings[activeQuizType] || getCurrentQuizTypeSetting();
-  quizTitle.textContent = isWrongReviewMode ? `錯題複習：${quizTypeSetting.title}` : quizTypeSetting.title;
+  quizTitle.textContent = isWrongReviewMode ? `錯題複習：${quizTypeSetting.title}` : "單字測驗";
   updateQuizTypeButtons(activeQuizType);
   updateWrongQuestionControls();
 
@@ -919,6 +1017,7 @@ function renderQuizQuestion() {
   }
 
   const currentWord = activeQuestions[quizQuestionIndex];
+  recordQuestionSeen(currentWord.questionId || currentWord.id, "vocabulary");
   recordWordTestSeen(currentWord.id, currentWord.word);
   renderEnglishProgressSummary();
 
@@ -935,7 +1034,8 @@ function renderQuizQuestion() {
 
   const promptLabel = document.createElement("p");
   promptLabel.className = "quiz-prompt-label";
-  promptLabel.textContent = "題目：";
+  promptLabel.textContent = `單字測驗｜第 ${quizQuestionIndex + 1} / ${activeQuestions.length} 題｜剩餘 ${ENGLISH_QUIZ_TIME_LIMIT_SECONDS} 秒`;
+  promptLabel.innerHTML = `單字測驗｜第 ${quizQuestionIndex + 1} / ${activeQuestions.length} 題｜剩餘 <strong id="geptQuizTimer">${ENGLISH_QUIZ_TIME_LIMIT_SECONDS}</strong> 秒`;
 
   const wordTitle = document.createElement("h3");
   wordTitle.className = "english-word gept-quiz-word";
@@ -968,16 +1068,19 @@ function renderQuizQuestion() {
   quizCard.append(prompt, options, feedback);
   quizContent.replaceChildren(quizCard);
 
-  nextQuizQuestionButton.disabled = quizQuestionIndex >= activeQuestions.length - 1;
+  nextQuizQuestionButton.disabled = true;
   reshuffleQuizVocabularyButton.disabled = false;
   reshuffleQuizVocabularyButton.textContent = isWrongReviewMode ? "重新隨機錯題" : "重新隨機";
-  nextQuizQuestionButton.textContent = quizQuestionIndex >= activeQuestions.length - 1 ? "已完成目前題組" : "下一題";
+  nextQuizQuestionButton.textContent = "答題後自動下一題";
   currentProgress.textContent = isWrongReviewMode
     ? `錯題複習：${quizQuestionIndex + 1} / ${activeQuestions.length}`
     : `測驗模式：${quizQuestionIndex + 1} / ${activeQuestions.length}`;
   updateQuizScoreDisplay();
   updateRandomStatus();
   updateSearchControls();
+  if (!isWrongReviewMode) {
+    startVocabularyQuizTimer();
+  }
 }
 
 function handleQuizAnswer(selectedButton, correctAnswer) {
@@ -992,6 +1095,7 @@ function handleQuizAnswer(selectedButton, correctAnswer) {
     quizAnsweredCurrentQuestion = true;
     quizAnsweredCount += 1;
 
+    recordQuestionAnswer(currentQuestion.questionId || currentQuestion.id, "vocabulary", isCorrect);
     recordWordTestAnswer(currentQuestion.id, currentQuestion.word, isCorrect);
     renderEnglishProgressSummary();
 
@@ -1004,6 +1108,16 @@ function handleQuizAnswer(selectedButton, correctAnswer) {
       }
     } else if (!isWrongReviewMode) {
       recordWrongQuestion(currentQuestion, activeQuizType, selectedButton.dataset.answer, correctAnswer);
+    }
+
+    if (!isWrongReviewMode) {
+      vocabularyQuizResults.push({
+        order: quizQuestionIndex + 1,
+        question: currentQuestion[quizTypeSettings[activeQuizType].promptField],
+        userAnswer: selectedButton.dataset.answer,
+        correctAnswer,
+        result: isCorrect ? "correct" : "wrong",
+      });
     }
   }
 
@@ -1030,6 +1144,63 @@ function handleQuizAnswer(selectedButton, correctAnswer) {
   }
 
   updateQuizScoreDisplay();
+
+  if (!isWrongReviewMode) {
+    clearVocabularyQuizTimer();
+    window.setTimeout(() => {
+      if (quizQuestionIndex >= activeQuestions.length - 1) {
+        renderVocabularyQuizCompletePanel();
+        return;
+      }
+      quizQuestionIndex += 1;
+      renderQuizQuestion();
+    }, 650);
+  }
+}
+
+
+function handleQuizTimeout() {
+  const activeQuestions = getActiveQuizQuestions();
+  const currentQuestion = activeQuestions[quizQuestionIndex];
+  if (!currentQuestion || quizAnsweredCurrentQuestion || isWrongReviewMode) {
+    return;
+  }
+  const activeQuizType = getQuizTypeForQuestion(currentQuestion);
+  const quizTypeSetting = quizTypeSettings[activeQuizType] || getCurrentQuizTypeSetting();
+  const correctAnswer = currentQuestion[quizTypeSetting.answerField];
+  quizAnsweredCurrentQuestion = true;
+  quizAnsweredCount += 1;
+  vocabularyQuizTimeoutCount += 1;
+  clearVocabularyQuizTimer();
+  recordQuestionTimeout(currentQuestion.questionId || currentQuestion.id, "vocabulary");
+  recordWordTestAnswer(currentQuestion.id, currentQuestion.word, false);
+  renderEnglishProgressSummary();
+  recordWrongQuestion(currentQuestion, activeQuizType, "未作答", correctAnswer);
+  vocabularyQuizResults.push({
+    order: quizQuestionIndex + 1,
+    question: currentQuestion[quizTypeSetting.promptField],
+    userAnswer: "未作答",
+    correctAnswer,
+    result: "timeout",
+  });
+  quizContent.querySelectorAll(".gept-quiz-option").forEach((button) => {
+    button.disabled = true;
+    button.classList.toggle("is-correct", button.dataset.answer === correctAnswer);
+  });
+  const feedback = document.querySelector("#geptQuizFeedback");
+  if (feedback) {
+    feedback.classList.add("is-wrong");
+    feedback.textContent = `逾時，正確答案是：${correctAnswer}`;
+  }
+  updateQuizScoreDisplay();
+  window.setTimeout(() => {
+    if (quizQuestionIndex >= activeQuestions.length - 1) {
+      renderVocabularyQuizCompletePanel();
+      return;
+    }
+    quizQuestionIndex += 1;
+    renderQuizQuestion();
+  }, 650);
 }
 
 previousWordButton.addEventListener("click", () => {
@@ -1172,6 +1343,10 @@ clearWrongQuestionsButton.addEventListener("click", () => {
   updateQuizScoreDisplay();
 });
 
+if (resetEnglishQuizProgressButton) {
+  resetEnglishQuizProgressButton.addEventListener("click", resetEnglishQuizProgressWithConfirm);
+}
+
 resetEnglishProgressButton.addEventListener("click", () => {
   const confirmed = window.confirm("確定要清除英文單字學習進度嗎？這不會影響日文資料。");
 
@@ -1184,6 +1359,8 @@ resetEnglishProgressButton.addEventListener("click", () => {
   applySearchToCategoryVocabulary();
   renderCurrentMode();
 });
+
+window.addEventListener("beforeunload", clearVocabularyQuizTimer);
 
 renderVocabularyTotalText();
 renderEnglishProgressSummary();
