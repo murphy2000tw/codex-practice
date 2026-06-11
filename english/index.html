@@ -58,7 +58,12 @@
           <span class="entry-card-action">查看題型</span>
         </a>
       </div>
+      <div class="quiz-actions" style="margin-top: 1rem;">
+        <button id="resetEnglishQuizProgress" class="secondary-button" type="button">重設英文測驗紀錄</button>
+      </div>
     </section>
   </main>
+  <script src="englishQuizProgress.js?v=1.1"></script>
+  <script>document.querySelector("#resetEnglishQuizProgress")?.addEventListener("click", resetEnglishQuizProgressWithConfirm);</script>
 </body>
 </html>
