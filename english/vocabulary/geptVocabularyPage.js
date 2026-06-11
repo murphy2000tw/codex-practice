@@ -139,11 +139,9 @@ function loadEnglishVocabProgress() {
       throw new Error("Invalid English vocabulary progress data");
     }
 
-    return {
-      version: progressVersion,
-      updatedAt: parsedProgress.updatedAt || emptyProgress.updatedAt,
-      words: parsedProgress.words,
-    };
+    const normalizedProgress = normalizeEnglishVocabProgress(parsedProgress);
+    saveEnglishVocabProgress(normalizedProgress);
+    return normalizedProgress;
   } catch (error) {
     saveEnglishVocabProgress(emptyProgress);
     return emptyProgress;
@@ -168,63 +166,142 @@ function getWordKey(wordId, wordText) {
   return String(wordId || wordText || "").trim();
 }
 
-function getWordProgress(wordId, wordText) {
-  const wordKey = getWordKey(wordId, wordText);
-  const savedProgress = englishVocabProgress.words[wordKey];
-
-  if (savedProgress && progressStatusLabels[savedProgress.status]) {
-    return savedProgress;
-  }
-
-  return {
-    word: wordText || wordKey,
-    status: progressStatusNew,
-    studyCount: 0,
-    correctCount: 0,
-    wrongCount: 0,
-    firstStudiedAt: null,
-    lastStudiedAt: null,
-  };
+function normalizeProgressNumber(value) {
+  const numberValue = Number(value);
+  return Number.isFinite(numberValue) && numberValue > 0 ? Math.floor(numberValue) : 0;
 }
 
-function markWordProgress(wordId, wordText, status) {
+function calculateWordStatus(wordProgress) {
+  const practiceCount = normalizeProgressNumber(wordProgress.practiceCount);
+  const testSeenCount = normalizeProgressNumber(wordProgress.testSeenCount);
+  const testCorrectCount = normalizeProgressNumber(wordProgress.testCorrectCount);
+
+  if (practiceCount === 0 && testSeenCount === 0) {
+    return progressStatusNew;
+  }
+
+  if (practiceCount >= 6 && testCorrectCount >= 6) {
+    return progressStatusKnown;
+  }
+
+  return progressStatusLearning;
+}
+
+function normalizeWordProgress(savedProgress = {}, wordText = "", wordKey = "") {
+  const practiceCount = normalizeProgressNumber(
+    savedProgress.practiceCount ?? savedProgress.studyCount,
+  );
+  const testCorrectCount = normalizeProgressNumber(
+    savedProgress.testCorrectCount ?? savedProgress.correctCount,
+  );
+  const testWrongCount = normalizeProgressNumber(
+    savedProgress.testWrongCount ?? savedProgress.wrongCount,
+  );
+  const testSeenCount = normalizeProgressNumber(
+    savedProgress.testSeenCount ?? (testCorrectCount + testWrongCount),
+  );
+  const normalizedProgress = {
+    word: savedProgress.word || wordText || wordKey,
+    practiceCount,
+    testSeenCount,
+    testCorrectCount,
+    testWrongCount,
+    status: progressStatusNew,
+    firstStudiedAt: savedProgress.firstStudiedAt || null,
+    lastStudiedAt: savedProgress.lastStudiedAt || null,
+    lastTestedAt: savedProgress.lastTestedAt || null,
+  };
+
+  normalizedProgress.status = calculateWordStatus(normalizedProgress);
+  return normalizedProgress;
+}
+
+function normalizeEnglishVocabProgress(progress) {
+  const normalizedProgress = {
+    version: progressVersion,
+    updatedAt: progress.updatedAt || new Date().toISOString(),
+    words: {},
+  };
+  const savedWords = progress.words && typeof progress.words === "object" && !Array.isArray(progress.words)
+    ? progress.words
+    : {};
+
+  Object.entries(savedWords).forEach(([wordKey, savedProgress]) => {
+    const normalizedKey = String(wordKey || "").trim();
+
+    if (!normalizedKey || !savedProgress || typeof savedProgress !== "object" || Array.isArray(savedProgress)) {
+      return;
+    }
+
+    normalizedProgress.words[normalizedKey] = normalizeWordProgress(savedProgress, savedProgress.word, normalizedKey);
+  });
+
+  return normalizedProgress;
+}
+
+function getWordProgress(wordId, wordText) {
   const wordKey = getWordKey(wordId, wordText);
 
   if (!wordKey) {
-    return;
+    return normalizeWordProgress({}, wordText, wordKey);
+  }
+
+  const savedProgress = englishVocabProgress.words[wordKey];
+  const normalizedProgress = normalizeWordProgress(savedProgress, wordText, wordKey);
+  englishVocabProgress.words[wordKey] = normalizedProgress;
+  return normalizedProgress;
+}
+
+function updateWordProgress(wordId, wordText, updateProgress) {
+  const wordKey = getWordKey(wordId, wordText);
+
+  if (!wordKey) {
+    return null;
   }
 
   const currentProgress = getWordProgress(wordId, wordText);
-  const studiedAt = new Date().toISOString();
   const nextProgress = {
     ...currentProgress,
     word: wordText || currentProgress.word || wordKey,
-    status,
-    studyCount: (currentProgress.studyCount || 0) + 1,
-    correctCount: currentProgress.correctCount || 0,
-    wrongCount: currentProgress.wrongCount || 0,
-    firstStudiedAt: currentProgress.firstStudiedAt || studiedAt,
-    lastStudiedAt: studiedAt,
   };
 
-  if (status === progressStatusKnown) {
-    nextProgress.correctCount += 1;
-  }
-
-  if (status === progressStatusLearning) {
-    nextProgress.wrongCount += 1;
-  }
-
+  updateProgress(nextProgress);
+  nextProgress.practiceCount = normalizeProgressNumber(nextProgress.practiceCount);
+  nextProgress.testSeenCount = normalizeProgressNumber(nextProgress.testSeenCount);
+  nextProgress.testCorrectCount = normalizeProgressNumber(nextProgress.testCorrectCount);
+  nextProgress.testWrongCount = normalizeProgressNumber(nextProgress.testWrongCount);
+  nextProgress.status = calculateWordStatus(nextProgress);
   englishVocabProgress.words[wordKey] = nextProgress;
   saveEnglishVocabProgress(englishVocabProgress);
+  return nextProgress;
 }
 
-function markWordKnown(wordId, wordText) {
-  markWordProgress(wordId, wordText, progressStatusKnown);
+function recordWordPractice(wordId, wordText) {
+  const studiedAt = new Date().toISOString();
+  return updateWordProgress(wordId, wordText, (nextProgress) => {
+    nextProgress.practiceCount += 1;
+    nextProgress.firstStudiedAt = nextProgress.firstStudiedAt || studiedAt;
+    nextProgress.lastStudiedAt = studiedAt;
+  });
 }
 
-function markWordLearning(wordId, wordText) {
-  markWordProgress(wordId, wordText, progressStatusLearning);
+function recordWordTestSeen(wordId, wordText) {
+  const testedAt = new Date().toISOString();
+  return updateWordProgress(wordId, wordText, (nextProgress) => {
+    nextProgress.testSeenCount += 1;
+    nextProgress.firstStudiedAt = nextProgress.firstStudiedAt || testedAt;
+    nextProgress.lastTestedAt = testedAt;
+  });
+}
+
+function recordWordTestAnswer(wordId, wordText, isCorrect) {
+  return updateWordProgress(wordId, wordText, (nextProgress) => {
+    if (isCorrect) {
+      nextProgress.testCorrectCount += 1;
+    } else {
+      nextProgress.testWrongCount += 1;
+    }
+  });
 }
 
 function resetEnglishVocabProgress() {
@@ -546,19 +623,10 @@ function renderProgressFilters() {
   englishProgressFilters.replaceChildren(...filterButtons);
 }
 
-function createStudyActionButton(label, action) {
-  const button = document.createElement("button");
-  button.className = label === "我會了" ? "answer-button" : "secondary-button";
-  button.type = "button";
-  button.textContent = label;
-  button.addEventListener("click", action);
-  return button;
-}
-
-function renderProgressAfterWordAction(wordKey) {
-  renderEnglishProgressSummary();
-  applySearchToCategoryVocabulary({ preserveWordKey: wordKey });
-  renderCurrentMode();
+function createWordProgressDetail(label, value) {
+  const item = document.createElement("span");
+  item.textContent = `${label}：${value}`;
+  return item;
 }
 
 function createWordProgressControls(word) {
@@ -568,24 +636,18 @@ function createWordProgressControls(word) {
 
   const statusText = document.createElement("p");
   statusText.className = "english-word-status";
-  statusText.textContent = `目前學習狀態：${progressStatusLabels[progress.status] || progressStatusLabels[progressStatusNew]}`;
+  statusText.textContent = `狀態：${progressStatusLabels[progress.status] || progressStatusLabels[progressStatusNew]}`;
 
-  const actions = document.createElement("div");
-  actions.className = "english-word-progress-actions";
-  actions.append(
-    createStudyActionButton("我會了", () => {
-      const wordKey = getVocabularyWordKey(word);
-      markWordKnown(word.id, word.word);
-      renderProgressAfterWordAction(wordKey);
-    }),
-    createStudyActionButton("還不熟", () => {
-      const wordKey = getVocabularyWordKey(word);
-      markWordLearning(word.id, word.word);
-      renderProgressAfterWordAction(wordKey);
-    }),
+  const details = document.createElement("div");
+  details.className = "english-word-progress-actions";
+  details.append(
+    createWordProgressDetail("練習次數", progress.practiceCount),
+    createWordProgressDetail("測驗出現", progress.testSeenCount),
+    createWordProgressDetail("測驗答對", progress.testCorrectCount),
+    createWordProgressDetail("測驗答錯", progress.testWrongCount),
   );
 
-  wrapper.append(statusText, actions);
+  wrapper.append(statusText, details);
   return wrapper;
 }
 
@@ -671,6 +733,9 @@ function renderCurrentWord() {
   }
 
   const currentWord = filteredVocabulary[currentWordIndex];
+  recordWordPractice(currentWord.id, currentWord.word);
+  renderEnglishProgressSummary();
+
   const cardHeader = document.createElement("div");
   const cardNumber = document.createElement("span");
   cardNumber.className = "card-number";
@@ -854,6 +919,9 @@ function renderQuizQuestion() {
   }
 
   const currentWord = activeQuestions[quizQuestionIndex];
+  recordWordTestSeen(currentWord.id, currentWord.word);
+  renderEnglishProgressSummary();
+
   const correctAnswer = currentWord[quizTypeSetting.answerField];
   quizAnsweredCurrentQuestion = false;
   quizCurrentQuestionRemoved = false;
@@ -923,6 +991,9 @@ function handleQuizAnswer(selectedButton, correctAnswer) {
   if (!quizAnsweredCurrentQuestion) {
     quizAnsweredCurrentQuestion = true;
     quizAnsweredCount += 1;
+
+    recordWordTestAnswer(currentQuestion.id, currentQuestion.word, isCorrect);
+    renderEnglishProgressSummary();
 
     if (isCorrect) {
       quizCorrectCount += 1;
