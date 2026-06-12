@@ -62,6 +62,59 @@ const listeningSentences = [
   { id: "sentence_052", text: "She is waiting for the bus.", level: "GEPT Elementary", type: "sentence" },
 ];
 
+const listeningQuestionAnswers = [
+  { id: "qa_001", question: "How are you?", answer: "I am fine, thank you.", options: ["I am fine, thank you.", "It is a book.", "She is my sister.", "I go to school by bus."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_002", question: "What time is it?", answer: "It is seven o'clock.", options: ["It is seven o'clock.", "I am ten years old.", "It is blue.", "She is my mother."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_003", question: "What is your name?", answer: "My name is Tom.", options: ["My name is Tom.", "I am going to school.", "It is on the desk.", "Yes, I do."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_004", question: "Where are you going?", answer: "I am going to school.", options: ["I am going to school.", "It is seven o'clock.", "No, it is not.", "She is my mother."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_005", question: "Do you like apples?", answer: "Yes, I do.", options: ["Yes, I do.", "It is blue.", "He is my teacher.", "I am fine, thank you."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_006", question: "Is this your pencil?", answer: "Yes, it is.", options: ["Yes, it is.", "My name is Tom.", "I go by bus.", "They are under the bed."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_007", question: "Who is she?", answer: "She is my mother.", options: ["She is my mother.", "It is sunny.", "I am ten years old.", "Yes, it is."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_008", question: "How old are you?", answer: "I am ten years old.", options: ["I am ten years old.", "It is seven o'clock.", "She is in the kitchen.", "No, I don't."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_009", question: "What color is your bag?", answer: "It is blue.", options: ["It is blue.", "It is on the desk.", "I am fine.", "He is my brother."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_010", question: "Where is my book?", answer: "It is on the desk.", options: ["It is on the desk.", "It is red.", "I am going home.", "Yes, I can."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_011", question: "How do you go to school?", answer: "I go to school by bus.", options: ["I go to school by bus.", "It is my school bag.", "She is my sister.", "No, it is not."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_012", question: "What is this?", answer: "It is a book.", options: ["It is a book.", "I am in the classroom.", "Yes, I do.", "She is my aunt."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_013", question: "Who is he?", answer: "He is my father.", options: ["He is my father.", "It is raining.", "I like bananas.", "At seven thirty."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_014", question: "What do you want?", answer: "I want some water.", options: ["I want some water.", "It is under the chair.", "She is my teacher.", "Yes, it is mine."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_015", question: "Can you swim?", answer: "Yes, I can.", options: ["Yes, I can.", "It is my ruler.", "I am eleven years old.", "They are at home."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_016", question: "Are you hungry?", answer: "Yes, I am.", options: ["Yes, I am.", "It is green.", "He goes by train.", "This is my pencil."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_017", question: "Where do you live?", answer: "I live in Taipei.", options: ["I live in Taipei.", "It is six o'clock.", "No, I am not.", "She is reading."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_018", question: "What day is today?", answer: "It is Monday.", options: ["It is Monday.", "It is a ruler.", "I am twelve.", "Yes, she is."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_019", question: "How is the weather?", answer: "It is sunny.", options: ["It is sunny.", "I am fine.", "He is my uncle.", "I go to school."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_020", question: "What are you doing?", answer: "I am reading a book.", options: ["I am reading a book.", "It is on the table.", "No, I do not.", "She is my cousin."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_021", question: "Where is your mother?", answer: "She is in the kitchen.", options: ["She is in the kitchen.", "It is my bag.", "I am ten.", "Yes, I like it."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_022", question: "What is your favorite color?", answer: "My favorite color is green.", options: ["My favorite color is green.", "It is on Sunday.", "He is a doctor.", "No, it is not."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_023", question: "When is your birthday?", answer: "It is in May.", options: ["It is in May.", "I am at school.", "Yes, I can.", "They are pencils."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_024", question: "What do you eat for breakfast?", answer: "I eat bread and eggs.", options: ["I eat bread and eggs.", "It is five dollars.", "She is my friend.", "No, I am not."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_025", question: "Do you have a brother?", answer: "Yes, I do.", options: ["Yes, I do.", "It is yellow.", "I am at home.", "She is cooking."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_026", question: "Is your father a doctor?", answer: "No, he is not.", options: ["No, he is not.", "I like English.", "It is on the bed.", "Yes, I am."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_027", question: "What subject do you like?", answer: "I like English.", options: ["I like English.", "It is my cap.", "She is my mother.", "At eight o'clock."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_028", question: "What time do you get up?", answer: "I get up at seven.", options: ["I get up at seven.", "It is brown.", "No, thank you.", "They are my friends."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_029", question: "Where is the library?", answer: "It is on the second floor.", options: ["It is on the second floor.", "I am going to the park.", "Yes, I do.", "He is nine years old."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_030", question: "May I borrow your ruler?", answer: "Sure, here you are.", options: ["Sure, here you are.", "It is a dog.", "I live in Tainan.", "No, she is not."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_031", question: "Thank you very much.", answer: "You're welcome.", options: ["You're welcome.", "I am fine.", "It is a pencil.", "He is at school."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_032", question: "How much is this pen?", answer: "It is ten dollars.", options: ["It is ten dollars.", "It is on the chair.", "I am watching TV.", "Yes, I have."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_033", question: "What is your phone number?", answer: "It is 1234-5678.", options: ["It is 1234-5678.", "It is sunny today.", "She is my sister.", "No, I can't."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_034", question: "What does your sister like?", answer: "She likes music.", options: ["She likes music.", "It is under the desk.", "I go by bike.", "Yes, it is."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_035", question: "Where are your shoes?", answer: "They are under the bed.", options: ["They are under the bed.", "It is my brother.", "I am thirsty.", "No, I don't."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_036", question: "Are these your books?", answer: "Yes, they are.", options: ["Yes, they are.", "It is in June.", "I like math.", "She is sleeping."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_037", question: "What do you do after school?", answer: "I play soccer after school.", options: ["I play soccer after school.", "It is white.", "He is my uncle.", "No, it isn't."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_038", question: "Who is your English teacher?", answer: "Ms. Lin is my English teacher.", options: ["Ms. Lin is my English teacher.", "It is on the wall.", "I am going home.", "Yes, I can."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_039", question: "What is in your bag?", answer: "There is a book in my bag.", options: ["There is a book in my bag.", "I am eleven years old.", "She is in the park.", "No, thank you."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_040", question: "Do you want some milk?", answer: "Yes, please.", options: ["Yes, please.", "It is my bike.", "I live in Kaohsiung.", "He is running."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_041", question: "Can I help you?", answer: "Yes, please.", options: ["Yes, please.", "It is Monday.", "She is my grandma.", "I go at six."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_042", question: "What time is lunch?", answer: "Lunch is at twelve.", options: ["Lunch is at twelve.", "It is my eraser.", "No, I am not.", "They are in the box."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_043", question: "Where do you play basketball?", answer: "I play basketball at school.", options: ["I play basketball at school.", "It is cloudy.", "Yes, she does.", "He is a student."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_044", question: "What animal do you like?", answer: "I like dogs.", options: ["I like dogs.", "It is on the sofa.", "She is ten.", "No, it is his."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_045", question: "Is it raining now?", answer: "No, it is not.", options: ["No, it is not.", "I am reading.", "It is my pencil case.", "She goes by bus."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_046", question: "How many pencils do you have?", answer: "I have three pencils.", options: ["I have three pencils.", "It is in the bag.", "Yes, I do.", "He is my cousin."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_047", question: "What fruit do you like?", answer: "I like bananas.", options: ["I like bananas.", "It is ten o'clock.", "No, she is not.", "They are on the desk."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_048", question: "Where is your classroom?", answer: "It is on the third floor.", options: ["It is on the third floor.", "I am fine, thank you.", "Yes, I am.", "She likes art."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_049", question: "What are those?", answer: "They are birds.", options: ["They are birds.", "It is my house.", "I am going to bed.", "No, I can't."], level: "GEPT Elementary", type: "qa" },
+  { id: "qa_050", question: "Good morning, class.", answer: "Good morning, teacher.", options: ["Good morning, teacher.", "It is under the table.", "I have two sisters.", "Yes, it does."], level: "GEPT Elementary", type: "qa" },
+];
+
 const LISTENING_PROGRESS_KEY = "englishListeningProgress_v1";
 const VOCAB_PROGRESS_KEY = "englishVocabProgress_v1";
 const LISTENING_PROGRESS_VERSION = 1;
@@ -71,6 +124,7 @@ const listeningModePractice = "practice";
 const listeningModeTest = "test";
 const listeningTypeVocabulary = "vocabulary";
 const listeningTypeSentence = "sentence";
+const listeningTypeQa = "qa";
 const futureListeningTypes = [
   "vocabulary",
   "sentence",
@@ -130,8 +184,25 @@ function getActivityConfig(type = listeningType) {
       emptyMessage: "目前沒有可用的句子聽力題目",
       items: listeningSentences,
       getText: (item) => item.text,
+      getAnswer: (item) => item.text,
       getSourceId: (item) => item.id || item.text,
       itemIdPrefix: "listening_sentence",
+    };
+  }
+
+  if (type === listeningTypeQa) {
+    return {
+      type: listeningTypeQa,
+      label: "問答聽力",
+      practiceTitle: "問答聽力練習",
+      testTitle: "問答聽力測驗",
+      answerLabel: "英文回答",
+      emptyMessage: "目前沒有可用的問答聽力題目",
+      items: listeningQuestionAnswers,
+      getText: (item) => item.question,
+      getAnswer: (item) => item.answer,
+      getSourceId: (item) => item.id || item.question,
+      itemIdPrefix: "listening_qa",
     };
   }
 
@@ -144,6 +215,7 @@ function getActivityConfig(type = listeningType) {
     emptyMessage: "目前沒有可用的單字聽力題目",
     items: listeningVocabulary,
     getText: (item) => item.word,
+    getAnswer: (item) => item.word,
     getSourceId: (item) => item.word || item.id,
     itemIdPrefix: "listening_vocab",
   };
@@ -151,19 +223,20 @@ function getActivityConfig(type = listeningType) {
 
 function getListeningItemId(item, type = listeningType) {
   const config = getActivityConfig(type);
-  if (type === listeningTypeSentence && typeof item?.id === "string" && item.id.trim()) {
+  if ((type === listeningTypeSentence || type === listeningTypeQa) && typeof item?.id === "string" && item.id.trim()) {
     return `listening_${item.id.trim()}`;
   }
   const source = String(config.getSourceId(item) || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
   return `${config.itemIdPrefix}_${source || type}`;
 }
 
-function normalizeListeningItem(record = {}, itemId = "", text = "", type = listeningTypeVocabulary) {
+function normalizeListeningItem(record = {}, itemId = "", text = "", type = listeningTypeVocabulary, answer = "") {
   const normalizedType = futureListeningTypes.includes(record.type) ? record.type : type;
   return {
     itemId: record.itemId || itemId,
     type: normalizedType,
     text: record.text || text,
+    answer: record.answer || answer || null,
     seenCount: normalizeListeningNumber(record.seenCount),
     answeredCount: normalizeListeningNumber(record.answeredCount),
     correctCount: normalizeListeningNumber(record.correctCount),
@@ -243,12 +316,14 @@ function updateListeningProgress(item, type, updater) {
   const progress = loadListeningProgress();
   const itemId = getListeningItemId(item, type);
   const text = config.getText(item);
+  const answer = config.getAnswer(item);
   const now = new Date().toISOString();
-  const current = normalizeListeningItem(progress.items[itemId], itemId, text, type);
+  const current = normalizeListeningItem(progress.items[itemId], itemId, text, type, answer);
   const next = updater(current, now) || current;
   next.itemId = itemId;
   next.type = type;
   next.text = text;
+  next.answer = answer || null;
   progress.items[itemId] = next;
   progress.updatedAt = now;
   return saveListeningProgress(progress).items[itemId];
@@ -388,13 +463,28 @@ function getItemText(item, type = listeningType) {
   return getActivityConfig(type).getText(item);
 }
 
+function getItemAnswer(item, type = listeningType) {
+  return getActivityConfig(type).getAnswer(item);
+}
+
 function getListeningOptions(currentItem, type = listeningType) {
   const config = getActivityConfig(type);
-  const correctAnswer = config.getText(currentItem);
-  const distractors = shuffleListeningItems(config.items)
-    .map((item) => config.getText(item))
-    .filter((text) => text && text !== correctAnswer);
-  return shuffleListeningItems([correctAnswer, ...new Set(distractors)].slice(0, 4));
+  const correctAnswer = config.getAnswer(currentItem);
+  const optionSource = Array.isArray(currentItem?.options) && currentItem.options.length
+    ? currentItem.options
+    : [
+      correctAnswer,
+      ...shuffleListeningItems(config.items)
+        .map((item) => config.getAnswer(item))
+        .filter((answer) => answer && answer !== correctAnswer),
+    ];
+  const uniqueOptions = [];
+  [correctAnswer, ...optionSource].forEach((answer) => {
+    if (answer && !uniqueOptions.includes(answer)) {
+      uniqueOptions.push(answer);
+    }
+  });
+  return shuffleListeningItems(uniqueOptions.slice(0, 4));
 }
 
 function selectListeningTestQuestions(type = listeningType) {
@@ -411,7 +501,7 @@ function selectListeningTestQuestions(type = listeningType) {
 
   availableQuestions.forEach((item) => {
     const itemId = getListeningItemId(item, type);
-    const record = normalizeListeningItem(progress.items[itemId], itemId, config.getText(item), type);
+    const record = normalizeListeningItem(progress.items[itemId], itemId, config.getText(item), type, config.getAnswer(item));
     if (record.type !== type) {
       unseenPool.push(item);
       return;
@@ -554,6 +644,7 @@ function renderPracticePreparation() {
     "播放次數不限，可以重複聆聽",
     "不設定答題秒數",
     "不顯示中文提示",
+    "不顯示英文問句文字",
   ].forEach((text) => {
     const item = document.createElement("p");
     item.textContent = text;
@@ -635,7 +726,7 @@ function handlePracticeAnswer(selectedButton, currentItem, feedback) {
   }
 
   const config = getActivityConfig();
-  const correctAnswer = getItemText(currentItem);
+  const correctAnswer = getItemAnswer(currentItem);
   practiceAnsweredCurrentQuestion = true;
   const isCorrect = selectedButton.dataset.answer === correctAnswer;
   recordListeningAnswer(currentItem, isCorrect);
@@ -649,7 +740,8 @@ function handlePracticeAnswer(selectedButton, currentItem, feedback) {
 
   feedback.classList.toggle("is-correct", isCorrect);
   feedback.classList.toggle("is-wrong", !isCorrect);
-  feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確${config.answerLabel}是：${correctAnswer}`;
+  const reviewText = listeningType === listeningTypeQa ? `｜英文問句：${getItemText(currentItem)}` : "";
+  feedback.textContent = isCorrect ? `答對了！${reviewText}` : `答錯了，正確${config.answerLabel}是：${correctAnswer}${reviewText}`;
   const nextButton = document.querySelector("#nextListeningPracticeQuestion");
   if (nextButton) {
     nextButton.disabled = false;
@@ -685,6 +777,7 @@ function renderTestPreparation() {
     `本次測驗：${testQuestions.length} 題`,
     "音訊只能播放一次",
     "不顯示中文提示",
+    "不顯示英文問句文字",
     "不設定答題秒數",
   ].forEach((text) => {
     const item = document.createElement("p");
@@ -772,7 +865,7 @@ function handleTestAnswer(selectedButton, currentItem) {
     return;
   }
 
-  const correctAnswer = getItemText(currentItem);
+  const correctAnswer = getItemAnswer(currentItem);
   testAnsweredQuestionIds.add(itemId);
   const selectedAnswer = selectedButton.dataset.answer;
   const isCorrect = selectedAnswer === correctAnswer;
@@ -788,6 +881,7 @@ function handleTestAnswer(selectedButton, currentItem) {
   testResults.push({
     order: testQuestionIndex + 1,
     userAnswer: selectedAnswer,
+    question: getItemText(currentItem),
     correctAnswer,
     result: isCorrect ? "correct" : "wrong",
   });
@@ -812,7 +906,8 @@ function createTestResultList() {
   list.className = "quiz-result-list";
   testResults.forEach((result) => {
     const item = document.createElement("li");
-    item.textContent = `第 ${result.order} 題｜你的答案：${result.userAnswer}｜正確${config.answerLabel}：${result.correctAnswer}｜結果：${result.result === "correct" ? "答對" : "答錯"}`;
+    const questionText = config.type === listeningTypeQa ? `英文問句：${result.question}｜` : "";
+    item.textContent = `第 ${result.order} 題｜${questionText}你的答案：${result.userAnswer}｜正確${config.answerLabel}：${result.correctAnswer}｜結果：${result.result === "correct" ? "答對" : "答錯"}`;
     list.append(item);
   });
   return list;
@@ -867,7 +962,7 @@ function parseListeningHash() {
   }
   const [type, mode] = hash.split("-");
   return {
-    type: type === listeningTypeSentence ? listeningTypeSentence : listeningTypeVocabulary,
+    type: [listeningTypeSentence, listeningTypeQa].includes(type) ? type : listeningTypeVocabulary,
     mode: mode === listeningModeTest ? listeningModeTest : listeningModePractice,
   };
 }
