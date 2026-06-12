@@ -1624,3 +1624,41 @@ h1 {
     text-align: center;
   }
 }
+
+.quiz-ready-card {
+  text-align: center;
+}
+
+.quiz-ready-details {
+  display: grid;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.quiz-ready-details p {
+  margin: 0;
+}
+
+.quiz-start-button {
+  min-height: 60px;
+  width: min(100%, 520px);
+  justify-self: center;
+  border-radius: 20px;
+  font-size: 1.15rem;
+}
+
+@media (max-width: 640px) {
+  .quiz-ready-card {
+    gap: 18px;
+    padding: 22px 18px;
+  }
+
+  .quiz-start-button {
+    min-height: 64px;
+    width: 100%;
+    font-size: 1.2rem;
+  }
+}
