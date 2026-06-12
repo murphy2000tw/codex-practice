@@ -165,8 +165,10 @@ const geptShortTalkListeningItems = [
 ];
 
 const LISTENING_PROGRESS_KEY = "englishListeningProgress_v1";
+const LISTENING_MOCK_RESULTS_KEY = "englishListeningMockResults_v1";
 const VOCAB_PROGRESS_KEY = "englishVocabProgress_v1";
 const LISTENING_PROGRESS_VERSION = 1;
+const LISTENING_MOCK_RESULTS_VERSION = 1;
 const VOCAB_PROGRESS_VERSION = 1;
 const LISTENING_TEST_TARGET_COUNT = 10;
 const listeningModePractice = "practice";
@@ -178,6 +180,7 @@ const listeningTypeGeptPicture = "geptPicture";
 const listeningTypeGeptQuestionResponse = "geptQuestionResponse";
 const listeningTypeGeptConversation = "geptConversation";
 const listeningTypeGeptShortTalk = "geptShortTalk";
+const listeningTypeGeptFullMock = "geptFullMock";
 const geptListeningTypes = [listeningTypeGeptPicture, listeningTypeGeptQuestionResponse, listeningTypeGeptConversation, listeningTypeGeptShortTalk];
 const futureListeningTypes = [
   "vocabulary",
@@ -187,7 +190,7 @@ const futureListeningTypes = [
   "geptQuestionResponse",
   "geptConversation",
   "geptShortTalk",
-  "geptFullMock",
+  listeningTypeGeptFullMock,
 ];
 
 let listeningMode = listeningModePractice;
@@ -202,6 +205,22 @@ let testPlayedQuestionIds = new Set();
 let testResults = [];
 let testCorrectCount = 0;
 let testPhase = "ready";
+let mockQuestions = [];
+let mockQuestionIndex = 0;
+let mockAnsweredQuestionIds = new Set();
+let mockPlayedQuestionIds = new Set();
+let mockResults = [];
+let mockCorrectCount = 0;
+let mockPhase = "ready";
+let mockSectionIndex = 0;
+let mockStartedAt = null;
+
+const mockSectionDefinitions = [
+  { type: listeningTypeGeptPicture, orderLabel: "第一部分", label: "看圖辨義", targetCount: 5, wrongTarget: 1, answeredTarget: 1, instruction: "請聽音訊後選出正確圖片。", answerLabel: "圖片" },
+  { type: listeningTypeGeptQuestionResponse, orderLabel: "第二部分", label: "問答", targetCount: 10, wrongTarget: 2, answeredTarget: 2, instruction: "請聽音訊後選出最適合的回答。", answerLabel: "英文回答" },
+  { type: listeningTypeGeptConversation, orderLabel: "第三部分", label: "簡短對話", targetCount: 10, wrongTarget: 2, answeredTarget: 2, instruction: "請聽對話與問題後選出正確答案。", answerLabel: "英文答案" },
+  { type: listeningTypeGeptShortTalk, orderLabel: "第四部分", label: "短文聽解", targetCount: 5, wrongTarget: 1, answeredTarget: 1, instruction: "請聽短文與問題後選出正確答案。", answerLabel: "英文答案" },
+];
 
 function canUseListeningLocalStorage() {
   try {
@@ -287,6 +306,22 @@ function getActivityConfig(type = listeningType) {
     return geptConfigs[type];
   }
 
+  if (type === listeningTypeGeptFullMock) {
+    return {
+      type: listeningTypeGeptFullMock,
+      label: "GEPT 初級聽力模擬",
+      practiceTitle: "GEPT 初級聽力模擬測驗",
+      testTitle: "GEPT 初級聽力模擬測驗",
+      answerLabel: "答案",
+      emptyMessage: "目前沒有可用的 GEPT 初級聽力模擬題目。",
+      items: geptListeningTypes.flatMap((geptType) => getActivityConfig(geptType).items),
+      getText: (item) => item.audioText || item.question || item.text || "",
+      getAnswer: (item) => item.answerId || item.answer || "",
+      getSourceId: (item) => item.id || item.audioText || item.question || item.text,
+      itemIdPrefix: "listening_geptFullMock",
+    };
+  }
+
   if (type === listeningTypeSentence) {
     return {
       type: listeningTypeSentence,
@@ -362,6 +397,7 @@ function normalizeListeningItem(record = {}, itemId = "", text = "", type = list
     testPlayCount: normalizeListeningNumber(record.testPlayCount),
     lastSeenAt: typeof record.lastSeenAt === "string" ? record.lastSeenAt : null,
     lastAnsweredAt: typeof record.lastAnsweredAt === "string" ? record.lastAnsweredAt : null,
+    updatedAt: typeof record.updatedAt === "string" ? record.updatedAt : null,
   };
 }
 
@@ -441,6 +477,7 @@ function updateListeningProgress(item, type, updater) {
   next.type = type;
   next.text = text;
   next.answer = answer || null;
+  next.updatedAt = now;
   progress.items[itemId] = next;
   progress.updatedAt = now;
   return saveListeningProgress(progress).items[itemId];
@@ -693,6 +730,198 @@ function selectListeningTestQuestions(type = listeningType) {
   return shuffleListeningItems(selected).slice(0, LISTENING_TEST_TARGET_COUNT);
 }
 
+
+function createEmptyMockResults() {
+  return {
+    version: LISTENING_MOCK_RESULTS_VERSION,
+    updatedAt: new Date().toISOString(),
+    attempts: [],
+  };
+}
+
+function normalizeMockSectionRecord(record = {}) {
+  return {
+    total: normalizeListeningNumber(record.total),
+    correct: normalizeListeningNumber(record.correct),
+    wrong: normalizeListeningNumber(record.wrong),
+  };
+}
+
+function normalizeMockResults(results) {
+  const normalized = createEmptyMockResults();
+  normalized.updatedAt = typeof results?.updatedAt === "string" ? results.updatedAt : normalized.updatedAt;
+  if (Array.isArray(results?.attempts)) {
+    normalized.attempts = results.attempts
+      .filter((attempt) => attempt && typeof attempt === "object" && !Array.isArray(attempt))
+      .map((attempt) => ({
+        id: typeof attempt.id === "string" ? attempt.id : `mock_${attempt.startedAt || new Date().toISOString()}`,
+        startedAt: typeof attempt.startedAt === "string" ? attempt.startedAt : null,
+        finishedAt: typeof attempt.finishedAt === "string" ? attempt.finishedAt : null,
+        totalQuestions: normalizeListeningNumber(attempt.totalQuestions),
+        correctCount: normalizeListeningNumber(attempt.correctCount),
+        wrongCount: normalizeListeningNumber(attempt.wrongCount),
+        accuracy: normalizeListeningNumber(attempt.accuracy),
+        sections: mockSectionDefinitions.reduce((sections, section) => {
+          sections[section.type] = normalizeMockSectionRecord(attempt.sections?.[section.type]);
+          return sections;
+        }, {}),
+      }));
+  }
+  return normalized;
+}
+
+function loadMockResults() {
+  const emptyResults = createEmptyMockResults();
+  if (!canUseListeningLocalStorage()) {
+    return emptyResults;
+  }
+  try {
+    const storedResults = window.localStorage.getItem(LISTENING_MOCK_RESULTS_KEY);
+    if (!storedResults) {
+      window.localStorage.setItem(LISTENING_MOCK_RESULTS_KEY, JSON.stringify(emptyResults));
+      return emptyResults;
+    }
+    const parsedResults = JSON.parse(storedResults);
+    if (!parsedResults || parsedResults.version !== LISTENING_MOCK_RESULTS_VERSION) {
+      throw new Error("Invalid listening mock results data");
+    }
+    const normalizedResults = normalizeMockResults(parsedResults);
+    window.localStorage.setItem(LISTENING_MOCK_RESULTS_KEY, JSON.stringify(normalizedResults));
+    return normalizedResults;
+  } catch (error) {
+    try {
+      window.localStorage.setItem(LISTENING_MOCK_RESULTS_KEY, JSON.stringify(emptyResults));
+    } catch (storageError) {
+      // Mock tests remain usable even when storage is unavailable.
+    }
+    return emptyResults;
+  }
+}
+
+function saveMockAttempt(attempt) {
+  const results = loadMockResults();
+  const now = new Date().toISOString();
+  results.attempts = [attempt, ...results.attempts].slice(0, 50);
+  results.updatedAt = now;
+  if (!canUseListeningLocalStorage()) {
+    return normalizeMockResults(results);
+  }
+  try {
+    window.localStorage.setItem(LISTENING_MOCK_RESULTS_KEY, JSON.stringify(results));
+  } catch (error) {
+    // Summary history is optional; keep the result screen usable.
+  }
+  return normalizeMockResults(results);
+}
+
+function resetMockResults() {
+  if (!canUseListeningLocalStorage()) {
+    return;
+  }
+  try {
+    window.localStorage.removeItem(LISTENING_MOCK_RESULTS_KEY);
+  } catch (error) {
+    // Ignore storage errors and keep the page usable.
+  }
+}
+
+function selectListeningQuestionsByType(type, targetCount, wrongTarget, answeredTarget, usedIds = new Set()) {
+  const config = getActivityConfig(type);
+  const availableQuestions = shuffleListeningItems(config.items).slice(0);
+  const progress = loadListeningProgress();
+  const wrongPool = [];
+  const answeredPool = [];
+  const unseenPool = [];
+
+  availableQuestions.forEach((item) => {
+    const itemId = getListeningItemId(item, type);
+    if (usedIds.has(itemId)) {
+      return;
+    }
+    const record = normalizeListeningItem(progress.items[itemId], itemId, config.getText(item), type, config.getAnswer(item));
+    if (record.type !== type) {
+      unseenPool.push(item);
+      return;
+    }
+    if (record.wrongCount > 0) {
+      wrongPool.push(item);
+      return;
+    }
+    if (record.answeredCount > 0 || record.seenCount > 0) {
+      answeredPool.push(item);
+      return;
+    }
+    unseenPool.push(item);
+  });
+
+  const selected = [];
+  const addFromPool = (pool, count) => {
+    shuffleListeningItems(pool).forEach((item) => {
+      const itemId = getListeningItemId(item, type);
+      if (selected.length >= targetCount || count <= 0 || usedIds.has(itemId)) {
+        return;
+      }
+      usedIds.add(itemId);
+      selected.push(item);
+      count -= 1;
+    });
+  };
+
+  addFromPool(wrongPool, wrongTarget);
+  addFromPool(answeredPool, answeredTarget);
+  addFromPool(unseenPool, targetCount - selected.length);
+  addFromPool([...wrongPool, ...answeredPool, ...unseenPool], targetCount - selected.length);
+  return selected.slice(0, targetCount);
+}
+
+function selectMockQuestions() {
+  const usedIds = new Set();
+  const selected = [];
+  mockSectionDefinitions.forEach((section) => {
+    const sectionItems = selectListeningQuestionsByType(section.type, section.targetCount, section.wrongTarget, section.answeredTarget, usedIds);
+    sectionItems.forEach((item, index) => {
+      selected.push({
+        item,
+        type: section.type,
+        section,
+        sectionIndex: mockSectionDefinitions.indexOf(section),
+        sectionOrder: index + 1,
+      });
+    });
+  });
+  return selected.map((entry, index) => ({ ...entry, order: index + 1 }));
+}
+
+function getMockSectionEntries(sectionIndex) {
+  return mockQuestions.filter((entry) => entry.sectionIndex === sectionIndex);
+}
+
+function findNextMockSectionIndex(startIndex) {
+  for (let index = startIndex; index < mockSectionDefinitions.length; index += 1) {
+    if (getMockSectionEntries(index).length) {
+      return index;
+    }
+  }
+  return -1;
+}
+
+function getMockQuestionEntry() {
+  return mockQuestions[mockQuestionIndex];
+}
+
+function getMockSectionStatsFromResults() {
+  return mockSectionDefinitions.reduce((stats, section) => {
+    const sectionResults = mockResults.filter((result) => result.type === section.type);
+    const correct = sectionResults.filter((result) => result.result === "correct").length;
+    stats[section.type] = {
+      total: sectionResults.length,
+      correct,
+      wrong: sectionResults.length - correct,
+    };
+    return stats;
+  }, {});
+}
+
 function isSpeechSynthesisSupported() {
   return typeof window !== "undefined" && "speechSynthesis" in window && typeof window.SpeechSynthesisUtterance === "function";
 }
@@ -759,6 +988,11 @@ function renderCurrentMode() {
   updateModeButtons();
   updateSpeechSupportMessage();
 
+  if (listeningType === listeningTypeGeptFullMock) {
+    renderMockPreparation();
+    return;
+  }
+
   const config = getActivityConfig();
   if (!config.items.length) {
     listeningProgress.textContent = `${config.label}：0 / 0`;
@@ -818,12 +1052,12 @@ function playPracticeItem(item) {
   }
 }
 
-function createListeningOptionButton(option, index) {
+function createListeningOptionButton(option, index, type = listeningType) {
   const optionButton = document.createElement("button");
   optionButton.className = "quiz-option gept-quiz-option";
   optionButton.type = "button";
   optionButton.dataset.answer = getOptionValue(option);
-  if (listeningType === listeningTypeGeptPicture) {
+  if (type === listeningTypeGeptPicture) {
     optionButton.classList.add("gept-picture-option");
     optionButton.setAttribute("aria-label", `${String.fromCharCode(65 + index)}. ${getOptionAlt(option)}`);
     const letter = document.createElement("span");
@@ -1124,6 +1358,353 @@ function renderTestCompletePanel() {
   listeningContent.replaceChildren(card);
 }
 
+
+function resetMockState() {
+  cancelEnglishSpeech();
+  mockQuestions = selectMockQuestions();
+  mockQuestionIndex = 0;
+  mockAnsweredQuestionIds = new Set();
+  mockPlayedQuestionIds = new Set();
+  mockResults = [];
+  mockCorrectCount = 0;
+  mockPhase = "ready";
+  mockSectionIndex = findNextMockSectionIndex(0);
+  mockStartedAt = null;
+}
+
+function getMockAvailableCounts() {
+  return mockSectionDefinitions.reduce((counts, section) => {
+    counts[section.type] = mockQuestions.filter((entry) => entry.type === section.type).length;
+    return counts;
+  }, {});
+}
+
+function renderMockHistory(container) {
+  const results = loadMockResults();
+  const history = document.createElement("div");
+  history.className = "quiz-ready-details";
+  const heading = document.createElement("h4");
+  heading.textContent = "查看模擬測驗紀錄";
+  history.append(heading);
+  if (!results.attempts.length) {
+    const empty = document.createElement("p");
+    empty.textContent = "目前尚無模擬測驗紀錄。";
+    history.append(empty);
+  } else {
+    const list = document.createElement("ol");
+    list.className = "quiz-result-list";
+    results.attempts.slice(0, 5).forEach((attempt) => {
+      const item = document.createElement("li");
+      const sectionSummary = mockSectionDefinitions.map((section) => {
+        const stat = attempt.sections?.[section.type] || { total: 0, correct: 0, wrong: 0 };
+        return `${section.label} ${stat.correct}/${stat.total}`;
+      }).join("｜");
+      item.textContent = `${attempt.finishedAt || attempt.startedAt || "未記錄時間"}｜總題數：${attempt.totalQuestions}｜答對：${attempt.correctCount}｜答錯：${attempt.wrongCount}｜正確率：${attempt.accuracy}%｜${sectionSummary}`;
+      list.append(item);
+    });
+    history.append(list);
+  }
+  container.append(history);
+}
+
+function renderMockPreparation() {
+  resetMockState();
+  const total = mockQuestions.length;
+  listeningProgress.textContent = `GEPT 初級聽力模擬測驗準備中：0 / ${total}`;
+  const card = document.createElement("article");
+  card.className = "quiz-card quiz-ready-card gept-quiz-card";
+  const badge = document.createElement("span");
+  badge.className = "card-number";
+  badge.textContent = "測驗準備";
+  const title = document.createElement("h3");
+  title.className = "quiz-title";
+  title.textContent = "GEPT 初級聽力模擬測驗";
+  const details = document.createElement("div");
+  details.className = "quiz-ready-details";
+  const counts = getMockAvailableCounts();
+  const totalLine = total === 30 ? "本次測驗：30 題" : `本次可用題數：${total} 題`;
+  [
+    totalLine,
+    `第一部分：看圖辨義 ${counts[listeningTypeGeptPicture] || 0} 題`,
+    `第二部分：問答 ${counts[listeningTypeGeptQuestionResponse] || 0} 題`,
+    `第三部分：簡短對話 ${counts[listeningTypeGeptConversation] || 0} 題`,
+    `第四部分：短文聽解 ${counts[listeningTypeGeptShortTalk] || 0} 題`,
+    "音訊只能播放一次",
+    "不顯示中文提示",
+    "不顯示英文播放稿",
+    "不設定答題秒數",
+  ].forEach((text) => {
+    const item = document.createElement("p");
+    item.textContent = text;
+    details.append(item);
+  });
+
+  const actions = document.createElement("div");
+  actions.className = "quiz-actions";
+  const startButton = createModeActionButton("開始測驗", () => {
+    if (!mockQuestions.length) {
+      return;
+    }
+    mockPhase = "sectionReady";
+    mockStartedAt = new Date().toISOString();
+    mockSectionIndex = findNextMockSectionIndex(0);
+    renderMockSectionIntro();
+  });
+  startButton.disabled = total === 0;
+  actions.append(startButton);
+  const resetButton = createModeActionButton("重設聽力模擬測驗紀錄", () => {
+    const confirmed = window.confirm("確定要清除聽力模擬測驗紀錄嗎？這不會影響日文資料。");
+    if (confirmed) {
+      resetMockResults();
+      renderMockPreparation();
+    }
+  }, "secondary-button");
+  actions.append(resetButton);
+
+  card.append(badge, title, details);
+  if (!total) {
+    const emptyMessage = document.createElement("p");
+    emptyMessage.className = "status-message quiz-status-message";
+    emptyMessage.textContent = "目前沒有可用的 GEPT 初級聽力模擬題目。";
+    card.append(emptyMessage);
+  }
+  card.append(actions);
+  renderMockHistory(card);
+  listeningContent.replaceChildren(card);
+}
+
+function renderMockSectionIntro() {
+  cancelEnglishSpeech();
+  if (mockSectionIndex < 0) {
+    renderMockCompletePanel();
+    return;
+  }
+  const section = mockSectionDefinitions[mockSectionIndex];
+  const sectionEntries = getMockSectionEntries(mockSectionIndex);
+  listeningProgress.textContent = `GEPT 初級聽力模擬測驗：${mockResults.length} / ${mockQuestions.length}`;
+  const card = document.createElement("article");
+  card.className = "quiz-card quiz-ready-card gept-quiz-card";
+  const badge = document.createElement("span");
+  badge.className = "card-number";
+  badge.textContent = section.orderLabel;
+  const title = document.createElement("h3");
+  title.className = "quiz-title";
+  title.textContent = `${section.orderLabel}：${section.label}`;
+  const details = document.createElement("div");
+  details.className = "quiz-ready-details";
+  [`共 ${sectionEntries.length} 題`, section.instruction, "按下開始本部分後才會播放音訊。"].forEach((text) => {
+    const item = document.createElement("p");
+    item.textContent = text;
+    details.append(item);
+  });
+  const startButton = createModeActionButton("開始本部分", () => {
+    const firstQuestionIndex = mockQuestions.findIndex((entry) => entry.sectionIndex === mockSectionIndex && !mockResults.some((result) => result.order === entry.order));
+    mockQuestionIndex = firstQuestionIndex >= 0 ? firstQuestionIndex : mockQuestionIndex;
+    mockPhase = "running";
+    renderMockQuestion();
+  });
+  card.append(badge, title, details, startButton);
+  listeningContent.replaceChildren(card);
+}
+
+function playMockItemOnce(entry) {
+  const itemId = getListeningItemId(entry.item, entry.type);
+  if (mockPlayedQuestionIds.has(itemId)) {
+    return;
+  }
+  mockPlayedQuestionIds.add(itemId);
+  if (speakEnglish(getItemText(entry.item, entry.type))) {
+    recordListeningPlay(entry.item, listeningModeTest, entry.type);
+  }
+}
+
+function renderMockQuestion() {
+  cancelEnglishSpeech();
+  if (mockPhase !== "running") {
+    renderMockPreparation();
+    return;
+  }
+  const entry = getMockQuestionEntry();
+  if (!entry) {
+    renderMockCompletePanel();
+    return;
+  }
+
+  recordListeningSeen(entry.item, entry.type);
+  const options = getListeningOptions(entry.item, entry.type);
+  const sectionEntries = getMockSectionEntries(entry.sectionIndex);
+  listeningProgress.textContent = `GEPT 初級聽力模擬測驗：${entry.order} / ${mockQuestions.length}`;
+
+  const card = document.createElement("article");
+  card.className = "quiz-card gept-quiz-card";
+  const prompt = document.createElement("div");
+  prompt.className = "quiz-prompt";
+  const title = document.createElement("p");
+  title.className = "quiz-prompt-label";
+  title.textContent = "GEPT 初級聽力模擬測驗";
+  const sectionLabel = document.createElement("p");
+  sectionLabel.className = "gept-quiz-instruction";
+  sectionLabel.textContent = `${entry.section.orderLabel}：${entry.section.label}`;
+  const orderLabel = document.createElement("p");
+  orderLabel.className = "listening-play-status";
+  orderLabel.textContent = `第 ${entry.order} / ${mockQuestions.length} 題｜${entry.section.label} 第 ${entry.sectionOrder} / ${sectionEntries.length} 題`;
+  const instruction = document.createElement("p");
+  instruction.className = "gept-quiz-instruction";
+  instruction.textContent = entry.section.instruction;
+  const playStatus = document.createElement("p");
+  playStatus.className = "listening-play-status";
+  playStatus.textContent = "音訊已播放一次，請作答。";
+  prompt.append(title, sectionLabel, orderLabel, instruction, playStatus);
+
+  const optionList = document.createElement("div");
+  optionList.className = "quiz-options gept-quiz-options";
+  options.forEach((option, index) => {
+    const optionButton = createListeningOptionButton(option, index, entry.type);
+    optionButton.addEventListener("click", () => handleMockAnswer(optionButton, entry));
+    optionList.append(optionButton);
+  });
+
+  card.append(prompt, optionList);
+  listeningContent.replaceChildren(card);
+  playMockItemOnce(entry);
+}
+
+function handleMockAnswer(selectedButton, entry) {
+  if (mockPhase !== "running") {
+    return;
+  }
+  const itemId = getListeningItemId(entry.item, entry.type);
+  if (mockAnsweredQuestionIds.has(itemId)) {
+    return;
+  }
+  mockAnsweredQuestionIds.add(itemId);
+  const correctAnswer = getItemAnswer(entry.item, entry.type);
+  const selectedAnswer = selectedButton.dataset.answer;
+  const isCorrect = selectedAnswer === correctAnswer;
+  recordListeningAnswer(entry.item, isCorrect, entry.type);
+  if (isCorrect) {
+    mockCorrectCount += 1;
+  }
+  mockResults.push({
+    order: entry.order,
+    sectionOrder: entry.sectionOrder,
+    sectionLabel: `${entry.section.orderLabel}：${entry.section.label}`,
+    userAnswer: selectedAnswer,
+    question: getItemText(entry.item, entry.type),
+    correctAnswer,
+    item: entry.item,
+    type: entry.type,
+    result: isCorrect ? "correct" : "wrong",
+  });
+  listeningContent.querySelectorAll(".gept-quiz-option").forEach((button) => {
+    button.disabled = true;
+  });
+
+  window.setTimeout(() => {
+    const nextIndex = mockQuestionIndex + 1;
+    if (nextIndex >= mockQuestions.length) {
+      renderMockCompletePanel();
+      return;
+    }
+    const nextEntry = mockQuestions[nextIndex];
+    mockQuestionIndex = nextIndex;
+    if (nextEntry.sectionIndex !== entry.sectionIndex) {
+      mockSectionIndex = nextEntry.sectionIndex;
+      mockPhase = "sectionReady";
+      renderMockSectionIntro();
+      return;
+    }
+    renderMockQuestion();
+  }, 450);
+}
+
+function getMockTranscriptLabel(type) {
+  if (type === listeningTypeGeptQuestionResponse) {
+    return "英文問句播放稿";
+  }
+  if (type === listeningTypeGeptConversation) {
+    return "英文對話播放稿";
+  }
+  if (type === listeningTypeGeptShortTalk) {
+    return "英文短文播放稿";
+  }
+  return "英文播放稿";
+}
+
+function createMockSectionSummary(stats) {
+  const list = document.createElement("div");
+  list.className = "quiz-ready-details";
+  mockSectionDefinitions.forEach((section) => {
+    const sectionStats = stats[section.type] || { total: 0, correct: 0, wrong: 0 };
+    const accuracy = sectionStats.total ? Math.round((sectionStats.correct / sectionStats.total) * 100) : 0;
+    const item = document.createElement("p");
+    item.textContent = `${section.label}：總題數 ${sectionStats.total}｜答對 ${sectionStats.correct}｜答錯 ${sectionStats.wrong}｜正確率 ${accuracy}%`;
+    list.append(item);
+  });
+  return list;
+}
+
+function createMockResultList() {
+  const list = document.createElement("ol");
+  list.className = "quiz-result-list";
+  mockResults.forEach((result) => {
+    const item = document.createElement("li");
+    const userAnswer = formatAnswerForReview(result.item, result.userAnswer, result.type);
+    const correctAnswer = formatAnswerForReview(result.item, result.correctAnswer, result.type);
+    const transcriptText = result.type === listeningTypeGeptPicture ? "" : `${getMockTranscriptLabel(result.type)}：${result.question}｜`;
+    item.textContent = `第 ${result.order} 題｜${result.sectionLabel}｜${transcriptText}你的答案：${userAnswer}｜正確答案：${correctAnswer}｜結果：${result.result === "correct" ? "答對" : "答錯"}`;
+    list.append(item);
+  });
+  return list;
+}
+
+function renderMockCompletePanel() {
+  cancelEnglishSpeech();
+  mockPhase = "complete";
+  const total = mockResults.length;
+  const wrongCount = total - mockCorrectCount;
+  const accuracy = total ? Math.round((mockCorrectCount / total) * 100) : 0;
+  const finishedAt = new Date().toISOString();
+  const sectionStats = getMockSectionStatsFromResults();
+  const attempt = {
+    id: `mock_${finishedAt}`,
+    startedAt: mockStartedAt || finishedAt,
+    finishedAt,
+    totalQuestions: total,
+    correctCount: mockCorrectCount,
+    wrongCount,
+    accuracy,
+    sections: sectionStats,
+  };
+  if (total) {
+    saveMockAttempt(attempt);
+  }
+  listeningProgress.textContent = `GEPT 初級聽力模擬測驗完成：${total} / ${total}`;
+
+  const card = document.createElement("article");
+  card.className = "quiz-card gept-quiz-card";
+  const title = document.createElement("h3");
+  title.className = "quiz-title";
+  title.textContent = "GEPT 初級聽力模擬測驗";
+  const summary = document.createElement("p");
+  summary.className = "article-result-message";
+  summary.textContent = `總題數：${total} 題｜答對：${mockCorrectCount} 題｜答錯：${wrongCount} 題｜正確率：${accuracy}%`;
+  const actions = document.createElement("div");
+  actions.className = "quiz-actions";
+  const retryButton = createModeActionButton("再測一次", renderMockPreparation);
+  const homeLink = document.createElement("a");
+  homeLink.className = "secondary-button";
+  homeLink.href = "../";
+  homeLink.textContent = "回英文學習首頁";
+  const listeningLink = document.createElement("a");
+  listeningLink.className = "secondary-button";
+  listeningLink.href = "./";
+  listeningLink.textContent = "回英文聽力區";
+  actions.append(retryButton, homeLink, listeningLink);
+  card.append(title, summary, createMockSectionSummary(sectionStats), createMockResultList(), actions);
+  listeningContent.replaceChildren(card);
+}
+
 function setListeningActivity(type, mode) {
   if (listeningType === type && listeningMode === mode) {
     return;
@@ -1143,7 +1724,7 @@ function parseListeningHash() {
     return { type: listeningTypeVocabulary, mode: listeningModePractice };
   }
   const [type, mode] = hash.split("-");
-  const supportedTypes = [listeningTypeSentence, listeningTypeQa, ...geptListeningTypes];
+  const supportedTypes = [listeningTypeSentence, listeningTypeQa, ...geptListeningTypes, listeningTypeGeptFullMock];
   return {
     type: supportedTypes.includes(type) ? type : listeningTypeVocabulary,
     mode: mode === listeningModeTest ? listeningModeTest : listeningModePractice,
