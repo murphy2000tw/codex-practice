@@ -115,6 +115,55 @@ const listeningQuestionAnswers = [
   { id: "qa_050", question: "Good morning, class.", answer: "Good morning, teacher.", options: ["Good morning, teacher.", "It is under the table.", "I have two sisters.", "Yes, it does."], level: "GEPT Elementary", type: "qa" },
 ];
 
+
+const geptPictureListeningItems = [
+  { id: "gept_picture_001", type: "geptPicture", audioText: "The dog is under the table.", answerId: "picture_dog_under_table", options: [{ id: "picture_dog_under_table", label: "🐶⬇️🪑", alt: "dog under table" }, { id: "picture_cat_on_chair", label: "🐱⬆️🪑", alt: "cat on chair" }, { id: "picture_boy_reading", label: "👦📖", alt: "boy reading" }, { id: "picture_girl_running", label: "👧🏃", alt: "girl running" }], level: "GEPT Elementary" },
+  { id: "gept_picture_002", type: "geptPicture", audioText: "The boy is reading a book.", answerId: "picture_boy_reading", options: [{ id: "picture_boy_reading", label: "👦📖", alt: "boy reading" }, { id: "picture_boy_sleeping", label: "👦🛏️", alt: "boy sleeping" }, { id: "picture_girl_running", label: "👧🏃", alt: "girl running" }, { id: "picture_man_driving", label: "👨🚗", alt: "man driving" }], level: "GEPT Elementary" },
+  { id: "gept_picture_003", type: "geptPicture", audioText: "The girl is riding a bike.", answerId: "picture_girl_biking", options: [{ id: "picture_girl_biking", label: "👧🚲", alt: "girl riding a bike" }, { id: "picture_girl_running", label: "👧🏃", alt: "girl running" }, { id: "picture_boy_swimming", label: "👦🏊", alt: "boy swimming" }, { id: "picture_dog_sleeping", label: "🐶💤", alt: "dog sleeping" }], level: "GEPT Elementary" },
+  { id: "gept_picture_004", type: "geptPicture", audioText: "There are three apples on the desk.", answerId: "picture_three_apples_desk", options: [{ id: "picture_three_apples_desk", label: "🍎🍎🍎🪑", alt: "three apples on desk" }, { id: "picture_one_banana", label: "🍌", alt: "one banana" }, { id: "picture_two_books", label: "📚📚", alt: "two books" }, { id: "picture_milk_cup", label: "🥛", alt: "milk" }], level: "GEPT Elementary" },
+  { id: "gept_picture_005", type: "geptPicture", audioText: "The cat is sleeping on the sofa.", answerId: "picture_cat_sofa", options: [{ id: "picture_cat_sofa", label: "🐱💤🛋️", alt: "cat sleeping on sofa" }, { id: "picture_dog_table", label: "🐶🪑", alt: "dog by table" }, { id: "picture_bird_tree", label: "🐦🌳", alt: "bird in tree" }, { id: "picture_fish_bowl", label: "🐟", alt: "fish" }], level: "GEPT Elementary" },
+  { id: "gept_picture_006", type: "geptPicture", audioText: "It is raining today.", answerId: "picture_rain", options: [{ id: "picture_rain", label: "🌧️☂️", alt: "rainy day" }, { id: "picture_sunny", label: "☀️", alt: "sunny day" }, { id: "picture_snow", label: "❄️", alt: "snowy day" }, { id: "picture_windy", label: "💨", alt: "windy day" }], level: "GEPT Elementary" },
+  { id: "gept_picture_007", type: "geptPicture", audioText: "The teacher is writing on the board.", answerId: "picture_teacher_board", options: [{ id: "picture_teacher_board", label: "👩‍🏫✏️⬛", alt: "teacher writing on board" }, { id: "picture_student_book", label: "🧑📖", alt: "student reading" }, { id: "picture_doctor", label: "👨‍⚕️", alt: "doctor" }, { id: "picture_cook", label: "👩‍🍳", alt: "cook" }], level: "GEPT Elementary" },
+  { id: "gept_picture_008", type: "geptPicture", audioText: "The shoes are under the bed.", answerId: "picture_shoes_under_bed", options: [{ id: "picture_shoes_under_bed", label: "👟⬇️🛏️", alt: "shoes under bed" }, { id: "picture_hat_on_chair", label: "🧢⬆️🪑", alt: "hat on chair" }, { id: "picture_bag_on_desk", label: "🎒⬆️🪑", alt: "bag on desk" }, { id: "picture_keys_in_bag", label: "🔑🎒", alt: "keys in bag" }], level: "GEPT Elementary" },
+  { id: "gept_picture_009", type: "geptPicture", audioText: "The family is eating dinner.", answerId: "picture_family_dinner", options: [{ id: "picture_family_dinner", label: "👨‍👩‍👧‍👦🍽️", alt: "family eating dinner" }, { id: "picture_children_school", label: "👧👦🏫", alt: "children at school" }, { id: "picture_people_bus", label: "🧑🚌", alt: "people on bus" }, { id: "picture_family_park", label: "👨‍👩‍👧‍👦🌳", alt: "family in park" }], level: "GEPT Elementary" },
+  { id: "gept_picture_010", type: "geptPicture", audioText: "The boy is brushing his teeth.", answerId: "picture_boy_brushing", options: [{ id: "picture_boy_brushing", label: "👦🪥", alt: "boy brushing teeth" }, { id: "picture_boy_eating", label: "👦🍔", alt: "boy eating" }, { id: "picture_boy_biking", label: "👦🚲", alt: "boy riding bike" }, { id: "picture_boy_writing", label: "👦✏️", alt: "boy writing" }], level: "GEPT Elementary" },
+];
+
+const geptQuestionResponseItems = listeningQuestionAnswers.slice(0, 10).map((item, index) => ({
+  id: `gept_qr_${String(index + 1).padStart(3, "0")}`,
+  type: "geptQuestionResponse",
+  audioText: item.question,
+  answer: item.answer,
+  options: item.options,
+  level: "GEPT Elementary",
+}));
+
+const geptConversationListeningItems = [
+  { id: "gept_conversation_001", type: "geptConversation", audioText: "A: Where is your brother? B: He is in the kitchen. Question: Where is the boy's brother?", answer: "He is in the kitchen.", options: ["He is in the kitchen.", "He is in the park.", "He is at school.", "He is on the bus."], level: "GEPT Elementary" },
+  { id: "gept_conversation_002", type: "geptConversation", audioText: "A: What are you doing? B: I am reading a book. Question: What is the girl doing?", answer: "She is reading a book.", options: ["She is reading a book.", "She is eating lunch.", "She is playing tennis.", "She is washing her hands."], level: "GEPT Elementary" },
+  { id: "gept_conversation_003", type: "geptConversation", audioText: "A: How do you go to school? B: I go to school by bus. Question: How does the student go to school?", answer: "The student goes to school by bus.", options: ["The student goes to school by bus.", "The student walks to school.", "The student goes by bike.", "The student goes by train."], level: "GEPT Elementary" },
+  { id: "gept_conversation_004", type: "geptConversation", audioText: "A: Is this your pencil? B: Yes, it is. Thank you. Question: What is the boy talking about?", answer: "He is talking about a pencil.", options: ["He is talking about a pencil.", "He is talking about a bag.", "He is talking about a dog.", "He is talking about a bike."], level: "GEPT Elementary" },
+  { id: "gept_conversation_005", type: "geptConversation", audioText: "A: What time is lunch? B: Lunch is at twelve. Question: What time is lunch?", answer: "Lunch is at twelve.", options: ["Lunch is at twelve.", "Lunch is at seven.", "Lunch is at eight.", "Lunch is at ten."], level: "GEPT Elementary" },
+  { id: "gept_conversation_006", type: "geptConversation", audioText: "A: Do you like bananas? B: No, I like apples. Question: What fruit does the child like?", answer: "The child likes apples.", options: ["The child likes apples.", "The child likes bananas.", "The child likes oranges.", "The child likes grapes."], level: "GEPT Elementary" },
+  { id: "gept_conversation_007", type: "geptConversation", audioText: "A: Where is your new cap? B: It is on my bed. Question: Where is the cap?", answer: "It is on the bed.", options: ["It is on the bed.", "It is under the desk.", "It is in the bag.", "It is near the door."], level: "GEPT Elementary" },
+  { id: "gept_conversation_008", type: "geptConversation", audioText: "A: Can you swim? B: Yes, I can swim well. Question: What can the child do?", answer: "The child can swim.", options: ["The child can swim.", "The child can cook.", "The child can drive.", "The child can sing."], level: "GEPT Elementary" },
+  { id: "gept_conversation_009", type: "geptConversation", audioText: "A: Why are you happy? B: Today is my birthday. Question: Why is the child happy?", answer: "Today is the child's birthday.", options: ["Today is the child's birthday.", "The child has a new dog.", "The child is going home.", "The child likes math."], level: "GEPT Elementary" },
+  { id: "gept_conversation_010", type: "geptConversation", audioText: "A: What is your sister wearing? B: She is wearing a red jacket. Question: What is the sister wearing?", answer: "She is wearing a red jacket.", options: ["She is wearing a red jacket.", "She is wearing blue shoes.", "She is wearing a green hat.", "She is wearing a yellow dress."], level: "GEPT Elementary" },
+];
+
+const geptShortTalkListeningItems = [
+  { id: "gept_shorttalk_001", type: "geptShortTalk", audioText: "Tom is a student. He gets up at seven every morning. He goes to school by bus. Question: How does Tom go to school?", answer: "He goes to school by bus.", options: ["He goes to school by bus.", "He walks to school.", "He goes to school by bike.", "He goes to school by train."], level: "GEPT Elementary" },
+  { id: "gept_shorttalk_002", type: "geptShortTalk", audioText: "Amy has a small dog. The dog is white. It likes to run in the park. Question: What color is Amy's dog?", answer: "It is white.", options: ["It is white.", "It is black.", "It is brown.", "It is yellow."], level: "GEPT Elementary" },
+  { id: "gept_shorttalk_003", type: "geptShortTalk", audioText: "It is Sunday. Ben and his family are at home. They are eating breakfast together. Question: Where is Ben's family?", answer: "They are at home.", options: ["They are at home.", "They are at school.", "They are in the park.", "They are on a bus."], level: "GEPT Elementary" },
+  { id: "gept_shorttalk_004", type: "geptShortTalk", audioText: "Lisa likes music. She plays the piano after school. Her mother listens to her. Question: What does Lisa play?", answer: "She plays the piano.", options: ["She plays the piano.", "She plays soccer.", "She plays basketball.", "She plays the guitar."], level: "GEPT Elementary" },
+  { id: "gept_shorttalk_005", type: "geptShortTalk", audioText: "Mark is thirsty. He opens the refrigerator and drinks some milk. Question: What does Mark drink?", answer: "He drinks some milk.", options: ["He drinks some milk.", "He drinks orange juice.", "He drinks water.", "He drinks tea."], level: "GEPT Elementary" },
+  { id: "gept_shorttalk_006", type: "geptShortTalk", audioText: "Grace has a red school bag. She puts two books and one pencil case in it. Question: What color is Grace's school bag?", answer: "It is red.", options: ["It is red.", "It is blue.", "It is green.", "It is black."], level: "GEPT Elementary" },
+  { id: "gept_shorttalk_007", type: "geptShortTalk", audioText: "Peter visits his grandma on Saturday. They make cookies in the kitchen. Question: When does Peter visit his grandma?", answer: "He visits her on Saturday.", options: ["He visits her on Saturday.", "He visits her on Monday.", "He visits her on Wednesday.", "He visits her on Friday."], level: "GEPT Elementary" },
+  { id: "gept_shorttalk_008", type: "geptShortTalk", audioText: "The library is quiet. Many students read books there. The library is on the second floor. Question: Where is the library?", answer: "It is on the second floor.", options: ["It is on the second floor.", "It is near the bus stop.", "It is in the kitchen.", "It is under the tree."], level: "GEPT Elementary" },
+  { id: "gept_shorttalk_009", type: "geptShortTalk", audioText: "Nina is in her room. She cleans her desk and finds her keys. Question: What does Nina find?", answer: "She finds her keys.", options: ["She finds her keys.", "She finds her shoes.", "She finds her phone.", "She finds her cap."], level: "GEPT Elementary" },
+  { id: "gept_shorttalk_010", type: "geptShortTalk", audioText: "It is hot today. Jack wears a T-shirt and shorts. He wants to drink water. Question: What does Jack want to drink?", answer: "He wants to drink water.", options: ["He wants to drink water.", "He wants to drink milk.", "He wants to drink tea.", "He wants to drink juice."], level: "GEPT Elementary" },
+];
+
 const LISTENING_PROGRESS_KEY = "englishListeningProgress_v1";
 const VOCAB_PROGRESS_KEY = "englishVocabProgress_v1";
 const LISTENING_PROGRESS_VERSION = 1;
@@ -125,6 +174,11 @@ const listeningModeTest = "test";
 const listeningTypeVocabulary = "vocabulary";
 const listeningTypeSentence = "sentence";
 const listeningTypeQa = "qa";
+const listeningTypeGeptPicture = "geptPicture";
+const listeningTypeGeptQuestionResponse = "geptQuestionResponse";
+const listeningTypeGeptConversation = "geptConversation";
+const listeningTypeGeptShortTalk = "geptShortTalk";
+const geptListeningTypes = [listeningTypeGeptPicture, listeningTypeGeptQuestionResponse, listeningTypeGeptConversation, listeningTypeGeptShortTalk];
 const futureListeningTypes = [
   "vocabulary",
   "sentence",
@@ -174,6 +228,65 @@ function normalizeListeningNumber(value) {
 }
 
 function getActivityConfig(type = listeningType) {
+  const geptConfigs = {
+    [listeningTypeGeptPicture]: {
+      type: listeningTypeGeptPicture,
+      label: "看圖辨義",
+      practiceTitle: "看圖辨義練習",
+      testTitle: "看圖辨義測驗",
+      answerLabel: "圖片",
+      emptyMessage: "目前沒有可用題目",
+      items: geptPictureListeningItems,
+      getText: (item) => item.audioText,
+      getAnswer: (item) => item.answerId,
+      getSourceId: (item) => item.id || item.audioText,
+      itemIdPrefix: "listening_geptPicture",
+    },
+    [listeningTypeGeptQuestionResponse]: {
+      type: listeningTypeGeptQuestionResponse,
+      label: "GEPT 問答",
+      practiceTitle: "問答練習",
+      testTitle: "問答測驗",
+      answerLabel: "英文回答",
+      emptyMessage: "目前沒有可用題目",
+      items: geptQuestionResponseItems,
+      getText: (item) => item.audioText,
+      getAnswer: (item) => item.answer,
+      getSourceId: (item) => item.id || item.audioText,
+      itemIdPrefix: "listening_geptQuestionResponse",
+    },
+    [listeningTypeGeptConversation]: {
+      type: listeningTypeGeptConversation,
+      label: "簡短對話",
+      practiceTitle: "簡短對話練習",
+      testTitle: "簡短對話測驗",
+      answerLabel: "英文答案",
+      emptyMessage: "目前沒有可用題目",
+      items: geptConversationListeningItems,
+      getText: (item) => item.audioText,
+      getAnswer: (item) => item.answer,
+      getSourceId: (item) => item.id || item.audioText,
+      itemIdPrefix: "listening_geptConversation",
+    },
+    [listeningTypeGeptShortTalk]: {
+      type: listeningTypeGeptShortTalk,
+      label: "短文聽解",
+      practiceTitle: "短文聽解練習",
+      testTitle: "短文聽解測驗",
+      answerLabel: "英文答案",
+      emptyMessage: "目前沒有可用題目",
+      items: geptShortTalkListeningItems,
+      getText: (item) => item.audioText,
+      getAnswer: (item) => item.answer,
+      getSourceId: (item) => item.id || item.audioText,
+      itemIdPrefix: "listening_geptShortTalk",
+    },
+  };
+
+  if (geptConfigs[type]) {
+    return geptConfigs[type];
+  }
+
   if (type === listeningTypeSentence) {
     return {
       type: listeningTypeSentence,
@@ -225,6 +338,10 @@ function getListeningItemId(item, type = listeningType) {
   const config = getActivityConfig(type);
   if ((type === listeningTypeSentence || type === listeningTypeQa) && typeof item?.id === "string" && item.id.trim()) {
     return `listening_${item.id.trim()}`;
+  }
+  if (geptListeningTypes.includes(type) && typeof item?.id === "string" && item.id.trim()) {
+    const geptId = item.id.trim().replace(/^gept_(picture|qr|conversation|shorttalk)_/, "");
+    return `${config.itemIdPrefix}_${geptId}`;
   }
   const source = String(config.getSourceId(item) || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
   return `${config.itemIdPrefix}_${source || type}`;
@@ -467,6 +584,41 @@ function getItemAnswer(item, type = listeningType) {
   return getActivityConfig(type).getAnswer(item);
 }
 
+function getOptionValue(option) {
+  if (option && typeof option === "object") {
+    return option.id || option.answer || option.label || "";
+  }
+  return option || "";
+}
+
+function getOptionLabel(option) {
+  if (option && typeof option === "object") {
+    return option.label || option.alt || option.id || "";
+  }
+  return option || "";
+}
+
+function getOptionAlt(option) {
+  if (option && typeof option === "object") {
+    return option.alt || option.label || option.id || "";
+  }
+  return getOptionLabel(option);
+}
+
+function findOptionByValue(item, value) {
+  return Array.isArray(item?.options) ? item.options.find((option) => getOptionValue(option) === value) : null;
+}
+
+function formatAnswerForReview(item, answer, type = listeningType) {
+  if (type !== listeningTypeGeptPicture) {
+    return answer || "未作答";
+  }
+  const option = findOptionByValue(item, answer);
+  const label = option ? getOptionLabel(option) : answer;
+  const alt = option ? getOptionAlt(option) : "";
+  return alt && alt !== label ? `${label} (${alt})` : label;
+}
+
 function getListeningOptions(currentItem, type = listeningType) {
   const config = getActivityConfig(type);
   const correctAnswer = config.getAnswer(currentItem);
@@ -479,9 +631,12 @@ function getListeningOptions(currentItem, type = listeningType) {
         .filter((answer) => answer && answer !== correctAnswer),
     ];
   const uniqueOptions = [];
-  [correctAnswer, ...optionSource].forEach((answer) => {
-    if (answer && !uniqueOptions.includes(answer)) {
-      uniqueOptions.push(answer);
+  const seenValues = new Set();
+  [findOptionByValue(currentItem, correctAnswer) || correctAnswer, ...optionSource].forEach((option) => {
+    const value = getOptionValue(option);
+    if (value && !seenValues.has(value)) {
+      seenValues.add(value);
+      uniqueOptions.push(option);
     }
   });
   return shuffleListeningItems(uniqueOptions.slice(0, 4));
@@ -644,7 +799,7 @@ function renderPracticePreparation() {
     "播放次數不限，可以重複聆聽",
     "不設定答題秒數",
     "不顯示中文提示",
-    "不顯示英文問句文字",
+    "不顯示英文播放稿",
   ].forEach((text) => {
     const item = document.createElement("p");
     item.textContent = text;
@@ -661,6 +816,27 @@ function playPracticeItem(item) {
   if (speakEnglish(getItemText(item))) {
     recordListeningPlay(item, listeningModePractice);
   }
+}
+
+function createListeningOptionButton(option, index) {
+  const optionButton = document.createElement("button");
+  optionButton.className = "quiz-option gept-quiz-option";
+  optionButton.type = "button";
+  optionButton.dataset.answer = getOptionValue(option);
+  if (listeningType === listeningTypeGeptPicture) {
+    optionButton.classList.add("gept-picture-option");
+    optionButton.setAttribute("aria-label", `${String.fromCharCode(65 + index)}. ${getOptionAlt(option)}`);
+    const letter = document.createElement("span");
+    letter.className = "gept-picture-letter";
+    letter.textContent = `${String.fromCharCode(65 + index)}.`;
+    const imageLabel = document.createElement("span");
+    imageLabel.className = "gept-picture-label";
+    imageLabel.textContent = getOptionLabel(option);
+    optionButton.append(letter, imageLabel);
+    return optionButton;
+  }
+  optionButton.textContent = `${String.fromCharCode(65 + index)}. ${getOptionLabel(option)}`;
+  return optionButton;
 }
 
 function renderPracticeQuestion() {
@@ -696,12 +872,8 @@ function renderPracticeQuestion() {
   feedback.className = "quiz-feedback";
   feedback.setAttribute("aria-live", "polite");
 
-  practiceCurrentOptions.forEach((answer, index) => {
-    const optionButton = document.createElement("button");
-    optionButton.className = "quiz-option gept-quiz-option";
-    optionButton.type = "button";
-    optionButton.textContent = `${String.fromCharCode(65 + index)}. ${answer}`;
-    optionButton.dataset.answer = answer;
+  practiceCurrentOptions.forEach((option, index) => {
+    const optionButton = createListeningOptionButton(option, index);
     optionButton.addEventListener("click", () => handlePracticeAnswer(optionButton, currentItem, feedback));
     options.append(optionButton);
   });
@@ -741,7 +913,8 @@ function handlePracticeAnswer(selectedButton, currentItem, feedback) {
   feedback.classList.toggle("is-correct", isCorrect);
   feedback.classList.toggle("is-wrong", !isCorrect);
   const reviewText = listeningType === listeningTypeQa ? `｜英文問句：${getItemText(currentItem)}` : "";
-  feedback.textContent = isCorrect ? `答對了！${reviewText}` : `答錯了，正確${config.answerLabel}是：${correctAnswer}${reviewText}`;
+  const correctAnswerText = formatAnswerForReview(currentItem, correctAnswer);
+  feedback.textContent = isCorrect ? `答對了！${reviewText}` : `答錯了，正確${config.answerLabel}是：${correctAnswerText}${reviewText}`;
   const nextButton = document.querySelector("#nextListeningPracticeQuestion");
   if (nextButton) {
     nextButton.disabled = false;
@@ -777,7 +950,7 @@ function renderTestPreparation() {
     `本次測驗：${testQuestions.length} 題`,
     "音訊只能播放一次",
     "不顯示中文提示",
-    "不顯示英文問句文字",
+    "不顯示英文播放稿",
     "不設定答題秒數",
   ].forEach((text) => {
     const item = document.createElement("p");
@@ -840,12 +1013,8 @@ function renderTestQuestion() {
 
   const options = document.createElement("div");
   options.className = "quiz-options gept-quiz-options";
-  testCurrentOptions.forEach((answer, index) => {
-    const optionButton = document.createElement("button");
-    optionButton.className = "quiz-option gept-quiz-option";
-    optionButton.type = "button";
-    optionButton.textContent = `${String.fromCharCode(65 + index)}. ${answer}`;
-    optionButton.dataset.answer = answer;
+  testCurrentOptions.forEach((option, index) => {
+    const optionButton = createListeningOptionButton(option, index);
     optionButton.addEventListener("click", () => handleTestAnswer(optionButton, currentItem));
     options.append(optionButton);
   });
@@ -883,6 +1052,8 @@ function handleTestAnswer(selectedButton, currentItem) {
     userAnswer: selectedAnswer,
     question: getItemText(currentItem),
     correctAnswer,
+    item: currentItem,
+    type: listeningType,
     result: isCorrect ? "correct" : "wrong",
   });
 
@@ -906,8 +1077,19 @@ function createTestResultList() {
   list.className = "quiz-result-list";
   testResults.forEach((result) => {
     const item = document.createElement("li");
-    const questionText = config.type === listeningTypeQa ? `英文問句：${result.question}｜` : "";
-    item.textContent = `第 ${result.order} 題｜${questionText}你的答案：${result.userAnswer}｜正確${config.answerLabel}：${result.correctAnswer}｜結果：${result.result === "correct" ? "答對" : "答錯"}`;
+    const userAnswer = formatAnswerForReview(result.item, result.userAnswer, result.type);
+    const correctAnswer = formatAnswerForReview(result.item, result.correctAnswer, result.type);
+    const transcriptLabel = config.type === listeningTypeGeptPicture
+      ? "英文播放稿"
+      : config.type === listeningTypeQa || config.type === listeningTypeGeptQuestionResponse
+        ? "英文問句"
+        : config.type === listeningTypeGeptConversation
+          ? "英文對話播放稿"
+          : config.type === listeningTypeGeptShortTalk
+            ? "英文短文播放稿"
+            : "英文播放稿";
+    const transcriptText = config.type === listeningTypeVocabulary || config.type === listeningTypeSentence ? "" : `${transcriptLabel}：${result.question}｜`;
+    item.textContent = `第 ${result.order} 題｜${transcriptText}你的答案：${userAnswer}｜正確${config.answerLabel}：${correctAnswer}｜結果：${result.result === "correct" ? "答對" : "答錯"}`;
     list.append(item);
   });
   return list;
@@ -961,8 +1143,9 @@ function parseListeningHash() {
     return { type: listeningTypeVocabulary, mode: listeningModePractice };
   }
   const [type, mode] = hash.split("-");
+  const supportedTypes = [listeningTypeSentence, listeningTypeQa, ...geptListeningTypes];
   return {
-    type: [listeningTypeSentence, listeningTypeQa].includes(type) ? type : listeningTypeVocabulary,
+    type: supportedTypes.includes(type) ? type : listeningTypeVocabulary,
     mode: mode === listeningModeTest ? listeningModeTest : listeningModePractice,
   };
 }

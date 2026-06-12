@@ -1727,3 +1727,22 @@ h1 {
     font-size: 1.2rem;
   }
 }
+
+.gept-picture-option {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  min-height: 132px;
+  text-align: center;
+}
+
+.gept-picture-letter {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 900;
+}
+
+.gept-picture-label {
+  font-size: clamp(2.2rem, 8vw, 4rem);
+  line-height: 1.1;
+}
