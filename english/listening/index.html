@@ -14,15 +14,15 @@
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">English Listening</p>
       <h1 id="page-title">英文聽力</h1>
-      <p class="hero-text">第一階段：GEPT 初級單字聽力。請聽音訊後選出正確英文單字。</p>
+      <p class="hero-text">英文聽力：單字聽力與句子聽力。請聽音訊後選出正確英文內容。</p>
     </section>
 
     <section class="category-panel subpage-panel" aria-labelledby="listening-title">
       <div class="category-header">
-        <h2 id="listening-title">單字聽力</h2>
+        <h2 id="listening-title">英文聽力</h2>
         <p id="listeningProgress" class="category-count" aria-live="polite">準備中</p>
       </div>
-      <p class="subpage-text">本頁只使用瀏覽器內建 speechSynthesis 播放英文單字，不使用外部音檔，也不顯示中文提示。</p>
+      <p class="subpage-text">本頁只使用瀏覽器內建 speechSynthesis 播放英文單字與英文句子，不使用外部音檔，也不顯示中文提示。</p>
 
       <div class="mode-panel gept-mode-panel" aria-labelledby="listeningModeTitle">
         <div>
@@ -30,8 +30,10 @@
           <p class="mode-description">練習模式可重複播放；測驗模式每題只播放一次，並先顯示準備畫面。</p>
         </div>
         <div class="mode-switch" role="group" aria-label="選擇英文聽力模式">
-          <button id="wordListeningPracticeMode" class="mode-button is-active" type="button" aria-pressed="true">單字聽力練習</button>
-          <button id="wordListeningTestMode" class="mode-button" type="button" aria-pressed="false">單字聽力測驗</button>
+          <button id="wordListeningPracticeMode" class="mode-button is-active" type="button" aria-pressed="true" data-listening-type="vocabulary" data-listening-mode="practice">單字聽力練習</button>
+          <button id="wordListeningTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="vocabulary" data-listening-mode="test">單字聽力測驗</button>
+          <button id="sentenceListeningPracticeMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="sentence" data-listening-mode="practice">句子聽力練習</button>
+          <button id="sentenceListeningTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="sentence" data-listening-mode="test">句子聽力測驗</button>
         </div>
       </div>
 
@@ -47,6 +49,6 @@
   <script src="../vocabulary/data/geptVocabularyBeginner003.js?v=1.0"></script>
   <script src="../vocabulary/data/geptVocabularyBeginner004.js?v=1.0"></script>
   <script src="../vocabulary/geptVocabulary.js?v=1.6"></script>
-  <script src="listeningPage.js?v=1.0"></script>
+  <script src="listeningPage.js?v=1.1"></script>
 </body>
 </html>
