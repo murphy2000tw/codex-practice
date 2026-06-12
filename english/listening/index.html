@@ -7,14 +7,14 @@
   <link rel="icon" type="image/png" href="../../app-icon.png">
   <link rel="manifest" href="../../manifest.webmanifest">
   <title>英文聽力｜英文學習</title>
-  <link rel="stylesheet" href="../../style.css?v=2.2">
+  <link rel="stylesheet" href="../../style.css?v=2.3">
 </head>
 <body>
   <main class="page-shell">
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">English Listening</p>
       <h1 id="page-title">英文聽力</h1>
-      <p class="hero-text">英文聽力：單字聽力、句子聽力與問答聽力。請聽音訊後選出正確英文內容。</p>
+      <p class="hero-text">英文聽力：單字聽力、句子聽力、問答聽力與仿 GEPT 初級四題型聽力。請聽音訊後選出正確英文內容。</p>
     </section>
 
     <section class="category-panel subpage-panel" aria-labelledby="listening-title">
@@ -22,7 +22,7 @@
         <h2 id="listening-title">英文聽力</h2>
         <p id="listeningProgress" class="category-count" aria-live="polite">準備中</p>
       </div>
-      <p class="subpage-text">本頁只使用瀏覽器內建 speechSynthesis 播放英文單字、英文句子與英文問句，不使用外部音檔，也不顯示中文提示。</p>
+      <p class="subpage-text">本頁只使用瀏覽器內建 speechSynthesis 播放英文單字、英文句子、英文問句與 GEPT 四題型聽力，不使用外部音檔，也不顯示中文提示。</p>
 
       <div class="mode-panel gept-mode-panel" aria-labelledby="listeningModeTitle">
         <div>
@@ -39,6 +39,23 @@
         </div>
       </div>
 
+      <div class="mode-panel gept-mode-panel" aria-labelledby="geptListeningModeTitle">
+        <div>
+          <p class="filter-label" id="geptListeningModeTitle">GEPT 四題型聽力</p>
+          <p class="mode-description">仿 GEPT 初級聽力題型練習；測驗模式每回最多 10 題，音訊只播放一次。</p>
+        </div>
+        <div class="mode-switch" role="group" aria-label="選擇 GEPT 四題型聽力模式">
+          <button id="geptPicturePracticeMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptPicture" data-listening-mode="practice">看圖辨義練習</button>
+          <button id="geptPictureTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptPicture" data-listening-mode="test">看圖辨義測驗</button>
+          <button id="geptQuestionResponsePracticeMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptQuestionResponse" data-listening-mode="practice">問答練習</button>
+          <button id="geptQuestionResponseTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptQuestionResponse" data-listening-mode="test">問答測驗</button>
+          <button id="geptConversationPracticeMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptConversation" data-listening-mode="practice">簡短對話練習</button>
+          <button id="geptConversationTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptConversation" data-listening-mode="test">簡短對話測驗</button>
+          <button id="geptShortTalkPracticeMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptShortTalk" data-listening-mode="practice">短文聽解練習</button>
+          <button id="geptShortTalkTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptShortTalk" data-listening-mode="test">短文聽解測驗</button>
+        </div>
+      </div>
+
       <div id="listeningSupportMessage" class="status-message quiz-status-message" role="status" hidden></div>
       <div id="listeningContent" class="quiz-content" aria-live="polite"></div>
 
@@ -51,6 +68,6 @@
   <script src="../vocabulary/data/geptVocabularyBeginner003.js?v=1.0"></script>
   <script src="../vocabulary/data/geptVocabularyBeginner004.js?v=1.0"></script>
   <script src="../vocabulary/geptVocabulary.js?v=1.6"></script>
-  <script src="listeningPage.js?v=1.2"></script>
+  <script src="listeningPage.js?v=1.3"></script>
 </body>
 </html>
