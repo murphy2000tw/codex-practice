@@ -1,12 +1,67 @@
 const listeningContent = document.querySelector("#listeningContent");
 const listeningProgress = document.querySelector("#listeningProgress");
 const listeningSupportMessage = document.querySelector("#listeningSupportMessage");
-const practiceModeButton = document.querySelector("#wordListeningPracticeMode");
-const testModeButton = document.querySelector("#wordListeningTestMode");
+const listeningModeButtons = Array.from(document.querySelectorAll("[data-listening-type][data-listening-mode]"));
 
 const listeningVocabulary = Array.isArray(geptVocabulary)
   ? geptVocabulary.filter((item) => item && typeof item.word === "string" && item.word.trim())
   : [];
+
+const listeningSentences = [
+  { id: "sentence_001", text: "I go to school by bus.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_002", text: "She is reading a book.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_003", text: "My father is a doctor.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_004", text: "The dog is under the table.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_005", text: "We have English class today.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_006", text: "He likes to play basketball.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_007", text: "There are three apples on the desk.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_008", text: "I get up at seven every morning.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_009", text: "It is sunny today.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_010", text: "Please open the window.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_011", text: "This is my new pencil.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_012", text: "Tom can ride a bike.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_013", text: "I want a glass of water.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_014", text: "The cat is sleeping on the sofa.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_015", text: "My mother cooks dinner at home.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_016", text: "We are going to the park.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_017", text: "I have two sisters.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_018", text: "He is wearing a blue jacket.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_019", text: "The bus stop is near my house.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_020", text: "May I borrow your ruler?", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_021", text: "They play soccer after school.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_022", text: "I brush my teeth before breakfast.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_023", text: "The library is on the second floor.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_024", text: "She drinks milk every morning.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_025", text: "My brother is twelve years old.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_026", text: "The teacher is writing on the board.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_027", text: "I am hungry now.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_028", text: "We eat lunch at school.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_029", text: "The shoes are under the bed.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_030", text: "Can you help me, please?", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_031", text: "I like music very much.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_032", text: "She washes her hands before dinner.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_033", text: "There is a bird in the tree.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_034", text: "He goes to bed at nine.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_035", text: "My favorite color is green.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_036", text: "The store opens at ten.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_037", text: "I can see a rainbow.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_038", text: "We need three eggs for the cake.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_039", text: "She has a red bag.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_040", text: "The boy is playing with his dog.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_041", text: "I do my homework after dinner.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_042", text: "It is time for class.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_043", text: "My grandparents live in Tainan.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_044", text: "He takes the train to Taipei.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_045", text: "The water is too hot.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_046", text: "Please write your name here.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_047", text: "I am looking for my keys.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_048", text: "We visit our uncle on Sunday.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_049", text: "The girl is singing a song.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_050", text: "This cake tastes good.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_051", text: "I need a clean shirt.", level: "GEPT Elementary", type: "sentence" },
+  { id: "sentence_052", text: "She is waiting for the bus.", level: "GEPT Elementary", type: "sentence" },
+];
+
 const LISTENING_PROGRESS_KEY = "englishListeningProgress_v1";
 const VOCAB_PROGRESS_KEY = "englishVocabProgress_v1";
 const LISTENING_PROGRESS_VERSION = 1;
@@ -15,6 +70,7 @@ const LISTENING_TEST_TARGET_COUNT = 10;
 const listeningModePractice = "practice";
 const listeningModeTest = "test";
 const listeningTypeVocabulary = "vocabulary";
+const listeningTypeSentence = "sentence";
 const futureListeningTypes = [
   "vocabulary",
   "sentence",
@@ -27,15 +83,14 @@ const futureListeningTypes = [
 ];
 
 let listeningMode = listeningModePractice;
+let listeningType = listeningTypeVocabulary;
 let practiceQuestions = [];
 let practiceQuestionIndex = 0;
 let practiceAnsweredCurrentQuestion = false;
-let practiceCurrentOptions = [];
 let testQuestions = [];
 let testQuestionIndex = 0;
 let testAnsweredQuestionIds = new Set();
 let testPlayedQuestionIds = new Set();
-let testCurrentOptions = [];
 let testResults = [];
 let testCorrectCount = 0;
 let testPhase = "ready";
@@ -64,15 +119,50 @@ function normalizeListeningNumber(value) {
   return Number.isFinite(numberValue) && numberValue > 0 ? Math.floor(numberValue) : 0;
 }
 
-function getListeningItemId(word) {
-  const source = String(word?.word || word?.id || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
-  return `listening_vocab_${source || "word"}`;
+function getActivityConfig(type = listeningType) {
+  if (type === listeningTypeSentence) {
+    return {
+      type: listeningTypeSentence,
+      label: "句子聽力",
+      practiceTitle: "句子聽力練習",
+      testTitle: "句子聽力測驗",
+      answerLabel: "英文句子",
+      emptyMessage: "目前沒有可用的句子聽力題目",
+      items: listeningSentences,
+      getText: (item) => item.text,
+      getSourceId: (item) => item.id || item.text,
+      itemIdPrefix: "listening_sentence",
+    };
+  }
+
+  return {
+    type: listeningTypeVocabulary,
+    label: "單字聽力",
+    practiceTitle: "單字聽力練習",
+    testTitle: "單字聽力測驗",
+    answerLabel: "英文單字",
+    emptyMessage: "目前沒有可用的單字聽力題目",
+    items: listeningVocabulary,
+    getText: (item) => item.word,
+    getSourceId: (item) => item.word || item.id,
+    itemIdPrefix: "listening_vocab",
+  };
 }
 
-function normalizeListeningItem(record = {}, itemId = "", text = "") {
+function getListeningItemId(item, type = listeningType) {
+  const config = getActivityConfig(type);
+  if (type === listeningTypeSentence && typeof item?.id === "string" && item.id.trim()) {
+    return `listening_${item.id.trim()}`;
+  }
+  const source = String(config.getSourceId(item) || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+  return `${config.itemIdPrefix}_${source || type}`;
+}
+
+function normalizeListeningItem(record = {}, itemId = "", text = "", type = listeningTypeVocabulary) {
+  const normalizedType = futureListeningTypes.includes(record.type) ? record.type : type;
   return {
     itemId: record.itemId || itemId,
-    type: futureListeningTypes.includes(record.type) ? record.type : listeningTypeVocabulary,
+    type: normalizedType,
     text: record.text || text,
     seenCount: normalizeListeningNumber(record.seenCount),
     answeredCount: normalizeListeningNumber(record.answeredCount),
@@ -94,7 +184,7 @@ function normalizeListeningProgress(progress) {
       if (!itemId || !record || typeof record !== "object" || Array.isArray(record)) {
         return;
       }
-      normalized.items[itemId] = normalizeListeningItem(record, itemId, record.text || "");
+      normalized.items[itemId] = normalizeListeningItem(record, itemId, record.text || "", record.type || listeningTypeVocabulary);
     });
   }
 
@@ -148,38 +238,40 @@ function saveListeningProgress(progress) {
   return normalizedProgress;
 }
 
-function updateListeningProgress(word, updater) {
+function updateListeningProgress(item, type, updater) {
+  const config = getActivityConfig(type);
   const progress = loadListeningProgress();
-  const itemId = getListeningItemId(word);
+  const itemId = getListeningItemId(item, type);
+  const text = config.getText(item);
   const now = new Date().toISOString();
-  const current = normalizeListeningItem(progress.items[itemId], itemId, word.word);
+  const current = normalizeListeningItem(progress.items[itemId], itemId, text, type);
   const next = updater(current, now) || current;
   next.itemId = itemId;
-  next.type = listeningTypeVocabulary;
-  next.text = word.word;
+  next.type = type;
+  next.text = text;
   progress.items[itemId] = next;
   progress.updatedAt = now;
   return saveListeningProgress(progress).items[itemId];
 }
 
-function recordListeningSeen(word) {
-  return updateListeningProgress(word, (record, now) => ({
+function recordListeningSeen(item, type = listeningType) {
+  return updateListeningProgress(item, type, (record, now) => ({
     ...record,
     seenCount: normalizeListeningNumber(record.seenCount) + 1,
     lastSeenAt: now,
   }));
 }
 
-function recordListeningPlay(word, mode) {
-  return updateListeningProgress(word, (record) => ({
+function recordListeningPlay(item, mode, type = listeningType) {
+  return updateListeningProgress(item, type, (record) => ({
     ...record,
     practicePlayCount: normalizeListeningNumber(record.practicePlayCount) + (mode === listeningModePractice ? 1 : 0),
     testPlayCount: normalizeListeningNumber(record.testPlayCount) + (mode === listeningModeTest ? 1 : 0),
   }));
 }
 
-function recordListeningAnswer(word, isCorrect) {
-  return updateListeningProgress(word, (record, now) => ({
+function recordListeningAnswer(item, isCorrect, type = listeningType) {
+  return updateListeningProgress(item, type, (record, now) => ({
     ...record,
     answeredCount: normalizeListeningNumber(record.answeredCount) + 1,
     correctCount: normalizeListeningNumber(record.correctCount) + (isCorrect ? 1 : 0),
@@ -292,16 +384,22 @@ function shuffleListeningItems(items) {
   return shuffled;
 }
 
-function getListeningOptions(currentWord) {
-  const correctAnswer = currentWord.word;
-  const distractors = shuffleListeningItems(listeningVocabulary)
-    .filter((word) => word.word && word.word !== correctAnswer)
-    .map((word) => word.word);
+function getItemText(item, type = listeningType) {
+  return getActivityConfig(type).getText(item);
+}
+
+function getListeningOptions(currentItem, type = listeningType) {
+  const config = getActivityConfig(type);
+  const correctAnswer = config.getText(currentItem);
+  const distractors = shuffleListeningItems(config.items)
+    .map((item) => config.getText(item))
+    .filter((text) => text && text !== correctAnswer);
   return shuffleListeningItems([correctAnswer, ...new Set(distractors)].slice(0, 4));
 }
 
-function selectListeningTestQuestions() {
-  const availableQuestions = shuffleListeningItems(listeningVocabulary).slice(0);
+function selectListeningTestQuestions(type = listeningType) {
+  const config = getActivityConfig(type);
+  const availableQuestions = shuffleListeningItems(config.items).slice(0);
   if (availableQuestions.length <= LISTENING_TEST_TARGET_COUNT) {
     return availableQuestions;
   }
@@ -311,28 +409,34 @@ function selectListeningTestQuestions() {
   const answeredPool = [];
   const unseenPool = [];
 
-  availableQuestions.forEach((word) => {
-    const record = normalizeListeningItem(progress.items[getListeningItemId(word)], getListeningItemId(word), word.word);
+  availableQuestions.forEach((item) => {
+    const itemId = getListeningItemId(item, type);
+    const record = normalizeListeningItem(progress.items[itemId], itemId, config.getText(item), type);
+    if (record.type !== type) {
+      unseenPool.push(item);
+      return;
+    }
     if (record.wrongCount > 0) {
-      wrongPool.push(word);
+      wrongPool.push(item);
       return;
     }
     if (record.answeredCount > 0 || record.seenCount > 0) {
-      answeredPool.push(word);
+      answeredPool.push(item);
       return;
     }
-    unseenPool.push(word);
+    unseenPool.push(item);
   });
 
   const selectedIds = new Set();
   const selected = [];
   const addFromPool = (pool, count) => {
-    shuffleListeningItems(pool).forEach((word) => {
-      if (selected.length >= LISTENING_TEST_TARGET_COUNT || count <= 0 || selectedIds.has(getListeningItemId(word))) {
+    shuffleListeningItems(pool).forEach((item) => {
+      const itemId = getListeningItemId(item, type);
+      if (selected.length >= LISTENING_TEST_TARGET_COUNT || count <= 0 || selectedIds.has(itemId)) {
         return;
       }
-      selectedIds.add(getListeningItemId(word));
-      selected.push(word);
+      selectedIds.add(itemId);
+      selected.push(item);
       count -= 1;
     });
   };
@@ -398,11 +502,11 @@ function createModeActionButton(label, onClick, className = "answer-button") {
 }
 
 function updateModeButtons() {
-  const isPracticeMode = listeningMode === listeningModePractice;
-  practiceModeButton.classList.toggle("is-active", isPracticeMode);
-  practiceModeButton.setAttribute("aria-pressed", String(isPracticeMode));
-  testModeButton.classList.toggle("is-active", !isPracticeMode);
-  testModeButton.setAttribute("aria-pressed", String(!isPracticeMode));
+  listeningModeButtons.forEach((button) => {
+    const isActive = button.dataset.listeningType === listeningType && button.dataset.listeningMode === listeningMode;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
 }
 
 function renderCurrentMode() {
@@ -410,9 +514,10 @@ function renderCurrentMode() {
   updateModeButtons();
   updateSpeechSupportMessage();
 
-  if (!listeningVocabulary.length) {
-    listeningProgress.textContent = "單字聽力：0 / 0";
-    listeningContent.replaceChildren(createEmptyMessage("目前沒有可用的單字聽力題目"));
+  const config = getActivityConfig();
+  if (!config.items.length) {
+    listeningProgress.textContent = `${config.label}：0 / 0`;
+    listeningContent.replaceChildren(createEmptyMessage(config.emptyMessage));
     return;
   }
 
@@ -425,15 +530,15 @@ function renderCurrentMode() {
 }
 
 function resetPracticeState() {
-  practiceQuestions = shuffleListeningItems(listeningVocabulary);
+  practiceQuestions = shuffleListeningItems(getActivityConfig().items);
   practiceQuestionIndex = 0;
   practiceAnsweredCurrentQuestion = false;
-  practiceCurrentOptions = [];
 }
 
 function renderPracticePreparation() {
   testPhase = "ready";
-  listeningProgress.textContent = `單字聽力練習：0 / ${listeningVocabulary.length}`;
+  const config = getActivityConfig();
+  listeningProgress.textContent = `${config.practiceTitle}：0 / ${config.items.length}`;
   const card = document.createElement("article");
   card.className = "quiz-card quiz-ready-card gept-quiz-card";
   const badge = document.createElement("span");
@@ -441,11 +546,11 @@ function renderPracticePreparation() {
   badge.textContent = "練習準備";
   const title = document.createElement("h3");
   title.className = "quiz-title";
-  title.textContent = "單字聽力練習";
+  title.textContent = config.practiceTitle;
   const details = document.createElement("div");
   details.className = "quiz-ready-details";
   [
-    "請聽音訊後選出正確英文單字",
+    `請聽音訊後選出正確${config.answerLabel}`,
     "播放次數不限，可以重複聆聽",
     "不設定答題秒數",
     "不顯示中文提示",
@@ -461,24 +566,25 @@ function renderPracticePreparation() {
   listeningContent.replaceChildren(card);
 }
 
-function playPracticeWord(word) {
-  if (speakEnglish(word.word)) {
-    recordListeningPlay(word, listeningModePractice);
+function playPracticeItem(item) {
+  if (speakEnglish(getItemText(item))) {
+    recordListeningPlay(item, listeningModePractice);
   }
 }
 
 function renderPracticeQuestion() {
   cancelEnglishSpeech();
-  const currentWord = practiceQuestions[practiceQuestionIndex];
-  if (!currentWord) {
+  const config = getActivityConfig();
+  const currentItem = practiceQuestions[practiceQuestionIndex];
+  if (!currentItem) {
     renderPracticePreparation();
     return;
   }
 
-  recordListeningSeen(currentWord);
+  recordListeningSeen(currentItem);
   practiceAnsweredCurrentQuestion = false;
-  practiceCurrentOptions = getListeningOptions(currentWord);
-  listeningProgress.textContent = `單字聽力練習：${practiceQuestionIndex + 1} / ${practiceQuestions.length}`;
+  const practiceCurrentOptions = getListeningOptions(currentItem);
+  listeningProgress.textContent = `${config.practiceTitle}：${practiceQuestionIndex + 1} / ${practiceQuestions.length}`;
 
   const card = document.createElement("article");
   card.className = "quiz-card gept-quiz-card";
@@ -486,11 +592,11 @@ function renderPracticeQuestion() {
   prompt.className = "quiz-prompt";
   const label = document.createElement("p");
   label.className = "quiz-prompt-label";
-  label.textContent = `單字聽力練習｜第 ${practiceQuestionIndex + 1} 題`;
+  label.textContent = `${config.practiceTitle}｜第 ${practiceQuestionIndex + 1} 題`;
   const instruction = document.createElement("p");
   instruction.className = "gept-quiz-instruction";
-  instruction.textContent = "請聽音訊後選出正確英文單字。";
-  const playButton = createModeActionButton("播放音訊 / 再聽一次", () => playPracticeWord(currentWord), "secondary-button listening-play-button");
+  instruction.textContent = `請聽音訊後選出正確${config.answerLabel}。`;
+  const playButton = createModeActionButton("播放音訊 / 再聽一次", () => playPracticeItem(currentItem), "secondary-button listening-play-button");
   prompt.append(label, instruction, playButton);
 
   const options = document.createElement("div");
@@ -505,7 +611,7 @@ function renderPracticeQuestion() {
     optionButton.type = "button";
     optionButton.textContent = `${String.fromCharCode(65 + index)}. ${answer}`;
     optionButton.dataset.answer = answer;
-    optionButton.addEventListener("click", () => handlePracticeAnswer(optionButton, currentWord, feedback));
+    optionButton.addEventListener("click", () => handlePracticeAnswer(optionButton, currentItem, feedback));
     options.append(optionButton);
   });
 
@@ -523,17 +629,19 @@ function renderPracticeQuestion() {
   listeningContent.replaceChildren(card);
 }
 
-function handlePracticeAnswer(selectedButton, currentWord, feedback) {
+function handlePracticeAnswer(selectedButton, currentItem, feedback) {
   if (practiceAnsweredCurrentQuestion) {
     return;
   }
 
+  const config = getActivityConfig();
+  const correctAnswer = getItemText(currentItem);
   practiceAnsweredCurrentQuestion = true;
-  const isCorrect = selectedButton.dataset.answer === currentWord.word;
-  recordListeningAnswer(currentWord, isCorrect);
+  const isCorrect = selectedButton.dataset.answer === correctAnswer;
+  recordListeningAnswer(currentItem, isCorrect);
 
   listeningContent.querySelectorAll(".gept-quiz-option").forEach((button) => {
-    const buttonIsCorrect = button.dataset.answer === currentWord.word;
+    const buttonIsCorrect = button.dataset.answer === correctAnswer;
     button.classList.toggle("is-correct", buttonIsCorrect);
     button.classList.toggle("is-wrong", button === selectedButton && !buttonIsCorrect);
     button.disabled = true;
@@ -541,7 +649,7 @@ function handlePracticeAnswer(selectedButton, currentWord, feedback) {
 
   feedback.classList.toggle("is-correct", isCorrect);
   feedback.classList.toggle("is-wrong", !isCorrect);
-  feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確英文答案是：${currentWord.word}`;
+  feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確${config.answerLabel}是：${correctAnswer}`;
   const nextButton = document.querySelector("#nextListeningPracticeQuestion");
   if (nextButton) {
     nextButton.disabled = false;
@@ -554,7 +662,6 @@ function resetTestState() {
   testQuestionIndex = 0;
   testAnsweredQuestionIds = new Set();
   testPlayedQuestionIds = new Set();
-  testCurrentOptions = [];
   testResults = [];
   testCorrectCount = 0;
   testPhase = "ready";
@@ -562,7 +669,8 @@ function resetTestState() {
 
 function renderTestPreparation() {
   resetTestState();
-  listeningProgress.textContent = `單字聽力測驗準備中：0 / ${testQuestions.length}`;
+  const config = getActivityConfig();
+  listeningProgress.textContent = `${config.testTitle}準備中：0 / ${testQuestions.length}`;
   const card = document.createElement("article");
   card.className = "quiz-card quiz-ready-card gept-quiz-card";
   const badge = document.createElement("span");
@@ -570,7 +678,7 @@ function renderTestPreparation() {
   badge.textContent = "測驗準備";
   const title = document.createElement("h3");
   title.className = "quiz-title";
-  title.textContent = "單字聽力測驗";
+  title.textContent = config.testTitle;
   const details = document.createElement("div");
   details.className = "quiz-ready-details";
   [
@@ -593,14 +701,14 @@ function renderTestPreparation() {
   listeningContent.replaceChildren(card);
 }
 
-function playTestWordOnce(word) {
-  const itemId = getListeningItemId(word);
+function playTestItemOnce(item) {
+  const itemId = getListeningItemId(item);
   if (testPlayedQuestionIds.has(itemId)) {
     return;
   }
   testPlayedQuestionIds.add(itemId);
-  if (speakEnglish(word.word)) {
-    recordListeningPlay(word, listeningModeTest);
+  if (speakEnglish(getItemText(item))) {
+    recordListeningPlay(item, listeningModeTest);
   }
 }
 
@@ -611,15 +719,16 @@ function renderTestQuestion() {
     return;
   }
 
-  const currentWord = testQuestions[testQuestionIndex];
-  if (!currentWord) {
+  const config = getActivityConfig();
+  const currentItem = testQuestions[testQuestionIndex];
+  if (!currentItem) {
     renderTestCompletePanel();
     return;
   }
 
-  recordListeningSeen(currentWord);
-  testCurrentOptions = getListeningOptions(currentWord);
-  listeningProgress.textContent = `單字聽力測驗：${testQuestionIndex + 1} / ${testQuestions.length}`;
+  recordListeningSeen(currentItem);
+  const testCurrentOptions = getListeningOptions(currentItem);
+  listeningProgress.textContent = `${config.testTitle}：${testQuestionIndex + 1} / ${testQuestions.length}`;
 
   const card = document.createElement("article");
   card.className = "quiz-card gept-quiz-card";
@@ -627,10 +736,10 @@ function renderTestQuestion() {
   prompt.className = "quiz-prompt";
   const label = document.createElement("p");
   label.className = "quiz-prompt-label";
-  label.textContent = `單字聽力測驗｜第 ${testQuestionIndex + 1} / ${testQuestions.length} 題`;
+  label.textContent = `${config.testTitle}｜第 ${testQuestionIndex + 1} / ${testQuestions.length} 題`;
   const instruction = document.createElement("p");
   instruction.className = "gept-quiz-instruction";
-  instruction.textContent = "請聽音訊後選出正確英文單字。";
+  instruction.textContent = `請聽音訊後選出正確${config.answerLabel}。`;
   const playStatus = document.createElement("p");
   playStatus.className = "listening-play-status";
   playStatus.textContent = "音訊已播放一次，請作答。";
@@ -644,30 +753,33 @@ function renderTestQuestion() {
     optionButton.type = "button";
     optionButton.textContent = `${String.fromCharCode(65 + index)}. ${answer}`;
     optionButton.dataset.answer = answer;
-    optionButton.addEventListener("click", () => handleTestAnswer(optionButton, currentWord));
+    optionButton.addEventListener("click", () => handleTestAnswer(optionButton, currentItem));
     options.append(optionButton);
   });
 
   card.append(prompt, options);
   listeningContent.replaceChildren(card);
-  playTestWordOnce(currentWord);
+  playTestItemOnce(currentItem);
 }
 
-function handleTestAnswer(selectedButton, currentWord) {
+function handleTestAnswer(selectedButton, currentItem) {
   if (testPhase !== "running") {
     return;
   }
 
-  const itemId = getListeningItemId(currentWord);
+  const itemId = getListeningItemId(currentItem);
   if (testAnsweredQuestionIds.has(itemId)) {
     return;
   }
 
+  const correctAnswer = getItemText(currentItem);
   testAnsweredQuestionIds.add(itemId);
   const selectedAnswer = selectedButton.dataset.answer;
-  const isCorrect = selectedAnswer === currentWord.word;
-  recordListeningAnswer(currentWord, isCorrect);
-  syncListeningTestAnswerToVocabProgress(currentWord, isCorrect);
+  const isCorrect = selectedAnswer === correctAnswer;
+  recordListeningAnswer(currentItem, isCorrect);
+  if (listeningType === listeningTypeVocabulary) {
+    syncListeningTestAnswerToVocabProgress(currentItem, isCorrect);
+  }
 
   if (isCorrect) {
     testCorrectCount += 1;
@@ -676,7 +788,7 @@ function handleTestAnswer(selectedButton, currentWord) {
   testResults.push({
     order: testQuestionIndex + 1,
     userAnswer: selectedAnswer,
-    correctAnswer: currentWord.word,
+    correctAnswer,
     result: isCorrect ? "correct" : "wrong",
   });
 
@@ -695,11 +807,12 @@ function handleTestAnswer(selectedButton, currentWord) {
 }
 
 function createTestResultList() {
+  const config = getActivityConfig();
   const list = document.createElement("ol");
   list.className = "quiz-result-list";
   testResults.forEach((result) => {
     const item = document.createElement("li");
-    item.textContent = `第 ${result.order} 題｜你的答案：${result.userAnswer}｜正確英文單字：${result.correctAnswer}｜結果：${result.result === "correct" ? "答對" : "答錯"}`;
+    item.textContent = `第 ${result.order} 題｜你的答案：${result.userAnswer}｜正確${config.answerLabel}：${result.correctAnswer}｜結果：${result.result === "correct" ? "答對" : "答錯"}`;
     list.append(item);
   });
   return list;
@@ -708,16 +821,17 @@ function createTestResultList() {
 function renderTestCompletePanel() {
   cancelEnglishSpeech();
   testPhase = "complete";
+  const config = getActivityConfig();
   const total = testResults.length;
   const wrongCount = total - testCorrectCount;
   const accuracy = total ? Math.round((testCorrectCount / total) * 100) : 0;
-  listeningProgress.textContent = `單字聽力測驗完成：${total} / ${total}`;
+  listeningProgress.textContent = `${config.testTitle}完成：${total} / ${total}`;
 
   const card = document.createElement("article");
   card.className = "quiz-card gept-quiz-card";
   const title = document.createElement("h3");
   title.className = "quiz-title";
-  title.textContent = "單字聽力測驗";
+  title.textContent = config.testTitle;
   const summary = document.createElement("p");
   summary.className = "article-result-message";
   summary.textContent = `總題數：${total} 題｜答對：${testCorrectCount} 題｜答錯：${wrongCount} 題｜正確率：${accuracy}%`;
@@ -733,29 +847,43 @@ function renderTestCompletePanel() {
   listeningContent.replaceChildren(card);
 }
 
-practiceModeButton.addEventListener("click", () => {
-  if (listeningMode === listeningModePractice) {
+function setListeningActivity(type, mode) {
+  if (listeningType === type && listeningMode === mode) {
     return;
   }
-  listeningMode = listeningModePractice;
-  window.location.hash = "practice";
+  listeningType = type;
+  listeningMode = mode;
+  window.location.hash = `${type}-${mode}`;
   renderCurrentMode();
-});
+}
 
-testModeButton.addEventListener("click", () => {
-  if (listeningMode === listeningModeTest) {
-    return;
+function parseListeningHash() {
+  const hash = window.location.hash.replace("#", "");
+  if (hash === "test") {
+    return { type: listeningTypeVocabulary, mode: listeningModeTest };
   }
-  listeningMode = listeningModeTest;
-  window.location.hash = "test";
-  renderCurrentMode();
+  if (hash === "practice") {
+    return { type: listeningTypeVocabulary, mode: listeningModePractice };
+  }
+  const [type, mode] = hash.split("-");
+  return {
+    type: type === listeningTypeSentence ? listeningTypeSentence : listeningTypeVocabulary,
+    mode: mode === listeningModeTest ? listeningModeTest : listeningModePractice,
+  };
+}
+
+listeningModeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    setListeningActivity(button.dataset.listeningType, button.dataset.listeningMode);
+  });
 });
 
 window.addEventListener("beforeunload", cancelEnglishSpeech);
 window.addEventListener("hashchange", () => {
-  const nextMode = window.location.hash === "#test" ? listeningModeTest : listeningModePractice;
-  if (nextMode !== listeningMode) {
-    listeningMode = nextMode;
+  const nextActivity = parseListeningHash();
+  if (nextActivity.type !== listeningType || nextActivity.mode !== listeningMode) {
+    listeningType = nextActivity.type;
+    listeningMode = nextActivity.mode;
     renderCurrentMode();
   }
 });
@@ -766,5 +894,7 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
-listeningMode = window.location.hash === "#test" ? listeningModeTest : listeningModePractice;
+const initialActivity = parseListeningHash();
+listeningType = initialActivity.type;
+listeningMode = initialActivity.mode;
 renderCurrentMode();
