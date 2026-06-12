@@ -98,6 +98,7 @@ let vocabularyQuizResults = [];
 let vocabularyQuizTimeoutCount = 0;
 let vocabularyQuizTimer = null;
 let vocabularyQuizRemainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
+let vocabularyQuizPhase = "idle";
 let englishVocabProgress = loadEnglishVocabProgress();
 
 function createEmptyEnglishVocabProgress() {
@@ -468,6 +469,7 @@ function startVocabularyQuizTimer() {
 
 function resetQuizState() {
   clearVocabularyQuizTimer();
+  vocabularyQuizPhase = "ready";
   quizQuestionIndex = 0;
   quizCorrectCount = 0;
   quizAnsweredCount = 0;
@@ -535,10 +537,12 @@ function renderCurrentMode() {
   quizPanel.hidden = !isQuizMode;
 
   if (isQuizMode) {
-    renderQuizQuestion();
+    renderQuizPreparation();
     return;
   }
 
+  clearVocabularyQuizTimer();
+  vocabularyQuizPhase = "idle";
   renderCurrentWord();
 }
 
@@ -928,6 +932,72 @@ function renderEmptyQuizMessage(message) {
 }
 
 
+
+function scrollToVocabularyQuizStart() {
+  quizPanel?.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function createVocabularyQuizStartButton() {
+  const startButton = document.createElement("button");
+  startButton.className = "answer-button quiz-start-button";
+  startButton.type = "button";
+  startButton.textContent = "開始測驗";
+  startButton.addEventListener("click", () => {
+    if (vocabularyQuizPhase === "running") {
+      return;
+    }
+    vocabularyQuizPhase = "running";
+    renderQuizQuestion();
+  });
+  return startButton;
+}
+
+function renderQuizPreparation() {
+  clearVocabularyQuizTimer();
+  vocabularyQuizPhase = "ready";
+  const activeQuestions = getActiveQuizQuestions();
+  const quizTypeSetting = getCurrentQuizTypeSetting();
+  quizTitle.textContent = isWrongReviewMode ? `錯題複習：${quizTypeSetting.title}` : "單字測驗";
+  updateQuizTypeButtons(currentQuizType);
+  updateWrongQuestionControls();
+  quizScore.textContent = "0 / 0";
+  quizProgress.textContent = `0 / ${activeQuestions.length}`;
+  currentProgress.textContent = activeQuestions.length ? `測驗準備中：0 / ${activeQuestions.length}` : "測驗準備中：0 / 0";
+  nextQuizQuestionButton.disabled = true;
+  reshuffleQuizVocabularyButton.disabled = false;
+  reshuffleQuizVocabularyButton.textContent = isWrongReviewMode ? "重新隨機錯題" : "重新隨機";
+
+  if (!activeQuestions.length) {
+    renderEmptyQuizMessage(isWrongReviewMode ? "目前沒有錯題。" : "目前沒有可用題目");
+    return;
+  }
+
+  const card = document.createElement("article");
+  card.className = "quiz-card quiz-ready-card gept-quiz-card";
+  const badge = document.createElement("span");
+  badge.className = "card-number";
+  badge.textContent = "測驗準備";
+  const title = document.createElement("h3");
+  title.className = "quiz-title";
+  title.textContent = "英文測驗準備";
+  const details = document.createElement("div");
+  details.className = "quiz-ready-details";
+  [
+    `測驗類型：單字測驗`,
+    `本次測驗：${activeQuestions.length} 題`,
+    `每題限時：${ENGLISH_QUIZ_TIME_LIMIT_SECONDS} 秒`,
+    "請按下方按鈕開始測驗。",
+  ].forEach((text) => {
+    const item = document.createElement("p");
+    item.textContent = text;
+    details.append(item);
+  });
+  card.append(badge, title, details, createVocabularyQuizStartButton());
+  quizContent.replaceChildren(card);
+  updateRandomStatus();
+  updateSearchControls();
+}
+
 function createVocabularyQuizResultList() {
   const list = document.createElement("ol");
   list.className = "quiz-result-list";
@@ -941,6 +1011,7 @@ function createVocabularyQuizResultList() {
 
 function renderVocabularyQuizCompletePanel() {
   clearVocabularyQuizTimer();
+  vocabularyQuizPhase = "complete";
   const total = vocabularyQuizResults.length;
   const wrongCount = total - quizCorrectCount;
   const accuracy = total ? Math.round((quizCorrectCount / total) * 100) : 0;
@@ -960,7 +1031,7 @@ function renderVocabularyQuizCompletePanel() {
   retryButton.textContent = "再測一次";
   retryButton.addEventListener("click", () => {
     resetQuizState();
-    renderQuizQuestion();
+    renderQuizPreparation();
   });
   const homeLink = document.createElement("a");
   homeLink.className = "secondary-button";
@@ -974,21 +1045,13 @@ function renderVocabularyQuizCompletePanel() {
   quizProgress.textContent = `${total} / ${total}`;
   currentProgress.textContent = `單字測驗完成：${total} / ${total}`;
   updateQuizScoreDisplay();
-
-  if (!isWrongReviewMode) {
-    clearVocabularyQuizTimer();
-    window.setTimeout(() => {
-      if (quizQuestionIndex >= activeQuestions.length - 1) {
-        renderVocabularyQuizCompletePanel();
-        return;
-      }
-      quizQuestionIndex += 1;
-      renderQuizQuestion();
-    }, 650);
-  }
 }
 
 function renderQuizQuestion() {
+  if (vocabularyQuizPhase !== "running") {
+    renderQuizPreparation();
+    return;
+  }
   const activeQuestions = getActiveQuizQuestions();
   const currentQuestion = activeQuestions[quizQuestionIndex];
   const activeQuizType = currentQuestion ? getQuizTypeForQuestion(currentQuestion) : currentQuizType;
@@ -1084,6 +1147,9 @@ function renderQuizQuestion() {
 }
 
 function handleQuizAnswer(selectedButton, correctAnswer) {
+  if (vocabularyQuizPhase !== "running") {
+    return;
+  }
   const feedback = document.querySelector("#geptQuizFeedback");
   const optionButtons = quizContent.querySelectorAll(".gept-quiz-option");
   const activeQuestions = getActiveQuizQuestions();
@@ -1160,6 +1226,9 @@ function handleQuizAnswer(selectedButton, correctAnswer) {
 
 
 function handleQuizTimeout() {
+  if (vocabularyQuizPhase !== "running") {
+    return;
+  }
   const activeQuestions = getActiveQuizQuestions();
   const currentQuestion = activeQuestions[quizQuestionIndex];
   if (!currentQuestion || quizAnsweredCurrentQuestion || isWrongReviewMode) {
@@ -1265,6 +1334,7 @@ quizModeButton.addEventListener("click", () => {
   isWrongReviewMode = false;
   resetQuizState();
   renderCurrentMode();
+  scrollToVocabularyQuizStart();
 });
 
 quizTypeButtons.forEach((button) => {
@@ -1275,7 +1345,8 @@ quizTypeButtons.forEach((button) => {
 
     currentQuizType = button.dataset.geptQuizType;
     resetQuizState();
-    renderQuizQuestion();
+    renderQuizPreparation();
+    scrollToVocabularyQuizStart();
   });
 });
 
@@ -1289,6 +1360,7 @@ reshuffleQuizVocabularyButton.addEventListener("click", () => {
 
   reshuffleCurrentVocabulary();
   renderCurrentMode();
+  scrollToVocabularyQuizStart();
 });
 
 nextQuizQuestionButton.addEventListener("click", () => {

@@ -23,6 +23,7 @@ let hasAnsweredCurrentQuestion = false;
 let currentTimer = null;
 let remainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
 let quizResults = [];
+let quizPhase = "idle";
 
 const articleTitle = document.querySelector("#readingArticleTitle");
 const articleMeta = document.querySelector("#readingArticleMeta");
@@ -67,7 +68,7 @@ const totalWrongLabel = document.querySelector("#readingTotalWrongLabel");
 const accuracyLabel = document.querySelector("#readingAccuracyLabel");
 
 const timerText = document.createElement("span");
-timerText.innerHTML = `剩餘：<strong id="readingTimer">${ENGLISH_QUIZ_TIME_LIMIT_SECONDS}</strong> 秒`;
+timerText.innerHTML = `<span id="readingTimerStatus">尚未開始</span>`;
 progressText.closest(".quiz-stats")?.append(timerText);
 
 function getCurrentQuestion() {
@@ -82,13 +83,16 @@ function clearTimer() {
 }
 
 function updateTimerText() {
-  const timer = document.querySelector("#readingTimer");
-  if (timer) {
-    timer.textContent = String(remainingSeconds);
+  const timerStatus = document.querySelector("#readingTimerStatus");
+  if (timerStatus) {
+    timerStatus.innerHTML = `剩餘：<strong id="readingTimer">${remainingSeconds}</strong> 秒`;
   }
 }
 
 function startTimer() {
+  if (quizPhase !== "running") {
+    return;
+  }
   clearTimer();
   remainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
   updateTimerText();
@@ -116,6 +120,9 @@ function updateScoreAndProgress() {
 
 function scheduleNextQuestion() {
   window.setTimeout(() => {
+    if (quizPhase !== "running") {
+      return;
+    }
     if (currentQuestionIndex >= quizQuestions.length - 1) {
       renderCompletePanel();
       return;
@@ -126,7 +133,7 @@ function scheduleNextQuestion() {
 }
 
 function recordResult(question, userAnswer, result) {
-  if (!question || hasAnsweredCurrentQuestion) {
+  if (quizPhase !== "running" || !question || hasAnsweredCurrentQuestion) {
     return;
   }
   hasAnsweredCurrentQuestion = true;
@@ -166,7 +173,68 @@ function renderOptions(question) {
   optionList.replaceChildren(...buttons);
 }
 
+
+function scrollToPreparationPanel() {
+  practicePanel?.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+function renderPreparationPanel() {
+  clearTimer();
+  quizPhase = "ready";
+  practicePanel.hidden = false;
+  completePanel.hidden = true;
+  const total = quizQuestions.length;
+  articleTitle.textContent = "英文測驗準備";
+  articleMeta.textContent = `${READING_QUIZ_TITLE}｜測驗準備中`;
+  passageText.textContent = total ? "請按下方按鈕開始測驗。" : "目前沒有可用題目";
+  translationText.textContent = "";
+  translationText.hidden = true;
+  translationToggle.disabled = true;
+  questionTypeText.textContent = `本次測驗：${total} 題｜每題限時：${ENGLISH_QUIZ_TIME_LIMIT_SECONDS} 秒`;
+  questionText.textContent = "";
+  optionList.replaceChildren();
+  clearFeedback();
+  scoreText.textContent = "0 / 0";
+  progressText.textContent = `0 / ${total}`;
+  articleProgressText.textContent = `${READING_QUIZ_TITLE}｜測驗準備中`;
+  wrongCountText.textContent = "0 題";
+  const timerStatus = document.querySelector("#readingTimerStatus");
+  if (timerStatus) timerStatus.textContent = "尚未開始";
+  nextQuestionButton.disabled = true;
+  nextArticleButton.disabled = true;
+
+  const readyCard = document.createElement("article");
+  readyCard.className = "quiz-card quiz-ready-card";
+  readyCard.innerHTML = `
+    <span class="card-number">測驗準備</span>
+    <h3 class="quiz-title">英文測驗準備</h3>
+    <div class="quiz-ready-details">
+      <p>測驗類型：${READING_QUIZ_TITLE}</p>
+      <p>本次測驗：${total} 題</p>
+      <p>每題限時：${ENGLISH_QUIZ_TIME_LIMIT_SECONDS} 秒</p>
+      <p>${total ? "請按下方按鈕開始測驗。" : "目前沒有可用題目。"}</p>
+    </div>
+  `;
+  if (total) {
+    const startButton = document.createElement("button");
+    startButton.className = "answer-button quiz-start-button";
+    startButton.type = "button";
+    startButton.textContent = "開始測驗";
+    startButton.addEventListener("click", () => {
+      if (quizPhase === "running") return;
+      quizPhase = "running";
+      renderQuestion();
+    });
+    readyCard.append(startButton);
+  }
+  optionList.replaceChildren(readyCard);
+}
+
 function renderQuestion() {
+  if (quizPhase !== "running") {
+    renderPreparationPanel();
+    return;
+  }
   const question = getCurrentQuestion();
   clearTimer();
 
@@ -205,7 +273,7 @@ function renderQuestion() {
 
 function handleAnswer(answer) {
   const question = getCurrentQuestion();
-  if (!question || hasAnsweredCurrentQuestion) {
+  if (quizPhase !== "running" || !question || hasAnsweredCurrentQuestion) {
     return;
   }
   const isCorrect = answer === question.answer;
@@ -223,7 +291,7 @@ function handleAnswer(answer) {
 
 function handleTimeout() {
   const question = getCurrentQuestion();
-  if (!question || hasAnsweredCurrentQuestion) {
+  if (quizPhase !== "running" || !question || hasAnsweredCurrentQuestion) {
     return;
   }
   recordResult(question, "未作答", "timeout");
@@ -250,6 +318,7 @@ function createResultList() {
 
 function renderCompletePanel() {
   clearTimer();
+  quizPhase = "complete";
   const total = quizResults.length;
   const wrongCount = total - correctCount;
   const accuracy = total ? Math.round((correctCount / total) * 100) : 0;
@@ -276,8 +345,9 @@ function renderCompletePanel() {
   completePanel.querySelector(".article-result-card")?.append(createResultList());
 }
 
-function restartPractice() {
+function restartPractice(shouldScroll = false) {
   clearTimer();
+  quizPhase = "ready";
   quizQuestions = selectEnglishQuizQuestions(flattenReadingQuestions(readingArticles), READING_QUIZ_CATEGORY);
   currentQuestionIndex = 0;
   correctCount = 0;
@@ -290,13 +360,16 @@ function restartPractice() {
   clearWrongListButton.disabled = true;
   returnPracticeButton.hidden = true;
   wrongMessage.textContent = "";
-  renderQuestion();
+  renderPreparationPanel();
+  if (shouldScroll) {
+    scrollToPreparationPanel();
+  }
 }
 
 translationToggle.addEventListener("click", () => {});
 nextQuestionButton.addEventListener("click", () => {});
 nextArticleButton.addEventListener("click", () => {});
-restartButtons.forEach((button) => button.addEventListener("click", restartPractice));
+restartButtons.forEach((button) => button.addEventListener("click", () => restartPractice(true)));
 window.addEventListener("beforeunload", clearTimer);
 
 restartPractice();
