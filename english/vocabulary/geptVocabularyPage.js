@@ -40,6 +40,7 @@ const allLevelsLabel = "全部級數";
 const availableLevels = [allLevelsLabel, "初級", "中級", "中高級"];
 const STORAGE_KEY = "englishVocabProgress_v1";
 const progressVersion = 1;
+const VOCAB_TEST_AUDIO_LIMIT_ONCE = false;
 const progressStatusAll = "all";
 const progressStatusNew = "new";
 const progressStatusLearning = "learning";
@@ -99,7 +100,78 @@ let vocabularyQuizTimeoutCount = 0;
 let vocabularyQuizTimer = null;
 let vocabularyQuizRemainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
 let vocabularyQuizPhase = "idle";
+let vocabularyQuizPlayedAudioKeys = new Set();
 let englishVocabProgress = loadEnglishVocabProgress();
+
+
+function speakEnglishWord(word) {
+  if (!word || typeof word !== "string") {
+    return false;
+  }
+
+  if (!("speechSynthesis" in window) || typeof window.SpeechSynthesisUtterance !== "function") {
+    alert("目前瀏覽器不支援語音播放功能");
+    return false;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-US";
+  utterance.rate = 0.85;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+
+  window.speechSynthesis.speak(utterance);
+  return true;
+}
+
+function createEnglishWordAudioButton(word, options = {}) {
+  const button = document.createElement("button");
+  button.className = "word-audio-button";
+  button.type = "button";
+  button.textContent = "🔊";
+  button.setAttribute("aria-label", `播放英文單字發音：${word || "單字"}`);
+  button.title = "播放英文單字發音";
+
+  if (options.disabled) {
+    button.disabled = true;
+  }
+
+  button.addEventListener("click", () => {
+    if (button.disabled) {
+      return;
+    }
+
+    const didSpeak = speakEnglishWord(word);
+    if (!didSpeak) {
+      return;
+    }
+
+    button.classList.add("is-playing");
+    window.setTimeout(() => {
+      button.classList.remove("is-playing");
+    }, 650);
+
+    if (typeof options.onPlay === "function") {
+      options.onPlay(button);
+    }
+  });
+
+  return button;
+}
+
+function createEnglishWordWithAudio(headingTag, word, className, options = {}) {
+  const wrapper = document.createElement("div");
+  wrapper.className = "english-word-audio-row";
+
+  const wordTitle = document.createElement(headingTag);
+  wordTitle.className = className;
+  wordTitle.textContent = word || "—";
+
+  wrapper.append(wordTitle, createEnglishWordAudioButton(options.speechWord || word, options));
+  return wrapper;
+}
 
 function createEmptyEnglishVocabProgress() {
   return {
@@ -791,15 +863,13 @@ function renderCurrentWord() {
 
   wordMeta.append(cardNumber, levelBadge);
 
-  const wordTitle = document.createElement("h2");
-  wordTitle.className = "english-word";
-  wordTitle.textContent = currentWord.word || "—";
+  const wordTitleRow = createEnglishWordWithAudio("h2", currentWord.word, "english-word");
 
   const partOfSpeech = document.createElement("p");
   partOfSpeech.className = "kana english-part-of-speech";
   partOfSpeech.textContent = currentWord.partOfSpeech || "—";
 
-  cardHeader.append(wordMeta, wordTitle, partOfSpeech);
+  cardHeader.append(wordMeta, wordTitleRow, partOfSpeech);
 
   const details = document.createElement("div");
   details.className = "vocabulary-details";
@@ -1100,15 +1170,28 @@ function renderQuizQuestion() {
   promptLabel.textContent = `單字測驗｜第 ${quizQuestionIndex + 1} / ${activeQuestions.length} 題｜剩餘 ${ENGLISH_QUIZ_TIME_LIMIT_SECONDS} 秒`;
   promptLabel.innerHTML = `單字測驗｜第 ${quizQuestionIndex + 1} / ${activeQuestions.length} 題｜剩餘 <strong id="geptQuizTimer">${ENGLISH_QUIZ_TIME_LIMIT_SECONDS}</strong> 秒`;
 
-  const wordTitle = document.createElement("h3");
-  wordTitle.className = "english-word gept-quiz-word";
-  wordTitle.textContent = currentWord[quizTypeSetting.promptField] || "—";
+  const quizAudioKey = `${activeQuizType}::${currentWord.questionId || currentWord.id || currentWord.word}::${quizQuestionIndex}`;
+  const wordTitleRow = createEnglishWordWithAudio(
+    "h3",
+    currentWord[quizTypeSetting.promptField] || "—",
+    "english-word gept-quiz-word",
+    {
+      speechWord: currentWord.word,
+      disabled: VOCAB_TEST_AUDIO_LIMIT_ONCE && vocabularyQuizPlayedAudioKeys.has(quizAudioKey),
+      onPlay: (button) => {
+        if (VOCAB_TEST_AUDIO_LIMIT_ONCE) {
+          vocabularyQuizPlayedAudioKeys.add(quizAudioKey);
+          button.disabled = true;
+        }
+      },
+    },
+  );
 
   const promptText = document.createElement("p");
   promptText.className = "gept-quiz-instruction";
   promptText.textContent = quizTypeSetting.instruction;
 
-  prompt.append(promptLabel, wordTitle, promptText);
+  prompt.append(promptLabel, wordTitleRow, promptText);
 
   const options = document.createElement("div");
   options.className = "quiz-options gept-quiz-options";

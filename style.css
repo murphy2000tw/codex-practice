@@ -1099,6 +1099,56 @@ h1 {
   line-height: 1;
 }
 
+.english-word-audio-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 22px 0 8px;
+}
+
+.english-word-audio-row .english-word {
+  margin: 0;
+}
+
+.word-audio-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent-dark);
+  background: #fff8f4;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgb(230 126 34 / 16%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.word-audio-button:hover,
+.word-audio-button:focus-visible {
+  background: #fff1eb;
+  box-shadow: 0 12px 24px rgb(230 126 34 / 22%);
+  transform: translateY(-1px);
+}
+
+.word-audio-button.is-playing {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.word-audio-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+  box-shadow: none;
+}
+
 .english-part-of-speech {
   text-transform: lowercase;
 }
