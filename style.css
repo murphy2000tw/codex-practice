@@ -1118,6 +1118,7 @@ h1 {
   justify-content: center;
   min-width: 48px;
   min-height: 48px;
+  flex: 0 0 auto;
   padding: 8px 10px;
   border: 2px solid var(--accent);
   border-radius: 999px;
@@ -1200,6 +1201,15 @@ h1 {
 }
 
 @media (max-width: 640px) {
+  .english-word-audio-row {
+    gap: 14px;
+  }
+
+  .word-audio-button {
+    min-width: 52px;
+    min-height: 52px;
+  }
+
   .gept-vocabulary-controls {
     display: grid;
     grid-template-columns: 1fr;

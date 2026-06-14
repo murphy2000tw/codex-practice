@@ -40,7 +40,6 @@ const allLevelsLabel = "全部級數";
 const availableLevels = [allLevelsLabel, "初級", "中級", "中高級"];
 const STORAGE_KEY = "englishVocabProgress_v1";
 const progressVersion = 1;
-const VOCAB_TEST_AUDIO_LIMIT_ONCE = false;
 const progressStatusAll = "all";
 const progressStatusNew = "new";
 const progressStatusLearning = "learning";
@@ -100,30 +99,48 @@ let vocabularyQuizTimeoutCount = 0;
 let vocabularyQuizTimer = null;
 let vocabularyQuizRemainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
 let vocabularyQuizPhase = "idle";
-let vocabularyQuizPlayedAudioKeys = new Set();
 let englishVocabProgress = loadEnglishVocabProgress();
 
 
+function canSpeakEnglishWord(word) {
+  return typeof word === "string" && word.trim().length > 0;
+}
+
+function canUseSpeechSynthesis() {
+  return "speechSynthesis" in window && typeof window.SpeechSynthesisUtterance === "function";
+}
+
+function stopEnglishWordAudio() {
+  if (!canUseSpeechSynthesis()) {
+    return;
+  }
+
+  try {
+    window.speechSynthesis.cancel();
+  } catch (error) {
+    // Speech playback is optional; keep the vocabulary page usable if cancellation fails.
+  }
+}
+
 function speakEnglishWord(word) {
-  if (!word || typeof word !== "string") {
+  if (!canSpeakEnglishWord(word) || !canUseSpeechSynthesis()) {
     return false;
   }
 
-  if (!("speechSynthesis" in window) || typeof window.SpeechSynthesisUtterance !== "function") {
-    alert("目前瀏覽器不支援語音播放功能");
-    return false;
-  }
+  stopEnglishWordAudio();
 
-  window.speechSynthesis.cancel();
-
-  const utterance = new SpeechSynthesisUtterance(word);
+  const utterance = new SpeechSynthesisUtterance(word.trim());
   utterance.lang = "en-US";
   utterance.rate = 0.85;
   utterance.pitch = 1;
   utterance.volume = 1;
 
-  window.speechSynthesis.speak(utterance);
-  return true;
+  try {
+    window.speechSynthesis.speak(utterance);
+    return true;
+  } catch (error) {
+    return false;
+  }
 }
 
 function createEnglishWordAudioButton(word, options = {}) {
@@ -134,7 +151,7 @@ function createEnglishWordAudioButton(word, options = {}) {
   button.setAttribute("aria-label", `播放英文單字發音：${word || "單字"}`);
   button.title = "播放英文單字發音";
 
-  if (options.disabled) {
+  if (options.disabled || !canSpeakEnglishWord(word)) {
     button.disabled = true;
   }
 
@@ -823,6 +840,8 @@ function renderEmptyVocabularyMessage(message, progressText = "0 / 0") {
 }
 
 function renderCurrentWord() {
+  stopEnglishWordAudio();
+
   if (!vocabulary.length) {
     renderEmptyVocabularyMessage("目前沒有可顯示的 GEPT 初級單字資料。");
     return;
@@ -1118,6 +1137,8 @@ function renderVocabularyQuizCompletePanel() {
 }
 
 function renderQuizQuestion() {
+  stopEnglishWordAudio();
+
   if (vocabularyQuizPhase !== "running") {
     renderQuizPreparation();
     return;
@@ -1170,20 +1191,12 @@ function renderQuizQuestion() {
   promptLabel.textContent = `單字測驗｜第 ${quizQuestionIndex + 1} / ${activeQuestions.length} 題｜剩餘 ${ENGLISH_QUIZ_TIME_LIMIT_SECONDS} 秒`;
   promptLabel.innerHTML = `單字測驗｜第 ${quizQuestionIndex + 1} / ${activeQuestions.length} 題｜剩餘 <strong id="geptQuizTimer">${ENGLISH_QUIZ_TIME_LIMIT_SECONDS}</strong> 秒`;
 
-  const quizAudioKey = `${activeQuizType}::${currentWord.questionId || currentWord.id || currentWord.word}::${quizQuestionIndex}`;
   const wordTitleRow = createEnglishWordWithAudio(
     "h3",
     currentWord[quizTypeSetting.promptField] || "—",
     "english-word gept-quiz-word",
     {
       speechWord: currentWord.word,
-      disabled: VOCAB_TEST_AUDIO_LIMIT_ONCE && vocabularyQuizPlayedAudioKeys.has(quizAudioKey),
-      onPlay: (button) => {
-        if (VOCAB_TEST_AUDIO_LIMIT_ONCE) {
-          vocabularyQuizPlayedAudioKeys.add(quizAudioKey);
-          button.disabled = true;
-        }
-      },
     },
   );
 
@@ -1515,7 +1528,11 @@ resetEnglishProgressButton.addEventListener("click", () => {
   renderCurrentMode();
 });
 
-window.addEventListener("beforeunload", clearVocabularyQuizTimer);
+window.addEventListener("pagehide", stopEnglishWordAudio);
+window.addEventListener("beforeunload", () => {
+  clearVocabularyQuizTimer();
+  stopEnglishWordAudio();
+});
 
 renderVocabularyTotalText();
 renderEnglishProgressSummary();
