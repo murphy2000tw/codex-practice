@@ -1288,6 +1288,39 @@ h1 {
   box-shadow: none;
 }
 
+.gept-listening-panel {
+  margin-top: 20px;
+}
+
+.gept-listening-prompt {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+.gept-listening-audio-button {
+  min-width: 150px;
+  min-height: 58px;
+  padding: 12px 20px;
+  font-size: 1.12rem;
+  font-weight: 900;
+}
+
+.gept-listening-feedback p {
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .gept-listening-audio-button {
+    width: 100%;
+    min-height: 60px;
+  }
+
+  .gept-listening-options {
+    grid-template-columns: 1fr;
+  }
+}
+
 .article-guide-panel,
 .article-practice-section {
   margin-bottom: 22px;

@@ -27,11 +27,12 @@
       <div class="mode-panel gept-mode-panel" aria-labelledby="geptModeTitle">
         <div>
           <p class="filter-label" id="geptModeTitle">模式切換</p>
-          <p class="mode-description">可用單字卡複習，也可以切換成看英文選中文的四選一測驗。</p>
+          <p class="mode-description">可用單字卡複習，也可以切換成單字測驗或單字聽力練習。</p>
         </div>
         <div class="mode-switch" role="group" aria-label="選擇 GEPT 初級單字練習模式">
           <button id="geptCardModeButton" class="mode-button is-active" type="button" aria-pressed="true">單字卡模式</button>
           <button id="geptQuizModeButton" class="mode-button" type="button" aria-pressed="false">測驗模式</button>
+          <button id="geptListeningModeButton" class="mode-button" type="button" aria-pressed="false">單字聽力練習</button>
         </div>
       </div>
 
@@ -125,6 +126,20 @@
         <div class="quiz-actions">
           <button id="reshuffleGeptQuizVocabulary" class="secondary-button" type="button">重新隨機</button>
           <button id="nextGeptQuizQuestion" class="answer-button" type="button">下一題</button>
+        </div>
+      </section>
+
+      <section id="geptListeningPanel" class="quiz-panel gept-listening-panel" aria-labelledby="geptListeningTitle" aria-live="polite" hidden>
+        <div class="quiz-header">
+          <div>
+            <span class="card-number">聽力練習</span>
+            <h2 id="geptListeningTitle" class="quiz-title">單字聽力練習</h2>
+          </div>
+        </div>
+        <p class="gept-quiz-instruction">聽發音，選出正確的英文單字</p>
+        <div id="geptListeningContent" class="quiz-content"></div>
+        <div class="quiz-actions">
+          <button id="nextGeptListeningQuestion" class="answer-button" type="button" disabled>下一題</button>
         </div>
       </section>
 
