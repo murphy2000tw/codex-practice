@@ -40,6 +40,7 @@ const allLevelsLabel = "全部級數";
 const availableLevels = [allLevelsLabel, "初級", "中級", "中高級"];
 const STORAGE_KEY = "englishVocabProgress_v1";
 const progressVersion = 1;
+// Toggle to true when a test should allow each vocabulary quiz question to be played only once.
 const VOCAB_TEST_AUDIO_LIMIT_ONCE = false;
 const progressStatusAll = "all";
 const progressStatusNew = "new";
@@ -104,19 +105,38 @@ let vocabularyQuizPlayedAudioKeys = new Set();
 let englishVocabProgress = loadEnglishVocabProgress();
 
 
-function speakEnglishWord(word) {
-  if (!word || typeof word !== "string") {
-    return false;
-  }
+function getSafeSpeechText(text) {
+  return typeof text === "string" ? text.trim() : "";
+}
 
-  if (!("speechSynthesis" in window) || typeof window.SpeechSynthesisUtterance !== "function") {
-    alert("目前瀏覽器不支援語音播放功能");
-    return false;
+function isSpeechSynthesisSupported() {
+  return (
+    typeof window !== "undefined" &&
+    "speechSynthesis" in window &&
+    typeof window.speechSynthesis?.speak === "function" &&
+    typeof window.speechSynthesis?.cancel === "function" &&
+    typeof window.SpeechSynthesisUtterance === "function"
+  );
+}
+
+function cancelEnglishSpeech() {
+  if (!isSpeechSynthesisSupported()) {
+    return;
   }
 
   window.speechSynthesis.cancel();
+}
 
-  const utterance = new SpeechSynthesisUtterance(word);
+function speakEnglishWord(word) {
+  const speechText = getSafeSpeechText(word);
+
+  if (!speechText || !isSpeechSynthesisSupported()) {
+    return false;
+  }
+
+  cancelEnglishSpeech();
+
+  const utterance = new window.SpeechSynthesisUtterance(speechText);
   utterance.lang = "en-US";
   utterance.rate = 0.85;
   utterance.pitch = 1;
@@ -127,14 +147,15 @@ function speakEnglishWord(word) {
 }
 
 function createEnglishWordAudioButton(word, options = {}) {
+  const speechText = getSafeSpeechText(word);
   const button = document.createElement("button");
   button.className = "word-audio-button";
   button.type = "button";
   button.textContent = "🔊";
-  button.setAttribute("aria-label", `播放英文單字發音：${word || "單字"}`);
+  button.setAttribute("aria-label", `播放英文單字發音：${speechText || "單字"}`);
   button.title = "播放英文單字發音";
 
-  if (options.disabled) {
+  if (options.disabled || !speechText) {
     button.disabled = true;
   }
 
@@ -143,7 +164,7 @@ function createEnglishWordAudioButton(word, options = {}) {
       return;
     }
 
-    const didSpeak = speakEnglishWord(word);
+    const didSpeak = speakEnglishWord(speechText);
     if (!didSpeak) {
       return;
     }
@@ -541,6 +562,7 @@ function startVocabularyQuizTimer() {
 
 function resetQuizState() {
   clearVocabularyQuizTimer();
+  cancelEnglishSpeech();
   vocabularyQuizPhase = "ready";
   quizQuestionIndex = 0;
   quizCorrectCount = 0;
@@ -550,6 +572,7 @@ function resetQuizState() {
   quizCurrentQuestionRemoved = false;
   vocabularyQuizResults = [];
   vocabularyQuizTimeoutCount = 0;
+  vocabularyQuizPlayedAudioKeys.clear();
   categoryQuizQuestions = selectEnglishQuizQuestions(filteredVocabulary, "vocabulary");
 }
 
@@ -823,6 +846,8 @@ function renderEmptyVocabularyMessage(message, progressText = "0 / 0") {
 }
 
 function renderCurrentWord() {
+  cancelEnglishSpeech();
+
   if (!vocabulary.length) {
     renderEmptyVocabularyMessage("目前沒有可顯示的 GEPT 初級單字資料。");
     return;
@@ -1118,6 +1143,7 @@ function renderVocabularyQuizCompletePanel() {
 }
 
 function renderQuizQuestion() {
+  cancelEnglishSpeech();
   if (vocabularyQuizPhase !== "running") {
     renderQuizPreparation();
     return;
@@ -1515,7 +1541,10 @@ resetEnglishProgressButton.addEventListener("click", () => {
   renderCurrentMode();
 });
 
-window.addEventListener("beforeunload", clearVocabularyQuizTimer);
+window.addEventListener("beforeunload", () => {
+  clearVocabularyQuizTimer();
+  cancelEnglishSpeech();
+});
 
 renderVocabularyTotalText();
 renderEnglishProgressSummary();
