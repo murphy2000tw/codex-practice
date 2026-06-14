@@ -10,6 +10,10 @@ const clearSearchButton = document.querySelector("#clearGeptSearch");
 const randomStatus = document.querySelector("#geptRandomStatus");
 const cardModeButton = document.querySelector("#geptCardModeButton");
 const quizModeButton = document.querySelector("#geptQuizModeButton");
+const listeningModeButton = document.querySelector("#geptListeningModeButton");
+const listeningPanel = document.querySelector("#geptListeningPanel");
+const listeningContent = document.querySelector("#geptListeningContent");
+const nextListeningQuestionButton = document.querySelector("#nextGeptListeningQuestion");
 const quizPanel = document.querySelector("#geptQuizPanel");
 const quizContent = document.querySelector("#geptQuizContent");
 const quizTitle = document.querySelector("#geptQuizTitle");
@@ -58,6 +62,7 @@ const progressFilterOptions = [
 ];
 const cardMode = "card";
 const quizMode = "quiz";
+const listeningMode = "listening";
 const englishToChineseQuizType = "english-to-chinese";
 const chineseToEnglishQuizType = "chinese-to-english";
 const quizTypeSettings = {
@@ -101,6 +106,10 @@ let vocabularyQuizTimer = null;
 let vocabularyQuizRemainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
 let vocabularyQuizPhase = "idle";
 let vocabularyQuizPlayedAudioKeys = new Set();
+let currentListeningWord = null;
+let listeningOptions = [];
+let selectedListeningAnswer = "";
+let isListeningAnswered = false;
 let englishVocabProgress = loadEnglishVocabProgress();
 
 
@@ -488,6 +497,28 @@ function shuffleVocabulary(words) {
   return shuffledWords;
 }
 
+
+function getVocabularyEnglish(word) {
+  return String(word?.word || word?.english || word?.en || word?.text || "").trim();
+}
+
+function getVocabularyMeaning(word) {
+  return String(word?.meaning || word?.chinese || word?.zh || "").trim();
+}
+
+function getListeningPracticeSource() {
+  const primarySource = filteredVocabulary.length ? filteredVocabulary : vocabulary;
+  return primarySource.filter((word) => getVocabularyEnglish(word) && getVocabularyMeaning(word));
+}
+
+function resetListeningState() {
+  stopEnglishWordAudio();
+  currentListeningWord = null;
+  listeningOptions = [];
+  selectedListeningAnswer = "";
+  isListeningAnswered = false;
+}
+
 function updateSearchControls() {
   clearSearchButton.disabled = !searchQuery;
 }
@@ -586,12 +617,14 @@ function applySearchToCategoryVocabulary(options = {}) {
       currentWordIndex = preservedIndex;
       chineseVisible = false;
       resetQuizState();
+      resetListeningState();
       return;
     }
   }
 
   resetCurrentPosition();
   resetQuizState();
+  resetListeningState();
 }
 
 function resetCurrentVocabulary() {
@@ -606,6 +639,7 @@ function reshuffleCurrentVocabulary() {
     )));
     resetCurrentPosition();
     resetQuizState();
+    resetListeningState();
     return;
   }
 
@@ -614,27 +648,41 @@ function reshuffleCurrentVocabulary() {
 
 function updateModeButtons() {
   const isCardMode = currentMode === cardMode;
+  const isQuizMode = currentMode === quizMode;
+  const isListeningMode = currentMode === listeningMode;
   cardModeButton.classList.toggle("is-active", isCardMode);
   cardModeButton.setAttribute("aria-pressed", String(isCardMode));
-  quizModeButton.classList.toggle("is-active", !isCardMode);
-  quizModeButton.setAttribute("aria-pressed", String(!isCardMode));
+  quizModeButton.classList.toggle("is-active", isQuizMode);
+  quizModeButton.setAttribute("aria-pressed", String(isQuizMode));
+  listeningModeButton.classList.toggle("is-active", isListeningMode);
+  listeningModeButton.setAttribute("aria-pressed", String(isListeningMode));
 }
 
 function renderCurrentMode() {
   updateModeButtons();
 
   const isQuizMode = currentMode === quizMode;
-  vocabularyCard.hidden = isQuizMode;
-  vocabularyControls.hidden = isQuizMode;
+  const isListeningMode = currentMode === listeningMode;
+  vocabularyCard.hidden = isQuizMode || isListeningMode;
+  vocabularyControls.hidden = isQuizMode || isListeningMode;
   quizPanel.hidden = !isQuizMode;
+  listeningPanel.hidden = !isListeningMode;
 
   if (isQuizMode) {
+    resetListeningState();
     renderQuizPreparation();
     return;
   }
 
   clearVocabularyQuizTimer();
   vocabularyQuizPhase = "idle";
+
+  if (isListeningMode) {
+    renderVocabListeningPractice();
+    return;
+  }
+
+  resetListeningState();
   renderCurrentWord();
 }
 
@@ -1021,6 +1069,155 @@ function renderEmptyQuizMessage(message) {
   updateRandomStatus();
   updateSearchControls();
   updateWrongQuestionControls();
+}
+
+function generateVocabListeningQuestion() {
+  const source = getListeningPracticeSource();
+
+  if (source.length < 4) {
+    currentListeningWord = null;
+    listeningOptions = [];
+    selectedListeningAnswer = "";
+    isListeningAnswered = false;
+    return false;
+  }
+
+  const uniqueByEnglish = [];
+  const seenEnglish = new Set();
+  source.forEach((word) => {
+    const english = getVocabularyEnglish(word);
+    if (!english || seenEnglish.has(english)) {
+      return;
+    }
+    seenEnglish.add(english);
+    uniqueByEnglish.push(word);
+  });
+
+  if (uniqueByEnglish.length < 4) {
+    currentListeningWord = null;
+    listeningOptions = [];
+    selectedListeningAnswer = "";
+    isListeningAnswered = false;
+    return false;
+  }
+
+  const shuffledWords = shuffleVocabulary(uniqueByEnglish);
+  currentListeningWord = shuffledWords[0];
+  const correctEnglish = getVocabularyEnglish(currentListeningWord);
+  const wrongOptions = shuffledWords
+    .slice(1)
+    .map((word) => getVocabularyEnglish(word))
+    .filter((english) => english && english !== correctEnglish)
+    .slice(0, 3);
+
+  listeningOptions = shuffleVocabulary([correctEnglish, ...wrongOptions]);
+  selectedListeningAnswer = "";
+  isListeningAnswered = false;
+  return listeningOptions.length === 4;
+}
+
+function playCurrentListeningWord() {
+  if (!currentListeningWord) {
+    return false;
+  }
+
+  return speakEnglishWord(getVocabularyEnglish(currentListeningWord));
+}
+
+function handleListeningAnswer(option) {
+  if (isListeningAnswered || !currentListeningWord) {
+    return;
+  }
+
+  selectedListeningAnswer = option;
+  isListeningAnswered = true;
+  renderVocabListeningPractice();
+}
+
+function goToNextListeningQuestion() {
+  stopEnglishWordAudio();
+  generateVocabListeningQuestion();
+  renderVocabListeningPractice();
+}
+
+function renderVocabListeningPractice() {
+  clearVocabularyQuizTimer();
+  stopEnglishWordAudio();
+  vocabularyQuizPhase = "idle";
+  quizTitle.textContent = "單字測驗";
+  currentProgress.textContent = "單字聽力練習";
+  updateRandomStatus();
+  updateSearchControls();
+
+  const source = getListeningPracticeSource();
+  if (source.length < 4 || (!currentListeningWord && !generateVocabListeningQuestion())) {
+    const statusMessage = document.createElement("p");
+    statusMessage.className = "status-message quiz-status-message";
+    statusMessage.textContent = "目前可練習的單字少於 4 筆，請調整分類、進度或搜尋條件。";
+    listeningContent.replaceChildren(statusMessage);
+    nextListeningQuestionButton.disabled = true;
+    return;
+  }
+
+  const correctEnglish = getVocabularyEnglish(currentListeningWord);
+  const correctMeaning = getVocabularyMeaning(currentListeningWord);
+  const isCorrect = isListeningAnswered && selectedListeningAnswer === correctEnglish;
+
+  const card = document.createElement("article");
+  card.className = "quiz-card gept-listening-card";
+
+  const prompt = document.createElement("div");
+  prompt.className = "quiz-prompt gept-listening-prompt";
+
+  const promptLabel = document.createElement("p");
+  promptLabel.className = "quiz-prompt-label";
+  promptLabel.textContent = "聽發音，選出正確的英文單字";
+
+  const playButton = createEnglishWordAudioButton(correctEnglish);
+  playButton.classList.add("gept-listening-audio-button");
+  playButton.textContent = "🔊 聽單字";
+  playButton.setAttribute("aria-label", "播放本題英文單字發音");
+
+  prompt.append(promptLabel, playButton);
+
+  const options = document.createElement("div");
+  options.className = "quiz-options gept-listening-options";
+
+  listeningOptions.forEach((option, index) => {
+    const optionButton = document.createElement("button");
+    optionButton.className = "quiz-option gept-listening-option";
+    optionButton.type = "button";
+    optionButton.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
+    optionButton.dataset.answer = option;
+    optionButton.disabled = isListeningAnswered;
+
+    if (isListeningAnswered) {
+      optionButton.classList.toggle("is-correct", option === correctEnglish);
+      optionButton.classList.toggle("is-wrong", option === selectedListeningAnswer && option !== correctEnglish);
+    }
+
+    optionButton.addEventListener("click", () => handleListeningAnswer(option));
+    options.append(optionButton);
+  });
+
+  const feedback = document.createElement("div");
+  feedback.className = "quiz-feedback gept-listening-feedback";
+  feedback.setAttribute("aria-live", "polite");
+
+  if (isListeningAnswered) {
+    feedback.classList.add(isCorrect ? "is-correct" : "is-wrong");
+    const result = document.createElement("p");
+    result.textContent = isCorrect ? "答對了！" : "再練一次！";
+    const answer = document.createElement("p");
+    answer.textContent = `正確答案：${correctEnglish}`;
+    const meaning = document.createElement("p");
+    meaning.textContent = `中文意思：${correctMeaning || "—"}`;
+    feedback.append(result, answer, meaning);
+  }
+
+  card.append(prompt, options, feedback);
+  listeningContent.replaceChildren(card);
+  nextListeningQuestionButton.disabled = !isListeningAnswered;
 }
 
 
@@ -1442,6 +1639,23 @@ quizModeButton.addEventListener("click", () => {
   resetQuizState();
   renderCurrentMode();
   scrollToVocabularyQuizStart();
+});
+
+listeningModeButton.addEventListener("click", () => {
+  if (currentMode === listeningMode) {
+    return;
+  }
+
+  currentMode = listeningMode;
+  isWrongReviewMode = false;
+  resetQuizState();
+  resetListeningState();
+  renderCurrentMode();
+  listeningPanel?.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+
+nextListeningQuestionButton.addEventListener("click", () => {
+  goToNextListeningQuestion();
 });
 
 quizTypeButtons.forEach((button) => {
