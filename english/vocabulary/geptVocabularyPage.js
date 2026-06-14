@@ -40,6 +40,7 @@ const allLevelsLabel = "全部級數";
 const availableLevels = [allLevelsLabel, "初級", "中級", "中高級"];
 const STORAGE_KEY = "englishVocabProgress_v1";
 const progressVersion = 1;
+const VOCAB_TEST_AUDIO_LIMIT_ONCE = false;
 const progressStatusAll = "all";
 const progressStatusNew = "new";
 const progressStatusLearning = "learning";
@@ -99,6 +100,7 @@ let vocabularyQuizTimeoutCount = 0;
 let vocabularyQuizTimer = null;
 let vocabularyQuizRemainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
 let vocabularyQuizPhase = "idle";
+let vocabularyQuizPlayedAudioKeys = new Set();
 let englishVocabProgress = loadEnglishVocabProgress();
 
 
@@ -567,6 +569,7 @@ function resetQuizState() {
   quizCurrentQuestionRemoved = false;
   vocabularyQuizResults = [];
   vocabularyQuizTimeoutCount = 0;
+  vocabularyQuizPlayedAudioKeys = new Set();
   categoryQuizQuestions = selectEnglishQuizQuestions(filteredVocabulary, "vocabulary");
 }
 
@@ -1191,12 +1194,20 @@ function renderQuizQuestion() {
   promptLabel.textContent = `單字測驗｜第 ${quizQuestionIndex + 1} / ${activeQuestions.length} 題｜剩餘 ${ENGLISH_QUIZ_TIME_LIMIT_SECONDS} 秒`;
   promptLabel.innerHTML = `單字測驗｜第 ${quizQuestionIndex + 1} / ${activeQuestions.length} 題｜剩餘 <strong id="geptQuizTimer">${ENGLISH_QUIZ_TIME_LIMIT_SECONDS}</strong> 秒`;
 
+  const quizAudioKey = `${activeQuizType}::${currentWord.questionId || currentWord.id || currentWord.word}::${quizQuestionIndex}`;
   const wordTitleRow = createEnglishWordWithAudio(
     "h3",
     currentWord[quizTypeSetting.promptField] || "—",
     "english-word gept-quiz-word",
     {
       speechWord: currentWord.word,
+      disabled: VOCAB_TEST_AUDIO_LIMIT_ONCE && vocabularyQuizPlayedAudioKeys.has(quizAudioKey),
+      onPlay: (button) => {
+        if (VOCAB_TEST_AUDIO_LIMIT_ONCE) {
+          vocabularyQuizPlayedAudioKeys.add(quizAudioKey);
+          button.disabled = true;
+        }
+      },
     },
   );
 
