@@ -3,6 +3,31 @@ const listeningProgress = document.querySelector("#listeningProgress");
 const listeningSupportMessage = document.querySelector("#listeningSupportMessage");
 const listeningModeButtons = Array.from(document.querySelectorAll("[data-listening-type][data-listening-mode]"));
 
+const RESET_PROGRESS_PASSWORD = "104821";
+
+function confirmResetProgressWithPassword(successMessage, resetAction) {
+  const password = window.prompt("請輸入重設進度密碼：\n提示：六碼，Vivi生日");
+
+  if (password === null) {
+    return false;
+  }
+
+  if (password !== RESET_PROGRESS_PASSWORD) {
+    window.alert("密碼錯誤，請重新輸入");
+    return false;
+  }
+
+  const confirmed = window.confirm("密碼正確，確定要重設全部進度嗎？");
+
+  if (!confirmed) {
+    return false;
+  }
+
+  resetAction();
+  window.alert(successMessage);
+  return true;
+}
+
 const listeningVocabulary = Array.isArray(geptVocabulary)
   ? geptVocabulary.filter((item) => item && typeof item.word === "string" && item.word.trim())
   : [];
@@ -1453,11 +1478,10 @@ function renderMockPreparation() {
   startButton.disabled = total === 0;
   actions.append(startButton);
   const resetButton = createModeActionButton("重設聽力模擬測驗紀錄", () => {
-    const confirmed = window.confirm("確定要清除聽力模擬測驗紀錄嗎？這不會影響日文資料。");
-    if (confirmed) {
+    confirmResetProgressWithPassword("聽力模擬測驗紀錄已清除。日文資料未受影響。", () => {
       resetMockResults();
       renderMockPreparation();
-    }
+    });
   }, "secondary-button");
   actions.append(resetButton);
 
