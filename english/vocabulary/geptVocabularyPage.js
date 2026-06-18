@@ -2073,16 +2073,12 @@ if (resetEnglishQuizProgressButton) {
 }
 
 resetEnglishProgressButton.addEventListener("click", () => {
-  const confirmed = window.confirm("確定要清除英文單字學習進度嗎？這不會影響日文資料。");
-
-  if (!confirmed) {
-    return;
-  }
-
-  resetEnglishVocabProgress();
-  renderEnglishProgressSummary();
-  applySearchToCategoryVocabulary();
-  renderCurrentMode();
+  confirmResetProgressWithPassword("英文單字學習進度已清除。日文資料未受影響。", () => {
+    resetEnglishVocabProgress();
+    renderEnglishProgressSummary();
+    applySearchToCategoryVocabulary();
+    renderCurrentMode();
+  });
 });
 
 window.addEventListener("pagehide", stopEnglishWordAudio);

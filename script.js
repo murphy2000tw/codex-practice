@@ -2,6 +2,31 @@ const VOCABULARY_CARD_COUNT = 10;
 const GRAMMAR_CARD_COUNT = 5;
 const VOCABULARY_URL = window.JAPANESE_VOCABULARY_URL || "vocabulary.json";
 const GRAMMAR_URL = window.JAPANESE_GRAMMAR_URL || "grammar.json";
+const RESET_PROGRESS_PASSWORD = "104821";
+
+function confirmResetProgressWithPassword(successMessage, resetAction) {
+  const password = window.prompt("請輸入重設進度密碼：\n提示：六碼，Vivi生日");
+
+  if (password === null) {
+    return false;
+  }
+
+  if (password !== RESET_PROGRESS_PASSWORD) {
+    window.alert("密碼錯誤，請重新輸入");
+    return false;
+  }
+
+  const confirmed = window.confirm("密碼正確，確定要重設全部進度嗎？");
+
+  if (!confirmed) {
+    return false;
+  }
+
+  resetAction();
+  window.alert(successMessage);
+  return true;
+}
+
 const CATEGORY_FILTERS = [
   { id: "all", label: "全部", matches: null },
   { id: "noun", label: "名詞", matches: ["名詞", "代名詞", "疑問詞", "連體詞"] },
@@ -1237,7 +1262,9 @@ quizModeButton.addEventListener("click", () => switchMode("quiz"));
 grammarModeButton.addEventListener("click", () => switchMode("grammar"));
 grammarQuizModeButton.addEventListener("click", () => switchMode("grammar-quiz"));
 nextQuizQuestionButton.addEventListener("click", createActiveQuizQuestion);
-restartQuizButton.addEventListener("click", restartQuiz);
+restartQuizButton.addEventListener("click", () => {
+  confirmResetProgressWithPassword("日文測驗進度已重設。", restartQuiz);
+});
 grammarMeaningQuizTypeButton.addEventListener("click", () => switchGrammarQuizType("meaning"));
 grammarClozeQuizTypeButton.addEventListener("click", () => switchGrammarQuizType("cloze"));
 
