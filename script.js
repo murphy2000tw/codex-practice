@@ -167,6 +167,11 @@ const quizAccuracy = document.querySelector("#quizAccuracy");
 const grammarQuizTypeControls = document.querySelector("#grammarQuizTypeControls");
 const grammarMeaningQuizTypeButton = document.querySelector("#grammarMeaningQuizTypeButton");
 const grammarClozeQuizTypeButton = document.querySelector("#grammarClozeQuizTypeButton");
+const japaneseMainContent = document.querySelector("#japaneseMainContent");
+const japaneseReadingPanel = document.querySelector("#japaneseReadingPanel");
+const japaneseListeningPanel = document.querySelector("#japaneseListeningPanel");
+const japaneseTabButtons = document.querySelectorAll(".japanese-tab-button");
+const modeButtons = document.querySelectorAll(".mode-button[data-mode-group]");
 
 let vocabulary = [];
 let filteredVocabulary = [];
@@ -188,6 +193,7 @@ let activeGrammarLevelId = "all";
 let searchQuery = "";
 let grammarSearchQuery = "";
 let activeMode = "cards";
+let activeJapaneseTab = "vocab";
 let currentQuizQuestion = null;
 let quizAnsweredCountValue = 0;
 let quizCorrectCountValue = 0;
@@ -201,6 +207,34 @@ let wordQuizRoundSeenKeys = new Set();
 let grammarQuizRoundSeenKeys = new Set();
 let grammarHasLoaded = false;
 let grammarIsLoading = false;
+
+function updateModeButtonsForJapaneseTab() {
+  modeButtons.forEach((button) => {
+    button.hidden = button.dataset.modeGroup !== activeJapaneseTab;
+  });
+}
+
+async function switchJapaneseTab(tab) {
+  activeJapaneseTab = tab;
+
+  japaneseTabButtons.forEach((button) => {
+    const isActive = button.dataset.japaneseTab === tab;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-selected", String(isActive));
+  });
+
+  const isVocabOrGrammarTab = tab === "vocab" || tab === "grammar";
+  japaneseMainContent.hidden = !isVocabOrGrammarTab;
+  japaneseReadingPanel.hidden = tab !== "reading";
+  japaneseListeningPanel.hidden = tab !== "listening";
+  updateModeButtonsForJapaneseTab();
+
+  if (tab === "vocab" && isGrammarMode()) {
+    await switchMode("cards");
+  } else if (tab === "grammar" && !isGrammarMode()) {
+    await switchMode("grammar");
+  }
+}
 
 function isGrammarMode() {
   return activeMode === "grammar" || activeMode === "grammar-quiz";
@@ -967,6 +1001,7 @@ async function switchMode(mode) {
   grammarModeButton.setAttribute("aria-pressed", String(isGrammarCardModeValue));
   grammarQuizModeButton.classList.toggle("is-active", isGrammarQuizModeValue);
   grammarQuizModeButton.setAttribute("aria-pressed", String(isGrammarQuizModeValue));
+  updateModeButtonsForJapaneseTab();
 
   controlsPanel.hidden = isQuizModeValue;
   cardsContainer.hidden = isQuizModeValue;
@@ -1347,8 +1382,12 @@ restartQuizButton.addEventListener("click", () => {
 });
 grammarMeaningQuizTypeButton.addEventListener("click", () => switchGrammarQuizType("meaning"));
 grammarClozeQuizTypeButton.addEventListener("click", () => switchGrammarQuizType("cloze"));
+japaneseTabButtons.forEach((button) => {
+  button.addEventListener("click", () => switchJapaneseTab(button.dataset.japaneseTab));
+});
 
 clearSearchButton.disabled = true;
+updateModeButtonsForJapaneseTab();
 updateQuizStats();
 
 loadVocabulary();

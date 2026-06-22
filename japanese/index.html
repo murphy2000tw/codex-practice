@@ -22,6 +22,19 @@
       <p class="hero-text">每天練習基礎單字與文法，先看日文與假名，再按下按鈕確認中文意思、詞性或文法用法。</p>
     </section>
 
+    <section class="japanese-tab-panel" aria-labelledby="japanese-tab-title">
+      <div>
+        <p class="filter-label" id="japanese-tab-title">日文學習</p>
+      </div>
+      <div class="japanese-tab-switch" role="tablist" aria-label="日文學習分類切換">
+        <button id="japaneseVocabTab" class="japanese-tab-button is-active" type="button" role="tab" aria-selected="true" aria-controls="japaneseMainContent" data-japanese-tab="vocab">單字</button>
+        <button id="japaneseGrammarTab" class="japanese-tab-button" type="button" role="tab" aria-selected="false" aria-controls="japaneseMainContent" data-japanese-tab="grammar">文法</button>
+        <button id="japaneseReadingTab" class="japanese-tab-button" type="button" role="tab" aria-selected="false" aria-controls="japaneseReadingPanel" data-japanese-tab="reading">閱讀</button>
+        <button id="japaneseListeningTab" class="japanese-tab-button" type="button" role="tab" aria-selected="false" aria-controls="japaneseListeningPanel" data-japanese-tab="listening">聽力</button>
+      </div>
+    </section>
+
+    <div id="japaneseMainContent">
     <section class="category-panel" aria-labelledby="category-title">
       <div class="category-header">
         <h2 id="category-title">分類篩選</h2>
@@ -56,10 +69,10 @@
         <p class="mode-description">選擇用單字卡複習、文法卡整理句型，或用選擇題測驗目前篩選出的單字與文法。</p>
       </div>
       <div class="mode-switch" role="group" aria-label="選擇練習模式">
-        <button id="cardModeButton" class="mode-button is-active" type="button" aria-pressed="true">單字卡模式</button>
-        <button id="quizModeButton" class="mode-button" type="button" aria-pressed="false">單字測驗模式</button>
-        <button id="grammarModeButton" class="mode-button" type="button" aria-pressed="false">文法卡模式</button>
-        <button id="grammarQuizModeButton" class="mode-button" type="button" aria-pressed="false">文法測驗模式</button>
+        <button id="cardModeButton" class="mode-button is-active" data-mode-group="vocab" type="button" aria-pressed="true">單字練習</button>
+        <button id="quizModeButton" class="mode-button" data-mode-group="vocab" type="button" aria-pressed="false">單字測驗</button>
+        <button id="grammarModeButton" class="mode-button" data-mode-group="grammar" type="button" aria-pressed="false">文法練習</button>
+        <button id="grammarQuizModeButton" class="mode-button" data-mode-group="grammar" type="button" aria-pressed="false">文法測驗</button>
       </div>
     </section>
 
@@ -93,6 +106,15 @@
     </section>
 
     <section class="cards-grid" id="vocabularyCards" aria-live="polite"></section>
+    </div>
+
+    <section id="japaneseReadingPanel" class="japanese-placeholder-panel" role="tabpanel" aria-labelledby="japaneseReadingTab" hidden>
+      <p>閱讀練習與測驗準備中</p>
+    </section>
+
+    <section id="japaneseListeningPanel" class="japanese-placeholder-panel" role="tabpanel" aria-labelledby="japaneseListeningTab" hidden>
+      <p>聽力練習與測驗準備中</p>
+    </section>
   </main>
 
   <script>
