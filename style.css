@@ -1967,6 +1967,13 @@ h1 {
   line-height: 1.7;
 }
 
+.reading-question-block {
+  display: grid;
+  gap: 12px;
+  border-top: 1px dashed var(--border);
+  padding-top: 18px;
+}
+
 .reading-feedback {
   border-radius: 18px;
   color: var(--muted);
@@ -2046,6 +2053,12 @@ h1 {
 .reading-result-item h3,
 .reading-result-item p {
   margin: 0 0 8px;
+}
+
+.reading-result-question {
+  border-top: 1px dashed var(--border);
+  margin-top: 12px;
+  padding-top: 12px;
 }
 
 @media (max-width: 640px) {
