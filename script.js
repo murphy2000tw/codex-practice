@@ -1404,16 +1404,27 @@ const READING_QUIZ_SIZE = 10;
 const readingPracticeModeButton = document.querySelector("#readingPracticeModeButton");
 const readingQuizModeButton = document.querySelector("#readingQuizModeButton");
 const readingContent = document.querySelector("#readingContent");
-const japaneseReadingQuestions = Array.isArray(window.JAPANESE_READING_QUESTIONS) ? window.JAPANESE_READING_QUESTIONS : [];
+const japaneseReadingSets = Array.isArray(window.JAPANESE_READING_SETS)
+  ? window.JAPANESE_READING_SETS
+  : (Array.isArray(window.JAPANESE_READING_QUESTIONS) ? window.JAPANESE_READING_QUESTIONS : []);
 let activeReadingMode = "practice";
-let currentReadingQuestion = null;
-let readingPracticeAnswered = false;
-let readingQuizQuestions = [];
+let currentReadingSet = null;
+let readingPracticeAnswers = {};
+let readingQuizItems = [];
+let readingQuizSets = [];
 let readingQuizAnswers = [];
-let currentReadingQuizIndex = 0;
+let currentReadingQuizSetIndex = 0;
 
-function getReadingSeenKey(question) {
-  return String(question.id);
+function getReadingSeenKey(readingSet) {
+  return String(readingSet.id);
+}
+
+function getReadingSetQuestionCount(readingSet) {
+  return Array.isArray(readingSet.questions) ? readingSet.questions.length : 0;
+}
+
+function getReadingSetById(readingSetId) {
+  return japaneseReadingSets.find((readingSet) => getReadingSeenKey(readingSet) === readingSetId);
 }
 
 function setReadingMode(mode) {
@@ -1433,105 +1444,160 @@ function renderReadingUnavailable() {
   readingContent.replaceChildren(Object.assign(document.createElement("p"), { className: "status-message", textContent: "目前無法載入閱讀題庫。" }));
 }
 
-function createReadingMeta(question) {
+function createReadingMeta(readingSet) {
   const details = document.createElement("div");
   details.className = "reading-details";
   details.innerHTML = `
-    <section><h4>文章假名</h4><p class="reading-kana">${question.passageKana}</p></section>
-    <section><h4>重要單字</h4><ul>${question.vocabulary.map((item) => `<li><strong>${item.word}</strong>（${item.kana}）：${item.meaning}</li>`).join("")}</ul></section>
-    <section><h4>文法重點</h4><ul>${question.grammarPoints.map((point) => `<li>${point}</li>`).join("")}</ul></section>
+    <section><h4>文章假名</h4><p class="reading-kana">${readingSet.passageKana}</p></section>
+    <section><h4>重要單字</h4><ul>${readingSet.vocabulary.map((item) => `<li><strong>${item.word}</strong>（${item.kana}）：${item.meaning}</li>`).join("")}</ul></section>
+    <section><h4>文法重點</h4><ul>${readingSet.grammarPoints.map((point) => `<li>${point}</li>`).join("")}</ul></section>
   `;
   return details;
 }
 
-function createReadingQuestionCard(question, { reveal = false, onAnswer } = {}) {
+function createReadingSetCard(readingSet, { reveal = false, showFeedback = false, selectedAnswers = {}, onAnswer } = {}) {
   const card = document.createElement("article");
   card.className = "reading-card";
-  const feedback = document.createElement("div");
-  feedback.className = "reading-feedback";
-  const optionButtons = question.options.map((option, index) => {
-    const button = document.createElement("button");
-    button.className = "quiz-option reading-option";
-    button.type = "button";
-    button.textContent = option;
-    button.addEventListener("click", () => onAnswer?.(index, optionButtons, feedback));
-    return button;
-  });
   card.innerHTML = `
-    <div class="reading-card-header"><span class="card-number">${question.level}・${question.type}</span><h2>${question.title}</h2></div>
-    <p class="reading-passage">${question.passage}</p>
-    <p class="reading-question">${question.question}</p>
+    <div class="reading-card-header"><span class="card-number">${readingSet.level}・${readingSet.type}</span><h2>${readingSet.title}</h2></div>
+    <p class="reading-passage">${readingSet.passage}</p>
   `;
-  const options = document.createElement("div");
-  options.className = "quiz-options reading-options";
-  options.replaceChildren(...optionButtons);
-  card.append(options, feedback);
+  readingSet.questions.forEach((question, questionIndex) => {
+    const questionBlock = document.createElement("section");
+    questionBlock.className = "reading-question-block";
+    const feedback = document.createElement("div");
+    feedback.className = "reading-feedback";
+    const optionButtons = question.options.map((option, optionIndex) => {
+      const button = document.createElement("button");
+      button.className = "quiz-option reading-option";
+      button.type = "button";
+      button.textContent = option;
+      button.addEventListener("click", () => onAnswer?.(questionIndex, optionIndex, optionButtons, feedback));
+      if (selectedAnswers[question.id] !== undefined || reveal) {
+        button.disabled = true;
+        if (showFeedback || reveal) {
+          button.classList.toggle("is-correct", optionIndex === question.answerIndex);
+          button.classList.toggle("is-wrong", selectedAnswers[question.id] === optionIndex && optionIndex !== question.answerIndex);
+        }
+      }
+      return button;
+    });
+    const selectedAnswer = selectedAnswers[question.id];
+    if ((showFeedback && selectedAnswer !== undefined) || reveal) {
+      const correct = selectedAnswer === question.answerIndex;
+      feedback.classList.add(correct ? "is-correct" : "is-wrong");
+      feedback.innerHTML = `<strong>${correct ? "答對了！" : `答錯了，正確答案是：${question.options[question.answerIndex]}`}</strong><p class="reading-explanation">解析：${question.explanation}</p>`;
+    }
+    const options = document.createElement("div");
+    options.className = "quiz-options reading-options";
+    options.replaceChildren(...optionButtons);
+    questionBlock.innerHTML = `<p class="reading-question">第 ${questionIndex + 1} 題：${question.question}</p>`;
+    questionBlock.append(options, feedback);
+    card.appendChild(questionBlock);
+  });
   if (reveal) {
-    feedback.innerHTML = `<p class="reading-explanation">解析：${question.explanation}</p>`;
-    card.appendChild(createReadingMeta(question));
+    card.appendChild(createReadingMeta(readingSet));
   }
   return card;
 }
 
 function showReadingPracticeQuestion() {
-  if (japaneseReadingQuestions.length === 0) return renderReadingUnavailable();
-  currentReadingQuestion = pickLeastSeenItem(japaneseReadingQuestions, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
-  incrementSeenCount(JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey(currentReadingQuestion));
-  readingPracticeAnswered = false;
-  const card = createReadingQuestionCard(currentReadingQuestion, { onAnswer: handleReadingPracticeAnswer });
+  if (japaneseReadingSets.length === 0) return renderReadingUnavailable();
+  currentReadingSet = pickLeastSeenItem(japaneseReadingSets, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
+  incrementSeenCount(JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey(currentReadingSet));
+  readingPracticeAnswers = {};
+  const card = createReadingSetCard(currentReadingSet, { showFeedback: true, onAnswer: handleReadingPracticeAnswer });
   const next = document.createElement("button");
   next.className = "answer-button";
   next.type = "button";
-  next.textContent = "換一題閱讀";
+  next.textContent = "換一篇閱讀";
   next.addEventListener("click", showReadingPracticeQuestion);
   readingContent.replaceChildren(card, next);
 }
 
-function handleReadingPracticeAnswer(selectedIndex, optionButtons, feedback) {
-  if (readingPracticeAnswered || !currentReadingQuestion) return;
-  readingPracticeAnswered = true;
-  const correct = selectedIndex === currentReadingQuestion.answerIndex;
+function handleReadingPracticeAnswer(questionIndex, selectedIndex, optionButtons, feedback) {
+  if (!currentReadingSet) return;
+  const question = currentReadingSet.questions[questionIndex];
+  if (!question || readingPracticeAnswers[question.id] !== undefined) return;
+  readingPracticeAnswers[question.id] = selectedIndex;
+  const correct = selectedIndex === question.answerIndex;
   feedback.classList.add(correct ? "is-correct" : "is-wrong");
-  feedback.innerHTML = `<strong>${correct ? "答對了！" : `答錯了，正確答案是：${currentReadingQuestion.options[currentReadingQuestion.answerIndex]}`}</strong><p class="reading-explanation">解析：${currentReadingQuestion.explanation}</p>`;
+  feedback.innerHTML = `<strong>${correct ? "答對了！" : `答錯了，正確答案是：${question.options[question.answerIndex]}`}</strong><p class="reading-explanation">解析：${question.explanation}</p>`;
   optionButtons.forEach((button, index) => {
     button.disabled = true;
-    button.classList.toggle("is-correct", index === currentReadingQuestion.answerIndex);
+    button.classList.toggle("is-correct", index === question.answerIndex);
     button.classList.toggle("is-wrong", index === selectedIndex && !correct);
   });
-  feedback.after(createReadingMeta(currentReadingQuestion));
+  if (Object.keys(readingPracticeAnswers).length === getReadingSetQuestionCount(currentReadingSet) && !feedback.closest(".reading-card").querySelector(".reading-details")) {
+    feedback.closest(".reading-card").appendChild(createReadingMeta(currentReadingSet));
+  }
 }
 
 function startReadingQuiz() {
-  const count = Math.min(READING_QUIZ_SIZE, japaneseReadingQuestions.length);
-  readingQuizQuestions = pickLeastSeenItems(japaneseReadingQuestions, count, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
-  incrementSeenCountsForItems(readingQuizQuestions, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
+  const pickedSets = [];
+  let questionTotal = 0;
+  while (questionTotal < READING_QUIZ_SIZE && pickedSets.length < japaneseReadingSets.length) {
+    const remaining = READING_QUIZ_SIZE - questionTotal;
+    const excludeKeys = new Set(pickedSets.map(getReadingSeenKey));
+    const fittingSets = japaneseReadingSets.filter((set) => !excludeKeys.has(getReadingSeenKey(set)) && getReadingSetQuestionCount(set) <= remaining);
+    const pool = fittingSets.length > 0 ? fittingSets : japaneseReadingSets.filter((set) => !excludeKeys.has(getReadingSeenKey(set)));
+    const pickedSet = pickLeastSeenItem(pool, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
+    if (!pickedSet) break;
+    pickedSets.push(pickedSet);
+    questionTotal += Math.min(getReadingSetQuestionCount(pickedSet), remaining);
+  }
+  incrementSeenCountsForItems(pickedSets, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
+  readingQuizItems = pickedSets.flatMap((readingSet) => readingSet.questions.map((question) => ({ readingSetId: readingSet.id, question }))).slice(0, READING_QUIZ_SIZE);
+  readingQuizSets = pickedSets.map((readingSet) => ({
+    ...readingSet,
+    questions: readingQuizItems.filter((item) => item.readingSetId === readingSet.id).map((item) => item.question),
+  })).filter((readingSet) => readingSet.questions.length > 0);
   readingQuizAnswers = [];
-  currentReadingQuizIndex = 0;
+  currentReadingQuizSetIndex = 0;
   renderReadingQuizQuestion();
 }
 
 function renderReadingQuizQuestion() {
-  const question = readingQuizQuestions[currentReadingQuizIndex];
-  if (!question) return renderReadingQuizResults();
+  const readingSet = readingQuizSets[currentReadingQuizSetIndex];
+  if (!readingSet) return renderReadingQuizResults();
+  const answeredInPreviousSets = readingQuizSets.slice(0, currentReadingQuizSetIndex).reduce((sum, set) => sum + set.questions.length, 0);
   const status = document.createElement("p");
   status.className = "set-status reading-quiz-status";
-  status.textContent = `閱讀測驗 ${currentReadingQuizIndex + 1} / ${readingQuizQuestions.length}`;
-  const card = createReadingQuestionCard(question, { onAnswer: (selectedIndex) => {
-    readingQuizAnswers[currentReadingQuizIndex] = selectedIndex;
-    currentReadingQuizIndex += 1;
-    renderReadingQuizQuestion();
+  status.textContent = `閱讀測驗 第 ${currentReadingQuizSetIndex + 1} 篇（${answeredInPreviousSets + 1}～${answeredInPreviousSets + readingSet.questions.length} / ${readingQuizItems.length} 題）`;
+  const selectedAnswers = {};
+  readingSet.questions.forEach((question, questionIndex) => {
+    const answer = readingQuizAnswers[answeredInPreviousSets + questionIndex];
+    if (answer !== undefined) selectedAnswers[question.id] = answer;
+  });
+  const card = createReadingSetCard(readingSet, { selectedAnswers, onAnswer: (questionIndex, selectedIndex) => {
+    readingQuizAnswers[answeredInPreviousSets + questionIndex] = selectedIndex;
+    if (readingSet.questions.every((_question, index) => readingQuizAnswers[answeredInPreviousSets + index] !== undefined)) {
+      currentReadingQuizSetIndex += 1;
+      renderReadingQuizQuestion();
+    } else {
+      renderReadingQuizQuestion();
+    }
   }});
   readingContent.replaceChildren(status, card);
 }
 
 function renderReadingQuizResults() {
-  const correctCount = readingQuizQuestions.filter((q, i) => readingQuizAnswers[i] === q.answerIndex).length;
+  const correctCount = readingQuizItems.filter((item, i) => readingQuizAnswers[i] === item.question.answerIndex).length;
   const result = document.createElement("article");
   result.className = "reading-card reading-result-card";
-  result.innerHTML = `<h2>測驗完成</h2><p class="reading-score">總分：${correctCount} / ${readingQuizQuestions.length}</p>`;
+  result.innerHTML = `<h2>測驗完成</h2><p class="reading-score">總分：${correctCount} / ${readingQuizItems.length}</p>`;
   const list = document.createElement("div");
   list.className = "reading-result-list";
-  list.innerHTML = readingQuizQuestions.map((q, i) => `<section class="reading-result-item"><h3>第 ${i + 1} 題：${q.title}</h3><p>你的答案：${q.options[readingQuizAnswers[i]] ?? "未作答"}</p><p>正確答案：${q.options[q.answerIndex]}</p><p>${readingQuizAnswers[i] === q.answerIndex ? "答對" : "答錯"}</p><p>解析：${q.explanation}</p></section>`).join("");
+  const groupedItems = readingQuizItems.reduce((groups, item, index) => {
+    const readingSet = getReadingSetById(item.readingSetId);
+    const group = groups.find((entry) => entry.readingSet.id === item.readingSetId);
+    const answer = readingQuizAnswers[index];
+    const resultItem = { question: item.question, answer, index };
+    if (group) group.items.push(resultItem);
+    else groups.push({ readingSet, items: [resultItem] });
+    return groups;
+  }, []);
+  list.innerHTML = groupedItems.map(({ readingSet, items }) => `<section class="reading-result-item"><h3>${readingSet.title}</h3>${items.map(({ question, answer, index }) => `<div class="reading-result-question"><p>第 ${index + 1} 題：${question.question}</p><p>你的答案：${question.options[answer] ?? "未作答"}</p><p>正確答案：${question.options[question.answerIndex]}</p><p>${answer === question.answerIndex ? "答對" : "答錯"}</p><p>解析：${question.explanation}</p></div>`).join("")}</section>`).join("");
   const restart = document.createElement("button");
   restart.className = "answer-button";
   restart.type = "button";
