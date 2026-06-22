@@ -533,6 +533,10 @@ h1 {
   box-shadow: 0 14px 36px rgba(67, 52, 40, 0.08);
 }
 
+.mode-panel[hidden] {
+  display: none;
+}
+
 .mode-description {
   margin: 8px 0 0;
   color: var(--muted);
