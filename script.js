@@ -2,6 +2,91 @@ const VOCABULARY_CARD_COUNT = 10;
 const GRAMMAR_CARD_COUNT = 5;
 const VOCABULARY_URL = window.JAPANESE_VOCABULARY_URL || "vocabulary.json";
 const GRAMMAR_URL = window.JAPANESE_GRAMMAR_URL || "grammar.json";
+
+const JAPANESE_VOCAB_SEEN_COUNTS_KEY = "japanese_vocab_seen_counts";
+const JAPANESE_GRAMMAR_SEEN_COUNTS_KEY = "japanese_grammar_seen_counts";
+
+function readSeenCounts(storageKey) {
+  try {
+    const rawCounts = window.localStorage?.getItem(storageKey);
+    const parsedCounts = rawCounts ? JSON.parse(rawCounts) : {};
+
+    if (!parsedCounts || typeof parsedCounts !== "object" || Array.isArray(parsedCounts)) {
+      return {};
+    }
+
+    return parsedCounts;
+  } catch (error) {
+    return {};
+  }
+}
+
+function writeSeenCounts(storageKey, seenCounts) {
+  try {
+    window.localStorage?.setItem(storageKey, JSON.stringify(seenCounts));
+  } catch (error) {
+    // localStorage may be unavailable in private or restricted browser contexts.
+  }
+}
+
+function getSeenCount(seenCounts, itemKey) {
+  const count = Number(seenCounts[itemKey]);
+  return Number.isFinite(count) && count > 0 ? count : 0;
+}
+
+function incrementSeenCount(storageKey, itemKey) {
+  const seenCounts = readSeenCounts(storageKey);
+  seenCounts[itemKey] = getSeenCount(seenCounts, itemKey) + 1;
+  writeSeenCounts(storageKey, seenCounts);
+}
+
+function getVocabularySeenKey(word) {
+  return String(word.id ?? word.word);
+}
+
+function getGrammarSeenKey(grammar) {
+  return String(grammar.grammarId ?? grammar.id ?? grammar.grammar);
+}
+
+function pickLeastSeenItem(items, storageKey, getItemKey, excludeKeys = new Set()) {
+  if (items.length === 0) {
+    return null;
+  }
+
+  const seenCounts = readSeenCounts(storageKey);
+  const availableItems = items.filter((item) => !excludeKeys.has(getItemKey(item)));
+  const candidates = availableItems.length > 0 ? availableItems : items;
+  const leastSeenCount = Math.min(...candidates.map((item) => getSeenCount(seenCounts, getItemKey(item))));
+  const leastSeenItems = candidates.filter((item) => getSeenCount(seenCounts, getItemKey(item)) === leastSeenCount);
+
+  return getRandomItem(leastSeenItems);
+}
+
+function pickLeastSeenItems(items, itemCount, storageKey, getItemKey, previousKeys = new Set()) {
+  const pickedItems = [];
+  const pickedKeys = new Set();
+  const previousFilteredKeys = new Set([...previousKeys].filter((key) => items.some((item) => getItemKey(item) === key)));
+
+  while (pickedItems.length < itemCount && pickedItems.length < items.length) {
+    const excludeKeys = pickedKeys.size + previousFilteredKeys.size < items.length
+      ? new Set([...pickedKeys, ...previousFilteredKeys])
+      : pickedKeys;
+    const pickedItem = pickLeastSeenItem(items, storageKey, getItemKey, excludeKeys);
+
+    if (!pickedItem) {
+      break;
+    }
+
+    pickedItems.push(pickedItem);
+    pickedKeys.add(getItemKey(pickedItem));
+  }
+
+  return pickedItems;
+}
+
+function incrementSeenCountsForItems(items, storageKey, getItemKey) {
+  items.forEach((item) => incrementSeenCount(storageKey, getItemKey(item)));
+}
 function confirmResetJapaneseQuizProgress(resetAction) {
   const confirmed = window.confirm("確定要重設日文學習進度嗎？此動作無法復原。");
 
@@ -85,12 +170,10 @@ const grammarClozeQuizTypeButton = document.querySelector("#grammarClozeQuizType
 
 let vocabulary = [];
 let filteredVocabulary = [];
-let wordDeck = [];
 let currentWords = [];
 let previousWordIds = new Set();
 let grammarItems = [];
 let filteredGrammar = [];
-let grammarDeck = [];
 let currentGrammarItems = [];
 let previousGrammarIds = new Set();
 let answersVisible = false;
@@ -114,6 +197,8 @@ let activeGrammarQuizType = "meaning";
 let grammarQuizAnsweredCountValue = 0;
 let grammarQuizCorrectCountValue = 0;
 let grammarQuizHasAnsweredCurrentQuestion = false;
+let wordQuizRoundSeenKeys = new Set();
+let grammarQuizRoundSeenKeys = new Set();
 let grammarHasLoaded = false;
 let grammarIsLoading = false;
 
@@ -264,10 +349,6 @@ function getRandomItem(items) {
   return items[Math.floor(Math.random() * items.length)];
 }
 
-function getRandomWord(words) {
-  return getRandomItem(words);
-}
-
 function getPartOfSpeechGroup(partOfSpeech) {
   return PART_OF_SPEECH_GROUPS.find((group) => group.matches.includes(partOfSpeech))?.id ?? "other";
 }
@@ -397,70 +478,39 @@ function getTotalGrammarGroups() {
   return Math.max(1, Math.ceil(filteredGrammar.length / GRAMMAR_CARD_COUNT));
 }
 
-function buildFreshDeck(items, previousIds) {
-  const shuffledItems = shuffleItems(items);
-
-  if (previousIds.size === 0) {
-    return shuffledItems;
-  }
-
-  const itemsNotInPreviousSet = shuffledItems.filter((item) => !previousIds.has(item.id));
-  const itemsInPreviousSet = shuffledItems.filter((item) => previousIds.has(item.id));
-
-  return [...itemsNotInPreviousSet, ...itemsInPreviousSet];
-}
-
 function resetDeck() {
-  wordDeck = buildFreshDeck(filteredVocabulary, previousWordIds);
   currentGroupNumber = 0;
   reshuffleNotice = "";
 }
 
 function resetGrammarDeck() {
-  grammarDeck = buildFreshDeck(filteredGrammar, previousGrammarIds);
   currentGrammarGroupNumber = 0;
   grammarReshuffleNotice = "";
 }
 
-function refreshDeckIfNeeded() {
-  if (wordDeck.length > 0) {
-    reshuffleNotice = "";
-    return;
-  }
-
-  wordDeck = buildFreshDeck(filteredVocabulary, previousWordIds);
-  currentGroupNumber = 0;
-  reshuffleNotice = "已重新洗牌。";
-}
-
-function refreshGrammarDeckIfNeeded() {
-  if (grammarDeck.length > 0) {
-    grammarReshuffleNotice = "";
-    return;
-  }
-
-  grammarDeck = buildFreshDeck(filteredGrammar, previousGrammarIds);
-  currentGrammarGroupNumber = 0;
-  grammarReshuffleNotice = "已重新洗牌。";
-}
-
 function getNextWordSet() {
-  refreshDeckIfNeeded();
-
-  const cardsToShow = Math.min(VOCABULARY_CARD_COUNT, wordDeck.length);
-  const nextWords = wordDeck.slice(0, cardsToShow);
-  wordDeck = wordDeck.slice(cardsToShow);
+  const cardsToShow = Math.min(VOCABULARY_CARD_COUNT, filteredVocabulary.length);
+  const nextWords = pickLeastSeenItems(
+    filteredVocabulary,
+    cardsToShow,
+    JAPANESE_VOCAB_SEEN_COUNTS_KEY,
+    getVocabularySeenKey,
+    previousWordIds,
+  );
   currentGroupNumber += 1;
 
   return nextWords;
 }
 
 function getNextGrammarSet() {
-  refreshGrammarDeckIfNeeded();
-
-  const cardsToShow = Math.min(GRAMMAR_CARD_COUNT, grammarDeck.length);
-  const nextGrammarItems = grammarDeck.slice(0, cardsToShow);
-  grammarDeck = grammarDeck.slice(cardsToShow);
+  const cardsToShow = Math.min(GRAMMAR_CARD_COUNT, filteredGrammar.length);
+  const nextGrammarItems = pickLeastSeenItems(
+    filteredGrammar,
+    cardsToShow,
+    JAPANESE_GRAMMAR_SEEN_COUNTS_KEY,
+    getGrammarSeenKey,
+    previousGrammarIds,
+  );
   currentGrammarGroupNumber += 1;
 
   return nextGrammarItems;
@@ -576,7 +626,17 @@ function createQuizQuestion() {
     return;
   }
 
-  const questionWord = getRandomWord(filteredVocabulary);
+  const questionWord = pickLeastSeenItem(
+    filteredVocabulary,
+    JAPANESE_VOCAB_SEEN_COUNTS_KEY,
+    getVocabularySeenKey,
+    wordQuizRoundSeenKeys,
+  );
+  const questionWordKey = getVocabularySeenKey(questionWord);
+  wordQuizRoundSeenKeys.add(questionWordKey);
+  if (wordQuizRoundSeenKeys.size >= filteredVocabulary.length) {
+    wordQuizRoundSeenKeys = new Set();
+  }
   const wrongOptions = createWrongQuizOptions(questionWord);
 
   if (wrongOptions.length < 3) {
@@ -595,6 +655,7 @@ function createQuizQuestion() {
     word: questionWord,
     options,
   };
+  incrementSeenCount(JAPANESE_VOCAB_SEEN_COUNTS_KEY, questionWordKey);
   quizHasAnsweredCurrentQuestion = false;
   nextQuizQuestionButton.hidden = true;
   renderQuizQuestion();
@@ -638,7 +699,17 @@ function createGrammarMeaningQuizQuestion() {
     return;
   }
 
-  const questionGrammar = getRandomItem(filteredGrammar);
+  const questionGrammar = pickLeastSeenItem(
+    filteredGrammar,
+    JAPANESE_GRAMMAR_SEEN_COUNTS_KEY,
+    getGrammarSeenKey,
+    grammarQuizRoundSeenKeys,
+  );
+  const questionGrammarKey = getGrammarSeenKey(questionGrammar);
+  grammarQuizRoundSeenKeys.add(questionGrammarKey);
+  if (grammarQuizRoundSeenKeys.size >= filteredGrammar.length) {
+    grammarQuizRoundSeenKeys = new Set();
+  }
   const wrongOptions = createWrongGrammarQuizOptions(questionGrammar);
 
   if (wrongOptions.length < 3) {
@@ -657,6 +728,7 @@ function createGrammarMeaningQuizQuestion() {
     grammar: questionGrammar,
     options,
   };
+  incrementSeenCount(JAPANESE_GRAMMAR_SEEN_COUNTS_KEY, questionGrammarKey);
   grammarQuizHasAnsweredCurrentQuestion = false;
   nextQuizQuestionButton.hidden = true;
   renderQuizQuestion();
@@ -679,7 +751,17 @@ function createGrammarClozeQuizQuestion() {
     return;
   }
 
-  const questionGrammar = getRandomItem(clozeGrammarItems);
+  const questionGrammar = pickLeastSeenItem(
+    clozeGrammarItems,
+    JAPANESE_GRAMMAR_SEEN_COUNTS_KEY,
+    getGrammarSeenKey,
+    grammarQuizRoundSeenKeys,
+  );
+  const questionGrammarKey = getGrammarSeenKey(questionGrammar);
+  grammarQuizRoundSeenKeys.add(questionGrammarKey);
+  if (grammarQuizRoundSeenKeys.size >= clozeGrammarItems.length) {
+    grammarQuizRoundSeenKeys = new Set();
+  }
   const options = shuffleItems(questionGrammar.quiz.choices.map((choice) => ({
     meaning: choice,
     isCorrect: choice === questionGrammar.quiz.answer,
@@ -689,6 +771,7 @@ function createGrammarClozeQuizQuestion() {
     grammar: questionGrammar,
     options,
   };
+  incrementSeenCount(JAPANESE_GRAMMAR_SEEN_COUNTS_KEY, questionGrammarKey);
   grammarQuizHasAnsweredCurrentQuestion = false;
   nextQuizQuestionButton.hidden = true;
   renderQuizQuestion();
@@ -831,6 +914,12 @@ function createActiveQuizQuestion() {
 }
 
 function restartQuiz() {
+  if (isGrammarQuizMode()) {
+    grammarQuizRoundSeenKeys = new Set();
+  } else {
+    wordQuizRoundSeenKeys = new Set();
+  }
+
   resetQuizStats();
   createActiveQuizQuestion();
 }
@@ -1016,7 +1105,8 @@ function showNewWordSet() {
 
   answersVisible = false;
   currentWords = getNextWordSet();
-  previousWordIds = new Set(currentWords.map((word) => word.id));
+  previousWordIds = new Set(currentWords.map(getVocabularySeenKey));
+  incrementSeenCountsForItems(currentWords, JAPANESE_VOCAB_SEEN_COUNTS_KEY, getVocabularySeenKey);
   renderCards(currentWords);
   updateWordSetStatus();
 }
@@ -1032,7 +1122,8 @@ function showNewGrammarSet() {
 
   answersVisible = false;
   currentGrammarItems = getNextGrammarSet();
-  previousGrammarIds = new Set(currentGrammarItems.map((grammar) => grammar.id));
+  previousGrammarIds = new Set(currentGrammarItems.map(getGrammarSeenKey));
+  incrementSeenCountsForItems(currentGrammarItems, JAPANESE_GRAMMAR_SEEN_COUNTS_KEY, getGrammarSeenKey);
   renderGrammarCards(currentGrammarItems);
   updateWordSetStatus();
 }
@@ -1046,6 +1137,7 @@ function refreshFilteredVocabulary() {
   clearSearchButton.disabled = searchQuery.length === 0;
 
   if (activeMode === "quiz") {
+    wordQuizRoundSeenKeys = new Set();
     createQuizQuestion();
   } else if (activeMode === "cards") {
     showNewWordSet();
@@ -1061,6 +1153,7 @@ function refreshFilteredGrammar() {
   clearSearchButton.disabled = grammarSearchQuery.length === 0;
 
   if (isGrammarQuizMode()) {
+    grammarQuizRoundSeenKeys = new Set();
     createGrammarQuizQuestion();
   } else if (isGrammarMode()) {
     showNewGrammarSet();
