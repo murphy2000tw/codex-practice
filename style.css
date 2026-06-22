@@ -1913,3 +1913,153 @@ h1 {
   font-size: clamp(2.2rem, 8vw, 4rem);
   line-height: 1.1;
 }
+
+.reading-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.reading-panel[hidden] {
+  display: none;
+}
+
+.reading-content {
+  display: grid;
+  gap: 18px;
+}
+
+.reading-card {
+  display: grid;
+  gap: 18px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.reading-card-header h2 {
+  margin: 16px 0 0;
+  font-size: clamp(1.45rem, 4vw, 2.1rem);
+}
+
+.reading-passage,
+.reading-kana {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 2;
+  overflow-wrap: anywhere;
+}
+
+.reading-kana {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.reading-question {
+  margin: 0;
+  color: var(--accent-dark);
+  font-size: 1.1rem;
+  font-weight: 900;
+  line-height: 1.7;
+}
+
+.reading-feedback {
+  border-radius: 18px;
+  color: var(--muted);
+  font-weight: 800;
+  line-height: 1.8;
+}
+
+.reading-feedback.is-correct,
+.reading-feedback.is-wrong {
+  padding: 14px 16px;
+}
+
+.reading-feedback.is-correct {
+  color: #246341;
+  background: #edf8f1;
+}
+
+.reading-feedback.is-wrong {
+  color: var(--accent-dark);
+  background: #fff1eb;
+}
+
+.reading-explanation {
+  margin: 8px 0 0;
+}
+
+.reading-details {
+  display: grid;
+  gap: 14px;
+  border-top: 1px dashed var(--border);
+  padding-top: 18px;
+}
+
+.reading-details section {
+  border: 1px solid rgba(234, 223, 212, 0.78);
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: #fff8f5;
+}
+
+.reading-details h4,
+.reading-details ul,
+.reading-details p {
+  margin: 0;
+}
+
+.reading-details h4 {
+  margin-bottom: 8px;
+  color: var(--accent-dark);
+}
+
+.reading-details ul {
+  padding-left: 1.25rem;
+  line-height: 1.8;
+}
+
+.reading-score {
+  margin: 0;
+  color: var(--accent-dark);
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+.reading-result-list {
+  display: grid;
+  gap: 12px;
+}
+
+.reading-result-item {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: #ffffff;
+  line-height: 1.7;
+}
+
+.reading-result-item h3,
+.reading-result-item p {
+  margin: 0 0 8px;
+}
+
+@media (max-width: 640px) {
+  .reading-card {
+    padding: 18px;
+  }
+
+  .reading-options {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .reading-passage {
+    font-size: 1.05rem;
+    line-height: 1.95;
+  }
+}

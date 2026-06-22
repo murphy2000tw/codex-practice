@@ -238,6 +238,8 @@ async function switchJapaneseTab(tab) {
     await switchMode("cards");
   } else if (tab === "grammar" && !isGrammarMode()) {
     await switchMode("grammar");
+  } else if (tab === "reading" && typeof initializeReadingPanel === "function") {
+    initializeReadingPanel();
   }
 }
 
@@ -1396,3 +1398,155 @@ updateModeButtonsForJapaneseTab();
 updateQuizStats();
 
 loadVocabulary();
+
+const JAPANESE_READING_SEEN_COUNTS_KEY = "japanese_reading_seen_counts";
+const READING_QUIZ_SIZE = 10;
+const readingPracticeModeButton = document.querySelector("#readingPracticeModeButton");
+const readingQuizModeButton = document.querySelector("#readingQuizModeButton");
+const readingContent = document.querySelector("#readingContent");
+const japaneseReadingQuestions = Array.isArray(window.JAPANESE_READING_QUESTIONS) ? window.JAPANESE_READING_QUESTIONS : [];
+let activeReadingMode = "practice";
+let currentReadingQuestion = null;
+let readingPracticeAnswered = false;
+let readingQuizQuestions = [];
+let readingQuizAnswers = [];
+let currentReadingQuizIndex = 0;
+
+function getReadingSeenKey(question) {
+  return String(question.id);
+}
+
+function setReadingMode(mode) {
+  activeReadingMode = mode;
+  readingPracticeModeButton?.classList.toggle("is-active", mode === "practice");
+  readingPracticeModeButton?.setAttribute("aria-pressed", String(mode === "practice"));
+  readingQuizModeButton?.classList.toggle("is-active", mode === "quiz");
+  readingQuizModeButton?.setAttribute("aria-pressed", String(mode === "quiz"));
+  if (mode === "quiz") {
+    startReadingQuiz();
+  } else {
+    showReadingPracticeQuestion();
+  }
+}
+
+function renderReadingUnavailable() {
+  readingContent.replaceChildren(Object.assign(document.createElement("p"), { className: "status-message", textContent: "目前無法載入閱讀題庫。" }));
+}
+
+function createReadingMeta(question) {
+  const details = document.createElement("div");
+  details.className = "reading-details";
+  details.innerHTML = `
+    <section><h4>文章假名</h4><p class="reading-kana">${question.passageKana}</p></section>
+    <section><h4>重要單字</h4><ul>${question.vocabulary.map((item) => `<li><strong>${item.word}</strong>（${item.kana}）：${item.meaning}</li>`).join("")}</ul></section>
+    <section><h4>文法重點</h4><ul>${question.grammarPoints.map((point) => `<li>${point}</li>`).join("")}</ul></section>
+  `;
+  return details;
+}
+
+function createReadingQuestionCard(question, { reveal = false, onAnswer } = {}) {
+  const card = document.createElement("article");
+  card.className = "reading-card";
+  const feedback = document.createElement("div");
+  feedback.className = "reading-feedback";
+  const optionButtons = question.options.map((option, index) => {
+    const button = document.createElement("button");
+    button.className = "quiz-option reading-option";
+    button.type = "button";
+    button.textContent = option;
+    button.addEventListener("click", () => onAnswer?.(index, optionButtons, feedback));
+    return button;
+  });
+  card.innerHTML = `
+    <div class="reading-card-header"><span class="card-number">${question.level}・${question.type}</span><h2>${question.title}</h2></div>
+    <p class="reading-passage">${question.passage}</p>
+    <p class="reading-question">${question.question}</p>
+  `;
+  const options = document.createElement("div");
+  options.className = "quiz-options reading-options";
+  options.replaceChildren(...optionButtons);
+  card.append(options, feedback);
+  if (reveal) {
+    feedback.innerHTML = `<p class="reading-explanation">解析：${question.explanation}</p>`;
+    card.appendChild(createReadingMeta(question));
+  }
+  return card;
+}
+
+function showReadingPracticeQuestion() {
+  if (japaneseReadingQuestions.length === 0) return renderReadingUnavailable();
+  currentReadingQuestion = pickLeastSeenItem(japaneseReadingQuestions, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
+  incrementSeenCount(JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey(currentReadingQuestion));
+  readingPracticeAnswered = false;
+  const card = createReadingQuestionCard(currentReadingQuestion, { onAnswer: handleReadingPracticeAnswer });
+  const next = document.createElement("button");
+  next.className = "answer-button";
+  next.type = "button";
+  next.textContent = "換一題閱讀";
+  next.addEventListener("click", showReadingPracticeQuestion);
+  readingContent.replaceChildren(card, next);
+}
+
+function handleReadingPracticeAnswer(selectedIndex, optionButtons, feedback) {
+  if (readingPracticeAnswered || !currentReadingQuestion) return;
+  readingPracticeAnswered = true;
+  const correct = selectedIndex === currentReadingQuestion.answerIndex;
+  feedback.classList.add(correct ? "is-correct" : "is-wrong");
+  feedback.innerHTML = `<strong>${correct ? "答對了！" : `答錯了，正確答案是：${currentReadingQuestion.options[currentReadingQuestion.answerIndex]}`}</strong><p class="reading-explanation">解析：${currentReadingQuestion.explanation}</p>`;
+  optionButtons.forEach((button, index) => {
+    button.disabled = true;
+    button.classList.toggle("is-correct", index === currentReadingQuestion.answerIndex);
+    button.classList.toggle("is-wrong", index === selectedIndex && !correct);
+  });
+  feedback.after(createReadingMeta(currentReadingQuestion));
+}
+
+function startReadingQuiz() {
+  const count = Math.min(READING_QUIZ_SIZE, japaneseReadingQuestions.length);
+  readingQuizQuestions = pickLeastSeenItems(japaneseReadingQuestions, count, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
+  incrementSeenCountsForItems(readingQuizQuestions, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
+  readingQuizAnswers = [];
+  currentReadingQuizIndex = 0;
+  renderReadingQuizQuestion();
+}
+
+function renderReadingQuizQuestion() {
+  const question = readingQuizQuestions[currentReadingQuizIndex];
+  if (!question) return renderReadingQuizResults();
+  const status = document.createElement("p");
+  status.className = "set-status reading-quiz-status";
+  status.textContent = `閱讀測驗 ${currentReadingQuizIndex + 1} / ${readingQuizQuestions.length}`;
+  const card = createReadingQuestionCard(question, { onAnswer: (selectedIndex) => {
+    readingQuizAnswers[currentReadingQuizIndex] = selectedIndex;
+    currentReadingQuizIndex += 1;
+    renderReadingQuizQuestion();
+  }});
+  readingContent.replaceChildren(status, card);
+}
+
+function renderReadingQuizResults() {
+  const correctCount = readingQuizQuestions.filter((q, i) => readingQuizAnswers[i] === q.answerIndex).length;
+  const result = document.createElement("article");
+  result.className = "reading-card reading-result-card";
+  result.innerHTML = `<h2>測驗完成</h2><p class="reading-score">總分：${correctCount} / ${readingQuizQuestions.length}</p>`;
+  const list = document.createElement("div");
+  list.className = "reading-result-list";
+  list.innerHTML = readingQuizQuestions.map((q, i) => `<section class="reading-result-item"><h3>第 ${i + 1} 題：${q.title}</h3><p>你的答案：${q.options[readingQuizAnswers[i]] ?? "未作答"}</p><p>正確答案：${q.options[q.answerIndex]}</p><p>${readingQuizAnswers[i] === q.answerIndex ? "答對" : "答錯"}</p><p>解析：${q.explanation}</p></section>`).join("");
+  const restart = document.createElement("button");
+  restart.className = "answer-button";
+  restart.type = "button";
+  restart.textContent = "重新開始閱讀測驗";
+  restart.addEventListener("click", startReadingQuiz);
+  result.append(list, restart);
+  readingContent.replaceChildren(result);
+}
+
+readingPracticeModeButton?.addEventListener("click", () => setReadingMode("practice"));
+readingQuizModeButton?.addEventListener("click", () => setReadingMode("quiz"));
+
+let readingPanelInitialized = false;
+function initializeReadingPanel() {
+  if (readingPanelInitialized) { return; }
+  readingPanelInitialized = true;
+  setReadingMode("practice");
+}
