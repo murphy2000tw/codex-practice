@@ -172,6 +172,7 @@ const japaneseReadingPanel = document.querySelector("#japaneseReadingPanel");
 const japaneseListeningPanel = document.querySelector("#japaneseListeningPanel");
 const japaneseTabButtons = document.querySelectorAll(".japanese-tab-button");
 const modeButtons = document.querySelectorAll(".mode-button[data-mode-group]");
+const modePanels = document.querySelectorAll("[data-mode-panel]");
 
 let vocabulary = [];
 let filteredVocabulary = [];
@@ -209,8 +210,12 @@ let grammarHasLoaded = false;
 let grammarIsLoading = false;
 
 function updateModeButtonsForJapaneseTab() {
+  modePanels.forEach((panel) => {
+    panel.hidden = panel.dataset.modePanel !== activeJapaneseTab;
+  });
+
   modeButtons.forEach((button) => {
-    button.hidden = button.dataset.modeGroup !== activeJapaneseTab;
+    button.hidden = false;
   });
 }
 

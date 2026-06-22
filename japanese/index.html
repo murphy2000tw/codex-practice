@@ -63,14 +63,23 @@
       </div>
     </section>
 
-    <section class="mode-panel" aria-labelledby="mode-title">
+    <section class="mode-panel" data-mode-panel="vocab" aria-labelledby="vocab-mode-title">
       <div>
-        <p class="filter-label" id="mode-title">模式切換</p>
-        <p class="mode-description">選擇用單字卡複習、文法卡整理句型，或用選擇題測驗目前篩選出的單字與文法。</p>
+        <p class="filter-label" id="vocab-mode-title">單字功能</p>
+        <p class="mode-description">在單字分頁中切換單字卡複習或單字測驗。</p>
       </div>
-      <div class="mode-switch" role="group" aria-label="選擇練習模式">
+      <div class="mode-switch" role="group" aria-label="選擇單字練習模式">
         <button id="cardModeButton" class="mode-button is-active" data-mode-group="vocab" type="button" aria-pressed="true">單字練習</button>
         <button id="quizModeButton" class="mode-button" data-mode-group="vocab" type="button" aria-pressed="false">單字測驗</button>
+      </div>
+    </section>
+
+    <section class="mode-panel" data-mode-panel="grammar" aria-labelledby="grammar-mode-title" hidden>
+      <div>
+        <p class="filter-label" id="grammar-mode-title">文法功能</p>
+        <p class="mode-description">在文法分頁中切換文法卡整理或文法測驗。</p>
+      </div>
+      <div class="mode-switch" role="group" aria-label="選擇文法練習模式">
         <button id="grammarModeButton" class="mode-button" data-mode-group="grammar" type="button" aria-pressed="false">文法練習</button>
         <button id="grammarQuizModeButton" class="mode-button" data-mode-group="grammar" type="button" aria-pressed="false">文法測驗</button>
       </div>
