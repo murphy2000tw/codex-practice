@@ -117,8 +117,18 @@
     <section class="cards-grid" id="vocabularyCards" aria-live="polite"></section>
     </div>
 
-    <section id="japaneseReadingPanel" class="japanese-placeholder-panel" role="tabpanel" aria-labelledby="japaneseReadingTab" hidden>
-      <p>閱讀練習與測驗準備中</p>
+    <section id="japaneseReadingPanel" class="reading-panel" role="tabpanel" aria-labelledby="japaneseReadingTab" hidden>
+      <div class="mode-panel reading-mode-panel" aria-labelledby="reading-mode-title">
+        <div>
+          <p class="filter-label" id="reading-mode-title">閱讀功能</p>
+          <p class="mode-description">在閱讀分頁中切換閱讀練習或 10 題閱讀測驗。</p>
+        </div>
+        <div class="mode-switch" role="group" aria-label="選擇閱讀模式">
+          <button id="readingPracticeModeButton" class="mode-button is-active" type="button" aria-pressed="true">閱讀練習</button>
+          <button id="readingQuizModeButton" class="mode-button" type="button" aria-pressed="false">閱讀測驗</button>
+        </div>
+      </div>
+      <div id="readingContent" class="reading-content" aria-live="polite"></div>
     </section>
 
     <section id="japaneseListeningPanel" class="japanese-placeholder-panel" role="tabpanel" aria-labelledby="japaneseListeningTab" hidden>
@@ -130,6 +140,7 @@
     window.JAPANESE_VOCABULARY_URL = "../vocabulary.json";
     window.JAPANESE_GRAMMAR_URL = "../grammar.json";
   </script>
-  <script src="../script.js?v=1.8"></script>
+  <script src="../japaneseReadingQuestions.js?v=1.0"></script>
+  <script src="../script.js?v=1.9"></script>
 </body>
 </html>
