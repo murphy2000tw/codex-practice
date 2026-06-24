@@ -1444,6 +1444,160 @@ function renderReadingUnavailable() {
   readingContent.replaceChildren(Object.assign(document.createElement("p"), { className: "status-message", textContent: "目前無法載入閱讀題庫。" }));
 }
 
+
+function isJapaneseKanji(char) {
+  return /[\u3400-\u9fff々〆ヵヶ]/u.test(char);
+}
+
+function toHiraganaReadingText(text) {
+  return String(text ?? "")
+    .replace(/[\u30a1-\u30f6]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0x60))
+    .replace(/\s+/g, "");
+}
+
+function createRubyPartsFromKana(text, kana) {
+  const source = String(text ?? "");
+  const reading = toHiraganaReadingText(kana);
+  if (!source || !reading) return [{ text: source }];
+  const parts = [];
+  let sourceIndex = 0;
+  let readingIndex = 0;
+
+  const pushText = (value) => {
+    if (!value) return;
+    const last = parts[parts.length - 1];
+    if (last && Object.prototype.hasOwnProperty.call(last, "text")) last.text += value;
+    else parts.push({ text: value });
+  };
+
+  while (sourceIndex < source.length) {
+    const char = source[sourceIndex];
+    if (!isJapaneseKanji(char)) {
+      pushText(char);
+      const normalizedChar = toHiraganaReadingText(char);
+      if (normalizedChar && reading.startsWith(normalizedChar, readingIndex)) {
+        readingIndex += normalizedChar.length;
+      }
+      sourceIndex += 1;
+      continue;
+    }
+
+    const kanjiStart = sourceIndex;
+    while (sourceIndex < source.length && isJapaneseKanji(source[sourceIndex])) sourceIndex += 1;
+    const base = source.slice(kanjiStart, sourceIndex);
+    let nextLiteral = "";
+    let lookAhead = sourceIndex;
+    while (lookAhead < source.length && !isJapaneseKanji(source[lookAhead])) {
+      nextLiteral += source[lookAhead];
+      lookAhead += 1;
+    }
+    const normalizedNextLiteral = toHiraganaReadingText(nextLiteral);
+    let ruby = "";
+    if (normalizedNextLiteral) {
+      const nextReadingIndex = reading.indexOf(normalizedNextLiteral, readingIndex);
+      if (nextReadingIndex >= readingIndex) {
+        ruby = reading.slice(readingIndex, nextReadingIndex);
+        readingIndex = nextReadingIndex;
+      }
+    } else {
+      ruby = reading.slice(readingIndex);
+      readingIndex = reading.length;
+    }
+
+    if (ruby) parts.push({ base, ruby });
+    else pushText(base);
+  }
+
+  return parts;
+}
+
+function createTitleRubyParts(readingSet) {
+  const title = String(readingSet.title ?? "");
+  if (!title) return [{ text: title }];
+
+  const passage = String(readingSet.passage ?? "");
+  const passageTitleIndex = passage.indexOf(title);
+  if (passageTitleIndex >= 0) {
+    const passageParts = createRubyPartsFromKana(readingSet.passage, readingSet.passageKana);
+    const titleParts = [];
+    let cursor = 0;
+    const titleStart = passageTitleIndex;
+    const titleEnd = titleStart + title.length;
+    const pushText = (value) => {
+      if (!value) return;
+      const last = titleParts[titleParts.length - 1];
+      if (last && Object.prototype.hasOwnProperty.call(last, "text")) last.text += value;
+      else titleParts.push({ text: value });
+    };
+
+    passageParts.forEach((part) => {
+      const value = part.base ?? part.text ?? "";
+      const partStart = cursor;
+      const partEnd = partStart + value.length;
+      cursor = partEnd;
+      if (partEnd <= titleStart || partStart >= titleEnd) return;
+      const sliceStart = Math.max(titleStart, partStart) - partStart;
+      const sliceEnd = Math.min(titleEnd, partEnd) - partStart;
+      const slicedValue = value.slice(sliceStart, sliceEnd);
+      if (part.base && part.ruby && sliceStart === 0 && sliceEnd === value.length) {
+        titleParts.push({ base: slicedValue, ruby: part.ruby });
+      } else {
+        pushText(slicedValue);
+      }
+    });
+
+    if (titleParts.some((part) => part.ruby)) return titleParts;
+  }
+
+  const vocabulary = Array.isArray(readingSet.vocabulary) ? readingSet.vocabulary : [];
+  const parts = [];
+  let index = 0;
+  const pushText = (value) => {
+    if (!value) return;
+    const last = parts[parts.length - 1];
+    if (last && Object.prototype.hasOwnProperty.call(last, "text")) last.text += value;
+    else parts.push({ text: value });
+  };
+
+  while (index < title.length) {
+    const match = vocabulary
+      .filter((item) => item.word && item.kana && title.startsWith(item.word, index))
+      .sort((a, b) => b.word.length - a.word.length)[0];
+    if (match) {
+      parts.push({ base: match.word, ruby: match.kana });
+      index += match.word.length;
+    } else {
+      pushText(title[index]);
+      index += 1;
+    }
+  }
+  return parts;
+}
+
+function renderRubyParts(parent, parts) {
+  parent.replaceChildren();
+  parts.forEach((part) => {
+    if (part.base && part.ruby) {
+      const ruby = document.createElement("ruby");
+      ruby.append(document.createTextNode(part.base));
+      const rt = document.createElement("rt");
+      rt.textContent = part.ruby;
+      ruby.appendChild(rt);
+      parent.appendChild(ruby);
+    } else {
+      parent.append(document.createTextNode(part.text ?? ""));
+    }
+  });
+}
+
+function getReadingTitleRubyParts(readingSet) {
+  return readingSet.titleRubyParts ?? createTitleRubyParts(readingSet);
+}
+
+function getReadingPassageRubyParts(readingSet) {
+  return readingSet.passageRubyParts ?? createRubyPartsFromKana(readingSet.passage, readingSet.passageKana);
+}
+
 function createReadingMeta(readingSet) {
   const details = document.createElement("div");
   details.className = "reading-details";
@@ -1455,13 +1609,25 @@ function createReadingMeta(readingSet) {
   return details;
 }
 
-function createReadingSetCard(readingSet, { reveal = false, showFeedback = false, selectedAnswers = {}, onAnswer } = {}) {
+function createReadingSetCard(readingSet, { reveal = false, showFeedback = false, selectedAnswers = {}, onAnswer, showRuby = false } = {}) {
   const card = document.createElement("article");
   card.className = "reading-card";
-  card.innerHTML = `
-    <div class="reading-card-header"><span class="card-number">${readingSet.level}・${readingSet.type}</span><h2>${readingSet.title}</h2></div>
-    <p class="reading-passage">${readingSet.passage}</p>
-  `;
+
+  const header = document.createElement("div");
+  header.className = "reading-card-header";
+  const meta = document.createElement("span");
+  meta.className = "card-number";
+  meta.textContent = `${readingSet.level}・${readingSet.type}`;
+  const title = document.createElement("h2");
+  if (showRuby) renderRubyParts(title, getReadingTitleRubyParts(readingSet));
+  else title.textContent = readingSet.title;
+  header.append(meta, title);
+
+  const passage = document.createElement("p");
+  passage.className = "reading-passage";
+  if (showRuby) renderRubyParts(passage, getReadingPassageRubyParts(readingSet));
+  else passage.textContent = readingSet.passage;
+  card.append(header, passage);
   readingSet.questions.forEach((question, questionIndex) => {
     const questionBlock = document.createElement("section");
     questionBlock.className = "reading-question-block";
@@ -1506,7 +1672,7 @@ function showReadingPracticeQuestion() {
   currentReadingSet = pickLeastSeenItem(japaneseReadingSets, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
   incrementSeenCount(JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey(currentReadingSet));
   readingPracticeAnswers = {};
-  const card = createReadingSetCard(currentReadingSet, { showFeedback: true, onAnswer: handleReadingPracticeAnswer });
+  const card = createReadingSetCard(currentReadingSet, { showFeedback: true, onAnswer: handleReadingPracticeAnswer, showRuby: true });
   const next = document.createElement("button");
   next.className = "answer-button";
   next.type = "button";
