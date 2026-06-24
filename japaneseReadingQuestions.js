@@ -35,7 +35,9 @@ window.JAPANESE_READING_SETS = [
     "grammarPoints": [
       "～ために",
       "～ことにしました"
-    ]
+    ],
+    "titleRuby": "郵便局の<ruby>荷物<rt>にもつ</rt></ruby>",
+    "passageRuby": "中村さんは妹にお菓子を送りたくて郵便局へ<ruby>行<rt>い</rt></ruby>きました。箱が少し大きかったので、窓口の人に安い送り方を<ruby>聞<rt>き</rt></ruby>きました。<ruby>明日<rt>あした</rt></ruby>着く<ruby>必要<rt>ひつよう</rt></ruby>はないため、普通の便で送ることにしました。"
   },
   {
     "id": "jp-reading-set-n4-002",
@@ -60,20 +62,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "映画",
-        "kana": "えいが",
-        "meaning": "主題語"
+        "word": "予定",
+        "kana": "予定",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "必要",
-        "kana": "ひつよう",
-        "meaning": "必要"
+        "word": "由美さんは友",
+        "kana": "由美さんは友",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "だちと映画を",
+        "kana": "だちと映画を",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～かもしれない",
       "～ことにしました"
-    ]
+    ],
+    "titleRuby": "映画の<ruby>時間<rt>じかん</rt></ruby>",
+    "passageRuby": "由美さんは<ruby>友<rt>とも</rt></ruby>だちと映画を見る<ruby>予定<rt>よてい</rt></ruby>です。七時の回は人気で席が前の方しかありませんでした。少し待てば八時半の回で真ん中の席が取れるので、二人は遅い回にしました。"
   },
   {
     "id": "jp-reading-set-n4-003",
@@ -98,20 +107,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "アルバイト初日",
-        "kana": "アルバイトしょにち",
-        "meaning": "主題語"
+        "word": "確認",
+        "kana": "確認",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "必要",
-        "kana": "ひつよう",
-        "meaning": "必要"
+        "word": "今日",
+        "kana": "今日",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "店長",
+        "kana": "店長",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～かもしれない",
       "～ことにしました"
-    ]
+    ],
+    "titleRuby": "アルバイト初日",
+    "passageRuby": "マイクさんは<ruby>今日<rt>きょう</rt></ruby>から喫茶店でアルバイトを<ruby>始<rt>はじ</rt></ruby>めました。<ruby>店長<rt>てんちょう</rt></ruby>は、注文を<ruby>聞<rt>き</rt></ruby>く前に水を出すこと、分からない言葉があったらすぐ<ruby>確認<rt>かくにん</rt></ruby>することを教えました。マイクさんは小さいノートに<ruby>書<rt>か</rt></ruby>きました。"
   },
   {
     "id": "jp-reading-set-n4-004",
@@ -136,20 +152,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "誕生日",
-        "kana": "たんじょうび",
-        "meaning": "主題語"
+        "word": "兄の誕生日に",
+        "kana": "兄の誕生日に",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "必要",
-        "kana": "ひつよう",
-        "meaning": "必要"
+        "word": "私は青いシャ",
+        "kana": "私は青いシャ",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "ツを買うつも",
+        "kana": "ツを買うつも",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～かもしれない",
       "～ことにしました"
-    ]
+    ],
+    "titleRuby": "誕生日のプレゼント",
+    "passageRuby": "兄の誕生日に、私は青いシャツを<ruby>買<rt>か</rt></ruby>うつもりでした。でも母から、兄は最近料理を<ruby>始<rt>はじ</rt></ruby>めたと<ruby>聞<rt>き</rt></ruby>きました。それで、シャツではなく<ruby>使<rt>つか</rt></ruby>いやすい包丁を選びました。"
   },
   {
     "id": "jp-reading-set-n4-005",
@@ -174,400 +197,457 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "スマホ",
-        "kana": "スマホ",
-        "meaning": "主題語"
+        "word": "明日",
+        "kana": "明日",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "必要",
-        "kana": "ひつよう",
-        "meaning": "必要"
+        "word": "朝",
+        "kana": "朝",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "夜",
+        "kana": "夜",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～かもしれない",
       "～ことにしました"
-    ]
+    ],
+    "titleRuby": "スマホの音",
+    "passageRuby": "佐藤さんのスマホは<ruby>朝<rt>あさ</rt></ruby>から音が出ませんでした。<ruby>電話<rt>でんわ</rt></ruby>は受けられますが、目覚ましが鳴らないかもしれません。<ruby>明日<rt>あした</rt></ruby>は早いので、今<ruby>夜<rt>よる</rt></ruby>は古い時計も<ruby>使<rt>つか</rt></ruby>うことにしました。"
   },
   {
     "id": "jp-reading-set-n4-006",
     "level": "N4",
-    "type": "短文理解",
-    "title": "ごみの日",
-    "passage": "ごみの日についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
-    "passageKana": "ごみの日についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
+    "type": "社區公告",
+    "title": "ごみ収集日の変更",
+    "passage": "町内会のお知らせです。来週だけ、燃えるごみの収集日は火曜日ではなく水曜日になります。朝八時までに、いつもの場所へ出してください。雨の場合も集めます。",
+    "passageKana": "ちょうないかいのおしらせです。らいしゅうだけ、もえるごみのしゅうしゅうびはかようびではなくすいようびになります。あさはちじまでに、いつものばしょへだしてください。あめのばあいもあつめます。",
     "questions": [
       {
         "id": "jp-reading-q-n4-006-01",
-        "question": "佐藤さんは出かける前に何をしますか。",
+        "question": "このお知らせの目的は何ですか。",
         "options": [
-          "時間と場所をもう一度確認します",
-          "手帳を買いに行きます",
-          "お知らせを捨てます",
-          "場所を友だちに変えてもらいます"
+          "来週のごみ収集日が変わることを知らせる",
+          "新しいごみ箱を売る",
+          "雨の日はごみを出せないと知らせる",
+          "町内会を休みにする"
         ],
         "answerIndex": 0,
-        "explanation": "前に間違えたことがあるので、出かける前に確認するつもりです。"
+        "explanation": "来週だけ燃えるごみの収集日が水曜日になる、と知らせています。"
       }
     ],
     "vocabulary": [
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "燃えるごみ",
+        "kana": "もえるごみ",
+        "meaning": "可燃垃圾"
       },
       {
-        "word": "手帳",
-        "kana": "てちょう",
-        "meaning": "記事本"
+        "word": "収集日",
+        "kana": "しゅうしゅうび",
+        "meaning": "收集日"
       }
     ],
     "grammarPoints": [
-      "～ことがある",
-      "～前に"
-    ]
+      "～場合",
+      "～までに"
+    ],
+    "titleRuby": "ごみ<ruby>収集<rt>しゅうしゅう</rt></ruby>日の<ruby>変<rt>か</rt></ruby>更",
+    "passageRuby": "町内会のお知らせです。来週だけ、<ruby>燃える<rt>もえる</rt></ruby>ごみの<ruby>収集<rt>しゅうしゅう</rt></ruby>日は火曜日ではなく水曜日になります。<ruby>朝<rt>あさ</rt></ruby>八時までに、いつもの<ruby>場所<rt>ばしょ</rt></ruby>へ出してください。<ruby>雨<rt>あめ</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>も集めます。"
   },
   {
     "id": "jp-reading-set-n4-007",
     "level": "N4",
-    "type": "短文理解",
-    "title": "ホテルの朝食",
-    "passage": "ホテルの朝食についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
-    "passageKana": "ホテルの朝食についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
+    "type": "ホテル案内",
+    "title": "旅館の朝食券",
+    "passage": "フロントの説明では、朝食は一階の食堂で七時から九時までです。食堂に入る前に、部屋の番号が書いてある朝食券を受付の箱に入れなければなりません。",
+    "passageKana": "フロントのせつめいでは、ちょうしょくはいっかいのしょくどうでしちじからくじまでです。しょくどうにはいるまえに、へやのばんごうがかいてあるちょうしょくけんをうけつけのはこにいれなければなりません。",
     "questions": [
       {
         "id": "jp-reading-q-n4-007-01",
-        "question": "佐藤さんは出かける前に何をしますか。",
+        "question": "朝食を食べる前に何をしなければなりませんか。",
         "options": [
-          "時間と場所をもう一度確認します",
-          "手帳を買いに行きます",
-          "お知らせを捨てます",
-          "場所を友だちに変えてもらいます"
+          "朝食券を受付の箱に入れる",
+          "部屋で料理を作る",
+          "九時のあとで食堂へ行く",
+          "外の店で券を買う"
         ],
         "answerIndex": 0,
-        "explanation": "前に間違えたことがあるので、出かける前に確認するつもりです。"
+        "explanation": "食堂に入る前に朝食券を受付の箱に入れる必要があります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "朝食券",
+        "kana": "ちょうしょくけん",
+        "meaning": "早餐券"
       },
       {
-        "word": "手帳",
-        "kana": "てちょう",
-        "meaning": "記事本"
+        "word": "受付",
+        "kana": "うけつけ",
+        "meaning": "櫃台"
       }
     ],
     "grammarPoints": [
-      "～ことがある",
-      "～前に"
-    ]
+      "～前に",
+      "～なければなりません"
+    ],
+    "titleRuby": "旅館の<ruby>朝<rt>あさ</rt></ruby>食券",
+    "passageRuby": "フロントの説明では、<ruby>朝<rt>あさ</rt></ruby>食は一階の食堂で七時から九時までです。食堂に<ruby>入<rt>はい</rt></ruby>る前に、<ruby>部屋<rt>へや</rt></ruby>の<ruby>番号<rt>ばんごう</rt></ruby>が<ruby>書<rt>か</rt></ruby>いてある<ruby>朝<rt>あさ</rt></ruby>食券を<ruby>受付<rt>うけつけ</rt></ruby>の箱に<ruby>入<rt>はい</rt></ruby>れなければなりません。"
   },
   {
     "id": "jp-reading-set-n4-008",
     "level": "N4",
-    "type": "短文理解",
-    "title": "駅の出口",
-    "passage": "駅の出口についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
-    "passageKana": "駅の出口についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
+    "type": "交通通知",
+    "title": "駅の出口工事",
+    "passage": "駅の東出口は工事のため、今月いっぱい使うことができません。バス停へ行く人は、西出口を出て右へ曲がってください。いつもより五分ぐらいかかるかもしれません。",
+    "passageKana": "えきのひがしでぐちはこうじのため、こんげついっぱいつかうことができません。バスていへいくひとは、にしでぐちをでてみぎへまがってください。いつもよりごふんぐらいかかるかもしれません。",
     "questions": [
       {
         "id": "jp-reading-q-n4-008-01",
-        "question": "佐藤さんは出かける前に何をしますか。",
+        "question": "バス停へ行く人はどうしますか。",
         "options": [
-          "時間と場所をもう一度確認します",
-          "手帳を買いに行きます",
-          "お知らせを捨てます",
-          "場所を友だちに変えてもらいます"
+          "西出口を出て右へ曲がる",
+          "東出口からすぐ出る",
+          "工事が終わるまで駅で待つ",
+          "電車に乗らない"
         ],
         "answerIndex": 0,
-        "explanation": "前に間違えたことがあるので、出かける前に確認するつもりです。"
+        "explanation": "東出口は使えないため、西出口を使うよう案内しています。"
       }
     ],
     "vocabulary": [
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "出口",
+        "kana": "でぐち",
+        "meaning": "出口"
       },
       {
-        "word": "手帳",
-        "kana": "てちょう",
-        "meaning": "記事本"
+        "word": "工事",
+        "kana": "こうじ",
+        "meaning": "施工"
       }
     ],
     "grammarPoints": [
-      "～ことがある",
-      "～前に"
-    ]
+      "～ため",
+      "～ことができません",
+      "～かもしれません"
+    ],
+    "titleRuby": "<ruby>駅<rt>えき</rt></ruby>の<ruby>出口<rt>でぐち</rt></ruby>工事",
+    "passageRuby": "<ruby>駅<rt>えき</rt></ruby>の東<ruby>出口<rt>でぐち</rt></ruby>は工事のため、今月いっぱい<ruby>使<rt>つか</rt></ruby>うことができません。バス停へ<ruby>行<rt>い</rt></ruby>く人は、西<ruby>出口<rt>でぐち</rt></ruby>を出て右へ曲がってください。いつもより五分ぐらいかかるかもしれません。"
   },
   {
     "id": "jp-reading-set-n4-009",
     "level": "N4",
-    "type": "短文理解",
-    "title": "料理教室",
-    "passage": "料理教室についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
-    "passageKana": "料理教室についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
+    "type": "活動紹介",
+    "title": "料理教室の申込",
+    "passage": "公民館の料理教室では、土曜日に春の弁当を作ります。参加したい人は、木曜日までに名前と電話番号を書いて申し込んでください。材料費は八百円です。",
+    "passageKana": "こうみんかんのりょうりきょうしつでは、どようびにはるのべんとうをつくります。さんかしたいひとは、もくようびまでになまえとでんわばんごうをかいてもうしこんでください。ざいりょうひははっぴゃくえんです。",
     "questions": [
       {
         "id": "jp-reading-q-n4-009-01",
-        "question": "佐藤さんは出かける前に何をしますか。",
+        "question": "参加する人は木曜日までに何をしますか。",
         "options": [
-          "時間と場所をもう一度確認します",
-          "手帳を買いに行きます",
-          "お知らせを捨てます",
-          "場所を友だちに変えてもらいます"
+          "名前と電話番号を書いて申し込む",
+          "弁当を家で食べる",
+          "材料費を二千円払う",
+          "公民館を掃除する"
         ],
         "answerIndex": 0,
-        "explanation": "前に間違えたことがあるので、出かける前に確認するつもりです。"
+        "explanation": "参加希望者は木曜日までに名前と電話番号を書いて申し込みます。"
       }
     ],
     "vocabulary": [
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "教室",
+        "kana": "教室",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "手帳",
-        "kana": "てちょう",
-        "meaning": "記事本"
+        "word": "電話",
+        "kana": "電話",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "参加",
+        "kana": "参加",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～ことがある",
-      "～前に"
-    ]
+      "～たい",
+      "～までに",
+      "～てください"
+    ],
+    "titleRuby": "料理<ruby>教室<rt>きょうしつ</rt></ruby>の申込",
+    "passageRuby": "<ruby>公民館<rt>こうみんかん</rt></ruby>の料理<ruby>教室<rt>きょうしつ</rt></ruby>では、土曜日に春の<ruby>弁当<rt>べんとう</rt></ruby>を作ります。<ruby>参加<rt>さんか</rt></ruby>したい人は、木曜日までに<ruby>名前<rt>なまえ</rt></ruby>と<ruby>電話<rt>でんわ</rt></ruby><ruby>番号<rt>ばんごう</rt></ruby>を<ruby>書<rt>か</rt></ruby>いて申し込んでください。材料費は八百円です。"
   },
   {
     "id": "jp-reading-set-n4-010",
     "level": "N4",
-    "type": "短文理解",
-    "title": "自転車の修理",
-    "passage": "自転車の修理についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
-    "passageKana": "自転車の修理についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
+    "type": "電話留言摘要",
+    "title": "自転車修理の連絡",
+    "passage": "自転車屋から李さんへ電話がありました。修理は終わりましたが、店は今日は六時に閉まります。六時に間に合わない場合は、明日の午前中に取りに来てもいいそうです。",
+    "passageKana": "じてんしゃやからりさんへでんわがありました。しゅうりはおわりましたが、みせはきょうはろくじにしまります。ろくじにまにあわないばあいは、あしたのごぜんちゅうにとりにきてもいいそうです。",
     "questions": [
       {
         "id": "jp-reading-q-n4-010-01",
-        "question": "佐藤さんは出かける前に何をしますか。",
+        "question": "李さんが今日六時に間に合わない場合、どうできますか。",
         "options": [
-          "時間と場所をもう一度確認します",
-          "手帳を買いに行きます",
-          "お知らせを捨てます",
-          "場所を友だちに変えてもらいます"
+          "明日の午前中に取りに行けます",
+          "修理をもう一度頼みます",
+          "自転車を店に置けません",
+          "今日の夜十時に行きます"
         ],
         "answerIndex": 0,
-        "explanation": "前に間違えたことがあるので、出かける前に確認するつもりです。"
+        "explanation": "六時に間に合わない場合は、明日の午前中に取りに来てもいいとあります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "明日",
+        "kana": "明日",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "手帳",
-        "kana": "てちょう",
-        "meaning": "記事本"
+        "word": "今日",
+        "kana": "今日",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "午前",
+        "kana": "午前",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～ことがある",
-      "～前に"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～そうです"
+    ],
+    "titleRuby": "自転車修理の連絡",
+    "passageRuby": "自転車屋から李さんへ<ruby>電話<rt>でんわ</rt></ruby>がありました。修理は<ruby>終<rt>お</rt></ruby>わりましたが、店は<ruby>今日<rt>きょう</rt></ruby>は六時に閉まります。六時に間に合わない<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>明日<rt>あした</rt></ruby>の<ruby>午前<rt>ごぜん</rt></ruby>中に取りに来てもいいそうです。"
   },
   {
     "id": "jp-reading-set-n4-011",
     "level": "N4",
-    "type": "短文理解",
-    "title": "留学生の発表",
-    "passage": "留学生の発表についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
-    "passageKana": "留学生の発表についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
+    "type": "学校通知",
+    "title": "留学生交流会",
+    "passage": "学校の掲示板に、留学生交流会は金曜日の午後三時から図書館の二階で行うと書いてあります。飲み物は学校が用意するので、参加する人は名札だけ持って来ればいいです。",
+    "passageKana": "学校の掲示板に、留学生交流会は金曜日の午後三時から図書館の二階で行うと書いてあります。飲み物は学校が用意するので、参加する人は名札だけ持って来ればいいです。",
     "questions": [
       {
         "id": "jp-reading-q-n4-011-01",
-        "question": "佐藤さんは出かける前に何をしますか。",
+        "question": "どこで行いますか。",
         "options": [
-          "時間と場所をもう一度確認します",
-          "手帳を買いに行きます",
-          "お知らせを捨てます",
-          "場所を友だちに変えてもらいます"
+          "図書館の二階",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "前に間違えたことがあるので、出かける前に確認するつもりです。"
+        "explanation": "本文では「図書館の二階」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "留学生交",
+        "kana": "留学生交",
+        "meaning": "主題語"
       },
       {
-        "word": "手帳",
-        "kana": "てちょう",
-        "meaning": "記事本"
+        "word": "図書館の二階",
+        "kana": "図書館の二階",
+        "meaning": "關鍵資訊"
       }
     ],
     "grammarPoints": [
-      "～ことがある",
-      "～前に"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "<ruby>留学生<rt>りゅうがくせい</rt></ruby><ruby>交流会<rt>こうりゅうかい</rt></ruby>",
+    "passageRuby": "<ruby>学校<rt>がっこう</rt></ruby>の掲示板に、<ruby>留学生<rt>りゅうがくせい</rt></ruby><ruby>交流会<rt>こうりゅうかい</rt></ruby>は金曜日の<ruby>午後<rt>ごご</rt></ruby>三時から<ruby>図書館<rt>としょかん</rt></ruby>の二階で<ruby>行<rt>い</rt></ruby>うと<ruby>書<rt>か</rt></ruby>いてあります。飲み物は<ruby>学校<rt>がっこう</rt></ruby>が用意するので、<ruby>参加<rt>さんか</rt></ruby>する人は名札だけ<ruby>持<rt>も</rt></ruby>って来ればいいです。"
   },
   {
     "id": "jp-reading-set-n4-012",
     "level": "N4",
-    "type": "短文理解",
+    "type": "店家公告",
     "title": "店の営業時間",
-    "passage": "店の営業時間についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
-    "passageKana": "店の営業時間についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
+    "passage": "駅前のパン屋は、来月から日曜日だけ開店時間が一時間遅くなります。平日は今まで通り朝七時からです。急いでいる人は前の日に買っておくとよさそうです。",
+    "passageKana": "駅前のパン屋は、来月から日曜日だけ開店時間が一時間遅くなります。平日は今まで通り朝七時からです。急いでいる人は前の日に買っておくとよさそうです。",
     "questions": [
       {
         "id": "jp-reading-q-n4-012-01",
-        "question": "佐藤さんは出かける前に何をしますか。",
+        "question": "日曜日の開店時間はどうなりますか。",
         "options": [
-          "時間と場所をもう一度確認します",
-          "手帳を買いに行きます",
-          "お知らせを捨てます",
-          "場所を友だちに変えてもらいます"
+          "一時間遅くなります",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "前に間違えたことがあるので、出かける前に確認するつもりです。"
+        "explanation": "本文では「一時間遅くなります」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "時間",
+        "kana": "時間",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "手帳",
-        "kana": "てちょう",
-        "meaning": "記事本"
+        "word": "駅",
+        "kana": "駅",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "朝",
+        "kana": "朝",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～ことがある",
-      "～前に"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "店の営業<ruby>時間<rt>じかん</rt></ruby>",
+    "passageRuby": "<ruby>駅<rt>えき</rt></ruby>前のパン屋は、来月から日曜日だけ開店<ruby>時間<rt>じかん</rt></ruby>が一<ruby>時間<rt>じかん</rt></ruby>遅くなります。平日は今まで通り<ruby>朝<rt>あさ</rt></ruby>七時からです。急いでいる人は前の日に<ruby>買<rt>か</rt></ruby>っておくとよさそうです。"
   },
   {
     "id": "jp-reading-set-n4-013",
     "level": "N4",
-    "type": "短文理解",
-    "title": "家族の電話",
-    "passage": "家族の電話についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
-    "passageKana": "家族の電話についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
+    "type": "電話留言摘要",
+    "title": "家族への電話",
+    "passage": "マリアさんは国の家族へ電話したかったのですが、時差を忘れて夜中にかけてしまいました。次からは、電話する前に向こうの時間を確認しようと思っています。",
+    "passageKana": "マリアさんは国の家族へ電話したかったのですが、時差を忘れて夜中にかけてしまいました。次からは、電話する前に向こうの時間を確認しようと思っています。",
     "questions": [
       {
         "id": "jp-reading-q-n4-013-01",
-        "question": "佐藤さんは出かける前に何をしますか。",
+        "question": "マリアさんは次から何を確認しますか。",
         "options": [
-          "時間と場所をもう一度確認します",
-          "手帳を買いに行きます",
-          "お知らせを捨てます",
-          "場所を友だちに変えてもらいます"
+          "向こうの時間",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "前に間違えたことがあるので、出かける前に確認するつもりです。"
+        "explanation": "本文では「向こうの時間」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "家族へ電",
+        "kana": "家族へ電",
+        "meaning": "主題語"
       },
       {
-        "word": "手帳",
-        "kana": "てちょう",
-        "meaning": "記事本"
+        "word": "向こうの時間",
+        "kana": "向こうの時間",
+        "meaning": "關鍵資訊"
       }
     ],
     "grammarPoints": [
-      "～ことがある",
-      "～前に"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "<ruby>家<rt>いえ</rt></ruby>族への<ruby>電話<rt>でんわ</rt></ruby>",
+    "passageRuby": "マリアさんは国の<ruby>家<rt>いえ</rt></ruby>族へ<ruby>電話<rt>でんわ</rt></ruby>したかったのですが、時差を<ruby>忘<rt>わす</rt></ruby>れて<ruby>夜<rt>よる</rt></ruby>中にかけてしまいました。次からは、<ruby>電話<rt>でんわ</rt></ruby>する前に向こうの<ruby>時間<rt>じかん</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>しようと思っています。"
   },
   {
     "id": "jp-reading-set-n4-014",
     "level": "N4",
-    "type": "短文理解",
-    "title": "忘れ物",
-    "passage": "忘れ物についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
-    "passageKana": "忘れ物についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
+    "type": "失物招領公告",
+    "title": "傘の忘れ物",
+    "passage": "電車の中で傘を忘れた人は、駅の忘れ物窓口で色と乗った時間を伝えてください。三日以内なら駅で受け取ることができます。",
+    "passageKana": "電車の中で傘を忘れた人は、駅の忘れ物窓口で色と乗った時間を伝えてください。三日以内なら駅で受け取ることができます。",
     "questions": [
       {
         "id": "jp-reading-q-n4-014-01",
-        "question": "佐藤さんは出かける前に何をしますか。",
+        "question": "傘を忘れた人は何を伝えますか。",
         "options": [
-          "時間と場所をもう一度確認します",
-          "手帳を買いに行きます",
-          "お知らせを捨てます",
-          "場所を友だちに変えてもらいます"
+          "色と乗った時間",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "前に間違えたことがあるので、出かける前に確認するつもりです。"
+        "explanation": "本文では「色と乗った時間」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "時間",
+        "kana": "時間",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "手帳",
-        "kana": "てちょう",
-        "meaning": "記事本"
+        "word": "駅",
+        "kana": "駅",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "電車",
+        "kana": "電車",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～ことがある",
-      "～前に"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "<ruby>傘<rt>かさ</rt></ruby>の<ruby>忘れ物<rt>わすれもの</rt></ruby>",
+    "passageRuby": "<ruby>電車<rt>でんしゃ</rt></ruby>の中で<ruby>傘<rt>かさ</rt></ruby>を<ruby>忘<rt>わす</rt></ruby>れた人は、<ruby>駅<rt>えき</rt></ruby>の<ruby>忘れ物<rt>わすれもの</rt></ruby>窓口で色と乗った<ruby>時間<rt>じかん</rt></ruby>を伝えてください。三日以内なら<ruby>駅<rt>えき</rt></ruby>で受け取ることができます。"
   },
   {
     "id": "jp-reading-set-n4-015",
     "level": "N4",
-    "type": "短文理解",
-    "title": "天気予報",
-    "passage": "天気予報についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
-    "passageKana": "天気予報についてのお知らせを読んだ佐藤さんは、時間と場所を手帳に書きました。前に一度間違えたことがあるので、出かける前にもう一度確認するつもりです。",
+    "type": "日記",
+    "title": "午後の天気",
+    "passage": "天気予報によると、午後から雨が強くなるそうです。山本さんは洗濯物を外に干していたので、昼休みに一度家へ戻ることにしました。",
+    "passageKana": "天気予報によると、午後から雨が強くなるそうです。山本さんは洗濯物を外に干していたので、昼休みに一度家へ戻ることにしました。",
     "questions": [
       {
         "id": "jp-reading-q-n4-015-01",
-        "question": "佐藤さんは出かける前に何をしますか。",
+        "question": "山本さんは昼休みに何をしますか。",
         "options": [
-          "時間と場所をもう一度確認します",
-          "手帳を買いに行きます",
-          "お知らせを捨てます",
-          "場所を友だちに変えてもらいます"
+          "一度家へ戻ります",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "前に間違えたことがあるので、出かける前に確認するつもりです。"
+        "explanation": "本文では「一度家へ戻ります」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "昼",
+        "kana": "昼",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "手帳",
-        "kana": "てちょう",
-        "meaning": "記事本"
+        "word": "午後",
+        "kana": "午後",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "雨",
+        "kana": "雨",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～ことがある",
-      "～前に"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "<ruby>午後<rt>ごご</rt></ruby>の天気",
+    "passageRuby": "天気予報によると、<ruby>午後<rt>ごご</rt></ruby>から<ruby>雨<rt>あめ</rt></ruby>が強くなるそうです。山本さんは<ruby>洗<rt>あら</rt></ruby>濯物を外に干していたので、<ruby>昼<rt>ひる</rt></ruby>休みに一度<ruby>家<rt>いえ</rt></ruby>へ戻ることにしました。"
   },
   {
     "id": "jp-reading-set-n4-016",
@@ -622,7 +702,9 @@ window.JAPANESE_READING_SETS = [
     "grammarPoints": [
       "～ので",
       "～ことになる"
-    ]
+    ],
+    "titleRuby": "<ruby>学校<rt>がっこう</rt></ruby>祭の準備",
+    "passageRuby": "来週の<ruby>学校<rt>がっこう</rt></ruby>祭で、私のクラスは焼きそばを売ります。<ruby>昨日<rt>きのう</rt></ruby>、みんなで役割を決めました。私はお金を集める係になりましたが、計算が苦手なので、佐藤さんと二人でやることになりました。店の紙皿は<ruby>先生<rt>せんせい</rt></ruby>が用意してくれます。"
   },
   {
     "id": "jp-reading-set-n4-017",
@@ -659,20 +741,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "引っ越す",
-        "kana": "ひっこす",
-        "meaning": "搬家"
+        "word": "駅",
+        "kana": "駅",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "家賃",
-        "kana": "やちん",
-        "meaning": "房租"
+        "word": "家",
+        "kana": "家",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "部屋",
+        "kana": "部屋",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～より",
       "～つもり"
-    ]
+    ],
+    "titleRuby": "新しい<ruby>部屋<rt>へや</rt></ruby>",
+    "passageRuby": "王さんは大学の近くに引っ越しました。新しい<ruby>部屋<rt>へや</rt></ruby>は<ruby>駅<rt>えき</rt></ruby>から少し遠いですが、窓が大きくて明るいです。前の<ruby>部屋<rt>へや</rt></ruby>より<ruby>家<rt>いえ</rt></ruby>賃も安いので、王さんは気に<ruby>入<rt>はい</rt></ruby>っています。ただ、スーパーまで歩いて十五分かかるため、週末にまとめて<ruby>買<rt>か</rt></ruby>い物をするつもりです。"
   },
   {
     "id": "jp-reading-set-n4-018",
@@ -722,7 +811,9 @@ window.JAPANESE_READING_SETS = [
     "grammarPoints": [
       "～ようと思う",
       "～そう"
-    ]
+    ],
+    "titleRuby": "旅<ruby>行<rt>い</rt></ruby>の計画",
+    "passageRuby": "田中さんたちは春休みに京都へ<ruby>行<rt>い</rt></ruby>く<ruby>予定<rt>よてい</rt></ruby>です。最初は日帰りで<ruby>行<rt>い</rt></ruby>こうと思っていましたが、見たい<ruby>場所<rt>ばしょ</rt></ruby>が多いので、一泊することにしました。ホテルは<ruby>駅<rt>えき</rt></ruby>の近くにしました。<ruby>朝<rt>あさ</rt></ruby>早く出れば、二日目にお寺を二つ見てから帰れそうです。"
   },
   {
     "id": "jp-reading-set-n4-019",
@@ -772,7 +863,9 @@ window.JAPANESE_READING_SETS = [
     "grammarPoints": [
       "～ための",
       "～なければならない"
-    ]
+    ],
+    "titleRuby": "<ruby>図書館<rt>としょかん</rt></ruby>イベント",
+    "passageRuby": "市の<ruby>図書館<rt>としょかん</rt></ruby>で、土曜日に子どものための<ruby>読<rt>よ</rt></ruby>み<ruby>聞<rt>き</rt></ruby>かせ会があります。<ruby>始<rt>はじ</rt></ruby>まるのは<ruby>午後<rt>ごご</rt></ruby>二時で、三十分前から<ruby>入<rt>はい</rt></ruby>れます。<ruby>参加<rt>さんか</rt></ruby>費は<ruby>無料<rt>むりょう</rt></ruby>ですが、人数が多い<ruby>場合<rt>ばあい</rt></ruby>は先に来た人から<ruby>入<rt>はい</rt></ruby>ります。小さい子どもは大人と一緒に来なければなりません。"
   },
   {
     "id": "jp-reading-set-n4-020",
@@ -809,20 +902,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "予定",
-        "kana": "よてい",
-        "meaning": "預定"
+        "word": "今日",
+        "kana": "今日",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "場合",
-        "kana": "ばあい",
-        "meaning": "情況"
+        "word": "夜",
+        "kana": "夜",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "練習",
+        "kana": "練習",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～ながら",
       "～てもいい"
-    ]
+    ],
+    "titleRuby": "運動センター",
+    "passageRuby": "中村さんは健康のために運動センターへ通い<ruby>始<rt>はじ</rt></ruby>めました。プールは<ruby>夜<rt>よる</rt></ruby>八時まで<ruby>使<rt>つか</rt></ruby>えますが、ジムは九時まで開いています。<ruby>今日<rt>きょう</rt></ruby>は水着を<ruby>忘<rt>わす</rt></ruby>れてしまったので、プールではなくジムで歩く<ruby>練習<rt>れんしゅう</rt></ruby>をしました。帰る前に、次回のために水着をかばんに<ruby>入<rt>はい</rt></ruby>れておきました。"
   },
   {
     "id": "jp-reading-set-n4-021",
@@ -859,20 +959,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "予定",
-        "kana": "よてい",
-        "meaning": "預定"
+        "word": "先生",
+        "kana": "先生",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "場合",
-        "kana": "ばあい",
-        "meaning": "情況"
+        "word": "昨日",
+        "kana": "昨日",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "写真",
+        "kana": "写真",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～ながら",
       "～てもいい"
-    ]
+    ],
+    "titleRuby": "日本語クラス",
+    "passageRuby": "林さんの日本語クラスでは、毎週金曜日に短い発表があります。今週のテーマは好きな町です。林さんは<ruby>写真<rt>しゃしん</rt></ruby>を見せながら話したいので、<ruby>昨日<rt>きのう</rt></ruby>スマホの<ruby>写真<rt>しゃしん</rt></ruby>を三枚選びました。発表は二分で、長すぎると<ruby>先生<rt>せんせい</rt></ruby>に止められます。"
   },
   {
     "id": "jp-reading-set-n4-022",
@@ -909,20 +1016,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "予定",
-        "kana": "よてい",
-        "meaning": "預定"
+        "word": "昼",
+        "kana": "昼",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "場合",
-        "kana": "ばあい",
-        "meaning": "情況"
+        "word": "夜",
+        "kana": "夜",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "店員",
+        "kana": "店員",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～ながら",
       "～てもいい"
-    ]
+    ],
+    "titleRuby": "レストラン<ruby>予約<rt>よやく</rt></ruby>",
+    "passageRuby": "鈴木さんは金曜日の<ruby>夜<rt>よる</rt></ruby>、<ruby>家<rt>いえ</rt></ruby>族とレストランへ<ruby>行<rt>い</rt></ruby>きます。人気の店なので、<ruby>昼<rt>ひる</rt></ruby>休みに<ruby>電話<rt>でんわ</rt></ruby>で四人席を<ruby>予約<rt>よやく</rt></ruby>しました。<ruby>店員<rt>てんいん</rt></ruby>は「七時はいっぱいですが、七時半なら空いています」と言いました。鈴木さんは七時半でお願いしました。"
   },
   {
     "id": "jp-reading-set-n4-023",
@@ -959,20 +1073,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "予定",
-        "kana": "よてい",
-        "meaning": "預定"
+        "word": "朝",
+        "kana": "朝",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "場合",
-        "kana": "ばあい",
-        "meaning": "情況"
+        "word": "雨",
+        "kana": "雨",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "参加",
+        "kana": "参加",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～ながら",
       "～てもいい"
-    ]
+    ],
+    "titleRuby": "地域の掃除",
+    "passageRuby": "日曜日の<ruby>朝<rt>あさ</rt></ruby>、町内で公園の掃除があります。<ruby>参加<rt>さんか</rt></ruby>する人は軍手を<ruby>持<rt>も</rt></ruby>って、八時五十分までに公園の<ruby>入口<rt>いりぐち</rt></ruby>に集まります。<ruby>雨<rt>あめ</rt></ruby>が強いときは中止ですが、小さい<ruby>雨<rt>あめ</rt></ruby>なら<ruby>行<rt>い</rt></ruby>います。<ruby>終<rt>お</rt></ruby>わったあとで、お茶が一人一本配られます。"
   },
   {
     "id": "jp-reading-set-n4-024",
@@ -1009,20 +1130,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "予定",
-        "kana": "よてい",
-        "meaning": "預定"
+        "word": "財布",
+        "kana": "財布",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "場合",
-        "kana": "ばあい",
-        "meaning": "情況"
+        "word": "母は冷蔵庫に",
+        "kana": "母は冷蔵庫に",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "メモを貼りま",
+        "kana": "メモを貼りま",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～ながら",
       "～てもいい"
-    ]
+    ],
+    "titleRuby": "<ruby>買<rt>か</rt></ruby>い物メモ",
+    "passageRuby": "母は冷蔵庫にメモを貼りました。「卵はまだあります。牛乳とパンだけ<ruby>買<rt>か</rt></ruby>ってください。安くても大きいジュースは<ruby>買<rt>か</rt></ruby>わなくてもいいです。」弟はメモを<ruby>読<rt>よ</rt></ruby>んで、<ruby>財布<rt>さいふ</rt></ruby>とエコバッグを<ruby>持<rt>も</rt></ruby>ってスーパーへ<ruby>行<rt>い</rt></ruby>きました。"
   },
   {
     "id": "jp-reading-set-n4-025",
@@ -1060,19 +1188,21 @@ window.JAPANESE_READING_SETS = [
     "vocabulary": [
       {
         "word": "予定",
-        "kana": "よてい",
-        "meaning": "預定"
+        "kana": "予定",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "場合",
-        "kana": "ばあい",
-        "meaning": "情況"
+        "word": "部屋",
+        "kana": "部屋",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～ながら",
       "～てもいい"
-    ]
+    ],
+    "titleRuby": "<ruby>友<rt>とも</rt></ruby>だちの引っ越し",
+    "passageRuby": "<ruby>友<rt>とも</rt></ruby>だちの<ruby>部屋<rt>へや</rt></ruby>は三階にありますが、エレベーターがありません。土曜日に引っ越しを手伝う<ruby>予定<rt>よてい</rt></ruby>でしたが、重い本棚は店の人が運ぶそうです。私は軽い箱を運んだあと、新しい<ruby>部屋<rt>へや</rt></ruby>でカーテンを付けるのを手伝います。"
   },
   {
     "id": "jp-reading-set-n4-026",
@@ -1122,7 +1252,9 @@ window.JAPANESE_READING_SETS = [
     "grammarPoints": [
       "～てください",
       "～ことができる"
-    ]
+    ],
+    "titleRuby": "市民<ruby>図書館<rt>としょかん</rt></ruby>のお知らせ",
+    "passageRuby": "【市民<ruby>図書館<rt>としょかん</rt></ruby>】六月二十九日は本の整理のため休みです。返す本は<ruby>入口<rt>いりぐち</rt></ruby>の返却箱に<ruby>入<rt>はい</rt></ruby>れてください。DVDと雑誌は箱に<ruby>入<rt>はい</rt></ruby>れないで、次の日以降に<ruby>受付<rt>うけつけ</rt></ruby>へ<ruby>持<rt>も</rt></ruby>って来てください。"
   },
   {
     "id": "jp-reading-set-n4-027",
@@ -1159,20 +1291,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "受付",
-        "kana": "うけつけ",
-        "meaning": "櫃台、受理"
+        "word": "駅",
+        "kana": "駅",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "以降",
-        "kana": "いこう",
-        "meaning": "以後"
+        "word": "朝",
+        "kana": "朝",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "夜",
+        "kana": "夜",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～てください",
       "～ことができる"
-    ]
+    ],
+    "titleRuby": "<ruby>駅<rt>えき</rt></ruby>前スーパーの案内",
+    "passageRuby": "<ruby>駅<rt>えき</rt></ruby>前スーパーは<ruby>朝<rt>あさ</rt></ruby>九時から<ruby>夜<rt>よる</rt></ruby>十時まで開いています。毎週火曜日は野菜が安くなりますが、魚売り場は<ruby>午後<rt>ごご</rt></ruby>七時に閉まります。店の袋は有料なので、<ruby>買<rt>か</rt></ruby>い物袋を<ruby>持<rt>も</rt></ruby>って来ると便利です。"
   },
   {
     "id": "jp-reading-set-n4-028",
@@ -1209,20 +1348,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "受付",
-        "kana": "うけつけ",
-        "meaning": "櫃台、受理"
+        "word": "午後",
+        "kana": "午後",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "以降",
-        "kana": "いこう",
-        "meaning": "以後"
+        "word": "予約",
+        "kana": "予約",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "料金",
+        "kana": "料金",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～てください",
       "～ことができる"
-    ]
+    ],
+    "titleRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>の割引",
+    "passageRuby": "この<ruby>映画館<rt>えいがかん</rt></ruby>では、水曜日の<ruby>午後<rt>ごご</rt></ruby>六時までの回は学生<ruby>料金<rt>りょうきん</rt></ruby>が安くなります。学生証を見せなければなりません。インターネットで席を<ruby>予約<rt>よやく</rt></ruby>した人も、<ruby>入口<rt>いりぐち</rt></ruby>で学生証を見せてください。"
   },
   {
     "id": "jp-reading-set-n4-029",
@@ -1260,19 +1406,26 @@ window.JAPANESE_READING_SETS = [
     "vocabulary": [
       {
         "word": "受付",
-        "kana": "うけつけ",
-        "meaning": "櫃台、受理"
+        "kana": "受付",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "以降",
-        "kana": "いこう",
-        "meaning": "以後"
+        "word": "荷物",
+        "kana": "荷物",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "朝",
+        "kana": "朝",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～てください",
       "～ことができる"
-    ]
+    ],
+    "titleRuby": "ホテル<ruby>受付<rt>うけつけ</rt></ruby>案内",
+    "passageRuby": "チェックインは<ruby>午後<rt>ごご</rt></ruby>三時からです。早く着いたお<ruby>客<rt>きゃく</rt></ruby>様は、<ruby>受付<rt>うけつけ</rt></ruby>で<ruby>荷物<rt>にもつ</rt></ruby>を預けることができます。<ruby>朝<rt>あさ</rt></ruby>食は二階で七時から九時までです。<ruby>部屋<rt>へや</rt></ruby>の<ruby>鍵<rt>かぎ</rt></ruby>をなくしたときは、すぐ<ruby>受付<rt>うけつけ</rt></ruby>に知らせてください。"
   },
   {
     "id": "jp-reading-set-n4-030",
@@ -1309,20 +1462,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "受付",
-        "kana": "うけつけ",
-        "meaning": "櫃台、受理"
+        "word": "時間",
+        "kana": "時間",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "以降",
-        "kana": "いこう",
-        "meaning": "以後"
+        "word": "受付",
+        "kana": "受付",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "教室",
+        "kana": "教室",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～てください",
       "～ことができる"
-    ]
+    ],
+    "titleRuby": "文化<ruby>教室<rt>きょうしつ</rt></ruby>の募集",
+    "passageRuby": "来月から<ruby>公民館<rt>こうみんかん</rt></ruby>で茶道<ruby>教室<rt>きょうしつ</rt></ruby>が<ruby>始<rt>はじ</rt></ruby>まります。毎週土曜日の<ruby>午前<rt>ごぜん</rt></ruby>十時から一<ruby>時間<rt>じかん</rt></ruby>です。初めての人も<ruby>参加<rt>さんか</rt></ruby>できます。申し込みは<ruby>電話<rt>でんわ</rt></ruby>ではなく、<ruby>公民館<rt>こうみんかん</rt></ruby>の<ruby>受付<rt>うけつけ</rt></ruby>で<ruby>名前<rt>なまえ</rt></ruby>を<ruby>書<rt>か</rt></ruby>いてください。"
   },
   {
     "id": "jp-reading-set-n4-031",
@@ -1347,20 +1507,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "残念",
-        "kana": "ざんねん",
-        "meaning": "可惜、遺憾"
+        "word": "教室",
+        "kana": "教室",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "別",
-        "kana": "べつ",
-        "meaning": "另外、不同"
+        "word": "授業が終わっ",
+        "kana": "授業が終わっ",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "たあと",
+        "kana": "たあと",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～かもしれない",
       "～ほうがいい"
-    ]
+    ],
+    "titleRuby": "静かな<ruby>教室<rt>きょうしつ</rt></ruby>",
+    "passageRuby": "授業が<ruby>終<rt>お</rt></ruby>わったあと、<ruby>教室<rt>きょうしつ</rt></ruby>に一人だけ学生が残っていました。机の上には消しゴムとノートがあり、窓は開いたままでした。学生は『田中さんの物かもしれない』と思い、職員室へ<ruby>持<rt>も</rt></ruby>って<ruby>行<rt>い</rt></ruby>きました。"
   },
   {
     "id": "jp-reading-set-n4-032",
@@ -1385,20 +1552,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "残念",
-        "kana": "ざんねん",
-        "meaning": "可惜、遺憾"
+        "word": "明日",
+        "kana": "明日",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "別",
-        "kana": "べつ",
-        "meaning": "另外、不同"
+        "word": "今日",
+        "kana": "今日",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "朝",
+        "kana": "朝",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～かもしれない",
       "～ほうがいい"
-    ]
+    ],
+    "titleRuby": "閉まったパン屋",
+    "passageRuby": "美香さんは好きなパン屋へ<ruby>行<rt>い</rt></ruby>きましたが、店の前に『<ruby>今日<rt>きょう</rt></ruby>は<ruby>午後<rt>ごご</rt></ruby>二時に閉めます』と紙が貼ってありました。時計を見ると二時十分でした。美香さんは残念でしたが、<ruby>明日<rt>あした</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>もう一度来ようと思いました。"
   },
   {
     "id": "jp-reading-set-n4-033",
@@ -1423,20 +1597,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "残念",
-        "kana": "ざんねん",
-        "meaning": "可惜、遺憾"
+        "word": "学校",
+        "kana": "学校",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "別",
-        "kana": "べつ",
-        "meaning": "另外、不同"
+        "word": "学校から帰る",
+        "kana": "学校から帰る",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "テーブルに母",
+        "kana": "テーブルに母",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～かもしれない",
       "～ほうがいい"
-    ]
+    ],
+    "titleRuby": "母のメモ",
+    "passageRuby": "<ruby>学校<rt>がっこう</rt></ruby>から帰ると、テーブルに母のメモがありました。『カレーは鍋の中です。温めて食べてください。七時ごろ帰ります。』私はお腹がすいていたので、手を<ruby>洗<rt>あら</rt></ruby>ってから台所へ<ruby>行<rt>い</rt></ruby>きました。"
   },
   {
     "id": "jp-reading-set-n4-034",
@@ -1461,20 +1642,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "残念",
-        "kana": "ざんねん",
-        "meaning": "可惜、遺憾"
+        "word": "先生",
+        "kana": "先生",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "別",
-        "kana": "べつ",
-        "meaning": "另外、不同"
+        "word": "今日",
+        "kana": "今日",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "朝",
+        "kana": "朝",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～かもしれない",
       "～ほうがいい"
-    ]
+    ],
+    "titleRuby": "<ruby>雨<rt>あめ</rt></ruby>の日の遠足",
+    "passageRuby": "遠足の日の<ruby>朝<rt>あさ</rt></ruby>、空は暗く、<ruby>雨<rt>あめ</rt></ruby>が降りそうでした。<ruby>先生<rt>せんせい</rt></ruby>は『山の道はすべりやすいので、<ruby>今日<rt>きょう</rt></ruby>は<ruby>博物館<rt>はくぶつかん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます』と言いました。学生たちは少し驚きましたが、バスの中で<ruby>博物館<rt>はくぶつかん</rt></ruby>の地図を見<ruby>始<rt>はじ</rt></ruby>めました。"
   },
   {
     "id": "jp-reading-set-n4-035",
@@ -1499,20 +1687,27 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "残念",
-        "kana": "ざんねん",
-        "meaning": "可惜、遺憾"
+        "word": "店員",
+        "kana": "店員",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "別",
-        "kana": "べつ",
-        "meaning": "另外、不同"
+        "word": "私は靴屋で黒",
+        "kana": "私は靴屋で黒",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "い靴を見てい",
+        "kana": "い靴を見てい",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～かもしれない",
       "～ほうがいい"
-    ]
+    ],
+    "titleRuby": "<ruby>店員<rt>てんいん</rt></ruby>のすすめ",
+    "passageRuby": "私は靴屋で黒い靴を見ていました。値段は安かったですが、少し小さく感じました。<ruby>店員<rt>てんいん</rt></ruby>は『長く歩くなら、少し大きいほうがいいですよ』と言いました。私は旅<ruby>行<rt>い</rt></ruby>で<ruby>使<rt>つか</rt></ruby>うので、別のサイズを出してもらいました。"
   },
   {
     "id": "jp-reading-set-n4-036",
@@ -1550,7 +1745,9 @@ window.JAPANESE_READING_SETS = [
     "grammarPoints": [
       "～そうです",
       "～ことにしました"
-    ]
+    ],
+    "titleRuby": "<ruby>学校<rt>がっこう</rt></ruby>の<ruby>写真<rt>しゃしん</rt></ruby>部",
+    "passageRuby": "田中さんは<ruby>写真<rt>しゃしん</rt></ruby>部に<ruby>入<rt>はい</rt></ruby>りました。土曜日に公園で花の<ruby>写真<rt>しゃしん</rt></ruby>を撮る<ruby>予定<rt>よてい</rt></ruby>でしたが、<ruby>雨<rt>あめ</rt></ruby>が降りそうなので、<ruby>学校<rt>がっこう</rt></ruby>の中で古い建物を撮ることにしました。"
   },
   {
     "id": "jp-reading-set-n4-037",
@@ -1588,7 +1785,9 @@ window.JAPANESE_READING_SETS = [
     "grammarPoints": [
       "～ために",
       "～ておきます"
-    ]
+    ],
+    "titleRuby": "期末<ruby>試験<rt>しけん</rt></ruby>の計画",
+    "passageRuby": "李さんは来週の期末<ruby>試験<rt>しけん</rt></ruby>のために、毎晩一<ruby>時間<rt>じかん</rt></ruby>ずつ復習しています。苦手な漢字は<ruby>朝<rt>あさ</rt></ruby>の<ruby>電車<rt>でんしゃ</rt></ruby>で見ておくことにしました。"
   },
   {
     "id": "jp-reading-set-n4-038",
@@ -1626,7 +1825,9 @@ window.JAPANESE_READING_SETS = [
     "grammarPoints": [
       "～てしまいました",
       "～てもいいです"
-    ]
+    ],
+    "titleRuby": "日文課の<ruby>宿題<rt>しゅくだい</rt></ruby>",
+    "passageRuby": "王さんは日文課の<ruby>宿題<rt>しゅくだい</rt></ruby>を<ruby>家<rt>いえ</rt></ruby>に<ruby>忘<rt>わす</rt></ruby>れてしまいました。授業の前に<ruby>先生<rt>せんせい</rt></ruby>に話すと、<ruby>明日<rt>あした</rt></ruby>出してもいいと言われました。"
   },
   {
     "id": "jp-reading-set-n4-039",
@@ -1651,26 +1852,23 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "学校",
+        "kana": "学校",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
-      },
-      {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "留学生",
+        "kana": "留学生",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～前に",
       "～かもしれません",
       "～ておきます"
-    ]
+    ],
+    "titleRuby": "<ruby>留学生<rt>りゅうがくせい</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>",
+    "passageRuby": "林さんは<ruby>留学生<rt>りゅうがくせい</rt></ruby>です。日本の冬は思ったより寒いので、<ruby>学校<rt>がっこう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>く前に温かいお茶を飲むようにしています。"
   },
   {
     "id": "jp-reading-set-n4-040",
@@ -1695,1686 +1893,1637 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "図書館",
+        "kana": "図書館",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "佐藤さんは図",
+        "kana": "佐藤さんは図",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "書館で料理の",
+        "kana": "書館で料理の",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
       "～前に",
       "～かもしれません",
       "～ておきます"
-    ]
+    ],
+    "titleRuby": "<ruby>図書館<rt>としょかん</rt></ruby>の本",
+    "passageRuby": "佐藤さんは<ruby>図書館<rt>としょかん</rt></ruby>で料理の本を借りました。二週間借りることができますが、旅<ruby>行<rt>い</rt></ruby>に<ruby>行<rt>い</rt></ruby>くので、来週返すつもりです。"
   },
   {
     "id": "jp-reading-set-n4-041",
     "level": "N4",
-    "type": "短文理解",
-    "title": "書店の新しい辞書",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "使用規則",
+    "title": "書店の辞書",
+    "passage": "書店の新しい辞書は字が大きくて読みやすいですが、少し重いです。アンナさんは毎日学校へ持って行くため、軽い小さい辞書を選びました。",
+    "passageKana": "書店の新しい辞書は字が大きくて読みやすいですが、少し重いです。アンナさんは毎日学校へ持って行くため、軽い小さい辞書を選びました。",
     "questions": [
       {
         "id": "jp-reading-q-n4-041-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "アンナさんはなぜ小さい辞書を選びましたか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "毎日学校へ持って行くから",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「毎日学校へ持って行くから」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "学校",
+        "kana": "学校",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
-      },
-      {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "辞書",
+        "kana": "辞書",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "<ruby>書<rt>か</rt></ruby>店の辞<ruby>書<rt>か</rt></ruby>",
+    "passageRuby": "<ruby>書<rt>か</rt></ruby>店の新しい辞<ruby>書<rt>か</rt></ruby>は字が大きくて<ruby>読<rt>よ</rt></ruby>みやすいですが、少し重いです。アンナさんは毎日<ruby>学校<rt>がっこう</rt></ruby>へ<ruby>持<rt>も</rt></ruby>って<ruby>行<rt>い</rt></ruby>くため、軽い小さい辞<ruby>書<rt>か</rt></ruby>を選びました。"
   },
   {
     "id": "jp-reading-set-n4-042",
     "level": "N4",
-    "type": "短文理解",
-    "title": "レストランの予約",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "預約確認",
+    "title": "レストラン予約",
+    "passage": "レストランから予約確認のメールが来ました。人数を変える場合は、前日の午後五時までに連絡しなければなりません。当日の変更はできません。",
+    "passageKana": "レストランから予約確認のメールが来ました。人数を変える場合は、前日の午後五時までに連絡しなければなりません。当日の変更はできません。",
     "questions": [
       {
         "id": "jp-reading-q-n4-042-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "人数を変える場合、いつまでに連絡しますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "前日の午後五時まで",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「前日の午後五時まで」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "レストラ",
+        "kana": "レストラ",
+        "meaning": "主題語"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
-      },
-      {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "前日の午後五",
+        "kana": "前日の午後五",
+        "meaning": "關鍵資訊"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "レストラン<ruby>予約<rt>よやく</rt></ruby>",
+    "passageRuby": "レストランから<ruby>予約<rt>よやく</rt></ruby><ruby>確認<rt>かくにん</rt></ruby>のメールが来ました。人数を<ruby>変<rt>か</rt></ruby>える<ruby>場合<rt>ばあい</rt></ruby>は、前日の<ruby>午後<rt>ごご</rt></ruby>五時までに連絡しなければなりません。当日の<ruby>変<rt>か</rt></ruby>更はできません。"
   },
   {
     "id": "jp-reading-set-n4-043",
     "level": "N4",
-    "type": "短文理解",
-    "title": "コンビニの支払い",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "店員說明",
+    "title": "コンビニコピー",
+    "passage": "コンビニのコピー機は、写真を印刷するとき先に画面でサイズを選びます。分からない場合は、店員に聞いてもいいですが、混んでいる時間は少し待ちます。",
+    "passageKana": "コンビニのコピー機は、写真を印刷するとき先に画面でサイズを選びます。分からない場合は、店員に聞いてもいいですが、混んでいる時間は少し待ちます。",
     "questions": [
       {
         "id": "jp-reading-q-n4-043-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "コピー機の使い方が分からない場合、どうしてもいいですか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "店員に聞いてもいいです",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「店員に聞いてもいいです」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "コンビニ",
+        "kana": "コンビニ",
+        "meaning": "主題語"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
-      },
-      {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "店員に聞いて",
+        "kana": "店員に聞いて",
+        "meaning": "關鍵資訊"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "コンビニコピー",
+    "passageRuby": "コンビニのコピー機は、<ruby>写真<rt>しゃしん</rt></ruby>を印刷するとき先に画面でサイズを選びます。分からない<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>店員<rt>てんいん</rt></ruby>に<ruby>聞<rt>き</rt></ruby>いてもいいですが、混んでいる<ruby>時間<rt>じかん</rt></ruby>は少し待ちます。"
   },
   {
     "id": "jp-reading-set-n4-044",
     "level": "N4",
-    "type": "短文理解",
-    "title": "スーパーの特売",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "店家資訊",
+    "title": "スーパー特売日",
+    "passage": "スーパーの特売日は水曜日です。卵は一人一パックまでで、午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。",
+    "passageKana": "スーパーの特売日は水曜日です。卵は一人一パックまでで、午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。",
     "questions": [
       {
         "id": "jp-reading-q-n4-044-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "卵について正しいものはどれですか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "一人一パックまでです",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「一人一パックまでです」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "スーパー",
+        "kana": "スーパー",
+        "meaning": "主題語"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
-      },
-      {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "一人一パック",
+        "kana": "一人一パック",
+        "meaning": "關鍵資訊"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "スーパー特売日",
+    "passageRuby": "スーパーの特売日は水曜日です。卵は一人一パックまでで、<ruby>午前<rt>ごぜん</rt></ruby>中に売り切れることがあります。近藤さんは開店してすぐ<ruby>買<rt>か</rt></ruby>いに<ruby>行<rt>い</rt></ruby>く<ruby>予定<rt>よてい</rt></ruby>です。"
   },
   {
     "id": "jp-reading-set-n4-045",
     "level": "N4",
-    "type": "短文理解",
-    "title": "郵便局の包み",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "宅配通知",
+    "title": "郵便局の再配達",
+    "passage": "宅配会社から不在票が入っていました。荷物を受け取るために、渡辺さんはインターネットで明日の夜七時から九時を選びました。",
+    "passageKana": "宅配会社から不在票が入っていました。荷物を受け取るために、渡辺さんはインターネットで明日の夜七時から九時を選びました。",
     "questions": [
       {
         "id": "jp-reading-q-n4-045-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "渡辺さんはいつ荷物を受け取りますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "明日の夜七時から九時",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「明日の夜七時から九時」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "荷物",
+        "kana": "荷物",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "明日",
+        "kana": "明日",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "夜",
+        "kana": "夜",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "郵便局の再配達",
+    "passageRuby": "宅配会社から不在票が<ruby>入<rt>はい</rt></ruby>っていました。<ruby>荷物<rt>にもつ</rt></ruby>を受け取るために、渡辺さんはインターネットで<ruby>明日<rt>あした</rt></ruby>の<ruby>夜<rt>よる</rt></ruby>七時から九時を選びました。"
   },
   {
     "id": "jp-reading-set-n4-046",
     "level": "N4",
-    "type": "短文理解",
+    "type": "交通案内",
     "title": "駅での乗り換え",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "passage": "初めて行く会場なので、小林さんは駅で乗り換え方を調べました。急行に乗ると早いですが、会場の近くの駅には止まらないので、各駅停車に乗ります。",
+    "passageKana": "初めて行く会場なので、小林さんは駅で乗り換え方を調べました。急行に乗ると早いですが、会場の近くの駅には止まらないので、各駅停車に乗ります。",
     "questions": [
       {
         "id": "jp-reading-q-n4-046-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "小林さんはどの電車に乗りますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "各駅停車",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「各駅停車」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "駅で乗り",
+        "kana": "駅で乗り",
+        "meaning": "主題語"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
-      },
-      {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "各駅停車",
+        "kana": "各駅停車",
+        "meaning": "關鍵資訊"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "<ruby>駅<rt>えき</rt></ruby>での乗り換え",
+    "passageRuby": "初めて<ruby>行<rt>い</rt></ruby>く会場なので、小林さんは<ruby>駅<rt>えき</rt></ruby>で乗り換え方を調べました。急<ruby>行<rt>い</rt></ruby>に乗ると早いですが、会場の近くの<ruby>駅<rt>えき</rt></ruby>には止まらないので、各<ruby>駅<rt>えき</rt></ruby>停車に乗ります。"
   },
   {
     "id": "jp-reading-set-n4-047",
     "level": "N4",
-    "type": "短文理解",
-    "title": "バスの時刻",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "交通通知",
+    "title": "バスの迂回",
+    "passage": "雨で道路が混んでいるため、五番バスは市役所前を通りません。図書館へ行く人は、中央公園で降りて十分歩いてください。",
+    "passageKana": "雨で道路が混んでいるため、五番バスは市役所前を通りません。図書館へ行く人は、中央公園で降りて十分歩いてください。",
     "questions": [
       {
         "id": "jp-reading-q-n4-047-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "図書館へ行く人はどこで降りますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "中央公園",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「中央公園」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "図書館",
+        "kana": "図書館",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "雨",
+        "kana": "雨",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "中央公園",
+        "kana": "中央公園",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "バスの迂回",
+    "passageRuby": "<ruby>雨<rt>あめ</rt></ruby>で道路が混んでいるため、五番バスは市役所前を通りません。<ruby>図書館<rt>としょかん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>く人は、中央公園で降りて十分歩いてください。"
   },
   {
     "id": "jp-reading-set-n4-048",
     "level": "N4",
-    "type": "短文理解",
+    "type": "飯店案内",
     "title": "ホテルのチェックイン",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "passage": "ホテルのチェックインは午後三時からです。早く着いた場合、荷物だけフロントに預けることができます。部屋には三時まで入れません。",
+    "passageKana": "ホテルのチェックインは午後三時からです。早く着いた場合、荷物だけフロントに預けることができます。部屋には三時まで入れません。",
     "questions": [
       {
         "id": "jp-reading-q-n4-048-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "早くホテルに着いた場合、何ができますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "荷物を預けること",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「荷物を預けること」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "荷物",
+        "kana": "荷物",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "午後",
+        "kana": "午後",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "部屋",
+        "kana": "部屋",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "ホテルのチェックイン",
+    "passageRuby": "ホテルのチェックインは<ruby>午後<rt>ごご</rt></ruby>三時からです。早く着いた<ruby>場合<rt>ばあい</rt></ruby>、<ruby>荷物<rt>にもつ</rt></ruby>だけフロントに預けることができます。<ruby>部屋<rt>へや</rt></ruby>には三時まで<ruby>入<rt>はい</rt></ruby>れません。"
   },
   {
     "id": "jp-reading-set-n4-049",
     "level": "N4",
-    "type": "短文理解",
-    "title": "旅行前の準備",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "旅行メモ",
+    "title": "旅行の荷物",
+    "passage": "旅行の前に、吉田さんは小さいかばんへ薬と充電器を入れておきました。着替えはホテルで洗えるので、二日分だけ持って行くことにしました。",
+    "passageKana": "旅行の前に、吉田さんは小さいかばんへ薬と充電器を入れておきました。着替えはホテルで洗えるので、二日分だけ持って行くことにしました。",
     "questions": [
       {
         "id": "jp-reading-q-n4-049-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "吉田さんは着替えをどうしますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "二日分だけ持って行く",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「二日分だけ持って行く」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "薬",
+        "kana": "薬",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
-      },
-      {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "充電器",
+        "kana": "充電器",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "旅<ruby>行<rt>い</rt></ruby>の<ruby>荷物<rt>にもつ</rt></ruby>",
+    "passageRuby": "旅<ruby>行<rt>い</rt></ruby>の前に、吉田さんは小さいかばんへ<ruby>薬<rt>くすり</rt></ruby>と充電器を<ruby>入<rt>はい</rt></ruby>れておきました。着替えはホテルで<ruby>洗<rt>あら</rt></ruby>えるので、二日分だけ<ruby>持<rt>も</rt></ruby>って<ruby>行<rt>い</rt></ruby>くことにしました。"
   },
   {
     "id": "jp-reading-set-n4-050",
     "level": "N4",
-    "type": "短文理解",
-    "title": "午後の天気",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "時刻表",
+    "title": "映画館の時刻",
+    "passage": "映画館の時刻表では、字幕の映画は午後二時と七時です。七時の回は終わるのが遅すぎるので、林さんは二時の回を見るつもりです。",
+    "passageKana": "映画館の時刻表では、字幕の映画は午後二時と七時です。七時の回は終わるのが遅すぎるので、林さんは二時の回を見るつもりです。",
     "questions": [
       {
         "id": "jp-reading-q-n4-050-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "林さんはどの回を見るつもりですか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "午後二時の回",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「午後二時の回」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "午後",
+        "kana": "午後",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "映画館",
+        "kana": "映画館",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "時刻表",
+        "kana": "時刻表",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>の時刻",
+    "passageRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>の時刻表では、字幕の映画は<ruby>午後<rt>ごご</rt></ruby>二時と七時です。七時の回は<ruby>終<rt>お</rt></ruby>わるのが遅すぎるので、林さんは二時の回を見るつもりです。"
   },
   {
     "id": "jp-reading-set-n4-051",
     "level": "N4",
-    "type": "短文理解",
-    "title": "公園の朝市",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "社區公告",
+    "title": "地域清掃",
+    "passage": "地域清掃は日曜日の朝九時からです。軍手は公園で借りられますが、飲み物は自分で持って来てください。雨の場合は来週に延びます。",
+    "passageKana": "地域清掃は日曜日の朝九時からです。軍手は公園で借りられますが、飲み物は自分で持って来てください。雨の場合は来週に延びます。",
     "questions": [
       {
         "id": "jp-reading-q-n4-051-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "地域清掃で自分で持って行くものは何ですか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "飲み物",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「飲み物」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "地域清掃",
+        "kana": "地域清掃",
+        "meaning": "主題語"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
-      },
-      {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "飲み物",
+        "kana": "飲み物",
+        "meaning": "關鍵資訊"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "地域清掃",
+    "passageRuby": "地域清掃は日曜日の<ruby>朝<rt>あさ</rt></ruby>九時からです。軍手は公園で借りられますが、飲み物は自分で<ruby>持<rt>も</rt></ruby>って来てください。<ruby>雨<rt>あめ</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>は来週に延びます。"
   },
   {
     "id": "jp-reading-set-n4-052",
     "level": "N4",
-    "type": "短文理解",
-    "title": "映画館の時間",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "分別表",
+    "title": "びんの分別",
+    "passage": "びんを出す日は月に二回です。中を水で洗ったあとで、茶色のびんと透明なびんを別の箱に入れなければなりません。",
+    "passageKana": "びんを出す日は月に二回です。中を水で洗ったあとで、茶色のびんと透明なびんを別の箱に入れなければなりません。",
     "questions": [
       {
         "id": "jp-reading-q-n4-052-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "びんは洗ったあとでどうしますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "色別に別の箱に入れる",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「色別に別の箱に入れる」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "びんを出す日",
+        "kana": "びんを出す日",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "は月に二回で",
+        "kana": "は月に二回で",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "中を水で洗っ",
+        "kana": "中を水で洗っ",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "びんの<ruby>分別<rt>ぶんべつ</rt></ruby>",
+    "passageRuby": "びんを出す日は月に二回です。中を水で<ruby>洗<rt>あら</rt></ruby>ったあとで、茶色のびんと透明なびんを別の箱に<ruby>入<rt>はい</rt></ruby>れなければなりません。"
   },
   {
     "id": "jp-reading-set-n4-053",
     "level": "N4",
-    "type": "短文理解",
-    "title": "地域の知らせ",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "失物招領公告",
+    "title": "落とし物の傘",
+    "passage": "駅の掲示板に、青い傘の落とし物があると書いてあります。心当たりがある人は、午後八時までに改札横の事務室へ来てください。",
+    "passageKana": "駅の掲示板に、青い傘の落とし物があると書いてあります。心当たりがある人は、午後八時までに改札横の事務室へ来てください。",
     "questions": [
       {
         "id": "jp-reading-q-n4-053-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "青い傘の持ち主はどこへ行きますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "改札横の事務室",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「改札横の事務室」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "落とし物",
+        "kana": "落とし物",
+        "meaning": "主題語"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
-      },
-      {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "改札横の事務",
+        "kana": "改札横の事務",
+        "meaning": "關鍵資訊"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "<ruby>落とし物<rt>おとしもの</rt></ruby>の<ruby>傘<rt>かさ</rt></ruby>",
+    "passageRuby": "<ruby>駅<rt>えき</rt></ruby>の掲示板に、青い<ruby>傘<rt>かさ</rt></ruby>の<ruby>落とし物<rt>おとしもの</rt></ruby>があると<ruby>書<rt>か</rt></ruby>いてあります。心当たりがある人は、<ruby>午後<rt>ごご</rt></ruby>八時までに改札横の事務室へ来てください。"
   },
   {
     "id": "jp-reading-set-n4-054",
     "level": "N4",
-    "type": "短文理解",
-    "title": "ごみの出し方",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "日記",
+    "title": "スマホの電池",
+    "passage": "スマホの電池が少なくなったので、木村さんは地図を見ながら歩くのをやめました。駅に着いたら、案内所で道を聞くつもりです。",
+    "passageKana": "スマホの電池が少なくなったので、木村さんは地図を見ながら歩くのをやめました。駅に着いたら、案内所で道を聞くつもりです。",
     "questions": [
       {
         "id": "jp-reading-q-n4-054-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "木村さんは駅に着いたら何をしますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "案内所で道を聞く",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「案内所で道を聞く」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "駅",
+        "kana": "駅",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
-      },
-      {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "案内所",
+        "kana": "案内所",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "スマホの電池",
+    "passageRuby": "スマホの電池が少なくなったので、木村さんは地図を見ながら歩くのをやめました。<ruby>駅<rt>えき</rt></ruby>に着いたら、<ruby>案内所<rt>あんないじょ</rt></ruby>で道を<ruby>聞<rt>き</rt></ruby>くつもりです。"
   },
   {
     "id": "jp-reading-set-n4-055",
     "level": "N4",
-    "type": "短文理解",
-    "title": "落とし物の傘",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "病院案内",
+    "title": "病院の受付",
+    "passage": "病院の受付は午前八時半に始まります。初めて来る人は保険証と住所が分かるものを出してください。予約があっても少し待つことがあります。",
+    "passageKana": "病院の受付は午前八時半に始まります。初めて来る人は保険証と住所が分かるものを出してください。予約があっても少し待つことがあります。",
     "questions": [
       {
         "id": "jp-reading-q-n4-055-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "初めて病院へ来る人は何を出しますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "保険証と住所が分かるもの",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「保険証と住所が分かるもの」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "受付",
+        "kana": "受付",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "午前",
+        "kana": "午前",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "予約",
+        "kana": "予約",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "<ruby>病院<rt>びょういん</rt></ruby>の<ruby>受付<rt>うけつけ</rt></ruby>",
+    "passageRuby": "<ruby>病院<rt>びょういん</rt></ruby>の<ruby>受付<rt>うけつけ</rt></ruby>は<ruby>午前<rt>ごぜん</rt></ruby>八時半に<ruby>始<rt>はじ</rt></ruby>まります。初めて来る人は保険証と<ruby>住所<rt>じゅうしょ</rt></ruby>が分かるものを出してください。<ruby>予約<rt>よやく</rt></ruby>があっても少し待つことがあります。"
   },
   {
     "id": "jp-reading-set-n4-056",
     "level": "N4",
-    "type": "短文理解",
-    "title": "スマホの故障",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "店員說明",
+    "title": "薬局の薬",
+    "passage": "薬局で薬を買うとき、受付の人が「眠くなるかもしれません」と説明しました。運転する予定がある人は、飲む前に医者へ相談したほうがいいです。",
+    "passageKana": "薬局で薬を買うとき、受付の人が「眠くなるかもしれません」と説明しました。運転する予定がある人は、飲む前に医者へ相談したほうがいいです。",
     "questions": [
       {
         "id": "jp-reading-q-n4-056-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "薬を飲む前に相談したほうがいい人はだれですか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "運転する予定がある人",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「運転する予定がある人」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "予定",
+        "kana": "予定",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "受付",
+        "kana": "受付",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "薬局",
+        "kana": "薬局",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "<ruby>薬<rt>くすり</rt></ruby>局の<ruby>薬<rt>くすり</rt></ruby>",
+    "passageRuby": "<ruby>薬<rt>くすり</rt></ruby>局で<ruby>薬<rt>くすり</rt></ruby>を<ruby>買<rt>か</rt></ruby>うとき、<ruby>受付<rt>うけつけ</rt></ruby>の人が「眠くなるかもしれません」と説明しました。運転する<ruby>予定<rt>よてい</rt></ruby>がある人は、飲む前に医者へ相談したほうがいいです。"
   },
   {
     "id": "jp-reading-set-n4-057",
     "level": "N4",
-    "type": "短文理解",
-    "title": "病院の受付",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "手寫留言",
+    "title": "引っ越しの連絡",
+    "passage": "前田さんは引っ越したあとで、管理人に新しい住所を書いた紙を渡しました。郵便物が前の部屋へ届くと困るので、郵便局にも知らせます。",
+    "passageKana": "前田さんは引っ越したあとで、管理人に新しい住所を書いた紙を渡しました。郵便物が前の部屋へ届くと困るので、郵便局にも知らせます。",
     "questions": [
       {
         "id": "jp-reading-q-n4-057-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "前田さんは郵便局に何を知らせますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "新しい住所",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「新しい住所」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "引っ越し",
+        "kana": "引っ越し",
+        "meaning": "主題語"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
-      },
-      {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "新しい住所",
+        "kana": "新しい住所",
+        "meaning": "關鍵資訊"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "引っ越しの連絡",
+    "passageRuby": "前田さんは引っ越したあとで、<ruby>管理人<rt>かんりにん</rt></ruby>に新しい<ruby>住所<rt>じゅうしょ</rt></ruby>を<ruby>書<rt>か</rt></ruby>いた紙を渡しました。郵便物が前の<ruby>部屋<rt>へや</rt></ruby>へ届くと困るので、郵便局にも知らせます。"
   },
   {
     "id": "jp-reading-set-n4-058",
     "level": "N4",
-    "type": "短文理解",
-    "title": "薬局の薬",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "日記",
+    "title": "誕生日の手紙",
+    "passage": "誕生日の手紙を書いたあとで、伊藤さんは封筒に切手を貼りました。明日の朝ポストに入れれば、週末までに友だちへ届くそうです。",
+    "passageKana": "誕生日の手紙を書いたあとで、伊藤さんは封筒に切手を貼りました。明日の朝ポストに入れれば、週末までに友だちへ届くそうです。",
     "questions": [
       {
         "id": "jp-reading-q-n4-058-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "手紙はいつポストに入れますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "明日の朝",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「明日の朝」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "明日",
+        "kana": "明日",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "朝",
+        "kana": "朝",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "切手",
+        "kana": "切手",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "誕生日の手紙",
+    "passageRuby": "誕生日の手紙を<ruby>書<rt>か</rt></ruby>いたあとで、伊藤さんは封筒に切手を貼りました。<ruby>明日<rt>あした</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>ポストに<ruby>入<rt>はい</rt></ruby>れれば、週末までに<ruby>友<rt>とも</rt></ruby>だちへ届くそうです。"
   },
   {
     "id": "jp-reading-set-n4-059",
     "level": "N4",
-    "type": "短文理解",
-    "title": "引っ越しの知らせ",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "手寫留言",
+    "title": "冷房の故障",
+    "passage": "部屋の冷房が急に止まってしまいました。管理人は、窓を開けて待ってください、修理の人は午後四時ごろ来ます、とメモを残しました。",
+    "passageKana": "部屋の冷房が急に止まってしまいました。管理人は、窓を開けて待ってください、修理の人は午後四時ごろ来ます、とメモを残しました。",
     "questions": [
       {
         "id": "jp-reading-q-n4-059-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "修理の人はいつごろ来ますか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "午後四時ごろ",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「午後四時ごろ」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "午後",
+        "kana": "午後",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "管理人",
+        "kana": "管理人",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "部屋",
+        "kana": "部屋",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです",
+      "～ことがあります"
+    ],
+    "titleRuby": "<ruby>冷房<rt>れいぼう</rt></ruby>の<ruby>故障<rt>こしょう</rt></ruby>",
+    "passageRuby": "<ruby>部屋<rt>へや</rt></ruby>の<ruby>冷房<rt>れいぼう</rt></ruby>が急に止まってしまいました。<ruby>管理人<rt>かんりにん</rt></ruby>は、窓を開けて待ってください、修理の人は<ruby>午後<rt>ごご</rt></ruby>四時ごろ来ます、とメモを残しました。"
   },
   {
     "id": "jp-reading-set-n4-060",
     "level": "N4",
-    "type": "短文理解",
-    "title": "誕生日のプレゼント",
-    "passage": "佐藤さんは明日の用事を忘れないように、寝る前にかばんを確認しました。雨が降るかもしれないので、折りたたみ傘も入れておきました。",
-    "passageKana": "さとうさんはあしたのようじをわすれないように、ねるまえにかばんをかくにんしました。あめがふるかもしれないので、おりたたみがさもいれておきました。",
+    "type": "使用規則",
+    "title": "自習室の規則",
+    "passage": "自習室では、飲み物は持ち込んでもいいですが、食べ物を食べてはいけません。使った机は帰る前にきれいにしておきましょう。",
+    "passageKana": "自習室では、飲み物は持ち込んでもいいですが、食べ物を食べてはいけません。使った机は帰る前にきれいにしておきましょう。",
     "questions": [
       {
         "id": "jp-reading-q-n4-060-01",
-        "question": "佐藤さんはなぜ傘を入れましたか。",
+        "question": "自習室でできないことは何ですか。",
         "options": [
-          "雨が降るかもしれないから",
-          "かばんを買うから",
-          "傘をなくしたから",
-          "明日家にいるから"
+          "食べ物を食べること",
+          "予定を全部やめます",
+          "何も持って行きません",
+          "別の日に学校で聞きます"
         ],
         "answerIndex": 0,
-        "explanation": "雨が降るかもしれないので入れました。"
+        "explanation": "本文では「食べ物を食べること」ことが分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "用事",
-        "kana": "ようじ",
-        "meaning": "事情"
+        "word": "自習室",
+        "kana": "自習室",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "確認",
-        "kana": "かくにん",
-        "meaning": "確認"
+        "word": "自習室では",
+        "kana": "自習室では",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "傘",
-        "kana": "かさ",
-        "meaning": "傘"
+        "word": "飲み物は持ち",
+        "kana": "飲み物は持ち",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～前に",
-      "～かもしれません",
-      "～ておきます"
-    ]
+      "～場合",
+      "～てもいいです"
+    ],
+    "titleRuby": "<ruby>自習室<rt>じしゅうしつ</rt></ruby>の規則",
+    "passageRuby": "<ruby>自習室<rt>じしゅうしつ</rt></ruby>では、飲み物は<ruby>持<rt>も</rt></ruby>ち込んでもいいですが、食べ物を食べてはいけません。<ruby>使<rt>つか</rt></ruby>った机は帰る前にきれいにしておきましょう。"
   },
   {
     "id": "jp-reading-set-n4-061",
     "level": "N4",
-    "type": "中短篇理解",
+    "type": "日記",
     "title": "新しい町の生活",
-    "passage": "私は先月から日記を書いています。はじめは分からないことが多かったですが、友だちや家族に聞きながら少しずつ慣れてきました。忙しい日もありますが、続けると楽しいことが見つかるようです。来月は自分で計画を立ててみようと思っています。",
-    "passageKana": "わたしはせんげつからにっきをかいています。はじめはわからないことがおおかったですが、ともだちやかぞくにききながらすこしずつなれてきました。いそがしいひもありますが、つづけるとたのしいことがみつかるようです。らいげつはじぶんでけいかくをたててみようとおもっています。",
+    "passage": "先月この町へ引っ越しました。はじめは道が分かりにくくて、買い物にも時間がかかりました。でも、近所の人が安いスーパーと静かな公園を教えてくれました。来月は地域清掃に参加して、もっと町を知りたいです。",
+    "passageKana": "せんげつこのまちへひっこしました。はじめはみちがわかりにくくて、かいものにもじかんがかかりました。でも、きんじょのひとがやすいスーパーとしずかなこうえんをおしえてくれました。らいげつはちいきせいそうにさんかして、もっとまちをしりたいです。",
     "questions": [
       {
         "id": "jp-reading-q-n4-061-01",
-        "question": "筆者ははじめどうでしたか。",
+        "question": "はじめ、筆者は何に困っていましたか。",
         "options": [
-          "分からないことが多かった",
-          "すぐ全部できた",
-          "何も始めなかった",
-          "家族に禁止された"
+          "道が分かりにくいこと",
+          "公園がうるさいこと",
+          "スーパーが高すぎること",
+          "近所の人がいないこと"
         ],
         "answerIndex": 0,
-        "explanation": "はじめは分からないことが多かったとあります。"
+        "explanation": "本文では「道が分かりにくいこと」と分かります。"
       },
       {
         "id": "jp-reading-q-n4-061-02",
-        "question": "筆者は来月どうするつもりですか。",
+        "question": "筆者は来月何をしたいですか。",
         "options": [
-          "自分で計画を立ててみる",
-          "日記を捨てる",
-          "友だちをやめる",
-          "毎日休む"
+          "地域清掃に参加する",
+          "別の町へ引っ越す",
+          "買い物をやめる",
+          "公園を閉める"
         ],
         "answerIndex": 0,
-        "explanation": "来月は自分で計画を立ててみようと思っています。"
+        "explanation": "本文では「地域清掃に参加する」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "日記",
-        "kana": "にっき",
-        "meaning": "日記"
+        "word": "引っ越しました",
+        "kana": "引っ越しました",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "慣れる",
-        "kana": "なれる",
-        "meaning": "適應"
+        "word": "近所",
+        "kana": "近所",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "計画",
-        "kana": "けいかく",
-        "meaning": "計畫"
+        "word": "地域清掃",
+        "kana": "地域清掃",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～ながら",
-      "～ようです",
-      "～てみます"
-    ]
+      "～にくい",
+      "～たい"
+    ],
+    "titleRuby": "<ruby>新しい<rt>あたらしい</rt></ruby><ruby>町<rt>まち</rt></ruby>の生活",
+    "passageRuby": "先月この<ruby>町<rt>まち</rt></ruby>へ<ruby>引っ越しました<rt>ひっこしました</rt></ruby>。はじめは<ruby>道<rt>みち</rt></ruby>が分かりにくくて、<ruby>買い物<rt>かいもの</rt></ruby>にも<ruby>時間<rt>じかん</rt></ruby>がかかりました。でも、<ruby>近所<rt>きんじょ</rt></ruby>の人が安いスーパーと静かな<ruby>公園<rt>こうえん</rt></ruby>を教えてくれました。来月は<ruby>地域清掃<rt>ちいきせいそう</rt></ruby>に<ruby>参加<rt>さんか</rt></ruby>して、もっと<ruby>町<rt>まち</rt></ruby>を知りたいです。"
   },
   {
     "id": "jp-reading-set-n4-062",
     "level": "N4",
-    "type": "中短篇理解",
+    "type": "学校通知",
     "title": "文化祭の準備",
-    "passage": "私は先月から日記を書いています。はじめは分からないことが多かったですが、友だちや家族に聞きながら少しずつ慣れてきました。忙しい日もありますが、続けると楽しいことが見つかるようです。来月は自分で計画を立ててみようと思っています。",
-    "passageKana": "わたしはせんげつからにっきをかいています。はじめはわからないことがおおかったですが、ともだちやかぞくにききながらすこしずつなれてきました。いそがしいひもありますが、つづけるとたのしいことがみつかるようです。らいげつはじぶんでけいかくをたててみようとおもっています。",
+    "passage": "文化祭の準備で、二年三組は教室を小さな喫茶店にします。金曜日の放課後に机を動かし、土曜日の朝に看板を付けます。食べ物を持って来る必要はありませんが、エプロンは各自で用意してください。",
+    "passageKana": "ぶんかさいのじゅんびで、にねんさんくみはきょうしつをちいさなきっさてんにします。きんようびのほうかごにつくえをうごかし、どようびのあさにかんばんをつけます。たべものをもってくるひつようはありませんが、エプロンはかくじでよういしてください。",
     "questions": [
       {
         "id": "jp-reading-q-n4-062-01",
-        "question": "筆者ははじめどうでしたか。",
+        "question": "金曜日の放課後に何をしますか。",
         "options": [
-          "分からないことが多かった",
-          "すぐ全部できた",
-          "何も始めなかった",
-          "家族に禁止された"
+          "机を動かす",
+          "看板を外す",
+          "食べ物を買う",
+          "文化祭を終える"
         ],
         "answerIndex": 0,
-        "explanation": "はじめは分からないことが多かったとあります。"
+        "explanation": "本文では「机を動かす」と分かります。"
       },
       {
         "id": "jp-reading-q-n4-062-02",
-        "question": "筆者は来月どうするつもりですか。",
+        "question": "学生は何を用意しなければなりませんか。",
         "options": [
-          "自分で計画を立ててみる",
-          "日記を捨てる",
-          "友だちをやめる",
-          "毎日休む"
+          "エプロン",
+          "机",
+          "食堂の鍵",
+          "飲み物全部"
         ],
         "answerIndex": 0,
-        "explanation": "来月は自分で計画を立ててみようと思っています。"
+        "explanation": "本文では「エプロン」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "日記",
-        "kana": "にっき",
-        "meaning": "日記"
+        "word": "文化祭",
+        "kana": "文化祭",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "慣れる",
-        "kana": "なれる",
-        "meaning": "適應"
+        "word": "放課後",
+        "kana": "放課後",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "計画",
-        "kana": "けいかく",
-        "meaning": "計畫"
+        "word": "必要",
+        "kana": "必要",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～ながら",
-      "～ようです",
-      "～てみます"
-    ]
+      "～なければなりません",
+      "～必要はありません"
+    ],
+    "titleRuby": "<ruby>文化祭<rt>ぶんかさい</rt></ruby>の<ruby>準備<rt>じゅんび</rt></ruby>",
+    "passageRuby": "<ruby>文化祭<rt>ぶんかさい</rt></ruby>の<ruby>準備<rt>じゅんび</rt></ruby>で、二年三組は<ruby>教室<rt>きょうしつ</rt></ruby>を小さな喫茶店にします。<ruby>金曜日<rt>きんようび</rt></ruby>の放課後に机を動かし、<ruby>土曜日<rt>どようび</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>に看板を付けます。食べ物を持って来る<ruby>必要<rt>ひつよう</rt></ruby>はありませんが、エプロンは各自で用意してください。"
   },
   {
     "id": "jp-reading-set-n4-063",
     "level": "N4",
-    "type": "中短篇理解",
+    "type": "店長留言",
     "title": "打工の一週間",
-    "passage": "私は先月から日記を書いています。はじめは分からないことが多かったですが、友だちや家族に聞きながら少しずつ慣れてきました。忙しい日もありますが、続けると楽しいことが見つかるようです。来月は自分で計画を立ててみようと思っています。",
-    "passageKana": "わたしはせんげつからにっきをかいています。はじめはわからないことがおおかったですが、ともだちやかぞくにききながらすこしずつなれてきました。いそがしいひもありますが、つづけるとたのしいことがみつかるようです。らいげつはじぶんでけいかくをたててみようとおもっています。",
+    "passage": "店長のメモです。今週は新しい店員が入るので、火曜日の開店前にレジの使い方を説明してください。昼は客が多すぎるかもしれないため、質問はノートに書いておくと分かりやすいです。",
+    "passageKana": "てんちょうのメモです。こんしゅうはあたらしいてんいんがはいるので、かようびのかいてんまえにレジのつかいかたをせつめいしてください。ひるはきゃくがおおすぎるかもしれないため、しつもんはノートにかいておくとわかりやすいです。",
     "questions": [
       {
         "id": "jp-reading-q-n4-063-01",
-        "question": "筆者ははじめどうでしたか。",
+        "question": "火曜日の開店前に何をしますか。",
         "options": [
-          "分からないことが多かった",
-          "すぐ全部できた",
-          "何も始めなかった",
-          "家族に禁止された"
+          "レジの使い方を説明する",
+          "店を休みにする",
+          "客に手紙を書く",
+          "昼ご飯を作る"
         ],
         "answerIndex": 0,
-        "explanation": "はじめは分からないことが多かったとあります。"
+        "explanation": "本文では「レジの使い方を説明する」と分かります。"
       },
       {
         "id": "jp-reading-q-n4-063-02",
-        "question": "筆者は来月どうするつもりですか。",
+        "question": "質問はどうしておくとよいですか。",
         "options": [
-          "自分で計画を立ててみる",
-          "日記を捨てる",
-          "友だちをやめる",
-          "毎日休む"
+          "ノートに書いておく",
+          "全部忘れる",
+          "客に聞かない",
+          "家に持って帰る"
         ],
         "answerIndex": 0,
-        "explanation": "来月は自分で計画を立ててみようと思っています。"
+        "explanation": "本文では「ノートに書いておく」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "日記",
-        "kana": "にっき",
-        "meaning": "日記"
+        "word": "店長",
+        "kana": "店長",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "慣れる",
-        "kana": "なれる",
-        "meaning": "適應"
+        "word": "店員",
+        "kana": "店員",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "計画",
-        "kana": "けいかく",
-        "meaning": "計畫"
+        "word": "開店前",
+        "kana": "開店前",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～ながら",
-      "～ようです",
-      "～てみます"
-    ]
+      "～ので",
+      "～すぎる",
+      "～ておく"
+    ],
+    "titleRuby": "打工の一週間",
+    "passageRuby": "<ruby>店長<rt>てんちょう</rt></ruby>のメモです。<ruby>今週<rt>こんしゅう</rt></ruby>は<ruby>新しい<rt>あたらしい</rt></ruby><ruby>店員<rt>てんいん</rt></ruby>が入るので、<ruby>火曜日<rt>かようび</rt></ruby>の<ruby>開店前<rt>かいてんまえ</rt></ruby>にレジの<ruby>使い方<rt>つかいかた</rt></ruby>を<ruby>説明<rt>せつめい</rt></ruby>してください。<ruby>昼<rt>ひる</rt></ruby>は客が多すぎるかもしれないため、<ruby>質問<rt>しつもん</rt></ruby>はノートに書いておくと分かりやすいです。"
   },
   {
     "id": "jp-reading-set-n4-064",
     "level": "N4",
-    "type": "中短篇理解",
-    "title": "健康のための散歩",
-    "passage": "私は先月から日記を書いています。はじめは分からないことが多かったですが、友だちや家族に聞きながら少しずつ慣れてきました。忙しい日もありますが、続けると楽しいことが見つかるようです。来月は自分で計画を立ててみようと思っています。",
-    "passageKana": "わたしはせんげつからにっきをかいています。はじめはわからないことがおおかったですが、ともだちやかぞくにききながらすこしずつなれてきました。いそがしいひもありますが、つづけるとたのしいことがみつかるようです。らいげつはじぶんでけいかくをたててみようとおもっています。",
+    "type": "日記",
+    "title": "散歩の習慣",
+    "passage": "最近、寝る前にスマホを見すぎて、朝起きにくくなりました。そこで、夕食のあとで三十分散歩することにしました。歩きながら音楽を聞くと気分がよくなり、夜も早く眠れるようです。",
+    "passageKana": "さいきん、ねるまえにスマホをみすぎて、あさおきにくくなりました。そこで、ゆうしょくのあとでさんじゅっぷんさんぽすることにしました。あるきながらおんがくをきくときぶんがよくなり、よるもはやくねむれるようです。",
     "questions": [
       {
         "id": "jp-reading-q-n4-064-01",
-        "question": "筆者ははじめどうでしたか。",
+        "question": "筆者はなぜ散歩を始めましたか。",
         "options": [
-          "分からないことが多かった",
-          "すぐ全部できた",
-          "何も始めなかった",
-          "家族に禁止された"
+          "朝起きにくくなったから",
+          "音楽が嫌いになったから",
+          "夕食を食べないから",
+          "スマホを買ったから"
         ],
         "answerIndex": 0,
-        "explanation": "はじめは分からないことが多かったとあります。"
+        "explanation": "本文では「朝起きにくくなったから」と分かります。"
       },
       {
         "id": "jp-reading-q-n4-064-02",
-        "question": "筆者は来月どうするつもりですか。",
+        "question": "散歩しながら何をしますか。",
         "options": [
-          "自分で計画を立ててみる",
-          "日記を捨てる",
-          "友だちをやめる",
-          "毎日休む"
+          "音楽を聞く",
+          "宿題を書く",
+          "薬を飲む",
+          "電車を待つ"
         ],
         "answerIndex": 0,
-        "explanation": "来月は自分で計画を立ててみようと思っています。"
+        "explanation": "本文では「音楽を聞く」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "日記",
-        "kana": "にっき",
-        "meaning": "日記"
+        "word": "寝る前",
+        "kana": "寝る前",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "慣れる",
-        "kana": "なれる",
-        "meaning": "適應"
+        "word": "散歩",
+        "kana": "散歩",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "計画",
-        "kana": "けいかく",
-        "meaning": "計畫"
+        "word": "気分",
+        "kana": "気分",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
+      "～すぎる",
       "～ながら",
-      "～ようです",
-      "～てみます"
-    ]
+      "～ようです"
+    ],
+    "titleRuby": "<ruby>散歩<rt>さんぽ</rt></ruby>の習慣",
+    "passageRuby": "<ruby>最近<rt>さいきん</rt></ruby>、<ruby>寝る前<rt>ねるまえ</rt></ruby>にスマホを見すぎて、<ruby>朝<rt>あさ</rt></ruby>起きにくくなりました。そこで、<ruby>夕食<rt>ゆうしょく</rt></ruby>のあとで三十分<ruby>散歩<rt>さんぽ</rt></ruby>することにしました。歩きながら<ruby>音楽<rt>おんがく</rt></ruby>を聞くと<ruby>気分<rt>きぶん</rt></ruby>がよくなり、夜も早く眠れるようです。"
   },
   {
     "id": "jp-reading-set-n4-065",
     "level": "N4",
-    "type": "中短篇理解",
+    "type": "簡單行程表",
     "title": "家族の京都旅行",
-    "passage": "私は先月から日記を書いています。はじめは分からないことが多かったですが、友だちや家族に聞きながら少しずつ慣れてきました。忙しい日もありますが、続けると楽しいことが見つかるようです。来月は自分で計画を立ててみようと思っています。",
-    "passageKana": "わたしはせんげつからにっきをかいています。はじめはわからないことがおおかったですが、ともだちやかぞくにききながらすこしずつなれてきました。いそがしいひもありますが、つづけるとたのしいことがみつかるようです。らいげつはじぶんでけいかくをたててみようとおもっています。",
+    "passage": "旅行メモ：午前九時に京都駅で集合。十時に博物館、昼は駅近くの店で定食を食べる。午後は雨の場合、寺ではなく屋内の市場へ行く予定です。切符は父が買っておきます。",
+    "passageKana": "りょこうメモ：ごぜんくじにきょうとえきでしゅうごう。じゅうじにはくぶつかん、ひるはえきちかくのみせでていしょくをたべる。ごごはあめのばあい、てらではなくおくないのいちばへいくよていです。きっぷはちちがかっておきます。",
     "questions": [
       {
         "id": "jp-reading-q-n4-065-01",
-        "question": "筆者ははじめどうでしたか。",
+        "question": "午前十時にどこへ行きますか。",
         "options": [
-          "分からないことが多かった",
-          "すぐ全部できた",
-          "何も始めなかった",
-          "家族に禁止された"
+          "博物館",
+          "寺",
+          "市場",
+          "ホテル"
         ],
         "answerIndex": 0,
-        "explanation": "はじめは分からないことが多かったとあります。"
+        "explanation": "本文では「博物館」と分かります。"
       },
       {
         "id": "jp-reading-q-n4-065-02",
-        "question": "筆者は来月どうするつもりですか。",
+        "question": "雨の場合、午後はどこへ行く予定ですか。",
         "options": [
-          "自分で計画を立ててみる",
-          "日記を捨てる",
-          "友だちをやめる",
-          "毎日休む"
+          "屋内の市場",
+          "駅の外の公園",
+          "遠い山",
+          "学校の教室"
         ],
         "answerIndex": 0,
-        "explanation": "来月は自分で計画を立ててみようと思っています。"
+        "explanation": "本文では「屋内の市場」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "日記",
-        "kana": "にっき",
-        "meaning": "日記"
+        "word": "京都駅",
+        "kana": "京都駅",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "慣れる",
-        "kana": "なれる",
-        "meaning": "適應"
+        "word": "博物館",
+        "kana": "博物館",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "計画",
-        "kana": "けいかく",
-        "meaning": "計畫"
+        "word": "場合",
+        "kana": "場合",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～ながら",
-      "～ようです",
-      "～てみます"
-    ]
+      "～場合",
+      "～予定です",
+      "～ておきます"
+    ],
+    "titleRuby": "家族の京都<ruby>旅行<rt>りょこう</rt></ruby>",
+    "passageRuby": "<ruby>旅行<rt>りょこう</rt></ruby>メモ：<ruby>午前<rt>ごぜん</rt></ruby>九時に<ruby>京都駅<rt>きょうとえき</rt></ruby>で<ruby>集合<rt>しゅうごう</rt></ruby>。十時に<ruby>博物館<rt>はくぶつかん</rt></ruby>、<ruby>昼<rt>ひる</rt></ruby>は駅近くの店で定食を食べる。<ruby>午後<rt>ごご</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>、寺ではなく屋内の市場へ行く<ruby>予定<rt>よてい</rt></ruby>です。<ruby>切符<rt>きっぷ</rt></ruby>は父が買っておきます。"
   },
   {
     "id": "jp-reading-set-n4-066",
     "level": "N4",
-    "type": "情報検索",
+    "type": "使用規則",
     "title": "運動センターの案内",
-    "passage": "お知らせ：利用する人は時間を確認してください。初めての場合は受付で名前を書かなければなりません。予約が必要な日は、前の日までに電話してもいいです。",
-    "passageKana": "おしらせ：りようするひとはじかんをかくにんしてください。はじめてのばあいはうけつけでなまえをかかなければなりません。よやくがひつようなひは、まえのひまでにでんわしてもいいです。",
+    "passage": "運動センターを初めて使う人は、受付で名前と住所を書いてください。プールは予約しなくてもいいですが、ヨガ教室は前の日までに予約が必要です。タオルは借りられません。",
+    "passageKana": "うんどうセンターをはじめてつかうひとは、うけつけでなまえとじゅうしょをかいてください。プールはよやくしなくてもいいですが、ヨガきょうしつはまえのひまでによやくがひつようです。タオルはかりられません。",
     "questions": [
       {
         "id": "jp-reading-q-n4-066-01",
-        "question": "初めて利用する人は何をしますか。",
+        "question": "初めて使う人は受付で何を書きますか。",
         "options": [
-          "受付で名前を書く",
-          "すぐ帰る",
-          "名前を書かない",
-          "電話を捨てる"
+          "名前と住所",
+          "電話番号だけ",
+          "好きな食べ物",
+          "学校の名前だけ"
         ],
         "answerIndex": 0,
-        "explanation": "初めての場合は受付で名前を書かなければなりません。"
+        "explanation": "本文では「名前と住所」と分かります。"
       },
       {
         "id": "jp-reading-q-n4-066-02",
-        "question": "予約が必要な日はどうしてもいいですか。",
+        "question": "予約が必要なのはどれですか。",
         "options": [
-          "前の日までに電話する",
-          "一週間後に行く",
-          "時間を見ない",
-          "受付を閉める"
+          "ヨガ教室",
+          "プール",
+          "タオル",
+          "受付"
         ],
         "answerIndex": 0,
-        "explanation": "前の日までに電話してもいいとあります。"
+        "explanation": "本文では「ヨガ教室」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "案内",
-        "kana": "あんない",
-        "meaning": "資訊"
+        "word": "受付",
+        "kana": "受付",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "受付",
-        "kana": "うけつけ",
-        "meaning": "櫃台"
+        "word": "住所",
+        "kana": "住所",
+        "meaning": "關鍵詞"
       },
       {
         "word": "予約",
-        "kana": "よやく",
-        "meaning": "預約"
+        "kana": "予約",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～場合",
-      "～なければなりません",
-      "～てもいいです"
-    ]
+      "～なくてもいいです",
+      "～必要です"
+    ],
+    "titleRuby": "運動センターの案内",
+    "passageRuby": "運動センターを初めて使う人は、<ruby>受付<rt>うけつけ</rt></ruby>で<ruby>名前<rt>なまえ</rt></ruby>と<ruby>住所<rt>じゅうしょ</rt></ruby>を書いてください。プールは<ruby>予約<rt>よやく</rt></ruby>しなくてもいいですが、ヨガ<ruby>教室<rt>きょうしつ</rt></ruby>は前の日までに<ruby>予約<rt>よやく</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>です。タオルは借りられません。"
   },
   {
     "id": "jp-reading-set-n4-067",
     "level": "N4",
-    "type": "情報検索",
+    "type": "図書館公告",
     "title": "図書館の利用",
-    "passage": "お知らせ：利用する人は時間を確認してください。初めての場合は受付で名前を書かなければなりません。予約が必要な日は、前の日までに電話してもいいです。",
-    "passageKana": "おしらせ：りようするひとはじかんをかくにんしてください。はじめてのばあいはうけつけでなまえをかかなければなりません。よやくがひつようなひは、まえのひまでにでんわしてもいいです。",
+    "passage": "市立図書館では、今月から学習室の席を予約できます。予約は一人一日二時間までです。飲み物はふたがある物なら持ち込んでもいいですが、席で食事はできません。",
+    "passageKana": "しりつとしょかんでは、こんげつからがくしゅうしつのせきをよやくできます。よやくはひとりいちにちにじかんまでです。のみものはふたがあるものならもちこんでもいいですが、せきでしょくじはできません。",
     "questions": [
       {
         "id": "jp-reading-q-n4-067-01",
-        "question": "初めて利用する人は何をしますか。",
+        "question": "学習室の予約は一人一日何時間までですか。",
         "options": [
-          "受付で名前を書く",
-          "すぐ帰る",
-          "名前を書かない",
-          "電話を捨てる"
+          "二時間まで",
+          "三十分まで",
+          "一日中",
+          "予約できない"
         ],
         "answerIndex": 0,
-        "explanation": "初めての場合は受付で名前を書かなければなりません。"
+        "explanation": "本文では「二時間まで」と分かります。"
       },
       {
         "id": "jp-reading-q-n4-067-02",
-        "question": "予約が必要な日はどうしてもいいですか。",
+        "question": "席でできないことは何ですか。",
         "options": [
-          "前の日までに電話する",
-          "一週間後に行く",
-          "時間を見ない",
-          "受付を閉める"
+          "食事をすること",
+          "ふた付きの飲み物を飲むこと",
+          "勉強すること",
+          "予約すること"
         ],
         "answerIndex": 0,
-        "explanation": "前の日までに電話してもいいとあります。"
+        "explanation": "本文では「食事をすること」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "案内",
-        "kana": "あんない",
-        "meaning": "資訊"
+        "word": "図書館",
+        "kana": "図書館",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "受付",
-        "kana": "うけつけ",
-        "meaning": "櫃台"
+        "word": "学習室",
+        "kana": "学習室",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "予約",
-        "kana": "よやく",
-        "meaning": "預約"
+        "word": "食事",
+        "kana": "食事",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～場合",
-      "～なければなりません",
+      "～ことができます",
       "～てもいいです"
-    ]
+    ],
+    "titleRuby": "<ruby>図書館<rt>としょかん</rt></ruby>の利用",
+    "passageRuby": "市立<ruby>図書館<rt>としょかん</rt></ruby>では、今月から<ruby>学習室<rt>がくしゅうしつ</rt></ruby>の席を<ruby>予約<rt>よやく</rt></ruby>できます。<ruby>予約<rt>よやく</rt></ruby>は一人一日二<ruby>時間<rt>じかん</rt></ruby>までです。飲み物はふたがある物なら持ち込んでもいいですが、席で<ruby>食事<rt>しょくじ</rt></ruby>はできません。"
   },
   {
     "id": "jp-reading-set-n4-068",
     "level": "N4",
-    "type": "情報検索",
+    "type": "映画館公告",
     "title": "映画館の予定",
-    "passage": "お知らせ：利用する人は時間を確認してください。初めての場合は受付で名前を書かなければなりません。予約が必要な日は、前の日までに電話してもいいです。",
-    "passageKana": "おしらせ：りようするひとはじかんをかくにんしてください。はじめてのばあいはうけつけでなまえをかかなければなりません。よやくがひつようなひは、まえのひまでにでんわしてもいいです。",
+    "passage": "映画館では、水曜日の午前中だけ学生料金が安くなります。チケットを買うとき学生証を見せなければなりません。忘れた場合は普通の料金になります。",
+    "passageKana": "えいがかんでは、すいようびのごぜんちゅうだけがくせいりょうきんがやすくなります。チケットをかうときがくせいしょうをみせなければなりません。わすれたばあいはふつうのりょうきんになります。",
     "questions": [
       {
         "id": "jp-reading-q-n4-068-01",
-        "question": "初めて利用する人は何をしますか。",
+        "question": "学生料金が安いのはいつですか。",
         "options": [
-          "受付で名前を書く",
-          "すぐ帰る",
-          "名前を書かない",
-          "電話を捨てる"
+          "水曜日の午前中",
+          "毎日の夜",
+          "土曜日の午後",
+          "月曜日だけ"
         ],
         "answerIndex": 0,
-        "explanation": "初めての場合は受付で名前を書かなければなりません。"
+        "explanation": "本文では「水曜日の午前中」と分かります。"
       },
       {
         "id": "jp-reading-q-n4-068-02",
-        "question": "予約が必要な日はどうしてもいいですか。",
+        "question": "学生証を忘れた場合、どうなりますか。",
         "options": [
-          "前の日までに電話する",
-          "一週間後に行く",
-          "時間を見ない",
-          "受付を閉める"
+          "普通の料金になる",
+          "映画を見られない",
+          "無料になる",
+          "次の日に来る"
         ],
         "answerIndex": 0,
-        "explanation": "前の日までに電話してもいいとあります。"
+        "explanation": "本文では「普通の料金になる」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "案内",
-        "kana": "あんない",
-        "meaning": "資訊"
+        "word": "映画館",
+        "kana": "映画館",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "受付",
-        "kana": "うけつけ",
-        "meaning": "櫃台"
+        "word": "学生料金",
+        "kana": "学生料金",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "予約",
-        "kana": "よやく",
-        "meaning": "預約"
+        "word": "場合",
+        "kana": "場合",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～場合",
+      "～とき",
       "～なければなりません",
-      "～てもいいです"
-    ]
+      "～場合"
+    ],
+    "titleRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>の<ruby>予定<rt>よてい</rt></ruby>",
+    "passageRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>では、<ruby>水曜日<rt>すいようび</rt></ruby>の<ruby>午前<rt>ごぜん</rt></ruby>中だけ<ruby>学生料金<rt>がくせいりょうきん</rt></ruby>が安くなります。チケットを買うとき<ruby>学生証<rt>がくせいしょう</rt></ruby>を見せなければなりません。忘れた<ruby>場合<rt>ばあい</rt></ruby>は<ruby>普通<rt>ふつう</rt></ruby>の料金になります。"
   },
   {
     "id": "jp-reading-set-n4-069",
     "level": "N4",
-    "type": "情報検索",
+    "type": "交通通知",
     "title": "バス会社の通知",
-    "passage": "お知らせ：利用する人は時間を確認してください。初めての場合は受付で名前を書かなければなりません。予約が必要な日は、前の日までに電話してもいいです。",
-    "passageKana": "おしらせ：りようするひとはじかんをかくにんしてください。はじめてのばあいはうけつけでなまえをかかなければなりません。よやくがひつようなひは、まえのひまでにでんわしてもいいです。",
+    "passage": "駅前の道路工事のため、三番バスは来週の月曜日から一週間、南口には止まりません。南口へ行く人は、一つ前の市役所前で降りて歩いてください。",
+    "passageKana": "えきまえのどうろこうじのため、さんばんバスはらいしゅうのげつようびからいっしゅうかん、みなみぐちにはとまりません。みなみぐちへいくひとは、ひとつまえのしやくしょまえでおりてあるいてください。",
     "questions": [
       {
         "id": "jp-reading-q-n4-069-01",
-        "question": "初めて利用する人は何をしますか。",
+        "question": "三番バスが南口に止まらない理由は何ですか。",
         "options": [
-          "受付で名前を書く",
-          "すぐ帰る",
-          "名前を書かない",
-          "電話を捨てる"
+          "道路工事のため",
+          "雨が強すぎるため",
+          "運転手が休むため",
+          "南口が遠いため"
         ],
         "answerIndex": 0,
-        "explanation": "初めての場合は受付で名前を書かなければなりません。"
+        "explanation": "本文では「道路工事のため」と分かります。"
       },
       {
         "id": "jp-reading-q-n4-069-02",
-        "question": "予約が必要な日はどうしてもいいですか。",
+        "question": "南口へ行く人はどこで降りますか。",
         "options": [
-          "前の日までに電話する",
-          "一週間後に行く",
-          "時間を見ない",
-          "受付を閉める"
+          "市役所前",
+          "駅前",
+          "北口",
+          "図書館前"
         ],
         "answerIndex": 0,
-        "explanation": "前の日までに電話してもいいとあります。"
+        "explanation": "本文では「市役所前」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "案内",
-        "kana": "あんない",
-        "meaning": "資訊"
+        "word": "道路工事",
+        "kana": "道路工事",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "受付",
-        "kana": "うけつけ",
-        "meaning": "櫃台"
+        "word": "南口",
+        "kana": "南口",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "予約",
-        "kana": "よやく",
-        "meaning": "預約"
+        "word": "市役所前",
+        "kana": "市役所前",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～場合",
-      "～なければなりません",
-      "～てもいいです"
-    ]
+      "～ため",
+      "～てください"
+    ],
+    "titleRuby": "バス会社の通知",
+    "passageRuby": "<ruby>駅前<rt>えきまえ</rt></ruby>の<ruby>道路工事<rt>どうろこうじ</rt></ruby>のため、三番バスは<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>月曜日<rt>げつようび</rt></ruby>から一週間、<ruby>南口<rt>みなみぐち</rt></ruby>には止まりません。<ruby>南口<rt>みなみぐち</rt></ruby>へ行く人は、一つ前の<ruby>市役所前<rt>しやくしょまえ</rt></ruby>で降りて歩いてください。"
   },
   {
     "id": "jp-reading-set-n4-070",
     "level": "N4",
-    "type": "情報検索",
+    "type": "店家公告",
     "title": "カフェの営業時間",
-    "passage": "お知らせ：利用する人は時間を確認してください。初めての場合は受付で名前を書かなければなりません。予約が必要な日は、前の日までに電話してもいいです。",
-    "passageKana": "おしらせ：りようするひとはじかんをかくにんしてください。はじめてのばあいはうけつけでなまえをかかなければなりません。よやくがひつようなひは、まえのひまでにでんわしてもいいです。",
+    "passage": "カフェ森は、店内の工事のため来週だけ午後二時に閉店します。ランチは一時半まで注文できます。持ち帰りの飲み物は、閉店の十分前まで買えます。",
+    "passageKana": "カフェもりは、てんないのこうじのためらいしゅうだけごごにじにへいてんします。ランチはいちじはんまでちゅうもんできます。もちかえりののみものは、へいてんのじゅっぷんまえまでかえます。",
     "questions": [
       {
         "id": "jp-reading-q-n4-070-01",
-        "question": "初めて利用する人は何をしますか。",
+        "question": "来週、カフェは何時に閉まりますか。",
         "options": [
-          "受付で名前を書く",
-          "すぐ帰る",
-          "名前を書かない",
-          "電話を捨てる"
+          "午後二時",
+          "午後三時",
+          "一時半",
+          "午前十時"
         ],
         "answerIndex": 0,
-        "explanation": "初めての場合は受付で名前を書かなければなりません。"
+        "explanation": "本文では「午後二時」と分かります。"
       },
       {
         "id": "jp-reading-q-n4-070-02",
-        "question": "予約が必要な日はどうしてもいいですか。",
+        "question": "持ち帰りの飲み物はいつまで買えますか。",
         "options": [
-          "前の日までに電話する",
-          "一週間後に行く",
-          "時間を見ない",
-          "受付を閉める"
+          "閉店の十分前まで",
+          "朝だけ",
+          "一時半まで",
+          "工事のあとだけ"
         ],
         "answerIndex": 0,
-        "explanation": "前の日までに電話してもいいとあります。"
+        "explanation": "本文では「閉店の十分前まで」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "案内",
-        "kana": "あんない",
-        "meaning": "資訊"
+        "word": "工事",
+        "kana": "工事",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "受付",
-        "kana": "うけつけ",
-        "meaning": "櫃台"
+        "word": "閉店",
+        "kana": "閉店",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "予約",
-        "kana": "よやく",
-        "meaning": "預約"
+        "word": "注文",
+        "kana": "注文",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～場合",
-      "～なければなりません",
-      "～てもいいです"
-    ]
+      "～ため",
+      "～まで"
+    ],
+    "titleRuby": "カフェの営業<ruby>時間<rt>じかん</rt></ruby>",
+    "passageRuby": "カフェ森は、店内の<ruby>工事<rt>こうじ</rt></ruby>のため<ruby>来週<rt>らいしゅう</rt></ruby>だけ<ruby>午後<rt>ごご</rt></ruby>二時に<ruby>閉店<rt>へいてん</rt></ruby>します。ランチは一時半まで<ruby>注文<rt>ちゅうもん</rt></ruby>できます。持ち帰りの飲み物は、<ruby>閉店<rt>へいてん</rt></ruby>の十分前まで買えます。"
   },
   {
     "id": "jp-reading-set-n4-071",
     "level": "N4",
-    "type": "文意推論",
+    "type": "電話留言摘要",
     "title": "電話の留言",
-    "passage": "知らせを読んだあと、山田さんは少し困りました。予定と合わないかもしれませんが、相手が待っているので、まず電話して相談することにしました。",
-    "passageKana": "しらせをよんだあと、やまださんはすこしこまりました。よていとあわないかもしれませんが、あいてがまっているので、まずでんわしてそうだんすることにしました。",
+    "passage": "受付の人から岡田さんへ伝言です。明日の歯医者の予約は午前十時から十時半に変わりました。都合が悪い場合は、今日の五時までに電話してください。",
+    "passageKana": "うけつけのひとからおかださんへでんごんです。あしたのはいしゃのよやくはごぜんじゅうじからじゅうじはんにかわりました。つごうがわるいばあいは、きょうのごじまでにでんわしてください。",
     "questions": [
       {
         "id": "jp-reading-q-n4-071-01",
-        "question": "山田さんは次に何をするでしょうか。",
+        "question": "あしたのはいしゃのよやくはいつになりましたか。",
         "options": [
-          "電話して相談する",
-          "何も読まない",
-          "相手を一日待たせる",
-          "予定を全部忘れる"
+          "午前十時半",
+          "予定を全部やめます",
+          "駅で待ちます",
+          "何も連絡できません"
         ],
         "answerIndex": 0,
-        "explanation": "まず電話して相談することにしたとあります。"
+        "explanation": "本文では「午前十時半」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "相談",
-        "kana": "そうだん",
-        "meaning": "商量"
-      },
-      {
-        "word": "相手",
-        "kana": "あいて",
-        "meaning": "對方"
-      },
-      {
-        "word": "困る",
-        "kana": "こまる",
-        "meaning": "困擾"
+        "word": "電話",
+        "kana": "電話",
+        "meaning": "主題語"
       }
     ],
     "grammarPoints": [
-      "～たあとで",
-      "～かもしれません",
-      "～ことにしました"
-    ]
+      "～場合",
+      "～予定です"
+    ],
+    "titleRuby": "<ruby>電話<rt>でんわ</rt></ruby>の留言",
+    "passageRuby": "<ruby>受付<rt>うけつけ</rt></ruby>の人から岡田さんへ<ruby>伝言<rt>でんごん</rt></ruby>です。<ruby>明日<rt>あした</rt></ruby>の<ruby>歯医者<rt>はいしゃ</rt></ruby>の<ruby>予約<rt>よやく</rt></ruby>は<ruby>午前<rt>ごぜん</rt></ruby>十時から十時半に変わりました。<ruby>都合<rt>つごう</rt></ruby>が悪い<ruby>場合<rt>ばあい</rt></ruby>は、今日の五時までに<ruby>電話<rt>でんわ</rt></ruby>してください。"
   },
   {
     "id": "jp-reading-set-n4-072",
     "level": "N4",
-    "type": "文意推論",
+    "type": "活動通知",
     "title": "雨の公園活動",
-    "passage": "知らせを読んだあと、山田さんは少し困りました。予定と合わないかもしれませんが、相手が待っているので、まず電話して相談することにしました。",
-    "passageKana": "しらせをよんだあと、やまださんはすこしこまりました。よていとあわないかもしれませんが、あいてがまっているので、まずでんわしてそうだんすることにしました。",
+    "passage": "明日の公園活動は、雨が強い場合、体育館で行います。体育館では外の靴が使えないので、参加する人は室内用の靴を持って来てください。",
+    "passageKana": "あしたのこうえんかつどうは、あめがつよいばあい、たいいくかんでおこないます。たいいくかんではそとのくつがつかえないので、さんかするひとはしつないようのくつをもってきてください。",
     "questions": [
       {
         "id": "jp-reading-q-n4-072-01",
-        "question": "山田さんは次に何をするでしょうか。",
+        "question": "参加する人は何を持って行かなければなりませんか。",
         "options": [
-          "電話して相談する",
-          "何も読まない",
-          "相手を一日待たせる",
-          "予定を全部忘れる"
+          "室内用の靴",
+          "予定を全部やめます",
+          "駅で待ちます",
+          "何も連絡できません"
         ],
         "answerIndex": 0,
-        "explanation": "まず電話して相談することにしたとあります。"
+        "explanation": "本文では「室内用の靴」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "相談",
-        "kana": "そうだん",
-        "meaning": "商量"
-      },
-      {
-        "word": "相手",
-        "kana": "あいて",
-        "meaning": "對方"
-      },
-      {
-        "word": "困る",
-        "kana": "こまる",
-        "meaning": "困擾"
+        "word": "室内用の靴",
+        "kana": "室内用の靴",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～たあとで",
-      "～かもしれません",
-      "～ことにしました"
-    ]
+      "～場合",
+      "～予定です"
+    ],
+    "titleRuby": "<ruby>雨<rt>あめ</rt></ruby>の<ruby>公園<rt>こうえん</rt></ruby>活動",
+    "passageRuby": "<ruby>明日<rt>あした</rt></ruby>の<ruby>公園<rt>こうえん</rt></ruby>活動は、<ruby>雨<rt>あめ</rt></ruby>が強い<ruby>場合<rt>ばあい</rt></ruby>、<ruby>体育館<rt>たいいくかん</rt></ruby>で行います。<ruby>体育館<rt>たいいくかん</rt></ruby>では外の<ruby>靴<rt>くつ</rt></ruby>が使えないので、<ruby>参加<rt>さんか</rt></ruby>する人は<ruby>室内用<rt>しつないよう</rt></ruby>の<ruby>靴<rt>くつ</rt></ruby>を持って来てください。"
   },
   {
     "id": "jp-reading-set-n4-073",
     "level": "N4",
-    "type": "文意推論",
+    "type": "店長留言",
     "title": "店長のメモ",
-    "passage": "知らせを読んだあと、山田さんは少し困りました。予定と合わないかもしれませんが、相手が待っているので、まず電話して相談することにしました。",
-    "passageKana": "しらせをよんだあと、やまださんはすこしこまりました。よていとあわないかもしれませんが、あいてがまっているので、まずでんわしてそうだんすることにしました。",
+    "passage": "店長からのメモです。新しい皿が届いたら、箱を開ける前に数を確認してください。割れている皿があった場合は、写真を撮ってから事務所へ持って来てください。",
+    "passageKana": "てんちょうからのメモです。あたらしいさらがとどいたら、はこをあけるまえにかずをかくにんしてください。われているさらがあったばあいは、しゃしんをとってからじむしょへもってきてください。",
     "questions": [
       {
         "id": "jp-reading-q-n4-073-01",
-        "question": "山田さんは次に何をするでしょうか。",
+        "question": "皿が割れていた場合、先に何をしますか。",
         "options": [
-          "電話して相談する",
-          "何も読まない",
-          "相手を一日待たせる",
-          "予定を全部忘れる"
+          "写真を撮る",
+          "予定を全部やめます",
+          "駅で待ちます",
+          "何も連絡できません"
         ],
         "answerIndex": 0,
-        "explanation": "まず電話して相談することにしたとあります。"
+        "explanation": "本文では「写真を撮る」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "相談",
-        "kana": "そうだん",
-        "meaning": "商量"
-      },
-      {
-        "word": "相手",
-        "kana": "あいて",
-        "meaning": "對方"
-      },
-      {
-        "word": "困る",
-        "kana": "こまる",
-        "meaning": "困擾"
+        "word": "店長",
+        "kana": "店長",
+        "meaning": "主題語"
       }
     ],
     "grammarPoints": [
-      "～たあとで",
-      "～かもしれません",
-      "～ことにしました"
-    ]
+      "～場合",
+      "～予定です"
+    ],
+    "titleRuby": "<ruby>店長<rt>てんちょう</rt></ruby>のメモ",
+    "passageRuby": "<ruby>店長<rt>てんちょう</rt></ruby>からのメモです。<ruby>新しい<rt>あたらしい</rt></ruby><ruby>皿<rt>さら</rt></ruby>が届いたら、<ruby>箱<rt>はこ</rt></ruby>を開ける前に数を確認してください。割れている<ruby>皿<rt>さら</rt></ruby>があった<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>写真<rt>しゃしん</rt></ruby>を撮ってから<ruby>事務所<rt>じむしょ</rt></ruby>へ持って来てください。"
   },
   {
     "id": "jp-reading-set-n4-074",
     "level": "N4",
-    "type": "文意推論",
+    "type": "朋友訊息",
     "title": "友だちの誘い",
-    "passage": "知らせを読んだあと、山田さんは少し困りました。予定と合わないかもしれませんが、相手が待っているので、まず電話して相談することにしました。",
-    "passageKana": "しらせをよんだあと、やまださんはすこしこまりました。よていとあわないかもしれませんが、あいてがまっているので、まずでんわしてそうだんすることにしました。",
+    "passage": "ジョンさんからのメッセージです。土曜日に新しいカレー屋へ行きませんか。辛い料理が苦手な人のために、甘いメニューもあるそうです。行ける場合は金曜日の夜までに返事をください。",
+    "passageKana": "ジョンさんからのメッセージです。どようびにあたらしいカレーやへいきませんか。からいりょうりがにがてなひとのために、あまいメニューもあるそうです。いけるばあいはきんようびのよるまでにへんじをください。",
     "questions": [
       {
         "id": "jp-reading-q-n4-074-01",
-        "question": "山田さんは次に何をするでしょうか。",
+        "question": "返事はいつまでに送りますか。",
         "options": [
-          "電話して相談する",
-          "何も読まない",
-          "相手を一日待たせる",
-          "予定を全部忘れる"
+          "金曜日の夜まで",
+          "予定を全部やめます",
+          "駅で待ちます",
+          "何も連絡できません"
         ],
         "answerIndex": 0,
-        "explanation": "まず電話して相談することにしたとあります。"
+        "explanation": "本文では「金曜日の夜まで」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "相談",
-        "kana": "そうだん",
-        "meaning": "商量"
-      },
-      {
-        "word": "相手",
-        "kana": "あいて",
-        "meaning": "對方"
-      },
-      {
-        "word": "困る",
-        "kana": "こまる",
-        "meaning": "困擾"
+        "word": "金曜日の夜まで",
+        "kana": "金曜日の夜まで",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～たあとで",
-      "～かもしれません",
-      "～ことにしました"
-    ]
+      "～場合",
+      "～予定です"
+    ],
+    "titleRuby": "友だちの誘い",
+    "passageRuby": "ジョンさんからのメッセージです。<ruby>土曜日<rt>どようび</rt></ruby>に<ruby>新しい<rt>あたらしい</rt></ruby>カレー屋へ行きませんか。<ruby>辛い<rt>からい</rt></ruby><ruby>料理<rt>りょうり</rt></ruby>が<ruby>苦手<rt>にがて</rt></ruby>な人のために、<ruby>甘い<rt>あまい</rt></ruby>メニューもあるそうです。行ける<ruby>場合<rt>ばあい</rt></ruby>は<ruby>金曜日<rt>きんようび</rt></ruby>の夜までに<ruby>返事<rt>へんじ</rt></ruby>をください。"
   },
   {
     "id": "jp-reading-set-n4-075",
     "level": "N4",
-    "type": "文意推論",
+    "type": "宅配通知",
     "title": "配送の知らせ",
-    "passage": "知らせを読んだあと、山田さんは少し困りました。予定と合わないかもしれませんが、相手が待っているので、まず電話して相談することにしました。",
-    "passageKana": "しらせをよんだあと、やまださんはすこしこまりました。よていとあわないかもしれませんが、あいてがまっているので、まずでんわしてそうだんすることにしました。",
+    "passage": "宅配会社からのお知らせです。今日届ける予定だった荷物は、雪で道路が混んでいるため、明日の午前中に届く予定です。時間を変えたい場合は、番号を入力して手続きしてください。",
+    "passageKana": "たくはいがいしゃからのおしらせです。きょうとどけるよていだったにもつは、ゆきでどうろがこんでいるため、あしたのごぜんちゅうにとどくよていです。じかんをかえたいばあいは、ばんごうをにゅうりょくしててつづきしてください。",
     "questions": [
       {
         "id": "jp-reading-q-n4-075-01",
-        "question": "山田さんは次に何をするでしょうか。",
+        "question": "荷物はいつ届く予定ですか。",
         "options": [
-          "電話して相談する",
-          "何も読まない",
-          "相手を一日待たせる",
-          "予定を全部忘れる"
+          "明日の午前中",
+          "予定を全部やめます",
+          "駅で待ちます",
+          "何も連絡できません"
         ],
         "answerIndex": 0,
-        "explanation": "まず電話して相談することにしたとあります。"
+        "explanation": "本文では「明日の午前中」と分かります。"
       }
     ],
     "vocabulary": [
       {
-        "word": "相談",
-        "kana": "そうだん",
-        "meaning": "商量"
-      },
-      {
-        "word": "相手",
-        "kana": "あいて",
-        "meaning": "對方"
-      },
-      {
-        "word": "困る",
-        "kana": "こまる",
-        "meaning": "困擾"
+        "word": "明日の午前中",
+        "kana": "明日の午前中",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
-      "～たあとで",
-      "～かもしれません",
-      "～ことにしました"
-    ]
+      "～場合",
+      "～予定です"
+    ],
+    "titleRuby": "配送の知らせ",
+    "passageRuby": "<ruby>宅配会社<rt>たくはいがいしゃ</rt></ruby>からのお知らせです。今日届ける<ruby>予定<rt>よてい</rt></ruby>だった<ruby>荷物<rt>にもつ</rt></ruby>は、<ruby>雪<rt>ゆき</rt></ruby>で<ruby>道<rt>みち</rt></ruby>路が混んでいるため、<ruby>明日<rt>あした</rt></ruby>の<ruby>午前<rt>ごぜん</rt></ruby>中に届く<ruby>予定<rt>よてい</rt></ruby>です。<ruby>時間<rt>じかん</rt></ruby>を変えたい<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>番号<rt>ばんごう</rt></ruby>を入力して<ruby>手続き<rt>てつづき</rt></ruby>してください。"
   },
   {
     "id": "jp-reading-set-n4-076",
@@ -3401,19 +3550,14 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "旅行",
-        "kana": "りょこう",
-        "meaning": "旅行"
+        "word": "図書館",
+        "kana": "図書館",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "借りる",
-        "kana": "かりる",
-        "meaning": "借"
-      },
-      {
-        "word": "調べる",
-        "kana": "しらべる",
-        "meaning": "查詢"
+        "word": "電車",
+        "kana": "電車",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
@@ -3445,11 +3589,6 @@ window.JAPANESE_READING_SETS = [
       }
     ],
     "vocabulary": [
-      {
-        "word": "特売",
-        "kana": "とくばい",
-        "meaning": "特價"
-      },
       {
         "word": "卵",
         "kana": "たまご",
@@ -3492,18 +3631,13 @@ window.JAPANESE_READING_SETS = [
     "vocabulary": [
       {
         "word": "荷物",
-        "kana": "にもつ",
-        "meaning": "包裹"
+        "kana": "荷物",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "送る",
-        "kana": "おくる",
-        "meaning": "寄送"
-      },
-      {
-        "word": "重い",
-        "kana": "おもい",
-        "meaning": "重"
+        "word": "家",
+        "kana": "家",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
@@ -3539,11 +3673,6 @@ window.JAPANESE_READING_SETS = [
         "word": "予定",
         "kana": "よてい",
         "meaning": "預定"
-      },
-      {
-        "word": "強い",
-        "kana": "つよい",
-        "meaning": "強"
       },
       {
         "word": "映画",
@@ -3745,14 +3874,14 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "携帯電話",
-        "kana": "けいたいでんわ",
-        "meaning": "手機"
+        "word": "朝",
+        "kana": "朝",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "故障",
-        "kana": "こしょう",
-        "meaning": "故障"
+        "word": "電話",
+        "kana": "電話",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
@@ -3785,14 +3914,19 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "誕生日",
-        "kana": "たんじょうび",
-        "meaning": "生日"
+        "word": "山田さんは友",
+        "kana": "山田さんは友",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "選ぶ",
-        "kana": "えらぶ",
-        "meaning": "選擇"
+        "word": "だちの誕生日",
+        "kana": "だちの誕生日",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "に何をあげる",
+        "kana": "に何をあげる",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
@@ -4179,14 +4313,19 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "授業",
-        "kana": "じゅぎょう",
-        "meaning": "課"
+        "word": "先生",
+        "kana": "先生",
+        "meaning": "關鍵詞"
       },
       {
-        "word": "忘れる",
-        "kana": "わすれる",
-        "meaning": "忘記"
+        "word": "明日",
+        "kana": "明日",
+        "meaning": "關鍵詞"
+      },
+      {
+        "word": "夜",
+        "kana": "夜",
+        "meaning": "關鍵詞"
       }
     ],
     "grammarPoints": [
@@ -4389,11 +4528,6 @@ window.JAPANESE_READING_SETS = [
         "word": "安心",
         "kana": "あんしん",
         "meaning": "安心"
-      },
-      {
-        "word": "困る",
-        "kana": "こまる",
-        "meaning": "困擾"
       }
     ],
     "grammarPoints": [
@@ -4520,11 +4654,6 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "引っ越す",
-        "kana": "ひっこす",
-        "meaning": "搬家"
-      },
-      {
         "word": "家賃",
         "kana": "やちん",
         "meaning": "房租"
@@ -4597,11 +4726,6 @@ window.JAPANESE_READING_SETS = [
         "word": "入口",
         "kana": "いりぐち",
         "meaning": "入口"
-      },
-      {
-        "word": "返す",
-        "kana": "かえす",
-        "meaning": "歸還"
       }
     ],
     "grammarPoints": [
@@ -4870,11 +4994,6 @@ window.JAPANESE_READING_SETS = [
         "word": "燃えるごみ",
         "kana": "もえるごみ",
         "meaning": "可燃垃圾"
-      },
-      {
-        "word": "洗う",
-        "kana": "あらう",
-        "meaning": "清洗"
       },
       {
         "word": "箱",
