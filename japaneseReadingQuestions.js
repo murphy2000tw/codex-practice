@@ -36,8 +36,8 @@ window.JAPANESE_READING_SETS = [
       "～ために",
       "～ことにしました"
     ],
-    "titleRuby": "<ruby>郵<rt>ゆう</rt></ruby><ruby>便<rt>びん</rt></ruby><ruby>局<rt>きょく</rt></ruby>の<ruby>荷物<rt>にもつ</rt></ruby>",
-    "passageRuby": "<ruby>中<rt>なか</rt></ruby><ruby>村<rt>むら</rt></ruby>さんは<ruby>妹<rt>いもうと</rt></ruby>にお<ruby>菓<rt>か</rt></ruby><ruby>子<rt>し</rt></ruby>を<ruby>送<rt>おく</rt></ruby>りたくて<ruby>郵<rt>ゆう</rt></ruby><ruby>便<rt>びん</rt></ruby><ruby>局<rt>きょく</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きました。<ruby>箱<rt>はこ</rt></ruby>が<ruby>少<rt>すこ</rt></ruby>し<ruby>大<rt>おお</rt></ruby>きかったので、<ruby>窓<rt>まど</rt></ruby><ruby>口<rt>ぐち</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>に<ruby>安<rt>やす</rt></ruby>い<ruby>送<rt>おく</rt></ruby>り<ruby>方<rt>かた</rt></ruby>を<ruby>聞<rt>き</rt></ruby>きました。<ruby>明日<rt>あした</rt></ruby><ruby>着<rt>つ</rt></ruby>く<ruby>必要<rt>ひつよう</rt></ruby>はないため、<ruby>普<rt>ふ</rt></ruby><ruby>通<rt>つう</rt></ruby>の<ruby>便<rt>びん</rt></ruby>で<ruby>送<rt>おく</rt></ruby>ることにしました。"
+    "titleRuby": "郵便局の荷物",
+    "passageRuby": "中村さんは妹にお菓子を送りたくて郵便局へ行きました。箱が少し大きかったので、窓口の人に安い送り方を聞きました。明日着く必要はないため、普通の便で送ることにしました。"
   },
   {
     "id": "jp-reading-set-n4-002",
@@ -81,8 +81,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれない",
       "～ことにしました"
     ],
-    "titleRuby": "<ruby>映<rt>えい</rt></ruby><ruby>画<rt>が</rt></ruby>の<ruby>時間<rt>じかん</rt></ruby>",
-    "passageRuby": "<ruby>由<rt>ゆ</rt></ruby><ruby>美<rt>み</rt></ruby>さんは<ruby>友<rt>とも</rt></ruby>だちと<ruby>映<rt>えい</rt></ruby><ruby>画<rt>が</rt></ruby>を<ruby>見<rt>み</rt></ruby>る<ruby>予定<rt>よてい</rt></ruby>です。<ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby>の<ruby>回<rt>かい</rt></ruby>は<ruby>人<rt>ひと</rt></ruby><ruby>気<rt>き</rt></ruby>で<ruby>席<rt>せき</rt></ruby>が<ruby>前<rt>ぜん</rt></ruby>の<ruby>方<rt>かた</rt></ruby>しかありませんでした。<ruby>少<rt>すこ</rt></ruby>し<ruby>待<rt>あ</rt></ruby>てば<ruby>八<rt>はち</rt></ruby><ruby>時<rt>じ</rt></ruby><ruby>半<rt>はん</rt></ruby>の<ruby>回<rt>かい</rt></ruby>で<ruby>真<rt>ま</rt></ruby>ん<ruby>中<rt>なか</rt></ruby>の<ruby>席<rt>せき</rt></ruby>が<ruby>取<rt>と</rt></ruby>れるので、<ruby>二<rt>ふた</rt></ruby><ruby>人<rt>ひと</rt></ruby>は<ruby>遅<rt>おそ</rt></ruby>い<ruby>回<rt>かい</rt></ruby>にしました。"
+    "titleRuby": "映画の時間",
+    "passageRuby": "由美さんは友だちと映画を見る予定です。七時の回は人気で席が前の方しかありませんでした。少し待てば八時半の回で真ん中の席が取れるので、二人は遅い回にしました。"
   },
   {
     "id": "jp-reading-set-n4-003",
@@ -126,8 +126,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれない",
       "～ことにしました"
     ],
-    "titleRuby": "アルバイト<ruby>初<rt>しょ</rt></ruby><ruby>日<rt>にち</rt></ruby>",
-    "passageRuby": "マイクさんは<ruby>今日<rt>きょう</rt></ruby>から<ruby>喫<rt>きっ</rt></ruby><ruby>茶<rt>ちゃ</rt></ruby><ruby>店<rt>みせ</rt></ruby>でアルバイトを<ruby>始<rt>はじ</rt></ruby>めました。<ruby>店長<rt>てんちょう</rt></ruby>は、<ruby>注<rt>ちゅう</rt></ruby><ruby>文<rt>もん</rt></ruby>を<ruby>聞<rt>き</rt></ruby>く<ruby>前<rt>ぜん</rt></ruby>に<ruby>水<rt>みず</rt></ruby>を<ruby>出<rt>だ</rt></ruby>すこと、<ruby>分<rt>わ</rt></ruby>からない<ruby>言<rt>あ</rt></ruby><ruby>葉<rt>ば</rt></ruby>があったらすぐ<ruby>確認<rt>かくにん</rt></ruby>することを<ruby>教<rt>おし</rt></ruby>えました。マイクさんは<ruby>小<rt>ちい</rt></ruby>さいノートに<ruby>書<rt>か</rt></ruby>きました。"
+    "titleRuby": "アルバイト初日",
+    "passageRuby": "マイクさんは今日から喫茶店でアルバイトを始めました。店長は、注文を聞く前に水を出すこと、分からない言葉があったらすぐ確認することを教えました。マイクさんは小さいノートに書きました。"
   },
   {
     "id": "jp-reading-set-n4-004",
@@ -171,8 +171,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれない",
       "～ことにしました"
     ],
-    "titleRuby": "<ruby>誕<rt>たん</rt></ruby><ruby>生<rt>じょう</rt></ruby><ruby>日<rt>にち</rt></ruby>のプレゼント",
-    "passageRuby": "<ruby>兄<rt>あに</rt></ruby>の<ruby>誕<rt>たん</rt></ruby><ruby>生<rt>じょう</rt></ruby><ruby>日<rt>にち</rt></ruby>に、<ruby>私<rt>わたし</rt></ruby>は<ruby>青<rt>あお</rt></ruby>いシャツを<ruby>買<rt>か</rt></ruby>うつもりでした。でも<ruby>母<rt>はは</rt></ruby>から、<ruby>兄<rt>あに</rt></ruby>は<ruby>最<rt>さい</rt></ruby><ruby>近<rt>ちか</rt></ruby><ruby>料<rt>りょう</rt></ruby><ruby>理<rt>り</rt></ruby>を<ruby>始<rt>はじ</rt></ruby>めたと<ruby>聞<rt>き</rt></ruby>きました。それで、シャツではなく<ruby>使<rt>つか</rt></ruby>いやすい<ruby>包<rt>ほう</rt></ruby><ruby>丁<rt>ちょう</rt></ruby>を<ruby>選<rt>えら</rt></ruby>びました。"
+    "titleRuby": "誕生日のプレゼント",
+    "passageRuby": "兄の誕生日に、私は青いシャツを買うつもりでした。でも母から、兄は最近料理を始めたと聞きました。それで、シャツではなく使いやすい包丁を選びました。"
   },
   {
     "id": "jp-reading-set-n4-005",
@@ -216,8 +216,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれない",
       "～ことにしました"
     ],
-    "titleRuby": "スマホの<ruby>音<rt>おと</rt></ruby>",
-    "passageRuby": "<ruby>佐<rt>さ</rt></ruby><ruby>藤<rt>とう</rt></ruby>さんのスマホは<ruby>朝<rt>あさ</rt></ruby>から<ruby>音<rt>おと</rt></ruby>が<ruby>出<rt>だ</rt></ruby>ませんでした。<ruby>電話<rt>でんわ</rt></ruby>は<ruby>受<rt>う</rt></ruby>けられますが、<ruby>目<rt>め</rt></ruby><ruby>覚<rt>さ</rt></ruby>ましが<ruby>鳴<rt>な</rt></ruby>らないかもしれません。<ruby>明日<rt>あした</rt></ruby>は<ruby>早<rt>はや</rt></ruby>いので、<ruby>今<rt>きょう</rt></ruby><ruby>夜<rt>よる</rt></ruby>は<ruby>古<rt>ふる</rt></ruby>い<ruby>時<rt>じ</rt></ruby><ruby>計<rt>けい</rt></ruby>も<ruby>使<rt>つか</rt></ruby>うことにしました。"
+    "titleRuby": "スマホの音",
+    "passageRuby": "佐藤さんのスマホは朝から音が出ませんでした。電話は受けられますが、目覚ましが鳴らないかもしれません。明日は早いので、今夜は古い時計も使うことにしました。"
   },
   {
     "id": "jp-reading-set-n4-006",
@@ -256,8 +256,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～までに"
     ],
-    "titleRuby": "ごみ<ruby>収集<rt>しゅうしゅう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>変<rt>か</rt></ruby><ruby>更<rt>こう</rt></ruby>",
-    "passageRuby": "<ruby>町<rt>まち</rt></ruby><ruby>内<rt>ない</rt></ruby><ruby>会<rt>かい</rt></ruby>のお<ruby>知<rt>し</rt></ruby>らせです。<ruby>来<rt>き</rt></ruby><ruby>週<rt>しゅう</rt></ruby>だけ、<ruby>燃える<rt>もえる</rt></ruby>ごみの<ruby>収集<rt>しゅうしゅう</rt></ruby><ruby>日<rt>にち</rt></ruby>は<ruby>火<rt>か</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>ではなく<ruby>水<rt>みず</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>になります。<ruby>朝<rt>あさ</rt></ruby><ruby>八<rt>はち</rt></ruby><ruby>時<rt>じ</rt></ruby>までに、いつもの<ruby>場所<rt>ばしょ</rt></ruby>へ<ruby>出<rt>だ</rt></ruby>してください。<ruby>雨<rt>あめ</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>も<ruby>集<rt>しゅう</rt></ruby>めます。"
+    "titleRuby": "ごみ収集日の変更",
+    "passageRuby": "町内会のお知らせです。来週だけ、燃えるごみの収集日は火曜日ではなく水曜日になります。朝八時までに、いつもの場所へ出してください。雨の場合も集めます。"
   },
   {
     "id": "jp-reading-set-n4-007",
@@ -296,8 +296,8 @@ window.JAPANESE_READING_SETS = [
       "～前に",
       "～なければなりません"
     ],
-    "titleRuby": "<ruby>旅<rt>りょ</rt></ruby><ruby>館<rt>かん</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby><ruby>食<rt>た</rt></ruby><ruby>券<rt>けん</rt></ruby>",
-    "passageRuby": "フロントの<ruby>説<rt>せつ</rt></ruby><ruby>明<rt>あ</rt></ruby>では、<ruby>朝<rt>あさ</rt></ruby><ruby>食<rt>た</rt></ruby>は<ruby>一<rt>いち</rt></ruby><ruby>階<rt>かい</rt></ruby>の<ruby>食<rt>た</rt></ruby><ruby>堂<rt>どう</rt></ruby>で<ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>九<rt>きゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>までです。<ruby>食<rt>た</rt></ruby><ruby>堂<rt>どう</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る<ruby>前<rt>ぜん</rt></ruby>に、<ruby>部屋<rt>へや</rt></ruby>の<ruby>番号<rt>ばんごう</rt></ruby>が<ruby>書<rt>か</rt></ruby>いてある<ruby>朝<rt>あさ</rt></ruby><ruby>食<rt>た</rt></ruby><ruby>券<rt>けん</rt></ruby>を<ruby>受付<rt>うけつけ</rt></ruby>の<ruby>箱<rt>はこ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>れなければなりません。"
+    "titleRuby": "旅館の朝食券",
+    "passageRuby": "フロントの説明では、朝食は一階の食堂で七時から九時までです。食堂に入る前に、部屋の番号が書いてある朝食券を受付の箱に入れなければなりません。"
   },
   {
     "id": "jp-reading-set-n4-008",
@@ -337,8 +337,8 @@ window.JAPANESE_READING_SETS = [
       "～ことができません",
       "～かもしれません"
     ],
-    "titleRuby": "<ruby>駅<rt>えき</rt></ruby>の<ruby>出口<rt>でぐち</rt></ruby><ruby>工<rt>こう</rt></ruby><ruby>事<rt>じ</rt></ruby>",
-    "passageRuby": "<ruby>駅<rt>えき</rt></ruby>の<ruby>東<rt>ひがし</rt></ruby><ruby>出口<rt>でぐち</rt></ruby>は<ruby>工<rt>こう</rt></ruby><ruby>事<rt>じ</rt></ruby>のため、<ruby>今<rt>きょう</rt></ruby><ruby>月<rt>がつ</rt></ruby>いっぱい<ruby>使<rt>つか</rt></ruby>うことができません。バス<ruby>停<rt>てい</rt></ruby>へ<ruby>行<rt>い</rt></ruby>く<ruby>人<rt>ひと</rt></ruby>は、<ruby>西<rt>にし</rt></ruby><ruby>出口<rt>でぐち</rt></ruby>を<ruby>出<rt>だ</rt></ruby>て<ruby>右<rt>みぎ</rt></ruby>へ<ruby>曲<rt>ま</rt></ruby>がってください。いつもより<ruby>五<rt>ご</rt></ruby><ruby>分<rt>わ</rt></ruby>ぐらいかかるかもしれません。"
+    "titleRuby": "駅の出口工事",
+    "passageRuby": "駅の東出口は工事のため、今月いっぱい使うことができません。バス停へ行く人は、西出口を出て右へ曲がってください。いつもより五分ぐらいかかるかもしれません。"
   },
   {
     "id": "jp-reading-set-n4-009",
@@ -383,8 +383,8 @@ window.JAPANESE_READING_SETS = [
       "～までに",
       "～てください"
     ],
-    "titleRuby": "<ruby>料<rt>りょう</rt></ruby><ruby>理<rt>り</rt></ruby><ruby>教室<rt>きょうしつ</rt></ruby>の<ruby>申<rt>もうし</rt></ruby><ruby>込<rt>こ</rt></ruby>",
-    "passageRuby": "<ruby>公民館<rt>こうみんかん</rt></ruby>の<ruby>料<rt>りょう</rt></ruby><ruby>理<rt>り</rt></ruby><ruby>教室<rt>きょうしつ</rt></ruby>では、<ruby>土<rt>ど</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>に<ruby>春<rt>はる</rt></ruby>の<ruby>弁当<rt>べんとう</rt></ruby>を<ruby>作<rt>つく</rt></ruby>ります。<ruby>参加<rt>さんか</rt></ruby>したい<ruby>人<rt>ひと</rt></ruby>は、<ruby>木<rt>もく</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>までに<ruby>名前<rt>なまえ</rt></ruby>と<ruby>電話<rt>でんわ</rt></ruby><ruby>番号<rt>ばんごう</rt></ruby>を<ruby>書<rt>か</rt></ruby>いて<ruby>申<rt>もうし</rt></ruby>し<ruby>込<rt>こ</rt></ruby>んでください。<ruby>材<rt>ざい</rt></ruby><ruby>料<rt>りょう</rt></ruby><ruby>費<rt>ひ</rt></ruby>は<ruby>八<rt>はち</rt></ruby><ruby>百<rt>ひゃく</rt></ruby><ruby>円<rt>えん</rt></ruby>です。"
+    "titleRuby": "料理教室の申込",
+    "passageRuby": "公民館の料理教室では、土曜日に春の弁当を作ります。参加したい人は、木曜日までに名前と電話番号を書いて申し込んでください。材料費は八百円です。"
   },
   {
     "id": "jp-reading-set-n4-010",
@@ -429,8 +429,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～そうです"
     ],
-    "titleRuby": "<ruby>自転車<rt>じてんしゃ</rt></ruby><ruby>修理<rt>しゅうり</rt></ruby>の<ruby>連絡<rt>れんらく</rt></ruby>",
-    "passageRuby": "<ruby>自転車屋<rt>じてんしゃや</rt></ruby>から<ruby>李<rt>り</rt></ruby>さんへ<ruby>電話<rt>でんわ</rt></ruby>がありました。<ruby>修理<rt>しゅうり</rt></ruby>は<ruby>終<rt>お</rt></ruby>わりましたが、<ruby>店<rt>みせ</rt></ruby>は<ruby>今日<rt>きょう</rt></ruby>は<ruby>六時<rt>ろくじ</rt></ruby>に<ruby>閉<rt>し</rt></ruby>まります。<ruby>六時<rt>ろくじ</rt></ruby>に<ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>わない<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>明日<rt>あした</rt></ruby>の<ruby>午前中<rt>ごぜんちゅう</rt></ruby>に<ruby>取<rt>と</rt></ruby>りに<ruby>来<rt>き</rt></ruby>てもいいそうです。"
+    "titleRuby": "自転車修理の連絡",
+    "passageRuby": "自転車屋から李さんへ電話がありました。修理は終わりましたが、店は今日は六時に閉まります。六時に間に合わない場合は、明日の午前中に取りに来てもいいそうです。"
   },
   {
     "id": "jp-reading-set-n4-011",
@@ -469,8 +469,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "<ruby>留学生<rt>りゅうがくせい</rt></ruby><ruby>交流会<rt>こうりゅうかい</rt></ruby>",
-    "passageRuby": "<ruby>学校<rt>がっこう</rt></ruby>の<ruby>掲<rt>けい</rt></ruby><ruby>示<rt>じ</rt></ruby><ruby>板<rt>ばん</rt></ruby>に、<ruby>留学生<rt>りゅうがくせい</rt></ruby><ruby>交流会<rt>こうりゅうかい</rt></ruby>は<ruby>金<rt>きん</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>午後<rt>ごご</rt></ruby><ruby>三<rt>さん</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>図書館<rt>としょかん</rt></ruby>の<ruby>二<rt>ふた</rt></ruby><ruby>階<rt>かい</rt></ruby>で<ruby>行<rt>い</rt></ruby>うと<ruby>書<rt>か</rt></ruby>いてあります。<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>は<ruby>学校<rt>がっこう</rt></ruby>が<ruby>用<rt>よう</rt></ruby><ruby>意<rt>い</rt></ruby>するので、<ruby>参加<rt>さんか</rt></ruby>する<ruby>人<rt>ひと</rt></ruby>は<ruby>名<rt>な</rt></ruby><ruby>札<rt>ふだ</rt></ruby>だけ<ruby>持<rt>も</rt></ruby>って<ruby>来<rt>き</rt></ruby>ればいいです。"
+    "titleRuby": "留学生交流会",
+    "passageRuby": "学校の掲示板に、留学生交流会は金曜日の午後三時から図書館の二階で行うと書いてあります。飲み物は学校が用意するので、参加する人は名札だけ持って来ればいいです。"
   },
   {
     "id": "jp-reading-set-n4-012",
@@ -515,8 +515,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～ことがあります"
     ],
-    "titleRuby": "<ruby>店<rt>みせ</rt></ruby>の<ruby>営<rt>えい</rt></ruby><ruby>業<rt>ぎょう</rt></ruby><ruby>時間<rt>じかん</rt></ruby>",
-    "passageRuby": "<ruby>駅<rt>えき</rt></ruby><ruby>前<rt>ぜん</rt></ruby>のパン<ruby>屋<rt>や</rt></ruby>は、<ruby>来<rt>き</rt></ruby><ruby>月<rt>がつ</rt></ruby>から<ruby>日<rt>にち</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>だけ<ruby>開<rt>あ</rt></ruby><ruby>店<rt>みせ</rt></ruby><ruby>時間<rt>じかん</rt></ruby>が<ruby>一<rt>いち</rt></ruby><ruby>時間<rt>じかん</rt></ruby><ruby>遅<rt>おそ</rt></ruby>くなります。<ruby>平<rt>へい</rt></ruby><ruby>日<rt>にち</rt></ruby>は<ruby>今<rt>きょう</rt></ruby>まで<ruby>通<rt>つう</rt></ruby>り<ruby>朝<rt>あさ</rt></ruby><ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby>からです。<ruby>急<rt>いそ</rt></ruby>いでいる<ruby>人<rt>ひと</rt></ruby>は<ruby>前<rt>ぜん</rt></ruby>の<ruby>日<rt>にち</rt></ruby>に<ruby>買<rt>か</rt></ruby>っておくとよさそうです。"
+    "titleRuby": "店の営業時間",
+    "passageRuby": "駅前のパン屋は、来月から日曜日だけ開店時間が一時間遅くなります。平日は今まで通り朝七時からです。急いでいる人は前の日に買っておくとよさそうです。"
   },
   {
     "id": "jp-reading-set-n4-013",
@@ -555,8 +555,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "<ruby>家<rt>いえ</rt></ruby><ruby>族<rt>ぞく</rt></ruby>への<ruby>電話<rt>でんわ</rt></ruby>",
-    "passageRuby": "マリアさんは<ruby>国<rt>くに</rt></ruby>の<ruby>家<rt>いえ</rt></ruby><ruby>族<rt>ぞく</rt></ruby>へ<ruby>電話<rt>でんわ</rt></ruby>したかったのですが、<ruby>時<rt>じ</rt></ruby><ruby>差<rt>さ</rt></ruby>を<ruby>忘<rt>わす</rt></ruby>れて<ruby>夜<rt>よる</rt></ruby><ruby>中<rt>なか</rt></ruby>にかけてしまいました。<ruby>次<rt>つぎ</rt></ruby>からは、<ruby>電話<rt>でんわ</rt></ruby>する<ruby>前<rt>ぜん</rt></ruby>に<ruby>向<rt>む</rt></ruby>こうの<ruby>時間<rt>じかん</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>しようと<ruby>思<rt>おも</rt></ruby>っています。"
+    "titleRuby": "家族への電話",
+    "passageRuby": "マリアさんは国の家族へ電話したかったのですが、時差を忘れて夜中にかけてしまいました。次からは、電話する前に向こうの時間を確認しようと思っています。"
   },
   {
     "id": "jp-reading-set-n4-014",
@@ -601,8 +601,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～ことがあります"
     ],
-    "titleRuby": "<ruby>傘<rt>かさ</rt></ruby>の<ruby>忘れ物<rt>わすれもの</rt></ruby>",
-    "passageRuby": "<ruby>電車<rt>でんしゃ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>傘<rt>かさ</rt></ruby>を<ruby>忘<rt>わす</rt></ruby>れた<ruby>人<rt>ひと</rt></ruby>は、<ruby>駅<rt>えき</rt></ruby>の<ruby>忘れ物<rt>わすれもの</rt></ruby><ruby>窓<rt>まど</rt></ruby><ruby>口<rt>ぐち</rt></ruby>で<ruby>色<rt>いろ</rt></ruby>と<ruby>乗<rt>の</rt></ruby>った<ruby>時間<rt>じかん</rt></ruby>を<ruby>伝<rt>つた</rt></ruby>えてください。<ruby>三<rt>さん</rt></ruby><ruby>日<rt>にち</rt></ruby><ruby>以<rt>い</rt></ruby><ruby>内<rt>ない</rt></ruby>なら<ruby>駅<rt>えき</rt></ruby>で<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>ることができます。"
+    "titleRuby": "傘の忘れ物",
+    "passageRuby": "電車の中で傘を忘れた人は、駅の忘れ物窓口で色と乗った時間を伝えてください。三日以内なら駅で受け取ることができます。"
   },
   {
     "id": "jp-reading-set-n4-015",
@@ -646,8 +646,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "<ruby>午後<rt>ごご</rt></ruby>の<ruby>天<rt>てん</rt></ruby><ruby>気<rt>き</rt></ruby>",
-    "passageRuby": "<ruby>天<rt>てん</rt></ruby><ruby>気<rt>き</rt></ruby><ruby>予<rt>よ</rt></ruby><ruby>報<rt>ほう</rt></ruby>によると、<ruby>午後<rt>ごご</rt></ruby>から<ruby>雨<rt>あめ</rt></ruby>が<ruby>強<rt>つよ</rt></ruby>くなるそうです。<ruby>山<rt>やま</rt></ruby><ruby>本<rt>もと</rt></ruby>さんは<ruby>洗<rt>あら</rt></ruby><ruby>濯<rt>たく</rt></ruby><ruby>物<rt>もの</rt></ruby>を<ruby>外<rt>そと</rt></ruby>に<ruby>干<rt>ほ</rt></ruby>していたので、<ruby>昼<rt>ひる</rt></ruby><ruby>休<rt>やす</rt></ruby>みに<ruby>一<rt>いち</rt></ruby><ruby>度<rt>ど</rt></ruby><ruby>家<rt>いえ</rt></ruby>へ<ruby>戻<rt>もど</rt></ruby>ることにしました。"
+    "titleRuby": "午後の天気",
+    "passageRuby": "天気予報によると、午後から雨が強くなるそうです。山本さんは洗濯物を外に干していたので、昼休みに一度家へ戻ることにしました。"
   },
   {
     "id": "jp-reading-set-n4-016",
@@ -703,8 +703,8 @@ window.JAPANESE_READING_SETS = [
       "～ので",
       "～ことになる"
     ],
-    "titleRuby": "<ruby>学校<rt>がっこう</rt></ruby><ruby>祭<rt>さい</rt></ruby>の<ruby>準<rt>じゅん</rt></ruby><ruby>備<rt>び</rt></ruby>",
-    "passageRuby": "<ruby>来<rt>き</rt></ruby><ruby>週<rt>しゅう</rt></ruby>の<ruby>学校<rt>がっこう</rt></ruby><ruby>祭<rt>さい</rt></ruby>で、<ruby>私<rt>わたし</rt></ruby>のクラスは<ruby>焼<rt>や</rt></ruby>きそばを<ruby>売<rt>う</rt></ruby>ります。<ruby>昨日<rt>きのう</rt></ruby>、みんなで<ruby>役<rt>やく</rt></ruby><ruby>割<rt>わり</rt></ruby>を<ruby>決<rt>き</rt></ruby>めました。<ruby>私<rt>わたし</rt></ruby>はお<ruby>金<rt>きん</rt></ruby>を<ruby>集<rt>しゅう</rt></ruby>める<ruby>係<rt>かかり</rt></ruby>になりましたが、<ruby>計<rt>けい</rt></ruby><ruby>算<rt>さん</rt></ruby>が<ruby>苦<rt>にが</rt></ruby><ruby>手<rt>て</rt></ruby>なので、<ruby>佐<rt>さ</rt></ruby><ruby>藤<rt>とう</rt></ruby>さんと<ruby>二<rt>ふた</rt></ruby><ruby>人<rt>ひと</rt></ruby>でやることになりました。<ruby>店<rt>みせ</rt></ruby>の<ruby>紙<rt>あ</rt></ruby><ruby>皿<rt>さら</rt></ruby>は<ruby>先生<rt>せんせい</rt></ruby>が<ruby>用<rt>よう</rt></ruby><ruby>意<rt>い</rt></ruby>してくれます。"
+    "titleRuby": "学校祭の準備",
+    "passageRuby": "来週の学校祭で、私のクラスは焼きそばを売ります。昨日、みんなで役割を決めました。私はお金を集める係になりましたが、計算が苦手なので、佐藤さんと二人でやることになりました。店の紙皿は先生が用意してくれます。"
   },
   {
     "id": "jp-reading-set-n4-017",
@@ -760,8 +760,8 @@ window.JAPANESE_READING_SETS = [
       "～より",
       "～つもり"
     ],
-    "titleRuby": "<ruby>新<rt>あたら</rt></ruby>しい<ruby>部屋<rt>へや</rt></ruby>",
-    "passageRuby": "<ruby>王<rt>おう</rt></ruby>さんは<ruby>大<rt>おお</rt></ruby><ruby>学<rt>がく</rt></ruby>の<ruby>近<rt>ちか</rt></ruby>くに<ruby>引<rt>びき</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>しました。<ruby>新<rt>あたら</rt></ruby>しい<ruby>部屋<rt>へや</rt></ruby>は<ruby>駅<rt>えき</rt></ruby>から<ruby>少<rt>すこ</rt></ruby>し<ruby>遠<rt>えん</rt></ruby>いですが、<ruby>窓<rt>まど</rt></ruby>が<ruby>大<rt>おお</rt></ruby>きくて<ruby>明<rt>あ</rt></ruby>るいです。<ruby>前<rt>ぜん</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>より<ruby>家<rt>いえ</rt></ruby><ruby>賃<rt>ちん</rt></ruby>も<ruby>安<rt>やす</rt></ruby>いので、<ruby>王<rt>おう</rt></ruby>さんは<ruby>気<rt>き</rt></ruby>に<ruby>入<rt>はい</rt></ruby>っています。ただ、スーパーまで<ruby>歩<rt>ある</rt></ruby>いて<ruby>十<rt>じゅう</rt></ruby><ruby>五<rt>ご</rt></ruby><ruby>分<rt>わ</rt></ruby>かかるため、<ruby>週<rt>しゅう</rt></ruby><ruby>末<rt>まつ</rt></ruby>にまとめて<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>をするつもりです。"
+    "titleRuby": "新しい部屋",
+    "passageRuby": "王さんは大学の近くに引っ越しました。新しい部屋は駅から少し遠いですが、窓が大きくて明るいです。前の部屋より家賃も安いので、王さんは気に入っています。ただ、スーパーまで歩いて十五分かかるため、週末にまとめて買い物をするつもりです。"
   },
   {
     "id": "jp-reading-set-n4-018",
@@ -812,8 +812,8 @@ window.JAPANESE_READING_SETS = [
       "～ようと思う",
       "～そう"
     ],
-    "titleRuby": "<ruby>旅<rt>りょ</rt></ruby><ruby>行<rt>い</rt></ruby>の<ruby>計<rt>けい</rt></ruby><ruby>画<rt>が</rt></ruby>",
-    "passageRuby": "<ruby>田<rt>た</rt></ruby><ruby>中<rt>なか</rt></ruby>さんたちは<ruby>春<rt>はる</rt></ruby><ruby>休<rt>やす</rt></ruby>みに<ruby>京<rt>きょう</rt></ruby><ruby>都<rt>と</rt></ruby>へ<ruby>行<rt>い</rt></ruby>く<ruby>予定<rt>よてい</rt></ruby>です。<ruby>最<rt>さい</rt></ruby><ruby>初<rt>しょ</rt></ruby>は<ruby>日<rt>にち</rt></ruby><ruby>帰<rt>かえ</rt></ruby>りで<ruby>行<rt>い</rt></ruby>こうと<ruby>思<rt>おも</rt></ruby>っていましたが、<ruby>見<rt>み</rt></ruby>たい<ruby>場所<rt>ばしょ</rt></ruby>が<ruby>多<rt>あ</rt></ruby>いので、<ruby>一<rt>いち</rt></ruby><ruby>泊<rt>はく</rt></ruby>することにしました。ホテルは<ruby>駅<rt>えき</rt></ruby>の<ruby>近<rt>ちか</rt></ruby>くにしました。<ruby>朝<rt>あさ</rt></ruby><ruby>早<rt>はや</rt></ruby>く<ruby>出<rt>だ</rt></ruby>れば、<ruby>二<rt>ふた</rt></ruby><ruby>日<rt>にち</rt></ruby><ruby>目<rt>め</rt></ruby>にお<ruby>寺<rt>てら</rt></ruby>を<ruby>二<rt>ふた</rt></ruby>つ<ruby>見<rt>み</rt></ruby>てから<ruby>帰<rt>かえ</rt></ruby>れそうです。"
+    "titleRuby": "旅行の計画",
+    "passageRuby": "田中さんたちは春休みに京都へ行く予定です。最初は日帰りで行こうと思っていましたが、見たい場所が多いので、一泊することにしました。ホテルは駅の近くにしました。朝早く出れば、二日目にお寺を二つ見てから帰れそうです。"
   },
   {
     "id": "jp-reading-set-n4-019",
@@ -864,8 +864,8 @@ window.JAPANESE_READING_SETS = [
       "～ための",
       "～なければならない"
     ],
-    "titleRuby": "<ruby>図書館<rt>としょかん</rt></ruby>イベント",
-    "passageRuby": "<ruby>市<rt>し</rt></ruby>の<ruby>図書館<rt>としょかん</rt></ruby>で、<ruby>土<rt>ど</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>に<ruby>子<rt>し</rt></ruby>どものための<ruby>読<rt>よ</rt></ruby>み<ruby>聞<rt>き</rt></ruby>かせ<ruby>会<rt>かい</rt></ruby>があります。<ruby>始<rt>はじ</rt></ruby>まるのは<ruby>午後<rt>ごご</rt></ruby><ruby>二<rt>ふた</rt></ruby><ruby>時<rt>じ</rt></ruby>で、<ruby>三<rt>さん</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>分<rt>わ</rt></ruby><ruby>前<rt>ぜん</rt></ruby>から<ruby>入<rt>はい</rt></ruby>れます。<ruby>参加<rt>さんか</rt></ruby><ruby>費<rt>ひ</rt></ruby>は<ruby>無料<rt>むりょう</rt></ruby>ですが、<ruby>人<rt>ひと</rt></ruby><ruby>数<rt>あ</rt></ruby>が<ruby>多<rt>あ</rt></ruby>い<ruby>場合<rt>ばあい</rt></ruby>は<ruby>先<rt>さき</rt></ruby>に<ruby>来<rt>き</rt></ruby>た<ruby>人<rt>ひと</rt></ruby>から<ruby>入<rt>はい</rt></ruby>ります。<ruby>小<rt>ちい</rt></ruby>さい<ruby>子<rt>し</rt></ruby>どもは<ruby>大<rt>おお</rt></ruby><ruby>人<rt>ひと</rt></ruby>と<ruby>一<rt>いち</rt></ruby><ruby>緒<rt>あ</rt></ruby>に<ruby>来<rt>き</rt></ruby>なければなりません。"
+    "titleRuby": "図書館イベント",
+    "passageRuby": "市の図書館で、土曜日に子どものための読み聞かせ会があります。始まるのは午後二時で、三十分前から入れます。参加費は無料ですが、人数が多い場合は先に来た人から入ります。小さい子どもは大人と一緒に来なければなりません。"
   },
   {
     "id": "jp-reading-set-n4-020",
@@ -921,8 +921,8 @@ window.JAPANESE_READING_SETS = [
       "～ながら",
       "～てもいい"
     ],
-    "titleRuby": "<ruby>運<rt>うん</rt></ruby><ruby>動<rt>どう</rt></ruby>センター",
-    "passageRuby": "<ruby>中<rt>なか</rt></ruby><ruby>村<rt>むら</rt></ruby>さんは<ruby>健<rt>けん</rt></ruby><ruby>康<rt>こう</rt></ruby>のために<ruby>運<rt>うん</rt></ruby><ruby>動<rt>どう</rt></ruby>センターへ<ruby>通<rt>つう</rt></ruby>い<ruby>始<rt>はじ</rt></ruby>めました。プールは<ruby>夜<rt>よる</rt></ruby><ruby>八<rt>はち</rt></ruby><ruby>時<rt>じ</rt></ruby>まで<ruby>使<rt>つか</rt></ruby>えますが、ジムは<ruby>九<rt>きゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>まで<ruby>開<rt>あ</rt></ruby>いています。<ruby>今日<rt>きょう</rt></ruby>は<ruby>水<rt>みず</rt></ruby><ruby>着<rt>つ</rt></ruby>を<ruby>忘<rt>わす</rt></ruby>れてしまったので、プールではなくジムで<ruby>歩<rt>ある</rt></ruby>く<ruby>練習<rt>れんしゅう</rt></ruby>をしました。<ruby>帰<rt>かえ</rt></ruby>る<ruby>前<rt>ぜん</rt></ruby>に、<ruby>次<rt>つぎ</rt></ruby><ruby>回<rt>かい</rt></ruby>のために<ruby>水<rt>みず</rt></ruby><ruby>着<rt>つ</rt></ruby>をかばんに<ruby>入<rt>はい</rt></ruby>れておきました。"
+    "titleRuby": "運動センター",
+    "passageRuby": "中村さんは健康のために運動センターへ通い始めました。プールは夜八時まで使えますが、ジムは九時まで開いています。今日は水着を忘れてしまったので、プールではなくジムで歩く練習をしました。帰る前に、次回のために水着をかばんに入れておきました。"
   },
   {
     "id": "jp-reading-set-n4-021",
@@ -978,8 +978,8 @@ window.JAPANESE_READING_SETS = [
       "～ながら",
       "～てもいい"
     ],
-    "titleRuby": "<ruby>日<rt>にち</rt></ruby><ruby>本<rt>もと</rt></ruby><ruby>語<rt>ご</rt></ruby>クラス",
-    "passageRuby": "<ruby>林<rt>はやし</rt></ruby>さんの<ruby>日<rt>にち</rt></ruby><ruby>本<rt>もと</rt></ruby><ruby>語<rt>ご</rt></ruby>クラスでは、<ruby>毎<rt>まい</rt></ruby><ruby>週<rt>しゅう</rt></ruby><ruby>金<rt>きん</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>に<ruby>短<rt>みじか</rt></ruby>い<ruby>発<rt>はっ</rt></ruby><ruby>表<rt>ぴょう</rt></ruby>があります。<ruby>今<rt>きょう</rt></ruby><ruby>週<rt>しゅう</rt></ruby>のテーマは<ruby>好<rt>す</rt></ruby>きな<ruby>町<rt>まち</rt></ruby>です。<ruby>林<rt>はやし</rt></ruby>さんは<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>見<rt>み</rt></ruby>せながら<ruby>話<rt>わ</rt></ruby>したいので、<ruby>昨日<rt>きのう</rt></ruby>スマホの<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>三<rt>さん</rt></ruby><ruby>枚<rt>まい</rt></ruby><ruby>選<rt>えら</rt></ruby>びました。<ruby>発<rt>はっ</rt></ruby><ruby>表<rt>ぴょう</rt></ruby>は<ruby>二<rt>ふた</rt></ruby><ruby>分<rt>わ</rt></ruby>で、<ruby>長<rt>ちょう</rt></ruby>すぎると<ruby>先生<rt>せんせい</rt></ruby>に<ruby>止<rt>あ</rt></ruby>められます。"
+    "titleRuby": "日本語クラス",
+    "passageRuby": "林さんの日本語クラスでは、毎週金曜日に短い発表があります。今週のテーマは好きな町です。林さんは写真を見せながら話したいので、昨日スマホの写真を三枚選びました。発表は二分で、長すぎると先生に止められます。"
   },
   {
     "id": "jp-reading-set-n4-022",
@@ -1035,8 +1035,8 @@ window.JAPANESE_READING_SETS = [
       "～ながら",
       "～てもいい"
     ],
-    "titleRuby": "レストラン<ruby>予約<rt>よやく</rt></ruby>",
-    "passageRuby": "<ruby>鈴<rt>すず</rt></ruby><ruby>木<rt>もく</rt></ruby>さんは<ruby>金<rt>きん</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>夜<rt>よる</rt></ruby>、<ruby>家<rt>いえ</rt></ruby><ruby>族<rt>ぞく</rt></ruby>とレストランへ<ruby>行<rt>い</rt></ruby>きます。<ruby>人<rt>ひと</rt></ruby><ruby>気<rt>き</rt></ruby>の<ruby>店<rt>みせ</rt></ruby>なので、<ruby>昼<rt>ひる</rt></ruby><ruby>休<rt>やす</rt></ruby>みに<ruby>電話<rt>でんわ</rt></ruby>で<ruby>四<rt>あ</rt></ruby><ruby>人<rt>ひと</rt></ruby><ruby>席<rt>せき</rt></ruby>を<ruby>予約<rt>よやく</rt></ruby>しました。<ruby>店員<rt>てんいん</rt></ruby>は「<ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby>はいっぱいですが、<ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby><ruby>半<rt>はん</rt></ruby>なら<ruby>空<rt>そら</rt></ruby>いています」と<ruby>言<rt>あ</rt></ruby>いました。<ruby>鈴<rt>すず</rt></ruby><ruby>木<rt>もく</rt></ruby>さんは<ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby><ruby>半<rt>はん</rt></ruby>でお<ruby>願<rt>ねが</rt></ruby>いしました。"
+    "titleRuby": "レストラン予約",
+    "passageRuby": "鈴木さんは金曜日の夜、家族とレストランへ行きます。人気の店なので、昼休みに電話で四人席を予約しました。店員は「七時はいっぱいですが、七時半なら空いています」と言いました。鈴木さんは七時半でお願いしました。"
   },
   {
     "id": "jp-reading-set-n4-023",
@@ -1092,8 +1092,8 @@ window.JAPANESE_READING_SETS = [
       "～ながら",
       "～てもいい"
     ],
-    "titleRuby": "<ruby>地<rt>ち</rt></ruby><ruby>域<rt>いき</rt></ruby>の<ruby>掃<rt>そう</rt></ruby><ruby>除<rt>じょ</rt></ruby>",
-    "passageRuby": "<ruby>日<rt>にち</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>、<ruby>町<rt>まち</rt></ruby><ruby>内<rt>ない</rt></ruby>で<ruby>公<rt>あ</rt></ruby><ruby>園<rt>あ</rt></ruby>の<ruby>掃<rt>そう</rt></ruby><ruby>除<rt>じょ</rt></ruby>があります。<ruby>参加<rt>さんか</rt></ruby>する<ruby>人<rt>ひと</rt></ruby>は<ruby>軍<rt>ぐん</rt></ruby><ruby>手<rt>て</rt></ruby>を<ruby>持<rt>も</rt></ruby>って、<ruby>八<rt>はち</rt></ruby><ruby>時<rt>じ</rt></ruby><ruby>五<rt>ご</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>分<rt>わ</rt></ruby>までに<ruby>公<rt>あ</rt></ruby><ruby>園<rt>あ</rt></ruby>の<ruby>入口<rt>いりぐち</rt></ruby>に<ruby>集<rt>しゅう</rt></ruby>まります。<ruby>雨<rt>あめ</rt></ruby>が<ruby>強<rt>つよ</rt></ruby>いときは<ruby>中<rt>なか</rt></ruby><ruby>止<rt>あ</rt></ruby>ですが、<ruby>小<rt>ちい</rt></ruby>さい<ruby>雨<rt>あめ</rt></ruby>なら<ruby>行<rt>い</rt></ruby>います。<ruby>終<rt>お</rt></ruby>わったあとで、お<ruby>茶<rt>ちゃ</rt></ruby>が<ruby>一<rt>いち</rt></ruby><ruby>人<rt>ひと</rt></ruby><ruby>一<rt>いち</rt></ruby><ruby>本<rt>もと</rt></ruby><ruby>配<rt>くば</rt></ruby>られます。"
+    "titleRuby": "地域の掃除",
+    "passageRuby": "日曜日の朝、町内で公園の掃除があります。参加する人は軍手を持って、八時五十分までに公園の入口に集まります。雨が強いときは中止ですが、小さい雨なら行います。終わったあとで、お茶が一人一本配られます。"
   },
   {
     "id": "jp-reading-set-n4-024",
@@ -1149,8 +1149,8 @@ window.JAPANESE_READING_SETS = [
       "～ながら",
       "～てもいい"
     ],
-    "titleRuby": "<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby>メモ",
-    "passageRuby": "<ruby>母<rt>はは</rt></ruby>は<ruby>冷<rt>れい</rt></ruby><ruby>蔵<rt>ぞう</rt></ruby><ruby>庫<rt>こ</rt></ruby>にメモを<ruby>貼<rt>は</rt></ruby>りました。「<ruby>卵<rt>たまご</rt></ruby>はまだあります。<ruby>牛<rt>ぎゅう</rt></ruby><ruby>乳<rt>にゅう</rt></ruby>とパンだけ<ruby>買<rt>か</rt></ruby>ってください。<ruby>安<rt>やす</rt></ruby>くても<ruby>大<rt>おお</rt></ruby>きいジュースは<ruby>買<rt>か</rt></ruby>わなくてもいいです。」<ruby>弟<rt>おとうと</rt></ruby>はメモを<ruby>読<rt>よ</rt></ruby>んで、<ruby>財布<rt>さいふ</rt></ruby>とエコバッグを<ruby>持<rt>も</rt></ruby>ってスーパーへ<ruby>行<rt>い</rt></ruby>きました。"
+    "titleRuby": "買い物メモ",
+    "passageRuby": "母は冷蔵庫にメモを貼りました。「卵はまだあります。牛乳とパンだけ買ってください。安くても大きいジュースは買わなくてもいいです。」弟はメモを読んで、財布とエコバッグを持ってスーパーへ行きました。"
   },
   {
     "id": "jp-reading-set-n4-025",
@@ -1201,8 +1201,8 @@ window.JAPANESE_READING_SETS = [
       "～ながら",
       "～てもいい"
     ],
-    "titleRuby": "<ruby>友<rt>とも</rt></ruby>だちの<ruby>引<rt>びき</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>し",
-    "passageRuby": "<ruby>友<rt>とも</rt></ruby>だちの<ruby>部屋<rt>へや</rt></ruby>は<ruby>三<rt>さん</rt></ruby><ruby>階<rt>かい</rt></ruby>にありますが、エレベーターがありません。<ruby>土<rt>ど</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>に<ruby>引<rt>びき</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>しを<ruby>手<rt>て</rt></ruby><ruby>伝<rt>つた</rt></ruby>う<ruby>予定<rt>よてい</rt></ruby>でしたが、<ruby>重<rt>あ</rt></ruby>い<ruby>本<rt>もと</rt></ruby><ruby>棚<rt>だな</rt></ruby>は<ruby>店<rt>みせ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>運<rt>うん</rt></ruby>ぶそうです。<ruby>私<rt>わたし</rt></ruby>は<ruby>軽<rt>かる</rt></ruby>い<ruby>箱<rt>はこ</rt></ruby>を<ruby>運<rt>うん</rt></ruby>んだあと、<ruby>新<rt>あたら</rt></ruby>しい<ruby>部屋<rt>へや</rt></ruby>でカーテンを<ruby>付<rt>つ</rt></ruby>けるのを<ruby>手<rt>て</rt></ruby><ruby>伝<rt>つた</rt></ruby>います。"
+    "titleRuby": "友だちの引っ越し",
+    "passageRuby": "友だちの部屋は三階にありますが、エレベーターがありません。土曜日に引っ越しを手伝う予定でしたが、重い本棚は店の人が運ぶそうです。私は軽い箱を運んだあと、新しい部屋でカーテンを付けるのを手伝います。"
   },
   {
     "id": "jp-reading-set-n4-026",
@@ -1253,8 +1253,8 @@ window.JAPANESE_READING_SETS = [
       "～てください",
       "～ことができる"
     ],
-    "titleRuby": "<ruby>市<rt>し</rt></ruby><ruby>民<rt>みん</rt></ruby><ruby>図書館<rt>としょかん</rt></ruby>のお<ruby>知<rt>し</rt></ruby>らせ",
-    "passageRuby": "【<ruby>市<rt>し</rt></ruby><ruby>民<rt>みん</rt></ruby><ruby>図書館<rt>としょかん</rt></ruby>】<ruby>六<rt>ろく</rt></ruby><ruby>月<rt>がつ</rt></ruby><ruby>二<rt>ふた</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>九<rt>きゅう</rt></ruby><ruby>日<rt>にち</rt></ruby>は<ruby>本<rt>もと</rt></ruby>の<ruby>整<rt>せい</rt></ruby><ruby>理<rt>り</rt></ruby>のため<ruby>休<rt>やす</rt></ruby>みです。<ruby>返<rt>かえ</rt></ruby>す<ruby>本<rt>もと</rt></ruby>は<ruby>入口<rt>いりぐち</rt></ruby>の<ruby>返<rt>かえ</rt></ruby><ruby>却<rt>きゃく</rt></ruby><ruby>箱<rt>はこ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>れてください。DVDと<ruby>雑<rt>ざっ</rt></ruby><ruby>誌<rt>し</rt></ruby>は<ruby>箱<rt>はこ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>れないで、<ruby>次<rt>つぎ</rt></ruby>の<ruby>日<rt>にち</rt></ruby><ruby>以<rt>い</rt></ruby><ruby>降<rt>こう</rt></ruby>に<ruby>受付<rt>うけつけ</rt></ruby>へ<ruby>持<rt>も</rt></ruby>って<ruby>来<rt>き</rt></ruby>てください。"
+    "titleRuby": "市民図書館のお知らせ",
+    "passageRuby": "【市民図書館】六月二十九日は本の整理のため休みです。返す本は入口の返却箱に入れてください。DVDと雑誌は箱に入れないで、次の日以降に受付へ持って来てください。"
   },
   {
     "id": "jp-reading-set-n4-027",
@@ -1310,8 +1310,8 @@ window.JAPANESE_READING_SETS = [
       "～てください",
       "～ことができる"
     ],
-    "titleRuby": "<ruby>駅<rt>えき</rt></ruby><ruby>前<rt>ぜん</rt></ruby>スーパーの<ruby>案<rt>あん</rt></ruby><ruby>内<rt>ない</rt></ruby>",
-    "passageRuby": "<ruby>駅<rt>えき</rt></ruby><ruby>前<rt>ぜん</rt></ruby>スーパーは<ruby>朝<rt>あさ</rt></ruby><ruby>九<rt>きゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>夜<rt>よる</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>まで<ruby>開<rt>あ</rt></ruby>いています。<ruby>毎<rt>まい</rt></ruby><ruby>週<rt>しゅう</rt></ruby><ruby>火<rt>か</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>は<ruby>野<rt>あ</rt></ruby><ruby>菜<rt>あ</rt></ruby>が<ruby>安<rt>やす</rt></ruby>くなりますが、<ruby>魚<rt>さかな</rt></ruby><ruby>売<rt>う</rt></ruby>り<ruby>場<rt>ば</rt></ruby>は<ruby>午後<rt>ごご</rt></ruby><ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby>に<ruby>閉<rt>し</rt></ruby>まります。<ruby>店<rt>みせ</rt></ruby>の<ruby>袋<rt>ふくろ</rt></ruby>は<ruby>有<rt>ゆう</rt></ruby><ruby>料<rt>りょう</rt></ruby>なので、<ruby>買<rt>か</rt></ruby>い<ruby>物<rt>もの</rt></ruby><ruby>袋<rt>ふくろ</rt></ruby>を<ruby>持<rt>も</rt></ruby>って<ruby>来<rt>き</rt></ruby>ると<ruby>便<rt>びん</rt></ruby><ruby>利<rt>り</rt></ruby>です。"
+    "titleRuby": "駅前スーパーの案内",
+    "passageRuby": "駅前スーパーは朝九時から夜十時まで開いています。毎週火曜日は野菜が安くなりますが、魚売り場は午後七時に閉まります。店の袋は有料なので、買い物袋を持って来ると便利です。"
   },
   {
     "id": "jp-reading-set-n4-028",
@@ -1367,8 +1367,8 @@ window.JAPANESE_READING_SETS = [
       "～てください",
       "～ことができる"
     ],
-    "titleRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>の<ruby>割<rt>わり</rt></ruby><ruby>引<rt>びき</rt></ruby>",
-    "passageRuby": "この<ruby>映画館<rt>えいがかん</rt></ruby>では、<ruby>水<rt>みず</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>午後<rt>ごご</rt></ruby><ruby>六<rt>ろく</rt></ruby><ruby>時<rt>じ</rt></ruby>までの<ruby>回<rt>かい</rt></ruby>は<ruby>学<rt>がく</rt></ruby><ruby>生<rt>じょう</rt></ruby><ruby>料金<rt>りょうきん</rt></ruby>が<ruby>安<rt>やす</rt></ruby>くなります。<ruby>学<rt>がく</rt></ruby><ruby>生<rt>じょう</rt></ruby><ruby>証<rt>しょう</rt></ruby>を<ruby>見<rt>み</rt></ruby>せなければなりません。インターネットで<ruby>席<rt>せき</rt></ruby>を<ruby>予約<rt>よやく</rt></ruby>した<ruby>人<rt>ひと</rt></ruby>も、<ruby>入口<rt>いりぐち</rt></ruby>で<ruby>学<rt>がく</rt></ruby><ruby>生<rt>じょう</rt></ruby><ruby>証<rt>しょう</rt></ruby>を<ruby>見<rt>み</rt></ruby>せてください。"
+    "titleRuby": "映画館の割引",
+    "passageRuby": "この映画館では、水曜日の午後六時までの回は学生料金が安くなります。学生証を見せなければなりません。インターネットで席を予約した人も、入口で学生証を見せてください。"
   },
   {
     "id": "jp-reading-set-n4-029",
@@ -1424,8 +1424,8 @@ window.JAPANESE_READING_SETS = [
       "～てください",
       "～ことができる"
     ],
-    "titleRuby": "ホテル<ruby>受付<rt>うけつけ</rt></ruby><ruby>案<rt>あん</rt></ruby><ruby>内<rt>ない</rt></ruby>",
-    "passageRuby": "チェックインは<ruby>午後<rt>ごご</rt></ruby><ruby>三<rt>さん</rt></ruby><ruby>時<rt>じ</rt></ruby>からです。<ruby>早<rt>はや</rt></ruby>く<ruby>着<rt>つ</rt></ruby>いたお<ruby>客<rt>きゃく</rt></ruby><ruby>様<rt>さま</rt></ruby>は、<ruby>受付<rt>うけつけ</rt></ruby>で<ruby>荷物<rt>にもつ</rt></ruby>を<ruby>預<rt>あず</rt></ruby>けることができます。<ruby>朝<rt>あさ</rt></ruby><ruby>食<rt>た</rt></ruby>は<ruby>二<rt>ふた</rt></ruby><ruby>階<rt>かい</rt></ruby>で<ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>九<rt>きゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>までです。<ruby>部屋<rt>へや</rt></ruby>の<ruby>鍵<rt>かぎ</rt></ruby>をなくしたときは、すぐ<ruby>受付<rt>うけつけ</rt></ruby>に<ruby>知<rt>し</rt></ruby>らせてください。"
+    "titleRuby": "ホテル受付案内",
+    "passageRuby": "チェックインは午後三時からです。早く着いたお客様は、受付で荷物を預けることができます。朝食は二階で七時から九時までです。部屋の鍵をなくしたときは、すぐ受付に知らせてください。"
   },
   {
     "id": "jp-reading-set-n4-030",
@@ -1481,8 +1481,8 @@ window.JAPANESE_READING_SETS = [
       "～てください",
       "～ことができる"
     ],
-    "titleRuby": "<ruby>文<rt>もん</rt></ruby><ruby>化<rt>あ</rt></ruby><ruby>教室<rt>きょうしつ</rt></ruby>の<ruby>募<rt>ぼ</rt></ruby><ruby>集<rt>しゅう</rt></ruby>",
-    "passageRuby": "<ruby>来<rt>き</rt></ruby><ruby>月<rt>がつ</rt></ruby>から<ruby>公民館<rt>こうみんかん</rt></ruby>で<ruby>茶<rt>ちゃ</rt></ruby><ruby>道<rt>みち</rt></ruby><ruby>教室<rt>きょうしつ</rt></ruby>が<ruby>始<rt>はじ</rt></ruby>まります。<ruby>毎<rt>まい</rt></ruby><ruby>週<rt>しゅう</rt></ruby><ruby>土<rt>ど</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>午前<rt>ごぜん</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>一<rt>いち</rt></ruby><ruby>時間<rt>じかん</rt></ruby>です。<ruby>初<rt>しょ</rt></ruby>めての<ruby>人<rt>ひと</rt></ruby>も<ruby>参加<rt>さんか</rt></ruby>できます。<ruby>申<rt>もうし</rt></ruby>し<ruby>込<rt>こ</rt></ruby>みは<ruby>電話<rt>でんわ</rt></ruby>ではなく、<ruby>公民館<rt>こうみんかん</rt></ruby>の<ruby>受付<rt>うけつけ</rt></ruby>で<ruby>名前<rt>なまえ</rt></ruby>を<ruby>書<rt>か</rt></ruby>いてください。"
+    "titleRuby": "文化教室の募集",
+    "passageRuby": "来月から公民館で茶道教室が始まります。毎週土曜日の午前十時から一時間です。初めての人も参加できます。申し込みは電話ではなく、公民館の受付で名前を書いてください。"
   },
   {
     "id": "jp-reading-set-n4-031",
@@ -1526,8 +1526,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれない",
       "～ほうがいい"
     ],
-    "titleRuby": "<ruby>静<rt>しず</rt></ruby>かな<ruby>教室<rt>きょうしつ</rt></ruby>",
-    "passageRuby": "<ruby>授<rt>じゅ</rt></ruby><ruby>業<rt>ぎょう</rt></ruby>が<ruby>終<rt>お</rt></ruby>わったあと、<ruby>教室<rt>きょうしつ</rt></ruby>に<ruby>一<rt>いち</rt></ruby><ruby>人<rt>ひと</rt></ruby>だけ<ruby>学<rt>がく</rt></ruby><ruby>生<rt>じょう</rt></ruby>が<ruby>残<rt>のこ</rt></ruby>っていました。<ruby>机<rt>つくえ</rt></ruby>の<ruby>上<rt>あ</rt></ruby>には<ruby>消<rt>け</rt></ruby>しゴムとノートがあり、<ruby>窓<rt>まど</rt></ruby>は<ruby>開<rt>あ</rt></ruby>いたままでした。<ruby>学<rt>がく</rt></ruby><ruby>生<rt>じょう</rt></ruby>は『<ruby>田<rt>た</rt></ruby><ruby>中<rt>なか</rt></ruby>さんの<ruby>物<rt>もの</rt></ruby>かもしれない』と<ruby>思<rt>おも</rt></ruby>い、<ruby>職<rt>しょく</rt></ruby><ruby>員<rt>いん</rt></ruby><ruby>室<rt>しつ</rt></ruby>へ<ruby>持<rt>も</rt></ruby>って<ruby>行<rt>い</rt></ruby>きました。"
+    "titleRuby": "静かな教室",
+    "passageRuby": "授業が終わったあと、教室に一人だけ学生が残っていました。机の上には消しゴムとノートがあり、窓は開いたままでした。学生は『田中さんの物かもしれない』と思い、職員室へ持って行きました。"
   },
   {
     "id": "jp-reading-set-n4-032",
@@ -1571,8 +1571,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれない",
       "～ほうがいい"
     ],
-    "titleRuby": "<ruby>閉<rt>し</rt></ruby>まったパン<ruby>屋<rt>や</rt></ruby>",
-    "passageRuby": "<ruby>美<rt>み</rt></ruby><ruby>香<rt>か</rt></ruby>さんは<ruby>好<rt>す</rt></ruby>きなパン<ruby>屋<rt>や</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きましたが、<ruby>店<rt>みせ</rt></ruby>の<ruby>前<rt>ぜん</rt></ruby>に『<ruby>今日<rt>きょう</rt></ruby>は<ruby>午後<rt>ごご</rt></ruby><ruby>二<rt>ふた</rt></ruby><ruby>時<rt>じ</rt></ruby>に<ruby>閉<rt>し</rt></ruby>めます』と<ruby>紙<rt>あ</rt></ruby>が<ruby>貼<rt>は</rt></ruby>ってありました。<ruby>時<rt>じ</rt></ruby><ruby>計<rt>けい</rt></ruby>を<ruby>見<rt>み</rt></ruby>ると<ruby>二<rt>ふた</rt></ruby><ruby>時<rt>じ</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>分<rt>わ</rt></ruby>でした。<ruby>美<rt>み</rt></ruby><ruby>香<rt>か</rt></ruby>さんは<ruby>残<rt>のこ</rt></ruby><ruby>念<rt>ねん</rt></ruby>でしたが、<ruby>明日<rt>あした</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>もう<ruby>一<rt>いち</rt></ruby><ruby>度<rt>ど</rt></ruby><ruby>来<rt>き</rt></ruby>ようと<ruby>思<rt>おも</rt></ruby>いました。"
+    "titleRuby": "閉まったパン屋",
+    "passageRuby": "美香さんは好きなパン屋へ行きましたが、店の前に『今日は午後二時に閉めます』と紙が貼ってありました。時計を見ると二時十分でした。美香さんは残念でしたが、明日の朝もう一度来ようと思いました。"
   },
   {
     "id": "jp-reading-set-n4-033",
@@ -1616,8 +1616,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれない",
       "～ほうがいい"
     ],
-    "titleRuby": "<ruby>母<rt>はは</rt></ruby>のメモ",
-    "passageRuby": "<ruby>学校<rt>がっこう</rt></ruby>から<ruby>帰<rt>かえ</rt></ruby>ると、テーブルに<ruby>母<rt>はは</rt></ruby>のメモがありました。『カレーは<ruby>鍋<rt>なべ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>です。<ruby>温<rt>あたた</rt></ruby>めて<ruby>食<rt>た</rt></ruby>べてください。<ruby>七時<rt>しちじ</rt></ruby>ごろ<ruby>帰<rt>かえ</rt></ruby>ります。』<ruby>私<rt>わたし</rt></ruby>はお<ruby>腹<rt>なか</rt></ruby>がすいていたので、<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>ってから<ruby>台所<rt>だいどころ</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きました。"
+    "titleRuby": "母のメモ",
+    "passageRuby": "学校から帰ると、テーブルに母のメモがありました。『カレーは鍋の中です。温めて食べてください。七時ごろ帰ります。』私はお腹がすいていたので、手を洗ってから台所へ行きました。"
   },
   {
     "id": "jp-reading-set-n4-034",
@@ -1661,8 +1661,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれない",
       "～ほうがいい"
     ],
-    "titleRuby": "<ruby>雨<rt>あめ</rt></ruby>の<ruby>日<rt>にち</rt></ruby>の<ruby>遠<rt>えん</rt></ruby><ruby>足<rt>そく</rt></ruby>",
-    "passageRuby": "<ruby>遠<rt>えん</rt></ruby><ruby>足<rt>そく</rt></ruby>の<ruby>日<rt>にち</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>、<ruby>空<rt>そら</rt></ruby>は<ruby>暗<rt>くら</rt></ruby>く、<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>こう</rt></ruby>りそうでした。<ruby>先生<rt>せんせい</rt></ruby>は『<ruby>山<rt>やま</rt></ruby>の<ruby>道<rt>みち</rt></ruby>はすべりやすいので、<ruby>今日<rt>きょう</rt></ruby>は<ruby>博物館<rt>はくぶつかん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます』と<ruby>言<rt>あ</rt></ruby>いました。<ruby>学<rt>がく</rt></ruby><ruby>生<rt>じょう</rt></ruby>たちは<ruby>少<rt>すこ</rt></ruby>し<ruby>驚<rt>おどろ</rt></ruby>きましたが、バスの<ruby>中<rt>なか</rt></ruby>で<ruby>博物館<rt>はくぶつかん</rt></ruby>の<ruby>地<rt>ち</rt></ruby><ruby>図<rt>ず</rt></ruby>を<ruby>見<rt>み</rt></ruby><ruby>始<rt>はじ</rt></ruby>めました。"
+    "titleRuby": "雨の日の遠足",
+    "passageRuby": "遠足の日の朝、空は暗く、雨が降りそうでした。先生は『山の道はすべりやすいので、今日は博物館へ行きます』と言いました。学生たちは少し驚きましたが、バスの中で博物館の地図を見始めました。"
   },
   {
     "id": "jp-reading-set-n4-035",
@@ -1706,8 +1706,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれない",
       "～ほうがいい"
     ],
-    "titleRuby": "<ruby>店員<rt>てんいん</rt></ruby>のすすめ",
-    "passageRuby": "<ruby>私<rt>わたし</rt></ruby>は<ruby>靴<rt>くつ</rt></ruby><ruby>屋<rt>や</rt></ruby>で<ruby>黒<rt>くろ</rt></ruby>い<ruby>靴<rt>くつ</rt></ruby>を<ruby>見<rt>み</rt></ruby>ていました。<ruby>値<rt>ね</rt></ruby><ruby>段<rt>だん</rt></ruby>は<ruby>安<rt>やす</rt></ruby>かったですが、<ruby>少<rt>すこ</rt></ruby>し<ruby>小<rt>ちい</rt></ruby>さく<ruby>感<rt>かん</rt></ruby>じました。<ruby>店員<rt>てんいん</rt></ruby>は『<ruby>長<rt>ちょう</rt></ruby>く<ruby>歩<rt>ある</rt></ruby>くなら、<ruby>少<rt>すこ</rt></ruby>し<ruby>大<rt>おお</rt></ruby>きいほうがいいですよ』と<ruby>言<rt>あ</rt></ruby>いました。<ruby>私<rt>わたし</rt></ruby>は<ruby>旅<rt>りょ</rt></ruby><ruby>行<rt>い</rt></ruby>で<ruby>使<rt>つか</rt></ruby>うので、<ruby>別<rt>べつ</rt></ruby>のサイズを<ruby>出<rt>だ</rt></ruby>してもらいました。"
+    "titleRuby": "店員のすすめ",
+    "passageRuby": "私は靴屋で黒い靴を見ていました。値段は安かったですが、少し小さく感じました。店員は『長く歩くなら、少し大きいほうがいいですよ』と言いました。私は旅行で使うので、別のサイズを出してもらいました。"
   },
   {
     "id": "jp-reading-set-n4-036",
@@ -1746,8 +1746,8 @@ window.JAPANESE_READING_SETS = [
       "～そうです",
       "～ことにしました"
     ],
-    "titleRuby": "<ruby>学校<rt>がっこう</rt></ruby>の<ruby>写真<rt>しゃしん</rt></ruby><ruby>部<rt>へ</rt></ruby>",
-    "passageRuby": "<ruby>田<rt>た</rt></ruby><ruby>中<rt>なか</rt></ruby>さんは<ruby>写真<rt>しゃしん</rt></ruby><ruby>部<rt>へ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>りました。<ruby>土<rt>ど</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>に<ruby>公<rt>あ</rt></ruby><ruby>園<rt>あ</rt></ruby>で<ruby>花<rt>はな</rt></ruby>の<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>る<ruby>予定<rt>よてい</rt></ruby>でしたが、<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>こう</rt></ruby>りそうなので、<ruby>学校<rt>がっこう</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>古<rt>ふる</rt></ruby>い<ruby>建<rt>たて</rt></ruby><ruby>物<rt>もの</rt></ruby>を<ruby>撮<rt>と</rt></ruby>ることにしました。"
+    "titleRuby": "学校の写真部",
+    "passageRuby": "田中さんは写真部に入りました。土曜日に公園で花の写真を撮る予定でしたが、雨が降りそうなので、学校の中で古い建物を撮ることにしました。"
   },
   {
     "id": "jp-reading-set-n4-037",
@@ -1786,8 +1786,8 @@ window.JAPANESE_READING_SETS = [
       "～ために",
       "～ておきます"
     ],
-    "titleRuby": "<ruby>期<rt>き</rt></ruby><ruby>末<rt>まつ</rt></ruby><ruby>試験<rt>しけん</rt></ruby>の<ruby>計<rt>けい</rt></ruby><ruby>画<rt>が</rt></ruby>",
-    "passageRuby": "<ruby>李<rt>り</rt></ruby>さんは<ruby>来<rt>き</rt></ruby><ruby>週<rt>しゅう</rt></ruby>の<ruby>期<rt>き</rt></ruby><ruby>末<rt>まつ</rt></ruby><ruby>試験<rt>しけん</rt></ruby>のために、<ruby>毎<rt>まい</rt></ruby><ruby>晩<rt>ばん</rt></ruby><ruby>一<rt>いち</rt></ruby><ruby>時間<rt>じかん</rt></ruby>ずつ<ruby>復<rt>ふく</rt></ruby><ruby>習<rt>しゅう</rt></ruby>しています。<ruby>苦<rt>にが</rt></ruby><ruby>手<rt>て</rt></ruby>な<ruby>漢<rt>かん</rt></ruby><ruby>字<rt>じ</rt></ruby>は<ruby>朝<rt>あさ</rt></ruby>の<ruby>電車<rt>でんしゃ</rt></ruby>で<ruby>見<rt>み</rt></ruby>ておくことにしました。"
+    "titleRuby": "期末試験の計画",
+    "passageRuby": "李さんは来週の期末試験のために、毎晩一時間ずつ復習しています。苦手な漢字は朝の電車で見ておくことにしました。"
   },
   {
     "id": "jp-reading-set-n4-038",
@@ -1826,8 +1826,8 @@ window.JAPANESE_READING_SETS = [
       "～てしまいました",
       "～てもいいです"
     ],
-    "titleRuby": "<ruby>日<rt>にち</rt></ruby><ruby>文<rt>もん</rt></ruby><ruby>課<rt>か</rt></ruby>の<ruby>宿題<rt>しゅくだい</rt></ruby>",
-    "passageRuby": "<ruby>王<rt>おう</rt></ruby>さんは<ruby>日<rt>にち</rt></ruby><ruby>文<rt>もん</rt></ruby><ruby>課<rt>か</rt></ruby>の<ruby>宿題<rt>しゅくだい</rt></ruby>を<ruby>家<rt>いえ</rt></ruby>に<ruby>忘<rt>わす</rt></ruby>れてしまいました。<ruby>授<rt>じゅ</rt></ruby><ruby>業<rt>ぎょう</rt></ruby>の<ruby>前<rt>ぜん</rt></ruby>に<ruby>先生<rt>せんせい</rt></ruby>に<ruby>話<rt>わ</rt></ruby>すと、<ruby>明日<rt>あした</rt></ruby><ruby>出<rt>だ</rt></ruby>してもいいと<ruby>言<rt>あ</rt></ruby>われました。"
+    "titleRuby": "日文課の宿題",
+    "passageRuby": "王さんは日文課の宿題を家に忘れてしまいました。授業の前に先生に話すと、明日出してもいいと言われました。"
   },
   {
     "id": "jp-reading-set-n4-039",
@@ -1867,8 +1867,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれません",
       "～ておきます"
     ],
-    "titleRuby": "<ruby>留学生<rt>りゅうがくせい</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>",
-    "passageRuby": "<ruby>林<rt>はやし</rt></ruby>さんは<ruby>留学生<rt>りゅうがくせい</rt></ruby>です。<ruby>日<rt>にち</rt></ruby><ruby>本<rt>もと</rt></ruby>の<ruby>冬<rt>ふゆ</rt></ruby>は<ruby>思<rt>おも</rt></ruby>ったより<ruby>寒<rt>さむ</rt></ruby>いので、<ruby>学校<rt>がっこう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>く<ruby>前<rt>ぜん</rt></ruby>に<ruby>温<rt>あたた</rt></ruby>かいお<ruby>茶<rt>ちゃ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>むようにしています。"
+    "titleRuby": "留学生の朝",
+    "passageRuby": "林さんは留学生です。日本の冬は思ったより寒いので、学校へ行く前に温かいお茶を飲むようにしています。"
   },
   {
     "id": "jp-reading-set-n4-040",
@@ -1913,8 +1913,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれません",
       "～ておきます"
     ],
-    "titleRuby": "<ruby>図書館<rt>としょかん</rt></ruby>の<ruby>本<rt>もと</rt></ruby>",
-    "passageRuby": "<ruby>佐<rt>さ</rt></ruby><ruby>藤<rt>とう</rt></ruby>さんは<ruby>図書館<rt>としょかん</rt></ruby>で<ruby>料<rt>りょう</rt></ruby><ruby>理<rt>り</rt></ruby>の<ruby>本<rt>もと</rt></ruby>を<ruby>借<rt>か</rt></ruby>りました。<ruby>二<rt>ふた</rt></ruby><ruby>週<rt>しゅう</rt></ruby><ruby>間<rt>ま</rt></ruby><ruby>借<rt>か</rt></ruby>りることができますが、<ruby>旅<rt>りょ</rt></ruby><ruby>行<rt>い</rt></ruby>に<ruby>行<rt>い</rt></ruby>くので、<ruby>来<rt>き</rt></ruby><ruby>週<rt>しゅう</rt></ruby><ruby>返<rt>かえ</rt></ruby>すつもりです。"
+    "titleRuby": "図書館の本",
+    "passageRuby": "佐藤さんは図書館で料理の本を借りました。二週間借りることができますが、旅行に行くので、来週返すつもりです。"
   },
   {
     "id": "jp-reading-set-n4-041",
@@ -1954,8 +1954,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～ことがあります"
     ],
-    "titleRuby": "<ruby>書<rt>か</rt></ruby><ruby>店<rt>みせ</rt></ruby>の<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>か</rt></ruby>",
-    "passageRuby": "<ruby>書<rt>か</rt></ruby><ruby>店<rt>みせ</rt></ruby>の<ruby>新<rt>あたら</rt></ruby>しい<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>か</rt></ruby>は<ruby>字<rt>じ</rt></ruby>が<ruby>大<rt>おお</rt></ruby>きくて<ruby>読<rt>よ</rt></ruby>みやすいですが、<ruby>少<rt>すこ</rt></ruby>し<ruby>重<rt>あ</rt></ruby>いです。アンナさんは<ruby>毎<rt>まい</rt></ruby><ruby>日<rt>にち</rt></ruby><ruby>学校<rt>がっこう</rt></ruby>へ<ruby>持<rt>も</rt></ruby>って<ruby>行<rt>い</rt></ruby>くため、<ruby>軽<rt>かる</rt></ruby>い<ruby>小<rt>ちい</rt></ruby>さい<ruby>辞<rt>じ</rt></ruby><ruby>書<rt>か</rt></ruby>を<ruby>選<rt>えら</rt></ruby>びました。"
+    "titleRuby": "書店の辞書",
+    "passageRuby": "書店の新しい辞書は字が大きくて読みやすいですが、少し重いです。アンナさんは毎日学校へ持って行くため、軽い小さい辞書を選びました。"
   },
   {
     "id": "jp-reading-set-n4-042",
@@ -1994,8 +1994,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "レストラン<ruby>予約<rt>よやく</rt></ruby>",
-    "passageRuby": "レストランから<ruby>予約<rt>よやく</rt></ruby><ruby>確認<rt>かくにん</rt></ruby>のメールが<ruby>来<rt>き</rt></ruby>ました。<ruby>人<rt>ひと</rt></ruby><ruby>数<rt>あ</rt></ruby>を<ruby>変<rt>か</rt></ruby>える<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>前<rt>ぜん</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>午後<rt>ごご</rt></ruby><ruby>五<rt>ご</rt></ruby><ruby>時<rt>じ</rt></ruby>までに<ruby>連<rt>れん</rt></ruby><ruby>絡<rt>らく</rt></ruby>しなければなりません。<ruby>当<rt>あ</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>変<rt>か</rt></ruby><ruby>更<rt>こう</rt></ruby>はできません。"
+    "titleRuby": "レストラン予約",
+    "passageRuby": "レストランから予約確認のメールが来ました。人数を変える場合は、前日の午後五時までに連絡しなければなりません。当日の変更はできません。"
   },
   {
     "id": "jp-reading-set-n4-043",
@@ -2036,7 +2036,7 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "titleRuby": "コンビニコピー",
-    "passageRuby": "コンビニのコピー<ruby>機<rt>あ</rt></ruby>は、<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>印<rt>あ</rt></ruby><ruby>刷<rt>あ</rt></ruby>するとき<ruby>先<rt>さき</rt></ruby>に<ruby>画<rt>が</rt></ruby><ruby>面<rt>あ</rt></ruby>でサイズを<ruby>選<rt>えら</rt></ruby>びます。<ruby>分<rt>わ</rt></ruby>からない<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>店員<rt>てんいん</rt></ruby>に<ruby>聞<rt>き</rt></ruby>いてもいいですが、<ruby>混<rt>あ</rt></ruby>んでいる<ruby>時間<rt>じかん</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>待<rt>あ</rt></ruby>ちます。"
+    "passageRuby": "コンビニのコピー<ruby>機<rt>き</rt></ruby>は、<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>印刷<rt>いんさつ</rt></ruby>するとき<ruby>先<rt>さき</rt></ruby>に<ruby>画面<rt>がめん</rt></ruby>でサイズを<ruby>選<rt>えら</rt></ruby>びます。<ruby>分<rt>わ</rt></ruby>からない<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>店員<rt>てんいん</rt></ruby>に<ruby>聞<rt>き</rt></ruby>いてもいいですが、<ruby>混<rt>こ</rt></ruby>んでいる<ruby>時間<rt>じかん</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>待<rt>ま</rt></ruby>ちます。"
   },
   {
     "id": "jp-reading-set-n4-044",
@@ -2075,8 +2075,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "スーパー<ruby>特<rt>とく</rt></ruby><ruby>売<rt>う</rt></ruby><ruby>日<rt>にち</rt></ruby>",
-    "passageRuby": "スーパーの<ruby>特<rt>とく</rt></ruby><ruby>売<rt>う</rt></ruby><ruby>日<rt>にち</rt></ruby>は<ruby>水<rt>みず</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>です。<ruby>卵<rt>たまご</rt></ruby>は<ruby>一<rt>いち</rt></ruby><ruby>人<rt>ひと</rt></ruby><ruby>一<rt>いち</rt></ruby>パックまでで、<ruby>午前<rt>ごぜん</rt></ruby><ruby>中<rt>なか</rt></ruby>に<ruby>売<rt>う</rt></ruby>り<ruby>切<rt>きっ</rt></ruby>れることがあります。<ruby>近<rt>ちか</rt></ruby><ruby>藤<rt>とう</rt></ruby>さんは<ruby>開<rt>あ</rt></ruby><ruby>店<rt>みせ</rt></ruby>してすぐ<ruby>買<rt>か</rt></ruby>いに<ruby>行<rt>い</rt></ruby>く<ruby>予定<rt>よてい</rt></ruby>です。"
+    "titleRuby": "スーパー特売日",
+    "passageRuby": "スーパーの特売日は水曜日です。卵は一人一パックまでで、午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。"
   },
   {
     "id": "jp-reading-set-n4-045",
@@ -2121,8 +2121,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～ことがあります"
     ],
-    "titleRuby": "<ruby>郵<rt>ゆう</rt></ruby><ruby>便<rt>びん</rt></ruby><ruby>局<rt>きょく</rt></ruby>の<ruby>再<rt>さい</rt></ruby><ruby>配<rt>くば</rt></ruby><ruby>達<rt>たつ</rt></ruby>",
-    "passageRuby": "<ruby>宅<rt>たく</rt></ruby><ruby>配<rt>くば</rt></ruby><ruby>会<rt>かい</rt></ruby><ruby>社<rt>しゃ</rt></ruby>から<ruby>不<rt>あ</rt></ruby><ruby>在<rt>ざい</rt></ruby><ruby>票<rt>ひょう</rt></ruby>が<ruby>入<rt>はい</rt></ruby>っていました。<ruby>荷物<rt>にもつ</rt></ruby>を<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>るために、<ruby>渡<rt>わた</rt></ruby><ruby>辺<rt>べ</rt></ruby>さんはインターネットで<ruby>明日<rt>あした</rt></ruby>の<ruby>夜<rt>よる</rt></ruby><ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>九<rt>きゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>を<ruby>選<rt>えら</rt></ruby>びました。"
+    "titleRuby": "郵便局の再配達",
+    "passageRuby": "宅配会社から不在票が入っていました。荷物を受け取るために、渡辺さんはインターネットで明日の夜七時から九時を選びました。"
   },
   {
     "id": "jp-reading-set-n4-046",
@@ -2161,8 +2161,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "<ruby>駅<rt>えき</rt></ruby>での<ruby>乗<rt>の</rt></ruby>り<ruby>換<rt>か</rt></ruby>え",
-    "passageRuby": "<ruby>初<rt>しょ</rt></ruby>めて<ruby>行<rt>い</rt></ruby>く<ruby>会<rt>かい</rt></ruby><ruby>場<rt>ば</rt></ruby>なので、<ruby>小<rt>ちい</rt></ruby><ruby>林<rt>はやし</rt></ruby>さんは<ruby>駅<rt>えき</rt></ruby>で<ruby>乗<rt>の</rt></ruby>り<ruby>換<rt>か</rt></ruby>え<ruby>方<rt>かた</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べました。<ruby>急<rt>いそ</rt></ruby><ruby>行<rt>い</rt></ruby>に<ruby>乗<rt>の</rt></ruby>ると<ruby>早<rt>はや</rt></ruby>いですが、<ruby>会<rt>かい</rt></ruby><ruby>場<rt>ば</rt></ruby>の<ruby>近<rt>ちか</rt></ruby>くの<ruby>駅<rt>えき</rt></ruby>には<ruby>止<rt>あ</rt></ruby>まらないので、<ruby>各<rt>かく</rt></ruby><ruby>駅<rt>えき</rt></ruby><ruby>停<rt>てい</rt></ruby><ruby>車<rt>しゃ</rt></ruby>に<ruby>乗<rt>の</rt></ruby>ります。"
+    "titleRuby": "駅での乗り換え",
+    "passageRuby": "初めて行く会場なので、小林さんは駅で乗り換え方を調べました。急行に乗ると早いですが、会場の近くの駅には止まらないので、各駅停車に乗ります。"
   },
   {
     "id": "jp-reading-set-n4-047",
@@ -2207,8 +2207,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～ことがあります"
     ],
-    "titleRuby": "バスの<ruby>迂<rt>う</rt></ruby><ruby>回<rt>かい</rt></ruby>",
-    "passageRuby": "<ruby>雨<rt>あめ</rt></ruby>で<ruby>道<rt>みち</rt></ruby><ruby>路<rt>あ</rt></ruby>が<ruby>混<rt>あ</rt></ruby>んでいるため、<ruby>五<rt>ご</rt></ruby><ruby>番<rt>あ</rt></ruby>バスは<ruby>市<rt>し</rt></ruby><ruby>役<rt>やく</rt></ruby><ruby>所<rt>ところ</rt></ruby><ruby>前<rt>ぜん</rt></ruby>を<ruby>通<rt>つう</rt></ruby>りません。<ruby>図書館<rt>としょかん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>く<ruby>人<rt>ひと</rt></ruby>は、<ruby>中<rt>なか</rt></ruby><ruby>央<rt>おう</rt></ruby><ruby>公<rt>あ</rt></ruby><ruby>園<rt>あ</rt></ruby>で<ruby>降<rt>こう</rt></ruby>りて<ruby>十<rt>じゅう</rt></ruby><ruby>分<rt>わ</rt></ruby><ruby>歩<rt>ある</rt></ruby>いてください。"
+    "titleRuby": "バスの迂回",
+    "passageRuby": "雨で道路が混んでいるため、五番バスは市役所前を通りません。図書館へ行く人は、中央公園で降りて十分歩いてください。"
   },
   {
     "id": "jp-reading-set-n4-048",
@@ -2253,7 +2253,7 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "ホテルのチェックイン",
-    "passageRuby": "ホテルのチェックインは<ruby>午後<rt>ごご</rt></ruby><ruby>三<rt>さん</rt></ruby><ruby>時<rt>じ</rt></ruby>からです。<ruby>早<rt>はや</rt></ruby>く<ruby>着<rt>つ</rt></ruby>いた<ruby>場合<rt>ばあい</rt></ruby>、<ruby>荷物<rt>にもつ</rt></ruby>だけフロントに<ruby>預<rt>あず</rt></ruby>けることができます。<ruby>部屋<rt>へや</rt></ruby>には<ruby>三<rt>さん</rt></ruby><ruby>時<rt>じ</rt></ruby>まで<ruby>入<rt>はい</rt></ruby>れません。"
+    "passageRuby": "ホテルのチェックインは午後三時からです。早く着いた場合、荷物だけフロントに預けることができます。部屋には三時まで入れません。"
   },
   {
     "id": "jp-reading-set-n4-049",
@@ -2293,8 +2293,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～ことがあります"
     ],
-    "titleRuby": "<ruby>旅<rt>りょ</rt></ruby><ruby>行<rt>い</rt></ruby>の<ruby>荷物<rt>にもつ</rt></ruby>",
-    "passageRuby": "<ruby>旅<rt>りょ</rt></ruby><ruby>行<rt>い</rt></ruby>の<ruby>前<rt>ぜん</rt></ruby>に、<ruby>吉<rt>あ</rt></ruby><ruby>田<rt>た</rt></ruby>さんは<ruby>小<rt>ちい</rt></ruby>さいかばんへ<ruby>薬<rt>くすり</rt></ruby>と<ruby>充<rt>じゅう</rt></ruby><ruby>電<rt>でん</rt></ruby><ruby>器<rt>き</rt></ruby>を<ruby>入<rt>はい</rt></ruby>れておきました。<ruby>着<rt>つ</rt></ruby><ruby>替<rt>が</rt></ruby>えはホテルで<ruby>洗<rt>あら</rt></ruby>えるので、<ruby>二<rt>ふた</rt></ruby><ruby>日<rt>にち</rt></ruby><ruby>分<rt>わ</rt></ruby>だけ<ruby>持<rt>も</rt></ruby>って<ruby>行<rt>い</rt></ruby>くことにしました。"
+    "titleRuby": "旅行の荷物",
+    "passageRuby": "旅行の前に、吉田さんは小さいかばんへ薬と充電器を入れておきました。着替えはホテルで洗えるので、二日分だけ持って行くことにしました。"
   },
   {
     "id": "jp-reading-set-n4-050",
@@ -2338,8 +2338,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>の<ruby>時<rt>じ</rt></ruby><ruby>刻<rt>こく</rt></ruby>",
-    "passageRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>の<ruby>時<rt>じ</rt></ruby><ruby>刻<rt>こく</rt></ruby><ruby>表<rt>ぴょう</rt></ruby>では、<ruby>字<rt>じ</rt></ruby><ruby>幕<rt>あ</rt></ruby>の<ruby>映<rt>えい</rt></ruby><ruby>画<rt>が</rt></ruby>は<ruby>午後<rt>ごご</rt></ruby><ruby>二<rt>ふた</rt></ruby><ruby>時<rt>じ</rt></ruby>と<ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby>です。<ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby>の<ruby>回<rt>かい</rt></ruby>は<ruby>終<rt>お</rt></ruby>わるのが<ruby>遅<rt>おそ</rt></ruby>すぎるので、<ruby>林<rt>はやし</rt></ruby>さんは<ruby>二<rt>ふた</rt></ruby><ruby>時<rt>じ</rt></ruby>の<ruby>回<rt>かい</rt></ruby>を<ruby>見<rt>み</rt></ruby>るつもりです。"
+    "titleRuby": "映画館の時刻",
+    "passageRuby": "映画館の時刻表では、字幕の映画は午後二時と七時です。七時の回は終わるのが遅すぎるので、林さんは二時の回を見るつもりです。"
   },
   {
     "id": "jp-reading-set-n4-051",
@@ -2379,8 +2379,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～ことがあります"
     ],
-    "titleRuby": "<ruby>地<rt>ち</rt></ruby><ruby>域<rt>いき</rt></ruby><ruby>清<rt>せい</rt></ruby><ruby>掃<rt>そう</rt></ruby>",
-    "passageRuby": "<ruby>地<rt>ち</rt></ruby><ruby>域<rt>いき</rt></ruby><ruby>清<rt>せい</rt></ruby><ruby>掃<rt>そう</rt></ruby>は<ruby>日<rt>にち</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby><ruby>九<rt>きゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>からです。<ruby>軍<rt>ぐん</rt></ruby><ruby>手<rt>て</rt></ruby>は<ruby>公<rt>あ</rt></ruby><ruby>園<rt>あ</rt></ruby>で<ruby>借<rt>か</rt></ruby>りられますが、<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>は<ruby>自<rt>じ</rt></ruby><ruby>分<rt>わ</rt></ruby>で<ruby>持<rt>も</rt></ruby>って<ruby>来<rt>き</rt></ruby>てください。<ruby>雨<rt>あめ</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>は<ruby>来<rt>き</rt></ruby><ruby>週<rt>しゅう</rt></ruby>に<ruby>延<rt>あ</rt></ruby>びます。"
+    "titleRuby": "地域清掃",
+    "passageRuby": "地域清掃は日曜日の朝九時からです。軍手は公園で借りられますが、飲み物は自分で持って来てください。雨の場合は来週に延びます。"
   },
   {
     "id": "jp-reading-set-n4-052",
@@ -2424,8 +2424,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "びんの<ruby>分別<rt>ぶんべつ</rt></ruby>",
-    "passageRuby": "びんを<ruby>出<rt>だ</rt></ruby>す<ruby>日<rt>にち</rt></ruby>は<ruby>月<rt>がつ</rt></ruby>に<ruby>二<rt>ふた</rt></ruby><ruby>回<rt>かい</rt></ruby>です。<ruby>中<rt>なか</rt></ruby>を<ruby>水<rt>みず</rt></ruby>で<ruby>洗<rt>あら</rt></ruby>ったあとで、<ruby>茶<rt>ちゃ</rt></ruby><ruby>色<rt>いろ</rt></ruby>のびんと<ruby>透<rt>あ</rt></ruby><ruby>明<rt>あ</rt></ruby>なびんを<ruby>別<rt>べつ</rt></ruby>の<ruby>箱<rt>はこ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>れなければなりません。"
+    "titleRuby": "びんの分別",
+    "passageRuby": "びんを出す日は月に二回です。中を水で洗ったあとで、茶色のびんと透明なびんを別の箱に入れなければなりません。"
   },
   {
     "id": "jp-reading-set-n4-053",
@@ -2465,8 +2465,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～ことがあります"
     ],
-    "titleRuby": "<ruby>落とし物<rt>おとしもの</rt></ruby>の<ruby>傘<rt>かさ</rt></ruby>",
-    "passageRuby": "<ruby>駅<rt>えき</rt></ruby>の<ruby>掲<rt>けい</rt></ruby><ruby>示<rt>じ</rt></ruby><ruby>板<rt>ばん</rt></ruby>に、<ruby>青<rt>あお</rt></ruby>い<ruby>傘<rt>かさ</rt></ruby>の<ruby>落とし物<rt>おとしもの</rt></ruby>があると<ruby>書<rt>か</rt></ruby>いてあります。<ruby>心<rt>こころ</rt></ruby><ruby>当<rt>あ</rt></ruby>たりがある<ruby>人<rt>ひと</rt></ruby>は、<ruby>午後<rt>ごご</rt></ruby><ruby>八<rt>はち</rt></ruby><ruby>時<rt>じ</rt></ruby>までに<ruby>改<rt>かい</rt></ruby><ruby>札<rt>ふだ</rt></ruby><ruby>横<rt>よこ</rt></ruby>の<ruby>事<rt>じ</rt></ruby><ruby>務<rt>む</rt></ruby><ruby>室<rt>しつ</rt></ruby>へ<ruby>来<rt>き</rt></ruby>てください。"
+    "titleRuby": "落とし物の傘",
+    "passageRuby": "駅の掲示板に、青い傘の落とし物があると書いてあります。心当たりがある人は、午後八時までに改札横の事務室へ来てください。"
   },
   {
     "id": "jp-reading-set-n4-054",
@@ -2505,8 +2505,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "スマホの<ruby>電<rt>でん</rt></ruby><ruby>池<rt>ち</rt></ruby>",
-    "passageRuby": "スマホの<ruby>電<rt>でん</rt></ruby><ruby>池<rt>ち</rt></ruby>が<ruby>少<rt>すこ</rt></ruby>なくなったので、<ruby>木<rt>もく</rt></ruby><ruby>村<rt>むら</rt></ruby>さんは<ruby>地<rt>ち</rt></ruby><ruby>図<rt>ず</rt></ruby>を<ruby>見<rt>み</rt></ruby>ながら<ruby>歩<rt>ある</rt></ruby>くのをやめました。<ruby>駅<rt>えき</rt></ruby>に<ruby>着<rt>つ</rt></ruby>いたら、<ruby>案内所<rt>あんないじょ</rt></ruby>で<ruby>道<rt>みち</rt></ruby>を<ruby>聞<rt>き</rt></ruby>くつもりです。"
+    "titleRuby": "スマホの電池",
+    "passageRuby": "スマホの電池が少なくなったので、木村さんは地図を見ながら歩くのをやめました。駅に着いたら、案内所で道を聞くつもりです。"
   },
   {
     "id": "jp-reading-set-n4-055",
@@ -2551,8 +2551,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～ことがあります"
     ],
-    "titleRuby": "<ruby>病院<rt>びょういん</rt></ruby>の<ruby>受付<rt>うけつけ</rt></ruby>",
-    "passageRuby": "<ruby>病院<rt>びょういん</rt></ruby>の<ruby>受付<rt>うけつけ</rt></ruby>は<ruby>午前<rt>ごぜん</rt></ruby><ruby>八<rt>はち</rt></ruby><ruby>時<rt>じ</rt></ruby><ruby>半<rt>はん</rt></ruby>に<ruby>始<rt>はじ</rt></ruby>まります。<ruby>初<rt>しょ</rt></ruby>めて<ruby>来<rt>き</rt></ruby>る<ruby>人<rt>ひと</rt></ruby>は<ruby>保<rt>ほ</rt></ruby><ruby>険<rt>けん</rt></ruby><ruby>証<rt>しょう</rt></ruby>と<ruby>住所<rt>じゅうしょ</rt></ruby>が<ruby>分<rt>わ</rt></ruby>かるものを<ruby>出<rt>だ</rt></ruby>してください。<ruby>予約<rt>よやく</rt></ruby>があっても<ruby>少<rt>すこ</rt></ruby>し<ruby>待<rt>あ</rt></ruby>つことがあります。"
+    "titleRuby": "病院の受付",
+    "passageRuby": "病院の受付は午前八時半に始まります。初めて来る人は保険証と住所が分かるものを出してください。予約があっても少し待つことがあります。"
   },
   {
     "id": "jp-reading-set-n4-056",
@@ -2596,8 +2596,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "<ruby>薬<rt>くすり</rt></ruby><ruby>局<rt>きょく</rt></ruby>の<ruby>薬<rt>くすり</rt></ruby>",
-    "passageRuby": "<ruby>薬<rt>くすり</rt></ruby><ruby>局<rt>きょく</rt></ruby>で<ruby>薬<rt>くすり</rt></ruby>を<ruby>買<rt>か</rt></ruby>うとき、<ruby>受付<rt>うけつけ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が「<ruby>眠<rt>ねむ</rt></ruby>くなるかもしれません」と<ruby>説<rt>せつ</rt></ruby><ruby>明<rt>あ</rt></ruby>しました。<ruby>運<rt>うん</rt></ruby><ruby>転<rt>てん</rt></ruby>する<ruby>予定<rt>よてい</rt></ruby>がある<ruby>人<rt>ひと</rt></ruby>は、<ruby>飲<rt>の</rt></ruby>む<ruby>前<rt>ぜん</rt></ruby>に<ruby>医<rt>い</rt></ruby><ruby>者<rt>しゃ</rt></ruby>へ<ruby>相<rt>そう</rt></ruby><ruby>談<rt>だん</rt></ruby>したほうがいいです。"
+    "titleRuby": "薬局の薬",
+    "passageRuby": "薬局で薬を買うとき、受付の人が「眠くなるかもしれません」と説明しました。運転する予定がある人は、飲む前に医者へ相談したほうがいいです。"
   },
   {
     "id": "jp-reading-set-n4-057",
@@ -2637,8 +2637,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～ことがあります"
     ],
-    "titleRuby": "<ruby>引<rt>びき</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>しの<ruby>連<rt>れん</rt></ruby><ruby>絡<rt>らく</rt></ruby>",
-    "passageRuby": "<ruby>前<rt>ぜん</rt></ruby><ruby>田<rt>た</rt></ruby>さんは<ruby>引<rt>びき</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>したあとで、<ruby>管理人<rt>かんりにん</rt></ruby>に<ruby>新<rt>あたら</rt></ruby>しい<ruby>住所<rt>じゅうしょ</rt></ruby>を<ruby>書<rt>か</rt></ruby>いた<ruby>紙<rt>あ</rt></ruby>を<ruby>渡<rt>わた</rt></ruby>しました。<ruby>郵<rt>ゆう</rt></ruby><ruby>便<rt>びん</rt></ruby><ruby>物<rt>もの</rt></ruby>が<ruby>前<rt>ぜん</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>へ<ruby>届<rt>あ</rt></ruby>くと<ruby>困<rt>あ</rt></ruby>るので、<ruby>郵<rt>ゆう</rt></ruby><ruby>便<rt>びん</rt></ruby><ruby>局<rt>きょく</rt></ruby>にも<ruby>知<rt>し</rt></ruby>らせます。"
+    "titleRuby": "引っ越しの連絡",
+    "passageRuby": "前田さんは引っ越したあとで、管理人に新しい住所を書いた紙を渡しました。郵便物が前の部屋へ届くと困るので、郵便局にも知らせます。"
   },
   {
     "id": "jp-reading-set-n4-058",
@@ -2682,8 +2682,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "<ruby>誕<rt>たん</rt></ruby><ruby>生<rt>じょう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>手<rt>て</rt></ruby><ruby>紙<rt>あ</rt></ruby>",
-    "passageRuby": "<ruby>誕<rt>たん</rt></ruby><ruby>生<rt>じょう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>手<rt>て</rt></ruby><ruby>紙<rt>あ</rt></ruby>を<ruby>書<rt>か</rt></ruby>いたあとで、<ruby>伊<rt>あ</rt></ruby><ruby>藤<rt>とう</rt></ruby>さんは<ruby>封<rt>ふう</rt></ruby><ruby>筒<rt>とう</rt></ruby>に<ruby>切<rt>きっ</rt></ruby><ruby>手<rt>て</rt></ruby>を<ruby>貼<rt>は</rt></ruby>りました。<ruby>明日<rt>あした</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>ポストに<ruby>入<rt>はい</rt></ruby>れれば、<ruby>週<rt>しゅう</rt></ruby><ruby>末<rt>まつ</rt></ruby>までに<ruby>友<rt>とも</rt></ruby>だちへ<ruby>届<rt>あ</rt></ruby>くそうです。"
+    "titleRuby": "誕生日の手紙",
+    "passageRuby": "誕生日の手紙を書いたあとで、伊藤さんは封筒に切手を貼りました。明日の朝ポストに入れれば、週末までに友だちへ届くそうです。"
   },
   {
     "id": "jp-reading-set-n4-059",
@@ -2728,8 +2728,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～ことがあります"
     ],
-    "titleRuby": "<ruby>冷房<rt>れいぼう</rt></ruby>の<ruby>故障<rt>こしょう</rt></ruby>",
-    "passageRuby": "<ruby>部屋<rt>へや</rt></ruby>の<ruby>冷房<rt>れいぼう</rt></ruby>が<ruby>急<rt>いそ</rt></ruby>に<ruby>止<rt>あ</rt></ruby>まってしまいました。<ruby>管理人<rt>かんりにん</rt></ruby>は、<ruby>窓<rt>まど</rt></ruby>を<ruby>開<rt>あ</rt></ruby>けて<ruby>待<rt>あ</rt></ruby>ってください、<ruby>修<rt>しゅう</rt></ruby><ruby>理<rt>り</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は<ruby>午後<rt>ごご</rt></ruby><ruby>四<rt>あ</rt></ruby><ruby>時<rt>じ</rt></ruby>ごろ<ruby>来<rt>き</rt></ruby>ます、とメモを<ruby>残<rt>のこ</rt></ruby>しました。"
+    "titleRuby": "冷房の故障",
+    "passageRuby": "部屋の冷房が急に止まってしまいました。管理人は、窓を開けて待ってください、修理の人は午後四時ごろ来ます、とメモを残しました。"
   },
   {
     "id": "jp-reading-set-n4-060",
@@ -2773,8 +2773,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "<ruby>自習室<rt>じしゅうしつ</rt></ruby>の<ruby>規<rt>あ</rt></ruby><ruby>則<rt>そく</rt></ruby>",
-    "passageRuby": "<ruby>自習室<rt>じしゅうしつ</rt></ruby>では、<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>は<ruby>持<rt>も</rt></ruby>ち<ruby>込<rt>こ</rt></ruby>んでもいいですが、<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>を<ruby>食<rt>た</rt></ruby>べてはいけません。<ruby>使<rt>つか</rt></ruby>った<ruby>机<rt>つくえ</rt></ruby>は<ruby>帰<rt>かえ</rt></ruby>る<ruby>前<rt>ぜん</rt></ruby>にきれいにしておきましょう。"
+    "titleRuby": "自習室の規則",
+    "passageRuby": "自習室では、飲み物は持ち込んでもいいですが、食べ物を食べてはいけません。使った机は帰る前にきれいにしておきましょう。"
   },
   {
     "id": "jp-reading-set-n4-061",
@@ -2830,8 +2830,8 @@ window.JAPANESE_READING_SETS = [
       "～にくい",
       "～たい"
     ],
-    "titleRuby": "<ruby>新しい<rt>あたらしい</rt></ruby><ruby>町<rt>まち</rt></ruby>の<ruby>生<rt>じょう</rt></ruby><ruby>活<rt>せい</rt></ruby>",
-    "passageRuby": "<ruby>先<rt>さき</rt></ruby><ruby>月<rt>がつ</rt></ruby>この<ruby>町<rt>まち</rt></ruby>へ<ruby>引っ越しました<rt>ひっこしました</rt></ruby>。はじめは<ruby>道<rt>みち</rt></ruby>が<ruby>分<rt>わ</rt></ruby>かりにくくて、<ruby>買い物<rt>かいもの</rt></ruby>にも<ruby>時間<rt>じかん</rt></ruby>がかかりました。でも、<ruby>近所<rt>きんじょ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>安<rt>やす</rt></ruby>いスーパーと<ruby>静<rt>しず</rt></ruby>かな<ruby>公園<rt>こうえん</rt></ruby>を<ruby>教<rt>おし</rt></ruby>えてくれました。<ruby>来<rt>き</rt></ruby><ruby>月<rt>がつ</rt></ruby>は<ruby>地域清掃<rt>ちいきせいそう</rt></ruby>に<ruby>参加<rt>さんか</rt></ruby>して、もっと<ruby>町<rt>まち</rt></ruby>を<ruby>知<rt>し</rt></ruby>りたいです。"
+    "titleRuby": "新しい町の生活",
+    "passageRuby": "先月この町へ引っ越しました。はじめは道が分かりにくくて、買い物にも時間がかかりました。でも、近所の人が安いスーパーと静かな公園を教えてくれました。来月は地域清掃に参加して、もっと町を知りたいです。"
   },
   {
     "id": "jp-reading-set-n4-062",
@@ -2887,8 +2887,8 @@ window.JAPANESE_READING_SETS = [
       "～なければなりません",
       "～必要はありません"
     ],
-    "titleRuby": "<ruby>文化祭<rt>ぶんかさい</rt></ruby>の<ruby>準備<rt>じゅんび</rt></ruby>",
-    "passageRuby": "<ruby>文化祭<rt>ぶんかさい</rt></ruby>の<ruby>準備<rt>じゅんび</rt></ruby>で、<ruby>二<rt>ふた</rt></ruby><ruby>年<rt>あ</rt></ruby><ruby>三<rt>さん</rt></ruby><ruby>組<rt>あ</rt></ruby>は<ruby>教室<rt>きょうしつ</rt></ruby>を<ruby>小<rt>ちい</rt></ruby>さな<ruby>喫<rt>きっ</rt></ruby><ruby>茶<rt>ちゃ</rt></ruby><ruby>店<rt>みせ</rt></ruby>にします。<ruby>金曜日<rt>きんようび</rt></ruby>の<ruby>放<rt>あ</rt></ruby><ruby>課<rt>か</rt></ruby><ruby>後<rt>あ</rt></ruby>に<ruby>机<rt>つくえ</rt></ruby>を<ruby>動<rt>どう</rt></ruby>かし、<ruby>土曜日<rt>どようび</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>に<ruby>看<rt>あ</rt></ruby><ruby>板<rt>ばん</rt></ruby>を<ruby>付<rt>つ</rt></ruby>けます。<ruby>食<rt>た</rt></ruby>べ<ruby>物<rt>もの</rt></ruby>を<ruby>持<rt>あ</rt></ruby>って<ruby>来<rt>き</rt></ruby>る<ruby>必要<rt>ひつよう</rt></ruby>はありませんが、エプロンは<ruby>各<rt>かく</rt></ruby><ruby>自<rt>じ</rt></ruby>で<ruby>用<rt>よう</rt></ruby><ruby>意<rt>い</rt></ruby>してください。"
+    "titleRuby": "文化祭の準備",
+    "passageRuby": "文化祭の準備で、二年三組は教室を小さな喫茶店にします。金曜日の放課後に机を動かし、土曜日の朝に看板を付けます。食べ物を持って来る必要はありませんが、エプロンは各自で用意してください。"
   },
   {
     "id": "jp-reading-set-n4-063",
@@ -2945,8 +2945,8 @@ window.JAPANESE_READING_SETS = [
       "～すぎる",
       "～ておく"
     ],
-    "titleRuby": "<ruby>打<rt>だ</rt></ruby><ruby>工<rt>こう</rt></ruby>の<ruby>一<rt>いち</rt></ruby><ruby>週<rt>しゅう</rt></ruby><ruby>間<rt>ま</rt></ruby>",
-    "passageRuby": "<ruby>店長<rt>てんちょう</rt></ruby>のメモです。<ruby>今週<rt>こんしゅう</rt></ruby>は<ruby>新しい<rt>あたらしい</rt></ruby><ruby>店員<rt>てんいん</rt></ruby>が<ruby>入<rt>あ</rt></ruby>るので、<ruby>火曜日<rt>かようび</rt></ruby>の<ruby>開店前<rt>かいてんまえ</rt></ruby>にレジの<ruby>使い方<rt>つかいかた</rt></ruby>を<ruby>説明<rt>せつめい</rt></ruby>してください。<ruby>昼<rt>ひる</rt></ruby>は<ruby>客<rt>きゃく</rt></ruby>が<ruby>多<rt>あ</rt></ruby>すぎるかもしれないため、<ruby>質問<rt>しつもん</rt></ruby>はノートに<ruby>書<rt>しょ</rt></ruby>いておくと<ruby>分<rt>わ</rt></ruby>かりやすいです。"
+    "titleRuby": "打工の一週間",
+    "passageRuby": "店長のメモです。今週は新しい店員が入るので、火曜日の開店前にレジの使い方を説明してください。昼は客が多すぎるかもしれないため、質問はノートに書いておくと分かりやすいです。"
   },
   {
     "id": "jp-reading-set-n4-064",
@@ -3003,8 +3003,8 @@ window.JAPANESE_READING_SETS = [
       "～ながら",
       "～ようです"
     ],
-    "titleRuby": "<ruby>散歩<rt>さんぽ</rt></ruby>の<ruby>習<rt>しゅう</rt></ruby><ruby>慣<rt>かん</rt></ruby>",
-    "passageRuby": "<ruby>最近<rt>さいきん</rt></ruby>、<ruby>寝る前<rt>ねるまえ</rt></ruby>にスマホを<ruby>見<rt>み</rt></ruby>すぎて、<ruby>朝<rt>あさ</rt></ruby><ruby>起<rt>あ</rt></ruby>きにくくなりました。そこで、<ruby>夕食<rt>ゆうしょく</rt></ruby>のあとで<ruby>三<rt>さん</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>分<rt>わ</rt></ruby><ruby>散歩<rt>さんぽ</rt></ruby>することにしました。<ruby>歩<rt>ある</rt></ruby>きながら<ruby>音楽<rt>おんがく</rt></ruby>を<ruby>聞<rt>あ</rt></ruby>くと<ruby>気分<rt>きぶん</rt></ruby>がよくなり、<ruby>夜<rt>あ</rt></ruby>も<ruby>早<rt>はや</rt></ruby>く<ruby>眠<rt>ねむ</rt></ruby>れるようです。"
+    "titleRuby": "散歩の習慣",
+    "passageRuby": "最近、寝る前にスマホを見すぎて、朝起きにくくなりました。そこで、夕食のあとで三十分散歩することにしました。歩きながら音楽を聞くと気分がよくなり、夜も早く眠れるようです。"
   },
   {
     "id": "jp-reading-set-n4-065",
@@ -3061,8 +3061,8 @@ window.JAPANESE_READING_SETS = [
       "～予定です",
       "～ておきます"
     ],
-    "titleRuby": "<ruby>家<rt>あ</rt></ruby><ruby>族<rt>ぞく</rt></ruby>の<ruby>京<rt>きょう</rt></ruby><ruby>都<rt>と</rt></ruby><ruby>旅行<rt>りょこう</rt></ruby>",
-    "passageRuby": "<ruby>旅行<rt>りょこう</rt></ruby>メモ：<ruby>午前<rt>ごぜん</rt></ruby><ruby>九<rt>きゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>に<ruby>京都駅<rt>きょうとえき</rt></ruby>で<ruby>集合<rt>しゅうごう</rt></ruby>。<ruby>十<rt>じゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>に<ruby>博物館<rt>はくぶつかん</rt></ruby>、<ruby>昼<rt>ひる</rt></ruby>は<ruby>駅<rt>あ</rt></ruby><ruby>近<rt>ちか</rt></ruby>くの<ruby>店<rt>みせ</rt></ruby>で<ruby>定<rt>あ</rt></ruby><ruby>食<rt>た</rt></ruby>を<ruby>食<rt>た</rt></ruby>べる。<ruby>午後<rt>ごご</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>、<ruby>寺<rt>てら</rt></ruby>ではなく<ruby>屋<rt>や</rt></ruby><ruby>内<rt>ない</rt></ruby>の<ruby>市<rt>し</rt></ruby><ruby>場<rt>ば</rt></ruby>へ<ruby>行<rt>い</rt></ruby>く<ruby>予定<rt>よてい</rt></ruby>です。<ruby>切符<rt>きっぷ</rt></ruby>は<ruby>父<rt>ちち</rt></ruby>が<ruby>買<rt>か</rt></ruby>っておきます。"
+    "titleRuby": "家族の京都旅行",
+    "passageRuby": "旅行メモ：午前九時に京都駅で集合。十時に博物館、昼は駅近くの店で定食を食べる。午後は雨の場合、寺ではなく屋内の市場へ行く予定です。切符は父が買っておきます。"
   },
   {
     "id": "jp-reading-set-n4-066",
@@ -3118,8 +3118,8 @@ window.JAPANESE_READING_SETS = [
       "～なくてもいいです",
       "～必要です"
     ],
-    "titleRuby": "<ruby>運<rt>うん</rt></ruby><ruby>動<rt>どう</rt></ruby>センターの<ruby>案<rt>あん</rt></ruby><ruby>内<rt>ない</rt></ruby>",
-    "passageRuby": "<ruby>運<rt>うん</rt></ruby><ruby>動<rt>どう</rt></ruby>センターを<ruby>初<rt>しょ</rt></ruby>めて<ruby>使<rt>あ</rt></ruby>う<ruby>人<rt>ひと</rt></ruby>は、<ruby>受付<rt>うけつけ</rt></ruby>で<ruby>名前<rt>なまえ</rt></ruby>と<ruby>住所<rt>じゅうしょ</rt></ruby>を<ruby>書<rt>しょ</rt></ruby>いてください。プールは<ruby>予約<rt>よやく</rt></ruby>しなくてもいいですが、ヨガ<ruby>教室<rt>きょうしつ</rt></ruby>は<ruby>前<rt>ぜん</rt></ruby>の<ruby>日<rt>にち</rt></ruby>までに<ruby>予約<rt>よやく</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>です。タオルは<ruby>借<rt>か</rt></ruby>りられません。"
+    "titleRuby": "運動センターの案内",
+    "passageRuby": "運動センターを初めて使う人は、受付で名前と住所を書いてください。プールは予約しなくてもいいですが、ヨガ教室は前の日までに予約が必要です。タオルは借りられません。"
   },
   {
     "id": "jp-reading-set-n4-067",
@@ -3175,8 +3175,8 @@ window.JAPANESE_READING_SETS = [
       "～ことができます",
       "～てもいいです"
     ],
-    "titleRuby": "<ruby>図書館<rt>としょかん</rt></ruby>の<ruby>利<rt>り</rt></ruby><ruby>用<rt>よう</rt></ruby>",
-    "passageRuby": "<ruby>市<rt>し</rt></ruby><ruby>立<rt>りつ</rt></ruby><ruby>図書館<rt>としょかん</rt></ruby>では、<ruby>今<rt>きょう</rt></ruby><ruby>月<rt>がつ</rt></ruby>から<ruby>学習室<rt>がくしゅうしつ</rt></ruby>の<ruby>席<rt>せき</rt></ruby>を<ruby>予約<rt>よやく</rt></ruby>できます。<ruby>予約<rt>よやく</rt></ruby>は<ruby>一<rt>いち</rt></ruby><ruby>人<rt>ひと</rt></ruby><ruby>一<rt>いち</rt></ruby><ruby>日<rt>にち</rt></ruby><ruby>二<rt>ふた</rt></ruby><ruby>時間<rt>じかん</rt></ruby>までです。<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>はふたがある<ruby>物<rt>もの</rt></ruby>なら<ruby>持<rt>あ</rt></ruby>ち<ruby>込<rt>こ</rt></ruby>んでもいいですが、<ruby>席<rt>せき</rt></ruby>で<ruby>食事<rt>しょくじ</rt></ruby>はできません。"
+    "titleRuby": "図書館の利用",
+    "passageRuby": "市立図書館では、今月から学習室の席を予約できます。予約は一人一日二時間までです。飲み物はふたがある物なら持ち込んでもいいですが、席で食事はできません。"
   },
   {
     "id": "jp-reading-set-n4-068",
@@ -3233,8 +3233,8 @@ window.JAPANESE_READING_SETS = [
       "～なければなりません",
       "～場合"
     ],
-    "titleRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>の<ruby>予定<rt>よてい</rt></ruby>",
-    "passageRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>では、<ruby>水曜日<rt>すいようび</rt></ruby>の<ruby>午前<rt>ごぜん</rt></ruby><ruby>中<rt>なか</rt></ruby>だけ<ruby>学生料金<rt>がくせいりょうきん</rt></ruby>が<ruby>安<rt>やす</rt></ruby>くなります。チケットを<ruby>買<rt>か</rt></ruby>うとき<ruby>学生証<rt>がくせいしょう</rt></ruby>を<ruby>見<rt>み</rt></ruby>せなければなりません。<ruby>忘<rt>わす</rt></ruby>れた<ruby>場合<rt>ばあい</rt></ruby>は<ruby>普通<rt>ふつう</rt></ruby>の<ruby>料<rt>りょう</rt></ruby><ruby>金<rt>きん</rt></ruby>になります。"
+    "titleRuby": "映画館の予定",
+    "passageRuby": "映画館では、水曜日の午前中だけ学生料金が安くなります。チケットを買うとき学生証を見せなければなりません。忘れた場合は普通の料金になります。"
   },
   {
     "id": "jp-reading-set-n4-069",
@@ -3290,8 +3290,8 @@ window.JAPANESE_READING_SETS = [
       "～ため",
       "～てください"
     ],
-    "titleRuby": "バス<ruby>会<rt>かい</rt></ruby><ruby>社<rt>しゃ</rt></ruby>の<ruby>通<rt>つう</rt></ruby><ruby>知<rt>し</rt></ruby>",
-    "passageRuby": "<ruby>駅前<rt>えきまえ</rt></ruby>の<ruby>道路工事<rt>どうろこうじ</rt></ruby>のため、<ruby>三<rt>さん</rt></ruby><ruby>番<rt>あ</rt></ruby>バスは<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>月曜日<rt>げつようび</rt></ruby>から<ruby>一<rt>いち</rt></ruby><ruby>週<rt>しゅう</rt></ruby><ruby>間<rt>ま</rt></ruby>、<ruby>南口<rt>みなみぐち</rt></ruby>には<ruby>止<rt>あ</rt></ruby>まりません。<ruby>南口<rt>みなみぐち</rt></ruby>へ<ruby>行<rt>い</rt></ruby>く<ruby>人<rt>ひと</rt></ruby>は、<ruby>一<rt>いち</rt></ruby>つ<ruby>前<rt>ぜん</rt></ruby>の<ruby>市役所前<rt>しやくしょまえ</rt></ruby>で<ruby>降<rt>こう</rt></ruby>りて<ruby>歩<rt>ある</rt></ruby>いてください。"
+    "titleRuby": "バス会社の通知",
+    "passageRuby": "駅前の道路工事のため、三番バスは来週の月曜日から一週間、南口には止まりません。南口へ行く人は、一つ前の市役所前で降りて歩いてください。"
   },
   {
     "id": "jp-reading-set-n4-070",
@@ -3347,8 +3347,8 @@ window.JAPANESE_READING_SETS = [
       "～ため",
       "～まで"
     ],
-    "titleRuby": "カフェの<ruby>営<rt>えい</rt></ruby><ruby>業<rt>ぎょう</rt></ruby><ruby>時間<rt>じかん</rt></ruby>",
-    "passageRuby": "カフェ<ruby>森<rt>あ</rt></ruby>は、<ruby>店<rt>みせ</rt></ruby><ruby>内<rt>ない</rt></ruby>の<ruby>工事<rt>こうじ</rt></ruby>のため<ruby>来週<rt>らいしゅう</rt></ruby>だけ<ruby>午後<rt>ごご</rt></ruby><ruby>二<rt>ふた</rt></ruby><ruby>時<rt>じ</rt></ruby>に<ruby>閉店<rt>へいてん</rt></ruby>します。ランチは<ruby>一<rt>いち</rt></ruby><ruby>時<rt>じ</rt></ruby><ruby>半<rt>はん</rt></ruby>まで<ruby>注文<rt>ちゅうもん</rt></ruby>できます。<ruby>持<rt>あ</rt></ruby>ち<ruby>帰<rt>かえ</rt></ruby>りの<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>は、<ruby>閉店<rt>へいてん</rt></ruby>の<ruby>十<rt>じゅう</rt></ruby><ruby>分<rt>わ</rt></ruby><ruby>前<rt>ぜん</rt></ruby>まで<ruby>買<rt>か</rt></ruby>えます。"
+    "titleRuby": "カフェの営業時間",
+    "passageRuby": "カフェ森は、店内の工事のため来週だけ午後二時に閉店します。ランチは一時半まで注文できます。持ち帰りの飲み物は、閉店の十分前まで買えます。"
   },
   {
     "id": "jp-reading-set-n4-071",
@@ -3382,8 +3382,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～予定です"
     ],
-    "titleRuby": "<ruby>電話<rt>でんわ</rt></ruby>の<ruby>留<rt>りゅう</rt></ruby><ruby>言<rt>あ</rt></ruby>",
-    "passageRuby": "<ruby>受付<rt>うけつけ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>から<ruby>岡<rt>あ</rt></ruby><ruby>田<rt>た</rt></ruby>さんへ<ruby>伝言<rt>でんごん</rt></ruby>です。<ruby>明日<rt>あした</rt></ruby>の<ruby>歯医者<rt>はいしゃ</rt></ruby>の<ruby>予約<rt>よやく</rt></ruby>は<ruby>午前<rt>ごぜん</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>十<rt>じゅう</rt></ruby><ruby>時<rt>じ</rt></ruby><ruby>半<rt>はん</rt></ruby>に<ruby>変<rt>へん</rt></ruby>わりました。<ruby>都合<rt>つごう</rt></ruby>が<ruby>悪<rt>あ</rt></ruby>い<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>今<rt>きょう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>五<rt>ご</rt></ruby><ruby>時<rt>じ</rt></ruby>までに<ruby>電話<rt>でんわ</rt></ruby>してください。"
+    "titleRuby": "電話の留言",
+    "passageRuby": "受付の人から岡田さんへ伝言です。明日の歯医者の予約は午前十時から十時半に変わりました。都合が悪い場合は、今日の五時までに電話してください。"
   },
   {
     "id": "jp-reading-set-n4-072",
@@ -3417,8 +3417,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～予定です"
     ],
-    "titleRuby": "<ruby>雨<rt>あめ</rt></ruby>の<ruby>公園<rt>こうえん</rt></ruby><ruby>活<rt>せい</rt></ruby><ruby>動<rt>どう</rt></ruby>",
-    "passageRuby": "<ruby>明日<rt>あした</rt></ruby>の<ruby>公園<rt>こうえん</rt></ruby><ruby>活<rt>せい</rt></ruby><ruby>動<rt>どう</rt></ruby>は、<ruby>雨<rt>あめ</rt></ruby>が<ruby>強<rt>つよ</rt></ruby>い<ruby>場合<rt>ばあい</rt></ruby>、<ruby>体育館<rt>たいいくかん</rt></ruby>で<ruby>行<rt>い</rt></ruby>います。<ruby>体育館<rt>たいいくかん</rt></ruby>では<ruby>外<rt>そと</rt></ruby>の<ruby>靴<rt>くつ</rt></ruby>が<ruby>使<rt>あ</rt></ruby>えないので、<ruby>参加<rt>さんか</rt></ruby>する<ruby>人<rt>ひと</rt></ruby>は<ruby>室内用<rt>しつないよう</rt></ruby>の<ruby>靴<rt>くつ</rt></ruby>を<ruby>持<rt>あ</rt></ruby>って<ruby>来<rt>き</rt></ruby>てください。"
+    "titleRuby": "雨の公園活動",
+    "passageRuby": "明日の公園活動は、雨が強い場合、体育館で行います。体育館では外の靴が使えないので、参加する人は室内用の靴を持って来てください。"
   },
   {
     "id": "jp-reading-set-n4-073",
@@ -3452,8 +3452,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～予定です"
     ],
-    "titleRuby": "<ruby>店長<rt>てんちょう</rt></ruby>のメモ",
-    "passageRuby": "<ruby>店長<rt>てんちょう</rt></ruby>からのメモです。<ruby>新しい<rt>あたらしい</rt></ruby><ruby>皿<rt>さら</rt></ruby>が<ruby>届<rt>あ</rt></ruby>いたら、<ruby>箱<rt>はこ</rt></ruby>を<ruby>開<rt>あ</rt></ruby>ける<ruby>前<rt>ぜん</rt></ruby>に<ruby>数<rt>あ</rt></ruby>を<ruby>確<rt>かく</rt></ruby><ruby>認<rt>にん</rt></ruby>してください。<ruby>割<rt>わり</rt></ruby>れている<ruby>皿<rt>さら</rt></ruby>があった<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>ってから<ruby>事務所<rt>じむしょ</rt></ruby>へ<ruby>持<rt>あ</rt></ruby>って<ruby>来<rt>き</rt></ruby>てください。"
+    "titleRuby": "店長のメモ",
+    "passageRuby": "店長からのメモです。新しい皿が届いたら、箱を開ける前に数を確認してください。割れている皿があった場合は、写真を撮ってから事務所へ持って来てください。"
   },
   {
     "id": "jp-reading-set-n4-074",
@@ -3487,8 +3487,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～予定です"
     ],
-    "titleRuby": "<ruby>友<rt>あ</rt></ruby>だちの<ruby>誘<rt>さそ</rt></ruby>い",
-    "passageRuby": "ジョンさんからのメッセージです。<ruby>土曜日<rt>どようび</rt></ruby>に<ruby>新しい<rt>あたらしい</rt></ruby>カレー<ruby>屋<rt>や</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きませんか。<ruby>辛い<rt>からい</rt></ruby><ruby>料理<rt>りょうり</rt></ruby>が<ruby>苦手<rt>にがて</rt></ruby>な<ruby>人<rt>ひと</rt></ruby>のために、<ruby>甘い<rt>あまい</rt></ruby>メニューもあるそうです。<ruby>行<rt>い</rt></ruby>ける<ruby>場合<rt>ばあい</rt></ruby>は<ruby>金曜日<rt>きんようび</rt></ruby>の<ruby>夜<rt>あ</rt></ruby>までに<ruby>返事<rt>へんじ</rt></ruby>をください。"
+    "titleRuby": "友だちの誘い",
+    "passageRuby": "ジョンさんからのメッセージです。土曜日に新しいカレー屋へ行きませんか。辛い料理が苦手な人のために、甘いメニューもあるそうです。行ける場合は金曜日の夜までに返事をください。"
   },
   {
     "id": "jp-reading-set-n4-075",
@@ -3522,17 +3522,17 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～予定です"
     ],
-    "titleRuby": "<ruby>配<rt>くば</rt></ruby><ruby>送<rt>おく</rt></ruby>の<ruby>知<rt>し</rt></ruby>らせ",
-    "passageRuby": "<ruby>宅配会社<rt>たくはいがいしゃ</rt></ruby>からのお<ruby>知<rt>し</rt></ruby>らせです。<ruby>今<rt>きょう</rt></ruby><ruby>日<rt>にち</rt></ruby><ruby>届<rt>あ</rt></ruby>ける<ruby>予定<rt>よてい</rt></ruby>だった<ruby>荷物<rt>にもつ</rt></ruby>は、<ruby>雪<rt>ゆき</rt></ruby>で<ruby>道<rt>みち</rt></ruby><ruby>路<rt>あ</rt></ruby>が<ruby>混<rt>あ</rt></ruby>んでいるため、<ruby>明日<rt>あした</rt></ruby>の<ruby>午前<rt>ごぜん</rt></ruby><ruby>中<rt>なか</rt></ruby>に<ruby>届<rt>あ</rt></ruby>く<ruby>予定<rt>よてい</rt></ruby>です。<ruby>時間<rt>じかん</rt></ruby>を<ruby>変<rt>へん</rt></ruby>えたい<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>番号<rt>ばんごう</rt></ruby>を<ruby>入<rt>あ</rt></ruby><ruby>力<rt>あ</rt></ruby>して<ruby>手続き<rt>てつづき</rt></ruby>してください。"
+    "titleRuby": "配送の知らせ",
+    "passageRuby": "宅配会社からのお知らせです。今日届ける予定だった荷物は、雪で道路が混んでいるため、明日の午前中に届く予定です。時間を変えたい場合は、番号を入力して手続きしてください。"
   },
   {
     "id": "jp-reading-set-n4-076",
     "level": "N4",
     "type": "短文理解",
     "title": "図書館の本",
-    "titleRuby": "<ruby>図書館<rt>としょかん</rt></ruby>の<ruby>本<rt>ほん</rt></ruby>",
+    "titleRuby": "図書館の本",
     "passage": "林さんは図書館で旅行の本を借りました。来週京都へ行くので、電車の乗り方を調べておきたいと思っています。",
-    "passageRuby": "<ruby>林<rt>はやし</rt></ruby>さんは<ruby>図書館<rt>としょかん</rt></ruby>で<ruby>旅<rt>りょ</rt></ruby><ruby>行<rt>い</rt></ruby>の<ruby>本<rt>ほん</rt></ruby>を<ruby>借<rt>か</rt></ruby>りました。<ruby>来週<rt>らいしゅう</rt></ruby><ruby>京<rt>きょう</rt></ruby><ruby>都<rt>と</rt></ruby>へ<ruby>行<rt>い</rt></ruby>くので、<ruby>電<rt>でん</rt></ruby><ruby>車<rt>しゃ</rt></ruby>の<ruby>乗<rt>の</rt></ruby>り<ruby>方<rt>かた</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べておきたいと<ruby>思<rt>おも</rt></ruby>っています。",
+    "passageRuby": "林さんは図書館で旅行の本を借りました。来週京都へ行くので、電車の乗り方を調べておきたいと思っています。",
     "passageKana": "はやしさんは としょかんで りょこうの ほんを かりました。らいしゅう きょうとへ いくので、でんしゃの のりかたを しらべておきたいと おもっています。",
     "questions": [
       {
@@ -3570,9 +3570,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "短文理解",
     "title": "スーパーの特売",
-    "titleRuby": "スーパーの<ruby>特売<rt>とくばい</rt></ruby>",
+    "titleRuby": "スーパーの特売",
     "passage": "母はスーパーのちらしを見て、卵が安いことを知りました。夕方は込むかもしれないので、昼前に買いに行くことにしました。",
-    "passageRuby": "<ruby>母<rt>はは</rt></ruby>はスーパーのちらしを<ruby>見<rt>み</rt></ruby>て、<ruby>卵<rt>たまご</rt></ruby>が<ruby>安<rt>やす</rt></ruby>いことを<ruby>知<rt>し</rt></ruby>りました。<ruby>夕方<rt>ゆうがた</rt></ruby>は<ruby>込<rt>こ</rt></ruby>むかもしれないので、<ruby>昼前<rt>ひるまえ</rt></ruby>に<ruby>買<rt>か</rt></ruby>いに<ruby>行<rt>い</rt></ruby>くことにしました。",
+    "passageRuby": "母はスーパーのちらしを見て、卵が安いことを知りました。夕方は込むかもしれないので、昼前に買いに行くことにしました。",
     "passageKana": "ははは スーパーの ちらしを みて、たまごが やすいことを しりました。ゆうがたは こむかもしれないので、ひるまえに かいに いくことに しました。",
     "questions": [
       {
@@ -3610,9 +3610,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "短文理解",
     "title": "郵便局の荷物",
-    "titleRuby": "<ruby>郵便局<rt>ゆうびんきょく</rt></ruby>の<ruby>荷物<rt>にもつ</rt></ruby>",
+    "titleRuby": "郵便局の荷物",
     "passage": "王さんは国の家族に荷物を送りました。箱が少し重かったので、郵便局の人に一番安い送り方を聞いてみました。",
-    "passageRuby": "<ruby>王<rt>おう</rt></ruby>さんは<ruby>国<rt>くに</rt></ruby>の<ruby>家族<rt>かぞく</rt></ruby>に<ruby>荷物<rt>にもつ</rt></ruby>を<ruby>送<rt>おく</rt></ruby>りました。<ruby>箱<rt>はこ</rt></ruby>が<ruby>少<rt>すこ</rt></ruby>し<ruby>重<rt>あ</rt></ruby>かったので、<ruby>郵便局<rt>ゆうびんきょく</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>に<ruby>一番<rt>いちばん</rt></ruby><ruby>安<rt>やす</rt></ruby>い<ruby>送<rt>おく</rt></ruby>り<ruby>方<rt>かた</rt></ruby>を<ruby>聞<rt>あ</rt></ruby>いてみました。",
+    "passageRuby": "王さんは国の家族に荷物を送りました。箱が少し重かったので、郵便局の人に一番安い送り方を聞いてみました。",
     "passageKana": "おうさんは くにの かぞくに にもつを おくりました。はこが すこし おもかったので、ゆうびんきょくの ひとに いちばん やすい おくりかたを きいてみました。",
     "questions": [
       {
@@ -3650,9 +3650,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "短文理解",
     "title": "雨の日の公園",
-    "titleRuby": "<ruby>雨<rt>あめ</rt></ruby>の<ruby>日<rt>にち</rt></ruby>の<ruby>公園<rt>こうえん</rt></ruby>",
+    "titleRuby": "雨の日の公園",
     "passage": "弟は公園でサッカーをする予定でした。しかし朝から雨が強かったので、家で映画を見ることにしました。",
-    "passageRuby": "<ruby>弟<rt>おとうと</rt></ruby>は<ruby>公園<rt>こうえん</rt></ruby>でサッカーをする<ruby>予定<rt>よてい</rt></ruby>でした。しかし<ruby>朝<rt>あさ</rt></ruby>から<ruby>雨<rt>あめ</rt></ruby>が<ruby>強<rt>つよ</rt></ruby>かったので、<ruby>家<rt>あ</rt></ruby>で<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>ることにしました。",
+    "passageRuby": "弟は公園でサッカーをする予定でした。しかし朝から雨が強かったので、家で映画を見ることにしました。",
     "passageKana": "おとうとは こうえんで サッカーを する よていでした。しかし あさから あめが つよかったので、いえで えいがを みることに しました。",
     "questions": [
       {
@@ -3690,9 +3690,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "短文理解",
     "title": "店長のメモ",
-    "titleRuby": "<ruby>店長<rt>てんちょう</rt></ruby>のメモ",
+    "titleRuby": "店長のメモ",
     "passage": "店長のメモには、「今日は新しい皿が届くので、箱を開ける前に数を確認してください」と書いてありました。",
-    "passageRuby": "<ruby>店長<rt>てんちょう</rt></ruby>のメモには、「<ruby>今日<rt>きょう</rt></ruby>は<ruby>新<rt>あたら</rt></ruby>しい<ruby>皿<rt>さら</rt></ruby>が<ruby>届<rt>あ</rt></ruby>くので、<ruby>箱<rt>はこ</rt></ruby>を<ruby>開<rt>あ</rt></ruby>ける<ruby>前<rt>まえ</rt></ruby>に<ruby>数<rt>あ</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>してください」と<ruby>書<rt>しょ</rt></ruby>いてありました。",
+    "passageRuby": "店長のメモには、「今日は新しい皿が届くので、箱を開ける前に数を確認してください」と書いてありました。",
     "passageKana": "てんちょうの メモには、「きょうは あたらしい さらが とどくので、はこを あける まえに かずを かくにんしてください」と かいてありました。",
     "questions": [
       {
@@ -3735,9 +3735,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "短文理解",
     "title": "歯医者の予約",
-    "titleRuby": "<ruby>歯医者<rt>はいしゃ</rt></ruby>の<ruby>予約<rt>よやく</rt></ruby>",
+    "titleRuby": "歯医者の予約",
     "passage": "佐藤さんは歯が痛かったので、駅前の歯医者に電話しました。土曜日は人が多いそうなので、金曜日の午後に予約しました。",
-    "passageRuby": "<ruby>佐<rt>さ</rt></ruby><ruby>藤<rt>とう</rt></ruby>さんは<ruby>歯<rt>は</rt></ruby>が<ruby>痛<rt>あ</rt></ruby>かったので、<ruby>駅<rt>あ</rt></ruby><ruby>前<rt>まえ</rt></ruby>の<ruby>歯医者<rt>はいしゃ</rt></ruby>に<ruby>電<rt>でん</rt></ruby><ruby>話<rt>わ</rt></ruby>しました。<ruby>土<rt>ど</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>は<ruby>人<rt>ひと</rt></ruby>が<ruby>多<rt>あ</rt></ruby>いそうなので、<ruby>金<rt>きん</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>午<rt>ご</rt></ruby><ruby>後<rt>あ</rt></ruby>に<ruby>予約<rt>よやく</rt></ruby>しました。",
+    "passageRuby": "佐藤さんは歯が痛かったので、駅前の歯医者に電話しました。土曜日は人が多いそうなので、金曜日の午後に予約しました。",
     "passageKana": "佐藤さんは歯が痛かったので、駅前の歯医者に電話しました。土曜日は人が多いそうなので、金曜日の午後に予約しました。",
     "questions": [
       {
@@ -3775,9 +3775,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "短文理解",
     "title": "洗濯店の紙",
-    "titleRuby": "<ruby>洗濯店<rt>せんたくてん</rt></ruby>の<ruby>紙<rt>あ</rt></ruby>",
+    "titleRuby": "洗濯店の紙",
     "passage": "姉は洗濯店でコートを出しました。店員は「水曜日の五時から受け取ることができます」と紙に書きました。",
-    "passageRuby": "<ruby>姉<rt>あね</rt></ruby>は<ruby>洗濯店<rt>せんたくてん</rt></ruby>でコートを<ruby>出<rt>だ</rt></ruby>しました。<ruby>店<rt>みせ</rt></ruby><ruby>員<rt>いん</rt></ruby>は「<ruby>水<rt>みず</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>五<rt>ご</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>受<rt>う</rt></ruby>け<ruby>取<rt>と</rt></ruby>ることができます」と<ruby>紙<rt>あ</rt></ruby>に<ruby>書<rt>しょ</rt></ruby>きました。",
+    "passageRuby": "姉は洗濯店でコートを出しました。店員は「水曜日の五時から受け取ることができます」と紙に書きました。",
     "passageKana": "姉は洗濯店でコートを出しました。店員は「水曜日の五時から受け取ることができます」と紙に書きました。",
     "questions": [
       {
@@ -3814,9 +3814,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "短文理解",
     "title": "文化祭の準備",
-    "titleRuby": "<ruby>文化祭<rt>ぶんかさい</rt></ruby>の<ruby>準<rt>じゅん</rt></ruby><ruby>備<rt>び</rt></ruby>",
+    "titleRuby": "文化祭の準備",
     "passage": "クラスメートは文化祭でカレーを作ることにしました。野菜を切る人が足りないので、李さんも手伝う予定です。",
-    "passageRuby": "クラスメートは<ruby>文化祭<rt>ぶんかさい</rt></ruby>でカレーを<ruby>作<rt>つく</rt></ruby>ることにしました。<ruby>野<rt>あ</rt></ruby><ruby>菜<rt>あ</rt></ruby>を<ruby>切<rt>きっ</rt></ruby>る<ruby>人<rt>ひと</rt></ruby>が<ruby>足<rt>そく</rt></ruby>りないので、<ruby>李<rt>り</rt></ruby>さんも<ruby>手<rt>て</rt></ruby><ruby>伝<rt>つた</rt></ruby>う<ruby>予定<rt>よてい</rt></ruby>です。",
+    "passageRuby": "クラスメートは文化祭でカレーを作ることにしました。野菜を切る人が足りないので、李さんも手伝う予定です。",
     "passageKana": "クラスメートは文化祭でカレーを作ることにしました。野菜を切る人が足りないので、李さんも手伝う予定です。",
     "questions": [
       {
@@ -3854,9 +3854,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "文意推論",
     "title": "携帯電話の故障",
-    "titleRuby": "<ruby>携帯電話<rt>けいたいでんわ</rt></ruby>の<ruby>故<rt>こ</rt></ruby><ruby>障<rt>しょう</rt></ruby>",
+    "titleRuby": "携帯電話の故障",
     "passage": "田中さんの携帯電話は朝から音が出ません。大切な電話が来るかもしれないので、授業のあとで店へ持って行くつもりです。",
-    "passageRuby": "<ruby>田<rt>た</rt></ruby><ruby>中<rt>なか</rt></ruby>さんの<ruby>携帯電話<rt>けいたいでんわ</rt></ruby>は<ruby>朝<rt>あさ</rt></ruby>から<ruby>音<rt>おと</rt></ruby>が<ruby>出<rt>だ</rt></ruby>ません。<ruby>大<rt>おお</rt></ruby><ruby>切<rt>きっ</rt></ruby>な<ruby>電<rt>でん</rt></ruby><ruby>話<rt>わ</rt></ruby>が<ruby>来<rt>き</rt></ruby>るかもしれないので、<ruby>授業<rt>じゅぎょう</rt></ruby>のあとで<ruby>店<rt>みせ</rt></ruby>へ<ruby>持<rt>あ</rt></ruby>って<ruby>行<rt>い</rt></ruby>くつもりです。",
+    "passageRuby": "田中さんの携帯電話は朝から音が出ません。大切な電話が来るかもしれないので、授業のあとで店へ持って行くつもりです。",
     "passageKana": "田中さんの携帯電話は朝から音が出ません。大切な電話が来るかもしれないので、授業のあとで店へ持って行くつもりです。",
     "questions": [
       {
@@ -3894,9 +3894,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "文意推論",
     "title": "誕生日の相談",
-    "titleRuby": "<ruby>誕生日<rt>たんじょうび</rt></ruby>の<ruby>相談<rt>そうだん</rt></ruby>",
+    "titleRuby": "誕生日の相談",
     "passage": "山田さんは友だちの誕生日に何をあげるか迷っています。友だちは料理が好きなので、料理の本を選んだほうがいいと思いました。",
-    "passageRuby": "<ruby>山<rt>やま</rt></ruby><ruby>田<rt>た</rt></ruby>さんは<ruby>友<rt>あ</rt></ruby>だちの<ruby>誕生日<rt>たんじょうび</rt></ruby>に<ruby>何<rt>あ</rt></ruby>をあげるか<ruby>迷<rt>あ</rt></ruby>っています。<ruby>友<rt>あ</rt></ruby>だちは<ruby>料<rt>りょう</rt></ruby><ruby>理<rt>り</rt></ruby>が<ruby>好<rt>す</rt></ruby>きなので、<ruby>料<rt>りょう</rt></ruby><ruby>理<rt>り</rt></ruby>の<ruby>本<rt>ほん</rt></ruby>を<ruby>選<rt>えら</rt></ruby>んだほうがいいと<ruby>思<rt>おも</rt></ruby>いました。",
+    "passageRuby": "山田さんは友だちの誕生日に何をあげるか迷っています。友だちは料理が好きなので、料理の本を選んだほうがいいと思いました。",
     "passageKana": "山田さんは友だちの誕生日に何をあげるか迷っています。友だちは料理が好きなので、料理の本を選んだほうがいいと思いました。",
     "questions": [
       {
@@ -3940,7 +3940,7 @@ window.JAPANESE_READING_SETS = [
     "title": "ホテルのチェックイン",
     "titleRuby": "ホテルのチェックイン",
     "passage": "留学生の二人は旅行の日、ホテルに三時に着きました。部屋に入る前に、名前を書かなければなりません。",
-    "passageRuby": "<ruby>留学生<rt>りゅうがくせい</rt></ruby>の<ruby>二人<rt>ふたり</rt></ruby>は<ruby>旅行<rt>りょこう</rt></ruby>の<ruby>日<rt>ひ</rt></ruby>、ホテルに<ruby>三時<rt>さんじ</rt></ruby>に<ruby>着<rt>つ</rt></ruby>きました。<ruby>部屋<rt>へや</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>に、<ruby>名前<rt>なまえ</rt></ruby>を<ruby>書<rt>か</rt></ruby>かなければなりません。",
+    "passageRuby": "留学生の二人は旅行の日、ホテルに三時に着きました。部屋に入る前に、名前を書かなければなりません。",
     "passageKana": "留学生の二人は旅行の日、ホテルに三時に着きました。部屋に入る前に、名前を書かなければなりません。",
     "questions": [
       {
@@ -3978,9 +3978,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "短文理解",
     "title": "駅の乗り換え",
-    "titleRuby": "<ruby>駅<rt>あ</rt></ruby>の<ruby>乗<rt>の</rt></ruby>り<ruby>換<rt>か</rt></ruby>え",
+    "titleRuby": "<ruby>駅<rt>えき</rt></ruby>の<ruby>乗<rt>の</rt></ruby>り<ruby>換<rt>か</rt></ruby>え",
     "passage": "鈴木さんは駅で急行に乗るつもりでしたが、その電車はこの駅に止まらないそうです。次の普通電車に乗ることにしました。",
-    "passageRuby": "<ruby>鈴<rt>すず</rt></ruby><ruby>木<rt>もく</rt></ruby>さんは<ruby>駅<rt>あ</rt></ruby>で<ruby>急<rt>いそ</rt></ruby><ruby>行<rt>い</rt></ruby>に<ruby>乗<rt>の</rt></ruby>るつもりでしたが、その<ruby>電<rt>でん</rt></ruby><ruby>車<rt>しゃ</rt></ruby>はこの<ruby>駅<rt>あ</rt></ruby>に<ruby>止<rt>あ</rt></ruby>まらないそうです。<ruby>次<rt>つぎ</rt></ruby>の<ruby>普通電車<rt>ふつうでんしゃ</rt></ruby>に<ruby>乗<rt>の</rt></ruby>ることにしました。",
+    "passageRuby": "<ruby>鈴木<rt>すずき</rt></ruby>さんは<ruby>駅<rt>えき</rt></ruby>で<ruby>急行<rt>きゅうこう</rt></ruby>に<ruby>乗<rt>の</rt></ruby>るつもりでしたが、その<ruby>電車<rt>でんしゃ</rt></ruby>はこの<ruby>駅<rt>えき</rt></ruby>に<ruby>止<rt>と</rt></ruby>まらないそうです。<ruby>次<rt>つぎ</rt></ruby>の<ruby>普通電車<rt>ふつうでんしゃ</rt></ruby>に<ruby>乗<rt>の</rt></ruby>ることにしました。",
     "passageKana": "鈴木さんは駅で急行に乗るつもりでしたが、その電車はこの駅に止まらないそうです。次の普通電車に乗ることにしました。",
     "questions": [
       {
@@ -4018,9 +4018,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "短文理解",
     "title": "薬局で薬を買う",
-    "titleRuby": "<ruby>薬局<rt>やっきょく</rt></ruby>で<ruby>薬<rt>あ</rt></ruby>を<ruby>買<rt>か</rt></ruby>う",
+    "titleRuby": "薬局で薬を買う",
     "passage": "私はのどが痛かったので、薬局へ行きました。薬を飲む前に、説明をよく読んだほうがいいと店員に言われました。",
-    "passageRuby": "<ruby>私<rt>わたし</rt></ruby>はのどが<ruby>痛<rt>あ</rt></ruby>かったので、<ruby>薬局<rt>やっきょく</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きました。<ruby>薬<rt>あ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>む<ruby>前<rt>まえ</rt></ruby>に、<ruby>説明<rt>せつめい</rt></ruby>をよく<ruby>読<rt>あ</rt></ruby>んだほうがいいと<ruby>店<rt>みせ</rt></ruby><ruby>員<rt>いん</rt></ruby>に<ruby>言<rt>あ</rt></ruby>われました。",
+    "passageRuby": "私はのどが痛かったので、薬局へ行きました。薬を飲む前に、説明をよく読んだほうがいいと店員に言われました。",
     "passageKana": "私はのどが痛かったので、薬局へ行きました。薬を飲む前に、説明をよく読んだほうがいいと店員に言われました。",
     "questions": [
       {
@@ -4058,9 +4058,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "短文理解",
     "title": "料理教室の持ち物",
-    "titleRuby": "<ruby>料理教室<rt>りょうりきょうしつ</rt></ruby>の<ruby>持<rt>あ</rt></ruby>ち<ruby>物<rt>もの</rt></ruby>",
+    "titleRuby": "料理教室の持ち物",
     "passage": "料理教室では、エプロンと小さいタオルを持って来てください。包丁は教室の物を使うので、持って来なくてもいいです。",
-    "passageRuby": "<ruby>料理教室<rt>りょうりきょうしつ</rt></ruby>では、エプロンと<ruby>小<rt>ちい</rt></ruby>さいタオルを<ruby>持<rt>あ</rt></ruby>って<ruby>来<rt>き</rt></ruby>てください。<ruby>包丁<rt>ほうちょう</rt></ruby>は<ruby>教<rt>おし</rt></ruby><ruby>室<rt>しつ</rt></ruby>の<ruby>物<rt>もの</rt></ruby>を<ruby>使<rt>あ</rt></ruby>うので、<ruby>持<rt>あ</rt></ruby>って<ruby>来<rt>き</rt></ruby>なくてもいいです。",
+    "passageRuby": "料理教室では、エプロンと小さいタオルを持って来てください。包丁は教室の物を使うので、持って来なくてもいいです。",
     "passageKana": "料理教室では、エプロンと小さいタオルを持って来てください。包丁は教室の物を使うので、持って来なくてもいいです。",
     "questions": [
       {
@@ -4097,9 +4097,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "情報検索",
     "title": "自転車置き場",
-    "titleRuby": "<ruby>自転車置<rt>じてんしゃお</rt></ruby>き<ruby>場<rt>ば</rt></ruby>",
+    "titleRuby": "自転車置き場",
     "passage": "学校の自転車置き場は朝七時から夜九時まで使えます。名前のシールがない自転車は、入口の近くに置いてはいけません。",
-    "passageRuby": "<ruby>学<rt>がく</rt></ruby><ruby>校<rt>こう</rt></ruby>の<ruby>自転車置<rt>じてんしゃお</rt></ruby>き<ruby>場<rt>ば</rt></ruby>は<ruby>朝<rt>あさ</rt></ruby><ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>夜<rt>よる</rt></ruby><ruby>九<rt>きゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>まで<ruby>使<rt>あ</rt></ruby>えます。<ruby>名前<rt>なまえ</rt></ruby>のシールがない<ruby>自<rt>じ</rt></ruby><ruby>転<rt>てん</rt></ruby><ruby>車<rt>しゃ</rt></ruby>は、<ruby>入口<rt>いりぐち</rt></ruby>の<ruby>近<rt>ちか</rt></ruby>くに<ruby>置<rt>お</rt></ruby>いてはいけません。",
+    "passageRuby": "学校の自転車置き場は朝七時から夜九時まで使えます。名前のシールがない自転車は、入口の近くに置いてはいけません。",
     "passageKana": "学校の自転車置き場は朝七時から夜九時まで使えます。名前のシールがない自転車は、入口の近くに置いてはいけません。",
     "questions": [
       {
@@ -4136,9 +4136,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "情報検索",
     "title": "カフェの時間",
-    "titleRuby": "カフェの<ruby>時間<rt>じかん</rt></ruby>",
+    "titleRuby": "カフェの時間",
     "passage": "駅前カフェは平日九時から八時までです。土曜日は十時に開きますが、日曜日は休みです。ケーキは午後二時から売ります。",
-    "passageRuby": "<ruby>駅<rt>あ</rt></ruby><ruby>前<rt>まえ</rt></ruby>カフェは<ruby>平<rt>へい</rt></ruby><ruby>日<rt>にち</rt></ruby><ruby>九<rt>きゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>八<rt>はち</rt></ruby><ruby>時<rt>じ</rt></ruby>までです。<ruby>土<rt>ど</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>は<ruby>十<rt>じゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>に<ruby>開<rt>あ</rt></ruby>きますが、<ruby>日<rt>にち</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>は<ruby>休<rt>やす</rt></ruby>みです。ケーキは<ruby>午<rt>ご</rt></ruby><ruby>後<rt>あ</rt></ruby><ruby>二<rt>ふた</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>売<rt>う</rt></ruby>ります。",
+    "passageRuby": "駅前カフェは平日九時から八時までです。土曜日は十時に開きますが、日曜日は休みです。ケーキは午後二時から売ります。",
     "passageKana": "駅前カフェは平日九時から八時までです。土曜日は十時に開きますが、日曜日は休みです。ケーキは午後二時から売ります。",
     "questions": [
       {
@@ -4175,9 +4175,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "情報検索",
     "title": "荷物の知らせ",
-    "titleRuby": "<ruby>荷物<rt>にもつ</rt></ruby>の<ruby>知<rt>し</rt></ruby>らせ",
+    "titleRuby": "荷物の知らせ",
     "passage": "配達の知らせです。荷物は今日の午前に届きましたが、家に人がいませんでした。明日の午後六時までに、もう一度配達を頼むことができます。",
-    "passageRuby": "<ruby>配達<rt>はいたつ</rt></ruby>の<ruby>知<rt>し</rt></ruby>らせです。<ruby>荷物<rt>にもつ</rt></ruby>は<ruby>今日<rt>きょう</rt></ruby>の<ruby>午<rt>ご</rt></ruby><ruby>前<rt>まえ</rt></ruby>に<ruby>届<rt>あ</rt></ruby>きましたが、<ruby>家<rt>あ</rt></ruby>に<ruby>人<rt>ひと</rt></ruby>がいませんでした。<ruby>明<rt>あ</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>午<rt>ご</rt></ruby><ruby>後<rt>あ</rt></ruby><ruby>六<rt>ろく</rt></ruby><ruby>時<rt>じ</rt></ruby>までに、もう<ruby>一<rt>いち</rt></ruby><ruby>度<rt>ど</rt></ruby><ruby>配達<rt>はいたつ</rt></ruby>を<ruby>頼<rt>あ</rt></ruby>むことができます。",
+    "passageRuby": "配達の知らせです。荷物は今日の午前に届きましたが、家に人がいませんでした。明日の午後六時までに、もう一度配達を頼むことができます。",
     "passageKana": "配達の知らせです。荷物は今日の午前に届きましたが、家に人がいませんでした。明日の午後六時までに、もう一度配達を頼むことができます。",
     "questions": [
       {
@@ -4214,9 +4214,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "情報検索",
     "title": "博物館の案内",
-    "titleRuby": "<ruby>博物館<rt>はくぶつかん</rt></ruby>の<ruby>案<rt>あん</rt></ruby><ruby>内<rt>ない</rt></ruby>",
+    "titleRuby": "博物館の案内",
     "passage": "町の博物館は今月、学生は無料で入れます。写真を撮ってもいいですが、フラッシュを使ってはいけません。",
-    "passageRuby": "<ruby>町<rt>まち</rt></ruby>の<ruby>博物館<rt>はくぶつかん</rt></ruby>は<ruby>今<rt>きょう</rt></ruby><ruby>月<rt>がつ</rt></ruby>、<ruby>学<rt>がく</rt></ruby><ruby>生<rt>じょう</rt></ruby>は<ruby>無料<rt>むりょう</rt></ruby>で<ruby>入<rt>あ</rt></ruby>れます。<ruby>写<rt>あ</rt></ruby><ruby>真<rt>ま</rt></ruby>を<ruby>撮<rt>と</rt></ruby>ってもいいですが、フラッシュを<ruby>使<rt>あ</rt></ruby>ってはいけません。",
+    "passageRuby": "町の博物館は今月、学生は無料で入れます。写真を撮ってもいいですが、フラッシュを使ってはいけません。",
     "passageKana": "町の博物館は今月、学生は無料で入れます。写真を撮ってもいいですが、フラッシュを使ってはいけません。",
     "questions": [
       {
@@ -4254,9 +4254,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "文意推論",
     "title": "留守番電話",
-    "titleRuby": "<ruby>留守番電話<rt>るすばんでんわ</rt></ruby>",
+    "titleRuby": "留守番電話",
     "passage": "父から電話がありました。「帰る時間が少し遅くなります。先に晩ご飯を食べてください」と留守番電話に入っていました。",
-    "passageRuby": "<ruby>父<rt>ちち</rt></ruby>から<ruby>電<rt>でん</rt></ruby><ruby>話<rt>わ</rt></ruby>がありました。「<ruby>帰<rt>かえ</rt></ruby>る<ruby>時間<rt>じかん</rt></ruby>が<ruby>少<rt>すこ</rt></ruby>し<ruby>遅<rt>おそ</rt></ruby>くなります。<ruby>先<rt>さき</rt></ruby>に<ruby>晩<rt>ばん</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby>を<ruby>食<rt>た</rt></ruby>べてください」と<ruby>留守番電話<rt>るすばんでんわ</rt></ruby>に<ruby>入<rt>あ</rt></ruby>っていました。",
+    "passageRuby": "父から電話がありました。「帰る時間が少し遅くなります。先に晩ご飯を食べてください」と留守番電話に入っていました。",
     "passageKana": "父から電話がありました。「帰る時間が少し遅くなります。先に晩ご飯を食べてください」と留守番電話に入っていました。",
     "questions": [
       {
@@ -4293,9 +4293,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "文意推論",
     "title": "メール通知",
-    "titleRuby": "メール<ruby>通知<rt>つうち</rt></ruby>",
+    "titleRuby": "メール通知",
     "passage": "先生からメールが来ました。明日の授業で使うプリントを忘れた学生が多かったので、今夜かばんに入れておくようにと書いてありました。",
-    "passageRuby": "<ruby>先生<rt>せんせい</rt></ruby>からメールが<ruby>来<rt>き</rt></ruby>ました。<ruby>明<rt>あ</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>授業<rt>じゅぎょう</rt></ruby>で<ruby>使<rt>あ</rt></ruby>うプリントを<ruby>忘<rt>わす</rt></ruby>れた<ruby>学<rt>がく</rt></ruby><ruby>生<rt>じょう</rt></ruby>が<ruby>多<rt>あ</rt></ruby>かったので、<ruby>今<rt>きょう</rt></ruby><ruby>夜<rt>よる</rt></ruby>かばんに<ruby>入<rt>あ</rt></ruby>れておくようにと<ruby>書<rt>しょ</rt></ruby>いてありました。",
+    "passageRuby": "先生からメールが来ました。明日の授業で使うプリントを忘れた学生が多かったので、今夜かばんに入れておくようにと書いてありました。",
     "passageKana": "先生からメールが来ました。明日の授業で使うプリントを忘れた学生が多かったので、今夜かばんに入れておくようにと書いてありました。",
     "questions": [
       {
@@ -4337,9 +4337,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "中短篇理解",
     "title": "期末試験の計画",
-    "titleRuby": "<ruby>期末試験<rt>きまつしけん</rt></ruby>の<ruby>計画<rt>けいかく</rt></ruby>",
+    "titleRuby": "期末試験の計画",
     "passage": "私は来週、期末試験を受けます。苦手な漢字が多いので、毎晩二十分ずつ復習しています。試験の前の日は早く寝たほうがいいと思っています。",
-    "passageRuby": "<ruby>私<rt>わたし</rt></ruby>は<ruby>来週<rt>らいしゅう</rt></ruby>、<ruby>期末試験<rt>きまつしけん</rt></ruby>を<ruby>受<rt>う</rt></ruby>けます。<ruby>苦手<rt>にがて</rt></ruby>な<ruby>漢字<rt>かんじ</rt></ruby>が<ruby>多<rt>あ</rt></ruby>いので、<ruby>毎<rt>まい</rt></ruby><ruby>晩<rt>ばん</rt></ruby><ruby>二<rt>ふた</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>分<rt>わ</rt></ruby>ずつ<ruby>復習<rt>ふくしゅう</rt></ruby>しています。<ruby>試<rt>し</rt></ruby><ruby>験<rt>けん</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>の<ruby>日<rt>にち</rt></ruby>は<ruby>早<rt>はや</rt></ruby>く<ruby>寝<rt>あ</rt></ruby>たほうがいいと<ruby>思<rt>おも</rt></ruby>っています。",
+    "passageRuby": "私は来週、期末試験を受けます。苦手な漢字が多いので、毎晩二十分ずつ復習しています。試験の前の日は早く寝たほうがいいと思っています。",
     "passageKana": "わたしは らいしゅう、きまつしけんを うけます。にがてな かんじが おおいので、まいばん にじゅっぷんずつ ふくしゅうしています。しけんの まえの ひは はやく ねたほうが いいと おもっています。",
     "questions": [
       {
@@ -4407,9 +4407,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "中短篇理解",
     "title": "アルバイトの予定",
-    "titleRuby": "アルバイトの<ruby>予定<rt>よてい</rt></ruby>",
+    "titleRuby": "アルバイトの予定",
     "passage": "李さんは駅前の店でアルバイトをしています。土曜日は昼から働く予定でしたが、店長から電話があり、朝九時に来てほしいと言われました。",
-    "passageRuby": "<ruby>李<rt>り</rt></ruby>さんは<ruby>駅<rt>あ</rt></ruby><ruby>前<rt>まえ</rt></ruby>の<ruby>店<rt>みせ</rt></ruby>でアルバイトをしています。<ruby>土<rt>ど</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>は<ruby>昼<rt>あ</rt></ruby>から<ruby>働<rt>あ</rt></ruby>く<ruby>予定<rt>よてい</rt></ruby>でしたが、<ruby>店長<rt>てんちょう</rt></ruby>から<ruby>電<rt>でん</rt></ruby><ruby>話<rt>わ</rt></ruby>があり、<ruby>朝<rt>あさ</rt></ruby><ruby>九<rt>きゅう</rt></ruby><ruby>時<rt>じ</rt></ruby>に<ruby>来<rt>き</rt></ruby>てほしいと<ruby>言<rt>あ</rt></ruby>われました。",
+    "passageRuby": "李さんは駅前の店でアルバイトをしています。土曜日は昼から働く予定でしたが、店長から電話があり、朝九時に来てほしいと言われました。",
     "passageKana": "りさんは えきまえの みせで アルバイトを しています。どようびは ひるから はたらく よていでしたが、てんちょうから でんわが あり、あさ くじに きてほしいと いわれました。",
     "questions": [
       {
@@ -4476,9 +4476,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "中短篇理解",
     "title": "留学生の朝",
-    "titleRuby": "<ruby>留学生<rt>りゅうがくせい</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>",
+    "titleRuby": "留学生の朝",
     "passage": "王さんは日本に来たばかりです。朝、道が分からなくて困りましたが、近所の人が駅まで一緒に歩いてくれました。王さんはとても安心しました。",
-    "passageRuby": "<ruby>王<rt>おう</rt></ruby>さんは<ruby>日<rt>にち</rt></ruby><ruby>本<rt>ほん</rt></ruby>に<ruby>来<rt>き</rt></ruby>たばかりです。<ruby>朝<rt>あさ</rt></ruby>、<ruby>道<rt>みち</rt></ruby>が<ruby>分<rt>わ</rt></ruby>からなくて<ruby>困<rt>あ</rt></ruby>りましたが、<ruby>近<rt>ちか</rt></ruby><ruby>所<rt>ところ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>が<ruby>駅<rt>あ</rt></ruby>まで<ruby>一<rt>いち</rt></ruby><ruby>緒<rt>あ</rt></ruby>に<ruby>歩<rt>ある</rt></ruby>いてくれました。<ruby>王<rt>おう</rt></ruby>さんはとても<ruby>安<rt>やす</rt></ruby><ruby>心<rt>こころ</rt></ruby>しました。",
+    "passageRuby": "王さんは日本に来たばかりです。朝、道が分からなくて困りましたが、近所の人が駅まで一緒に歩いてくれました。王さんはとても安心しました。",
     "passageKana": "おうさんは にほんに きたばかりです。あさ、みちが わからなくて こまりましたが、きんじょの ひとが えきまで いっしょに あるいてくれました。おうさんは とても あんしんしました。",
     "questions": [
       {
@@ -4540,9 +4540,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "中短篇理解",
     "title": "美術館の午後",
-    "titleRuby": "<ruby>美<rt>み</rt></ruby><ruby>術<rt>じゅつ</rt></ruby><ruby>館<rt>かん</rt></ruby>の<ruby>午<rt>ご</rt></ruby><ruby>後<rt>あ</rt></ruby>",
+    "titleRuby": "美術館の午後",
     "passage": "佐藤さんは午後、美術館へ行きました。人が少なかったので、好きな絵をゆっくり見ることができました。帰る前に小さいカードを一枚買いました。",
-    "passageRuby": "<ruby>佐<rt>さ</rt></ruby><ruby>藤<rt>とう</rt></ruby>さんは<ruby>午<rt>ご</rt></ruby><ruby>後<rt>あ</rt></ruby>、<ruby>美<rt>み</rt></ruby><ruby>術<rt>じゅつ</rt></ruby><ruby>館<rt>かん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きました。<ruby>人<rt>ひと</rt></ruby>が<ruby>少<rt>すこ</rt></ruby>なかったので、<ruby>好<rt>す</rt></ruby>きな<ruby>絵<rt>え</rt></ruby>をゆっくり<ruby>見<rt>み</rt></ruby>ることができました。<ruby>帰<rt>かえ</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>に<ruby>小<rt>ちい</rt></ruby>さいカードを<ruby>一<rt>いち</rt></ruby><ruby>枚<rt>まい</rt></ruby><ruby>買<rt>か</rt></ruby>いました。",
+    "passageRuby": "佐藤さんは午後、美術館へ行きました。人が少なかったので、好きな絵をゆっくり見ることができました。帰る前に小さいカードを一枚買いました。",
     "passageKana": "さとうさんは ごご、びじゅつかんへ いきました。ひとが すくなかったので、すきな えを ゆっくり みることが できました。かえる まえに ちいさい カードを いちまい かいました。",
     "questions": [
       {
@@ -4610,9 +4610,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "中短篇理解",
     "title": "引っ越しの知らせ",
-    "titleRuby": "<ruby>引<rt>ひ</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>しの<ruby>知<rt>し</rt></ruby>らせ",
+    "titleRuby": "引っ越しの知らせ",
     "passage": "中村さんは来月、新しいアパートへ引っ越します。今の部屋より駅に近いので便利ですが、家賃は少し高くなります。友だちにはメールで住所を知らせる予定です。",
-    "passageRuby": "<ruby>中<rt>なか</rt></ruby><ruby>村<rt>むら</rt></ruby>さんは<ruby>来<rt>き</rt></ruby><ruby>月<rt>がつ</rt></ruby>、<ruby>新<rt>あたら</rt></ruby>しいアパートへ<ruby>引<rt>ひ</rt></ruby>っ<ruby>越<rt>こ</rt></ruby>します。<ruby>今<rt>きょう</rt></ruby>の<ruby>部<rt>へ</rt></ruby><ruby>屋<rt>や</rt></ruby>より<ruby>駅<rt>あ</rt></ruby>に<ruby>近<rt>ちか</rt></ruby>いので<ruby>便<rt>びん</rt></ruby><ruby>利<rt>り</rt></ruby>ですが、<ruby>家<rt>あ</rt></ruby><ruby>賃<rt>ちん</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>高<rt>あ</rt></ruby>くなります。<ruby>友<rt>あ</rt></ruby>だちにはメールで<ruby>住所<rt>じゅうしょ</rt></ruby>を<ruby>知<rt>し</rt></ruby>らせる<ruby>予定<rt>よてい</rt></ruby>です。",
+    "passageRuby": "中村さんは来月、新しいアパートへ引っ越します。今の部屋より駅に近いので便利ですが、家賃は少し高くなります。友だちにはメールで住所を知らせる予定です。",
     "passageKana": "なかむらさんは らいげつ、あたらしい アパートへ ひっこします。いまの へやより えきに ちかいので べんりですが、やちんは すこし たかくなります。ともだちには メールで じゅうしょを しらせる よていです。",
     "questions": [
       {
@@ -4674,9 +4674,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "情報検索",
     "title": "図書館のお知らせ",
-    "titleRuby": "<ruby>図書館<rt>としょかん</rt></ruby>のお<ruby>知<rt>し</rt></ruby>らせ",
+    "titleRuby": "図書館のお知らせ",
     "passage": "図書館からのお知らせです。来週の月曜日は本の整理をするため、午後一時から開きます。借りた本は入口の箱に返してもいいです。",
-    "passageRuby": "<ruby>図書館<rt>としょかん</rt></ruby>からのお<ruby>知<rt>し</rt></ruby>らせです。<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>月曜日<rt>げつようび</rt></ruby>は<ruby>本<rt>ほん</rt></ruby>の<ruby>整理<rt>せいり</rt></ruby>をするため、<ruby>午<rt>ご</rt></ruby><ruby>後<rt>あ</rt></ruby><ruby>一<rt>いち</rt></ruby><ruby>時<rt>じ</rt></ruby>から<ruby>開<rt>あ</rt></ruby>きます。<ruby>借<rt>か</rt></ruby>りた<ruby>本<rt>ほん</rt></ruby>は<ruby>入口<rt>いりぐち</rt></ruby>の<ruby>箱<rt>はこ</rt></ruby>に<ruby>返<rt>かえ</rt></ruby>してもいいです。",
+    "passageRuby": "図書館からのお知らせです。来週の月曜日は本の整理をするため、午後一時から開きます。借りた本は入口の箱に返してもいいです。",
     "passageKana": "としょかんからの おしらせです。らいしゅうの げつようびは ほんの せいりを するため、ごご いちじから あきます。かりた ほんは いりぐちの はこに かえしても いいです。",
     "questions": [
       {
@@ -4738,9 +4738,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "情報検索",
     "title": "バス時刻の変更",
-    "titleRuby": "バス<ruby>時刻<rt>じこく</rt></ruby>の<ruby>変更<rt>へんこう</rt></ruby>",
+    "titleRuby": "バス時刻の変更",
     "passage": "市のバスは工事のため、明日だけ時刻が変わります。駅行きのバスは午前八時十分ではなく、八時二十五分に出ます。雨の場合、さらに遅れるかもしれません。",
-    "passageRuby": "<ruby>市<rt>し</rt></ruby>のバスは<ruby>工事<rt>こうじ</rt></ruby>のため、<ruby>明<rt>あ</rt></ruby><ruby>日<rt>にち</rt></ruby>だけ<ruby>時刻<rt>じこく</rt></ruby>が<ruby>変<rt>へん</rt></ruby>わります。<ruby>駅<rt>あ</rt></ruby><ruby>行<rt>い</rt></ruby>きのバスは<ruby>午<rt>ご</rt></ruby><ruby>前<rt>まえ</rt></ruby><ruby>八<rt>はち</rt></ruby><ruby>時<rt>じ</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>分<rt>わ</rt></ruby>ではなく、<ruby>八<rt>はち</rt></ruby><ruby>時<rt>じ</rt></ruby><ruby>二<rt>ふた</rt></ruby><ruby>十<rt>じゅう</rt></ruby><ruby>五<rt>ご</rt></ruby><ruby>分<rt>わ</rt></ruby>に<ruby>出<rt>だ</rt></ruby>ます。<ruby>雨<rt>あめ</rt></ruby>の<ruby>場<rt>ば</rt></ruby><ruby>合<rt>あ</rt></ruby>、さらに<ruby>遅<rt>おそ</rt></ruby>れるかもしれません。",
+    "passageRuby": "市のバスは工事のため、明日だけ時刻が変わります。駅行きのバスは午前八時十分ではなく、八時二十五分に出ます。雨の場合、さらに遅れるかもしれません。",
     "passageKana": "しの バスは こうじの ため、あしただけ じこくが かわります。えきいきの バスは ごぜん はちじ じゅっぷんではなく、はちじ にじゅうごふんに でます。あめの ばあい、さらに おくれるかもしれません。",
     "questions": [
       {
@@ -4808,9 +4808,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "情報検索",
     "title": "運動センターの教室",
-    "titleRuby": "<ruby>運動<rt>うんどう</rt></ruby>センターの<ruby>教<rt>おし</rt></ruby><ruby>室<rt>しつ</rt></ruby>",
+    "titleRuby": "運動センターの教室",
     "passage": "運動センターのヨガ教室は火曜日と金曜日の夜七時からです。初めての人は受付で名前を書いてください。タオルは必要ですが、飲み物は中で買うことができます。",
-    "passageRuby": "<ruby>運動<rt>うんどう</rt></ruby>センターのヨガ<ruby>教<rt>おし</rt></ruby><ruby>室<rt>しつ</rt></ruby>は<ruby>火<rt>か</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>と<ruby>金<rt>きん</rt></ruby><ruby>曜<rt>よう</rt></ruby><ruby>日<rt>にち</rt></ruby>の<ruby>夜<rt>よる</rt></ruby><ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby>からです。<ruby>初<rt>しょ</rt></ruby>めての<ruby>人<rt>ひと</rt></ruby>は<ruby>受付<rt>うけつけ</rt></ruby>で<ruby>名前<rt>なまえ</rt></ruby>を<ruby>書<rt>しょ</rt></ruby>いてください。タオルは<ruby>必<rt>ひつ</rt></ruby><ruby>要<rt>よう</rt></ruby>ですが、<ruby>飲<rt>の</rt></ruby>み<ruby>物<rt>もの</rt></ruby>は<ruby>中<rt>なか</rt></ruby>で<ruby>買<rt>か</rt></ruby>うことができます。",
+    "passageRuby": "運動センターのヨガ教室は火曜日と金曜日の夜七時からです。初めての人は受付で名前を書いてください。タオルは必要ですが、飲み物は中で買うことができます。",
     "passageKana": "うんどうセンターの ヨガきょうしつは かようびと きんようびの よる しちじからです。はじめての ひとは うけつけで なまえを かいてください。タオルは ひつようですが、のみものは なかで かうことが できます。",
     "questions": [
       {
@@ -4877,9 +4877,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "情報検索",
     "title": "映画館の案内",
-    "titleRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>の<ruby>案<rt>あん</rt></ruby><ruby>内<rt>ない</rt></ruby>",
+    "titleRuby": "映画館の案内",
     "passage": "映画館の午前の回は千円で見ることができます。切符はネットで買ってもいいですが、始まる十分前までに来なければなりません。",
-    "passageRuby": "<ruby>映画館<rt>えいがかん</rt></ruby>の<ruby>午<rt>ご</rt></ruby><ruby>前<rt>まえ</rt></ruby>の<ruby>回<rt>かい</rt></ruby>は<ruby>千<rt>あ</rt></ruby><ruby>円<rt>えん</rt></ruby>で<ruby>見<rt>み</rt></ruby>ることができます。<ruby>切符<rt>きっぷ</rt></ruby>はネットで<ruby>買<rt>か</rt></ruby>ってもいいですが、<ruby>始<rt>あ</rt></ruby>まる<ruby>十<rt>じゅう</rt></ruby><ruby>分<rt>わ</rt></ruby><ruby>前<rt>まえ</rt></ruby>までに<ruby>来<rt>き</rt></ruby>なければなりません。",
+    "passageRuby": "映画館の午前の回は千円で見ることができます。切符はネットで買ってもいいですが、始まる十分前までに来なければなりません。",
     "passageKana": "えいがかんの ごぜんの かいは せんえんで みることが できます。きっぷは ネットで かっても いいですが、はじまる じゅっぷんまえまでに こなければなりません。",
     "questions": [
       {
@@ -4947,9 +4947,9 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "情報検索",
     "title": "ごみ出しのルール",
-    "titleRuby": "ごみ<ruby>出<rt>だ</rt></ruby>しのルール",
+    "titleRuby": "ごみ出しのルール",
     "passage": "この町では、燃えるごみは月曜日と木曜日の朝に出します。びんは水で洗ってから、青い箱に入れてください。夜にごみを出してはいけません。",
-    "passageRuby": "この<ruby>町<rt>まち</rt></ruby>では、<ruby>燃<rt>も</rt></ruby>えるごみは<ruby>月曜日<rt>げつようび</rt></ruby>と<ruby>木曜日<rt>もくようび</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>に<ruby>出<rt>だ</rt></ruby>します。びんは<ruby>水<rt>みず</rt></ruby>で<ruby>洗<rt>あら</rt></ruby>ってから、<ruby>青<rt>あお</rt></ruby>い<ruby>箱<rt>はこ</rt></ruby>に<ruby>入<rt>あ</rt></ruby>れてください。<ruby>夜<rt>よる</rt></ruby>にごみを<ruby>出<rt>だ</rt></ruby>してはいけません。",
+    "passageRuby": "この町では、燃えるごみは月曜日と木曜日の朝に出します。びんは水で洗ってから、青い箱に入れてください。夜にごみを出してはいけません。",
     "passageKana": "この まちでは、もえるごみは げつようびと もくようびの あさに だします。びんは みずで あらってから、あおい はこに いれてください。よるに ごみを だしてはいけません。",
     "questions": [
       {
