@@ -429,8 +429,8 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです",
       "～そうです"
     ],
-    "titleRuby": "自転車修理の連絡",
-    "passageRuby": "自転車屋から李さんへ<ruby>電話<rt>でんわ</rt></ruby>がありました。修理は<ruby>終<rt>お</rt></ruby>わりましたが、店は<ruby>今日<rt>きょう</rt></ruby>は六時に閉まります。六時に間に合わない<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>明日<rt>あした</rt></ruby>の<ruby>午前<rt>ごぜん</rt></ruby>中に取りに来てもいいそうです。"
+    "titleRuby": "<ruby>自転車<rt>じてんしゃ</rt></ruby><ruby>修理<rt>しゅうり</rt></ruby>の<ruby>連絡<rt>れんらく</rt></ruby>",
+    "passageRuby": "<ruby>自転車屋<rt>じてんしゃや</rt></ruby>から<ruby>李<rt>り</rt></ruby>さんへ<ruby>電話<rt>でんわ</rt></ruby>がありました。<ruby>修理<rt>しゅうり</rt></ruby>は<ruby>終<rt>お</rt></ruby>わりましたが、<ruby>店<rt>みせ</rt></ruby>は<ruby>今日<rt>きょう</rt></ruby>は<ruby>六時<rt>ろくじ</rt></ruby>に<ruby>閉<rt>し</rt></ruby>まります。<ruby>六時<rt>ろくじ</rt></ruby>に<ruby>間<rt>ま</rt></ruby>に<ruby>合<rt>あ</rt></ruby>わない<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>明日<rt>あした</rt></ruby>の<ruby>午前中<rt>ごぜんちゅう</rt></ruby>に<ruby>取<rt>と</rt></ruby>りに<ruby>来<rt>き</rt></ruby>てもいいそうです。"
   },
   {
     "id": "jp-reading-set-n4-011",
@@ -1616,8 +1616,8 @@ window.JAPANESE_READING_SETS = [
       "～かもしれない",
       "～ほうがいい"
     ],
-    "titleRuby": "母のメモ",
-    "passageRuby": "<ruby>学校<rt>がっこう</rt></ruby>から帰ると、テーブルに母のメモがありました。『カレーは鍋の中です。温めて食べてください。七時ごろ帰ります。』私はお腹がすいていたので、手を<ruby>洗<rt>あら</rt></ruby>ってから台所へ<ruby>行<rt>い</rt></ruby>きました。"
+    "titleRuby": "<ruby>母<rt>はは</rt></ruby>のメモ",
+    "passageRuby": "<ruby>学校<rt>がっこう</rt></ruby>から<ruby>帰<rt>かえ</rt></ruby>ると、テーブルに<ruby>母<rt>はは</rt></ruby>のメモがありました。『カレーは<ruby>鍋<rt>なべ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>です。<ruby>温<rt>あたた</rt></ruby>めて<ruby>食<rt>た</rt></ruby>べてください。<ruby>七時<rt>しちじ</rt></ruby>ごろ<ruby>帰<rt>かえ</rt></ruby>ります。』私はお<ruby>腹<rt>なか</rt></ruby>がすいていたので、<ruby>手<rt>て</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>ってから<ruby>台所<rt>だいどころ</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きました。"
   },
   {
     "id": "jp-reading-set-n4-034",
