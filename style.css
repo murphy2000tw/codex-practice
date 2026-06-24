@@ -1949,8 +1949,22 @@ h1 {
   color: var(--text);
   font-size: 1.15rem;
   font-weight: 700;
-  line-height: 2;
+  line-height: 2.15;
   overflow-wrap: anywhere;
+}
+
+.reading-passage ruby,
+.reading-card-header h2 ruby {
+  ruby-position: over;
+}
+
+.reading-passage rt,
+.reading-card-header h2 rt {
+  color: inherit;
+  font-size: 0.55em;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
 }
 
 .reading-kana {
@@ -2073,6 +2087,6 @@ h1 {
 
   .reading-passage {
     font-size: 1.05rem;
-    line-height: 1.95;
+    line-height: 2.2;
   }
 }
