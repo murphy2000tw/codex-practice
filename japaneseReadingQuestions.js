@@ -3940,7 +3940,7 @@ window.JAPANESE_READING_SETS = [
     "title": "ホテルのチェックイン",
     "titleRuby": "ホテルのチェックイン",
     "passage": "留学生の二人は旅行の日、ホテルに三時に着きました。部屋に入る前に、名前を書かなければなりません。",
-    "passageRuby": "<ruby>留学生<rt>りゅうがくせい</rt></ruby>の二人は旅行の日、ホテルに三時に着きました。部屋に入る<ruby>前<rt>まえ</rt></ruby>に、<ruby>名前<rt>なまえ</rt></ruby>を書かなければなりません。",
+    "passageRuby": "<ruby>留学生<rt>りゅうがくせい</rt></ruby>の<ruby>二人<rt>ふたり</rt></ruby>は<ruby>旅行<rt>りょこう</rt></ruby>の<ruby>日<rt>ひ</rt></ruby>、ホテルに<ruby>三時<rt>さんじ</rt></ruby>に<ruby>着<rt>つ</rt></ruby>きました。<ruby>部屋<rt>へや</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>に、<ruby>名前<rt>なまえ</rt></ruby>を<ruby>書<rt>か</rt></ruby>かなければなりません。",
     "passageKana": "留学生の二人は旅行の日、ホテルに三時に着きました。部屋に入る前に、名前を書かなければなりません。",
     "questions": [
       {
