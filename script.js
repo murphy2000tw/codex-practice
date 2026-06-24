@@ -1574,6 +1574,35 @@ function createTitleRubyParts(readingSet) {
   return parts;
 }
 
+
+function createRubyPartsFromMarkup(markup, fallbackText = "") {
+  const source = String(markup ?? "");
+  if (!source) return [{ text: String(fallbackText ?? "") }];
+
+  const parts = [];
+  const pushText = (value) => {
+    if (!value) return;
+    const last = parts[parts.length - 1];
+    if (last && Object.prototype.hasOwnProperty.call(last, "text")) last.text += value;
+    else parts.push({ text: value });
+  };
+
+  const rubyPattern = /<ruby>(.*?)<rt>(.*?)<\/rt><\/ruby>/g;
+  let cursor = 0;
+  let match;
+  while ((match = rubyPattern.exec(source)) !== null) {
+    pushText(source.slice(cursor, match.index));
+    const base = match[1].replace(/<[^>]+>/g, "");
+    const ruby = match[2].replace(/<[^>]+>/g, "");
+    if (base && ruby) parts.push({ base, ruby });
+    else pushText(base);
+    cursor = match.index + match[0].length;
+  }
+  pushText(source.slice(cursor));
+
+  return parts.length ? parts : [{ text: String(fallbackText ?? "") }];
+}
+
 function renderRubyParts(parent, parts) {
   parent.replaceChildren();
   parts.forEach((part) => {
@@ -1591,11 +1620,11 @@ function renderRubyParts(parent, parts) {
 }
 
 function getReadingTitleRubyParts(readingSet) {
-  return readingSet.titleRubyParts ?? createTitleRubyParts(readingSet);
+  return readingSet.titleRubyParts ?? (readingSet.titleRuby ? createRubyPartsFromMarkup(readingSet.titleRuby, readingSet.title) : createTitleRubyParts(readingSet));
 }
 
 function getReadingPassageRubyParts(readingSet) {
-  return readingSet.passageRubyParts ?? createRubyPartsFromKana(readingSet.passage, readingSet.passageKana);
+  return readingSet.passageRubyParts ?? (readingSet.passageRuby ? createRubyPartsFromMarkup(readingSet.passageRuby, readingSet.passage) : createRubyPartsFromKana(readingSet.passage, readingSet.passageKana));
 }
 
 function createReadingMeta(readingSet) {
