@@ -1445,24 +1445,20 @@ function renderReadingUnavailable() {
 }
 
 
-function isJapaneseKanji(char) {
-  return /[\u3400-\u9fff々〆ヵヶ]/u.test(char);
+function normalizeRubyTerms(rubyTerms) {
+  if (!Array.isArray(rubyTerms)) return [];
+  return rubyTerms
+    .filter((term) => term && term.text && term.reading)
+    .map((term) => ({ text: String(term.text), reading: String(term.reading) }))
+    .sort((a, b) => b.text.length - a.text.length || a.text.localeCompare(b.text, "ja"));
 }
 
-function toHiraganaReadingText(text) {
-  return String(text ?? "")
-    .replace(/[\u30a1-\u30f6]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0x60))
-    .replace(/\s+/g, "");
-}
-
-function createRubyPartsFromKana(text, kana) {
+function createRubyPartsFromTerms(text, rubyTerms) {
   const source = String(text ?? "");
-  const reading = toHiraganaReadingText(kana);
-  if (!source || !reading) return [{ text: source }];
-  const parts = [];
-  let sourceIndex = 0;
-  let readingIndex = 0;
+  const terms = normalizeRubyTerms(rubyTerms);
+  if (!source || !terms.length) return [{ text: source }];
 
+  const parts = [];
   const pushText = (value) => {
     if (!value) return;
     const last = parts[parts.length - 1];
@@ -1470,137 +1466,19 @@ function createRubyPartsFromKana(text, kana) {
     else parts.push({ text: value });
   };
 
-  while (sourceIndex < source.length) {
-    const char = source[sourceIndex];
-    if (!isJapaneseKanji(char)) {
-      pushText(char);
-      const normalizedChar = toHiraganaReadingText(char);
-      if (normalizedChar && reading.startsWith(normalizedChar, readingIndex)) {
-        readingIndex += normalizedChar.length;
-      }
-      sourceIndex += 1;
-      continue;
-    }
-
-    const kanjiStart = sourceIndex;
-    while (sourceIndex < source.length && isJapaneseKanji(source[sourceIndex])) sourceIndex += 1;
-    const base = source.slice(kanjiStart, sourceIndex);
-    let nextLiteral = "";
-    let lookAhead = sourceIndex;
-    while (lookAhead < source.length && !isJapaneseKanji(source[lookAhead])) {
-      nextLiteral += source[lookAhead];
-      lookAhead += 1;
-    }
-    const normalizedNextLiteral = toHiraganaReadingText(nextLiteral);
-    let ruby = "";
-    if (normalizedNextLiteral) {
-      const nextReadingIndex = reading.indexOf(normalizedNextLiteral, readingIndex);
-      if (nextReadingIndex >= readingIndex) {
-        ruby = reading.slice(readingIndex, nextReadingIndex);
-        readingIndex = nextReadingIndex;
-      }
-    } else {
-      ruby = reading.slice(readingIndex);
-      readingIndex = reading.length;
-    }
-
-    if (ruby) parts.push({ base, ruby });
-    else pushText(base);
-  }
-
-  return parts;
-}
-
-function createTitleRubyParts(readingSet) {
-  const title = String(readingSet.title ?? "");
-  if (!title) return [{ text: title }];
-
-  const passage = String(readingSet.passage ?? "");
-  const passageTitleIndex = passage.indexOf(title);
-  if (passageTitleIndex >= 0) {
-    const passageParts = createRubyPartsFromKana(readingSet.passage, readingSet.passageKana);
-    const titleParts = [];
-    let cursor = 0;
-    const titleStart = passageTitleIndex;
-    const titleEnd = titleStart + title.length;
-    const pushText = (value) => {
-      if (!value) return;
-      const last = titleParts[titleParts.length - 1];
-      if (last && Object.prototype.hasOwnProperty.call(last, "text")) last.text += value;
-      else titleParts.push({ text: value });
-    };
-
-    passageParts.forEach((part) => {
-      const value = part.base ?? part.text ?? "";
-      const partStart = cursor;
-      const partEnd = partStart + value.length;
-      cursor = partEnd;
-      if (partEnd <= titleStart || partStart >= titleEnd) return;
-      const sliceStart = Math.max(titleStart, partStart) - partStart;
-      const sliceEnd = Math.min(titleEnd, partEnd) - partStart;
-      const slicedValue = value.slice(sliceStart, sliceEnd);
-      if (part.base && part.ruby && sliceStart === 0 && sliceEnd === value.length) {
-        titleParts.push({ base: slicedValue, ruby: part.ruby });
-      } else {
-        pushText(slicedValue);
-      }
-    });
-
-    if (titleParts.some((part) => part.ruby)) return titleParts;
-  }
-
-  const vocabulary = Array.isArray(readingSet.vocabulary) ? readingSet.vocabulary : [];
-  const parts = [];
   let index = 0;
-  const pushText = (value) => {
-    if (!value) return;
-    const last = parts[parts.length - 1];
-    if (last && Object.prototype.hasOwnProperty.call(last, "text")) last.text += value;
-    else parts.push({ text: value });
-  };
-
-  while (index < title.length) {
-    const match = vocabulary
-      .filter((item) => item.word && item.kana && title.startsWith(item.word, index))
-      .sort((a, b) => b.word.length - a.word.length)[0];
+  while (index < source.length) {
+    const match = terms.find((term) => source.startsWith(term.text, index));
     if (match) {
-      parts.push({ base: match.word, ruby: match.kana });
-      index += match.word.length;
+      parts.push({ base: match.text, ruby: match.reading });
+      index += match.text.length;
     } else {
-      pushText(title[index]);
+      pushText(source[index]);
       index += 1;
     }
   }
+
   return parts;
-}
-
-
-function createRubyPartsFromMarkup(markup, fallbackText = "") {
-  const source = String(markup ?? "");
-  if (!source) return [{ text: String(fallbackText ?? "") }];
-
-  const parts = [];
-  const pushText = (value) => {
-    if (!value) return;
-    const last = parts[parts.length - 1];
-    if (last && Object.prototype.hasOwnProperty.call(last, "text")) last.text += value;
-    else parts.push({ text: value });
-  };
-
-  const rubyPattern = /<ruby>(.*?)<rt>(.*?)<\/rt><\/ruby>/g;
-  let cursor = 0;
-  let match;
-  while ((match = rubyPattern.exec(source)) !== null) {
-    pushText(source.slice(cursor, match.index));
-    const base = match[1].replace(/<[^>]+>/g, "");
-    const ruby = match[2].replace(/<[^>]+>/g, "");
-    if (base && ruby) parts.push({ base, ruby });
-    else pushText(base);
-    cursor = match.index + match[0].length;
-  }
-  pushText(source.slice(cursor));
-
-  return parts.length ? parts : [{ text: String(fallbackText ?? "") }];
 }
 
 function renderRubyParts(parent, parts) {
@@ -1619,12 +1497,16 @@ function renderRubyParts(parent, parts) {
   });
 }
 
+function renderRubyText(parent, text, rubyTerms) {
+  renderRubyParts(parent, createRubyPartsFromTerms(text, rubyTerms));
+}
+
 function getReadingTitleRubyParts(readingSet) {
-  return readingSet.titleRubyParts ?? createRubyPartsFromMarkup(readingSet.titleRuby ?? readingSet.title, readingSet.title);
+  return createRubyPartsFromTerms(readingSet.title, readingSet.rubyTerms);
 }
 
 function getReadingPassageRubyParts(readingSet) {
-  return readingSet.passageRubyParts ?? createRubyPartsFromMarkup(readingSet.passageRuby ?? readingSet.passage, readingSet.passage);
+  return createRubyPartsFromTerms(readingSet.passage, readingSet.rubyTerms);
 }
 
 function createReadingMeta(readingSet) {
@@ -1648,13 +1530,13 @@ function createReadingSetCard(readingSet, { reveal = false, showFeedback = false
   meta.className = "card-number";
   meta.textContent = `${readingSet.level}・${readingSet.type}`;
   const title = document.createElement("h2");
-  if (showRuby) renderRubyParts(title, getReadingTitleRubyParts(readingSet));
+  if (showRuby) renderRubyText(title, readingSet.title, readingSet.rubyTerms);
   else title.textContent = readingSet.title;
   header.append(meta, title);
 
   const passage = document.createElement("p");
   passage.className = "reading-passage";
-  if (showRuby) renderRubyParts(passage, getReadingPassageRubyParts(readingSet));
+  if (showRuby) renderRubyText(passage, readingSet.passage, readingSet.rubyTerms);
   else passage.textContent = readingSet.passage;
   card.append(header, passage);
   readingSet.questions.forEach((question, questionIndex) => {
