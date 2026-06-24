@@ -1620,11 +1620,11 @@ function renderRubyParts(parent, parts) {
 }
 
 function getReadingTitleRubyParts(readingSet) {
-  return readingSet.titleRubyParts ?? (readingSet.titleRuby ? createRubyPartsFromMarkup(readingSet.titleRuby, readingSet.title) : createTitleRubyParts(readingSet));
+  return readingSet.titleRubyParts ?? createRubyPartsFromMarkup(readingSet.titleRuby ?? readingSet.title, readingSet.title);
 }
 
 function getReadingPassageRubyParts(readingSet) {
-  return readingSet.passageRubyParts ?? (readingSet.passageRuby ? createRubyPartsFromMarkup(readingSet.passageRuby, readingSet.passage) : createRubyPartsFromKana(readingSet.passage, readingSet.passageKana));
+  return readingSet.passageRubyParts ?? createRubyPartsFromMarkup(readingSet.passageRuby ?? readingSet.passage, readingSet.passage);
 }
 
 function createReadingMeta(readingSet) {
