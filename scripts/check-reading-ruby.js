@@ -12,11 +12,25 @@ function stripRubyMarkup(value) {
   return String(value ?? '')
     .replace(/<ruby>/g, '')
     .replace(/<rt>.*?<\/rt>/g, '')
-    .replace(/<\/ruby>/g, '');
+    .replace(/<\/ruby>/g, '')
+    .replace(/<[^>]+>/g, '');
+}
+
+function collectKanji(value) {
+  return [...new Set(String(value ?? '').match(/[\u4E00-\u9FFF]/gu) || [])];
+}
+
+function collectRubyKanji(value) {
+  const covered = new Set();
+  for (const match of String(value ?? '').matchAll(/<ruby>(.*?)<rt>.*?<\/rt><\/ruby>/g)) {
+    for (const char of collectKanji(stripRubyMarkup(match[1]))) covered.add(char);
+  }
+  return covered;
 }
 
 const rtIssues = [];
 const textIssues = [];
+const coverageIssues = [];
 
 for (const readingSet of readingSets) {
   for (const field of ['titleRuby', 'passageRuby']) {
@@ -43,6 +57,21 @@ for (const readingSet of readingSets) {
         actual,
       });
     }
+
+
+    const kanji = collectKanji(expected);
+    const covered = collectRubyKanji(markup);
+    const missing = kanji.filter((char) => !covered.has(char));
+    if (kanji.length && missing.length / kanji.length > 0.35) {
+      coverageIssues.push({
+        id: readingSet.id,
+        title: readingSet.title,
+        field,
+        missing: missing.join(''),
+        covered: kanji.length - missing.length,
+        total: kanji.length,
+      });
+    }
   }
 }
 
@@ -62,8 +91,16 @@ if (textIssues.length) {
   }
 }
 
+if (coverageIssues.length) {
+  console.warn('Ruby kanji coverage warnings (>35% of unique kanji missing ruby):');
+  for (const issue of coverageIssues) {
+    console.warn(`- ${issue.id} (${issue.title}) ${issue.field}: ${issue.covered}/${issue.total} covered, missing unique kanji: ${issue.missing}`);
+  }
+}
+
 if (rtIssues.length || textIssues.length) {
   process.exitCode = 1;
 } else {
-  console.log(`Checked ${readingSets.length} reading sets: all titleRuby/passageRuby <rt> entries are kana-only and base text matches title/passage.`);
+  const coverageSummary = coverageIssues.length ? `; ${coverageIssues.length} coverage warning(s)` : '; no large coverage gaps';
+  console.log(`Checked ${readingSets.length} reading sets: all titleRuby/passageRuby <rt> entries are kana-only and base text matches title/passage${coverageSummary}.`);
 }
