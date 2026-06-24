@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 const path = require('node:path');
-
 const repoRoot = path.join(__dirname, '..');
 global.window = {};
 require(path.join(repoRoot, 'japaneseReadingQuestions.js'));
@@ -8,13 +7,23 @@ require(path.join(repoRoot, 'japaneseReadingQuestions.js'));
 const readingSets = window.JAPANESE_READING_SETS || [];
 const kanaReadingPattern = /^[\u3041-\u3096\u30A1-\u30FAー]+$/u;
 const kanjiPattern = /[\u3400-\u9FFF々〆ヵヶ]/u;
+const errors = [];
+const warnings = [];
 
 function normalizeRubyTerms(rubyTerms) {
   if (!Array.isArray(rubyTerms)) return [];
   return rubyTerms
     .filter((term) => term && term.text && term.reading)
-    .map((term) => ({ text: String(term.text), reading: String(term.reading) }))
+    .map((term) => ({ text: String(term.text).trim(), reading: String(term.reading).trim() }))
+    .filter((term) => term.text && term.reading && kanaReadingPattern.test(term.reading))
     .sort((a, b) => b.text.length - a.text.length || a.text.localeCompare(b.text, 'ja'));
+}
+
+function mergeAndDedupeTerms(vocabTerms = [], manualTerms = []) {
+  const merged = new Map();
+  normalizeRubyTerms(vocabTerms).forEach((term) => merged.set(term.text, term));
+  normalizeRubyTerms(manualTerms).forEach((term) => merged.set(term.text, term));
+  return normalizeRubyTerms([...merged.values()]);
 }
 
 function createRubyPartsFromTerms(text, rubyTerms) {
@@ -35,69 +44,53 @@ function createRubyPartsFromTerms(text, rubyTerms) {
   return parts;
 }
 
-const errors = [];
-let setsWithRubyTerms = 0;
-
-for (const [readingSetIndex, readingSet] of readingSets.entries()) {
-  const rubyTerms = Array.isArray(readingSet.rubyTerms) ? readingSet.rubyTerms : [];
-  if (!rubyTerms.length) continue;
-  setsWithRubyTerms += 1;
-
-  const seenTerms = new Set();
+for (const readingSet of readingSets) {
   const sourceText = `${readingSet.title ?? ''}\n${readingSet.passage ?? ''}`;
+  const vocabTerms = [];
 
-  for (const [termIndex, term] of rubyTerms.entries()) {
-    const label = `${readingSet.id} rubyTerms[${termIndex}]`;
-    const text = String(term?.text ?? '');
-    const reading = String(term?.reading ?? '');
-    const key = `${text}\u0000${reading}`;
-
-    if (!text.trim()) errors.push(`${label}: text must not be empty`);
-    if (!reading.trim()) errors.push(`${label}: reading must not be empty`);
-    if (reading && !kanaReadingPattern.test(reading)) errors.push(`${label}: reading must contain only kana or ー: ${reading}`);
-    if (kanjiPattern.test(reading)) errors.push(`${label}: reading must not contain kanji: ${reading}`);
-    if (text && !sourceText.includes(text)) errors.push(`${label}: text does not appear in title or passage: ${text}`);
-    if (seenTerms.has(key)) errors.push(`${label}: duplicate rubyTerm: ${text}（${reading}）`);
-    seenTerms.add(key);
+  for (const [index, item] of (readingSet.vocabulary || []).entries()) {
+    const label = `${readingSet.id} vocabulary[${index}]`;
+    const word = String(item?.word ?? '').trim();
+    const kana = String(item?.kana ?? '').trim();
+    if (!word) errors.push(`${label}: word must not be empty`);
+    if (!kana) errors.push(`${label}: kana must not be empty`);
+    if (kana && !kanaReadingPattern.test(kana)) warnings.push(`${label}: kana is not safe for ruby and will be skipped: ${kana}`);
+    if (kana && kanjiPattern.test(kana)) warnings.push(`${label}: kana contains kanji and will be skipped: ${kana}`);
+    if (word && !sourceText.includes(word)) warnings.push(`${label}: word does not appear in title or passage: ${word}`);
+    vocabTerms.push({ text: word, reading: kana });
   }
 
-  const sorted = normalizeRubyTerms(rubyTerms).map((term) => term.text);
-  const unsorted = rubyTerms.filter((term) => term?.text && term?.reading).map((term) => String(term.text));
-  for (let i = 1; i < unsorted.length; i += 1) {
-    if (unsorted[i - 1].length < unsorted[i].length) {
-      errors.push(`${readingSet.id}: rubyTerms should be listed longest-to-shortest near "${unsorted[i]}"`);
-      break;
-    }
+  const manualTerms = Array.isArray(readingSet.rubyTerms) ? readingSet.rubyTerms : [];
+  const seenManualTexts = new Set();
+  for (const [index, term] of manualTerms.entries()) {
+    const label = `${readingSet.id} rubyTerms[${index}]`;
+    const text = String(term?.text ?? '').trim();
+    const reading = String(term?.reading ?? '').trim();
+    if (!text) errors.push(`${label}: text must not be empty`);
+    if (!reading) errors.push(`${label}: reading must not be empty`);
+    if (reading && !kanaReadingPattern.test(reading)) errors.push(`${label}: reading must contain only kana, katakana, or ー: ${reading}`);
+    if (reading && kanjiPattern.test(reading)) errors.push(`${label}: reading must not contain kanji: ${reading}`);
+    if (text && !sourceText.includes(text)) warnings.push(`${label}: text does not appear in title or passage: ${text}`);
+    if (seenManualTexts.has(text)) warnings.push(`${label}: duplicate rubyTerms text; later duplicate is ignored by rendering priority: ${text}`);
+    seenManualTexts.add(text);
   }
 
+  const terms = mergeAndDedupeTerms(vocabTerms, manualTerms);
   for (const textField of ['title', 'passage']) {
-    const parts = createRubyPartsFromTerms(readingSet[textField], rubyTerms);
+    const parts = createRubyPartsFromTerms(readingSet[textField], terms);
     const renderedBase = parts.map((part) => part.base ?? part.text ?? '').join('');
-    if (renderedBase !== String(readingSet[textField] ?? '')) {
-      errors.push(`${readingSet.id} ${textField}: rendered base text mismatch`);
-    }
-    for (const part of parts) {
-      if (part.ruby && kanjiPattern.test(part.ruby)) errors.push(`${readingSet.id} ${textField}: generated rt contains kanji: ${part.ruby}`);
-    }
+    if (renderedBase !== String(readingSet[textField] ?? '')) errors.push(`${readingSet.id} ${textField}: rendered base text mismatch`);
+    for (const part of parts) if (part.ruby && kanjiPattern.test(part.ruby)) errors.push(`${readingSet.id} ${textField}: generated rt contains kanji: ${part.ruby}`);
   }
-
-  for (const longer of sorted) {
-    for (const shorter of sorted) {
-      if (longer !== shorter && longer.includes(shorter) && longer.length > shorter.length) {
-        const longerIndex = sorted.indexOf(longer);
-        const shorterIndex = sorted.indexOf(shorter);
-        if (longerIndex > shorterIndex) errors.push(`${readingSet.id}: overlapping term order should prefer longer text: ${longer} before ${shorter}`);
-      }
-    }
-  }
-
-  if (readingSetIndex >= 30) errors.push(`${readingSet.id}: rubyTerms should only be added to the first 30 reading sets in this batch`);
 }
 
+if (warnings.length) {
+  console.warn('Reading rubyTerms warnings:');
+  for (const warning of warnings) console.warn(`- ${warning}`);
+}
 if (errors.length) {
   console.error('Reading rubyTerms check failed:');
   for (const error of errors) console.error(`- ${error}`);
   process.exit(1);
 }
-
-console.log(`Checked ${readingSets.length} reading sets. ${setsWithRubyTerms} sets have safe rubyTerms; all terms are present in source text, kana-only, non-empty, unique, and render without base text mismatch.`);
+console.log(`Checked ${readingSets.length} reading sets. Ruby rendering uses vocabulary plus rubyTerms, skips unsafe vocabulary kana, and does not require full kanji coverage.`);

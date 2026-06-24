@@ -1445,12 +1445,29 @@ function renderReadingUnavailable() {
 }
 
 
+const rubyReadingPattern = /^[\u3041-\u3096\u30A1-\u30FAー]+$/u;
+
 function normalizeRubyTerms(rubyTerms) {
   if (!Array.isArray(rubyTerms)) return [];
   return rubyTerms
     .filter((term) => term && term.text && term.reading)
-    .map((term) => ({ text: String(term.text), reading: String(term.reading) }))
+    .map((term) => ({ text: String(term.text).trim(), reading: String(term.reading).trim() }))
+    .filter((term) => term.text && term.reading && rubyReadingPattern.test(term.reading))
     .sort((a, b) => b.text.length - a.text.length || a.text.localeCompare(b.text, "ja"));
+}
+
+function mergeAndDedupeTerms(vocabTerms = [], manualTerms = []) {
+  const merged = new Map();
+  normalizeRubyTerms(vocabTerms).forEach((term) => merged.set(term.text, term));
+  normalizeRubyTerms(manualTerms).forEach((term) => merged.set(term.text, term));
+  return normalizeRubyTerms([...merged.values()]);
+}
+
+function getReadingRubyTerms(readingSet) {
+  const vocabTerms = Array.isArray(readingSet?.vocabulary)
+    ? readingSet.vocabulary.map((item) => ({ text: item?.word, reading: item?.kana }))
+    : [];
+  return mergeAndDedupeTerms(vocabTerms, readingSet?.rubyTerms || []);
 }
 
 function createRubyPartsFromTerms(text, rubyTerms) {
@@ -1502,11 +1519,11 @@ function renderRubyText(parent, text, rubyTerms) {
 }
 
 function getReadingTitleRubyParts(readingSet) {
-  return createRubyPartsFromTerms(readingSet.title, readingSet.rubyTerms);
+  return createRubyPartsFromTerms(readingSet.title, getReadingRubyTerms(readingSet));
 }
 
 function getReadingPassageRubyParts(readingSet) {
-  return createRubyPartsFromTerms(readingSet.passage, readingSet.rubyTerms);
+  return createRubyPartsFromTerms(readingSet.passage, getReadingRubyTerms(readingSet));
 }
 
 function createReadingMeta(readingSet) {
@@ -1530,13 +1547,13 @@ function createReadingSetCard(readingSet, { reveal = false, showFeedback = false
   meta.className = "card-number";
   meta.textContent = `${readingSet.level}・${readingSet.type}`;
   const title = document.createElement("h2");
-  if (showRuby) renderRubyText(title, readingSet.title, readingSet.rubyTerms);
+  if (showRuby) renderRubyText(title, readingSet.title, getReadingRubyTerms(readingSet));
   else title.textContent = readingSet.title;
   header.append(meta, title);
 
   const passage = document.createElement("p");
   passage.className = "reading-passage";
-  if (showRuby) renderRubyText(passage, readingSet.passage, readingSet.rubyTerms);
+  if (showRuby) renderRubyText(passage, readingSet.passage, getReadingRubyTerms(readingSet));
   else passage.textContent = readingSet.passage;
   card.append(header, passage);
   readingSet.questions.forEach((question, questionIndex) => {
