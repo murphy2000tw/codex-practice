@@ -62,7 +62,7 @@ for (const readingSet of readingSets) {
     const kanji = collectKanji(expected);
     const covered = collectRubyKanji(markup);
     const missing = kanji.filter((char) => !covered.has(char));
-    if (kanji.length && missing.length / kanji.length > 0.35) {
+    if (missing.length) {
       coverageIssues.push({
         id: readingSet.id,
         title: readingSet.title,
@@ -92,15 +92,14 @@ if (textIssues.length) {
 }
 
 if (coverageIssues.length) {
-  console.warn('Ruby kanji coverage warnings (>35% of unique kanji missing ruby):');
+  console.error('Ruby kanji coverage errors (kanji missing ruby):');
   for (const issue of coverageIssues) {
-    console.warn(`- ${issue.id} (${issue.title}) ${issue.field}: ${issue.covered}/${issue.total} covered, missing unique kanji: ${issue.missing}`);
+    console.error(`- ${issue.id} (${issue.title}) ${issue.field}: ${issue.covered}/${issue.total} covered, missing unique kanji: ${issue.missing}`);
   }
 }
 
-if (rtIssues.length || textIssues.length) {
+if (rtIssues.length || textIssues.length || coverageIssues.length) {
   process.exitCode = 1;
 } else {
-  const coverageSummary = coverageIssues.length ? `; ${coverageIssues.length} coverage warning(s)` : '; no large coverage gaps';
-  console.log(`Checked ${readingSets.length} reading sets: all titleRuby/passageRuby <rt> entries are kana-only and base text matches title/passage${coverageSummary}.`);
+  console.log(`Checked ${readingSets.length} reading sets: all titleRuby/passageRuby <rt> entries are kana-only, base text matches title/passage, and kanji coverage warnings are 0.`);
 }
