@@ -8,7 +8,7 @@ const readingSets = window.JAPANESE_READING_SETS || [];
 const kanaReadingPattern = /^[\u3041-\u3096\u30A1-\u30FAー]+$/u;
 const kanjiPattern = /[\u3400-\u9FFF々〆ヵヶ]/u;
 const importantCompoundTerms = [
-  '来週', '急行', '店長', '学校祭', '準備', '予約確認', '前日', '午後', '連絡', '当日',
+  '来週', '今週', '一週間', '急行', '店長', '朝食券', '開店前', '質問', '説明', '市役所前', '道路工事', '三番バス', '南口', '図書館', '読み聞かせ会', '参加費', '自転車置き場', '旅行', '充電器', '手伝う予定', '郵便局', '再配達', '不在票', '学校祭', '準備', '予約確認', '前日', '午後', '連絡', '当日',
   '変更', '道路', '中央公園', '開店時間', '平日', '来月', '日曜日', '普通電車', '受付',
   '荷物', '朝食', '地域清掃', '軍手', '飲み物', '写真部', '建物', '授業', '学生', '予定',
   '営業', '時間', '駅前', '教室', '習慣', '文化祭', '放課後',
@@ -30,6 +30,13 @@ const commonReadingRubyTerms = [
   { text: "学生", reading: "がくせい" }, { text: "予定", reading: "よてい" }, { text: "営業", reading: "えいぎょう" },
   { text: "時間", reading: "じかん" }, { text: "駅前", reading: "えきまえ" }, { text: "教室", reading: "きょうしつ" },
   { text: "習慣", reading: "しゅうかん" }, { text: "文化祭", reading: "ぶんかさい" }, { text: "放課後", reading: "ほうかご" },
+  { text: "今週", reading: "こんしゅう" }, { text: "一週間", reading: "いっしゅうかん" }, { text: "朝食券", reading: "ちょうしょくけん" },
+  { text: "開店前", reading: "かいてんまえ" }, { text: "質問", reading: "しつもん" }, { text: "説明", reading: "せつめい" },
+  { text: "市役所前", reading: "しやくしょまえ" }, { text: "道路工事", reading: "どうろこうじ" }, { text: "三番バス", reading: "さんばんバス" },
+  { text: "南口", reading: "みなみぐち" }, { text: "図書館", reading: "としょかん" }, { text: "読み聞かせ会", reading: "よみきかせかい" },
+  { text: "参加費", reading: "さんかひ" }, { text: "自転車置き場", reading: "じてんしゃおきば" }, { text: "旅行", reading: "りょこう" },
+  { text: "充電器", reading: "じゅうでんき" }, { text: "手伝う予定", reading: "てつだうよてい" }, { text: "郵便局", reading: "ゆうびんきょく" },
+  { text: "再配達", reading: "さいはいたつ" }, { text: "不在票", reading: "ふざいひょう" },
 ];
 
 function normalizeRubyTerms(rubyTerms) {

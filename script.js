@@ -1475,6 +1475,13 @@ const commonReadingRubyTerms = [
   { text: "学生", reading: "がくせい" }, { text: "予定", reading: "よてい" }, { text: "営業", reading: "えいぎょう" },
   { text: "時間", reading: "じかん" }, { text: "駅前", reading: "えきまえ" }, { text: "教室", reading: "きょうしつ" },
   { text: "習慣", reading: "しゅうかん" }, { text: "文化祭", reading: "ぶんかさい" }, { text: "放課後", reading: "ほうかご" },
+  { text: "今週", reading: "こんしゅう" }, { text: "一週間", reading: "いっしゅうかん" }, { text: "朝食券", reading: "ちょうしょくけん" },
+  { text: "開店前", reading: "かいてんまえ" }, { text: "質問", reading: "しつもん" }, { text: "説明", reading: "せつめい" },
+  { text: "市役所前", reading: "しやくしょまえ" }, { text: "道路工事", reading: "どうろこうじ" }, { text: "三番バス", reading: "さんばんバス" },
+  { text: "南口", reading: "みなみぐち" }, { text: "図書館", reading: "としょかん" }, { text: "読み聞かせ会", reading: "よみきかせかい" },
+  { text: "参加費", reading: "さんかひ" }, { text: "自転車置き場", reading: "じてんしゃおきば" }, { text: "旅行", reading: "りょこう" },
+  { text: "充電器", reading: "じゅうでんき" }, { text: "手伝う予定", reading: "てつだうよてい" }, { text: "郵便局", reading: "ゆうびんきょく" },
+  { text: "再配達", reading: "さいはいたつ" }, { text: "不在票", reading: "ふざいひょう" },
 ];
 
 function normalizeRubyTerms(rubyTerms) {
@@ -1698,15 +1705,24 @@ function renderReadingQuizQuestion() {
     if (answer !== undefined) selectedAnswers[question.id] = answer;
   });
   const card = createReadingSetCard(readingSet, { showFeedback: true, selectedAnswers, onAnswer: (questionIndex, selectedIndex) => {
+    if (readingQuizAnswers[answeredInPreviousSets + questionIndex] !== undefined) return;
     readingQuizAnswers[answeredInPreviousSets + questionIndex] = selectedIndex;
-    if (readingSet.questions.every((_question, index) => readingQuizAnswers[answeredInPreviousSets + index] !== undefined)) {
+    renderReadingQuizQuestion();
+  }});
+  const setComplete = readingSet.questions.every((_question, index) => readingQuizAnswers[answeredInPreviousSets + index] !== undefined);
+  const quizNodes = [status, card];
+  if (setComplete) {
+    const next = document.createElement("button");
+    next.className = "answer-button";
+    next.type = "button";
+    next.textContent = currentReadingQuizSetIndex + 1 >= readingQuizSets.length ? "查看測驗結果" : "下一篇閱讀";
+    next.addEventListener("click", () => {
       currentReadingQuizSetIndex += 1;
       renderReadingQuizQuestion();
-    } else {
-      renderReadingQuizQuestion();
-    }
-  }});
-  readingContent.replaceChildren(status, card);
+    });
+    quizNodes.push(next);
+  }
+  readingContent.replaceChildren(...quizNodes);
 }
 
 function renderReadingQuizResults() {
