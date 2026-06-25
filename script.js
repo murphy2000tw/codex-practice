@@ -1449,6 +1449,17 @@ const rubyReadingPattern = /^[\u3041-\u3096\u30A1-\u30FAー]+$/u;
 const rubyBaseKanjiPattern = /[\u3400-\u9FFF々〆ヵヶ]/u;
 
 const commonReadingRubyTerms = [
+  { text: "来週", reading: "らいしゅう" }, { text: "今週", reading: "こんしゅう" }, { text: "一週間", reading: "いっしゅうかん" },
+  { text: "誕生日", reading: "たんじょうび" }, { text: "五十分", reading: "ごじゅっぷん" }, { text: "三十分", reading: "さんじゅっぷん" },
+  { text: "十分", reading: "じゅっぷん" }, { text: "学習室", reading: "がくしゅうしつ" }, { text: "宿題", reading: "しゅくだい" },
+  { text: "授業", reading: "じゅぎょう" }, { text: "学生料金", reading: "がくせいりょうきん" }, { text: "学生証", reading: "がくせいしょう" },
+  { text: "朝食券", reading: "ちょうしょくけん" }, { text: "店長", reading: "てんちょう" }, { text: "開店前", reading: "かいてんまえ" },
+  { text: "図書館", reading: "としょかん" }, { text: "市立図書館", reading: "しりつとしょかん" }, { text: "市役所前", reading: "しやくしょまえ" },
+  { text: "道路工事", reading: "どうろこうじ" }, { text: "自転車置き場", reading: "じてんしゃおきば" }, { text: "地域清掃", reading: "ちいきせいそう" },
+  { text: "日本語", reading: "にほんご" }, { text: "日本語の宿題", reading: "にほんごのしゅくだい" }, { text: "郵便局", reading: "ゆうびんきょく" },
+  { text: "再配達", reading: "さいはいたつ" }, { text: "不在票", reading: "ふざいひょう" }, { text: "映画館", reading: "えいがかん" },
+  { text: "割引", reading: "わりびき" }, { text: "受付", reading: "うけつけ" }, { text: "返却箱", reading: "へんきゃくばこ" },
+  { text: "料理教室", reading: "りょうりきょうしつ" }, { text: "薬局", reading: "やっきょく" }, { text: "台所", reading: "だいどころ" },
   { text: "市民図書館のお知らせ", reading: "しみんとしょかんのおしらせ" }, { text: "市民図書館", reading: "しみんとしょかん" }, { text: "駅前スーパー", reading: "えきまえスーパー" },
   { text: "料理教室", reading: "りょうりきょうしつ" }, { text: "魚売り場", reading: "さかなうりば" }, { text: "買い物袋", reading: "かいものぶくろ" },
   { text: "使用規則", reading: "しようきそく" }, { text: "出口工事", reading: "でぐちこうじ" }, { text: "西出口", reading: "にしでぐち" },
@@ -1539,11 +1550,22 @@ function renderRubyParts(parent, parts) {
   parent.replaceChildren();
   parts.forEach((part) => {
     if (part.base && part.ruby) {
-      const ruby = document.createElement("ruby");
-      ruby.append(document.createTextNode(part.base));
-      const rt = document.createElement("rt");
+      const ruby = document.createElement("span");
+      ruby.className = "jp-ruby";
+      ruby.setAttribute("role", "text");
+      ruby.setAttribute("aria-label", `${part.base}（${part.ruby}）`);
+
+      const rt = document.createElement("span");
+      rt.className = "jp-rt";
+      rt.setAttribute("aria-hidden", "true");
       rt.textContent = part.ruby;
-      ruby.appendChild(rt);
+
+      const rb = document.createElement("span");
+      rb.className = "jp-rb";
+      rb.setAttribute("aria-hidden", "true");
+      rb.textContent = part.base;
+
+      ruby.append(rt, rb);
       parent.appendChild(ruby);
     } else {
       parent.append(document.createTextNode(part.text ?? ""));
@@ -1602,7 +1624,8 @@ function createReadingSetCard(readingSet, { reveal = false, showFeedback = false
       const button = document.createElement("button");
       button.className = "quiz-option reading-option";
       button.type = "button";
-      button.textContent = option;
+      if (showRuby) renderRubyText(button, option, getReadingRubyTerms(readingSet));
+      else button.textContent = option;
       button.addEventListener("click", () => onAnswer?.(questionIndex, optionIndex, optionButtons, feedback));
       if (selectedAnswers[question.id] !== undefined || reveal) {
         button.disabled = true;
