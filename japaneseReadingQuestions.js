@@ -24,12 +24,27 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "郵便局",
         "kana": "ゆうびんきょく",
-        "meaning": "主題語"
+        "meaning": "重點詞"
       },
       {
-        "word": "必要",
-        "kana": "ひつよう",
-        "meaning": "必要"
+        "word": "荷物",
+        "kana": "にもつ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "中村",
+        "kana": "なかむら",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "菓子",
+        "kana": "かし",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "窓口",
+        "kana": "まどぐち",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -37,38 +52,38 @@ window.JAPANESE_READING_SETS = [
       "～ことにしました"
     ],
     "rubyTerms": [
-          {
-                "text": "郵便局",
-                "reading": "ゆうびんきょく"
-          },
-          {
-                "text": "中村",
-                "reading": "なかむら"
-          },
-          {
-                "text": "必要",
-                "reading": "ひつよう"
-          },
-          {
-                "text": "荷物",
-                "reading": "にもつ"
-          },
-          {
-                "text": "菓子",
-                "reading": "かし"
-          },
-          {
-                "text": "妹",
-                "reading": "いもうと"
-          },
-          {
-                "text": "箱",
-                "reading": "はこ"
-          },
-          {
-                "text": "聞",
-                "reading": "き"
-          }
+      {
+        "text": "郵便局",
+        "reading": "ゆうびんきょく"
+      },
+      {
+        "text": "荷物",
+        "reading": "にもつ"
+      },
+      {
+        "text": "中村",
+        "reading": "なかむら"
+      },
+      {
+        "text": "菓子",
+        "reading": "かし"
+      },
+      {
+        "text": "窓口",
+        "reading": "まどぐち"
+      },
+      {
+        "text": "必要",
+        "reading": "ひつよう"
+      },
+      {
+        "text": "普通",
+        "reading": "ふつう"
+      },
+      {
+        "text": "明日",
+        "reading": "あした"
+      }
     ],
     "titleRuby": "郵便局の荷物",
     "passageRuby": "中村さんは妹にお菓子を送りたくて郵便局へ行きました。箱が少し大きかったので、窓口の人に安い送り方を聞きました。明日着く必要はないため、普通の便で送ることにしました。"
@@ -96,19 +111,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "八時半",
+        "kana": "はちじはん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "映画",
+        "kana": "えいが",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "由美",
+        "kana": "ゆみ",
+        "meaning": "重點詞"
+      },
+      {
         "word": "予定",
-        "kana": "予定",
-        "meaning": "關鍵詞"
-      },
-      {
-        "word": "由美さんは友",
-        "kana": "由美さんは友",
-        "meaning": "關鍵詞"
-      },
-      {
-        "word": "だちと映画を",
-        "kana": "だちと映画を",
-        "meaning": "關鍵詞"
+        "kana": "よてい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -116,38 +141,34 @@ window.JAPANESE_READING_SETS = [
       "～ことにしました"
     ],
     "rubyTerms": [
-          {
-                "text": "八時半",
-                "reading": "はちじはん"
-          },
-          {
-                "text": "予定",
-                "reading": "よてい"
-          },
-          {
-                "text": "人気",
-                "reading": "にんき"
-          },
-          {
-                "text": "映画",
-                "reading": "えいが"
-          },
-          {
-                "text": "時間",
-                "reading": "じかん"
-          },
-          {
-                "text": "由美",
-                "reading": "ゆみ"
-          },
-          {
-                "text": "席",
-                "reading": "せき"
-          },
-          {
-                "text": "見",
-                "reading": "み"
-          }
+      {
+        "text": "八時半",
+        "reading": "はちじはん"
+      },
+      {
+        "text": "映画",
+        "reading": "えいが"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "由美",
+        "reading": "ゆみ"
+      },
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "人気",
+        "reading": "にんき"
+      },
+      {
+        "text": "二人",
+        "reading": "ふたり"
+      }
     ],
     "titleRuby": "映画の時間",
     "passageRuby": "由美さんは友だちと映画を見る予定です。七時の回は人気で席が前の方しかありませんでした。少し待てば八時半の回で真ん中の席が取れるので、二人は遅い回にしました。"
@@ -175,19 +196,24 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "店長",
+        "kana": "てんちょう",
+        "meaning": "重點詞"
+      },
+      {
         "word": "確認",
-        "kana": "確認",
-        "meaning": "關鍵詞"
+        "kana": "かくにん",
+        "meaning": "重點詞"
       },
       {
         "word": "今日",
-        "kana": "今日",
-        "meaning": "關鍵詞"
+        "kana": "きょう",
+        "meaning": "重點詞"
       },
       {
-        "word": "店長",
-        "kana": "店長",
-        "meaning": "關鍵詞"
+        "word": "注文",
+        "kana": "ちゅうもん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -195,38 +221,22 @@ window.JAPANESE_READING_SETS = [
       "～ことにしました"
     ],
     "rubyTerms": [
-          {
-                "text": "喫茶店",
-                "reading": "きっさてん"
-          },
-          {
-                "text": "今日",
-                "reading": "きょう"
-          },
-          {
-                "text": "初日",
-                "reading": "しょにち"
-          },
-          {
-                "text": "店長",
-                "reading": "てんちょう"
-          },
-          {
-                "text": "注文",
-                "reading": "ちゅうもん"
-          },
-          {
-                "text": "確認",
-                "reading": "かくにん"
-          },
-          {
-                "text": "水",
-                "reading": "みず"
-          },
-          {
-                "text": "聞",
-                "reading": "き"
-          }
+      {
+        "text": "店長",
+        "reading": "てんちょう"
+      },
+      {
+        "text": "確認",
+        "reading": "かくにん"
+      },
+      {
+        "text": "今日",
+        "reading": "きょう"
+      },
+      {
+        "text": "注文",
+        "reading": "ちゅうもん"
+      }
     ],
     "titleRuby": "アルバイト初日",
     "passageRuby": "マイクさんは今日から喫茶店でアルバイトを始めました。店長は、注文を聞く前に水を出すこと、分からない言葉があったらすぐ確認することを教えました。マイクさんは小さいノートに書きました。"
@@ -254,19 +264,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "兄の誕生日に",
-        "kana": "兄の誕生日に",
-        "meaning": "關鍵詞"
+        "word": "誕生日",
+        "kana": "たんじょうび",
+        "meaning": "重點詞"
       },
       {
-        "word": "私は青いシャ",
-        "kana": "私は青いシャ",
-        "meaning": "關鍵詞"
+        "word": "青い",
+        "kana": "あおい",
+        "meaning": "重點詞"
       },
       {
-        "word": "ツを買うつも",
-        "kana": "ツを買うつも",
-        "meaning": "關鍵詞"
+        "word": "買う",
+        "kana": "かう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "料理",
+        "kana": "りょうり",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "最近",
+        "kana": "さいきん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -274,38 +294,38 @@ window.JAPANESE_READING_SETS = [
       "～ことにしました"
     ],
     "rubyTerms": [
-          {
-                "text": "誕生日",
-                "reading": "たんじょうび"
-          },
-          {
-                "text": "包丁",
-                "reading": "ほうちょう"
-          },
-          {
-                "text": "料理",
-                "reading": "りょうり"
-          },
-          {
-                "text": "最近",
-                "reading": "さいきん"
-          },
-          {
-                "text": "兄",
-                "reading": "あに"
-          },
-          {
-                "text": "母",
-                "reading": "はは"
-          },
-          {
-                "text": "選",
-                "reading": "えら"
-          },
-          {
-                "text": "青",
-                "reading": "あお"
-          }
+      {
+        "text": "誕生日",
+        "reading": "たんじょうび"
+      },
+      {
+        "text": "青い",
+        "reading": "あおい"
+      },
+      {
+        "text": "買う",
+        "reading": "かう"
+      },
+      {
+        "text": "料理",
+        "reading": "りょうり"
+      },
+      {
+        "text": "最近",
+        "reading": "さいきん"
+      },
+      {
+        "text": "包丁",
+        "reading": "ほうちょう"
+      },
+      {
+        "text": "兄",
+        "reading": "あに"
+      },
+      {
+        "text": "母",
+        "reading": "はは"
+      }
     ],
     "titleRuby": "誕生日のプレゼント",
     "passageRuby": "兄の誕生日に、私は青いシャツを買うつもりでした。でも母から、兄は最近料理を始めたと聞きました。それで、シャツではなく使いやすい包丁を選びました。"
@@ -334,18 +354,28 @@ window.JAPANESE_READING_SETS = [
     "vocabulary": [
       {
         "word": "明日",
-        "kana": "明日",
-        "meaning": "關鍵詞"
+        "kana": "あした",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "電話",
+        "kana": "でんわ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "佐藤",
+        "kana": "さとう",
+        "meaning": "重點詞"
       },
       {
         "word": "朝",
-        "kana": "朝",
-        "meaning": "關鍵詞"
+        "kana": "あさ",
+        "meaning": "重點詞"
       },
       {
         "word": "夜",
-        "kana": "夜",
-        "meaning": "關鍵詞"
+        "kana": "よる",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -353,38 +383,26 @@ window.JAPANESE_READING_SETS = [
       "～ことにしました"
     ],
     "rubyTerms": [
-          {
-                "text": "目覚まし",
-                "reading": "めざまし"
-          },
-          {
-                "text": "今夜",
-                "reading": "こんや"
-          },
-          {
-                "text": "佐藤",
-                "reading": "さとう"
-          },
-          {
-                "text": "明日",
-                "reading": "あした"
-          },
-          {
-                "text": "時計",
-                "reading": "とけい"
-          },
-          {
-                "text": "電話",
-                "reading": "でんわ"
-          },
-          {
-                "text": "朝",
-                "reading": "あさ"
-          },
-          {
-                "text": "音",
-                "reading": "おと"
-          }
+      {
+        "text": "明日",
+        "reading": "あした"
+      },
+      {
+        "text": "電話",
+        "reading": "でんわ"
+      },
+      {
+        "text": "佐藤",
+        "reading": "さとう"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "夜",
+        "reading": "よる"
+      }
     ],
     "titleRuby": "スマホの音",
     "passageRuby": "佐藤さんのスマホは朝から音が出ませんでした。電話は受けられますが、目覚ましが鳴らないかもしれません。明日は早いので、今夜は古い時計も使うことにしました。"
@@ -414,12 +432,27 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "燃えるごみ",
         "kana": "もえるごみ",
-        "meaning": "可燃垃圾"
+        "meaning": "重點詞"
       },
       {
-        "word": "収集日",
-        "kana": "しゅうしゅうび",
-        "meaning": "收集日"
+        "word": "水曜日",
+        "kana": "すいようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "火曜日",
+        "kana": "かようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "来週",
+        "kana": "らいしゅう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "場合",
+        "kana": "ばあい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -427,38 +460,38 @@ window.JAPANESE_READING_SETS = [
       "～までに"
     ],
     "rubyTerms": [
-          {
-                "text": "収集日",
-                "reading": "しゅうしゅうび"
-          },
-          {
-                "text": "水曜日",
-                "reading": "すいようび"
-          },
-          {
-                "text": "火曜日",
-                "reading": "かようび"
-          },
-          {
-                "text": "町内会",
-                "reading": "ちょうないかい"
-          },
-          {
-                "text": "場合",
-                "reading": "ばあい"
-          },
-          {
-                "text": "場所",
-                "reading": "ばしょ"
-          },
-          {
-                "text": "変更",
-                "reading": "へんこう"
-          },
-          {
-                "text": "来週",
-                "reading": "らいしゅう"
-          }
+      {
+        "text": "燃えるごみ",
+        "reading": "もえるごみ"
+      },
+      {
+        "text": "水曜日",
+        "reading": "すいようび"
+      },
+      {
+        "text": "火曜日",
+        "reading": "かようび"
+      },
+      {
+        "text": "来週",
+        "reading": "らいしゅう"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "雨",
+        "reading": "あめ"
+      },
+      {
+        "text": "町",
+        "reading": "まち"
+      }
     ],
     "titleRuby": "ごみ収集日の変更",
     "passageRuby": "町内会のお知らせです。来週だけ、燃えるごみの収集日は火曜日ではなく水曜日になります。朝八時までに、いつもの場所へ出してください。雨の場合も集めます。"
@@ -486,14 +519,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "朝食券",
-        "kana": "ちょうしょくけん",
-        "meaning": "早餐券"
+        "word": "フロント",
+        "kana": "フロント",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "部屋",
+        "kana": "へや",
+        "meaning": "重點詞"
       },
       {
         "word": "受付",
         "kana": "うけつけ",
-        "meaning": "櫃台"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "説明",
+        "kana": "せつめい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "番号",
+        "kana": "ばんごう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -501,38 +549,34 @@ window.JAPANESE_READING_SETS = [
       "～なければなりません"
     ],
     "rubyTerms": [
-          {
-                "text": "朝食券",
-                "reading": "ちょうしょくけん"
-          },
-          {
-                "text": "受付",
-                "reading": "うけつけ"
-          },
-          {
-                "text": "旅館",
-                "reading": "りょかん"
-          },
-          {
-                "text": "朝食",
-                "reading": "ちょうしょく"
-          },
-          {
-                "text": "番号",
-                "reading": "ばんごう"
-          },
-          {
-                "text": "説明",
-                "reading": "せつめい"
-          },
-          {
-                "text": "部屋",
-                "reading": "へや"
-          },
-          {
-                "text": "食堂",
-                "reading": "しょくどう"
-          }
+      {
+        "text": "フロント",
+        "reading": "フロント"
+      },
+      {
+        "text": "部屋",
+        "reading": "へや"
+      },
+      {
+        "text": "受付",
+        "reading": "うけつけ"
+      },
+      {
+        "text": "説明",
+        "reading": "せつめい"
+      },
+      {
+        "text": "番号",
+        "reading": "ばんごう"
+      },
+      {
+        "text": "箱",
+        "reading": "はこ"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      }
     ],
     "titleRuby": "旅館の朝食券",
     "passageRuby": "フロントの説明では、朝食は一階の食堂で七時から九時までです。食堂に入る前に、部屋の番号が書いてある朝食券を受付の箱に入れなければなりません。"
@@ -560,14 +604,19 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "出口",
-        "kana": "でぐち",
-        "meaning": "出口"
+        "word": "今月",
+        "kana": "こんげつ",
+        "meaning": "重點詞"
       },
       {
         "word": "工事",
         "kana": "こうじ",
-        "meaning": "施工"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "駅",
+        "kana": "えき",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -576,38 +625,18 @@ window.JAPANESE_READING_SETS = [
       "～かもしれません"
     ],
     "rubyTerms": [
-          {
-                "text": "東出口",
-                "reading": "ひがしでぐち"
-          },
-          {
-                "text": "西出口",
-                "reading": "にしでぐち"
-          },
-          {
-                "text": "五分",
-                "reading": "ごふん"
-          },
-          {
-                "text": "今月",
-                "reading": "こんげつ"
-          },
-          {
-                "text": "出口",
-                "reading": "でぐち"
-          },
-          {
-                "text": "工事",
-                "reading": "こうじ"
-          },
-          {
-                "text": "右",
-                "reading": "みぎ"
-          },
-          {
-                "text": "駅",
-                "reading": "えき"
-          }
+      {
+        "text": "今月",
+        "reading": "こんげつ"
+      },
+      {
+        "text": "工事",
+        "reading": "こうじ"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      }
     ],
     "titleRuby": "駅の出口工事",
     "passageRuby": "駅の東出口は工事のため、今月いっぱい使うことができません。バス停へ行く人は、西出口を出て右へ曲がってください。いつもより五分ぐらいかかるかもしれません。"
@@ -635,19 +664,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "教室",
-        "kana": "教室",
-        "meaning": "關鍵詞"
+        "word": "料理教室",
+        "kana": "りょうりきょうしつ",
+        "meaning": "重點詞"
       },
       {
-        "word": "電話",
-        "kana": "電話",
-        "meaning": "關鍵詞"
+        "word": "土曜日",
+        "kana": "どようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "弁当",
+        "kana": "べんとう",
+        "meaning": "重點詞"
       },
       {
         "word": "参加",
-        "kana": "参加",
-        "meaning": "關鍵詞"
+        "kana": "さんか",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "教室",
+        "kana": "きょうしつ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -656,38 +695,38 @@ window.JAPANESE_READING_SETS = [
       "～てください"
     ],
     "rubyTerms": [
-          {
-                "text": "料理教室",
-                "reading": "りょうりきょうしつ"
-          },
-          {
-                "text": "電話番号",
-                "reading": "でんわばんごう"
-          },
-          {
-                "text": "公民館",
-                "reading": "こうみんかん"
-          },
-          {
-                "text": "土曜日",
-                "reading": "どようび"
-          },
-          {
-                "text": "木曜日",
-                "reading": "もくようび"
-          },
-          {
-                "text": "材料費",
-                "reading": "ざいりょうひ"
-          },
-          {
-                "text": "弁当",
-                "reading": "べんとう"
-          },
-          {
-                "text": "春",
-                "reading": "はる"
-          }
+      {
+        "text": "料理教室",
+        "reading": "りょうりきょうしつ"
+      },
+      {
+        "text": "土曜日",
+        "reading": "どようび"
+      },
+      {
+        "text": "弁当",
+        "reading": "べんとう"
+      },
+      {
+        "text": "参加",
+        "reading": "さんか"
+      },
+      {
+        "text": "教室",
+        "reading": "きょうしつ"
+      },
+      {
+        "text": "電話",
+        "reading": "でんわ"
+      },
+      {
+        "text": "料理",
+        "reading": "りょうり"
+      },
+      {
+        "text": "名前",
+        "reading": "なまえ"
+      }
     ],
     "titleRuby": "料理教室の申込",
     "passageRuby": "公民館の料理教室では、土曜日に春の弁当を作ります。参加したい人は、木曜日までに名前と電話番号を書いて申し込んでください。材料費は八百円です。"
@@ -715,19 +754,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "明日",
-        "kana": "明日",
-        "meaning": "關鍵詞"
+        "word": "午前中",
+        "kana": "ごぜんちゅう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "自転車",
+        "kana": "じてんしゃ",
+        "meaning": "重點詞"
       },
       {
         "word": "今日",
-        "kana": "今日",
-        "meaning": "關鍵詞"
+        "kana": "きょう",
+        "meaning": "重點詞"
       },
       {
-        "word": "午前",
-        "kana": "午前",
-        "meaning": "關鍵詞"
+        "word": "明日",
+        "kana": "あした",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "電話",
+        "kana": "でんわ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -736,38 +785,38 @@ window.JAPANESE_READING_SETS = [
       "～そうです"
     ],
     "rubyTerms": [
-          {
-                "text": "自転車修理",
-                "reading": "じてんしゃしゅうり"
-          },
-          {
-                "text": "自転車屋",
-                "reading": "じてんしゃや"
-          },
-          {
-                "text": "午前中",
-                "reading": "ごぜんちゅう"
-          },
-          {
-                "text": "修理",
-                "reading": "しゅうり"
-          },
-          {
-                "text": "六時",
-                "reading": "ろくじ"
-          },
-          {
-                "text": "連絡",
-                "reading": "れんらく"
-          },
-          {
-                "text": "電話",
-                "reading": "でんわ"
-          },
-          {
-                "text": "李",
-                "reading": "り"
-          }
+      {
+        "text": "午前中",
+        "reading": "ごぜんちゅう"
+      },
+      {
+        "text": "自転車",
+        "reading": "じてんしゃ"
+      },
+      {
+        "text": "今日",
+        "reading": "きょう"
+      },
+      {
+        "text": "明日",
+        "reading": "あした"
+      },
+      {
+        "text": "電話",
+        "reading": "でんわ"
+      },
+      {
+        "text": "午前",
+        "reading": "ごぜん"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      },
+      {
+        "text": "連絡",
+        "reading": "れんらく"
+      }
     ],
     "titleRuby": "自転車修理の連絡",
     "passageRuby": "自転車屋から李さんへ電話がありました。修理は終わりましたが、店は今日は六時に閉まります。六時に間に合わない場合は、明日の午前中に取りに来てもいいそうです。"
@@ -795,14 +844,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "留学生交",
-        "kana": "留学生交",
-        "meaning": "主題語"
+        "word": "金曜日",
+        "kana": "きんようび",
+        "meaning": "重點詞"
       },
       {
-        "word": "図書館の二階",
-        "kana": "図書館の二階",
-        "meaning": "關鍵資訊"
+        "word": "留学生",
+        "kana": "りゅうがくせい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "図書館",
+        "kana": "としょかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "飲み物",
+        "kana": "のみもの",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "掲示板",
+        "kana": "けいじばん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -810,38 +874,38 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "rubyTerms": [
-          {
-                "text": "留学生交流会",
-                "reading": "りゅうがくせいこうりゅうかい"
-          },
-          {
-                "text": "図書館",
-                "reading": "としょかん"
-          },
-          {
-                "text": "掲示板",
-                "reading": "けいじばん"
-          },
-          {
-                "text": "金曜日",
-                "reading": "きんようび"
-          },
-          {
-                "text": "午後",
-                "reading": "ごご"
-          },
-          {
-                "text": "参加",
-                "reading": "さんか"
-          },
-          {
-                "text": "名札",
-                "reading": "なふだ"
-          },
-          {
-                "text": "学校",
-                "reading": "がっこう"
-          }
+      {
+        "text": "金曜日",
+        "reading": "きんようび"
+      },
+      {
+        "text": "留学生",
+        "reading": "りゅうがくせい"
+      },
+      {
+        "text": "図書館",
+        "reading": "としょかん"
+      },
+      {
+        "text": "飲み物",
+        "reading": "のみもの"
+      },
+      {
+        "text": "掲示板",
+        "reading": "けいじばん"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "参加",
+        "reading": "さんか"
+      },
+      {
+        "text": "二階",
+        "reading": "にかい"
+      }
     ],
     "titleRuby": "留学生交流会",
     "passageRuby": "学校の掲示板に、留学生交流会は金曜日の午後三時から図書館の二階で行うと書いてあります。飲み物は学校が用意するので、参加する人は名札だけ持って来ればいいです。"
@@ -869,19 +933,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "営業時間",
+        "kana": "えいぎょうじかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "日曜日",
+        "kana": "にちようび",
+        "meaning": "重點詞"
+      },
+      {
         "word": "時間",
-        "kana": "時間",
-        "meaning": "關鍵詞"
+        "kana": "じかん",
+        "meaning": "重點詞"
       },
       {
-        "word": "駅",
-        "kana": "駅",
-        "meaning": "關鍵詞"
+        "word": "駅前",
+        "kana": "えきまえ",
+        "meaning": "重點詞"
       },
       {
-        "word": "朝",
-        "kana": "朝",
-        "meaning": "關鍵詞"
+        "word": "平日",
+        "kana": "へいじつ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -890,38 +964,34 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "rubyTerms": [
-          {
-                "text": "営業時間",
-                "reading": "えいぎょうじかん"
-          },
-          {
-                "text": "開店時間",
-                "reading": "かいてんじかん"
-          },
-          {
-                "text": "日曜日",
-                "reading": "にちようび"
-          },
-          {
-                "text": "平日",
-                "reading": "へいじつ"
-          },
-          {
-                "text": "来月",
-                "reading": "らいげつ"
-          },
-          {
-                "text": "駅前",
-                "reading": "えきまえ"
-          },
-          {
-                "text": "店",
-                "reading": "みせ"
-          },
-          {
-                "text": "買",
-                "reading": "か"
-          }
+      {
+        "text": "営業時間",
+        "reading": "えいぎょうじかん"
+      },
+      {
+        "text": "日曜日",
+        "reading": "にちようび"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "駅前",
+        "reading": "えきまえ"
+      },
+      {
+        "text": "平日",
+        "reading": "へいじつ"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      }
     ],
     "titleRuby": "店の営業時間",
     "passageRuby": "駅前のパン屋は、来月から日曜日だけ開店時間が一時間遅くなります。平日は今まで通り朝七時からです。急いでいる人は前の日に買っておくとよさそうです。"
@@ -949,14 +1019,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "家族へ電",
-        "kana": "家族へ電",
-        "meaning": "主題語"
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
       },
       {
-        "word": "向こうの時間",
-        "kana": "向こうの時間",
-        "meaning": "關鍵資訊"
+        "word": "確認",
+        "kana": "かくにん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "電話",
+        "kana": "でんわ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "家族",
+        "kana": "かぞく",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "夜",
+        "kana": "よる",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -964,38 +1049,30 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "rubyTerms": [
-          {
-                "text": "夜中",
-                "reading": "よなか"
-          },
-          {
-                "text": "家族",
-                "reading": "かぞく"
-          },
-          {
-                "text": "時差",
-                "reading": "じさ"
-          },
-          {
-                "text": "時間",
-                "reading": "じかん"
-          },
-          {
-                "text": "確認",
-                "reading": "かくにん"
-          },
-          {
-                "text": "電話",
-                "reading": "でんわ"
-          },
-          {
-                "text": "国",
-                "reading": "くに"
-          },
-          {
-                "text": "忘",
-                "reading": "わす"
-          }
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "確認",
+        "reading": "かくにん"
+      },
+      {
+        "text": "電話",
+        "reading": "でんわ"
+      },
+      {
+        "text": "家族",
+        "reading": "かぞく"
+      },
+      {
+        "text": "夜",
+        "reading": "よる"
+      },
+      {
+        "text": "国",
+        "reading": "くに"
+      }
     ],
     "titleRuby": "家族への電話",
     "passageRuby": "マリアさんは国の家族へ電話したかったのですが、時差を忘れて夜中にかけてしまいました。次からは、電話する前に向こうの時間を確認しようと思っています。"
@@ -1023,19 +1100,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "時間",
-        "kana": "時間",
-        "meaning": "關鍵詞"
+        "word": "受け取る",
+        "kana": "うけとる",
+        "meaning": "重點詞"
       },
       {
-        "word": "駅",
-        "kana": "駅",
-        "meaning": "關鍵詞"
+        "word": "窓口",
+        "kana": "まどぐち",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
       },
       {
         "word": "電車",
-        "kana": "電車",
-        "meaning": "關鍵詞"
+        "kana": "でんしゃ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "駅",
+        "kana": "えき",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -1044,38 +1131,34 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "rubyTerms": [
-          {
-                "text": "忘れ物",
-                "reading": "わすれもの"
-          },
-          {
-                "text": "時間",
-                "reading": "じかん"
-          },
-          {
-                "text": "窓口",
-                "reading": "まどぐち"
-          },
-          {
-                "text": "電車",
-                "reading": "でんしゃ"
-          },
-          {
-                "text": "乗",
-                "reading": "の"
-          },
-          {
-                "text": "傘",
-                "reading": "かさ"
-          },
-          {
-                "text": "色",
-                "reading": "いろ"
-          },
-          {
-                "text": "駅",
-                "reading": "えき"
-          }
+      {
+        "text": "受け取る",
+        "reading": "うけとる"
+      },
+      {
+        "text": "窓口",
+        "reading": "まどぐち"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "電車",
+        "reading": "でんしゃ"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      },
+      {
+        "text": "窓",
+        "reading": "まど"
+      },
+      {
+        "text": "傘",
+        "reading": "かさ"
+      }
     ],
     "titleRuby": "傘の忘れ物",
     "passageRuby": "電車の中で傘を忘れた人は、駅の忘れ物窓口で色と乗った時間を伝えてください。三日以内なら駅で受け取ることができます。"
@@ -1103,19 +1186,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "昼",
-        "kana": "昼",
-        "meaning": "關鍵詞"
+        "word": "昼休み",
+        "kana": "ひるやすみ",
+        "meaning": "重點詞"
       },
       {
         "word": "午後",
-        "kana": "午後",
-        "meaning": "關鍵詞"
+        "kana": "ごご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "休み",
+        "kana": "やすみ",
+        "meaning": "重點詞"
       },
       {
         "word": "雨",
-        "kana": "雨",
-        "meaning": "關鍵詞"
+        "kana": "あめ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "昼",
+        "kana": "ひる",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -1123,38 +1216,26 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "rubyTerms": [
-          {
-                "text": "天気予報",
-                "reading": "てんきよほう"
-          },
-          {
-                "text": "洗濯物",
-                "reading": "せんたくもの"
-          },
-          {
-                "text": "午後",
-                "reading": "ごご"
-          },
-          {
-                "text": "天気",
-                "reading": "てんき"
-          },
-          {
-                "text": "山本",
-                "reading": "やまもと"
-          },
-          {
-                "text": "昼休",
-                "reading": "ひるやす"
-          },
-          {
-                "text": "家",
-                "reading": "いえ"
-          },
-          {
-                "text": "雨",
-                "reading": "あめ"
-          }
+      {
+        "text": "昼休み",
+        "reading": "ひるやすみ"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "休み",
+        "reading": "やすみ"
+      },
+      {
+        "text": "雨",
+        "reading": "あめ"
+      },
+      {
+        "text": "昼",
+        "reading": "ひる"
+      }
     ],
     "titleRuby": "午後の天気",
     "passageRuby": "天気予報によると、午後から雨が強くなるそうです。山本さんは洗濯物を外に干していたので、昼休みに一度家へ戻ることにしました。"
@@ -1194,19 +1275,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "役割",
-        "kana": "やくわり",
-        "meaning": "角色、分工"
+        "word": "二人",
+        "kana": "ふたり",
+        "meaning": "重點詞"
       },
       {
-        "word": "係",
-        "kana": "かかり",
-        "meaning": "負責人"
+        "word": "先生",
+        "kana": "せんせい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "学校",
+        "kana": "がっこう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "来週",
+        "kana": "らいしゅう",
+        "meaning": "重點詞"
       },
       {
         "word": "苦手",
         "kana": "にがて",
-        "meaning": "不擅長"
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -1214,38 +1305,38 @@ window.JAPANESE_READING_SETS = [
       "～ことになる"
     ],
     "rubyTerms": [
-          {
-                "text": "学校祭",
-                "reading": "がっこうさい"
-          },
-          {
-                "text": "二人",
-                "reading": "ふたり"
-          },
-          {
-                "text": "佐藤",
-                "reading": "さとう"
-          },
-          {
-                "text": "先生",
-                "reading": "せんせい"
-          },
-          {
-                "text": "役割",
-                "reading": "やくわり"
-          },
-          {
-                "text": "準備",
-                "reading": "じゅんび"
-          },
-          {
-                "text": "紙皿",
-                "reading": "かみざら"
-          },
-          {
-                "text": "計算",
-                "reading": "けいさん"
-          }
+      {
+        "text": "二人",
+        "reading": "ふたり"
+      },
+      {
+        "text": "先生",
+        "reading": "せんせい"
+      },
+      {
+        "text": "学校",
+        "reading": "がっこう"
+      },
+      {
+        "text": "来週",
+        "reading": "らいしゅう"
+      },
+      {
+        "text": "苦手",
+        "reading": "にがて"
+      },
+      {
+        "text": "佐藤",
+        "reading": "さとう"
+      },
+      {
+        "text": "準備",
+        "reading": "じゅんび"
+      },
+      {
+        "text": "用意",
+        "reading": "ようい"
+      }
     ],
     "titleRuby": "学校祭の準備",
     "passageRuby": "来週の学校祭で、私のクラスは焼きそばを売ります。昨日、みんなで役割を決めました。私はお金を集める係になりましたが、計算が苦手なので、佐藤さんと二人でやることになりました。店の紙皿は先生が用意してくれます。"
@@ -1285,19 +1376,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "駅",
-        "kana": "駅",
-        "meaning": "關鍵詞"
-      },
-      {
-        "word": "家",
-        "kana": "家",
-        "meaning": "關鍵詞"
+        "word": "引っ越し",
+        "kana": "ひっこし",
+        "meaning": "重點詞"
       },
       {
         "word": "部屋",
-        "kana": "部屋",
-        "meaning": "關鍵詞"
+        "kana": "へや",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "週末",
+        "kana": "しゅうまつ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "家賃",
+        "kana": "やちん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "駅",
+        "kana": "えき",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -1305,38 +1406,34 @@ window.JAPANESE_READING_SETS = [
       "～つもり"
     ],
     "rubyTerms": [
-          {
-                "text": "引っ越",
-                "reading": "ひっこ"
-          },
-          {
-                "text": "買い物",
-                "reading": "かいもの"
-          },
-          {
-                "text": "大学",
-                "reading": "だいがく"
-          },
-          {
-                "text": "家賃",
-                "reading": "やちん"
-          },
-          {
-                "text": "週末",
-                "reading": "しゅうまつ"
-          },
-          {
-                "text": "部屋",
-                "reading": "へや"
-          },
-          {
-                "text": "王",
-                "reading": "おう"
-          },
-          {
-                "text": "駅",
-                "reading": "えき"
-          }
+      {
+        "text": "引っ越し",
+        "reading": "ひっこし"
+      },
+      {
+        "text": "部屋",
+        "reading": "へや"
+      },
+      {
+        "text": "週末",
+        "reading": "しゅうまつ"
+      },
+      {
+        "text": "家賃",
+        "reading": "やちん"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      },
+      {
+        "text": "窓",
+        "reading": "まど"
+      },
+      {
+        "text": "王",
+        "reading": "おう"
+      }
     ],
     "titleRuby": "新しい部屋",
     "passageRuby": "王さんは大学の近くに引っ越しました。新しい部屋は駅から少し遠いですが、窓が大きくて明るいです。前の部屋より家賃も安いので、王さんは気に入っています。ただ、スーパーまで歩いて十五分かかるため、週末にまとめて買い物をするつもりです。"
@@ -1376,14 +1473,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "日帰り",
-        "kana": "ひがえり",
-        "meaning": "當天來回"
+        "word": "予定",
+        "kana": "よてい",
+        "meaning": "重點詞"
       },
       {
-        "word": "一泊",
-        "kana": "いっぱく",
-        "meaning": "住一晚"
+        "word": "旅行",
+        "kana": "りょこう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "田中",
+        "kana": "たなか",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "計画",
+        "kana": "けいかく",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "休み",
+        "kana": "やすみ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -1391,38 +1503,38 @@ window.JAPANESE_READING_SETS = [
       "～そう"
     ],
     "rubyTerms": [
-          {
-                "text": "二日目",
-                "reading": "ふつかめ"
-          },
-          {
-                "text": "予定",
-                "reading": "よてい"
-          },
-          {
-                "text": "京都",
-                "reading": "きょうと"
-          },
-          {
-                "text": "旅行",
-                "reading": "りょこう"
-          },
-          {
-                "text": "日帰",
-                "reading": "ひがえ"
-          },
-          {
-                "text": "春休",
-                "reading": "はるやす"
-          },
-          {
-                "text": "田中",
-                "reading": "たなか"
-          },
-          {
-                "text": "計画",
-                "reading": "けいかく"
-          }
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "旅行",
+        "reading": "りょこう"
+      },
+      {
+        "text": "田中",
+        "reading": "たなか"
+      },
+      {
+        "text": "計画",
+        "reading": "けいかく"
+      },
+      {
+        "text": "休み",
+        "reading": "やすみ"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      },
+      {
+        "text": "寺",
+        "reading": "てら"
+      }
     ],
     "titleRuby": "旅行の計画",
     "passageRuby": "田中さんたちは春休みに京都へ行く予定です。最初は日帰りで行こうと思っていましたが、見たい場所が多いので、一泊することにしました。ホテルは駅の近くにしました。朝早く出れば、二日目にお寺を二つ見てから帰れそうです。"
@@ -1462,14 +1574,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "無料",
-        "kana": "むりょう",
-        "meaning": "免費"
+        "word": "土曜日",
+        "kana": "どようび",
+        "meaning": "重點詞"
       },
       {
-        "word": "場合",
-        "kana": "ばあい",
-        "meaning": "情況"
+        "word": "図書館",
+        "kana": "としょかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "三十分",
+        "kana": "さんじゅっぷん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "参加",
+        "kana": "さんか",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -1477,38 +1604,38 @@ window.JAPANESE_READING_SETS = [
       "～なければならない"
     ],
     "rubyTerms": [
-          {
-                "text": "読み聞かせ会",
-                "reading": "よみきかせかい"
-          },
-          {
-                "text": "三十分前",
-                "reading": "さんじゅっぷんまえ"
-          },
-          {
-                "text": "参加費",
-                "reading": "さんかひ"
-          },
-          {
-                "text": "図書館",
-                "reading": "としょかん"
-          },
-          {
-                "text": "土曜日",
-                "reading": "どようび"
-          },
-          {
-                "text": "人数",
-                "reading": "にんずう"
-          },
-          {
-                "text": "場合",
-                "reading": "ばあい"
-          },
-          {
-                "text": "無料",
-                "reading": "むりょう"
-          }
+      {
+        "text": "土曜日",
+        "reading": "どようび"
+      },
+      {
+        "text": "図書館",
+        "reading": "としょかん"
+      },
+      {
+        "text": "三十分",
+        "reading": "さんじゅっぷん"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "参加",
+        "reading": "さんか"
+      },
+      {
+        "text": "人数",
+        "reading": "にんずう"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      },
+      {
+        "text": "十分",
+        "reading": "じゅっぷん"
+      }
     ],
     "titleRuby": "図書館イベント",
     "passageRuby": "市の図書館で、土曜日に子どものための読み聞かせ会があります。始まるのは午後二時で、三十分前から入れます。参加費は無料ですが、人数が多い場合は先に来た人から入ります。小さい子どもは大人と一緒に来なければなりません。"
@@ -1548,19 +1675,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "今日",
-        "kana": "今日",
-        "meaning": "關鍵詞"
+        "word": "運動センター",
+        "kana": "うんどうセンター",
+        "meaning": "重點詞"
       },
       {
-        "word": "夜",
-        "kana": "夜",
-        "meaning": "關鍵詞"
+        "word": "プール",
+        "kana": "プール",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "中村",
+        "kana": "なかむら",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "今日",
+        "kana": "きょう",
+        "meaning": "重點詞"
       },
       {
         "word": "練習",
-        "kana": "練習",
-        "meaning": "關鍵詞"
+        "kana": "れんしゅう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -1568,38 +1705,30 @@ window.JAPANESE_READING_SETS = [
       "～てもいい"
     ],
     "rubyTerms": [
-          {
-                "text": "運動センター",
-                "reading": "うんどうセンター"
-          },
-          {
-                "text": "夜八時",
-                "reading": "よるはちじ"
-          },
-          {
-                "text": "中村",
-                "reading": "なかむら"
-          },
-          {
-                "text": "健康",
-                "reading": "けんこう"
-          },
-          {
-                "text": "次回",
-                "reading": "じかい"
-          },
-          {
-                "text": "水着",
-                "reading": "みずぎ"
-          },
-          {
-                "text": "練習",
-                "reading": "れんしゅう"
-          },
-          {
-                "text": "運動",
-                "reading": "うんどう"
-          }
+      {
+        "text": "運動センター",
+        "reading": "うんどうセンター"
+      },
+      {
+        "text": "プール",
+        "reading": "プール"
+      },
+      {
+        "text": "中村",
+        "reading": "なかむら"
+      },
+      {
+        "text": "今日",
+        "reading": "きょう"
+      },
+      {
+        "text": "練習",
+        "reading": "れんしゅう"
+      },
+      {
+        "text": "夜",
+        "reading": "よる"
+      }
     ],
     "titleRuby": "運動センター",
     "passageRuby": "中村さんは健康のために運動センターへ通い始めました。プールは夜八時まで使えますが、ジムは九時まで開いています。今日は水着を忘れてしまったので、プールではなくジムで歩く練習をしました。帰る前に、次回のために水着をかばんに入れておきました。"
@@ -1639,19 +1768,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "先生",
-        "kana": "先生",
-        "meaning": "關鍵詞"
-      },
-      {
-        "word": "昨日",
-        "kana": "昨日",
-        "meaning": "關鍵詞"
+        "word": "金曜日",
+        "kana": "きんようび",
+        "meaning": "重點詞"
       },
       {
         "word": "写真",
-        "kana": "写真",
-        "meaning": "關鍵詞"
+        "kana": "しゃしん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "先生",
+        "kana": "せんせい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "日本",
+        "kana": "にほん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "今週",
+        "kana": "こんしゅう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -1659,38 +1798,34 @@ window.JAPANESE_READING_SETS = [
       "～てもいい"
     ],
     "rubyTerms": [
-          {
-                "text": "毎週金曜日",
-                "reading": "まいしゅうきんようび"
-          },
-          {
-                "text": "日本語",
-                "reading": "にほんご"
-          },
-          {
-                "text": "三枚",
-                "reading": "さんまい"
-          },
-          {
-                "text": "今週",
-                "reading": "こんしゅう"
-          },
-          {
-                "text": "写真",
-                "reading": "しゃしん"
-          },
-          {
-                "text": "昨日",
-                "reading": "きのう"
-          },
-          {
-                "text": "発表",
-                "reading": "はっぴょう"
-          },
-          {
-                "text": "林",
-                "reading": "はやし"
-          }
+      {
+        "text": "金曜日",
+        "reading": "きんようび"
+      },
+      {
+        "text": "写真",
+        "reading": "しゃしん"
+      },
+      {
+        "text": "先生",
+        "reading": "せんせい"
+      },
+      {
+        "text": "日本",
+        "reading": "にほん"
+      },
+      {
+        "text": "今週",
+        "reading": "こんしゅう"
+      },
+      {
+        "text": "林",
+        "reading": "はやし"
+      },
+      {
+        "text": "町",
+        "reading": "まち"
+      }
     ],
     "titleRuby": "日本語クラス",
     "passageRuby": "林さんの日本語クラスでは、毎週金曜日に短い発表があります。今週のテーマは好きな町です。林さんは写真を見せながら話したいので、昨日スマホの写真を三枚選びました。発表は二分で、長すぎると先生に止められます。"
@@ -1730,19 +1865,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "昼",
-        "kana": "昼",
-        "meaning": "關鍵詞"
+        "word": "レストラン",
+        "kana": "レストラン",
+        "meaning": "重點詞"
       },
       {
-        "word": "夜",
-        "kana": "夜",
-        "meaning": "關鍵詞"
+        "word": "金曜日",
+        "kana": "きんようび",
+        "meaning": "重點詞"
       },
       {
-        "word": "店員",
-        "kana": "店員",
-        "meaning": "關鍵詞"
+        "word": "昼休み",
+        "kana": "ひるやすみ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "人気",
+        "kana": "にんき",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "予約",
+        "kana": "よやく",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -1750,38 +1895,38 @@ window.JAPANESE_READING_SETS = [
       "～てもいい"
     ],
     "rubyTerms": [
-          {
-                "text": "七時半",
-                "reading": "しちじはん"
-          },
-          {
-                "text": "四人席",
-                "reading": "よにんせき"
-          },
-          {
-                "text": "金曜日",
-                "reading": "きんようび"
-          },
-          {
-                "text": "予約",
-                "reading": "よやく"
-          },
-          {
-                "text": "人気",
-                "reading": "にんき"
-          },
-          {
-                "text": "家族",
-                "reading": "かぞく"
-          },
-          {
-                "text": "店員",
-                "reading": "てんいん"
-          },
-          {
-                "text": "鈴木",
-                "reading": "すずき"
-          }
+      {
+        "text": "レストラン",
+        "reading": "レストラン"
+      },
+      {
+        "text": "金曜日",
+        "reading": "きんようび"
+      },
+      {
+        "text": "昼休み",
+        "reading": "ひるやすみ"
+      },
+      {
+        "text": "人気",
+        "reading": "にんき"
+      },
+      {
+        "text": "予約",
+        "reading": "よやく"
+      },
+      {
+        "text": "電話",
+        "reading": "でんわ"
+      },
+      {
+        "text": "家族",
+        "reading": "かぞく"
+      },
+      {
+        "text": "店員",
+        "reading": "てんいん"
+      }
     ],
     "titleRuby": "レストラン予約",
     "passageRuby": "鈴木さんは金曜日の夜、家族とレストランへ行きます。人気の店なので、昼休みに電話で四人席を予約しました。店員は「七時はいっぱいですが、七時半なら空いています」と言いました。鈴木さんは七時半でお願いしました。"
@@ -1821,19 +1966,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "朝",
-        "kana": "朝",
-        "meaning": "關鍵詞"
-      },
-      {
-        "word": "雨",
-        "kana": "雨",
-        "meaning": "關鍵詞"
+        "word": "日曜日",
+        "kana": "にちようび",
+        "meaning": "重點詞"
       },
       {
         "word": "参加",
-        "kana": "参加",
-        "meaning": "關鍵詞"
+        "kana": "さんか",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "一人",
+        "kana": "ひとり",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "十分",
+        "kana": "じゅっぷん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "軍手",
+        "kana": "ぐんて",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -1841,38 +1996,38 @@ window.JAPANESE_READING_SETS = [
       "～てもいい"
     ],
     "rubyTerms": [
-          {
-                "text": "八時五十分",
-                "reading": "はちじごじゅっぷん"
-          },
-          {
-                "text": "日曜日",
-                "reading": "にちようび"
-          },
-          {
-                "text": "入口",
-                "reading": "いりぐち"
-          },
-          {
-                "text": "公園",
-                "reading": "こうえん"
-          },
-          {
-                "text": "参加",
-                "reading": "さんか"
-          },
-          {
-                "text": "掃除",
-                "reading": "そうじ"
-          },
-          {
-                "text": "町内",
-                "reading": "ちょうない"
-          },
-          {
-                "text": "軍手",
-                "reading": "ぐんて"
-          }
+      {
+        "text": "日曜日",
+        "reading": "にちようび"
+      },
+      {
+        "text": "参加",
+        "reading": "さんか"
+      },
+      {
+        "text": "一人",
+        "reading": "ひとり"
+      },
+      {
+        "text": "十分",
+        "reading": "じゅっぷん"
+      },
+      {
+        "text": "軍手",
+        "reading": "ぐんて"
+      },
+      {
+        "text": "入口",
+        "reading": "いりぐち"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "雨",
+        "reading": "あめ"
+      }
     ],
     "titleRuby": "地域の掃除",
     "passageRuby": "日曜日の朝、町内で公園の掃除があります。参加する人は軍手を持って、八時五十分までに公園の入口に集まります。雨が強いときは中止ですが、小さい雨なら行います。終わったあとで、お茶が一人一本配られます。"
@@ -1912,19 +2067,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "冷蔵庫",
+        "kana": "れいぞうこ",
+        "meaning": "重點詞"
+      },
+      {
         "word": "財布",
-        "kana": "財布",
-        "meaning": "關鍵詞"
+        "kana": "さいふ",
+        "meaning": "重點詞"
       },
       {
-        "word": "母は冷蔵庫に",
-        "kana": "母は冷蔵庫に",
-        "meaning": "關鍵詞"
+        "word": "母",
+        "kana": "はは",
+        "meaning": "重點詞"
       },
       {
-        "word": "メモを貼りま",
-        "kana": "メモを貼りま",
-        "meaning": "關鍵詞"
+        "word": "卵",
+        "kana": "たまご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "弟",
+        "kana": "おとうと",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -1932,38 +2097,26 @@ window.JAPANESE_READING_SETS = [
       "～てもいい"
     ],
     "rubyTerms": [
-          {
-                "text": "冷蔵庫",
-                "reading": "れいぞうこ"
-          },
-          {
-                "text": "買い物",
-                "reading": "かいもの"
-          },
-          {
-                "text": "牛乳",
-                "reading": "ぎゅうにゅう"
-          },
-          {
-                "text": "財布",
-                "reading": "さいふ"
-          },
-          {
-                "text": "卵",
-                "reading": "たまご"
-          },
-          {
-                "text": "弟",
-                "reading": "おとうと"
-          },
-          {
-                "text": "母",
-                "reading": "はは"
-          },
-          {
-                "text": "読",
-                "reading": "よ"
-          }
+      {
+        "text": "冷蔵庫",
+        "reading": "れいぞうこ"
+      },
+      {
+        "text": "財布",
+        "reading": "さいふ"
+      },
+      {
+        "text": "母",
+        "reading": "はは"
+      },
+      {
+        "text": "卵",
+        "reading": "たまご"
+      },
+      {
+        "text": "弟",
+        "reading": "おとうと"
+      }
     ],
     "titleRuby": "買い物メモ",
     "passageRuby": "母は冷蔵庫にメモを貼りました。「卵はまだあります。牛乳とパンだけ買ってください。安くても大きいジュースは買わなくてもいいです。」弟はメモを読んで、財布とエコバッグを持ってスーパーへ行きました。"
@@ -2003,14 +2156,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "引っ越し",
+        "kana": "ひっこし",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "土曜日",
+        "kana": "どようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "手伝う",
+        "kana": "てつだう",
+        "meaning": "重點詞"
+      },
+      {
         "word": "予定",
-        "kana": "予定",
-        "meaning": "關鍵詞"
+        "kana": "よてい",
+        "meaning": "重點詞"
       },
       {
         "word": "部屋",
-        "kana": "部屋",
-        "meaning": "關鍵詞"
+        "kana": "へや",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2018,38 +2186,34 @@ window.JAPANESE_READING_SETS = [
       "～てもいい"
     ],
     "rubyTerms": [
-          {
-                "text": "土曜日",
-                "reading": "どようび"
-          },
-          {
-                "text": "引っ越",
-                "reading": "ひっこ"
-          },
-          {
-                "text": "三階",
-                "reading": "さんがい"
-          },
-          {
-                "text": "予定",
-                "reading": "よてい"
-          },
-          {
-                "text": "本棚",
-                "reading": "ほんだな"
-          },
-          {
-                "text": "部屋",
-                "reading": "へや"
-          },
-          {
-                "text": "友",
-                "reading": "とも"
-          },
-          {
-                "text": "箱",
-                "reading": "はこ"
-          }
+      {
+        "text": "引っ越し",
+        "reading": "ひっこし"
+      },
+      {
+        "text": "土曜日",
+        "reading": "どようび"
+      },
+      {
+        "text": "手伝う",
+        "reading": "てつだう"
+      },
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "部屋",
+        "reading": "へや"
+      },
+      {
+        "text": "軽い",
+        "reading": "かるい"
+      },
+      {
+        "text": "箱",
+        "reading": "はこ"
+      }
     ],
     "titleRuby": "友だちの引っ越し",
     "passageRuby": "友だちの部屋は三階にありますが、エレベーターがありません。土曜日に引っ越しを手伝う予定でしたが、重い本棚は店の人が運ぶそうです。私は軽い箱を運んだあと、新しい部屋でカーテンを付けるのを手伝います。"
@@ -2089,14 +2253,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "受付",
-        "kana": "うけつけ",
-        "meaning": "櫃台、受理"
+        "word": "図書館",
+        "kana": "としょかん",
+        "meaning": "重點詞"
       },
       {
-        "word": "以降",
-        "kana": "いこう",
-        "meaning": "以後"
+        "word": "受付",
+        "kana": "うけつけ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "入口",
+        "kana": "いりぐち",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "休み",
+        "kana": "やすみ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "整理",
+        "kana": "せいり",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2104,38 +2283,30 @@ window.JAPANESE_READING_SETS = [
       "～ことができる"
     ],
     "rubyTerms": [
-          {
-                "text": "六月二十九日",
-                "reading": "ろくがつにじゅうくにち"
-          },
-          {
-                "text": "市民図書館",
-                "reading": "しみんとしょかん"
-          },
-          {
-                "text": "返却箱",
-                "reading": "へんきゃくばこ"
-          },
-          {
-                "text": "入口",
-                "reading": "いりぐち"
-          },
-          {
-                "text": "受付",
-                "reading": "うけつけ"
-          },
-          {
-                "text": "整理",
-                "reading": "せいり"
-          },
-          {
-                "text": "雑誌",
-                "reading": "ざっし"
-          },
-          {
-                "text": "本",
-                "reading": "ほん"
-          }
+      {
+        "text": "図書館",
+        "reading": "としょかん"
+      },
+      {
+        "text": "受付",
+        "reading": "うけつけ"
+      },
+      {
+        "text": "入口",
+        "reading": "いりぐち"
+      },
+      {
+        "text": "休み",
+        "reading": "やすみ"
+      },
+      {
+        "text": "整理",
+        "reading": "せいり"
+      },
+      {
+        "text": "箱",
+        "reading": "はこ"
+      }
     ],
     "titleRuby": "市民図書館のお知らせ",
     "passageRuby": "【市民図書館】六月二十九日は本の整理のため休みです。返す本は入口の返却箱に入れてください。DVDと雑誌は箱に入れないで、次の日以降に受付へ持って来てください。"
@@ -2175,19 +2346,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "駅",
-        "kana": "駅",
-        "meaning": "關鍵詞"
+        "word": "売り場",
+        "kana": "うりば",
+        "meaning": "重點詞"
       },
       {
-        "word": "朝",
-        "kana": "朝",
-        "meaning": "關鍵詞"
+        "word": "火曜日",
+        "kana": "かようび",
+        "meaning": "重點詞"
       },
       {
-        "word": "夜",
-        "kana": "夜",
-        "meaning": "關鍵詞"
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "便利",
+        "kana": "べんり",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "駅前",
+        "kana": "えきまえ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2195,38 +2376,38 @@ window.JAPANESE_READING_SETS = [
       "～ことができる"
     ],
     "rubyTerms": [
-          {
-                "text": "毎週火曜日",
-                "reading": "まいしゅうかようび"
-          },
-          {
-                "text": "買い物袋",
-                "reading": "かいものぶくろ"
-          },
-          {
-                "text": "魚売り場",
-                "reading": "さかなうりば"
-          },
-          {
-                "text": "便利",
-                "reading": "べんり"
-          },
-          {
-                "text": "有料",
-                "reading": "ゆうりょう"
-          },
-          {
-                "text": "案内",
-                "reading": "あんない"
-          },
-          {
-                "text": "野菜",
-                "reading": "やさい"
-          },
-          {
-                "text": "駅前",
-                "reading": "えきまえ"
-          }
+      {
+        "text": "売り場",
+        "reading": "うりば"
+      },
+      {
+        "text": "火曜日",
+        "reading": "かようび"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "便利",
+        "reading": "べんり"
+      },
+      {
+        "text": "駅前",
+        "reading": "えきまえ"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "夜",
+        "reading": "よる"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      }
     ],
     "titleRuby": "駅前スーパーの案内",
     "passageRuby": "駅前スーパーは朝九時から夜十時まで開いています。毎週火曜日は野菜が安くなりますが、魚売り場は午後七時に閉まります。店の袋は有料なので、買い物袋を持って来ると便利です。"
@@ -2266,19 +2447,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "午後",
-        "kana": "午後",
-        "meaning": "關鍵詞"
+        "word": "学生料金",
+        "kana": "がくせいりょうきん",
+        "meaning": "重點詞"
       },
       {
-        "word": "予約",
-        "kana": "予約",
-        "meaning": "關鍵詞"
+        "word": "水曜日",
+        "kana": "すいようび",
+        "meaning": "重點詞"
       },
       {
-        "word": "料金",
-        "kana": "料金",
-        "meaning": "關鍵詞"
+        "word": "映画館",
+        "kana": "えいがかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "学生証",
+        "kana": "がくせいしょう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "映画",
+        "kana": "えいが",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2286,38 +2477,38 @@ window.JAPANESE_READING_SETS = [
       "～ことができる"
     ],
     "rubyTerms": [
-          {
-                "text": "学生料金",
-                "reading": "がくせいりょうきん"
-          },
-          {
-                "text": "学生証",
-                "reading": "がくせいしょう"
-          },
-          {
-                "text": "映画館",
-                "reading": "えいがかん"
-          },
-          {
-                "text": "水曜日",
-                "reading": "すいようび"
-          },
-          {
-                "text": "予約",
-                "reading": "よやく"
-          },
-          {
-                "text": "入口",
-                "reading": "いりぐち"
-          },
-          {
-                "text": "割引",
-                "reading": "わりびき"
-          },
-          {
-                "text": "席",
-                "reading": "せき"
-          }
+      {
+        "text": "学生料金",
+        "reading": "がくせいりょうきん"
+      },
+      {
+        "text": "水曜日",
+        "reading": "すいようび"
+      },
+      {
+        "text": "映画館",
+        "reading": "えいがかん"
+      },
+      {
+        "text": "学生証",
+        "reading": "がくせいしょう"
+      },
+      {
+        "text": "映画",
+        "reading": "えいが"
+      },
+      {
+        "text": "予約",
+        "reading": "よやく"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "料金",
+        "reading": "りょうきん"
+      }
     ],
     "titleRuby": "映画館の割引",
     "passageRuby": "この映画館では、水曜日の午後六時までの回は学生料金が安くなります。学生証を見せなければなりません。インターネットで席を予約した人も、入口で学生証を見せてください。"
@@ -2357,19 +2548,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "受付",
-        "kana": "受付",
-        "meaning": "關鍵詞"
-      },
-      {
         "word": "荷物",
-        "kana": "荷物",
-        "meaning": "關鍵詞"
+        "kana": "にもつ",
+        "meaning": "重點詞"
       },
       {
-        "word": "朝",
-        "kana": "朝",
-        "meaning": "關鍵詞"
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "二階",
+        "kana": "にかい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "部屋",
+        "kana": "へや",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "受付",
+        "kana": "うけつけ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2377,38 +2578,34 @@ window.JAPANESE_READING_SETS = [
       "～ことができる"
     ],
     "rubyTerms": [
-          {
-                "text": "午後三時",
-                "reading": "ごごさんじ"
-          },
-          {
-                "text": "受付案内",
-                "reading": "うけつけあんない"
-          },
-          {
-                "text": "お客様",
-                "reading": "おきゃくさま"
-          },
-          {
-                "text": "二階",
-                "reading": "にかい"
-          },
-          {
-                "text": "受付",
-                "reading": "うけつけ"
-          },
-          {
-                "text": "朝食",
-                "reading": "ちょうしょく"
-          },
-          {
-                "text": "荷物",
-                "reading": "にもつ"
-          },
-          {
-                "text": "鍵",
-                "reading": "かぎ"
-          }
+      {
+        "text": "荷物",
+        "reading": "にもつ"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "二階",
+        "reading": "にかい"
+      },
+      {
+        "text": "部屋",
+        "reading": "へや"
+      },
+      {
+        "text": "受付",
+        "reading": "うけつけ"
+      },
+      {
+        "text": "三時",
+        "reading": "さんじ"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      }
     ],
     "titleRuby": "ホテル受付案内",
     "passageRuby": "チェックインは午後三時からです。早く着いたお客様は、受付で荷物を預けることができます。朝食は二階で七時から九時までです。部屋の鍵をなくしたときは、すぐ受付に知らせてください。"
@@ -2448,19 +2645,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "時間",
-        "kana": "時間",
-        "meaning": "關鍵詞"
+        "word": "土曜日",
+        "kana": "どようび",
+        "meaning": "重點詞"
       },
       {
-        "word": "受付",
-        "kana": "受付",
-        "meaning": "關鍵詞"
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "参加",
+        "kana": "さんか",
+        "meaning": "重點詞"
       },
       {
         "word": "教室",
-        "kana": "教室",
-        "meaning": "關鍵詞"
+        "kana": "きょうしつ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "電話",
+        "kana": "でんわ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2468,38 +2675,38 @@ window.JAPANESE_READING_SETS = [
       "～ことができる"
     ],
     "rubyTerms": [
-          {
-                "text": "毎週土曜日",
-                "reading": "まいしゅうどようび"
-          },
-          {
-                "text": "午前十時",
-                "reading": "ごぜんじゅうじ"
-          },
-          {
-                "text": "文化教室",
-                "reading": "ぶんかきょうしつ"
-          },
-          {
-                "text": "茶道教室",
-                "reading": "さどうきょうしつ"
-          },
-          {
-                "text": "一時間",
-                "reading": "いちじかん"
-          },
-          {
-                "text": "公民館",
-                "reading": "こうみんかん"
-          },
-          {
-                "text": "募集",
-                "reading": "ぼしゅう"
-          },
-          {
-                "text": "来月",
-                "reading": "らいげつ"
-          }
+      {
+        "text": "土曜日",
+        "reading": "どようび"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "参加",
+        "reading": "さんか"
+      },
+      {
+        "text": "教室",
+        "reading": "きょうしつ"
+      },
+      {
+        "text": "電話",
+        "reading": "でんわ"
+      },
+      {
+        "text": "午前",
+        "reading": "ごぜん"
+      },
+      {
+        "text": "受付",
+        "reading": "うけつけ"
+      },
+      {
+        "text": "名前",
+        "reading": "なまえ"
+      }
     ],
     "titleRuby": "文化教室の募集",
     "passageRuby": "来月から公民館で茶道教室が始まります。毎週土曜日の午前十時から一時間です。初めての人も参加できます。申し込みは電話ではなく、公民館の受付で名前を書いてください。"
@@ -2527,19 +2734,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "職員室",
+        "kana": "しょくいんしつ",
+        "meaning": "重點詞"
+      },
+      {
         "word": "教室",
-        "kana": "教室",
-        "meaning": "關鍵詞"
+        "kana": "きょうしつ",
+        "meaning": "重點詞"
       },
       {
-        "word": "授業が終わっ",
-        "kana": "授業が終わっ",
-        "meaning": "關鍵詞"
+        "word": "授業",
+        "kana": "じゅぎょう",
+        "meaning": "重點詞"
       },
       {
-        "word": "たあと",
-        "kana": "たあと",
-        "meaning": "關鍵詞"
+        "word": "一人",
+        "kana": "ひとり",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "学生",
+        "kana": "がくせい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2547,7 +2764,41 @@ window.JAPANESE_READING_SETS = [
       "～ほうがいい"
     ],
     "titleRuby": "静かな教室",
-    "passageRuby": "授業が終わったあと、教室に一人だけ学生が残っていました。机の上には消しゴムとノートがあり、窓は開いたままでした。学生は『田中さんの物かもしれない』と思い、職員室へ持って行きました。"
+    "passageRuby": "授業が終わったあと、教室に一人だけ学生が残っていました。机の上には消しゴムとノートがあり、窓は開いたままでした。学生は『田中さんの物かもしれない』と思い、職員室へ持って行きました。",
+    "rubyTerms": [
+      {
+        "text": "職員室",
+        "reading": "しょくいんしつ"
+      },
+      {
+        "text": "教室",
+        "reading": "きょうしつ"
+      },
+      {
+        "text": "授業",
+        "reading": "じゅぎょう"
+      },
+      {
+        "text": "一人",
+        "reading": "ひとり"
+      },
+      {
+        "text": "学生",
+        "reading": "がくせい"
+      },
+      {
+        "text": "田中",
+        "reading": "たなか"
+      },
+      {
+        "text": "窓",
+        "reading": "まど"
+      },
+      {
+        "text": "机",
+        "reading": "つくえ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-032",
@@ -2572,19 +2823,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "明日",
-        "kana": "明日",
-        "meaning": "關鍵詞"
-      },
-      {
         "word": "今日",
-        "kana": "今日",
-        "meaning": "關鍵詞"
+        "kana": "きょう",
+        "meaning": "重點詞"
       },
       {
-        "word": "朝",
-        "kana": "朝",
-        "meaning": "關鍵詞"
+        "word": "明日",
+        "kana": "あした",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "美香",
+        "kana": "みか",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "残念",
+        "kana": "ざんねん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2592,7 +2853,37 @@ window.JAPANESE_READING_SETS = [
       "～ほうがいい"
     ],
     "titleRuby": "閉まったパン屋",
-    "passageRuby": "美香さんは好きなパン屋へ行きましたが、店の前に『今日は午後二時に閉めます』と紙が貼ってありました。時計を見ると二時十分でした。美香さんは残念でしたが、明日の朝もう一度来ようと思いました。"
+    "passageRuby": "美香さんは好きなパン屋へ行きましたが、店の前に『今日は午後二時に閉めます』と紙が貼ってありました。時計を見ると二時十分でした。美香さんは残念でしたが、明日の朝もう一度来ようと思いました。",
+    "rubyTerms": [
+      {
+        "text": "今日",
+        "reading": "きょう"
+      },
+      {
+        "text": "明日",
+        "reading": "あした"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "美香",
+        "reading": "みか"
+      },
+      {
+        "text": "残念",
+        "reading": "ざんねん"
+      },
+      {
+        "text": "十分",
+        "reading": "じゅっぷん"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-033",
@@ -2617,19 +2908,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "温めて",
+        "kana": "あたためて",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "台所",
+        "kana": "だいどころ",
+        "meaning": "重點詞"
+      },
+      {
         "word": "学校",
-        "kana": "学校",
-        "meaning": "關鍵詞"
+        "kana": "がっこう",
+        "meaning": "重點詞"
       },
       {
-        "word": "学校から帰る",
-        "kana": "学校から帰る",
-        "meaning": "關鍵詞"
+        "word": "お腹",
+        "kana": "おなか",
+        "meaning": "重點詞"
       },
       {
-        "word": "テーブルに母",
-        "kana": "テーブルに母",
-        "meaning": "關鍵詞"
+        "word": "母",
+        "kana": "はは",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2637,7 +2938,33 @@ window.JAPANESE_READING_SETS = [
       "～ほうがいい"
     ],
     "titleRuby": "母のメモ",
-    "passageRuby": "学校から帰ると、テーブルに母のメモがありました。『カレーは鍋の中です。温めて食べてください。七時ごろ帰ります。』私はお腹がすいていたので、手を洗ってから台所へ行きました。"
+    "passageRuby": "学校から帰ると、テーブルに母のメモがありました。『カレーは鍋の中です。温めて食べてください。七時ごろ帰ります。』私はお腹がすいていたので、手を洗ってから台所へ行きました。",
+    "rubyTerms": [
+      {
+        "text": "温めて",
+        "reading": "あたためて"
+      },
+      {
+        "text": "台所",
+        "reading": "だいどころ"
+      },
+      {
+        "text": "学校",
+        "reading": "がっこう"
+      },
+      {
+        "text": "お腹",
+        "reading": "おなか"
+      },
+      {
+        "text": "母",
+        "reading": "はは"
+      },
+      {
+        "text": "鍋",
+        "reading": "なべ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-034",
@@ -2662,19 +2989,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "先生",
-        "kana": "先生",
-        "meaning": "關鍵詞"
+        "word": "博物館",
+        "kana": "はくぶつかん",
+        "meaning": "重點詞"
       },
       {
         "word": "今日",
-        "kana": "今日",
-        "meaning": "關鍵詞"
+        "kana": "きょう",
+        "meaning": "重點詞"
       },
       {
-        "word": "朝",
-        "kana": "朝",
-        "meaning": "關鍵詞"
+        "word": "先生",
+        "kana": "せんせい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "学生",
+        "kana": "がくせい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "遠足",
+        "kana": "えんそく",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2682,7 +3019,41 @@ window.JAPANESE_READING_SETS = [
       "～ほうがいい"
     ],
     "titleRuby": "雨の日の遠足",
-    "passageRuby": "遠足の日の朝、空は暗く、雨が降りそうでした。先生は『山の道はすべりやすいので、今日は博物館へ行きます』と言いました。学生たちは少し驚きましたが、バスの中で博物館の地図を見始めました。"
+    "passageRuby": "遠足の日の朝、空は暗く、雨が降りそうでした。先生は『山の道はすべりやすいので、今日は博物館へ行きます』と言いました。学生たちは少し驚きましたが、バスの中で博物館の地図を見始めました。",
+    "rubyTerms": [
+      {
+        "text": "博物館",
+        "reading": "はくぶつかん"
+      },
+      {
+        "text": "今日",
+        "reading": "きょう"
+      },
+      {
+        "text": "先生",
+        "reading": "せんせい"
+      },
+      {
+        "text": "学生",
+        "reading": "がくせい"
+      },
+      {
+        "text": "遠足",
+        "reading": "えんそく"
+      },
+      {
+        "text": "地図",
+        "reading": "ちず"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "雨",
+        "reading": "あめ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-035",
@@ -2707,19 +3078,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "旅行",
+        "kana": "りょこう",
+        "meaning": "重點詞"
+      },
+      {
         "word": "店員",
-        "kana": "店員",
-        "meaning": "關鍵詞"
+        "kana": "てんいん",
+        "meaning": "重點詞"
       },
       {
-        "word": "私は靴屋で黒",
-        "kana": "私は靴屋で黒",
-        "meaning": "關鍵詞"
+        "word": "靴屋",
+        "kana": "くつや",
+        "meaning": "重點詞"
       },
       {
-        "word": "い靴を見てい",
-        "kana": "い靴を見てい",
-        "meaning": "關鍵詞"
+        "word": "黒い",
+        "kana": "くろい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "値段",
+        "kana": "ねだん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2727,7 +3108,33 @@ window.JAPANESE_READING_SETS = [
       "～ほうがいい"
     ],
     "titleRuby": "店員のすすめ",
-    "passageRuby": "私は靴屋で黒い靴を見ていました。値段は安かったですが、少し小さく感じました。店員は『長く歩くなら、少し大きいほうがいいですよ』と言いました。私は旅行で使うので、別のサイズを出してもらいました。"
+    "passageRuby": "私は靴屋で黒い靴を見ていました。値段は安かったですが、少し小さく感じました。店員は『長く歩くなら、少し大きいほうがいいですよ』と言いました。私は旅行で使うので、別のサイズを出してもらいました。",
+    "rubyTerms": [
+      {
+        "text": "旅行",
+        "reading": "りょこう"
+      },
+      {
+        "text": "店員",
+        "reading": "てんいん"
+      },
+      {
+        "text": "靴屋",
+        "reading": "くつや"
+      },
+      {
+        "text": "黒い",
+        "reading": "くろい"
+      },
+      {
+        "text": "値段",
+        "reading": "ねだん"
+      },
+      {
+        "text": "別",
+        "reading": "べつ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-036",
@@ -2752,14 +3159,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "写真部",
-        "kana": "しゃしんぶ",
-        "meaning": "攝影社"
+        "word": "土曜日",
+        "kana": "どようび",
+        "meaning": "重點詞"
       },
       {
-        "word": "建物",
-        "kana": "たてもの",
-        "meaning": "建築物"
+        "word": "写真部",
+        "kana": "しゃしんぶ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "予定",
+        "kana": "よてい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "写真",
+        "kana": "しゃしん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "田中",
+        "kana": "たなか",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2767,7 +3189,41 @@ window.JAPANESE_READING_SETS = [
       "～ことにしました"
     ],
     "titleRuby": "学校の写真部",
-    "passageRuby": "田中さんは写真部に入りました。土曜日に公園で花の写真を撮る予定でしたが、雨が降りそうなので、学校の中で古い建物を撮ることにしました。"
+    "passageRuby": "田中さんは写真部に入りました。土曜日に公園で花の写真を撮る予定でしたが、雨が降りそうなので、学校の中で古い建物を撮ることにしました。",
+    "rubyTerms": [
+      {
+        "text": "土曜日",
+        "reading": "どようび"
+      },
+      {
+        "text": "写真部",
+        "reading": "しゃしんぶ"
+      },
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "写真",
+        "reading": "しゃしん"
+      },
+      {
+        "text": "田中",
+        "reading": "たなか"
+      },
+      {
+        "text": "学校",
+        "reading": "がっこう"
+      },
+      {
+        "text": "建物",
+        "reading": "たてもの"
+      },
+      {
+        "text": "雨",
+        "reading": "あめ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-037",
@@ -2794,12 +3250,27 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "期末試験",
         "kana": "きまつしけん",
-        "meaning": "期末考"
+        "meaning": "重點詞"
       },
       {
-        "word": "復習",
-        "kana": "ふくしゅう",
-        "meaning": "複習"
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "電車",
+        "kana": "でんしゃ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "計画",
+        "kana": "けいかく",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "来週",
+        "kana": "らいしゅう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2807,7 +3278,41 @@ window.JAPANESE_READING_SETS = [
       "～ておきます"
     ],
     "titleRuby": "期末試験の計画",
-    "passageRuby": "李さんは来週の期末試験のために、毎晩一時間ずつ復習しています。苦手な漢字は朝の電車で見ておくことにしました。"
+    "passageRuby": "李さんは来週の期末試験のために、毎晩一時間ずつ復習しています。苦手な漢字は朝の電車で見ておくことにしました。",
+    "rubyTerms": [
+      {
+        "text": "期末試験",
+        "reading": "きまつしけん"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "電車",
+        "reading": "でんしゃ"
+      },
+      {
+        "text": "計画",
+        "reading": "けいかく"
+      },
+      {
+        "text": "来週",
+        "reading": "らいしゅう"
+      },
+      {
+        "text": "毎晩",
+        "reading": "まいばん"
+      },
+      {
+        "text": "復習",
+        "reading": "ふくしゅう"
+      },
+      {
+        "text": "苦手",
+        "reading": "にがて"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-038",
@@ -2832,14 +3337,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "宿題",
-        "kana": "しゅくだい",
-        "meaning": "作業"
+        "word": "日文課",
+        "kana": "にほんごか",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "明日",
+        "kana": "あした",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "先生",
+        "kana": "せんせい",
+        "meaning": "重點詞"
       },
       {
         "word": "授業",
         "kana": "じゅぎょう",
-        "meaning": "課程"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "宿題",
+        "kana": "しゅくだい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2847,7 +3367,33 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "日文課の宿題",
-    "passageRuby": "王さんは日文課の宿題を家に忘れてしまいました。授業の前に先生に話すと、明日出してもいいと言われました。"
+    "passageRuby": "王さんは日文課の宿題を家に忘れてしまいました。授業の前に先生に話すと、明日出してもいいと言われました。",
+    "rubyTerms": [
+      {
+        "text": "日文課",
+        "reading": "にほんごか"
+      },
+      {
+        "text": "明日",
+        "reading": "あした"
+      },
+      {
+        "text": "先生",
+        "reading": "せんせい"
+      },
+      {
+        "text": "授業",
+        "reading": "じゅぎょう"
+      },
+      {
+        "text": "宿題",
+        "reading": "しゅくだい"
+      },
+      {
+        "text": "王",
+        "reading": "おう"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-039",
@@ -2872,14 +3418,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "学校",
-        "kana": "学校",
-        "meaning": "關鍵詞"
+        "word": "留学生",
+        "kana": "りゅうがくせい",
+        "meaning": "重點詞"
       },
       {
-        "word": "留学生",
-        "kana": "留学生",
-        "meaning": "關鍵詞"
+        "word": "温かい",
+        "kana": "あたたかい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "学生",
+        "kana": "がくせい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "学校",
+        "kana": "がっこう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "日本",
+        "kana": "にほん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2888,7 +3449,41 @@ window.JAPANESE_READING_SETS = [
       "～ておきます"
     ],
     "titleRuby": "留学生の朝",
-    "passageRuby": "林さんは留学生です。日本の冬は思ったより寒いので、学校へ行く前に温かいお茶を飲むようにしています。"
+    "passageRuby": "林さんは留学生です。日本の冬は思ったより寒いので、学校へ行く前に温かいお茶を飲むようにしています。",
+    "rubyTerms": [
+      {
+        "text": "留学生",
+        "reading": "りゅうがくせい"
+      },
+      {
+        "text": "温かい",
+        "reading": "あたたかい"
+      },
+      {
+        "text": "学生",
+        "reading": "がくせい"
+      },
+      {
+        "text": "学校",
+        "reading": "がっこう"
+      },
+      {
+        "text": "日本",
+        "reading": "にほん"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "林",
+        "reading": "はやし"
+      },
+      {
+        "text": "冬",
+        "reading": "ふゆ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-040",
@@ -2914,18 +3509,28 @@ window.JAPANESE_READING_SETS = [
     "vocabulary": [
       {
         "word": "図書館",
-        "kana": "図書館",
-        "meaning": "關鍵詞"
+        "kana": "としょかん",
+        "meaning": "重點詞"
       },
       {
-        "word": "佐藤さんは図",
-        "kana": "佐藤さんは図",
-        "meaning": "關鍵詞"
+        "word": "二週間",
+        "kana": "にしゅうかん",
+        "meaning": "重點詞"
       },
       {
-        "word": "書館で料理の",
-        "kana": "書館で料理の",
-        "meaning": "關鍵詞"
+        "word": "旅行",
+        "kana": "りょこう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "来週",
+        "kana": "らいしゅう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "佐藤",
+        "kana": "さとう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2934,7 +3539,33 @@ window.JAPANESE_READING_SETS = [
       "～ておきます"
     ],
     "titleRuby": "図書館の本",
-    "passageRuby": "佐藤さんは図書館で料理の本を借りました。二週間借りることができますが、旅行に行くので、来週返すつもりです。"
+    "passageRuby": "佐藤さんは図書館で料理の本を借りました。二週間借りることができますが、旅行に行くので、来週返すつもりです。",
+    "rubyTerms": [
+      {
+        "text": "図書館",
+        "reading": "としょかん"
+      },
+      {
+        "text": "二週間",
+        "reading": "にしゅうかん"
+      },
+      {
+        "text": "旅行",
+        "reading": "りょこう"
+      },
+      {
+        "text": "来週",
+        "reading": "らいしゅう"
+      },
+      {
+        "text": "佐藤",
+        "reading": "さとう"
+      },
+      {
+        "text": "料理",
+        "reading": "りょうり"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-041",
@@ -2960,13 +3591,28 @@ window.JAPANESE_READING_SETS = [
     "vocabulary": [
       {
         "word": "学校",
-        "kana": "学校",
-        "meaning": "關鍵詞"
+        "kana": "がっこう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "書店",
+        "kana": "しょてん",
+        "meaning": "重點詞"
       },
       {
         "word": "辞書",
-        "kana": "辞書",
-        "meaning": "關鍵詞"
+        "kana": "じしょ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "毎日",
+        "kana": "まいにち",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "軽い",
+        "kana": "かるい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -2975,7 +3621,29 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "titleRuby": "書店の辞書",
-    "passageRuby": "書店の新しい辞書は字が大きくて読みやすいですが、少し重いです。アンナさんは毎日学校へ持って行くため、軽い小さい辞書を選びました。"
+    "passageRuby": "書店の新しい辞書は字が大きくて読みやすいですが、少し重いです。アンナさんは毎日学校へ持って行くため、軽い小さい辞書を選びました。",
+    "rubyTerms": [
+      {
+        "text": "学校",
+        "reading": "がっこう"
+      },
+      {
+        "text": "書店",
+        "reading": "しょてん"
+      },
+      {
+        "text": "辞書",
+        "reading": "じしょ"
+      },
+      {
+        "text": "毎日",
+        "reading": "まいにち"
+      },
+      {
+        "text": "軽い",
+        "reading": "かるい"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-042",
@@ -3000,14 +3668,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "レストラ",
-        "kana": "レストラ",
-        "meaning": "主題語"
+        "word": "レストラン",
+        "kana": "レストラン",
+        "meaning": "重點詞"
       },
       {
-        "word": "前日の午後五",
-        "kana": "前日の午後五",
-        "meaning": "關鍵資訊"
+        "word": "確認",
+        "kana": "かくにん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "予約",
+        "kana": "よやく",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "人数",
+        "kana": "にんずう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3015,7 +3698,41 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "レストラン予約",
-    "passageRuby": "レストランから予約確認のメールが来ました。人数を変える場合は、前日の午後五時までに連絡しなければなりません。当日の変更はできません。"
+    "passageRuby": "レストランから予約確認のメールが来ました。人数を変える場合は、前日の午後五時までに連絡しなければなりません。当日の変更はできません。",
+    "rubyTerms": [
+      {
+        "text": "レストラン",
+        "reading": "レストラン"
+      },
+      {
+        "text": "確認",
+        "reading": "かくにん"
+      },
+      {
+        "text": "予約",
+        "reading": "よやく"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "人数",
+        "reading": "にんずう"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      },
+      {
+        "text": "前日",
+        "reading": "ぜんじつ"
+      },
+      {
+        "text": "連絡",
+        "reading": "れんらく"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-043",
@@ -3040,14 +3757,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "コンビニ",
-        "kana": "コンビニ",
-        "meaning": "主題語"
+        "word": "コピー機",
+        "kana": "コピーき",
+        "meaning": "重點詞"
       },
       {
-        "word": "店員に聞いて",
-        "kana": "店員に聞いて",
-        "meaning": "關鍵資訊"
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "写真",
+        "kana": "しゃしん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "店員",
+        "kana": "てんいん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "場合",
+        "kana": "ばあい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3056,7 +3788,37 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "titleRuby": "コンビニコピー",
-    "passageRuby": "コンビニのコピー<ruby>機<rt>き</rt></ruby>は、<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>印刷<rt>いんさつ</rt></ruby>するとき<ruby>先<rt>さき</rt></ruby>に<ruby>画面<rt>がめん</rt></ruby>でサイズを<ruby>選<rt>えら</rt></ruby>びます。<ruby>分<rt>わ</rt></ruby>からない<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>店員<rt>てんいん</rt></ruby>に<ruby>聞<rt>き</rt></ruby>いてもいいですが、<ruby>混<rt>こ</rt></ruby>んでいる<ruby>時間<rt>じかん</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>待<rt>ま</rt></ruby>ちます。"
+    "passageRuby": "コンビニのコピー<ruby>機<rt>き</rt></ruby>は、<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>印刷<rt>いんさつ</rt></ruby>するとき<ruby>先<rt>さき</rt></ruby>に<ruby>画面<rt>がめん</rt></ruby>でサイズを<ruby>選<rt>えら</rt></ruby>びます。<ruby>分<rt>わ</rt></ruby>からない<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>店員<rt>てんいん</rt></ruby>に<ruby>聞<rt>き</rt></ruby>いてもいいですが、<ruby>混<rt>こ</rt></ruby>んでいる<ruby>時間<rt>じかん</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>待<rt>ま</rt></ruby>ちます。",
+    "rubyTerms": [
+      {
+        "text": "コピー機",
+        "reading": "コピーき"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "写真",
+        "reading": "しゃしん"
+      },
+      {
+        "text": "店員",
+        "reading": "てんいん"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      },
+      {
+        "text": "印刷",
+        "reading": "いんさつ"
+      },
+      {
+        "text": "画面",
+        "reading": "がめん"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-044",
@@ -3081,14 +3843,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "スーパー",
-        "kana": "スーパー",
-        "meaning": "主題語"
+        "word": "水曜日",
+        "kana": "すいようび",
+        "meaning": "重點詞"
       },
       {
-        "word": "一人一パック",
-        "kana": "一人一パック",
-        "meaning": "關鍵資訊"
+        "word": "午前中",
+        "kana": "ごぜんちゅう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "予定",
+        "kana": "よてい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午前",
+        "kana": "ごぜん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "一人",
+        "kana": "ひとり",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3096,7 +3873,37 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "スーパー特売日",
-    "passageRuby": "スーパーの特売日は水曜日です。卵は一人一パックまでで、午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。"
+    "passageRuby": "スーパーの特売日は水曜日です。卵は一人一パックまでで、午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。",
+    "rubyTerms": [
+      {
+        "text": "水曜日",
+        "reading": "すいようび"
+      },
+      {
+        "text": "午前中",
+        "reading": "ごぜんちゅう"
+      },
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "午前",
+        "reading": "ごぜん"
+      },
+      {
+        "text": "一人",
+        "reading": "ひとり"
+      },
+      {
+        "text": "近藤",
+        "reading": "こんどう"
+      },
+      {
+        "text": "卵",
+        "reading": "たまご"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-045",
@@ -3121,19 +3928,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "宅配会社",
+        "kana": "たくはいがいしゃ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "受け取る",
+        "kana": "うけとる",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "郵便局",
+        "kana": "ゆうびんきょく",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "不在票",
+        "kana": "ふざいひょう",
+        "meaning": "重點詞"
+      },
+      {
         "word": "荷物",
-        "kana": "荷物",
-        "meaning": "關鍵詞"
-      },
-      {
-        "word": "明日",
-        "kana": "明日",
-        "meaning": "關鍵詞"
-      },
-      {
-        "word": "夜",
-        "kana": "夜",
-        "meaning": "關鍵詞"
+        "kana": "にもつ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3142,7 +3959,41 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "titleRuby": "郵便局の再配達",
-    "passageRuby": "宅配会社から不在票が入っていました。荷物を受け取るために、渡辺さんはインターネットで明日の夜七時から九時を選びました。"
+    "passageRuby": "宅配会社から不在票が入っていました。荷物を受け取るために、渡辺さんはインターネットで明日の夜七時から九時を選びました。",
+    "rubyTerms": [
+      {
+        "text": "宅配会社",
+        "reading": "たくはいがいしゃ"
+      },
+      {
+        "text": "受け取る",
+        "reading": "うけとる"
+      },
+      {
+        "text": "郵便局",
+        "reading": "ゆうびんきょく"
+      },
+      {
+        "text": "不在票",
+        "reading": "ふざいひょう"
+      },
+      {
+        "text": "荷物",
+        "reading": "にもつ"
+      },
+      {
+        "text": "明日",
+        "reading": "あした"
+      },
+      {
+        "text": "渡辺",
+        "reading": "わたなべ"
+      },
+      {
+        "text": "配達",
+        "reading": "はいたつ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-046",
@@ -3167,14 +4018,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "駅で乗り",
-        "kana": "駅で乗り",
-        "meaning": "主題語"
+        "word": "各駅停車",
+        "kana": "かくえきていしゃ",
+        "meaning": "重點詞"
       },
       {
-        "word": "各駅停車",
-        "kana": "各駅停車",
-        "meaning": "關鍵資訊"
+        "word": "乗り換え",
+        "kana": "のりかえ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "急行",
+        "kana": "きゅうこう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "小林",
+        "kana": "こばやし",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "会場",
+        "kana": "かいじょう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3182,7 +4048,37 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "駅での乗り換え",
-    "passageRuby": "初めて行く会場なので、小林さんは駅で乗り換え方を調べました。急行に乗ると早いですが、会場の近くの駅には止まらないので、各駅停車に乗ります。"
+    "passageRuby": "初めて行く会場なので、小林さんは駅で乗り換え方を調べました。急行に乗ると早いですが、会場の近くの駅には止まらないので、各駅停車に乗ります。",
+    "rubyTerms": [
+      {
+        "text": "各駅停車",
+        "reading": "かくえきていしゃ"
+      },
+      {
+        "text": "乗り換え",
+        "reading": "のりかえ"
+      },
+      {
+        "text": "急行",
+        "reading": "きゅうこう"
+      },
+      {
+        "text": "小林",
+        "reading": "こばやし"
+      },
+      {
+        "text": "会場",
+        "reading": "かいじょう"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      },
+      {
+        "text": "林",
+        "reading": "はやし"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-047",
@@ -3207,19 +4103,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "図書館",
-        "kana": "図書館",
-        "meaning": "關鍵詞"
+        "word": "五番バス",
+        "kana": "ごばんバス",
+        "meaning": "重點詞"
       },
       {
-        "word": "雨",
-        "kana": "雨",
-        "meaning": "關鍵詞"
+        "word": "市役所前",
+        "kana": "しやくしょまえ",
+        "meaning": "重點詞"
       },
       {
         "word": "中央公園",
-        "kana": "中央公園",
-        "meaning": "關鍵詞"
+        "kana": "ちゅうおうこうえん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "市役所",
+        "kana": "しやくしょ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "図書館",
+        "kana": "としょかん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3228,7 +4134,41 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "titleRuby": "バスの迂回",
-    "passageRuby": "雨で道路が混んでいるため、五番バスは市役所前を通りません。図書館へ行く人は、中央公園で降りて十分歩いてください。"
+    "passageRuby": "雨で道路が混んでいるため、五番バスは市役所前を通りません。図書館へ行く人は、中央公園で降りて十分歩いてください。",
+    "rubyTerms": [
+      {
+        "text": "五番バス",
+        "reading": "ごばんバス"
+      },
+      {
+        "text": "市役所前",
+        "reading": "しやくしょまえ"
+      },
+      {
+        "text": "中央公園",
+        "reading": "ちゅうおうこうえん"
+      },
+      {
+        "text": "市役所",
+        "reading": "しやくしょ"
+      },
+      {
+        "text": "図書館",
+        "reading": "としょかん"
+      },
+      {
+        "text": "迂回",
+        "reading": "うかい"
+      },
+      {
+        "text": "道路",
+        "reading": "どうろ"
+      },
+      {
+        "text": "十分",
+        "reading": "じゅっぷん"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-048",
@@ -3253,19 +4193,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "フロント",
+        "kana": "フロント",
+        "meaning": "重點詞"
+      },
+      {
         "word": "荷物",
-        "kana": "荷物",
-        "meaning": "關鍵詞"
+        "kana": "にもつ",
+        "meaning": "重點詞"
       },
       {
         "word": "午後",
-        "kana": "午後",
-        "meaning": "關鍵詞"
+        "kana": "ごご",
+        "meaning": "重點詞"
       },
       {
         "word": "部屋",
-        "kana": "部屋",
-        "meaning": "關鍵詞"
+        "kana": "へや",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "場合",
+        "kana": "ばあい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3273,7 +4223,33 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "ホテルのチェックイン",
-    "passageRuby": "ホテルのチェックインは午後三時からです。早く着いた場合、荷物だけフロントに預けることができます。部屋には三時まで入れません。"
+    "passageRuby": "ホテルのチェックインは午後三時からです。早く着いた場合、荷物だけフロントに預けることができます。部屋には三時まで入れません。",
+    "rubyTerms": [
+      {
+        "text": "フロント",
+        "reading": "フロント"
+      },
+      {
+        "text": "荷物",
+        "reading": "にもつ"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "部屋",
+        "reading": "へや"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      },
+      {
+        "text": "三時",
+        "reading": "さんじ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-049",
@@ -3298,14 +4274,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "薬",
-        "kana": "薬",
-        "meaning": "關鍵詞"
+        "word": "充電器",
+        "kana": "じゅうでんき",
+        "meaning": "重點詞"
       },
       {
-        "word": "充電器",
-        "kana": "充電器",
-        "meaning": "關鍵詞"
+        "word": "着替え",
+        "kana": "きがえ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "荷物",
+        "kana": "にもつ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "旅行",
+        "kana": "りょこう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "吉田",
+        "kana": "よしだ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3314,7 +4305,33 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "titleRuby": "旅行の荷物",
-    "passageRuby": "旅行の前に、吉田さんは小さいかばんへ薬と充電器を入れておきました。着替えはホテルで洗えるので、二日分だけ持って行くことにしました。"
+    "passageRuby": "旅行の前に、吉田さんは小さいかばんへ薬と充電器を入れておきました。着替えはホテルで洗えるので、二日分だけ持って行くことにしました。",
+    "rubyTerms": [
+      {
+        "text": "充電器",
+        "reading": "じゅうでんき"
+      },
+      {
+        "text": "着替え",
+        "reading": "きがえ"
+      },
+      {
+        "text": "荷物",
+        "reading": "にもつ"
+      },
+      {
+        "text": "旅行",
+        "reading": "りょこう"
+      },
+      {
+        "text": "吉田",
+        "reading": "よしだ"
+      },
+      {
+        "text": "薬",
+        "reading": "くすり"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-050",
@@ -3339,19 +4356,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "午後",
-        "kana": "午後",
-        "meaning": "關鍵詞"
-      },
-      {
         "word": "映画館",
-        "kana": "映画館",
-        "meaning": "關鍵詞"
+        "kana": "えいがかん",
+        "meaning": "重點詞"
       },
       {
         "word": "時刻表",
-        "kana": "時刻表",
-        "meaning": "關鍵詞"
+        "kana": "じこくひょう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "映画",
+        "kana": "えいが",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "字幕",
+        "kana": "じまく",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3359,7 +4386,33 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "映画館の時刻",
-    "passageRuby": "映画館の時刻表では、字幕の映画は午後二時と七時です。七時の回は終わるのが遅すぎるので、林さんは二時の回を見るつもりです。"
+    "passageRuby": "映画館の時刻表では、字幕の映画は午後二時と七時です。七時の回は終わるのが遅すぎるので、林さんは二時の回を見るつもりです。",
+    "rubyTerms": [
+      {
+        "text": "映画館",
+        "reading": "えいがかん"
+      },
+      {
+        "text": "時刻表",
+        "reading": "じこくひょう"
+      },
+      {
+        "text": "映画",
+        "reading": "えいが"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "字幕",
+        "reading": "じまく"
+      },
+      {
+        "text": "林",
+        "reading": "はやし"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-051",
@@ -3385,13 +4438,28 @@ window.JAPANESE_READING_SETS = [
     "vocabulary": [
       {
         "word": "地域清掃",
-        "kana": "地域清掃",
-        "meaning": "主題語"
+        "kana": "ちいきせいそう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "日曜日",
+        "kana": "にちようび",
+        "meaning": "重點詞"
       },
       {
         "word": "飲み物",
-        "kana": "飲み物",
-        "meaning": "關鍵資訊"
+        "kana": "のみもの",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "来週",
+        "kana": "らいしゅう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "場合",
+        "kana": "ばあい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3400,7 +4468,41 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "titleRuby": "地域清掃",
-    "passageRuby": "地域清掃は日曜日の朝九時からです。軍手は公園で借りられますが、飲み物は自分で持って来てください。雨の場合は来週に延びます。"
+    "passageRuby": "地域清掃は日曜日の朝九時からです。軍手は公園で借りられますが、飲み物は自分で持って来てください。雨の場合は来週に延びます。",
+    "rubyTerms": [
+      {
+        "text": "地域清掃",
+        "reading": "ちいきせいそう"
+      },
+      {
+        "text": "日曜日",
+        "reading": "にちようび"
+      },
+      {
+        "text": "飲み物",
+        "reading": "のみもの"
+      },
+      {
+        "text": "来週",
+        "reading": "らいしゅう"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      },
+      {
+        "text": "軍手",
+        "reading": "ぐんて"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "雨",
+        "reading": "あめ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-052",
@@ -3425,19 +4527,24 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "びんを出す日",
-        "kana": "びんを出す日",
-        "meaning": "關鍵詞"
+        "word": "分別",
+        "kana": "ぶんべつ",
+        "meaning": "重點詞"
       },
       {
-        "word": "は月に二回で",
-        "kana": "は月に二回で",
-        "meaning": "關鍵詞"
+        "word": "透明",
+        "kana": "とうめい",
+        "meaning": "重點詞"
       },
       {
-        "word": "中を水で洗っ",
-        "kana": "中を水で洗っ",
-        "meaning": "關鍵詞"
+        "word": "箱",
+        "kana": "はこ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "別",
+        "kana": "べつ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3445,7 +4552,25 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "びんの分別",
-    "passageRuby": "びんを出す日は月に二回です。中を水で洗ったあとで、茶色のびんと透明なびんを別の箱に入れなければなりません。"
+    "passageRuby": "びんを出す日は月に二回です。中を水で洗ったあとで、茶色のびんと透明なびんを別の箱に入れなければなりません。",
+    "rubyTerms": [
+      {
+        "text": "分別",
+        "reading": "ぶんべつ"
+      },
+      {
+        "text": "透明",
+        "reading": "とうめい"
+      },
+      {
+        "text": "箱",
+        "reading": "はこ"
+      },
+      {
+        "text": "別",
+        "reading": "べつ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-053",
@@ -3471,13 +4596,28 @@ window.JAPANESE_READING_SETS = [
     "vocabulary": [
       {
         "word": "落とし物",
-        "kana": "落とし物",
-        "meaning": "主題語"
+        "kana": "おとしもの",
+        "meaning": "重點詞"
       },
       {
-        "word": "改札横の事務",
-        "kana": "改札横の事務",
-        "meaning": "關鍵資訊"
+        "word": "掲示板",
+        "kana": "けいじばん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "事務室",
+        "kana": "じむしつ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "青い",
+        "kana": "あおい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3486,7 +4626,41 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "titleRuby": "落とし物の傘",
-    "passageRuby": "駅の掲示板に、青い傘の落とし物があると書いてあります。心当たりがある人は、午後八時までに改札横の事務室へ来てください。"
+    "passageRuby": "駅の掲示板に、青い傘の落とし物があると書いてあります。心当たりがある人は、午後八時までに改札横の事務室へ来てください。",
+    "rubyTerms": [
+      {
+        "text": "落とし物",
+        "reading": "おとしもの"
+      },
+      {
+        "text": "掲示板",
+        "reading": "けいじばん"
+      },
+      {
+        "text": "事務室",
+        "reading": "じむしつ"
+      },
+      {
+        "text": "青い",
+        "reading": "あおい"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "改札",
+        "reading": "かいさつ"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      },
+      {
+        "text": "傘",
+        "reading": "かさ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-054",
@@ -3511,14 +4685,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "駅",
-        "kana": "駅",
-        "meaning": "關鍵詞"
+        "word": "案内所",
+        "kana": "あんないじょ",
+        "meaning": "重點詞"
       },
       {
-        "word": "案内所",
-        "kana": "案内所",
-        "meaning": "關鍵詞"
+        "word": "地図",
+        "kana": "ちず",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "電池",
+        "kana": "でんち",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "木村",
+        "kana": "きむら",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "駅",
+        "kana": "えき",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3526,7 +4715,29 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "スマホの電池",
-    "passageRuby": "スマホの電池が少なくなったので、木村さんは地図を見ながら歩くのをやめました。駅に着いたら、案内所で道を聞くつもりです。"
+    "passageRuby": "スマホの電池が少なくなったので、木村さんは地図を見ながら歩くのをやめました。駅に着いたら、案内所で道を聞くつもりです。",
+    "rubyTerms": [
+      {
+        "text": "案内所",
+        "reading": "あんないじょ"
+      },
+      {
+        "text": "地図",
+        "reading": "ちず"
+      },
+      {
+        "text": "電池",
+        "reading": "でんち"
+      },
+      {
+        "text": "木村",
+        "reading": "きむら"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-055",
@@ -3551,19 +4762,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "受付",
-        "kana": "受付",
-        "meaning": "關鍵詞"
+        "word": "八時半",
+        "kana": "はちじはん",
+        "meaning": "重點詞"
       },
       {
-        "word": "午前",
-        "kana": "午前",
-        "meaning": "關鍵詞"
+        "word": "保険証",
+        "kana": "ほけんしょう",
+        "meaning": "重點詞"
       },
       {
         "word": "予約",
-        "kana": "予約",
-        "meaning": "關鍵詞"
+        "kana": "よやく",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午前",
+        "kana": "ごぜん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "住所",
+        "kana": "じゅうしょ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3572,7 +4793,37 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "titleRuby": "病院の受付",
-    "passageRuby": "病院の受付は午前八時半に始まります。初めて来る人は保険証と住所が分かるものを出してください。予約があっても少し待つことがあります。"
+    "passageRuby": "病院の受付は午前八時半に始まります。初めて来る人は保険証と住所が分かるものを出してください。予約があっても少し待つことがあります。",
+    "rubyTerms": [
+      {
+        "text": "八時半",
+        "reading": "はちじはん"
+      },
+      {
+        "text": "保険証",
+        "reading": "ほけんしょう"
+      },
+      {
+        "text": "予約",
+        "reading": "よやく"
+      },
+      {
+        "text": "午前",
+        "reading": "ごぜん"
+      },
+      {
+        "text": "住所",
+        "reading": "じゅうしょ"
+      },
+      {
+        "text": "受付",
+        "reading": "うけつけ"
+      },
+      {
+        "text": "病院",
+        "reading": "びょういん"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-056",
@@ -3598,18 +4849,28 @@ window.JAPANESE_READING_SETS = [
     "vocabulary": [
       {
         "word": "予定",
-        "kana": "予定",
-        "meaning": "關鍵詞"
+        "kana": "よてい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "買う",
+        "kana": "かう",
+        "meaning": "重點詞"
       },
       {
         "word": "受付",
-        "kana": "受付",
-        "meaning": "關鍵詞"
+        "kana": "うけつけ",
+        "meaning": "重點詞"
       },
       {
         "word": "薬局",
-        "kana": "薬局",
-        "meaning": "關鍵詞"
+        "kana": "やっきょく",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "説明",
+        "kana": "せつめい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3617,7 +4878,41 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "薬局の薬",
-    "passageRuby": "薬局で薬を買うとき、受付の人が「眠くなるかもしれません」と説明しました。運転する予定がある人は、飲む前に医者へ相談したほうがいいです。"
+    "passageRuby": "薬局で薬を買うとき、受付の人が「眠くなるかもしれません」と説明しました。運転する予定がある人は、飲む前に医者へ相談したほうがいいです。",
+    "rubyTerms": [
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "買う",
+        "reading": "かう"
+      },
+      {
+        "text": "受付",
+        "reading": "うけつけ"
+      },
+      {
+        "text": "薬局",
+        "reading": "やっきょく"
+      },
+      {
+        "text": "説明",
+        "reading": "せつめい"
+      },
+      {
+        "text": "運転",
+        "reading": "うんてん"
+      },
+      {
+        "text": "医者",
+        "reading": "いしゃ"
+      },
+      {
+        "text": "相談",
+        "reading": "そうだん"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-057",
@@ -3643,13 +4938,28 @@ window.JAPANESE_READING_SETS = [
     "vocabulary": [
       {
         "word": "引っ越し",
-        "kana": "引っ越し",
-        "meaning": "主題語"
+        "kana": "ひっこし",
+        "meaning": "重點詞"
       },
       {
-        "word": "新しい住所",
-        "kana": "新しい住所",
-        "meaning": "關鍵資訊"
+        "word": "郵便局",
+        "kana": "ゆうびんきょく",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "管理人",
+        "kana": "かんりにん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "郵便物",
+        "kana": "ゆうびんぶつ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "部屋",
+        "kana": "へや",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3658,7 +4968,37 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "titleRuby": "引っ越しの連絡",
-    "passageRuby": "前田さんは引っ越したあとで、管理人に新しい住所を書いた紙を渡しました。郵便物が前の部屋へ届くと困るので、郵便局にも知らせます。"
+    "passageRuby": "前田さんは引っ越したあとで、管理人に新しい住所を書いた紙を渡しました。郵便物が前の部屋へ届くと困るので、郵便局にも知らせます。",
+    "rubyTerms": [
+      {
+        "text": "引っ越し",
+        "reading": "ひっこし"
+      },
+      {
+        "text": "郵便局",
+        "reading": "ゆうびんきょく"
+      },
+      {
+        "text": "管理人",
+        "reading": "かんりにん"
+      },
+      {
+        "text": "郵便物",
+        "reading": "ゆうびんぶつ"
+      },
+      {
+        "text": "部屋",
+        "reading": "へや"
+      },
+      {
+        "text": "住所",
+        "reading": "じゅうしょ"
+      },
+      {
+        "text": "連絡",
+        "reading": "れんらく"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-058",
@@ -3683,19 +5023,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "誕生日",
+        "kana": "たんじょうび",
+        "meaning": "重點詞"
+      },
+      {
         "word": "明日",
-        "kana": "明日",
-        "meaning": "關鍵詞"
+        "kana": "あした",
+        "meaning": "重點詞"
       },
       {
-        "word": "朝",
-        "kana": "朝",
-        "meaning": "關鍵詞"
+        "word": "手紙",
+        "kana": "てがみ",
+        "meaning": "重點詞"
       },
       {
-        "word": "切手",
-        "kana": "切手",
-        "meaning": "關鍵詞"
+        "word": "伊藤",
+        "kana": "いとう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "封筒",
+        "kana": "ふうとう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3703,7 +5053,41 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "誕生日の手紙",
-    "passageRuby": "誕生日の手紙を書いたあとで、伊藤さんは封筒に切手を貼りました。明日の朝ポストに入れれば、週末までに友だちへ届くそうです。"
+    "passageRuby": "誕生日の手紙を書いたあとで、伊藤さんは封筒に切手を貼りました。明日の朝ポストに入れれば、週末までに友だちへ届くそうです。",
+    "rubyTerms": [
+      {
+        "text": "誕生日",
+        "reading": "たんじょうび"
+      },
+      {
+        "text": "明日",
+        "reading": "あした"
+      },
+      {
+        "text": "手紙",
+        "reading": "てがみ"
+      },
+      {
+        "text": "伊藤",
+        "reading": "いとう"
+      },
+      {
+        "text": "封筒",
+        "reading": "ふうとう"
+      },
+      {
+        "text": "切手",
+        "reading": "きって"
+      },
+      {
+        "text": "週末",
+        "reading": "しゅうまつ"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-059",
@@ -3728,19 +5112,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "午後",
-        "kana": "午後",
-        "meaning": "關鍵詞"
+        "word": "午後四時",
+        "kana": "ごごよじ",
+        "meaning": "重點詞"
       },
       {
         "word": "管理人",
-        "kana": "管理人",
-        "meaning": "關鍵詞"
+        "kana": "かんりにん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
       },
       {
         "word": "部屋",
-        "kana": "部屋",
-        "meaning": "關鍵詞"
+        "kana": "へや",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "冷房",
+        "kana": "れいぼう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3749,7 +5143,41 @@ window.JAPANESE_READING_SETS = [
       "～ことがあります"
     ],
     "titleRuby": "冷房の故障",
-    "passageRuby": "部屋の冷房が急に止まってしまいました。管理人は、窓を開けて待ってください、修理の人は午後四時ごろ来ます、とメモを残しました。"
+    "passageRuby": "部屋の冷房が急に止まってしまいました。管理人は、窓を開けて待ってください、修理の人は午後四時ごろ来ます、とメモを残しました。",
+    "rubyTerms": [
+      {
+        "text": "午後四時",
+        "reading": "ごごよじ"
+      },
+      {
+        "text": "管理人",
+        "reading": "かんりにん"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "部屋",
+        "reading": "へや"
+      },
+      {
+        "text": "冷房",
+        "reading": "れいぼう"
+      },
+      {
+        "text": "故障",
+        "reading": "こしょう"
+      },
+      {
+        "text": "急に",
+        "reading": "きゅうに"
+      },
+      {
+        "text": "修理",
+        "reading": "しゅうり"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-060",
@@ -3774,19 +5202,24 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "飲み物",
+        "kana": "のみもの",
+        "meaning": "重點詞"
+      },
+      {
         "word": "自習室",
-        "kana": "自習室",
-        "meaning": "關鍵詞"
+        "kana": "じしゅうしつ",
+        "meaning": "重點詞"
       },
       {
-        "word": "自習室では",
-        "kana": "自習室では",
-        "meaning": "關鍵詞"
+        "word": "規則",
+        "kana": "きそく",
+        "meaning": "重點詞"
       },
       {
-        "word": "飲み物は持ち",
-        "kana": "飲み物は持ち",
-        "meaning": "關鍵詞"
+        "word": "机",
+        "kana": "つくえ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3794,7 +5227,25 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "自習室の規則",
-    "passageRuby": "自習室では、飲み物は持ち込んでもいいですが、食べ物を食べてはいけません。使った机は帰る前にきれいにしておきましょう。"
+    "passageRuby": "自習室では、飲み物は持ち込んでもいいですが、食べ物を食べてはいけません。使った机は帰る前にきれいにしておきましょう。",
+    "rubyTerms": [
+      {
+        "text": "飲み物",
+        "reading": "のみもの"
+      },
+      {
+        "text": "自習室",
+        "reading": "じしゅうしつ"
+      },
+      {
+        "text": "規則",
+        "reading": "きそく"
+      },
+      {
+        "text": "机",
+        "reading": "つくえ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-061",
@@ -3831,19 +5282,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "引っ越しました",
-        "kana": "引っ越しました",
-        "meaning": "關鍵詞"
+        "word": "地域清掃",
+        "kana": "ちいきせいそう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "引っ越し",
+        "kana": "ひっこし",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "参加",
+        "kana": "さんか",
+        "meaning": "重點詞"
       },
       {
         "word": "近所",
-        "kana": "近所",
-        "meaning": "關鍵詞"
-      },
-      {
-        "word": "地域清掃",
-        "kana": "地域清掃",
-        "meaning": "關鍵詞"
+        "kana": "きんじょ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3851,7 +5312,33 @@ window.JAPANESE_READING_SETS = [
       "～たい"
     ],
     "titleRuby": "新しい町の生活",
-    "passageRuby": "先月この町へ引っ越しました。はじめは道が分かりにくくて、買い物にも時間がかかりました。でも、近所の人が安いスーパーと静かな公園を教えてくれました。来月は地域清掃に参加して、もっと町を知りたいです。"
+    "passageRuby": "先月この町へ引っ越しました。はじめは道が分かりにくくて、買い物にも時間がかかりました。でも、近所の人が安いスーパーと静かな公園を教えてくれました。来月は地域清掃に参加して、もっと町を知りたいです。",
+    "rubyTerms": [
+      {
+        "text": "地域清掃",
+        "reading": "ちいきせいそう"
+      },
+      {
+        "text": "引っ越し",
+        "reading": "ひっこし"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "参加",
+        "reading": "さんか"
+      },
+      {
+        "text": "近所",
+        "reading": "きんじょ"
+      },
+      {
+        "text": "町",
+        "reading": "まち"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-062",
@@ -3888,19 +5375,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "二年三組",
+        "kana": "にねんさんくみ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "土曜日",
+        "kana": "どようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "金曜日",
+        "kana": "きんようび",
+        "meaning": "重點詞"
+      },
+      {
         "word": "文化祭",
-        "kana": "文化祭",
-        "meaning": "關鍵詞"
+        "kana": "ぶんかさい",
+        "meaning": "重點詞"
       },
       {
         "word": "放課後",
-        "kana": "放課後",
-        "meaning": "關鍵詞"
-      },
-      {
-        "word": "必要",
-        "kana": "必要",
-        "meaning": "關鍵詞"
+        "kana": "ほうかご",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3908,7 +5405,41 @@ window.JAPANESE_READING_SETS = [
       "～必要はありません"
     ],
     "titleRuby": "文化祭の準備",
-    "passageRuby": "文化祭の準備で、二年三組は教室を小さな喫茶店にします。金曜日の放課後に机を動かし、土曜日の朝に看板を付けます。食べ物を持って来る必要はありませんが、エプロンは各自で用意してください。"
+    "passageRuby": "文化祭の準備で、二年三組は教室を小さな喫茶店にします。金曜日の放課後に机を動かし、土曜日の朝に看板を付けます。食べ物を持って来る必要はありませんが、エプロンは各自で用意してください。",
+    "rubyTerms": [
+      {
+        "text": "二年三組",
+        "reading": "にねんさんくみ"
+      },
+      {
+        "text": "土曜日",
+        "reading": "どようび"
+      },
+      {
+        "text": "金曜日",
+        "reading": "きんようび"
+      },
+      {
+        "text": "文化祭",
+        "reading": "ぶんかさい"
+      },
+      {
+        "text": "放課後",
+        "reading": "ほうかご"
+      },
+      {
+        "text": "必要",
+        "reading": "ひつよう"
+      },
+      {
+        "text": "教室",
+        "reading": "きょうしつ"
+      },
+      {
+        "text": "準備",
+        "reading": "じゅんび"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-063",
@@ -3945,19 +5476,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "店長",
-        "kana": "店長",
-        "meaning": "關鍵詞"
-      },
-      {
-        "word": "店員",
-        "kana": "店員",
-        "meaning": "關鍵詞"
+        "word": "火曜日",
+        "kana": "かようび",
+        "meaning": "重點詞"
       },
       {
         "word": "開店前",
-        "kana": "開店前",
-        "meaning": "關鍵詞"
+        "kana": "かいてんまえ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "一週間",
+        "kana": "いっしゅうかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "店長",
+        "kana": "てんちょう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "店員",
+        "kana": "てんいん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -3966,7 +5507,41 @@ window.JAPANESE_READING_SETS = [
       "～ておく"
     ],
     "titleRuby": "打工の一週間",
-    "passageRuby": "店長のメモです。今週は新しい店員が入るので、火曜日の開店前にレジの使い方を説明してください。昼は客が多すぎるかもしれないため、質問はノートに書いておくと分かりやすいです。"
+    "passageRuby": "店長のメモです。今週は新しい店員が入るので、火曜日の開店前にレジの使い方を説明してください。昼は客が多すぎるかもしれないため、質問はノートに書いておくと分かりやすいです。",
+    "rubyTerms": [
+      {
+        "text": "火曜日",
+        "reading": "かようび"
+      },
+      {
+        "text": "開店前",
+        "reading": "かいてんまえ"
+      },
+      {
+        "text": "一週間",
+        "reading": "いっしゅうかん"
+      },
+      {
+        "text": "店長",
+        "reading": "てんちょう"
+      },
+      {
+        "text": "店員",
+        "reading": "てんいん"
+      },
+      {
+        "text": "説明",
+        "reading": "せつめい"
+      },
+      {
+        "text": "今週",
+        "reading": "こんしゅう"
+      },
+      {
+        "text": "質問",
+        "reading": "しつもん"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-064",
@@ -4003,19 +5578,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "寝る前",
-        "kana": "寝る前",
-        "meaning": "關鍵詞"
+        "word": "三十分",
+        "kana": "さんじゅっぷん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "十分",
+        "kana": "じゅっぷん",
+        "meaning": "重點詞"
       },
       {
         "word": "散歩",
-        "kana": "散歩",
-        "meaning": "關鍵詞"
+        "kana": "さんぽ",
+        "meaning": "重點詞"
       },
       {
-        "word": "気分",
-        "kana": "気分",
-        "meaning": "關鍵詞"
+        "word": "習慣",
+        "kana": "しゅうかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "最近",
+        "kana": "さいきん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4024,7 +5609,41 @@ window.JAPANESE_READING_SETS = [
       "～ようです"
     ],
     "titleRuby": "散歩の習慣",
-    "passageRuby": "最近、寝る前にスマホを見すぎて、朝起きにくくなりました。そこで、夕食のあとで三十分散歩することにしました。歩きながら音楽を聞くと気分がよくなり、夜も早く眠れるようです。"
+    "passageRuby": "最近、寝る前にスマホを見すぎて、朝起きにくくなりました。そこで、夕食のあとで三十分散歩することにしました。歩きながら音楽を聞くと気分がよくなり、夜も早く眠れるようです。",
+    "rubyTerms": [
+      {
+        "text": "三十分",
+        "reading": "さんじゅっぷん"
+      },
+      {
+        "text": "十分",
+        "reading": "じゅっぷん"
+      },
+      {
+        "text": "散歩",
+        "reading": "さんぽ"
+      },
+      {
+        "text": "習慣",
+        "reading": "しゅうかん"
+      },
+      {
+        "text": "最近",
+        "reading": "さいきん"
+      },
+      {
+        "text": "夕食",
+        "reading": "ゆうしょく"
+      },
+      {
+        "text": "音楽",
+        "reading": "おんがく"
+      },
+      {
+        "text": "気分",
+        "reading": "きぶん"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-065",
@@ -4061,19 +5680,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "京都駅",
-        "kana": "京都駅",
-        "meaning": "關鍵詞"
-      },
-      {
         "word": "博物館",
-        "kana": "博物館",
-        "meaning": "關鍵詞"
+        "kana": "はくぶつかん",
+        "meaning": "重點詞"
       },
       {
-        "word": "場合",
-        "kana": "場合",
-        "meaning": "關鍵詞"
+        "word": "京都駅",
+        "kana": "きょうとえき",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "予定",
+        "kana": "よてい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "旅行",
+        "kana": "りょこう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4082,7 +5711,41 @@ window.JAPANESE_READING_SETS = [
       "～ておきます"
     ],
     "titleRuby": "家族の京都旅行",
-    "passageRuby": "旅行メモ：午前九時に京都駅で集合。十時に博物館、昼は駅近くの店で定食を食べる。午後は雨の場合、寺ではなく屋内の市場へ行く予定です。切符は父が買っておきます。"
+    "passageRuby": "旅行メモ：午前九時に京都駅で集合。十時に博物館、昼は駅近くの店で定食を食べる。午後は雨の場合、寺ではなく屋内の市場へ行く予定です。切符は父が買っておきます。",
+    "rubyTerms": [
+      {
+        "text": "博物館",
+        "reading": "はくぶつかん"
+      },
+      {
+        "text": "京都駅",
+        "reading": "きょうとえき"
+      },
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "旅行",
+        "reading": "りょこう"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "午前",
+        "reading": "ごぜん"
+      },
+      {
+        "text": "家族",
+        "reading": "かぞく"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-066",
@@ -4119,19 +5782,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "受付",
-        "kana": "受付",
-        "meaning": "關鍵詞"
+        "word": "運動センター",
+        "kana": "うんどうセンター",
+        "meaning": "重點詞"
       },
       {
-        "word": "住所",
-        "kana": "住所",
-        "meaning": "關鍵詞"
+        "word": "ヨガ教室",
+        "kana": "ヨガきょうしつ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "プール",
+        "kana": "プール",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "必要",
+        "kana": "ひつよう",
+        "meaning": "重點詞"
       },
       {
         "word": "予約",
-        "kana": "予約",
-        "meaning": "關鍵詞"
+        "kana": "よやく",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4139,7 +5812,41 @@ window.JAPANESE_READING_SETS = [
       "～必要です"
     ],
     "titleRuby": "運動センターの案内",
-    "passageRuby": "運動センターを初めて使う人は、受付で名前と住所を書いてください。プールは予約しなくてもいいですが、ヨガ教室は前の日までに予約が必要です。タオルは借りられません。"
+    "passageRuby": "運動センターを初めて使う人は、受付で名前と住所を書いてください。プールは予約しなくてもいいですが、ヨガ教室は前の日までに予約が必要です。タオルは借りられません。",
+    "rubyTerms": [
+      {
+        "text": "運動センター",
+        "reading": "うんどうセンター"
+      },
+      {
+        "text": "ヨガ教室",
+        "reading": "ヨガきょうしつ"
+      },
+      {
+        "text": "プール",
+        "reading": "プール"
+      },
+      {
+        "text": "必要",
+        "reading": "ひつよう"
+      },
+      {
+        "text": "予約",
+        "reading": "よやく"
+      },
+      {
+        "text": "教室",
+        "reading": "きょうしつ"
+      },
+      {
+        "text": "住所",
+        "reading": "じゅうしょ"
+      },
+      {
+        "text": "受付",
+        "reading": "うけつけ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-067",
@@ -4176,19 +5883,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "市立図書館",
+        "kana": "しりつとしょかん",
+        "meaning": "重點詞"
+      },
+      {
         "word": "図書館",
-        "kana": "図書館",
-        "meaning": "關鍵詞"
+        "kana": "としょかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "飲み物",
+        "kana": "のみもの",
+        "meaning": "重點詞"
       },
       {
         "word": "学習室",
-        "kana": "学習室",
-        "meaning": "關鍵詞"
+        "kana": "がくしゅうしつ",
+        "meaning": "重點詞"
       },
       {
-        "word": "食事",
-        "kana": "食事",
-        "meaning": "關鍵詞"
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4196,7 +5913,41 @@ window.JAPANESE_READING_SETS = [
       "～てもいいです"
     ],
     "titleRuby": "図書館の利用",
-    "passageRuby": "市立図書館では、今月から学習室の席を予約できます。予約は一人一日二時間までです。飲み物はふたがある物なら持ち込んでもいいですが、席で食事はできません。"
+    "passageRuby": "市立図書館では、今月から学習室の席を予約できます。予約は一人一日二時間までです。飲み物はふたがある物なら持ち込んでもいいですが、席で食事はできません。",
+    "rubyTerms": [
+      {
+        "text": "市立図書館",
+        "reading": "しりつとしょかん"
+      },
+      {
+        "text": "図書館",
+        "reading": "としょかん"
+      },
+      {
+        "text": "飲み物",
+        "reading": "のみもの"
+      },
+      {
+        "text": "学習室",
+        "reading": "がくしゅうしつ"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "予約",
+        "reading": "よやく"
+      },
+      {
+        "text": "一人",
+        "reading": "ひとり"
+      },
+      {
+        "text": "今月",
+        "reading": "こんげつ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-068",
@@ -4233,19 +5984,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "映画館",
-        "kana": "映画館",
-        "meaning": "關鍵詞"
-      },
-      {
         "word": "学生料金",
-        "kana": "学生料金",
-        "meaning": "關鍵詞"
+        "kana": "がくせいりょうきん",
+        "meaning": "重點詞"
       },
       {
-        "word": "場合",
-        "kana": "場合",
-        "meaning": "關鍵詞"
+        "word": "水曜日",
+        "kana": "すいようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午前中",
+        "kana": "ごぜんちゅう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "映画館",
+        "kana": "えいがかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "学生証",
+        "kana": "がくせいしょう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4254,7 +6015,41 @@ window.JAPANESE_READING_SETS = [
       "～場合"
     ],
     "titleRuby": "映画館の予定",
-    "passageRuby": "映画館では、水曜日の午前中だけ学生料金が安くなります。チケットを買うとき学生証を見せなければなりません。忘れた場合は普通の料金になります。"
+    "passageRuby": "映画館では、水曜日の午前中だけ学生料金が安くなります。チケットを買うとき学生証を見せなければなりません。忘れた場合は普通の料金になります。",
+    "rubyTerms": [
+      {
+        "text": "学生料金",
+        "reading": "がくせいりょうきん"
+      },
+      {
+        "text": "水曜日",
+        "reading": "すいようび"
+      },
+      {
+        "text": "午前中",
+        "reading": "ごぜんちゅう"
+      },
+      {
+        "text": "映画館",
+        "reading": "えいがかん"
+      },
+      {
+        "text": "学生証",
+        "reading": "がくせいしょう"
+      },
+      {
+        "text": "普通",
+        "reading": "ふつう"
+      },
+      {
+        "text": "映画",
+        "reading": "えいが"
+      },
+      {
+        "text": "予定",
+        "reading": "よてい"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-069",
@@ -4291,19 +6086,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "道路工事",
-        "kana": "道路工事",
-        "meaning": "關鍵詞"
-      },
-      {
-        "word": "南口",
-        "kana": "南口",
-        "meaning": "關鍵詞"
-      },
-      {
         "word": "市役所前",
-        "kana": "市役所前",
-        "meaning": "關鍵詞"
+        "kana": "しやくしょまえ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "道路工事",
+        "kana": "どうろこうじ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "三番バス",
+        "kana": "さんばんバス",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "市役所",
+        "kana": "しやくしょ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "月曜日",
+        "kana": "げつようび",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4311,7 +6116,41 @@ window.JAPANESE_READING_SETS = [
       "～てください"
     ],
     "titleRuby": "バス会社の通知",
-    "passageRuby": "駅前の道路工事のため、三番バスは来週の月曜日から一週間、南口には止まりません。南口へ行く人は、一つ前の市役所前で降りて歩いてください。"
+    "passageRuby": "駅前の道路工事のため、三番バスは来週の月曜日から一週間、南口には止まりません。南口へ行く人は、一つ前の市役所前で降りて歩いてください。",
+    "rubyTerms": [
+      {
+        "text": "市役所前",
+        "reading": "しやくしょまえ"
+      },
+      {
+        "text": "道路工事",
+        "reading": "どうろこうじ"
+      },
+      {
+        "text": "三番バス",
+        "reading": "さんばんバス"
+      },
+      {
+        "text": "市役所",
+        "reading": "しやくしょ"
+      },
+      {
+        "text": "月曜日",
+        "reading": "げつようび"
+      },
+      {
+        "text": "一週間",
+        "reading": "いっしゅうかん"
+      },
+      {
+        "text": "来週",
+        "reading": "らいしゅう"
+      },
+      {
+        "text": "道路",
+        "reading": "どうろ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-070",
@@ -4348,19 +6187,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "工事",
-        "kana": "工事",
-        "meaning": "關鍵詞"
+        "word": "営業時間",
+        "kana": "えいぎょうじかん",
+        "meaning": "重點詞"
       },
       {
-        "word": "閉店",
-        "kana": "閉店",
-        "meaning": "關鍵詞"
+        "word": "持ち帰り",
+        "kana": "もちかえり",
+        "meaning": "重點詞"
       },
       {
-        "word": "注文",
-        "kana": "注文",
-        "meaning": "關鍵詞"
+        "word": "飲み物",
+        "kana": "のみもの",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4368,7 +6217,41 @@ window.JAPANESE_READING_SETS = [
       "～まで"
     ],
     "titleRuby": "カフェの営業時間",
-    "passageRuby": "カフェ森は、店内の工事のため来週だけ午後二時に閉店します。ランチは一時半まで注文できます。持ち帰りの飲み物は、閉店の十分前まで買えます。"
+    "passageRuby": "カフェ森は、店内の工事のため来週だけ午後二時に閉店します。ランチは一時半まで注文できます。持ち帰りの飲み物は、閉店の十分前まで買えます。",
+    "rubyTerms": [
+      {
+        "text": "営業時間",
+        "reading": "えいぎょうじかん"
+      },
+      {
+        "text": "持ち帰り",
+        "reading": "もちかえり"
+      },
+      {
+        "text": "飲み物",
+        "reading": "のみもの"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "来週",
+        "reading": "らいしゅう"
+      },
+      {
+        "text": "十分",
+        "reading": "じゅっぷん"
+      },
+      {
+        "text": "工事",
+        "reading": "こうじ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-071",
@@ -4393,9 +6276,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "歯医者",
+        "kana": "はいしゃ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "今日",
+        "kana": "きょう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "明日",
+        "kana": "あした",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "予約",
+        "kana": "よやく",
+        "meaning": "重點詞"
+      },
+      {
         "word": "電話",
-        "kana": "電話",
-        "meaning": "主題語"
+        "kana": "でんわ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4403,7 +6306,41 @@ window.JAPANESE_READING_SETS = [
       "～予定です"
     ],
     "titleRuby": "電話の留言",
-    "passageRuby": "受付の人から岡田さんへ伝言です。明日の歯医者の予約は午前十時から十時半に変わりました。都合が悪い場合は、今日の五時までに電話してください。"
+    "passageRuby": "受付の人から岡田さんへ伝言です。明日の歯医者の予約は午前十時から十時半に変わりました。都合が悪い場合は、今日の五時までに電話してください。",
+    "rubyTerms": [
+      {
+        "text": "歯医者",
+        "reading": "はいしゃ"
+      },
+      {
+        "text": "今日",
+        "reading": "きょう"
+      },
+      {
+        "text": "明日",
+        "reading": "あした"
+      },
+      {
+        "text": "予約",
+        "reading": "よやく"
+      },
+      {
+        "text": "電話",
+        "reading": "でんわ"
+      },
+      {
+        "text": "午前",
+        "reading": "ごぜん"
+      },
+      {
+        "text": "受付",
+        "reading": "うけつけ"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-072",
@@ -4428,9 +6365,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "室内用の靴",
-        "kana": "室内用の靴",
-        "meaning": "關鍵詞"
+        "word": "公園活動",
+        "kana": "こうえんかつどう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "体育館",
+        "kana": "たいいくかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "室内用",
+        "kana": "しつないよう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "明日",
+        "kana": "あした",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "参加",
+        "kana": "さんか",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4438,7 +6395,37 @@ window.JAPANESE_READING_SETS = [
       "～予定です"
     ],
     "titleRuby": "雨の公園活動",
-    "passageRuby": "明日の公園活動は、雨が強い場合、体育館で行います。体育館では外の靴が使えないので、参加する人は室内用の靴を持って来てください。"
+    "passageRuby": "明日の公園活動は、雨が強い場合、体育館で行います。体育館では外の靴が使えないので、参加する人は室内用の靴を持って来てください。",
+    "rubyTerms": [
+      {
+        "text": "公園活動",
+        "reading": "こうえんかつどう"
+      },
+      {
+        "text": "体育館",
+        "reading": "たいいくかん"
+      },
+      {
+        "text": "室内用",
+        "reading": "しつないよう"
+      },
+      {
+        "text": "明日",
+        "reading": "あした"
+      },
+      {
+        "text": "参加",
+        "reading": "さんか"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      },
+      {
+        "text": "雨",
+        "reading": "あめ"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-073",
@@ -4463,9 +6450,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "事務所",
+        "kana": "じむしょ",
+        "meaning": "重點詞"
+      },
+      {
         "word": "店長",
-        "kana": "店長",
-        "meaning": "主題語"
+        "kana": "てんちょう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "確認",
+        "kana": "かくにん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "写真",
+        "kana": "しゃしん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "場合",
+        "kana": "ばあい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4473,7 +6480,41 @@ window.JAPANESE_READING_SETS = [
       "～予定です"
     ],
     "titleRuby": "店長のメモ",
-    "passageRuby": "店長からのメモです。新しい皿が届いたら、箱を開ける前に数を確認してください。割れている皿があった場合は、写真を撮ってから事務所へ持って来てください。"
+    "passageRuby": "店長からのメモです。新しい皿が届いたら、箱を開ける前に数を確認してください。割れている皿があった場合は、写真を撮ってから事務所へ持って来てください。",
+    "rubyTerms": [
+      {
+        "text": "事務所",
+        "reading": "じむしょ"
+      },
+      {
+        "text": "店長",
+        "reading": "てんちょう"
+      },
+      {
+        "text": "確認",
+        "reading": "かくにん"
+      },
+      {
+        "text": "写真",
+        "reading": "しゃしん"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      },
+      {
+        "text": "箱",
+        "reading": "はこ"
+      },
+      {
+        "text": "皿",
+        "reading": "さら"
+      },
+      {
+        "text": "数",
+        "reading": "かず"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-074",
@@ -4498,9 +6539,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "金曜日の夜まで",
-        "kana": "金曜日の夜まで",
-        "meaning": "關鍵詞"
+        "word": "土曜日",
+        "kana": "どようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "金曜日",
+        "kana": "きんようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "苦手",
+        "kana": "にがて",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "料理",
+        "kana": "りょうり",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "場合",
+        "kana": "ばあい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4508,7 +6569,41 @@ window.JAPANESE_READING_SETS = [
       "～予定です"
     ],
     "titleRuby": "友だちの誘い",
-    "passageRuby": "ジョンさんからのメッセージです。土曜日に新しいカレー屋へ行きませんか。辛い料理が苦手な人のために、甘いメニューもあるそうです。行ける場合は金曜日の夜までに返事をください。"
+    "passageRuby": "ジョンさんからのメッセージです。土曜日に新しいカレー屋へ行きませんか。辛い料理が苦手な人のために、甘いメニューもあるそうです。行ける場合は金曜日の夜までに返事をください。",
+    "rubyTerms": [
+      {
+        "text": "土曜日",
+        "reading": "どようび"
+      },
+      {
+        "text": "金曜日",
+        "reading": "きんようび"
+      },
+      {
+        "text": "苦手",
+        "reading": "にがて"
+      },
+      {
+        "text": "料理",
+        "reading": "りょうり"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      },
+      {
+        "text": "誘い",
+        "reading": "さそい"
+      },
+      {
+        "text": "返事",
+        "reading": "へんじ"
+      },
+      {
+        "text": "夜",
+        "reading": "よる"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-075",
@@ -4533,9 +6628,29 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "明日の午前中",
-        "kana": "明日の午前中",
-        "meaning": "關鍵詞"
+        "word": "宅配会社",
+        "kana": "たくはいがいしゃ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午前中",
+        "kana": "ごぜんちゅう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "手続き",
+        "kana": "てつづき",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "荷物",
+        "kana": "にもつ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
@@ -4543,7 +6658,41 @@ window.JAPANESE_READING_SETS = [
       "～予定です"
     ],
     "titleRuby": "配送の知らせ",
-    "passageRuby": "宅配会社からのお知らせです。今日届ける予定だった荷物は、雪で道路が混んでいるため、明日の午前中に届く予定です。時間を変えたい場合は、番号を入力して手続きしてください。"
+    "passageRuby": "宅配会社からのお知らせです。今日届ける予定だった荷物は、雪で道路が混んでいるため、明日の午前中に届く予定です。時間を変えたい場合は、番号を入力して手続きしてください。",
+    "rubyTerms": [
+      {
+        "text": "宅配会社",
+        "reading": "たくはいがいしゃ"
+      },
+      {
+        "text": "午前中",
+        "reading": "ごぜんちゅう"
+      },
+      {
+        "text": "手続き",
+        "reading": "てつづき"
+      },
+      {
+        "text": "荷物",
+        "reading": "にもつ"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "今日",
+        "reading": "きょう"
+      },
+      {
+        "text": "明日",
+        "reading": "あした"
+      }
+    ]
   },
   {
     "id": "jp-reading-set-n4-076",
@@ -4571,18 +6720,55 @@ window.JAPANESE_READING_SETS = [
     "vocabulary": [
       {
         "word": "図書館",
-        "kana": "図書館",
-        "meaning": "關鍵詞"
+        "kana": "としょかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "旅行",
+        "kana": "りょこう",
+        "meaning": "重點詞"
       },
       {
         "word": "電車",
-        "kana": "電車",
-        "meaning": "關鍵詞"
+        "kana": "でんしゃ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "来週",
+        "kana": "らいしゅう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "林",
+        "kana": "はやし",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ので",
       "～ておきます"
+    ],
+    "rubyTerms": [
+      {
+        "text": "図書館",
+        "reading": "としょかん"
+      },
+      {
+        "text": "旅行",
+        "reading": "りょこう"
+      },
+      {
+        "text": "電車",
+        "reading": "でんしゃ"
+      },
+      {
+        "text": "来週",
+        "reading": "らいしゅう"
+      },
+      {
+        "text": "林",
+        "reading": "はやし"
+      }
     ]
   },
   {
@@ -4610,19 +6796,38 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "卵",
-        "kana": "たまご",
-        "meaning": "蛋"
+        "word": "母",
+        "kana": "はは",
+        "meaning": "重點詞"
       },
       {
-        "word": "込む",
-        "kana": "こむ",
-        "meaning": "擁擠"
+        "word": "昼",
+        "kana": "ひる",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "卵",
+        "kana": "たまご",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～かもしれません",
       "～ことにしました"
+    ],
+    "rubyTerms": [
+      {
+        "text": "母",
+        "reading": "はは"
+      },
+      {
+        "text": "昼",
+        "reading": "ひる"
+      },
+      {
+        "text": "卵",
+        "reading": "たまご"
+      }
     ]
   },
   {
@@ -4650,19 +6855,60 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "荷物",
-        "kana": "荷物",
-        "meaning": "關鍵詞"
+        "word": "郵便局",
+        "kana": "ゆうびんきょく",
+        "meaning": "重點詞"
       },
       {
-        "word": "家",
-        "kana": "家",
-        "meaning": "關鍵詞"
+        "word": "荷物",
+        "kana": "にもつ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "家族",
+        "kana": "かぞく",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "箱",
+        "kana": "はこ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "王",
+        "kana": "おう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ので",
       "～てみます"
+    ],
+    "rubyTerms": [
+      {
+        "text": "郵便局",
+        "reading": "ゆうびんきょく"
+      },
+      {
+        "text": "荷物",
+        "reading": "にもつ"
+      },
+      {
+        "text": "家族",
+        "reading": "かぞく"
+      },
+      {
+        "text": "箱",
+        "reading": "はこ"
+      },
+      {
+        "text": "王",
+        "reading": "おう"
+      },
+      {
+        "text": "国",
+        "reading": "くに"
+      }
     ]
   },
   {
@@ -4690,19 +6936,56 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "予定",
-        "kana": "よてい",
-        "meaning": "預定"
-      },
-      {
         "word": "映画",
         "kana": "えいが",
-        "meaning": "電影"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "予定",
+        "kana": "よてい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "朝",
+        "kana": "あさ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "雨",
+        "kana": "あめ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "弟",
+        "kana": "おとうと",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～予定です",
       "～ので"
+    ],
+    "rubyTerms": [
+      {
+        "text": "映画",
+        "reading": "えいが"
+      },
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "雨",
+        "reading": "あめ"
+      },
+      {
+        "text": "弟",
+        "reading": "おとうと"
+      }
     ]
   },
   {
@@ -4732,22 +7015,58 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "店長",
         "kana": "てんちょう",
-        "meaning": "店長"
-      },
-      {
-        "word": "届く",
-        "kana": "とどく",
-        "meaning": "送達"
+        "meaning": "重點詞"
       },
       {
         "word": "確認",
         "kana": "かくにん",
-        "meaning": "確認"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "今日",
+        "kana": "きょう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "箱",
+        "kana": "はこ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "皿",
+        "kana": "さら",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ので",
       "～前に"
+    ],
+    "rubyTerms": [
+      {
+        "text": "店長",
+        "reading": "てんちょう"
+      },
+      {
+        "text": "確認",
+        "reading": "かくにん"
+      },
+      {
+        "text": "今日",
+        "reading": "きょう"
+      },
+      {
+        "text": "箱",
+        "reading": "はこ"
+      },
+      {
+        "text": "皿",
+        "reading": "さら"
+      },
+      {
+        "text": "数",
+        "reading": "かず"
+      }
     ]
   },
   {
@@ -4777,17 +7096,66 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "歯医者",
         "kana": "はいしゃ",
-        "meaning": "牙醫"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "土曜日",
+        "kana": "どようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "金曜日",
+        "kana": "きんようび",
+        "meaning": "重點詞"
       },
       {
         "word": "予約",
         "kana": "よやく",
-        "meaning": "預約"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ので",
       "～そうです"
+    ],
+    "rubyTerms": [
+      {
+        "text": "歯医者",
+        "reading": "はいしゃ"
+      },
+      {
+        "text": "土曜日",
+        "reading": "どようび"
+      },
+      {
+        "text": "金曜日",
+        "reading": "きんようび"
+      },
+      {
+        "text": "予約",
+        "reading": "よやく"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "電話",
+        "reading": "でんわ"
+      },
+      {
+        "text": "佐藤",
+        "reading": "さとう"
+      },
+      {
+        "text": "医者",
+        "reading": "いしゃ"
+      }
     ]
   },
   {
@@ -4815,18 +7183,46 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "洗濯店",
-        "kana": "せんたくてん",
-        "meaning": "洗衣店"
-      },
-      {
         "word": "受け取る",
         "kana": "うけとる",
-        "meaning": "領取"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "水曜日",
+        "kana": "すいようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "洗濯店",
+        "kana": "せんたくてん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "店員",
+        "kana": "てんいん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ことができます"
+    ],
+    "rubyTerms": [
+      {
+        "text": "受け取る",
+        "reading": "うけとる"
+      },
+      {
+        "text": "水曜日",
+        "reading": "すいようび"
+      },
+      {
+        "text": "洗濯店",
+        "reading": "せんたくてん"
+      },
+      {
+        "text": "店員",
+        "reading": "てんいん"
+      }
     ]
   },
   {
@@ -4856,17 +7252,45 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "文化祭",
         "kana": "ぶんかさい",
-        "meaning": "文化祭"
+        "meaning": "重點詞"
       },
       {
         "word": "手伝う",
         "kana": "てつだう",
-        "meaning": "幫忙"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "予定",
+        "kana": "よてい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "準備",
+        "kana": "じゅんび",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ことにしました",
       "～予定です"
+    ],
+    "rubyTerms": [
+      {
+        "text": "文化祭",
+        "reading": "ぶんかさい"
+      },
+      {
+        "text": "手伝う",
+        "reading": "てつだう"
+      },
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "準備",
+        "reading": "じゅんび"
+      }
     ]
   },
   {
@@ -4894,19 +7318,64 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "朝",
-        "kana": "朝",
-        "meaning": "關鍵詞"
+        "word": "携帯電話",
+        "kana": "けいたいでんわ",
+        "meaning": "重點詞"
       },
       {
         "word": "電話",
-        "kana": "電話",
-        "meaning": "關鍵詞"
+        "kana": "でんわ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "授業",
+        "kana": "じゅぎょう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "田中",
+        "kana": "たなか",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "故障",
+        "kana": "こしょう",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～かもしれません",
       "～あとで"
+    ],
+    "rubyTerms": [
+      {
+        "text": "携帯電話",
+        "reading": "けいたいでんわ"
+      },
+      {
+        "text": "電話",
+        "reading": "でんわ"
+      },
+      {
+        "text": "授業",
+        "reading": "じゅぎょう"
+      },
+      {
+        "text": "田中",
+        "reading": "たなか"
+      },
+      {
+        "text": "故障",
+        "reading": "こしょう"
+      },
+      {
+        "text": "大切",
+        "reading": "たいせつ"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      }
     ]
   },
   {
@@ -4934,23 +7403,55 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "山田さんは友",
-        "kana": "山田さんは友",
-        "meaning": "關鍵詞"
+        "word": "迷っています",
+        "kana": "まよっています",
+        "meaning": "重點詞"
       },
       {
-        "word": "だちの誕生日",
-        "kana": "だちの誕生日",
-        "meaning": "關鍵詞"
+        "word": "誕生日",
+        "kana": "たんじょうび",
+        "meaning": "重點詞"
       },
       {
-        "word": "に何をあげる",
-        "kana": "に何をあげる",
-        "meaning": "關鍵詞"
+        "word": "料理",
+        "kana": "りょうり",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "相談",
+        "kana": "そうだん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "山田",
+        "kana": "やまだ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ほうがいいです"
+    ],
+    "rubyTerms": [
+      {
+        "text": "迷っています",
+        "reading": "まよっています"
+      },
+      {
+        "text": "誕生日",
+        "reading": "たんじょうび"
+      },
+      {
+        "text": "料理",
+        "reading": "りょうり"
+      },
+      {
+        "text": "相談",
+        "reading": "そうだん"
+      },
+      {
+        "text": "山田",
+        "reading": "やまだ"
+      }
     ]
   },
   {
@@ -4980,17 +7481,62 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "留学生",
         "kana": "りゅうがくせい",
-        "meaning": "留學生"
+        "meaning": "重點詞"
       },
       {
-        "word": "名前",
-        "kana": "なまえ",
-        "meaning": "名字"
+        "word": "二人",
+        "kana": "ふたり",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "旅行",
+        "kana": "りょこう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "部屋",
+        "kana": "へや",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "学生",
+        "kana": "がくせい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～前に",
       "～なければなりません"
+    ],
+    "rubyTerms": [
+      {
+        "text": "留学生",
+        "reading": "りゅうがくせい"
+      },
+      {
+        "text": "二人",
+        "reading": "ふたり"
+      },
+      {
+        "text": "旅行",
+        "reading": "りょこう"
+      },
+      {
+        "text": "部屋",
+        "reading": "へや"
+      },
+      {
+        "text": "学生",
+        "reading": "がくせい"
+      },
+      {
+        "text": "三時",
+        "reading": "さんじ"
+      },
+      {
+        "text": "名前",
+        "reading": "なまえ"
+      }
     ]
   },
   {
@@ -5018,19 +7564,56 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "急行",
-        "kana": "きゅうこう",
-        "meaning": "快車"
+        "word": "乗り換え",
+        "kana": "のりかえ",
+        "meaning": "重點詞"
       },
       {
-        "word": "普通電車",
-        "kana": "ふつうでんしゃ",
-        "meaning": "普通電車"
+        "word": "普通",
+        "kana": "ふつう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "電車",
+        "kana": "でんしゃ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "急行",
+        "kana": "きゅうこう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "駅",
+        "kana": "えき",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～つもりでした",
       "～ことにしました"
+    ],
+    "rubyTerms": [
+      {
+        "text": "乗り換え",
+        "reading": "のりかえ"
+      },
+      {
+        "text": "普通",
+        "reading": "ふつう"
+      },
+      {
+        "text": "電車",
+        "reading": "でんしゃ"
+      },
+      {
+        "text": "急行",
+        "reading": "きゅうこう"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      }
     ]
   },
   {
@@ -5058,19 +7641,56 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "買う",
+        "kana": "かう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "店員",
+        "kana": "てんいん",
+        "meaning": "重點詞"
+      },
+      {
         "word": "薬局",
         "kana": "やっきょく",
-        "meaning": "藥局"
+        "meaning": "重點詞"
       },
       {
         "word": "説明",
         "kana": "せつめい",
-        "meaning": "說明"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "薬",
+        "kana": "くすり",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ので",
       "～ほうがいいです"
+    ],
+    "rubyTerms": [
+      {
+        "text": "買う",
+        "reading": "かう"
+      },
+      {
+        "text": "店員",
+        "reading": "てんいん"
+      },
+      {
+        "text": "薬局",
+        "reading": "やっきょく"
+      },
+      {
+        "text": "説明",
+        "reading": "せつめい"
+      },
+      {
+        "text": "薬",
+        "reading": "くすり"
+      }
     ]
   },
   {
@@ -5100,16 +7720,44 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "料理教室",
         "kana": "りょうりきょうしつ",
-        "meaning": "料理教室"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "教室",
+        "kana": "きょうしつ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "料理",
+        "kana": "りょうり",
+        "meaning": "重點詞"
       },
       {
         "word": "包丁",
         "kana": "ほうちょう",
-        "meaning": "菜刀"
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～なくてもいいです"
+    ],
+    "rubyTerms": [
+      {
+        "text": "料理教室",
+        "reading": "りょうりきょうしつ"
+      },
+      {
+        "text": "教室",
+        "reading": "きょうしつ"
+      },
+      {
+        "text": "料理",
+        "reading": "りょうり"
+      },
+      {
+        "text": "包丁",
+        "reading": "ほうちょう"
+      }
     ]
   },
   {
@@ -5139,16 +7787,61 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "自転車置き場",
         "kana": "じてんしゃおきば",
-        "meaning": "自行車停車場"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "自転車",
+        "kana": "じてんしゃ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "学校",
+        "kana": "がっこう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "名前",
+        "kana": "なまえ",
+        "meaning": "重點詞"
       },
       {
         "word": "入口",
         "kana": "いりぐち",
-        "meaning": "入口"
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～てはいけません"
+    ],
+    "rubyTerms": [
+      {
+        "text": "自転車置き場",
+        "reading": "じてんしゃおきば"
+      },
+      {
+        "text": "自転車",
+        "reading": "じてんしゃ"
+      },
+      {
+        "text": "学校",
+        "reading": "がっこう"
+      },
+      {
+        "text": "名前",
+        "reading": "なまえ"
+      },
+      {
+        "text": "入口",
+        "reading": "いりぐち"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "夜",
+        "reading": "よる"
+      }
     ]
   },
   {
@@ -5176,18 +7869,67 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "平日",
-        "kana": "へいじつ",
-        "meaning": "平日"
+        "word": "土曜日",
+        "kana": "どようび",
+        "meaning": "重點詞"
       },
       {
-        "word": "休み",
-        "kana": "やすみ",
-        "meaning": "休息／公休"
+        "word": "日曜日",
+        "kana": "にちようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "駅前",
+        "kana": "えきまえ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ですが"
+    ],
+    "rubyTerms": [
+      {
+        "text": "土曜日",
+        "reading": "どようび"
+      },
+      {
+        "text": "日曜日",
+        "reading": "にちようび"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "駅前",
+        "reading": "えきまえ"
+      },
+      {
+        "text": "平日",
+        "reading": "へいじつ"
+      },
+      {
+        "text": "休み",
+        "reading": "やすみ"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      }
     ]
   },
   {
@@ -5215,18 +7957,59 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "配達",
-        "kana": "はいたつ",
-        "meaning": "配送"
-      },
-      {
         "word": "荷物",
         "kana": "にもつ",
-        "meaning": "包裹"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "今日",
+        "kana": "きょう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "明日",
+        "kana": "あした",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午前",
+        "kana": "ごぜん",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ことができます"
+    ],
+    "rubyTerms": [
+      {
+        "text": "荷物",
+        "reading": "にもつ"
+      },
+      {
+        "text": "今日",
+        "reading": "きょう"
+      },
+      {
+        "text": "明日",
+        "reading": "あした"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "午前",
+        "reading": "ごぜん"
+      },
+      {
+        "text": "配達",
+        "reading": "はいたつ"
+      }
     ]
   },
   {
@@ -5256,17 +8039,58 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "博物館",
         "kana": "はくぶつかん",
-        "meaning": "博物館"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "写真",
+        "kana": "しゃしん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "学生",
+        "kana": "がくせい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "今月",
+        "kana": "こんげつ",
+        "meaning": "重點詞"
       },
       {
         "word": "無料",
         "kana": "むりょう",
-        "meaning": "免費"
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～てもいいです",
       "～てはいけません"
+    ],
+    "rubyTerms": [
+      {
+        "text": "博物館",
+        "reading": "はくぶつかん"
+      },
+      {
+        "text": "写真",
+        "reading": "しゃしん"
+      },
+      {
+        "text": "学生",
+        "reading": "がくせい"
+      },
+      {
+        "text": "今月",
+        "reading": "こんげつ"
+      },
+      {
+        "text": "無料",
+        "reading": "むりょう"
+      },
+      {
+        "text": "町",
+        "reading": "まち"
+      }
     ]
   },
   {
@@ -5296,16 +8120,53 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "留守番電話",
         "kana": "るすばんでんわ",
-        "meaning": "語音留言"
+        "meaning": "重點詞"
       },
       {
         "word": "晩ご飯",
         "kana": "ばんごはん",
-        "meaning": "晚餐"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "時間",
+        "kana": "じかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "電話",
+        "kana": "でんわ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "父",
+        "kana": "ちち",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～てください"
+    ],
+    "rubyTerms": [
+      {
+        "text": "留守番電話",
+        "reading": "るすばんでんわ"
+      },
+      {
+        "text": "晩ご飯",
+        "reading": "ばんごはん"
+      },
+      {
+        "text": "時間",
+        "reading": "じかん"
+      },
+      {
+        "text": "電話",
+        "reading": "でんわ"
+      },
+      {
+        "text": "父",
+        "reading": "ちち"
+      }
     ]
   },
   {
@@ -5333,23 +8194,55 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "先生",
-        "kana": "先生",
-        "meaning": "關鍵詞"
+        "word": "明日",
+        "kana": "あした",
+        "meaning": "重點詞"
       },
       {
-        "word": "明日",
-        "kana": "明日",
-        "meaning": "關鍵詞"
+        "word": "先生",
+        "kana": "せんせい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "授業",
+        "kana": "じゅぎょう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "学生",
+        "kana": "がくせい",
+        "meaning": "重點詞"
       },
       {
         "word": "夜",
-        "kana": "夜",
-        "meaning": "關鍵詞"
+        "kana": "よる",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ておきます"
+    ],
+    "rubyTerms": [
+      {
+        "text": "明日",
+        "reading": "あした"
+      },
+      {
+        "text": "先生",
+        "reading": "せんせい"
+      },
+      {
+        "text": "授業",
+        "reading": "じゅぎょう"
+      },
+      {
+        "text": "学生",
+        "reading": "がくせい"
+      },
+      {
+        "text": "夜",
+        "reading": "よる"
+      }
     ]
   },
   {
@@ -5403,23 +8296,67 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "期末試験",
         "kana": "きまつしけん",
-        "meaning": "期末考"
+        "meaning": "重點詞"
       },
       {
-        "word": "苦手",
-        "kana": "にがて",
-        "meaning": "不擅長"
+        "word": "計画",
+        "kana": "けいかく",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "来週",
+        "kana": "らいしゅう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "毎晩",
+        "kana": "まいばん",
+        "meaning": "重點詞"
       },
       {
         "word": "復習",
         "kana": "ふくしゅう",
-        "meaning": "複習"
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ので",
       "～ずつ",
       "～ほうがいいです"
+    ],
+    "rubyTerms": [
+      {
+        "text": "期末試験",
+        "reading": "きまつしけん"
+      },
+      {
+        "text": "計画",
+        "reading": "けいかく"
+      },
+      {
+        "text": "来週",
+        "reading": "らいしゅう"
+      },
+      {
+        "text": "毎晩",
+        "reading": "まいばん"
+      },
+      {
+        "text": "復習",
+        "reading": "ふくしゅう"
+      },
+      {
+        "text": "苦手",
+        "reading": "にがて"
+      },
+      {
+        "text": "漢字",
+        "reading": "かんじ"
+      },
+      {
+        "text": "十分",
+        "reading": "じゅっぷん"
+      }
     ]
   },
   {
@@ -5471,24 +8408,68 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "店長",
-        "kana": "てんちょう",
-        "meaning": "店長"
-      },
-      {
-        "word": "働く",
-        "kana": "はたらく",
-        "meaning": "工作"
+        "word": "土曜日",
+        "kana": "どようび",
+        "meaning": "重點詞"
       },
       {
         "word": "予定",
         "kana": "よてい",
-        "meaning": "預定"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "店長",
+        "kana": "てんちょう",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "電話",
+        "kana": "でんわ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "駅前",
+        "kana": "えきまえ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～予定でした",
       "～てほしい"
+    ],
+    "rubyTerms": [
+      {
+        "text": "土曜日",
+        "reading": "どようび"
+      },
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "店長",
+        "reading": "てんちょう"
+      },
+      {
+        "text": "電話",
+        "reading": "でんわ"
+      },
+      {
+        "text": "駅前",
+        "reading": "えきまえ"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      },
+      {
+        "text": "昼",
+        "reading": "ひる"
+      }
     ]
   },
   {
@@ -5540,19 +8521,68 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "近所",
-        "kana": "きんじょ",
-        "meaning": "附近"
+        "word": "留学生",
+        "kana": "りゅうがくせい",
+        "meaning": "重點詞"
       },
       {
-        "word": "安心",
-        "kana": "あんしん",
-        "meaning": "安心"
+        "word": "学生",
+        "kana": "がくせい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "日本",
+        "kana": "にほん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "近所",
+        "kana": "きんじょ",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "一緒",
+        "kana": "いっしょ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～たばかり",
       "～てくれました"
+    ],
+    "rubyTerms": [
+      {
+        "text": "留学生",
+        "reading": "りゅうがくせい"
+      },
+      {
+        "text": "学生",
+        "reading": "がくせい"
+      },
+      {
+        "text": "日本",
+        "reading": "にほん"
+      },
+      {
+        "text": "近所",
+        "reading": "きんじょ"
+      },
+      {
+        "text": "一緒",
+        "reading": "いっしょ"
+      },
+      {
+        "text": "安心",
+        "reading": "あんしん"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      }
     ]
   },
   {
@@ -5606,23 +8636,55 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "美術館",
         "kana": "びじゅつかん",
-        "meaning": "美術館"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "佐藤",
+        "kana": "さとう",
+        "meaning": "重點詞"
       },
       {
         "word": "絵",
         "kana": "え",
-        "meaning": "畫"
+        "meaning": "重點詞"
       },
       {
-        "word": "帰る",
-        "kana": "かえる",
-        "meaning": "回去"
+        "word": "一枚",
+        "kana": "いちまい",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ので",
       "～ことができます",
       "～前に"
+    ],
+    "rubyTerms": [
+      {
+        "text": "美術館",
+        "reading": "びじゅつかん"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "佐藤",
+        "reading": "さとう"
+      },
+      {
+        "text": "絵",
+        "reading": "え"
+      },
+      {
+        "text": "一枚",
+        "reading": "いちまい"
+      }
     ]
   },
   {
@@ -5674,19 +8736,68 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "家賃",
-        "kana": "やちん",
-        "meaning": "房租"
+        "word": "引っ越し",
+        "kana": "ひっこし",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "中村",
+        "kana": "なかむら",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "予定",
+        "kana": "よてい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "部屋",
+        "kana": "へや",
+        "meaning": "重點詞"
       },
       {
         "word": "住所",
         "kana": "じゅうしょ",
-        "meaning": "地址"
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～より",
       "～予定です"
+    ],
+    "rubyTerms": [
+      {
+        "text": "引っ越し",
+        "reading": "ひっこし"
+      },
+      {
+        "text": "中村",
+        "reading": "なかむら"
+      },
+      {
+        "text": "予定",
+        "reading": "よてい"
+      },
+      {
+        "text": "部屋",
+        "reading": "へや"
+      },
+      {
+        "text": "住所",
+        "reading": "じゅうしょ"
+      },
+      {
+        "text": "便利",
+        "reading": "べんり"
+      },
+      {
+        "text": "家賃",
+        "reading": "やちん"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      }
     ]
   },
   {
@@ -5738,19 +8849,64 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "整理",
-        "kana": "せいり",
-        "meaning": "整理"
+        "word": "図書館",
+        "kana": "としょかん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "月曜日",
+        "kana": "げつようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午後",
+        "kana": "ごご",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "来週",
+        "kana": "らいしゅう",
+        "meaning": "重點詞"
       },
       {
         "word": "入口",
         "kana": "いりぐち",
-        "meaning": "入口"
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ため",
       "～てもいいです"
+    ],
+    "rubyTerms": [
+      {
+        "text": "図書館",
+        "reading": "としょかん"
+      },
+      {
+        "text": "月曜日",
+        "reading": "げつようび"
+      },
+      {
+        "text": "午後",
+        "reading": "ごご"
+      },
+      {
+        "text": "来週",
+        "reading": "らいしゅう"
+      },
+      {
+        "text": "入口",
+        "reading": "いりぐち"
+      },
+      {
+        "text": "整理",
+        "reading": "せいり"
+      },
+      {
+        "text": "箱",
+        "reading": "はこ"
+      }
     ]
   },
   {
@@ -5802,25 +8958,65 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
+        "word": "明日",
+        "kana": "あした",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午前",
+        "kana": "ごぜん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "場合",
+        "kana": "ばあい",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "十分",
+        "kana": "じゅっぷん",
+        "meaning": "重點詞"
+      },
+      {
         "word": "工事",
         "kana": "こうじ",
-        "meaning": "工程"
-      },
-      {
-        "word": "時刻",
-        "kana": "じこく",
-        "meaning": "時刻"
-      },
-      {
-        "word": "遅れる",
-        "kana": "おくれる",
-        "meaning": "延遲"
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ため",
       "～ではなく",
       "～場合"
+    ],
+    "rubyTerms": [
+      {
+        "text": "明日",
+        "reading": "あした"
+      },
+      {
+        "text": "午前",
+        "reading": "ごぜん"
+      },
+      {
+        "text": "場合",
+        "reading": "ばあい"
+      },
+      {
+        "text": "十分",
+        "reading": "じゅっぷん"
+      },
+      {
+        "text": "工事",
+        "reading": "こうじ"
+      },
+      {
+        "text": "駅",
+        "reading": "えき"
+      },
+      {
+        "text": "雨",
+        "reading": "あめ"
+      }
     ]
   },
   {
@@ -5872,24 +9068,68 @@ window.JAPANESE_READING_SETS = [
     ],
     "vocabulary": [
       {
-        "word": "運動",
-        "kana": "うんどう",
-        "meaning": "運動"
+        "word": "運動センター",
+        "kana": "うんどうセンター",
+        "meaning": "重點詞"
       },
       {
-        "word": "受付",
-        "kana": "うけつけ",
-        "meaning": "櫃台"
+        "word": "ヨガ教室",
+        "kana": "ヨガきょうしつ",
+        "meaning": "重點詞"
       },
       {
-        "word": "必要",
-        "kana": "ひつよう",
-        "meaning": "必要"
+        "word": "金曜日",
+        "kana": "きんようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "飲み物",
+        "kana": "のみもの",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "火曜日",
+        "kana": "かようび",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～てください",
       "～ことができます"
+    ],
+    "rubyTerms": [
+      {
+        "text": "運動センター",
+        "reading": "うんどうセンター"
+      },
+      {
+        "text": "ヨガ教室",
+        "reading": "ヨガきょうしつ"
+      },
+      {
+        "text": "金曜日",
+        "reading": "きんようび"
+      },
+      {
+        "text": "飲み物",
+        "reading": "のみもの"
+      },
+      {
+        "text": "火曜日",
+        "reading": "かようび"
+      },
+      {
+        "text": "必要",
+        "reading": "ひつよう"
+      },
+      {
+        "text": "買う",
+        "reading": "かう"
+      },
+      {
+        "text": "教室",
+        "reading": "きょうしつ"
+      }
     ]
   },
   {
@@ -5943,23 +9183,55 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "映画館",
         "kana": "えいがかん",
-        "meaning": "電影院"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "映画",
+        "kana": "えいが",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "午前",
+        "kana": "ごぜん",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "十分",
+        "kana": "じゅっぷん",
+        "meaning": "重點詞"
       },
       {
         "word": "切符",
         "kana": "きっぷ",
-        "meaning": "票"
-      },
-      {
-        "word": "始まる",
-        "kana": "はじまる",
-        "meaning": "開始"
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～ことができます",
       "～てもいいです",
       "～なければなりません"
+    ],
+    "rubyTerms": [
+      {
+        "text": "映画館",
+        "reading": "えいがかん"
+      },
+      {
+        "text": "映画",
+        "reading": "えいが"
+      },
+      {
+        "text": "午前",
+        "reading": "ごぜん"
+      },
+      {
+        "text": "十分",
+        "reading": "じゅっぷん"
+      },
+      {
+        "text": "切符",
+        "reading": "きっぷ"
+      }
     ]
   },
   {
@@ -6013,18 +9285,63 @@ window.JAPANESE_READING_SETS = [
       {
         "word": "燃えるごみ",
         "kana": "もえるごみ",
-        "meaning": "可燃垃圾"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "月曜日",
+        "kana": "げつようび",
+        "meaning": "重點詞"
+      },
+      {
+        "word": "青い",
+        "kana": "あおい",
+        "meaning": "重點詞"
       },
       {
         "word": "箱",
         "kana": "はこ",
-        "meaning": "箱子"
+        "meaning": "重點詞"
+      },
+      {
+        "word": "朝",
+        "kana": "あさ",
+        "meaning": "重點詞"
       }
     ],
     "grammarPoints": [
       "～てから",
       "～てください",
       "～てはいけません"
+    ],
+    "rubyTerms": [
+      {
+        "text": "燃えるごみ",
+        "reading": "もえるごみ"
+      },
+      {
+        "text": "月曜日",
+        "reading": "げつようび"
+      },
+      {
+        "text": "青い",
+        "reading": "あおい"
+      },
+      {
+        "text": "箱",
+        "reading": "はこ"
+      },
+      {
+        "text": "朝",
+        "reading": "あさ"
+      },
+      {
+        "text": "夜",
+        "reading": "よる"
+      },
+      {
+        "text": "町",
+        "reading": "まち"
+      }
     ]
   }
 ];

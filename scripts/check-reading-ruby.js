@@ -54,8 +54,8 @@ for (const readingSet of readingSets) {
     const kana = String(item?.kana ?? '').trim();
     if (!word) errors.push(`${label}: word must not be empty`);
     if (!kana) errors.push(`${label}: kana must not be empty`);
-    if (kana && !kanaReadingPattern.test(kana)) warnings.push(`${label}: kana is not safe for ruby and will be skipped: ${kana}`);
-    if (kana && kanjiPattern.test(kana)) warnings.push(`${label}: kana contains kanji and will be skipped: ${kana}`);
+    if (kana && !kanaReadingPattern.test(kana)) errors.push(`${label}: kana must contain only kana, katakana, or ー: ${kana}`);
+    if (kana && kanjiPattern.test(kana)) errors.push(`${label}: kana must not contain kanji: ${kana}`);
     if (word && !sourceText.includes(word)) warnings.push(`${label}: word does not appear in title or passage: ${word}`);
     vocabTerms.push({ text: word, reading: kana });
   }
@@ -76,6 +76,10 @@ for (const readingSet of readingSets) {
   }
 
   const terms = mergeAndDedupeTerms(vocabTerms, manualTerms);
+  const applicableTermCount = terms.filter((term) => sourceText.includes(term.text)).length;
+  if (applicableTermCount < 3) {
+    warnings.push(`${readingSet.id} ${readingSet.title}: only ${applicableTermCount} applicable ruby terms in title + passage`);
+  }
   for (const textField of ['title', 'passage']) {
     const parts = createRubyPartsFromTerms(readingSet[textField], terms);
     const renderedBase = parts.map((part) => part.base ?? part.text ?? '').join('');
