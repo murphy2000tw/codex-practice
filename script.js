@@ -1449,6 +1449,12 @@ const rubyReadingPattern = /^[\u3041-\u3096\u30A1-\u30FAー]+$/u;
 const rubyBaseKanjiPattern = /[\u3400-\u9FFF々〆ヵヶ]/u;
 
 const commonReadingRubyTerms = [
+  { text: "市民図書館のお知らせ", reading: "しみんとしょかんのおしらせ" }, { text: "市民図書館", reading: "しみんとしょかん" }, { text: "駅前スーパー", reading: "えきまえスーパー" },
+  { text: "料理教室", reading: "りょうりきょうしつ" }, { text: "魚売り場", reading: "さかなうりば" }, { text: "買い物袋", reading: "かいものぶくろ" },
+  { text: "使用規則", reading: "しようきそく" }, { text: "出口工事", reading: "でぐちこうじ" }, { text: "西出口", reading: "にしでぐち" },
+  { text: "東出口", reading: "ひがしでぐち" }, { text: "返却箱", reading: "へんきゃくばこ" }, { text: "伝言メモ", reading: "でんごんメモ" },
+  { text: "歯医者", reading: "はいしゃ" }, { text: "薬局", reading: "やっきょく" }, { text: "台所", reading: "だいどころ" },
+  { text: "予約", reading: "よやく" }, { text: "受付", reading: "うけつけ" }, { text: "辞書", reading: "じしょ" }, { text: "混む", reading: "こむ" },
   { text: "期末試験", reading: "きまつしけん" }, { text: "営業時間", reading: "えいぎょうじかん" }, { text: "朝の電車", reading: "あさのでんしゃ" },
   { text: "持ち帰り", reading: "もちかえり" }, { text: "京都旅行", reading: "きょうとりょこう" }, { text: "町内会", reading: "ちょうないかい" },
   { text: "収集日", reading: "しゅうしゅうび" }, { text: "水曜日", reading: "すいようび" }, { text: "燃えるごみ", reading: "もえるごみ" },
@@ -1609,8 +1615,12 @@ function createReadingSetCard(readingSet, { reveal = false, showFeedback = false
     const options = document.createElement("div");
     options.className = "quiz-options reading-options";
     options.replaceChildren(...optionButtons);
-    questionBlock.innerHTML = `<p class="reading-question">第 ${questionIndex + 1} 題：${question.question}</p>`;
-    questionBlock.append(options, feedback);
+    const prompt = document.createElement("p");
+    prompt.className = "reading-question";
+    prompt.append(`第 ${questionIndex + 1} 題：`);
+    if (showRuby) renderRubyText(prompt, question.question, getReadingRubyTerms(readingSet));
+    else prompt.append(question.question);
+    questionBlock.append(prompt, options, feedback);
     card.appendChild(questionBlock);
   });
   if (reveal) {

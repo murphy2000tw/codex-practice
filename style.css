@@ -1954,6 +1954,7 @@ h1 {
 }
 
 .reading-passage ruby,
+.reading-question ruby,
 .reading-card-header h2 ruby {
   display: inline ruby;
   ruby-position: over;
@@ -1965,12 +1966,14 @@ h1 {
 }
 
 .reading-passage ruby *,
+.reading-question ruby *,
 .reading-card-header h2 ruby * {
   letter-spacing: normal;
   word-spacing: normal;
 }
 
 .reading-passage rt,
+.reading-question rt,
 .reading-card-header h2 rt {
   color: inherit;
   font-size: 0.55em;
