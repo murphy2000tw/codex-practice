@@ -1648,8 +1648,13 @@ function createReadingSetCard(readingSet, { reveal = false, showFeedback = false
     const prompt = document.createElement("p");
     prompt.className = "reading-question";
     prompt.append(`第 ${questionIndex + 1} 題：`);
-    if (showRuby) renderRubyText(prompt, question.question, getReadingRubyTerms(readingSet));
-    else prompt.append(question.question);
+    if (showRuby) {
+      const questionText = document.createElement("span");
+      renderRubyText(questionText, question.question, getReadingRubyTerms(readingSet));
+      prompt.append(questionText);
+    } else {
+      prompt.append(question.question);
+    }
     questionBlock.append(prompt, options, feedback);
     card.appendChild(questionBlock);
   });
@@ -1727,7 +1732,7 @@ function renderReadingQuizQuestion() {
     const answer = readingQuizAnswers[answeredInPreviousSets + questionIndex];
     if (answer !== undefined) selectedAnswers[question.id] = answer;
   });
-  const card = createReadingSetCard(readingSet, { showFeedback: true, selectedAnswers, onAnswer: (questionIndex, selectedIndex) => {
+  const card = createReadingSetCard(readingSet, { showFeedback: true, selectedAnswers, showRuby: true, onAnswer: (questionIndex, selectedIndex) => {
     if (readingQuizAnswers[answeredInPreviousSets + questionIndex] !== undefined) return;
     readingQuizAnswers[answeredInPreviousSets + questionIndex] = selectedIndex;
     renderReadingQuizQuestion();
