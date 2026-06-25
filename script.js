@@ -1663,7 +1663,7 @@ function renderReadingQuizQuestion() {
     const answer = readingQuizAnswers[answeredInPreviousSets + questionIndex];
     if (answer !== undefined) selectedAnswers[question.id] = answer;
   });
-  const card = createReadingSetCard(readingSet, { selectedAnswers, onAnswer: (questionIndex, selectedIndex) => {
+  const card = createReadingSetCard(readingSet, { showFeedback: true, selectedAnswers, onAnswer: (questionIndex, selectedIndex) => {
     readingQuizAnswers[answeredInPreviousSets + questionIndex] = selectedIndex;
     if (readingSet.questions.every((_question, index) => readingQuizAnswers[answeredInPreviousSets + index] !== undefined)) {
       currentReadingQuizSetIndex += 1;

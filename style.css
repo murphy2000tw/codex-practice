@@ -477,7 +477,7 @@ h1 {
 @media (max-width: 640px) {
   .page-shell {
     width: min(100% - 24px, 1120px);
-    padding: 36px 0 48px;
+    padding: calc(36px + env(safe-area-inset-top, 0px)) 0 calc(48px + env(safe-area-inset-bottom, 0px));
   }
 
   .category-panel {
@@ -1955,7 +1955,11 @@ h1 {
 
 .reading-passage ruby,
 .reading-card-header h2 ruby {
+  display: inline ruby;
   ruby-position: over;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 
 .reading-passage rt,
