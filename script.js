@@ -1446,13 +1446,29 @@ function renderReadingUnavailable() {
 
 
 const rubyReadingPattern = /^[\u3041-\u3096\u30A1-\u30FAー]+$/u;
+const rubyBaseKanjiPattern = /[\u3400-\u9FFF々〆ヵヶ]/u;
+
+const commonReadingRubyTerms = [
+  { text: "来週", reading: "らいしゅう" }, { text: "急行", reading: "きゅうこう" }, { text: "店長", reading: "てんちょう" },
+  { text: "学校祭", reading: "がっこうさい" }, { text: "準備", reading: "じゅんび" }, { text: "予約確認", reading: "よやくかくにん" },
+  { text: "前日", reading: "ぜんじつ" }, { text: "午後", reading: "ごご" }, { text: "連絡", reading: "れんらく" },
+  { text: "当日", reading: "とうじつ" }, { text: "変更", reading: "へんこう" }, { text: "道路", reading: "どうろ" },
+  { text: "中央公園", reading: "ちゅうおうこうえん" }, { text: "開店時間", reading: "かいてんじかん" }, { text: "平日", reading: "へいじつ" },
+  { text: "来月", reading: "らいげつ" }, { text: "日曜日", reading: "にちようび" }, { text: "普通電車", reading: "ふつうでんしゃ" },
+  { text: "受付", reading: "うけつけ" }, { text: "荷物", reading: "にもつ" }, { text: "朝食", reading: "ちょうしょく" },
+  { text: "地域清掃", reading: "ちいきせいそう" }, { text: "軍手", reading: "ぐんて" }, { text: "飲み物", reading: "のみもの" },
+  { text: "写真部", reading: "しゃしんぶ" }, { text: "建物", reading: "たてもの" }, { text: "授業", reading: "じゅぎょう" },
+  { text: "学生", reading: "がくせい" }, { text: "予定", reading: "よてい" }, { text: "営業", reading: "えいぎょう" },
+  { text: "時間", reading: "じかん" }, { text: "駅前", reading: "えきまえ" }, { text: "教室", reading: "きょうしつ" },
+  { text: "習慣", reading: "しゅうかん" }, { text: "文化祭", reading: "ぶんかさい" }, { text: "放課後", reading: "ほうかご" },
+];
 
 function normalizeRubyTerms(rubyTerms) {
   if (!Array.isArray(rubyTerms)) return [];
   return rubyTerms
     .filter((term) => term && term.text && term.reading)
     .map((term) => ({ text: String(term.text).trim(), reading: String(term.reading).trim() }))
-    .filter((term) => term.text && term.reading && rubyReadingPattern.test(term.reading))
+    .filter((term) => term.text && term.reading && rubyReadingPattern.test(term.reading) && rubyBaseKanjiPattern.test(term.text))
     .sort((a, b) => b.text.length - a.text.length || a.text.localeCompare(b.text, "ja"));
 }
 
@@ -1467,7 +1483,7 @@ function getReadingRubyTerms(readingSet) {
   const vocabTerms = Array.isArray(readingSet?.vocabulary)
     ? readingSet.vocabulary.map((item) => ({ text: item?.word, reading: item?.kana }))
     : [];
-  return mergeAndDedupeTerms(vocabTerms, readingSet?.rubyTerms || []);
+  return mergeAndDedupeTerms([...commonReadingRubyTerms, ...vocabTerms], readingSet?.rubyTerms || []);
 }
 
 function createRubyPartsFromTerms(text, rubyTerms) {

@@ -1960,6 +1960,14 @@ h1 {
   white-space: nowrap;
   overflow-wrap: normal;
   word-break: keep-all;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+.reading-passage ruby *,
+.reading-card-header h2 ruby * {
+  letter-spacing: normal;
+  word-spacing: normal;
 }
 
 .reading-passage rt,
@@ -1968,7 +1976,7 @@ h1 {
   font-size: 0.55em;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: normal;
 }
 
 .reading-kana {
