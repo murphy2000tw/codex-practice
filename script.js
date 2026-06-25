@@ -1597,10 +1597,23 @@ function createReadingMeta(readingSet) {
 }
 
 
+function getReadingQuestionCorrectIndex(question) {
+  if (!question || !Array.isArray(question.options)) return -1;
+  if (Number.isInteger(question.answerIndex)) return question.answerIndex;
+  if (Number.isInteger(question.correctIndex)) return question.correctIndex;
+  if (typeof question.correctAnswer === "string") return question.options.indexOf(question.correctAnswer);
+  return -1;
+}
+
+function isReadingSelectedIndexCorrect(question, selectedIndex) {
+  return selectedIndex === getReadingQuestionCorrectIndex(question);
+}
+
 function applyReadingOptionFeedback(button, optionIndex, question, selectedAnswer, { reveal = false } = {}) {
   const hasAnswer = selectedAnswer !== undefined;
   const shouldShowFeedback = reveal || hasAnswer;
-  const isCorrectOption = optionIndex === question.answerIndex;
+  const correctIndex = getReadingQuestionCorrectIndex(question);
+  const isCorrectOption = optionIndex === correctIndex;
   const isSelectedWrongOption = hasAnswer && selectedAnswer === optionIndex && !isCorrectOption;
 
   button.disabled = shouldShowFeedback;
@@ -1636,6 +1649,7 @@ function createReadingSetCard(readingSet, { reveal = false, showFeedback = false
       const button = document.createElement("button");
       button.className = "quiz-option reading-option";
       button.type = "button";
+      button.dataset.optionIndex = String(optionIndex);
       if (showRuby) renderRubyText(button, option, getReadingRubyTerms(readingSet));
       else button.textContent = option;
       button.addEventListener("click", () => onAnswer?.(questionIndex, optionIndex, optionButtons, feedback));
@@ -1646,9 +1660,10 @@ function createReadingSetCard(readingSet, { reveal = false, showFeedback = false
     });
     const selectedAnswer = selectedAnswers[question.id];
     if ((showFeedback && selectedAnswer !== undefined) || reveal) {
-      const correct = selectedAnswer === question.answerIndex;
+      const correctIndex = getReadingQuestionCorrectIndex(question);
+      const correct = isReadingSelectedIndexCorrect(question, selectedAnswer);
       feedback.classList.add(correct ? "is-correct" : "is-wrong");
-      feedback.innerHTML = `<strong>${correct ? "答對了！" : `答錯了，正確答案是：${question.options[question.answerIndex]}`}</strong><p class="reading-explanation">解析：${question.explanation}</p>`;
+      feedback.innerHTML = `<strong>${correct ? "答對了！" : `答錯了，正確答案是：${question.options[correctIndex]}`}</strong><p class="reading-explanation">解析：${question.explanation}</p>`;
     }
     const options = document.createElement("div");
     options.className = "quiz-options reading-options";
@@ -1691,9 +1706,10 @@ function handleReadingPracticeAnswer(questionIndex, selectedIndex, optionButtons
   const question = currentReadingSet.questions[questionIndex];
   if (!question || readingPracticeAnswers[question.id] !== undefined) return;
   readingPracticeAnswers[question.id] = selectedIndex;
-  const correct = selectedIndex === question.answerIndex;
+  const correctIndex = getReadingQuestionCorrectIndex(question);
+  const correct = isReadingSelectedIndexCorrect(question, selectedIndex);
   feedback.classList.add(correct ? "is-correct" : "is-wrong");
-  feedback.innerHTML = `<strong>${correct ? "答對了！" : `答錯了，正確答案是：${question.options[question.answerIndex]}`}</strong><p class="reading-explanation">解析：${question.explanation}</p>`;
+  feedback.innerHTML = `<strong>${correct ? "答對了！" : `答錯了，正確答案是：${question.options[correctIndex]}`}</strong><p class="reading-explanation">解析：${question.explanation}</p>`;
   optionButtons.forEach((button, index) => {
     applyReadingOptionFeedback(button, index, question, selectedIndex);
   });
@@ -1760,7 +1776,7 @@ function renderReadingQuizQuestion() {
 }
 
 function renderReadingQuizResults() {
-  const correctCount = readingQuizItems.filter((item, i) => readingQuizAnswers[i] === item.question.answerIndex).length;
+  const correctCount = readingQuizItems.filter((item, i) => isReadingSelectedIndexCorrect(item.question, readingQuizAnswers[i])).length;
   const result = document.createElement("article");
   result.className = "reading-card reading-result-card";
   result.innerHTML = `<h2>測驗完成</h2><p class="reading-score">總分：${correctCount} / ${readingQuizItems.length}</p>`;
@@ -1775,7 +1791,10 @@ function renderReadingQuizResults() {
     else groups.push({ readingSet, items: [resultItem] });
     return groups;
   }, []);
-  list.innerHTML = groupedItems.map(({ readingSet, items }) => `<section class="reading-result-item"><h3>${readingSet.title}</h3>${items.map(({ question, answer, index }) => `<div class="reading-result-question"><p>第 ${index + 1} 題：${question.question}</p><p>你的答案：${question.options[answer] ?? "未作答"}</p><p>正確答案：${question.options[question.answerIndex]}</p><p>${answer === question.answerIndex ? "答對" : "答錯"}</p><p>解析：${question.explanation}</p></div>`).join("")}</section>`).join("");
+  list.innerHTML = groupedItems.map(({ readingSet, items }) => `<section class="reading-result-item"><h3>${readingSet.title}</h3>${items.map(({ question, answer, index }) => {
+    const correctIndex = getReadingQuestionCorrectIndex(question);
+    return `<div class="reading-result-question"><p>第 ${index + 1} 題：${question.question}</p><p>你的答案：${question.options[answer] ?? "未作答"}</p><p>正確答案：${question.options[correctIndex]}</p><p>${isReadingSelectedIndexCorrect(question, answer) ? "答對" : "答錯"}</p><p>解析：${question.explanation}</p></div>`;
+  }).join("")}</section>`).join("");
   const restart = document.createElement("button");
   restart.className = "answer-button";
   restart.type = "button";
