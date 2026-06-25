@@ -1588,11 +1588,56 @@ function getReadingPassageRubyParts(readingSet) {
 function createReadingMeta(readingSet) {
   const details = document.createElement("div");
   details.className = "reading-details";
-  details.innerHTML = `
-    <section><h4>文章假名</h4><p class="reading-kana">${readingSet.passageKana}</p></section>
-    <section><h4>重要單字</h4><ul>${readingSet.vocabulary.map((item) => `<li><strong>${item.word}</strong>（${item.kana}）：${item.meaning}</li>`).join("")}</ul></section>
-    <section><h4>文法重點</h4><ul>${readingSet.grammarPoints.map((point) => `<li>${point}</li>`).join("")}</ul></section>
-  `;
+
+  const kanaSection = document.createElement("section");
+  const kanaTitle = document.createElement("h4");
+  kanaTitle.textContent = "文章假名";
+  const kanaText = document.createElement("p");
+  kanaText.className = "reading-kana";
+  kanaText.textContent = readingSet?.passageKana || "暫無資料";
+  kanaSection.append(kanaTitle, kanaText);
+  details.appendChild(kanaSection);
+
+  const vocabularySection = document.createElement("section");
+  const vocabularyTitle = document.createElement("h4");
+  vocabularyTitle.textContent = "重要單字";
+  const vocabularyList = document.createElement("ul");
+  const vocabularyItems = Array.isArray(readingSet?.vocabulary) ? readingSet.vocabulary : [];
+  if (vocabularyItems.length > 0) {
+    vocabularyItems.forEach((item) => {
+      const listItem = document.createElement("li");
+      const word = document.createElement("strong");
+      word.textContent = item?.word || "暫無單字";
+      listItem.append(word, `（${item?.kana || "暫無假名"}）：${item?.meaning || "暫無說明"}`);
+      vocabularyList.appendChild(listItem);
+    });
+  } else {
+    const listItem = document.createElement("li");
+    listItem.textContent = "暫無資料";
+    vocabularyList.appendChild(listItem);
+  }
+  vocabularySection.append(vocabularyTitle, vocabularyList);
+  details.appendChild(vocabularySection);
+
+  const grammarSection = document.createElement("section");
+  const grammarTitle = document.createElement("h4");
+  grammarTitle.textContent = "文法重點";
+  const grammarList = document.createElement("ul");
+  const grammarPoints = Array.isArray(readingSet?.grammarPoints) ? readingSet.grammarPoints : [];
+  if (grammarPoints.length > 0) {
+    grammarPoints.forEach((point) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = point || "暫無資料";
+      grammarList.appendChild(listItem);
+    });
+  } else {
+    const listItem = document.createElement("li");
+    listItem.textContent = "暫無資料";
+    grammarList.appendChild(listItem);
+  }
+  grammarSection.append(grammarTitle, grammarList);
+  details.appendChild(grammarSection);
+
   return details;
 }
 
