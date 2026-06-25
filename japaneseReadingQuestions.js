@@ -5056,6 +5056,10 @@ window.JAPANESE_READING_SETS = [
     "passageRuby": "誕生日の手紙を書いたあとで、伊藤さんは封筒に切手を貼りました。明日の朝ポストに入れれば、週末までに友だちへ届くそうです。",
     "rubyTerms": [
       {
+        "text": "誕生日の手紙",
+        "reading": "たんじょうびのてがみ"
+      },
+      {
         "text": "誕生日",
         "reading": "たんじょうび"
       },

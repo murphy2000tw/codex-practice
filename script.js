@@ -1596,6 +1596,18 @@ function createReadingMeta(readingSet) {
   return details;
 }
 
+
+function applyReadingOptionFeedback(button, optionIndex, question, selectedAnswer, { reveal = false } = {}) {
+  const hasAnswer = selectedAnswer !== undefined;
+  const shouldShowFeedback = reveal || hasAnswer;
+  const isCorrectOption = optionIndex === question.answerIndex;
+  const isSelectedWrongOption = hasAnswer && selectedAnswer === optionIndex && !isCorrectOption;
+
+  button.disabled = shouldShowFeedback;
+  button.classList.toggle("is-correct", shouldShowFeedback && isCorrectOption);
+  button.classList.toggle("is-wrong", shouldShowFeedback && isSelectedWrongOption);
+}
+
 function createReadingSetCard(readingSet, { reveal = false, showFeedback = false, selectedAnswers = {}, onAnswer, showRuby = false } = {}) {
   const card = document.createElement("article");
   card.className = "reading-card";
@@ -1627,12 +1639,8 @@ function createReadingSetCard(readingSet, { reveal = false, showFeedback = false
       if (showRuby) renderRubyText(button, option, getReadingRubyTerms(readingSet));
       else button.textContent = option;
       button.addEventListener("click", () => onAnswer?.(questionIndex, optionIndex, optionButtons, feedback));
-      if (selectedAnswers[question.id] !== undefined || reveal) {
-        button.disabled = true;
-        if (showFeedback || reveal) {
-          button.classList.toggle("is-correct", optionIndex === question.answerIndex);
-          button.classList.toggle("is-wrong", selectedAnswers[question.id] === optionIndex && optionIndex !== question.answerIndex);
-        }
+      if (showFeedback || reveal) {
+        applyReadingOptionFeedback(button, optionIndex, question, selectedAnswers[question.id], { reveal });
       }
       return button;
     });
@@ -1687,9 +1695,7 @@ function handleReadingPracticeAnswer(questionIndex, selectedIndex, optionButtons
   feedback.classList.add(correct ? "is-correct" : "is-wrong");
   feedback.innerHTML = `<strong>${correct ? "答對了！" : `答錯了，正確答案是：${question.options[question.answerIndex]}`}</strong><p class="reading-explanation">解析：${question.explanation}</p>`;
   optionButtons.forEach((button, index) => {
-    button.disabled = true;
-    button.classList.toggle("is-correct", index === question.answerIndex);
-    button.classList.toggle("is-wrong", index === selectedIndex && !correct);
+    applyReadingOptionFeedback(button, index, question, selectedIndex);
   });
   if (Object.keys(readingPracticeAnswers).length === getReadingSetQuestionCount(currentReadingSet) && !feedback.closest(".reading-card").querySelector(".reading-details")) {
     feedback.closest(".reading-card").appendChild(createReadingMeta(currentReadingSet));
