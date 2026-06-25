@@ -1449,7 +1449,15 @@ const rubyReadingPattern = /^[\u3041-\u3096\u30A1-\u30FAー]+$/u;
 const rubyBaseKanjiPattern = /[\u3400-\u9FFF々〆ヵヶ]/u;
 
 const commonReadingRubyTerms = [
-  { text: "来週", reading: "らいしゅう" }, { text: "急行", reading: "きゅうこう" }, { text: "店長", reading: "てんちょう" },
+  { text: "期末試験", reading: "きまつしけん" }, { text: "営業時間", reading: "えいぎょうじかん" }, { text: "朝の電車", reading: "あさのでんしゃ" },
+  { text: "持ち帰り", reading: "もちかえり" }, { text: "京都旅行", reading: "きょうとりょこう" }, { text: "町内会", reading: "ちょうないかい" },
+  { text: "収集日", reading: "しゅうしゅうび" }, { text: "水曜日", reading: "すいようび" }, { text: "燃えるごみ", reading: "もえるごみ" },
+  { text: "十分前", reading: "じゅっぷんまえ" }, { text: "一時間", reading: "いちじかん" }, { text: "来週", reading: "らいしゅう" },
+  { text: "復習", reading: "ふくしゅう" }, { text: "毎晩", reading: "まいばん" }, { text: "閉店", reading: "へいてん" },
+  { text: "店内", reading: "てんない" }, { text: "工事", reading: "こうじ" }, { text: "博物館", reading: "はくぶつかん" },
+  { text: "屋内", reading: "おくない" }, { text: "市場", reading: "いちば" }, { text: "切符", reading: "きっぷ" },
+  { text: "部屋", reading: "へや" }, { text: "受付", reading: "うけつけ" }, { text: "荷物", reading: "にもつ" },
+  { text: "飲み物", reading: "のみもの" }, { text: "急行", reading: "きゅうこう" }, { text: "店長", reading: "てんちょう" },
   { text: "学校祭", reading: "がっこうさい" }, { text: "準備", reading: "じゅんび" }, { text: "予約確認", reading: "よやくかくにん" },
   { text: "前日", reading: "ぜんじつ" }, { text: "午後", reading: "ごご" }, { text: "連絡", reading: "れんらく" },
   { text: "当日", reading: "とうじつ" }, { text: "変更", reading: "へんこう" }, { text: "道路", reading: "どうろ" },
