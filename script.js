@@ -275,12 +275,23 @@ function getActiveGrammarLevel() {
   return LEVEL_FILTERS.find((level) => level.id === activeGrammarLevelId) ?? LEVEL_FILTERS[0];
 }
 
+function getPartOfSpeechValues(partOfSpeech) {
+  return String(partOfSpeech ?? "")
+    .split(/[／/・、,]+/)
+    .map((value) => value.trim())
+    .filter(Boolean);
+}
+
+function wordMatchesPartOfSpeech(word, matches) {
+  return getPartOfSpeechValues(word.partOfSpeech).some((partOfSpeech) => matches.includes(partOfSpeech));
+}
+
 function getWordsForCategory(category) {
   if (!category.matches) {
     return vocabulary;
   }
 
-  return vocabulary.filter((word) => category.matches.includes(word.partOfSpeech));
+  return vocabulary.filter((word) => wordMatchesPartOfSpeech(word, category.matches));
 }
 
 function getWordsForLevel(words, level) {
@@ -391,7 +402,11 @@ function getRandomItem(items) {
 }
 
 function getPartOfSpeechGroup(partOfSpeech) {
-  return PART_OF_SPEECH_GROUPS.find((group) => group.matches.includes(partOfSpeech))?.id ?? "other";
+  const partOfSpeechValues = getPartOfSpeechValues(partOfSpeech);
+
+  return PART_OF_SPEECH_GROUPS.find((group) => (
+    partOfSpeechValues.some((value) => group.matches.includes(value))
+  ))?.id ?? "other";
 }
 
 function hasSamePartOfSpeechGroup(word, referenceWord) {
