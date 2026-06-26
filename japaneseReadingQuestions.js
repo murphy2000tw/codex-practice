@@ -839,7 +839,7 @@ window.JAPANESE_READING_SETS = [
           "公民館のホール"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「図書館の二階」ことが分かります。"
+        "explanation": "本文から、正しい答えが「図書館の二階」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -928,7 +928,7 @@ window.JAPANESE_READING_SETS = [
           "毎日七時からになります"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「一時間遅くなります」ことが分かります。"
+        "explanation": "本文から、正しい答えが「一時間遅くなります」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -1014,7 +1014,7 @@ window.JAPANESE_READING_SETS = [
           "家族の住所"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「向こうの時間」ことが分かります。"
+        "explanation": "本文から、正しい答えが「向こうの時間」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -1095,7 +1095,7 @@ window.JAPANESE_READING_SETS = [
           "家の電話番号"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「色と乗った時間」ことが分かります。"
+        "explanation": "本文から、正しい答えが「色と乗った時間」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -1181,7 +1181,7 @@ window.JAPANESE_READING_SETS = [
           "天気予報を消します"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「一度家へ戻ります」ことが分かります。"
+        "explanation": "本文から、正しい答えが「一度家へ戻ります」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -1835,8 +1835,8 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "中短文理解",
     "title": "レストラン予約",
-    "passage": "鈴木さんは金曜日の夜、家族とレストランへ行きます。人気の店なので、昼休みに電話で四人席を予約しました。店員は「七時はいっぱいですが、七時半なら空いています」と言いました。鈴木さんは七時半でお願いしました。",
-    "passageKana": "すずきさんはきんようびのよる、かぞくとレストランへいきます。にんきのみせなので、ひるやすみにでんわでよにんせきをよやくしました。てんいんは「しちじはいっぱいですが、しちじはんならあいています」といいました。すずきさんはしちじはんでおねがいしました。",
+    "passage": "鈴木さんは金曜日の夜、家族とレストランへ行きます。人気の店なので、昼休みに電話で四人分の席を予約しました。店員は「七時はいっぱいですが、七時半なら空いています」と言いました。鈴木さんは七時半でお願いしました。",
+    "passageKana": "すずきさんはきんようびのよる、かぞくとレストランへいきます。にんきのみせなので、ひるやすみにでんわでよにんぶんのせきをよやくしました。てんいんは「しちじはいっぱいですが、しちじはんならあいています」といいました。すずきさんはしちじはんでおねがいしました。",
     "questions": [
       {
         "id": "jp-reading-q-n4-022-01",
@@ -1848,7 +1848,7 @@ window.JAPANESE_READING_SETS = [
           "金曜日の夜"
         ],
         "answerIndex": 0,
-        "explanation": "七時はいっぱいで、七時半なら空いているためです。"
+        "explanation": "七時はいっぱいですが、七時半なら空いているためです。"
       },
       {
         "id": "jp-reading-q-n4-022-02",
@@ -1929,15 +1929,15 @@ window.JAPANESE_READING_SETS = [
       },
     ],
     "titleRuby": "レストラン予約",
-    "passageRuby": "鈴木さんは金曜日の夜、家族とレストランへ行きます。人気の店なので、昼休みに電話で四人席を予約しました。店員は「七時はいっぱいですが、七時半なら空いています」と言いました。鈴木さんは七時半でお願いしました。"
+    "passageRuby": "鈴木さんは金曜日の夜、家族とレストランへ行きます。人気の店なので、昼休みに電話で四人分の席を予約しました。店員は「七時はいっぱいですが、七時半なら空いています」と言いました。鈴木さんは七時半でお願いしました。"
   },
   {
     "id": "jp-reading-set-n4-023",
     "level": "N4",
     "type": "中短文理解",
     "title": "地域の掃除",
-    "passage": "日曜日の朝、町内で公園の掃除があります。参加する人は軍手を持って、八時五十分までに公園の入口に集まります。雨が強いときは中止ですが、小さい雨なら行います。終わったあとで、お茶が一人一本配られます。",
-    "passageKana": "にちようびのあさ、ちょうないでこうえんのそうじがあります。さんかするひとはぐんてをもって、はちじごじゅっぷんまでにこうえんのいりぐちにあつまります。あめがつよいときはちゅうしですが、ちいさいあめならおこないます。おわったあとで、おちゃがひとりいっぽんくばられます。",
+    "passage": "日曜日の朝、町内で公園の掃除があります。参加する人は軍手を持って、八時五十分までに公園の入口に集まります。雨が強いときは中止ですが、小雨なら行います。終わったあとで、お茶が一人一本配られます。",
+    "passageKana": "にちようびのあさ、ちょうないでこうえんのそうじがあります。さんかするひとはぐんてをもって、はちじごじゅっぷんまでにこうえんのいりぐちにあつまります。あめがつよいときはちゅうしですが、こさめならおこないます。おわったあとで、おちゃがひとりいっぽんくばられます。",
     "questions": [
       {
         "id": "jp-reading-q-n4-023-01",
@@ -2030,7 +2030,7 @@ window.JAPANESE_READING_SETS = [
       }
     ],
     "titleRuby": "地域の掃除",
-    "passageRuby": "日曜日の朝、町内で公園の掃除があります。参加する人は軍手を持って、八時五十分までに公園の入口に集まります。雨が強いときは中止ですが、小さい雨なら行います。終わったあとで、お茶が一人一本配られます。"
+    "passageRuby": "日曜日の朝、町内で公園の掃除があります。参加する人は軍手を持って、八時五十分までに公園の入口に集まります。雨が強いときは中止ですが、小雨なら行います。終わったあとで、お茶が一人一本配られます。"
   },
   {
     "id": "jp-reading-set-n4-024",
@@ -2223,8 +2223,8 @@ window.JAPANESE_READING_SETS = [
     "level": "N4",
     "type": "情報検索",
     "title": "市民図書館のお知らせ",
-    "passage": "【市民図書館】六月二十九日は本の整理のため休みです。返す本は入口の返却箱に入れてください。DVDと雑誌は箱に入れないで、次の日以降に受付へ持って来てください。",
-    "passageKana": "【しみんとしょかん】ろくがつにじゅうくにちはほんのせいりのためやすみです。かえすほんはいりぐちのへんきゃくばこにいれてください。DVDとざっしははこにいれないで、つぎのひいこうにうけつけへもってきてください。",
+    "passage": "【市民図書館】六月二十九日は本の整理のため休みです。返す本は入口の返却箱に入れてください。DVDと雑誌は返却箱には入れないで、次の日以降に受付へ持って来てください。",
+    "passageKana": "【しみんとしょかん】ろくがつにじゅうくにちはほんのせいりのためやすみです。かえすほんはいりぐちのへんきゃくばこにいれてください。DVDとざっしはへんきゃくばこにはいれないで、つぎのひいこうにうけつけへもってきてください。",
     "questions": [
       {
         "id": "jp-reading-q-n4-026-01",
@@ -2309,7 +2309,7 @@ window.JAPANESE_READING_SETS = [
       }
     ],
     "titleRuby": "市民図書館のお知らせ",
-    "passageRuby": "【市民図書館】六月二十九日は本の整理のため休みです。返す本は入口の返却箱に入れてください。DVDと雑誌は箱に入れないで、次の日以降に受付へ持って来てください。"
+    "passageRuby": "【市民図書館】六月二十九日は本の整理のため休みです。返す本は入口の返却箱に入れてください。DVDと雑誌は返却箱には入れないで、次の日以降に受付へ持って来てください。"
   },
   {
     "id": "jp-reading-set-n4-027",
@@ -3585,7 +3585,7 @@ window.JAPANESE_READING_SETS = [
           "辞書を家に置くから"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「毎日学校へ持って行くから」ことが分かります。"
+        "explanation": "本文から、正しい答えが「毎日学校へ持って行くから」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -3663,7 +3663,7 @@ window.JAPANESE_READING_SETS = [
           "来店したあと"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「前日の午後五時まで」ことが分かります。"
+        "explanation": "本文から、正しい答えが「前日の午後五時まで」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -3752,7 +3752,7 @@ window.JAPANESE_READING_SETS = [
           "すぐ家へ帰ります"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「店員に聞いてもいいです」ことが分かります。"
+        "explanation": "本文から、正しい答えが「店員に聞いてもいいです」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -3824,9 +3824,9 @@ window.JAPANESE_READING_SETS = [
     "id": "jp-reading-set-n4-044",
     "level": "N4",
     "type": "店家資訊",
-    "title": "スーパー特売日",
-    "passage": "スーパーの特売日は水曜日です。卵は一人一パックまでで、午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。",
-    "passageKana": "スーパーの特売日は水曜日です。卵は一人一パックまでで、午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。",
+    "title": "スーパーの特売日",
+    "passage": "スーパーの特売日は水曜日です。卵は一人一パックまでです。午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。",
+    "passageKana": "スーパーの特売日は水曜日です。卵は一人一パックまでです。午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。",
     "questions": [
       {
         "id": "jp-reading-q-n4-044-01",
@@ -3838,7 +3838,7 @@ window.JAPANESE_READING_SETS = [
           "水曜日は売りません"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「一人一パックまでです」ことが分かります。"
+        "explanation": "本文に「一人一パックまでです」とあります。"
       }
     ],
     "vocabulary": [
@@ -3872,8 +3872,8 @@ window.JAPANESE_READING_SETS = [
       "～場合",
       "～てもいいです"
     ],
-    "titleRuby": "スーパー特売日",
-    "passageRuby": "スーパーの特売日は水曜日です。卵は一人一パックまでで、午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。",
+    "titleRuby": "スーパーの特売日",
+    "passageRuby": "スーパーの特売日は水曜日です。卵は一人一パックまでです。午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。",
     "rubyTerms": [
       {
         "text": "水曜日",
@@ -3923,7 +3923,7 @@ window.JAPANESE_READING_SETS = [
           "来週の朝六時"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「明日の夜七時から九時」ことが分かります。"
+        "explanation": "本文から、正しい答えが「明日の夜七時から九時」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4013,7 +4013,7 @@ window.JAPANESE_READING_SETS = [
           "駅に止まらない電車"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「各駅停車」ことが分かります。"
+        "explanation": "本文から、正しい答えが「各駅停車」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4098,7 +4098,7 @@ window.JAPANESE_READING_SETS = [
           "五番バスの中"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「中央公園」ことが分かります。"
+        "explanation": "本文から、正しい答えが「中央公園」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4188,7 +4188,7 @@ window.JAPANESE_READING_SETS = [
           "鍵を受け取ること"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「荷物を預けること」ことが分かります。"
+        "explanation": "本文から、正しい答えが「荷物を預けること」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4269,7 +4269,7 @@ window.JAPANESE_READING_SETS = [
           "かばんから出す"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「二日分だけ持って行く」ことが分かります。"
+        "explanation": "本文から、正しい答えが「二日分だけ持って行く」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4351,7 +4351,7 @@ window.JAPANESE_READING_SETS = [
           "時刻表にない回"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「午後二時の回」ことが分かります。"
+        "explanation": "本文から、正しい答えが「午後二時の回」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4432,7 +4432,7 @@ window.JAPANESE_READING_SETS = [
           "ほうき"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「飲み物」ことが分かります。"
+        "explanation": "本文から、正しい答えが「飲み物」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4522,7 +4522,7 @@ window.JAPANESE_READING_SETS = [
           "月に一回だけ出す"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「色別に別の箱に入れる」ことが分かります。"
+        "explanation": "本文から、正しい答えが「色別に別の箱に入れる」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4590,7 +4590,7 @@ window.JAPANESE_READING_SETS = [
           "午後八時の電車"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「改札横の事務室」ことが分かります。"
+        "explanation": "本文から、正しい答えが「改札横の事務室」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4680,7 +4680,7 @@ window.JAPANESE_READING_SETS = [
           "駅の外で充電する"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「案内所で道を聞く」ことが分かります。"
+        "explanation": "本文から、正しい答えが「案内所で道を聞く」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4757,7 +4757,7 @@ window.JAPANESE_READING_SETS = [
           "病院の地図"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「保険証と住所が分かるもの」ことが分かります。"
+        "explanation": "本文から、正しい答えが「保険証と住所が分かるもの」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4843,7 +4843,7 @@ window.JAPANESE_READING_SETS = [
           "説明を聞いた人"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「運転する予定がある人」ことが分かります。"
+        "explanation": "本文から、正しい答えが「運転する予定がある人」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -4932,7 +4932,7 @@ window.JAPANESE_READING_SETS = [
           "郵便物の色"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「新しい住所」ことが分かります。"
+        "explanation": "本文から、正しい答えが「新しい住所」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -5018,7 +5018,7 @@ window.JAPANESE_READING_SETS = [
           "切手を貼る前"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「明日の朝」ことが分かります。"
+        "explanation": "本文から、正しい答えが「明日の朝」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -5111,7 +5111,7 @@ window.JAPANESE_READING_SETS = [
           "窓を閉めたあと"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「午後四時ごろ」ことが分かります。"
+        "explanation": "本文から、正しい答えが「午後四時ごろ」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -5201,7 +5201,7 @@ window.JAPANESE_READING_SETS = [
           "帰る前に片づけること"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「食べ物を食べること」ことが分かります。"
+        "explanation": "本文から、正しい答えが「食べ物を食べること」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -5269,7 +5269,7 @@ window.JAPANESE_READING_SETS = [
           "近所の人がいないこと"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「道が分かりにくいこと」と分かります。"
+        "explanation": "本文から、正しい答えが「道が分かりにくいこと」であることが分かります。"
       },
       {
         "id": "jp-reading-q-n4-061-02",
@@ -5281,7 +5281,7 @@ window.JAPANESE_READING_SETS = [
           "公園を閉める"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「地域清掃に参加する」と分かります。"
+        "explanation": "本文から、正しい答えが「地域清掃に参加する」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -5362,7 +5362,7 @@ window.JAPANESE_READING_SETS = [
           "文化祭を終える"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「机を動かす」と分かります。"
+        "explanation": "本文から、正しい答えが「机を動かす」であることが分かります。"
       },
       {
         "id": "jp-reading-q-n4-062-02",
@@ -5374,7 +5374,7 @@ window.JAPANESE_READING_SETS = [
           "飲み物全部"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「エプロン」と分かります。"
+        "explanation": "本文から、正しい答えが「エプロン」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -5463,7 +5463,7 @@ window.JAPANESE_READING_SETS = [
           "昼ご飯を作る"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「レジの使い方を説明する」と分かります。"
+        "explanation": "本文から、正しい答えが「レジの使い方を説明する」であることが分かります。"
       },
       {
         "id": "jp-reading-q-n4-063-02",
@@ -5475,7 +5475,7 @@ window.JAPANESE_READING_SETS = [
           "家に持って帰る"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「ノートに書いておく」と分かります。"
+        "explanation": "本文から、正しい答えが「ノートに書いておく」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -5565,7 +5565,7 @@ window.JAPANESE_READING_SETS = [
           "スマホを買ったから"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「朝起きにくくなったから」と分かります。"
+        "explanation": "本文から、正しい答えが「朝起きにくくなったから」であることが分かります。"
       },
       {
         "id": "jp-reading-q-n4-064-02",
@@ -5577,7 +5577,7 @@ window.JAPANESE_READING_SETS = [
           "電車を待つ"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「音楽を聞く」と分かります。"
+        "explanation": "本文から、正しい答えが「音楽を聞く」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -5667,7 +5667,7 @@ window.JAPANESE_READING_SETS = [
           "ホテル"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「博物館」と分かります。"
+        "explanation": "本文から、正しい答えが「博物館」であることが分かります。"
       },
       {
         "id": "jp-reading-q-n4-065-02",
@@ -5679,7 +5679,7 @@ window.JAPANESE_READING_SETS = [
           "学校の教室"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「屋内の市場」と分かります。"
+        "explanation": "本文から、正しい答えが「屋内の市場」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -5769,7 +5769,7 @@ window.JAPANESE_READING_SETS = [
           "学校の名前だけ"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「名前と住所」と分かります。"
+        "explanation": "本文から、正しい答えが「名前と住所」であることが分かります。"
       },
       {
         "id": "jp-reading-q-n4-066-02",
@@ -5781,7 +5781,7 @@ window.JAPANESE_READING_SETS = [
           "受付"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「ヨガ教室」と分かります。"
+        "explanation": "本文から、正しい答えが「ヨガ教室」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -5870,7 +5870,7 @@ window.JAPANESE_READING_SETS = [
           "予約できない"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「二時間まで」と分かります。"
+        "explanation": "本文から、正しい答えが「二時間まで」であることが分かります。"
       },
       {
         "id": "jp-reading-q-n4-067-02",
@@ -5882,7 +5882,7 @@ window.JAPANESE_READING_SETS = [
           "予約すること"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「食事をすること」と分かります。"
+        "explanation": "本文から、正しい答えが「食事をすること」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -5971,7 +5971,7 @@ window.JAPANESE_READING_SETS = [
           "月曜日だけ"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「水曜日の午前中」と分かります。"
+        "explanation": "本文から、正しい答えが「水曜日の午前中」であることが分かります。"
       },
       {
         "id": "jp-reading-q-n4-068-02",
@@ -5983,7 +5983,7 @@ window.JAPANESE_READING_SETS = [
           "次の日に来る"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「普通の料金になる」と分かります。"
+        "explanation": "本文から、正しい答えが「普通の料金になる」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -6073,7 +6073,7 @@ window.JAPANESE_READING_SETS = [
           "南口が遠いため"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「道路工事のため」と分かります。"
+        "explanation": "本文から、正しい答えが「道路工事のため」であることが分かります。"
       },
       {
         "id": "jp-reading-q-n4-069-02",
@@ -6085,7 +6085,7 @@ window.JAPANESE_READING_SETS = [
           "図書館前"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「市役所前」と分かります。"
+        "explanation": "本文から、正しい答えが「市役所前」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -6174,7 +6174,7 @@ window.JAPANESE_READING_SETS = [
           "午前十時"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「午後二時」と分かります。"
+        "explanation": "本文から、正しい答えが「午後二時」であることが分かります。"
       },
       {
         "id": "jp-reading-q-n4-070-02",
@@ -6186,7 +6186,7 @@ window.JAPANESE_READING_SETS = [
           "工事のあとだけ"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「閉店の十分前まで」と分かります。"
+        "explanation": "本文から、正しい答えが「閉店の十分前まで」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -6275,7 +6275,7 @@ window.JAPANESE_READING_SETS = [
           "明日の午後"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「午前十時半」と分かります。"
+        "explanation": "本文から、正しい答えが「午前十時半」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -6364,7 +6364,7 @@ window.JAPANESE_READING_SETS = [
           "雨のチケット"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「室内用の靴」と分かります。"
+        "explanation": "本文から、正しい答えが「室内用の靴」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -6449,7 +6449,7 @@ window.JAPANESE_READING_SETS = [
           "数を数えない"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「写真を撮る」と分かります。"
+        "explanation": "本文から、正しい答えが「写真を撮る」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -6538,7 +6538,7 @@ window.JAPANESE_READING_SETS = [
           "料理を食べたあと"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「金曜日の夜まで」と分かります。"
+        "explanation": "本文から、正しい答えが「金曜日の夜まで」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -6627,7 +6627,7 @@ window.JAPANESE_READING_SETS = [
           "番号を入力する前"
         ],
         "answerIndex": 0,
-        "explanation": "本文では「明日の午前中」と分かります。"
+        "explanation": "本文から、正しい答えが「明日の午前中」であることが分かります。"
       }
     ],
     "vocabulary": [
@@ -9111,9 +9111,9 @@ window.JAPANESE_READING_SETS = [
     "type": "情報検索",
     "title": "運動センターの教室",
     "titleRuby": "運動センターの教室",
-    "passage": "運動センターのヨガ教室は火曜日と金曜日の夜七時からです。初めての人は受付で名前を書いてください。タオルは必要ですが、飲み物は中で買うことができます。",
-    "passageRuby": "運動センターのヨガ教室は火曜日と金曜日の夜七時からです。初めての人は受付で名前を書いてください。タオルは必要ですが、飲み物は中で買うことができます。",
-    "passageKana": "うんどうセンターの ヨガきょうしつは かようびと きんようびの よる しちじからです。はじめての ひとは うけつけで なまえを かいてください。タオルは ひつようですが、のみものは なかで かうことが できます。",
+    "passage": "運動センターのヨガ教室は火曜日と金曜日の夜七時からです。初めての人は受付で名前を書いてください。タオルは必要ですが、飲み物はセンター内で買うことができます。",
+    "passageRuby": "運動センターのヨガ教室は火曜日と金曜日の夜七時からです。初めての人は受付で名前を書いてください。タオルは必要ですが、飲み物はセンター内で買うことができます。",
+    "passageKana": "うんどうセンターの ヨガきょうしつは かようびと きんようびの よる しちじからです。はじめての ひとは うけつけで なまえを かいてください。タオルは ひつようですが、のみものは センターないで かうことが できます。",
     "questions": [
       {
         "id": "jp-reading-q-n4-103-01",
