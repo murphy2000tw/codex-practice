@@ -2133,6 +2133,51 @@ h1 {
   padding-top: 12px;
 }
 
+@media (min-width: 768px) {
+  .reading-card {
+    gap: 22px;
+  }
+
+  .reading-card-header h2 {
+    font-size: clamp(1.8rem, 3vw, 2.45rem);
+    line-height: 1.45;
+  }
+
+  .reading-passage {
+    font-size: 1.32rem;
+    line-height: 2.35;
+  }
+
+  .reading-question {
+    font-size: 1.24rem;
+    line-height: 1.9;
+  }
+
+  .reading-option {
+    font-size: 1.08rem;
+    line-height: 1.75;
+  }
+
+  .reading-passage .jp-ruby,
+  .reading-question .jp-ruby,
+  .reading-option .jp-ruby,
+  .reading-card-header h2 .jp-ruby {
+    padding-top: 0.78em;
+  }
+
+  .reading-passage .jp-rt,
+  .reading-question .jp-rt,
+  .reading-option .jp-rt,
+  .reading-card-header h2 .jp-rt,
+  .reading-passage rt,
+  .reading-question rt,
+  .reading-option rt,
+  .reading-card-header h2 rt {
+    font-size: 0.46em;
+    line-height: 1.05;
+  }
+}
+
 @media (max-width: 640px) {
   .reading-card {
     padding: 18px;
