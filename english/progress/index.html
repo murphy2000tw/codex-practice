@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" href="../../app-icon.png">
+  <link rel="icon" type="image/png" href="../../app-icon.png">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <title>學習進度｜英文學習</title>
+  <link rel="stylesheet" href="../../style.css?v=1.9">
+</head>
+<body>
+  <main class="page-shell">
+    <nav class="site-nav" aria-label="主選單">
+      <a class="site-nav-link" href="../../">首頁</a>
+      <a class="site-nav-link" href="../">英文學習</a>
+      <a class="site-nav-link is-active" href="./" aria-current="page">學習進度</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">English Progress</p>
+      <h1 id="page-title">學習進度</h1>
+      <p class="hero-text">查看每天練習、測驗和各單元使用情形。</p>
+    </section>
+
+    <section id="emptyProgressNotice" class="entry-section progress-empty-state" hidden>
+      <h2>目前還沒有學習紀錄。</h2>
+      <p>完成一次英文練習或測驗後，這裡就會開始累積每日進度。</p>
+    </section>
+
+    <section class="entry-section" aria-labelledby="today-progress-title">
+      <div class="category-header">
+        <h2 id="today-progress-title">今日紀錄</h2>
+      </div>
+      <p id="todayNoData" class="progress-empty-message" hidden>今天還沒有學習紀錄，完成一次練習或測驗後就會出現在這裡。</p>
+      <div id="todayProgressGrid" class="progress-stat-grid"></div>
+    </section>
+
+    <section class="entry-section" aria-labelledby="daily-progress-title">
+      <div class="category-header">
+        <h2 id="daily-progress-title">最近 7 天每日紀錄</h2>
+      </div>
+      <div class="progress-table-wrap">
+        <table class="progress-table">
+          <thead><tr><th>日期</th><th>學習時間</th><th>練習題數</th><th>測驗題數</th><th>總題數</th><th>正確率</th><th>使用模組</th></tr></thead>
+          <tbody id="recentDaysBody"></tbody>
+        </table>
+      </div>
+      <section class="weekly-progress-card" aria-labelledby="weekly-progress-title">
+        <h3 id="weekly-progress-title">本週進度</h3>
+        <div id="weeklyProgressGrid" class="progress-stat-grid"></div>
+      </section>
+    </section>
+
+    <section class="entry-section" aria-labelledby="module-progress-title">
+      <div class="category-header">
+        <h2 id="module-progress-title">各模組統計</h2>
+      </div>
+      <div class="progress-table-wrap">
+        <table class="progress-table">
+          <thead><tr><th>模組名稱</th><th>學習次數</th><th>練習題數</th><th>測驗題數</th><th>總題數</th><th>正確率</th><th>學習時間</th><th>狀態</th></tr></thead>
+          <tbody id="moduleSummaryBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="../englishLearningProgress.js?v=1.1"></script>
+  <script>
+    const statCard = (label, value) => `<article class="progress-stat-card"><span class="progress-stat-label">${label}</span><strong>${value}</strong></article>`;
+    const moduleStatus = (module) => {
+      const accuracy = getEnglishAccuracyNumber(module.correctCount, module.totalQuestions);
+      if (module.totalQuestions === 0) return "尚未開始";
+      if (accuracy >= 85 && module.totalQuestions >= 20) return "穩定";
+      if (accuracy >= 70 && module.totalQuestions >= 10) return "進步中";
+      if (accuracy < 70 && module.totalQuestions >= 10) return "需要加強";
+      return "累積中";
+    };
+
+    function renderProgressPage() {
+      const progress = getEnglishLearningProgress();
+      const hasAnyProgress = Object.values(progress.days).some((day) => day.totalQuestions > 0 || day.totalDurationSeconds > 0);
+      document.querySelector("#emptyProgressNotice").hidden = hasAnyProgress;
+
+      const today = getTodayEnglishLearningSummary();
+      const hasTodayProgress = today.totalQuestions > 0 || today.totalDurationSeconds > 0;
+      document.querySelector("#todayNoData").hidden = hasTodayProgress;
+      document.querySelector("#todayProgressGrid").hidden = !hasTodayProgress;
+      if (hasTodayProgress) {
+        document.querySelector("#todayProgressGrid").innerHTML = [
+          statCard("學習時間", formatEnglishLearningDuration(today.totalDurationSeconds)),
+          statCard("總題數", `${today.totalQuestions} 題`),
+          statCard("練習題數", `${today.practiceQuestions} 題`),
+          statCard("測驗題數", `${today.quizQuestions} 題`),
+          statCard("答對", `${today.correctCount} 題`),
+          statCard("答錯", `${today.wrongCount} 題`),
+          statCard("正確率", calculateEnglishAccuracy(today.correctCount, today.totalQuestions)),
+          statCard("使用模組", getUsedEnglishLearningModuleNames(today)),
+        ].join("");
+      }
+
+      const recentDays = getRecentEnglishLearningDays(7);
+      document.querySelector("#recentDaysBody").innerHTML = recentDays.map((day) => `<tr><td>${formatEnglishProgressDate(day.date)}</td><td>${formatEnglishLearningDuration(day.totalDurationSeconds)}</td><td>${day.practiceQuestions} 題</td><td>${day.quizQuestions} 題</td><td>${day.totalQuestions} 題</td><td>${calculateEnglishAccuracy(day.correctCount, day.totalQuestions)}</td><td>${getUsedEnglishLearningModuleNames(day)}</td></tr>`).join("");
+
+      const weekly = getRecentSevenDaysSummary();
+      document.querySelector("#weeklyProgressGrid").innerHTML = [
+        statCard("學習天數", `${weekly.learningDays} / 7 天`),
+        statCard("總學習時間", formatEnglishLearningDuration(weekly.totalDurationSeconds)),
+        statCard("總題數", `${weekly.totalQuestions} 題`),
+        statCard("平均正確率", calculateEnglishAccuracy(weekly.correctCount, weekly.totalQuestions)),
+        statCard("最常使用", weekly.mostUsedModule),
+        statCard("需要加強", weekly.weakestModule),
+      ].join("");
+
+      const moduleSummary = getEnglishModuleSummary();
+      document.querySelector("#moduleSummaryBody").innerHTML = ENGLISH_LEARNING_MODULES.map((moduleName) => {
+        const module = moduleSummary[moduleName];
+        return `<tr><td>${getEnglishLearningModuleName(moduleName)}</td><td>${module.sessions} 次</td><td>${module.practiceQuestions} 題</td><td>${module.quizQuestions} 題</td><td>${module.totalQuestions} 題</td><td>${calculateEnglishAccuracy(module.correctCount, module.totalQuestions)}</td><td>${formatEnglishLearningDuration(module.totalDurationSeconds)}</td><td>${moduleStatus(module)}</td></tr>`;
+      }).join("");
+    }
+    renderProgressPage();
+  </script>
+</body>
+</html>

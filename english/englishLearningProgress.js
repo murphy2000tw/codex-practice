@@ -170,3 +170,87 @@ function getEnglishModuleSummary() {
   });
   return summary;
 }
+
+const ENGLISH_LEARNING_MODULE_NAMES = {
+  vocabulary: "單字",
+  articles: "冠詞",
+  reading: "閱讀",
+  cloze: "填空",
+  listening: "聽力",
+};
+
+function calculateEnglishAccuracy(correctCount, totalQuestions) {
+  const total = toEnglishLearningNumber(totalQuestions);
+  if (total <= 0) return "-";
+  return `${Math.round((toEnglishLearningNumber(correctCount) / total) * 100)}%`;
+}
+
+function getEnglishAccuracyNumber(correctCount, totalQuestions) {
+  const total = toEnglishLearningNumber(totalQuestions);
+  if (total <= 0) return 0;
+  return Math.round((toEnglishLearningNumber(correctCount) / total) * 100);
+}
+
+function formatEnglishProgressDate(dateValue) {
+  const dateKey = typeof dateValue === "string" && /^\d{4}-\d{2}-\d{2}$/.test(dateValue) ? dateValue : getEnglishLearningLocalDateKey(dateValue);
+  return dateKey.replaceAll("-", "/");
+}
+
+function formatEnglishLearningDuration(seconds) {
+  const totalSeconds = toEnglishLearningNumber(seconds);
+  if (totalSeconds <= 0) return "0 分鐘";
+  if (totalSeconds < 60) return "不到 1 分鐘";
+  return `約 ${Math.ceil(totalSeconds / 60)} 分鐘`;
+}
+
+function getEnglishLearningModuleName(module) {
+  return ENGLISH_LEARNING_MODULE_NAMES[module] || module;
+}
+
+function getUsedEnglishLearningModuleNames(dayProgress) {
+  const day = normalizeEnglishDayProgress(dayProgress, dayProgress?.date || getEnglishLearningLocalDateKey());
+  const names = Object.entries(day.modules)
+    .filter(([, moduleProgress]) => normalizeEnglishModuleProgress(moduleProgress).totalQuestions > 0)
+    .map(([module]) => getEnglishLearningModuleName(module));
+  return names.length ? names.join("、") : "尚未使用";
+}
+
+function getRecentSevenDaysSummary() {
+  const days = getRecentEnglishLearningDays(7);
+  const moduleTotals = Object.fromEntries(ENGLISH_LEARNING_MODULES.map((module) => [module, createEmptyEnglishModuleProgress()]));
+  const summary = { learningDays: 0, totalDurationSeconds: 0, totalQuestions: 0, correctCount: 0, mostUsedModule: "資料不足", weakestModule: "資料不足", days };
+  days.forEach((day) => {
+    if (day.totalQuestions > 0 || day.totalDurationSeconds > 0) summary.learningDays += 1;
+    summary.totalDurationSeconds += day.totalDurationSeconds;
+    summary.totalQuestions += day.totalQuestions;
+    summary.correctCount += day.correctCount;
+    Object.entries(day.modules || {}).forEach(([module, moduleProgress]) => {
+      if (!moduleTotals[module]) return;
+      const normalized = normalizeEnglishModuleProgress(moduleProgress);
+      Object.keys(moduleTotals[module]).forEach((field) => { moduleTotals[module][field] += normalized[field]; });
+    });
+  });
+  const usedModules = Object.entries(moduleTotals).filter(([, moduleProgress]) => moduleProgress.totalQuestions > 0);
+  if (usedModules.length) {
+    summary.mostUsedModule = getEnglishLearningModuleName(usedModules.slice().sort((a, b) => b[1].totalQuestions - a[1].totalQuestions)[0][0]);
+  }
+  const enoughDataModules = usedModules.filter(([, moduleProgress]) => moduleProgress.totalQuestions >= 10);
+  if (enoughDataModules.length) {
+    summary.weakestModule = getEnglishLearningModuleName(enoughDataModules.slice().sort((a, b) => getEnglishAccuracyNumber(a[1].correctCount, a[1].totalQuestions) - getEnglishAccuracyNumber(b[1].correctCount, b[1].totalQuestions))[0][0]);
+  }
+  return summary;
+}
+
+function getEnglishLearningStreak() {
+  const progress = getEnglishLearningProgress();
+  let streak = 0;
+  const date = new Date();
+  while (true) {
+    const dateKey = getEnglishLearningLocalDateKey(date);
+    const day = normalizeEnglishDayProgress(progress.days[dateKey], dateKey);
+    if (day.totalQuestions <= 0 && day.totalDurationSeconds <= 0) break;
+    streak += 1;
+    date.setDate(date.getDate() - 1);
+  }
+  return streak;
+}

@@ -23,6 +23,40 @@
       <p class="hero-text">GEPT 初級學習專區</p>
     </section>
 
+    <section class="entry-section english-progress-overview" aria-labelledby="english-progress-overview-title">
+      <div class="category-header">
+        <div>
+          <h2 id="english-progress-overview-title">學習進度</h2>
+          <p class="progress-section-description">查看每天練習、測驗和各單元使用情形。</p>
+        </div>
+        <a class="secondary-button progress-link-button" href="progress/">查看學習進度</a>
+      </div>
+      <p id="englishProgressEmpty" class="progress-empty-message" hidden>今日尚未開始學習</p>
+      <div id="englishProgressStats" class="progress-stat-grid" aria-label="今日學習進度摘要">
+        <article class="progress-stat-card">
+          <span class="progress-stat-label">今日已練習題數</span>
+          <strong id="todayPracticeQuestions">0 題</strong>
+        </article>
+        <article class="progress-stat-card">
+          <span class="progress-stat-label">今日已測驗題數</span>
+          <strong id="todayQuizQuestions">0 題</strong>
+        </article>
+        <article class="progress-stat-card">
+          <span class="progress-stat-label">今日正確率</span>
+          <strong id="todayAccuracy">-</strong>
+        </article>
+        <article class="progress-stat-card">
+          <span class="progress-stat-label">今日學習時間</span>
+          <strong id="todayDuration">0 分鐘</strong>
+        </article>
+        <article class="progress-stat-card">
+          <span class="progress-stat-label">連續學習天數</span>
+          <strong id="todayStreak">0 天</strong>
+        </article>
+      </div>
+    </section>
+
+
     <section class="entry-section" aria-labelledby="english-entry-title">
       <div class="category-header">
         <h2 id="english-entry-title">選擇練習內容</h2>
@@ -70,7 +104,23 @@
       </div>
     </section>
   </main>
+  <script src="englishLearningProgress.js?v=1.1"></script>
   <script src="englishQuizProgress.js?v=1.1"></script>
-  <script>document.querySelector("#resetEnglishQuizProgress")?.addEventListener("click", resetEnglishQuizProgressWithConfirm);</script>
+  <script>
+    function renderEnglishProgressOverview() {
+      const summary = getTodayEnglishLearningSummary();
+      const hasProgress = summary.totalQuestions > 0 || summary.totalDurationSeconds > 0;
+      document.querySelector("#englishProgressEmpty").hidden = hasProgress;
+      document.querySelector("#englishProgressStats").hidden = !hasProgress;
+      if (!hasProgress) return;
+      document.querySelector("#todayPracticeQuestions").textContent = `${summary.practiceQuestions} 題`;
+      document.querySelector("#todayQuizQuestions").textContent = `${summary.quizQuestions} 題`;
+      document.querySelector("#todayAccuracy").textContent = calculateEnglishAccuracy(summary.correctCount, summary.totalQuestions);
+      document.querySelector("#todayDuration").textContent = formatEnglishLearningDuration(summary.totalDurationSeconds);
+      document.querySelector("#todayStreak").textContent = `${getEnglishLearningStreak()} 天`;
+    }
+    renderEnglishProgressOverview();
+    document.querySelector("#resetEnglishQuizProgress")?.addEventListener("click", resetEnglishQuizProgressWithConfirm);
+  </script>
 </body>
 </html>
