@@ -2298,3 +2298,40 @@ h1 {
     width: 100%;
   }
 }
+
+.vocabulary-entrance-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.vocabulary-entrance-panel[hidden] {
+  display: none;
+}
+
+.vocabulary-entrance-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.vocabulary-entrance-card {
+  min-height: 230px;
+}
+
+@media (max-width: 640px) {
+  .vocabulary-entrance-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vocabulary-entrance-card {
+    min-height: 210px;
+  }
+
+  .vocabulary-entrance-card .entry-card-action {
+    width: 100%;
+    padding: 14px 16px;
+    text-align: center;
+  }
+}
+
+#vocabularyAppPanel[hidden] {
+  display: none;
+}

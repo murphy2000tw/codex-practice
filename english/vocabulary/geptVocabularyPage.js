@@ -1,3 +1,5 @@
+const vocabularyEntrancePanel = document.querySelector("#vocabularyEntrancePanel");
+const vocabularyAppPanel = document.querySelector("#vocabularyAppPanel");
 const vocabularyCard = document.querySelector("#vocabularyCard");
 const currentProgress = document.querySelector("#currentProgress");
 const previousWordButton = document.querySelector("#previousWord");
@@ -84,7 +86,31 @@ const quizTypeSettings = {
   },
 };
 
-let currentMode = cardMode;
+function getInitialVocabularyMode() {
+  const modeParam = new URLSearchParams(window.location.search).get("mode") || "";
+  const normalizedMode = modeParam.trim().toLowerCase();
+
+  if (["practice", "card", "cards"].includes(normalizedMode)) {
+    return cardMode;
+  }
+
+  if (["quiz", "test"].includes(normalizedMode)) {
+    return quizMode;
+  }
+
+  if (["listening", "listening-practice"].includes(normalizedMode)) {
+    return listeningMode;
+  }
+
+  if (["listening-test", "listening-quiz"].includes(normalizedMode)) {
+    return listeningTestMode;
+  }
+
+  return "entrance";
+}
+
+const initialVocabularyMode = getInitialVocabularyMode();
+let currentMode = initialVocabularyMode === "entrance" ? cardMode : initialVocabularyMode;
 let currentWordIndex = 0;
 let chineseVisible = false;
 let selectedCategory = allCategoriesLabel;
@@ -2113,6 +2139,12 @@ window.addEventListener("beforeunload", () => {
   clearVocabularyQuizTimer();
   stopEnglishWordAudio();
 });
+
+if (vocabularyEntrancePanel && vocabularyAppPanel) {
+  const isEntranceMode = initialVocabularyMode === "entrance";
+  vocabularyEntrancePanel.hidden = !isEntranceMode;
+  vocabularyAppPanel.hidden = isEntranceMode;
+}
 
 renderVocabularyTotalText();
 renderEnglishProgressSummary();
