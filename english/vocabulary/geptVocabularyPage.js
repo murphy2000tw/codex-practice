@@ -32,6 +32,8 @@ const returnQuizButton = document.querySelector("#returnGeptQuiz");
 const clearWrongQuestionsButton = document.querySelector("#clearGeptWrongQuestions");
 const nextQuizQuestionButton = document.querySelector("#nextGeptQuizQuestion");
 const reshuffleQuizVocabularyButton = document.querySelector("#reshuffleGeptQuizVocabulary");
+const wrongQuestionActions = reviewWrongQuestionsButton?.closest(".quiz-actions");
+const quizNavigationActions = nextQuizQuestionButton?.closest(".quiz-actions");
 const vocabularyControls = document.querySelector("#geptVocabularyControls");
 const vocabularyTotalText = document.querySelector("#geptVocabularyTotalText");
 const vocabularyTotalInline = document.querySelector("#geptVocabularyTotalInline");
@@ -1076,11 +1078,31 @@ function getWrongQuestionRecordKey(record) {
   return `${record.quizTypeKey}::${record.word}`;
 }
 
+function updateQuizActionVisibility() {
+  const isReady = vocabularyQuizPhase === "ready";
+  const isRunning = vocabularyQuizPhase === "running";
+  const isComplete = vocabularyQuizPhase === "complete";
+  const canReviewWrongQuestions = wrongQuestions.length > 0;
+
+  if (wrongQuestionActions) {
+    wrongQuestionActions.hidden = isReady || isRunning || (isComplete && !canReviewWrongQuestions && !isWrongReviewMode);
+  }
+
+  if (quizNavigationActions) {
+    quizNavigationActions.hidden = isReady || isComplete || (!isWrongReviewMode && isRunning);
+  }
+
+  reviewWrongQuestionsButton.hidden = !canReviewWrongQuestions;
+  clearWrongQuestionsButton.hidden = !canReviewWrongQuestions;
+  returnQuizButton.hidden = !isWrongReviewMode;
+}
+
 function updateWrongQuestionControls() {
   wrongQuestionCount.textContent = `${wrongQuestions.length} 題`;
   reviewWrongQuestionsButton.disabled = !wrongQuestions.length;
   clearWrongQuestionsButton.disabled = !wrongQuestions.length;
   returnQuizButton.hidden = !isWrongReviewMode;
+  updateQuizActionVisibility();
 }
 
 function recordWrongQuestion(word, quizType, selectedAnswer, correctAnswer) {
@@ -1627,6 +1649,7 @@ function createVocabularyQuizStartButton() {
       return;
     }
     vocabularyQuizPhase = "running";
+    updateQuizActionVisibility();
     vocabularyQuizStartedAt = new Date().toISOString();
     renderQuizQuestion();
   });
@@ -1641,6 +1664,7 @@ function renderQuizPreparation() {
   quizTitle.textContent = isWrongReviewMode ? `錯題複習：${quizTypeSetting.title}` : "單字測驗";
   updateQuizTypeButtons(currentQuizType);
   updateWrongQuestionControls();
+  updateQuizActionVisibility();
   quizScore.textContent = "0 / 0";
   quizProgress.textContent = `0 / ${activeQuestions.length}`;
   currentProgress.textContent = activeQuestions.length ? `測驗準備中：0 / ${activeQuestions.length}` : "測驗準備中：0 / 0";
@@ -1727,8 +1751,8 @@ function renderVocabularyQuizCompletePanel() {
   });
   const homeLink = document.createElement("a");
   homeLink.className = "secondary-button";
-  homeLink.href = "../";
-  homeLink.textContent = "回英文學習首頁";
+  homeLink.href = "./";
+  homeLink.textContent = "返回單字入口頁";
   actions.append(retryButton, homeLink);
   card.append(title, summary, createVocabularyQuizResultList(), actions);
   quizContent.replaceChildren(card);
@@ -1737,6 +1761,7 @@ function renderVocabularyQuizCompletePanel() {
   quizProgress.textContent = `${total} / ${total}`;
   currentProgress.textContent = `單字測驗完成：${total} / ${total}`;
   updateQuizScoreDisplay();
+  updateQuizActionVisibility();
 }
 
 function renderQuizQuestion() {
@@ -1753,6 +1778,7 @@ function renderQuizQuestion() {
   quizTitle.textContent = isWrongReviewMode ? `錯題複習：${quizTypeSetting.title}` : "單字測驗";
   updateQuizTypeButtons(activeQuizType);
   updateWrongQuestionControls();
+  updateQuizActionVisibility();
 
   if (!vocabulary.length) {
     renderEmptyQuizMessage("目前沒有可顯示的 GEPT 初級單字資料。");
@@ -1842,6 +1868,7 @@ function renderQuizQuestion() {
   reshuffleQuizVocabularyButton.disabled = false;
   reshuffleQuizVocabularyButton.textContent = isWrongReviewMode ? "重新隨機錯題" : "重新隨機";
   nextQuizQuestionButton.textContent = "答題後自動下一題";
+  updateQuizActionVisibility();
   currentProgress.textContent = isWrongReviewMode
     ? `錯題複習：${quizQuestionIndex + 1} / ${activeQuestions.length}`
     : `測驗模式：${quizQuestionIndex + 1} / ${activeQuestions.length}`;
