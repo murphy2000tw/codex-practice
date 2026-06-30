@@ -81,16 +81,18 @@ function getCurrentQuestion() {
 }
 
 function clearFeedback() {
-  feedback.className = "quiz-feedback reading-feedback";
-  feedback.textContent = "";
-  explanation.textContent = "";
+  if (feedback) {
+    feedback.className = "quiz-feedback reading-feedback";
+    feedback.textContent = "";
+  }
+  if (explanation) explanation.textContent = "";
 }
 
 function updateScoreAndProgress() {
-  scoreText.textContent = `${correctCount} / ${quizResults.length}`;
-  progressText.textContent = quizQuestions.length ? `${currentQuestionIndex + 1} / ${quizQuestions.length}` : "0 / 0";
-  articleProgressText.textContent = `${READING_QUIZ_TITLE}｜第 ${quizQuestions.length ? currentQuestionIndex + 1 : 0} / ${quizQuestions.length} 題`;
-  wrongCountText.textContent = `${quizResults.filter((result) => result.result !== "correct").length} 題`;
+  if (scoreText) scoreText.textContent = `${correctCount} / ${quizResults.length}`;
+  if (progressText) progressText.textContent = quizQuestions.length ? `${currentQuestionIndex + 1} / ${quizQuestions.length}` : "0 / 0";
+  if (articleProgressText) articleProgressText.textContent = `${READING_QUIZ_TITLE}｜第 ${quizQuestions.length ? currentQuestionIndex + 1 : 0} / ${quizQuestions.length} 題`;
+  if (wrongCountText) wrongCountText.textContent = `${quizResults.filter((result) => result.result !== "correct").length} 題`;
 }
 
 function goToNextQuestion() {
@@ -151,7 +153,7 @@ function renderOptions(question) {
     button.addEventListener("click", () => handleAnswer(option));
     return button;
   });
-  optionList.replaceChildren(...buttons);
+  optionList?.replaceChildren(...buttons);
 }
 
 
@@ -161,8 +163,10 @@ function scrollToPreparationPanel() {
 
 function setQuizViewState(state) {
   const isReady = state === "ready";
-  if (readingPageMode === "practice" && practiceTestModeButton) {
-    practiceTestModeButton.hidden = true;
+  if (readingPageMode === "practice") {
+    if (readingModePanel) readingModePanel.hidden = true;
+    if (readingReviewControls) readingReviewControls.hidden = true;
+    if (wrongMessage) wrongMessage.hidden = true;
   }
   if (readingPageMode === "quiz") {
     if (passageCard) passageCard.hidden = isReady;
@@ -179,25 +183,27 @@ function setQuizViewState(state) {
 function renderPreparationPanel() {
   quizPhase = "ready";
   setQuizViewState("ready");
-  practicePanel.hidden = false;
-  completePanel.hidden = true;
+  if (practicePanel) practicePanel.hidden = false;
+  if (completePanel) completePanel.hidden = true;
   const total = quizQuestions.length;
-  articleTitle.textContent = `${READING_QUIZ_TITLE}準備`;
-  articleMeta.textContent = `${READING_QUIZ_TITLE}｜測驗準備中`;
-  passageText.textContent = total ? "請按下方按鈕開始測驗。" : "目前沒有可用題目";
-  translationText.textContent = "";
-  translationText.hidden = true;
-  translationToggle.disabled = true;
-  questionTypeText.textContent = `本次測驗：${total} 題`;
-  questionText.textContent = "";
-  optionList.replaceChildren();
+  if (articleTitle) articleTitle.textContent = `${READING_QUIZ_TITLE}準備`;
+  if (articleMeta) articleMeta.textContent = `${READING_QUIZ_TITLE}｜測驗準備中`;
+  if (passageText) passageText.textContent = total ? "請按下方按鈕開始測驗。" : "目前沒有可用題目";
+  if (translationText) {
+    translationText.textContent = "";
+    translationText.hidden = true;
+  }
+  if (translationToggle) translationToggle.disabled = true;
+  if (questionTypeText) questionTypeText.textContent = `本次測驗：${total} 題`;
+  if (questionText) questionText.textContent = "";
+  optionList?.replaceChildren();
   clearFeedback();
-  scoreText.textContent = "0 / 0";
-  progressText.textContent = `0 / ${total}`;
-  articleProgressText.textContent = `${READING_QUIZ_TITLE}｜測驗準備中`;
-  wrongCountText.textContent = "0 題";
-  nextQuestionButton.disabled = true;
-  nextArticleButton.disabled = true;
+  if (scoreText) scoreText.textContent = "0 / 0";
+  if (progressText) progressText.textContent = `0 / ${total}`;
+  if (articleProgressText) articleProgressText.textContent = `${READING_QUIZ_TITLE}｜測驗準備中`;
+  if (wrongCountText) wrongCountText.textContent = "0 題";
+  if (nextQuestionButton) nextQuestionButton.disabled = true;
+  if (nextArticleButton) nextArticleButton.disabled = true;
 
   const readyCard = document.createElement("article");
   readyCard.className = "quiz-card quiz-ready-card";
@@ -223,7 +229,7 @@ function renderPreparationPanel() {
     });
     readyCard.append(startButton);
   }
-  optionList.replaceChildren(readyCard);
+  optionList?.replaceChildren(readyCard);
 }
 
 function renderQuestion() {
@@ -233,35 +239,37 @@ function renderQuestion() {
   }
   const question = getCurrentQuestion();
   if (!question) {
-    practicePanel.hidden = false;
-    completePanel.hidden = true;
-    articleTitle.textContent = `${READING_QUIZ_TITLE}：目前沒有題目`;
-    articleMeta.textContent = "";
-    passageText.textContent = "這個分類目前沒有可測驗的題目。";
-    questionText.textContent = "";
-    optionList.replaceChildren();
+    if (practicePanel) practicePanel.hidden = false;
+    if (completePanel) completePanel.hidden = true;
+    if (articleTitle) articleTitle.textContent = `${READING_QUIZ_TITLE}：目前沒有題目`;
+    if (articleMeta) articleMeta.textContent = "";
+    if (passageText) passageText.textContent = "這個分類目前沒有可測驗的題目。";
+    if (questionText) questionText.textContent = "";
+    optionList?.replaceChildren();
     clearFeedback();
     updateScoreAndProgress();
     return;
   }
 
   setQuizViewState("running");
-  practicePanel.hidden = false;
-  completePanel.hidden = true;
-  articleTitle.textContent = question.passageTitle || READING_QUIZ_TITLE;
-  articleMeta.textContent = `分類：${question.category || "閱讀"}｜第 ${currentQuestionIndex + 1} / ${quizQuestions.length} 題`;
-  passageText.textContent = question.passage || "";
-  translationText.textContent = "";
-  translationText.hidden = true;
-  translationToggle.disabled = true;
-  questionTypeText.textContent = question.questionType ? `題型：${question.questionType}` : "題型：—";
-  questionText.textContent = question.question;
+  if (practicePanel) practicePanel.hidden = false;
+  if (completePanel) completePanel.hidden = true;
+  if (articleTitle) articleTitle.textContent = question.passageTitle || READING_QUIZ_TITLE;
+  if (articleMeta) articleMeta.textContent = `分類：${question.category || "閱讀"}｜第 ${currentQuestionIndex + 1} / ${quizQuestions.length} 題`;
+  if (passageText) passageText.textContent = question.passage || "";
+  if (translationText) {
+    translationText.textContent = "";
+    translationText.hidden = true;
+  }
+  if (translationToggle) translationToggle.disabled = true;
+  if (questionTypeText) questionTypeText.textContent = question.questionType ? `題型：${question.questionType}` : "題型：—";
+  if (questionText) questionText.textContent = question.question;
   hasAnsweredCurrentQuestion = false;
   clearFeedback();
   renderOptions(question);
   updateScoreAndProgress();
-  nextQuestionButton.disabled = true;
-  nextArticleButton.disabled = true;
+  if (nextQuestionButton) nextQuestionButton.disabled = true;
+  if (nextArticleButton) nextArticleButton.disabled = true;
   recordQuestionSeen(question.questionId, READING_QUIZ_CATEGORY);
 }
 
@@ -272,16 +280,18 @@ function handleAnswer(answer) {
   }
   const isCorrect = answer === question.answer;
   recordResult(question, answer, isCorrect ? "correct" : "wrong");
-  optionList.querySelectorAll("button").forEach((button) => {
+  optionList?.querySelectorAll("button").forEach((button) => {
     button.disabled = true;
     button.classList.toggle("is-correct", button.dataset.answer === question.answer);
     button.classList.toggle("is-wrong", button.dataset.answer === answer && !isCorrect);
   });
-  feedback.className = `quiz-feedback reading-feedback ${isCorrect ? "is-correct" : "is-wrong"}`;
-  feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${question.answer}`;
-  explanation.textContent = readingPageMode === "practice" ? (question.explanation || "") : "";
-  nextQuestionButton.disabled = false;
-  nextArticleButton.disabled = false;
+  if (feedback) {
+    feedback.className = `quiz-feedback reading-feedback ${isCorrect ? "is-correct" : "is-wrong"}`;
+    feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${question.answer}`;
+  }
+  if (explanation) explanation.textContent = readingPageMode === "practice" ? (question.explanation || "") : "";
+  if (nextQuestionButton) nextQuestionButton.disabled = false;
+  if (nextArticleButton) nextArticleButton.disabled = false;
 }
 
 function createResultList() {
@@ -312,11 +322,13 @@ function renderCompletePanel() {
     endedAt,
   });
   setQuizViewState("complete");
-  practicePanel.hidden = true;
-  completePanel.hidden = false;
-  resultTitle.textContent = `${READING_QUIZ_TITLE}完成！`;
-  resultModeText.textContent = `測驗類型：${READING_QUIZ_TITLE}`;
-  resultModeText.hidden = false;
+  if (practicePanel) practicePanel.hidden = true;
+  if (completePanel) completePanel.hidden = false;
+  if (resultTitle) resultTitle.textContent = `${READING_QUIZ_TITLE}完成！`;
+  if (resultModeText) {
+    resultModeText.textContent = `測驗類型：${READING_QUIZ_TITLE}`;
+    resultModeText.hidden = false;
+  }
   totalAnsweredLabel.textContent = "總題數";
   totalCorrectLabel.textContent = "答對";
   totalWrongLabel.textContent = "答錯";
@@ -329,10 +341,10 @@ function renderCompletePanel() {
   accuracyText.textContent = `${accuracy}%`;
   resultWrongCountText.textContent = `${wrongCount} 題`;
   resultMessage.textContent = `本次共 ${total} 題，答對 ${correctCount} 題，答錯 ${wrongCount} 題。`;
-  reviewWrongFromResultButton.hidden = true;
-  clearWrongFromResultButton.hidden = true;
-  completePanel.querySelector(".quiz-result-list")?.remove();
-  completePanel.querySelector(".article-result-card")?.append(createResultList());
+  if (reviewWrongFromResultButton) reviewWrongFromResultButton.hidden = true;
+  if (clearWrongFromResultButton) clearWrongFromResultButton.hidden = true;
+  completePanel?.querySelector(".quiz-result-list")?.remove();
+  completePanel?.querySelector(".article-result-card")?.append(createResultList());
 }
 
 function restartPractice(shouldScroll = false) {
@@ -343,20 +355,26 @@ function restartPractice(shouldScroll = false) {
   hasAnsweredCurrentQuestion = false;
   quizResults = [];
   quizStartedAt = null;
-  modeDescription.textContent = readingPageMode === "practice" ? "閱讀練習：作答後可以查看解答說明。" : "閱讀測驗：請慢慢閱讀文章，完成後再作答。";
+  if (modeDescription) modeDescription.textContent = readingPageMode === "practice" ? "閱讀練習：作答後可以查看解答說明。" : "閱讀測驗：請慢慢閱讀文章，完成後再作答。";
   modeButtons.forEach((button) => { button.disabled = true; });
-  startWrongReviewButton.disabled = true;
-  clearWrongListButton.disabled = true;
-  returnPracticeButton.hidden = true;
-  wrongMessage.textContent = "";
-  renderPreparationPanel();
+  if (startWrongReviewButton) startWrongReviewButton.disabled = true;
+  if (clearWrongListButton) clearWrongListButton.disabled = true;
+  if (returnPracticeButton) returnPracticeButton.hidden = true;
+  if (wrongMessage) wrongMessage.textContent = "";
+  if (readingPageMode === "practice") {
+    quizPhase = "running";
+    quizStartedAt = new Date().toISOString();
+    renderQuestion();
+  } else {
+    renderPreparationPanel();
+  }
   if (shouldScroll) {
     scrollToPreparationPanel();
   }
 }
 
-translationToggle.addEventListener("click", () => {});
-nextQuestionButton.addEventListener("click", goToNextQuestion);
-nextArticleButton.addEventListener("click", goToNextArticle);
+translationToggle?.addEventListener("click", () => {});
+nextQuestionButton?.addEventListener("click", goToNextQuestion);
+nextArticleButton?.addEventListener("click", goToNextArticle);
 restartButtons.forEach((button) => button.addEventListener("click", () => restartPractice(true)));
 restartPractice();
