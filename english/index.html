@@ -23,44 +23,10 @@
       <p class="hero-text">GEPT 初級學習專區</p>
     </section>
 
-    <section class="entry-section english-progress-overview" aria-labelledby="english-progress-overview-title">
-      <div class="category-header">
-        <div>
-          <h2 id="english-progress-overview-title">學習進度</h2>
-          <p class="progress-section-description">查看每天練習、測驗和各單元使用情形。</p>
-        </div>
-        <a class="secondary-button progress-link-button" href="progress/">查看學習進度</a>
-      </div>
-      <p id="englishProgressEmpty" class="progress-empty-message" hidden>今日尚未開始學習</p>
-      <div id="englishProgressStats" class="progress-stat-grid" aria-label="今日學習進度摘要">
-        <article class="progress-stat-card">
-          <span class="progress-stat-label">今日已練習題數</span>
-          <strong id="todayPracticeQuestions">0 題</strong>
-        </article>
-        <article class="progress-stat-card">
-          <span class="progress-stat-label">今日已測驗題數</span>
-          <strong id="todayQuizQuestions">0 題</strong>
-        </article>
-        <article class="progress-stat-card">
-          <span class="progress-stat-label">今日正確率</span>
-          <strong id="todayAccuracy">-</strong>
-        </article>
-        <article class="progress-stat-card">
-          <span class="progress-stat-label">今日學習時間</span>
-          <strong id="todayDuration">0 分鐘</strong>
-        </article>
-        <article class="progress-stat-card">
-          <span class="progress-stat-label">連續學習天數</span>
-          <strong id="todayStreak">0 天</strong>
-        </article>
-      </div>
-    </section>
-
-
     <section class="entry-section" aria-labelledby="english-entry-title">
       <div class="category-header">
         <h2 id="english-entry-title">選擇練習內容</h2>
-        <p class="category-count">五個 GEPT 初級練習入口</p>
+        <p class="category-count">六個 GEPT 初級練習入口</p>
       </div>
 
       <div class="entry-grid">
@@ -80,23 +46,30 @@
 
         <a class="word-card entry-card" href="reading/">
           <span class="card-number">03</span>
-          <h3 class="entry-card-title">閱讀測驗</h3>
+          <h3 class="entry-card-title">閱讀練習</h3>
           <p class="entry-card-text">短篇英文文章閱讀與理解題。</p>
           <span class="entry-card-action">查看題型</span>
         </a>
 
         <a class="word-card entry-card" href="fill-in-the-blank/">
           <span class="card-number">04</span>
-          <h3 class="entry-card-title">填空題</h3>
+          <h3 class="entry-card-title">填空練習</h3>
           <p class="entry-card-text">用單字、文法完成句子填空。</p>
           <span class="entry-card-action">查看題型</span>
         </a>
 
         <a class="word-card entry-card" href="listening/">
           <span class="card-number">05</span>
-          <h3 class="entry-card-title">英文聽力</h3>
+          <h3 class="entry-card-title">聽力練習</h3>
           <p class="entry-card-text">單字、句子與問答聽力練習和測驗，使用瀏覽器語音播放英文。</p>
           <span class="entry-card-action">開始聽力</span>
+        </a>
+
+        <a class="word-card entry-card" href="progress/">
+          <span class="card-number">06</span>
+          <h3 class="entry-card-title">學習進度</h3>
+          <p class="entry-card-text">查看每天練習、測驗和各單元使用情形。</p>
+          <span class="entry-card-action">查看進度</span>
         </a>
       </div>
       <div class="quiz-actions" style="margin-top: 1rem;">
@@ -107,19 +80,6 @@
   <script src="englishLearningProgress.js?v=1.1"></script>
   <script src="englishQuizProgress.js?v=1.1"></script>
   <script>
-    function renderEnglishProgressOverview() {
-      const summary = getTodayEnglishLearningSummary();
-      const hasProgress = summary.totalQuestions > 0 || summary.totalDurationSeconds > 0;
-      document.querySelector("#englishProgressEmpty").hidden = hasProgress;
-      document.querySelector("#englishProgressStats").hidden = !hasProgress;
-      if (!hasProgress) return;
-      document.querySelector("#todayPracticeQuestions").textContent = `${summary.practiceQuestions} 題`;
-      document.querySelector("#todayQuizQuestions").textContent = `${summary.quizQuestions} 題`;
-      document.querySelector("#todayAccuracy").textContent = calculateEnglishAccuracy(summary.correctCount, summary.totalQuestions);
-      document.querySelector("#todayDuration").textContent = formatEnglishLearningDuration(summary.totalDurationSeconds);
-      document.querySelector("#todayStreak").textContent = `${getEnglishLearningStreak()} 天`;
-    }
-    renderEnglishProgressOverview();
     document.querySelector("#resetEnglishQuizProgress")?.addEventListener("click", resetEnglishQuizProgressWithConfirm);
   </script>
 </body>
