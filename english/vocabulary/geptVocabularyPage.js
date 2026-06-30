@@ -113,7 +113,8 @@ function getInitialVocabularyMode() {
   return "entrance";
 }
 
-const initialVocabularyMode = getInitialVocabularyMode();
+const isStandaloneVocabularyQuizPage = document.body?.dataset.vocabularyPage === "quiz";
+const initialVocabularyMode = isStandaloneVocabularyQuizPage ? quizMode : getInitialVocabularyMode();
 let currentMode = initialVocabularyMode === "entrance" ? cardMode : initialVocabularyMode;
 let currentWordIndex = 0;
 let chineseVisible = false;
@@ -575,7 +576,9 @@ function resetListeningState() {
 }
 
 function updateSearchControls() {
-  clearSearchButton.disabled = !searchQuery;
+  if (clearSearchButton) {
+    clearSearchButton.disabled = !searchQuery;
+  }
 }
 
 function getCurrentModeText() {
@@ -594,7 +597,7 @@ function getCurrentModeText() {
   }
 
   if (searchQuery) {
-    modeParts.push(`搜尋：${vocabularySearchInput.value.trim()}`);
+    modeParts.push(`搜尋：${vocabularySearchInput?.value.trim() || searchQuery}`);
   }
 
   return modeParts.length ? modeParts.join("，") : "全部分類、全部級數、全部進度";
@@ -707,14 +710,14 @@ function updateModeButtons() {
   const isQuizMode = currentMode === quizMode;
   const isListeningMode = currentMode === listeningMode;
   const isListeningTestMode = currentMode === listeningTestMode;
-  cardModeButton.classList.toggle("is-active", isCardMode);
-  cardModeButton.setAttribute("aria-pressed", String(isCardMode));
-  quizModeButton.classList.toggle("is-active", isQuizMode);
-  quizModeButton.setAttribute("aria-pressed", String(isQuizMode));
-  listeningModeButton.classList.toggle("is-active", isListeningMode);
-  listeningModeButton.setAttribute("aria-pressed", String(isListeningMode));
-  listeningTestModeButton.classList.toggle("is-active", isListeningTestMode);
-  listeningTestModeButton.setAttribute("aria-pressed", String(isListeningTestMode));
+  cardModeButton?.classList.toggle("is-active", isCardMode);
+  cardModeButton?.setAttribute("aria-pressed", String(isCardMode));
+  quizModeButton?.classList.toggle("is-active", isQuizMode);
+  quizModeButton?.setAttribute("aria-pressed", String(isQuizMode));
+  listeningModeButton?.classList.toggle("is-active", isListeningMode);
+  listeningModeButton?.setAttribute("aria-pressed", String(isListeningMode));
+  listeningTestModeButton?.classList.toggle("is-active", isListeningTestMode);
+  listeningTestModeButton?.setAttribute("aria-pressed", String(isListeningTestMode));
 }
 
 function updateModeScopedVisibility() {
@@ -758,10 +761,18 @@ function renderCurrentMode() {
   const isListeningMode = currentMode === listeningMode;
   const isListeningTestMode = currentMode === listeningTestMode;
   const isAnyListeningMode = isListeningMode || isListeningTestMode;
-  vocabularyCard.hidden = isQuizMode || isAnyListeningMode;
-  vocabularyControls.hidden = isQuizMode || isAnyListeningMode;
-  quizPanel.hidden = !isQuizMode;
-  listeningPanel.hidden = !isAnyListeningMode;
+  if (vocabularyCard) {
+    vocabularyCard.hidden = isQuizMode || isAnyListeningMode;
+  }
+  if (vocabularyControls) {
+    vocabularyControls.hidden = isQuizMode || isAnyListeningMode;
+  }
+  if (quizPanel) {
+    quizPanel.hidden = !isQuizMode;
+  }
+  if (listeningPanel) {
+    listeningPanel.hidden = !isAnyListeningMode;
+  }
 
   if (isQuizMode) {
     resetListeningState();
@@ -816,6 +827,9 @@ function createCategoryFilterButton(category) {
 }
 
 function updateCategoryFilterButtons() {
+  if (!categoryFilters) {
+    return;
+  }
   const filterButtons = categoryFilters.querySelectorAll(".filter-button");
   filterButtons.forEach((button) => {
     const isActive = button.dataset.category === selectedCategory;
@@ -825,6 +839,9 @@ function updateCategoryFilterButtons() {
 }
 
 function renderCategoryFilters() {
+  if (!categoryFilters) {
+    return;
+  }
   const availableCategories = getAvailableCategories();
   const filterButtons = [allCategoriesLabel, ...availableCategories].map(createCategoryFilterButton);
   categoryFilters.replaceChildren(...filterButtons);
@@ -856,6 +873,10 @@ function getEnglishProgressSummary() {
 
 function renderEnglishProgressSummary() {
   const summary = getEnglishProgressSummary();
+
+  if (!englishProgressTotal || !englishProgressKnown || !englishProgressLearning || !englishProgressNew || !englishProgressCompletion) {
+    return;
+  }
 
   englishProgressTotal.textContent = summary.total;
   englishProgressKnown.textContent = summary.known;
@@ -891,6 +912,9 @@ function createProgressFilterButton(option) {
 }
 
 function updateProgressFilterButtons() {
+  if (!englishProgressFilters) {
+    return;
+  }
   const filterButtons = englishProgressFilters.querySelectorAll(".filter-button");
   filterButtons.forEach((button) => {
     const isActive = button.dataset.progressStatus === selectedProgressStatus;
@@ -900,6 +924,9 @@ function updateProgressFilterButtons() {
 }
 
 function renderProgressFilters() {
+  if (!englishProgressFilters) {
+    return;
+  }
   const filterButtons = progressFilterOptions.map(createProgressFilterButton);
   englishProgressFilters.replaceChildren(...filterButtons);
 }
@@ -1183,7 +1210,9 @@ function renderEmptyQuizMessage(message) {
   quizContent.append(statusMessage);
   quizScore.textContent = "0 / 0";
   quizProgress.textContent = "0 / 0";
-  currentProgress.textContent = isWrongReviewMode ? "錯題複習：0 / 0" : "測驗模式：0 / 0";
+  if (currentProgress) {
+    currentProgress.textContent = isWrongReviewMode ? "錯題複習：0 / 0" : "測驗模式：0 / 0";
+  }
   nextQuizQuestionButton.disabled = true;
   reshuffleQuizVocabularyButton.disabled = true;
   updateRandomStatus();
@@ -1667,7 +1696,9 @@ function renderQuizPreparation() {
   updateQuizActionVisibility();
   quizScore.textContent = "0 / 0";
   quizProgress.textContent = `0 / ${activeQuestions.length}`;
-  currentProgress.textContent = activeQuestions.length ? `測驗準備中：0 / ${activeQuestions.length}` : "測驗準備中：0 / 0";
+  if (currentProgress) {
+    currentProgress.textContent = activeQuestions.length ? `測驗準備中：0 / ${activeQuestions.length}` : "測驗準備中：0 / 0";
+  }
   nextQuizQuestionButton.disabled = true;
   reshuffleQuizVocabularyButton.disabled = false;
   reshuffleQuizVocabularyButton.textContent = isWrongReviewMode ? "重新隨機錯題" : "重新隨機";
@@ -1759,7 +1790,9 @@ function renderVocabularyQuizCompletePanel() {
   nextQuizQuestionButton.disabled = true;
   reshuffleQuizVocabularyButton.disabled = false;
   quizProgress.textContent = `${total} / ${total}`;
-  currentProgress.textContent = `單字測驗完成：${total} / ${total}`;
+  if (currentProgress) {
+    currentProgress.textContent = `單字測驗完成：${total} / ${total}`;
+  }
   updateQuizScoreDisplay();
   updateQuizActionVisibility();
 }
@@ -1869,9 +1902,11 @@ function renderQuizQuestion() {
   reshuffleQuizVocabularyButton.textContent = isWrongReviewMode ? "重新隨機錯題" : "重新隨機";
   nextQuizQuestionButton.textContent = "答題後自動下一題";
   updateQuizActionVisibility();
-  currentProgress.textContent = isWrongReviewMode
-    ? `錯題複習：${quizQuestionIndex + 1} / ${activeQuestions.length}`
-    : `測驗模式：${quizQuestionIndex + 1} / ${activeQuestions.length}`;
+  if (currentProgress) {
+    currentProgress.textContent = isWrongReviewMode
+      ? `錯題複習：${quizQuestionIndex + 1} / ${activeQuestions.length}`
+      : `測驗模式：${quizQuestionIndex + 1} / ${activeQuestions.length}`;
+  }
   updateQuizScoreDisplay();
   updateRandomStatus();
   updateSearchControls();
@@ -2006,7 +2041,7 @@ function handleQuizTimeout() {
   }, 650);
 }
 
-previousWordButton.addEventListener("click", () => {
+previousWordButton?.addEventListener("click", () => {
   if (currentWordIndex > 0) {
     currentWordIndex -= 1;
     chineseVisible = false;
@@ -2014,7 +2049,7 @@ previousWordButton.addEventListener("click", () => {
   }
 });
 
-nextWordButton.addEventListener("click", () => {
+nextWordButton?.addEventListener("click", () => {
   if (currentWordIndex < filteredVocabulary.length - 1) {
     currentWordIndex += 1;
     chineseVisible = false;
@@ -2022,7 +2057,7 @@ nextWordButton.addEventListener("click", () => {
   }
 });
 
-toggleChineseButton.addEventListener("click", () => {
+toggleChineseButton?.addEventListener("click", () => {
   if (toggleChineseButton.disabled) {
     return;
   }
@@ -2031,25 +2066,25 @@ toggleChineseButton.addEventListener("click", () => {
   updateChineseVisibility();
 });
 
-reshuffleVocabularyButton.addEventListener("click", () => {
+reshuffleVocabularyButton?.addEventListener("click", () => {
   reshuffleCurrentVocabulary();
   renderCurrentMode();
 });
 
-vocabularySearchInput.addEventListener("input", () => {
+vocabularySearchInput?.addEventListener("input", () => {
   searchQuery = normalizeSearchText(vocabularySearchInput.value);
   applySearchToCategoryVocabulary();
   renderCurrentMode();
 });
 
-clearSearchButton.addEventListener("click", () => {
+clearSearchButton?.addEventListener("click", () => {
   vocabularySearchInput.value = "";
   searchQuery = "";
   resetCurrentVocabulary();
   renderCurrentMode();
 });
 
-cardModeButton.addEventListener("click", () => {
+cardModeButton?.addEventListener("click", () => {
   if (currentMode === cardMode) {
     return;
   }
@@ -2059,7 +2094,7 @@ cardModeButton.addEventListener("click", () => {
   renderCurrentMode();
 });
 
-quizModeButton.addEventListener("click", () => {
+quizModeButton?.addEventListener("click", () => {
   if (currentMode === quizMode) {
     return;
   }
@@ -2071,7 +2106,7 @@ quizModeButton.addEventListener("click", () => {
   scrollToVocabularyQuizStart();
 });
 
-listeningModeButton.addEventListener("click", () => {
+listeningModeButton?.addEventListener("click", () => {
   if (currentMode === listeningMode) {
     return;
   }
@@ -2084,7 +2119,7 @@ listeningModeButton.addEventListener("click", () => {
   listeningPanel?.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
-listeningTestModeButton.addEventListener("click", () => {
+listeningTestModeButton?.addEventListener("click", () => {
   if (currentMode === listeningTestMode) {
     return;
   }
@@ -2097,7 +2132,7 @@ listeningTestModeButton.addEventListener("click", () => {
   listeningPanel?.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
-nextListeningQuestionButton.addEventListener("click", () => {
+nextListeningQuestionButton?.addEventListener("click", () => {
   if (currentMode === listeningTestMode) {
     goToNextVocabListeningTestQuestion();
     return;
@@ -2119,7 +2154,7 @@ quizTypeButtons.forEach((button) => {
   });
 });
 
-reshuffleQuizVocabularyButton.addEventListener("click", () => {
+reshuffleQuizVocabularyButton?.addEventListener("click", () => {
   if (isWrongReviewMode) {
     wrongReviewQuestions = shuffleVocabulary(wrongQuestions);
     resetQuizState();
@@ -2132,7 +2167,7 @@ reshuffleQuizVocabularyButton.addEventListener("click", () => {
   scrollToVocabularyQuizStart();
 });
 
-nextQuizQuestionButton.addEventListener("click", () => {
+nextQuizQuestionButton?.addEventListener("click", () => {
   const activeQuestions = getActiveQuizQuestions();
 
   if (quizCurrentQuestionRemoved) {
@@ -2148,7 +2183,7 @@ nextQuizQuestionButton.addEventListener("click", () => {
   renderQuizQuestion();
 });
 
-reviewWrongQuestionsButton.addEventListener("click", () => {
+reviewWrongQuestionsButton?.addEventListener("click", () => {
   if (!wrongQuestions.length) {
     renderEmptyQuizMessage("目前沒有錯題。");
     return;
@@ -2161,14 +2196,14 @@ reviewWrongQuestionsButton.addEventListener("click", () => {
   renderCurrentMode();
 });
 
-returnQuizButton.addEventListener("click", () => {
+returnQuizButton?.addEventListener("click", () => {
   isWrongReviewMode = false;
   reshuffleQuizVocabularyButton.textContent = "重新隨機";
   resetQuizState();
   renderCurrentMode();
 });
 
-clearWrongQuestionsButton.addEventListener("click", () => {
+clearWrongQuestionsButton?.addEventListener("click", () => {
   wrongQuestions = [];
   wrongReviewQuestions = [];
 
@@ -2188,7 +2223,7 @@ if (resetEnglishQuizProgressButton) {
   resetEnglishQuizProgressButton.addEventListener("click", resetEnglishQuizProgressWithConfirm);
 }
 
-resetEnglishProgressButton.addEventListener("click", () => {
+resetEnglishProgressButton?.addEventListener("click", () => {
   confirmResetProgressWithPassword("英文單字學習進度已清除。日文資料未受影響。", () => {
     resetEnglishVocabProgress();
     renderEnglishProgressSummary();
