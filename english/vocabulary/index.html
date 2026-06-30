@@ -14,10 +14,49 @@
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">English Learning</p>
       <h1 id="page-title">GEPT 初級單字</h1>
-      <p class="hero-text"><span id="geptVocabularyTotalText">GEPT 初級單字</span>，支援分類篩選、隨機顯示、單字搜尋與中文答案切換。</p>
+      <p class="hero-text">選擇單字練習或測驗模式。</p>
     </section>
 
-    <section class="category-panel subpage-panel" aria-labelledby="subpage-title">
+    <section id="vocabularyEntrancePanel" class="entry-section vocabulary-entrance-panel" aria-labelledby="vocabulary-entrance-title">
+      <div class="category-header">
+        <h2 id="vocabulary-entrance-title">GEPT 初級單字</h2>
+        <p class="category-count">4 個單字練習入口</p>
+      </div>
+
+      <div class="entry-grid vocabulary-entrance-grid">
+        <a class="word-card entry-card vocabulary-entrance-card" href="?mode=practice">
+          <span class="card-number">01</span>
+          <h3 class="entry-card-title">單字練習</h3>
+          <p class="entry-card-text">練習英文單字、中文意思、詞性與例句。</p>
+          <span class="entry-card-action">開始練習</span>
+        </a>
+
+        <a class="word-card entry-card vocabulary-entrance-card" href="?mode=quiz">
+          <span class="card-number">02</span>
+          <h3 class="entry-card-title">單字測驗</h3>
+          <p class="entry-card-text">用測驗確認今天學過的單字。</p>
+          <span class="entry-card-action">開始測驗</span>
+        </a>
+
+        <a class="word-card entry-card vocabulary-entrance-card" href="?mode=listening-practice">
+          <span class="card-number">03</span>
+          <h3 class="entry-card-title">單字聽力練習</h3>
+          <p class="entry-card-text">聽單字發音，練習聽懂英文單字。</p>
+          <span class="entry-card-action">開始聽力練習</span>
+        </a>
+
+        <a class="word-card entry-card vocabulary-entrance-card" href="?mode=listening-quiz">
+          <span class="card-number">04</span>
+          <h3 class="entry-card-title">單字聽力測驗</h3>
+          <p class="entry-card-text">只聽聲音作答，測試單字聽力。</p>
+          <span class="entry-card-action">開始聽力測驗</span>
+        </a>
+      </div>
+
+      <a class="secondary-button back-link" href="../">返回英文首頁</a>
+    </section>
+
+    <section id="vocabularyAppPanel" class="category-panel subpage-panel" aria-labelledby="subpage-title" hidden>
       <div class="category-header">
         <h2 id="subpage-title">單字卡學習</h2>
         <p id="currentProgress" class="category-count" aria-live="polite">載入中</p>
@@ -162,6 +201,6 @@
   <script src="data/geptVocabularyBeginner003.js?v=1.0"></script>
   <script src="data/geptVocabularyBeginner004.js?v=1.0"></script>
   <script src="geptVocabulary.js?v=1.6"></script>
-  <script src="geptVocabularyPage.js?v=2.7"></script>
+  <script src="geptVocabularyPage.js?v=2.8"></script>
 </body>
 </html>
