@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" href="../../app-icon.png">
+  <link rel="icon" type="image/png" href="../../app-icon.png">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <title>冠詞練習｜英文學習</title>
+  <link rel="stylesheet" href="../../style.css?v=2.2">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">English Article Practice</p>
+      <h1 id="page-title">冠詞練習</h1>
+      <p class="hero-text">練習 a、an、the 的使用方式，答題後會顯示解答說明。</p>
+    </section>
+
+    <section class="quiz-panel article-practice-section" aria-labelledby="article-practice-title">
+      <div class="quiz-header">
+        <div>
+          <span class="card-number">四選一練習</span>
+          <h2 id="article-practice-title" class="quiz-title">冠詞練習題目</h2>
+        </div>
+        <div class="quiz-stats" aria-label="冠詞練習分數與進度">
+          <span>目前分數：<strong id="articlePracticeScore">0 / 0</strong></span>
+          <span>題目進度：<strong id="articlePracticeProgress">0 / 0</strong></span>
+        </div>
+      </div>
+
+      <p class="mode-description article-mode-description">練習說明：選出句子中最適合的冠詞。答題後會顯示正確答案與規則說明。</p>
+
+      <div class="quiz-content article-practice-panel" aria-live="polite">
+        <article class="quiz-card article-question-card">
+          <div class="quiz-prompt">
+            <p id="articlePracticeCategory" class="quiz-prompt-label">分類：—</p>
+            <p id="articlePracticeSentence" class="quiz-title article-question-sentence">載入中</p>
+          </div>
+          <div id="articlePracticeOptions" class="quiz-options article-options" role="group" aria-label="選擇正確冠詞"></div>
+          <div class="article-feedback-area" aria-live="polite">
+            <p id="articlePracticeFeedback" class="quiz-feedback article-feedback"></p>
+            <p id="articlePracticeExplanation" class="article-explanation"></p>
+          </div>
+        </article>
+        <div class="quiz-actions article-actions">
+          <button id="restartArticlePracticeOnly" class="secondary-button" type="button">重新開始</button>
+          <button id="nextArticlePracticeQuestion" class="answer-button" type="button" disabled>下一題</button>
+        </div>
+      </div>
+
+      <a class="secondary-button back-link" href="./">返回冠詞入口頁</a>
+    </section>
+  </main>
+
+  <script src="articleQuestions.js?v=1.2"></script>
+  <script src="articlePracticeOnlyPage.js?v=1.0"></script>
+</body>
+</html>

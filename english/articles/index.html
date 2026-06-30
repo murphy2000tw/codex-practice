@@ -14,157 +14,33 @@
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">English Learning</p>
       <h1 id="page-title">冠詞練習</h1>
-      <p class="hero-text">練習 a、an、the，以及不使用冠詞的不同使用情境。</p>
+      <p class="hero-text">選擇冠詞練習或測驗模式</p>
     </section>
 
-    <section class="category-panel subpage-panel article-guide-panel" aria-labelledby="article-guide-title">
+    <section class="entry-section article-entrance-panel" aria-labelledby="article-entrance-title">
       <div class="category-header">
-        <h2 id="article-guide-title">冠詞簡單說明</h2>
-        <p class="category-count">GEPT 初級學習專區</p>
+        <h2 id="article-entrance-title">冠詞練習</h2>
+        <p class="category-count">2 個冠詞學習入口</p>
       </div>
 
-      <div class="article-guide-grid">
-        <article class="word-card article-guide-card">
-          <span class="card-number">a</span>
-          <h3>a</h3>
-          <p>單數可數名詞，第一次提到、表示職業身分或一個物品，且子音音開頭。</p>
-          <p class="article-example">I have a book.</p>
-        </article>
+      <div class="entry-grid article-entrance-grid">
+        <a class="word-card entry-card article-entrance-card" href="practice.html">
+          <span class="card-number">01</span>
+          <h3 class="entry-card-title">冠詞練習</h3>
+          <p class="entry-card-text">練習 a、an、the 的使用方式，熟悉冠詞規則。</p>
+          <span class="entry-card-action">開始練習</span>
+        </a>
 
-        <article class="word-card article-guide-card">
-          <span class="card-number">an</span>
-          <h3>an</h3>
-          <p>用在第一次提到的單數可數名詞前，且發音是母音開頭。</p>
-          <p class="article-example">She eats an apple.</p>
-        </article>
-
-        <article class="word-card article-guide-card">
-          <span class="card-number">the</span>
-          <h3>the</h3>
-          <p>用在特定的人事物、前面提過的名詞，或世界上獨一無二的事物。</p>
-          <p class="article-example">I see a dog. The dog is black.</p>
-        </article>
-
-        <article class="word-card article-guide-card">
-          <span class="card-number">不填</span>
-          <h3>不用冠詞</h3>
-          <p>泛指複數、泛指不可數、運動、語言、科目、餐點等常不用冠詞。</p>
-          <p class="article-example">I like music. Dogs are friendly.</p>
-        </article>
-      </div>
-      <div class="article-core-note" aria-label="冠詞核心練習重點">
-        <p>核心練習：a 用於第一次提到的單數可數名詞與子音音開頭；an 用於母音音開頭；the 用於特定、前面提過、獨一無二；不填用於泛指複數、泛指不可數、運動、語言、餐點等。</p>
-      </div>
-    </section>
-
-    <section class="quiz-panel article-practice-section" aria-labelledby="article-practice-title">
-      <div class="quiz-header">
-        <div>
-          <span class="card-number">四選一練習</span>
-          <h2 id="article-practice-title" class="quiz-title">題目練習區</h2>
-        </div>
-        <div class="quiz-stats" aria-label="冠詞練習分數與進度">
-          <span><span id="articleScoreLabel">目前分數</span>：<strong id="articleScore">0 / 0</strong></span>
-          <span>題目進度：<strong id="articleProgress">0 / 0</strong></span>
-          <span>本次錯題：<strong id="articleWrongCount">0 題</strong></span>
-        </div>
+        <a class="word-card entry-card article-entrance-card" href="quiz.html">
+          <span class="card-number">02</span>
+          <h3 class="entry-card-title">冠詞測驗</h3>
+          <p class="entry-card-text">用測驗確認冠詞觀念是否熟悉。</p>
+          <span class="entry-card-action">開始測驗</span>
+        </a>
       </div>
 
-      <div class="article-mode-panel" aria-label="冠詞練習模式切換">
-        <div class="mode-switch article-mode-switch" role="group" aria-label="選擇冠詞練習模式">
-          <button class="mode-button article-mode-button is-active" type="button" data-article-mode="practice" aria-pressed="true">練習模式</button>
-          <button class="mode-button article-mode-button" type="button" data-article-mode="test" aria-pressed="false">測試模式</button>
-        </div>
-        <p id="articleModeDescription" class="mode-description article-mode-description">練習模式：答題後會顯示解釋，適合學習文法觀念。</p>
-      </div>
-
-      <div class="article-filter-panel" aria-label="冠詞用法分類篩選與錯題操作">
-        <div class="article-filter-row">
-          <span class="quiz-prompt-label">用法分類篩選：</span>
-          <div class="article-filter-buttons">
-            <button class="secondary-button article-filter-button js-article-filter is-active" type="button" data-category="all" aria-pressed="true">全部</button>
-            <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="a" aria-pressed="false">a</button>
-            <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="an" aria-pressed="false">an</button>
-            <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="the" aria-pressed="false">the</button>
-            <button class="secondary-button article-filter-button js-article-filter" type="button" data-category="不填" aria-pressed="false">不填</button>
-          </div>
-        </div>
-        <div class="article-review-actions" aria-label="本次冠詞錯題操作">
-          <button id="startArticleReview" class="secondary-button" type="button">錯題複習</button>
-          <button id="backToArticlePractice" class="secondary-button" type="button" hidden>返回一般練習</button>
-          <button id="clearArticleWrongQuestions" class="secondary-button" type="button">清除錯題</button>
-        </div>
-        <p id="articleReviewMessage" class="article-review-message" aria-live="polite"></p>
-      </div>
-
-      <div id="articlePracticePanel" class="quiz-content article-practice-panel" aria-live="polite">
-        <article class="quiz-card article-question-card">
-          <div class="quiz-prompt">
-            <p id="articleQuestionCategory" class="quiz-prompt-label">分類：—</p>
-            <p id="articleQuestionSentence" class="quiz-title article-question-sentence">載入中</p>
-          </div>
-
-          <div
-            id="articleOptions"
-            class="quiz-options article-options"
-            role="group"
-            aria-label="選擇正確冠詞"
-          ></div>
-
-          <div class="article-feedback-area" aria-live="polite">
-            <p id="articleFeedback" class="quiz-feedback article-feedback"></p>
-            <p id="articleExplanation" class="article-explanation"></p>
-          </div>
-        </article>
-
-        <div class="quiz-actions article-actions">
-          <button id="restartArticlePractice" class="secondary-button js-restart-article-practice" type="button">重新開始</button>
-          <button id="nextArticleQuestion" class="answer-button" type="button">下一題</button>
-        </div>
-      </div>
-
-      <div id="articleCompletePanel" class="article-complete-panel" aria-live="polite" hidden>
-        <article class="quiz-card article-result-card">
-          <span id="articleCompleteBadge" class="card-number">完成</span>
-          <h2 id="articleCompleteTitle" class="quiz-title">冠詞練習完成！</h2>
-          <p id="articleResultMode" class="article-result-message article-result-mode">模式：練習模式</p>
-          <div class="vocabulary-summary article-result-summary" aria-label="冠詞練習完成結果">
-            <div class="summary-item">
-              <span id="articleTotalAnswered" class="summary-value">0 題</span>
-              <span class="summary-label">總作答</span>
-            </div>
-            <div class="summary-item">
-              <span id="articleTotalCorrect" class="summary-value">0 題</span>
-              <span class="summary-label">答對</span>
-            </div>
-            <div class="summary-item">
-              <span id="articleTotalWrong" class="summary-value">0 題</span>
-              <span class="summary-label">答錯</span>
-            </div>
-            <div class="summary-item">
-              <span id="articleAccuracy" class="summary-value">0%</span>
-              <span class="summary-label">正確率</span>
-            </div>
-            <div class="summary-item">
-              <span id="articleRemainingWrong" class="summary-value">0 題</span>
-              <span class="summary-label">本次錯題</span>
-            </div>
-          </div>
-          <p id="articleCompleteMessage" class="article-result-message"></p>
-          <div class="quiz-actions article-actions">
-            <button class="answer-button js-restart-article-practice" type="button">再測一次</button>
-            <a class="secondary-button" href="../">回英文學習首頁</a>
-          </div>
-        </article>
-      </div>
-
-      <a class="secondary-button back-link" href="../">返回英文學習首頁</a>
+      <a class="secondary-button back-link" href="../">返回英文首頁</a>
     </section>
   </main>
-
-  <script src="../englishQuizProgress.js?v=1.1"></script>
-  <script src="../englishLearningProgress.js?v=1.0"></script>
-  <script src="articleQuestions.js?v=1.2"></script>
-  <script src="articlePracticePage.js?v=1.3"></script>
 </body>
 </html>
