@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" href="../../app-icon.png">
+  <link rel="icon" type="image/png" href="../../app-icon.png">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <title>冠詞測驗｜冠詞練習｜英文學習</title>
+  <link rel="stylesheet" href="../../style.css?v=2.2">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">English Article Quiz</p>
+      <h1 id="page-title">冠詞測驗</h1>
+      <p class="hero-text">測驗 a、an、the 與不使用冠詞的觀念，完成後會保存本次學習紀錄。</p>
+    </section>
+
+    <section class="quiz-panel article-practice-section" aria-labelledby="article-practice-title">
+      <div class="quiz-header">
+        <div>
+          <span class="card-number">冠詞測驗</span>
+          <h2 id="article-practice-title" class="quiz-title">冠詞測驗題目</h2>
+        </div>
+        <div class="quiz-stats" aria-label="冠詞測驗分數與進度">
+          <span><span id="articleScoreLabel">本次分數</span>：<strong id="articleScore">0 / 0</strong></span>
+          <span>題目進度：<strong id="articleProgress">0 / 0</strong></span>
+          <span>本次錯題：<strong id="articleWrongCount">0 題</strong></span>
+        </div>
+      </div>
+
+      <div id="articlePracticePanel" class="quiz-content article-practice-panel" aria-live="polite">
+        <article class="quiz-card article-question-card">
+          <div class="quiz-prompt">
+            <p id="articleQuestionCategory" class="quiz-prompt-label">測驗準備中</p>
+            <p id="articleQuestionSentence" class="quiz-title article-question-sentence">請按下方按鈕開始測驗。</p>
+          </div>
+
+          <div id="articleOptions" class="quiz-options article-options" role="group" aria-label="選擇正確冠詞"></div>
+
+          <div class="article-feedback-area" aria-live="polite">
+            <p id="articleFeedback" class="quiz-feedback article-feedback"></p>
+            <p id="articleExplanation" class="article-explanation"></p>
+          </div>
+        </article>
+
+        <div class="quiz-actions article-actions" hidden>
+          <button id="restartArticlePractice" class="secondary-button js-restart-article-practice" type="button">重新測驗</button>
+          <button id="nextArticleQuestion" class="answer-button" type="button">答題後自動下一題</button>
+        </div>
+      </div>
+
+      <div id="articleCompletePanel" class="article-complete-panel" aria-live="polite" hidden>
+        <article class="quiz-card article-result-card">
+          <span id="articleCompleteBadge" class="card-number">完成</span>
+          <h2 id="articleCompleteTitle" class="quiz-title">冠詞測驗完成！</h2>
+          <p id="articleResultMode" class="article-result-message article-result-mode">測驗類型：冠詞測驗</p>
+          <div class="vocabulary-summary article-result-summary" aria-label="冠詞測驗完成結果">
+            <div class="summary-item"><span id="articleTotalAnswered" class="summary-value">0 題</span><span class="summary-label">總作答</span></div>
+            <div class="summary-item"><span id="articleTotalCorrect" class="summary-value">0 題</span><span class="summary-label">答對</span></div>
+            <div class="summary-item"><span id="articleTotalWrong" class="summary-value">0 題</span><span class="summary-label">答錯</span></div>
+            <div class="summary-item"><span id="articleAccuracy" class="summary-value">0%</span><span class="summary-label">正確率</span></div>
+            <div class="summary-item"><span id="articleRemainingWrong" class="summary-value">0 題</span><span class="summary-label">逾時</span></div>
+          </div>
+          <p id="articleCompleteMessage" class="article-result-message"></p>
+          <div class="quiz-actions article-actions">
+            <button class="answer-button js-restart-article-practice" type="button">重新測驗</button>
+            <a class="secondary-button" href="./">返回冠詞入口頁</a>
+          </div>
+        </article>
+      </div>
+
+      <p id="articleModeDescription" class="mode-description article-mode-description" hidden></p>
+      <p id="articleReviewMessage" class="article-review-message" aria-live="polite" hidden></p>
+      <button id="startArticleReview" type="button" hidden></button>
+      <button id="completeArticleReview" type="button" hidden></button>
+      <button id="backToArticlePractice" type="button" hidden></button>
+      <button id="clearArticleWrongQuestions" type="button" hidden></button>
+      <a class="secondary-button back-link" href="./">返回冠詞入口頁</a>
+    </section>
+  </main>
+
+  <script src="../englishQuizProgress.js?v=1.1"></script>
+  <script src="../englishLearningProgress.js?v=1.0"></script>
+  <script src="articleQuestions.js?v=1.2"></script>
+  <script src="articlePracticePage.js?v=1.4"></script>
+</body>
+</html>

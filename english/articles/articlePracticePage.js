@@ -42,6 +42,7 @@ const completeReviewButton = document.querySelector("#completeArticleReview");
 const backToPracticeButton = document.querySelector("#backToArticlePractice");
 const clearWrongQuestionsButton = document.querySelector("#clearArticleWrongQuestions");
 const reviewMessage = document.querySelector("#articleReviewMessage");
+const quizStatsPanel = progressText?.closest(".quiz-stats");
 
 let quizQuestions = questions;
 let currentQuestionIndex = 0;
@@ -56,7 +57,7 @@ let quizStartedAt = null;
 
 const timerText = document.createElement("span");
 timerText.innerHTML = `<span id="articleTimerStatus">尚未開始</span>`;
-progressText.closest(".quiz-stats")?.append(timerText);
+quizStatsPanel?.append(timerText);
 
 function getCurrentQuestion() {
   return quizQuestions[currentQuestionIndex];
@@ -174,6 +175,7 @@ function renderPreparationPanel() {
   quizPhase = "ready";
   practicePanel.hidden = false;
   completePanel.hidden = true;
+  if (quizStatsPanel) quizStatsPanel.hidden = true;
   const total = quizQuestions.length;
   questionCategory.textContent = `${ARTICLE_QUIZ_TITLE}｜測驗準備中`;
   questionSentence.textContent = total ? "請按下方按鈕開始測驗。" : "目前沒有可用題目";
@@ -240,6 +242,7 @@ function renderQuestion() {
 
   practicePanel.hidden = false;
   completePanel.hidden = true;
+  if (quizStatsPanel) quizStatsPanel.hidden = false;
   questionCategory.textContent = `${ARTICLE_QUIZ_TITLE}｜第 ${currentQuestionIndex + 1} / ${quizQuestions.length} 題`;
   questionSentence.textContent = getDisplayQuestion(question);
   hasAnsweredCurrentQuestion = false;
@@ -316,6 +319,7 @@ function renderCompletePanel() {
 
   practicePanel.hidden = true;
   completePanel.hidden = false;
+  if (quizStatsPanel) quizStatsPanel.hidden = false;
   completeBadge.textContent = "完成";
   completeTitle.textContent = `${ARTICLE_QUIZ_TITLE}完成！`;
   resultModeText.textContent = `測驗類型：${ARTICLE_QUIZ_TITLE}`;
