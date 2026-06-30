@@ -109,6 +109,8 @@ let vocabularyQuizTimeoutCount = 0;
 let vocabularyQuizTimer = null;
 let vocabularyQuizRemainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
 let vocabularyQuizPhase = "idle";
+let vocabularyQuizStartedAt = null;
+let vocabularyListeningTestStartedAt = null;
 let vocabularyQuizPlayedAudioKeys = new Set();
 let currentListeningWord = null;
 let listeningOptions = [];
@@ -623,6 +625,7 @@ function resetQuizState() {
   quizCurrentQuestionRemoved = false;
   vocabularyQuizResults = [];
   vocabularyQuizTimeoutCount = 0;
+  vocabularyQuizStartedAt = null;
   vocabularyQuizPlayedAudioKeys = new Set();
   categoryQuizQuestions = selectEnglishQuizQuestions(filteredVocabulary, "vocabulary");
 }
@@ -1306,6 +1309,7 @@ function startVocabListeningTest() {
   vocabListeningTestResults = [];
   vocabListeningTestSelectedAnswer = "";
   vocabListeningTestHasPlayedAudio = false;
+  vocabularyListeningTestStartedAt = new Date().toISOString();
   vocabListeningTestPhase = vocabListeningTestQuestions.length ? "question" : "start";
   renderVocabListeningTestQuestion();
 }
@@ -1481,6 +1485,17 @@ function renderVocabListeningTestResult() {
   const total = vocabListeningTestResults.length;
   const accuracy = total ? Math.round((vocabListeningTestCorrectCount / total) * 100) : 0;
   const wrongResults = vocabListeningTestResults.filter((result) => !result.isCorrect);
+  const endedAt = new Date().toISOString();
+  recordEnglishLearningSession({
+    module: "listening",
+    mode: "quiz",
+    totalQuestions: total,
+    correctCount: vocabListeningTestCorrectCount,
+    wrongCount: Math.max(0, total - vocabListeningTestCorrectCount),
+    durationSeconds: vocabularyListeningTestStartedAt ? Math.max(0, Math.round((new Date(endedAt) - new Date(vocabularyListeningTestStartedAt)) / 1000)) : 0,
+    startedAt: vocabularyListeningTestStartedAt || endedAt,
+    endedAt,
+  });
   const card = document.createElement("article");
   card.className = "quiz-card gept-listening-card";
   const title = document.createElement("h3");
@@ -1550,6 +1565,7 @@ function createVocabularyQuizStartButton() {
       return;
     }
     vocabularyQuizPhase = "running";
+    vocabularyQuizStartedAt = new Date().toISOString();
     renderQuizQuestion();
   });
   return startButton;
@@ -1618,6 +1634,17 @@ function renderVocabularyQuizCompletePanel() {
   const total = vocabularyQuizResults.length;
   const wrongCount = total - quizCorrectCount;
   const accuracy = total ? Math.round((quizCorrectCount / total) * 100) : 0;
+  const endedAt = new Date().toISOString();
+  recordEnglishLearningSession({
+    module: "vocabulary",
+    mode: "quiz",
+    totalQuestions: total,
+    correctCount: quizCorrectCount,
+    wrongCount,
+    durationSeconds: vocabularyQuizStartedAt ? Math.max(0, Math.round((new Date(endedAt) - new Date(vocabularyQuizStartedAt)) / 1000)) : 0,
+    startedAt: vocabularyQuizStartedAt || endedAt,
+    endedAt,
+  });
   const card = document.createElement("article");
   card.className = "quiz-card gept-quiz-card";
   const title = document.createElement("h3");

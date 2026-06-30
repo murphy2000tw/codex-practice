@@ -21,6 +21,7 @@ let correctCount = 0;
 let hasAnsweredCurrentQuestion = false;
 let quizResults = [];
 let quizPhase = "idle";
+let quizStartedAt = null;
 
 const articleTitle = document.querySelector("#readingArticleTitle");
 const articleMeta = document.querySelector("#readingArticleMeta");
@@ -188,6 +189,7 @@ function renderPreparationPanel() {
     startButton.addEventListener("click", () => {
       if (quizPhase === "running") return;
       quizPhase = "running";
+      quizStartedAt = new Date().toISOString();
       renderQuestion();
     });
     readyCard.append(startButton);
@@ -268,6 +270,17 @@ function renderCompletePanel() {
   const total = quizResults.length;
   const wrongCount = total - correctCount;
   const accuracy = total ? Math.round((correctCount / total) * 100) : 0;
+  const endedAt = new Date().toISOString();
+  recordEnglishLearningSession({
+    module: "reading",
+    mode: "quiz",
+    totalQuestions: total,
+    correctCount,
+    wrongCount,
+    durationSeconds: quizStartedAt ? Math.max(0, Math.round((new Date(endedAt) - new Date(quizStartedAt)) / 1000)) : 0,
+    startedAt: quizStartedAt || endedAt,
+    endedAt,
+  });
   practicePanel.hidden = true;
   completePanel.hidden = false;
   resultTitle.textContent = `${READING_QUIZ_TITLE}完成！`;
@@ -298,6 +311,7 @@ function restartPractice(shouldScroll = false) {
   correctCount = 0;
   hasAnsweredCurrentQuestion = false;
   quizResults = [];
+  quizStartedAt = null;
   modeDescription.textContent = "分類測驗：請慢慢閱讀文章，完成後再作答。";
   modeButtons.forEach((button) => { button.disabled = true; });
   startWrongReviewButton.disabled = true;
