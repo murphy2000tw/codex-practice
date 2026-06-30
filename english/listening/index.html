@@ -6,70 +6,62 @@
   <link rel="apple-touch-icon" href="../../app-icon.png">
   <link rel="icon" type="image/png" href="../../app-icon.png">
   <link rel="manifest" href="../../manifest.webmanifest">
-  <title>英文聽力｜英文學習</title>
+  <title>聽力練習｜英文學習</title>
   <link rel="stylesheet" href="../../style.css?v=2.3">
 </head>
 <body>
   <main class="page-shell">
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">English Listening</p>
-      <h1 id="page-title">英文聽力</h1>
-      <p class="hero-text">英文聽力：單字聽力、句子聽力、問答聽力與仿 GEPT 初級四題型聽力與完整 GEPT 初級聽力模擬測驗。請聽音訊後選出正確英文內容。</p>
+      <h1 id="page-title">聽力練習</h1>
+      <p class="hero-text">選擇聽力練習或測驗模式。</p>
     </section>
 
-    <section class="category-panel subpage-panel" aria-labelledby="listening-title">
+    <section class="entry-section" aria-labelledby="listening-entry-title">
       <div class="category-header">
-        <h2 id="listening-title">英文聽力</h2>
-        <p id="listeningProgress" class="category-count" aria-live="polite">準備中</p>
-      </div>
-      <p class="subpage-text">本頁只使用瀏覽器內建 speechSynthesis 播放英文單字、英文句子、英文問句與 GEPT 四題型聽力，不使用外部音檔，也不顯示中文提示。</p>
-
-      <div class="mode-panel gept-mode-panel" aria-labelledby="listeningModeTitle">
-        <div>
-          <p class="filter-label" id="listeningModeTitle">選擇聽力模式</p>
-          <p class="mode-description">練習模式可重複播放；測驗模式每題只播放一次，並先顯示準備畫面。</p>
-        </div>
-        <div class="mode-switch" role="group" aria-label="選擇英文聽力模式">
-          <button id="wordListeningPracticeMode" class="mode-button is-active" type="button" aria-pressed="true" data-listening-type="vocabulary" data-listening-mode="practice">單字聽力練習</button>
-          <button id="wordListeningTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="vocabulary" data-listening-mode="test">單字聽力測驗</button>
-          <button id="sentenceListeningPracticeMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="sentence" data-listening-mode="practice">句子聽力練習</button>
-          <button id="sentenceListeningTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="sentence" data-listening-mode="test">句子聽力測驗</button>
-          <button id="qaListeningPracticeMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="qa" data-listening-mode="practice">問答聽力練習</button>
-          <button id="qaListeningTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="qa" data-listening-mode="test">問答聽力測驗</button>
-        </div>
+        <h2 id="listening-entry-title">選擇聽力功能</h2>
+        <p class="category-count">五個聽力入口</p>
       </div>
 
-      <div class="mode-panel gept-mode-panel" aria-labelledby="geptListeningModeTitle">
-        <div>
-          <p class="filter-label" id="geptListeningModeTitle">GEPT 四題型聽力</p>
-          <p class="mode-description">仿 GEPT 初級聽力題型練習；單一題型測驗每回最多 10 題，完整模擬依看圖辨義、問答、簡短對話、短文聽解順序出題，音訊只播放一次。</p>
-        </div>
-        <div class="mode-switch" role="group" aria-label="選擇 GEPT 四題型聽力模式">
-          <button id="geptPicturePracticeMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptPicture" data-listening-mode="practice">看圖辨義練習</button>
-          <button id="geptPictureTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptPicture" data-listening-mode="test">看圖辨義測驗</button>
-          <button id="geptQuestionResponsePracticeMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptQuestionResponse" data-listening-mode="practice">問答練習</button>
-          <button id="geptQuestionResponseTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptQuestionResponse" data-listening-mode="test">問答測驗</button>
-          <button id="geptConversationPracticeMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptConversation" data-listening-mode="practice">簡短對話練習</button>
-          <button id="geptConversationTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptConversation" data-listening-mode="test">簡短對話測驗</button>
-          <button id="geptShortTalkPracticeMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptShortTalk" data-listening-mode="practice">短文聽解練習</button>
-          <button id="geptShortTalkTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptShortTalk" data-listening-mode="test">短文聽解測驗</button>
-          <button id="geptFullMockTestMode" class="mode-button" type="button" aria-pressed="false" data-listening-type="geptFullMock" data-listening-mode="test">GEPT 初級聽力模擬</button>
-        </div>
+      <div class="entry-grid">
+        <a class="word-card entry-card" href="practice.html?type=vocabulary">
+          <span class="card-number">01</span>
+          <h3 class="entry-card-title">單字聽力練習</h3>
+          <p class="entry-card-text">聽英文單字發音，練習聽懂單字。</p>
+          <span class="entry-card-action">開始練習</span>
+        </a>
+
+        <a class="word-card entry-card" href="practice.html?type=sentence">
+          <span class="card-number">02</span>
+          <h3 class="entry-card-title">句子聽力練習</h3>
+          <p class="entry-card-text">聽英文句子，練習理解句意。</p>
+          <span class="entry-card-action">開始練習</span>
+        </a>
+
+        <a class="word-card entry-card" href="practice.html?type=qa">
+          <span class="card-number">03</span>
+          <h3 class="entry-card-title">問答聽力練習</h3>
+          <p class="entry-card-text">聽問題與回答，練習生活情境聽力。</p>
+          <span class="entry-card-action">開始練習</span>
+        </a>
+
+        <a class="word-card entry-card" href="practice.html?type=geptPicture">
+          <span class="card-number">04</span>
+          <h3 class="entry-card-title">GEPT 聽力練習</h3>
+          <p class="entry-card-text">練習 GEPT 初級常見聽力題型。</p>
+          <span class="entry-card-action">開始練習</span>
+        </a>
+
+        <a class="word-card entry-card" href="quiz.html?type=geptFullMock">
+          <span class="card-number">05</span>
+          <h3 class="entry-card-title">聽力測驗 / GEPT 聽力模擬</h3>
+          <p class="entry-card-text">用測驗確認聽力理解能力。</p>
+          <span class="entry-card-action">開始測驗</span>
+        </a>
       </div>
 
-      <div id="listeningSupportMessage" class="status-message quiz-status-message" role="status" hidden></div>
-      <div id="listeningContent" class="quiz-content" aria-live="polite"></div>
-
-      <a class="secondary-button back-link" href="../">返回英文學習首頁</a>
+      <a class="secondary-button back-link" href="../">返回英文首頁</a>
     </section>
   </main>
-
-  <script src="../englishLearningProgress.js?v=1.0"></script>
-  <script src="../vocabulary/data/geptVocabularyBeginner001.js?v=1.0"></script>
-  <script src="../vocabulary/data/geptVocabularyBeginner002.js?v=1.0"></script>
-  <script src="../vocabulary/data/geptVocabularyBeginner003.js?v=1.0"></script>
-  <script src="../vocabulary/data/geptVocabularyBeginner004.js?v=1.0"></script>
-  <script src="../vocabulary/geptVocabulary.js?v=1.6"></script>
-  <script src="listeningPage.js?v=1.4"></script>
 </body>
 </html>

@@ -1357,6 +1357,10 @@ function createTestResultList() {
   return list;
 }
 
+function getListeningEntryHref() {
+  return "./";
+}
+
 function renderTestCompletePanel() {
   cancelEnglishSpeech();
   testPhase = "complete";
@@ -1390,8 +1394,8 @@ function renderTestCompletePanel() {
   const retryButton = createModeActionButton("再測一次", renderTestPreparation);
   const homeLink = document.createElement("a");
   homeLink.className = "secondary-button";
-  homeLink.href = "../";
-  homeLink.textContent = "回英文學習首頁";
+  homeLink.href = getListeningEntryHref();
+  homeLink.textContent = "回聽力入口頁";
   actions.append(retryButton, homeLink);
   card.append(title, summary, createTestResultList(), actions);
   listeningContent.replaceChildren(card);
@@ -1742,13 +1746,9 @@ function renderMockCompletePanel() {
   const retryButton = createModeActionButton("再測一次", renderMockPreparation);
   const homeLink = document.createElement("a");
   homeLink.className = "secondary-button";
-  homeLink.href = "../";
-  homeLink.textContent = "回英文學習首頁";
-  const listeningLink = document.createElement("a");
-  listeningLink.className = "secondary-button";
-  listeningLink.href = "./";
-  listeningLink.textContent = "回英文聽力區";
-  actions.append(retryButton, homeLink, listeningLink);
+  homeLink.href = getListeningEntryHref();
+  homeLink.textContent = "回聽力入口頁";
+  actions.append(retryButton, homeLink);
   card.append(title, summary, createMockSectionSummary(sectionStats), createMockResultList(), actions);
   listeningContent.replaceChildren(card);
 }
@@ -1759,11 +1759,49 @@ function setListeningActivity(type, mode) {
   }
   listeningType = type;
   listeningMode = mode;
+  const pageName = window.location.pathname.split("/").pop();
+  if (pageName === "practice.html" || pageName === "quiz.html") {
+    const targetPage = mode === listeningModeTest ? "quiz.html" : "practice.html";
+    window.location.href = `${targetPage}?type=${encodeURIComponent(type)}`;
+    return;
+  }
   window.location.hash = `${type}-${mode}`;
   renderCurrentMode();
 }
 
+function parseListeningActivityFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const pageName = window.location.pathname.split("/").pop();
+  const requestedType = params.get("type") || "";
+  const validTypes = [
+    listeningTypeVocabulary,
+    listeningTypeSentence,
+    listeningTypeQa,
+    ...geptListeningTypes,
+    listeningTypeGeptFullMock,
+  ];
+  const type = validTypes.includes(requestedType) ? requestedType : listeningTypeVocabulary;
+
+  if (pageName === "quiz.html") {
+    return { type, mode: listeningModeTest };
+  }
+
+  if (pageName === "practice.html") {
+    return {
+      type: type === listeningTypeGeptFullMock ? listeningTypeGeptPicture : type,
+      mode: listeningModePractice,
+    };
+  }
+
+  return null;
+}
+
 function parseListeningHash() {
+  const urlActivity = parseListeningActivityFromUrl();
+  if (urlActivity) {
+    return urlActivity;
+  }
+
   const hash = window.location.hash.replace("#", "");
   if (hash === "test") {
     return { type: listeningTypeVocabulary, mode: listeningModeTest };
