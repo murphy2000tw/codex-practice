@@ -230,6 +230,7 @@ let testPlayedQuestionIds = new Set();
 let testResults = [];
 let testCorrectCount = 0;
 let testPhase = "ready";
+let testStartedAt = null;
 let mockQuestions = [];
 let mockQuestionIndex = 0;
 let mockAnsweredQuestionIds = new Set();
@@ -1189,6 +1190,7 @@ function resetTestState() {
   testResults = [];
   testCorrectCount = 0;
   testPhase = "ready";
+  testStartedAt = null;
 }
 
 function renderTestPreparation() {
@@ -1221,6 +1223,7 @@ function renderTestPreparation() {
       return;
     }
     testPhase = "running";
+    testStartedAt = new Date().toISOString();
     renderTestQuestion();
   }));
   listeningContent.replaceChildren(card);
@@ -1361,6 +1364,17 @@ function renderTestCompletePanel() {
   const total = testResults.length;
   const wrongCount = total - testCorrectCount;
   const accuracy = total ? Math.round((testCorrectCount / total) * 100) : 0;
+  const endedAt = new Date().toISOString();
+  recordEnglishLearningSession({
+    module: "listening",
+    mode: "quiz",
+    totalQuestions: total,
+    correctCount: testCorrectCount,
+    wrongCount,
+    durationSeconds: testStartedAt ? Math.max(0, Math.round((new Date(endedAt) - new Date(testStartedAt)) / 1000)) : 0,
+    startedAt: testStartedAt || endedAt,
+    endedAt,
+  });
   listeningProgress.textContent = `${config.testTitle}完成：${total} / ${total}`;
 
   const card = document.createElement("article");
@@ -1702,6 +1716,16 @@ function renderMockCompletePanel() {
   };
   if (total) {
     saveMockAttempt(attempt);
+    recordEnglishLearningSession({
+      module: "listening",
+      mode: "quiz",
+      totalQuestions: total,
+      correctCount: mockCorrectCount,
+      wrongCount,
+      durationSeconds: mockStartedAt ? Math.max(0, Math.round((new Date(finishedAt) - new Date(mockStartedAt)) / 1000)) : 0,
+      startedAt: mockStartedAt || finishedAt,
+      endedAt: finishedAt,
+    });
   }
   listeningProgress.textContent = `GEPT 初級聽力模擬測驗完成：${total} / ${total}`;
 

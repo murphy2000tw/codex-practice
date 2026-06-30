@@ -44,6 +44,7 @@ let currentTimer = null;
 let remainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
 let quizResults = [];
 let quizPhase = "idle";
+let quizStartedAt = null;
 
 const timerText = document.createElement("span");
 timerText.innerHTML = `<span id="fillBlankTimerStatus">尚未開始</span>`;
@@ -200,6 +201,7 @@ function renderPreparationPanel() {
     startButton.addEventListener("click", () => {
       if (quizPhase === "running") return;
       quizPhase = "running";
+      quizStartedAt = new Date().toISOString();
       existingReadyCard?.remove();
       renderQuestion();
     });
@@ -294,6 +296,17 @@ function renderCompletePanel() {
   const total = quizResults.length;
   const wrongCount = total - correctCount;
   const accuracy = total ? Math.round((correctCount / total) * 100) : 0;
+  const endedAt = new Date().toISOString();
+  recordEnglishLearningSession({
+    module: "cloze",
+    mode: "quiz",
+    totalQuestions: total,
+    correctCount,
+    wrongCount,
+    durationSeconds: quizStartedAt ? Math.max(0, Math.round((new Date(endedAt) - new Date(quizStartedAt)) / 1000)) : 0,
+    startedAt: quizStartedAt || endedAt,
+    endedAt,
+  });
   practicePanel.hidden = true;
   completePanel.hidden = false;
   completeTitle.textContent = `${CLOZE_QUIZ_TITLE}完成！`;
@@ -319,6 +332,7 @@ function restartPractice(shouldScroll = false) {
   timeoutCount = 0;
   hasAnsweredCurrentQuestion = false;
   quizResults = [];
+  quizStartedAt = null;
   startWrongReviewButton.disabled = true;
   clearWrongQuestionsButton.disabled = true;
   exitWrongReviewButton.hidden = true;
