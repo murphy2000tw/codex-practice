@@ -9,6 +9,8 @@ const categoryTotalText = document.querySelector("#fillBlankCategoryTotal");
 const scoreText = document.querySelector("#fillBlankScore");
 const wrongCountText = document.querySelector("#fillBlankWrongCount");
 const modeButtons = document.querySelectorAll(".fill-blank-mode-button");
+const questionCard = document.querySelector(".fill-blank-question-card");
+const answerActions = document.querySelector(".fill-blank-actions");
 const modeDescription = document.querySelector("#fillBlankModeDescription");
 const questionCategory = document.querySelector("#fillBlankQuestionCategory");
 const questionSentence = document.querySelector("#fillBlankQuestionSentence");
@@ -48,7 +50,7 @@ let quizStartedAt = null;
 
 const timerText = document.createElement("span");
 timerText.innerHTML = `<span id="fillBlankTimerStatus">尚未開始</span>`;
-progressText.closest(".quiz-stats")?.append(timerText);
+progressText?.closest(".quiz-stats")?.append(timerText);
 
 function normalizeAnswer(answer) {
   return String(answer)
@@ -100,18 +102,18 @@ function startTimer() {
 }
 
 function clearFeedback() {
-  feedback.className = "quiz-feedback fill-blank-feedback";
-  feedback.textContent = "";
-  explanation.textContent = "";
-  translation.textContent = "";
-  hintText.hidden = true;
-  hintText.textContent = "";
+  if (feedback) feedback.className = "quiz-feedback fill-blank-feedback";
+  if (feedback) feedback.textContent = "";
+  if (explanation) explanation.textContent = "";
+  if (translation) translation.textContent = "";
+  if (hintText) hintText.hidden = true;
+  if (hintText) hintText.textContent = "";
 }
 
 function updateScoreAndProgress() {
-  scoreText.textContent = `${correctCount} / ${quizResults.length}`;
-  progressText.textContent = quizQuestions.length ? `${currentQuestionIndex + 1} / ${quizQuestions.length}` : "0 / 0";
-  wrongCountText.textContent = `${quizResults.filter((result) => result.result !== "correct").length} 題`;
+  if (scoreText) scoreText.textContent = `${correctCount} / ${quizResults.length}`;
+  if (progressText) progressText.textContent = quizQuestions.length ? `${currentQuestionIndex + 1} / ${quizQuestions.length}` : "0 / 0";
+  if (wrongCountText) wrongCountText.textContent = `${quizResults.filter((result) => result.result !== "correct").length} 題`;
 }
 
 function scheduleNextQuestion() {
@@ -161,6 +163,8 @@ function renderPreparationPanel() {
   practicePanel.hidden = false;
   completePanel.hidden = true;
   const total = quizQuestions.length;
+  if (questionCard) questionCard.hidden = true;
+  if (answerActions) answerActions.hidden = true;
   questionCategory.textContent = `${CLOZE_QUIZ_TITLE}｜測驗準備中`;
   questionSentence.textContent = total ? "請按下方按鈕開始測驗。" : "目前沒有可用題目";
   answerInput.value = "";
@@ -170,7 +174,7 @@ function renderPreparationPanel() {
   scoreText.textContent = "0 / 0";
   progressText.textContent = `0 / ${total}`;
   wrongCountText.textContent = "0 題";
-  modeDescription.textContent = "分類測驗：只抽填空題，每題 10 秒，完成後顯示總表。";
+  if (modeDescription) modeDescription.textContent = "測驗準備：只抽填空題，每題 10 秒，完成後顯示總表。";
   modeButtons.forEach((button) => { button.disabled = true; });
   hintButton.hidden = true;
   hintButton.disabled = true;
@@ -185,7 +189,7 @@ function renderPreparationPanel() {
   readyCard.className = "quiz-card quiz-ready-card";
   readyCard.innerHTML = `
     <span class="card-number">測驗準備</span>
-    <h3 class="quiz-title">英文測驗準備</h3>
+    <h3 class="quiz-title">填空測驗準備</h3>
     <div class="quiz-ready-details">
       <p>測驗類型：${CLOZE_QUIZ_TITLE}</p>
       <p>本次測驗：${total} 題</p>
@@ -235,6 +239,8 @@ function renderQuestion() {
 
   practicePanel.hidden = false;
   completePanel.hidden = true;
+  if (questionCard) questionCard.hidden = false;
+  if (answerActions) answerActions.hidden = false;
   questionCategory.textContent = `${CLOZE_QUIZ_TITLE}｜第 ${currentQuestionIndex + 1} / ${quizQuestions.length} 題`;
   questionSentence.textContent = question.blankSentence;
   answerInput.value = "";
@@ -243,7 +249,7 @@ function renderQuestion() {
   hasAnsweredCurrentQuestion = false;
   clearFeedback();
   updateScoreAndProgress();
-  modeDescription.textContent = "分類測驗：只抽填空題，每題 10 秒，完成後顯示總表。";
+  if (modeDescription) modeDescription.textContent = "測驗進行中：請在時間內輸入答案。";
   modeButtons.forEach((button) => { button.disabled = true; });
   hintButton.hidden = true;
   hintButton.disabled = true;
@@ -317,7 +323,7 @@ function renderCompletePanel() {
   totalWrongText.textContent = `${wrongCount} 題`;
   accuracyText.textContent = `${accuracy}%`;
   remainingWrongText.textContent = `${timeoutCount} 題`;
-  remainingWrongText.nextElementSibling.textContent = "逾時";
+  if (remainingWrongText.nextElementSibling) remainingWrongText.nextElementSibling.textContent = "逾時";
   resultWrongReviewButton.hidden = true;
   completePanel.querySelector(".quiz-result-list")?.remove();
   completePanel.querySelector(".article-result-card")?.append(createResultList());
@@ -333,26 +339,26 @@ function restartPractice(shouldScroll = false) {
   hasAnsweredCurrentQuestion = false;
   quizResults = [];
   quizStartedAt = null;
-  startWrongReviewButton.disabled = true;
-  clearWrongQuestionsButton.disabled = true;
-  exitWrongReviewButton.hidden = true;
+  if (startWrongReviewButton) startWrongReviewButton.disabled = true;
+  if (clearWrongQuestionsButton) clearWrongQuestionsButton.disabled = true;
+  if (exitWrongReviewButton) exitWrongReviewButton.hidden = true;
   renderPreparationPanel();
   if (shouldScroll) {
     scrollToPreparationPanel();
   }
 }
 
-checkButton.addEventListener("click", handleCheckAnswer);
-hintButton.addEventListener("click", () => {});
-nextButton.addEventListener("click", () => {});
-answerInput.addEventListener("keydown", (event) => {
+checkButton?.addEventListener("click", handleCheckAnswer);
+hintButton?.addEventListener("click", () => {});
+nextButton?.addEventListener("click", () => {});
+answerInput?.addEventListener("keydown", (event) => {
   if (event.key === "Enter") handleCheckAnswer();
 });
 restartButtons.forEach((button) => button.addEventListener("click", () => restartPractice(true)));
-startWrongReviewButton.addEventListener("click", () => {});
-resultWrongReviewButton.addEventListener("click", () => {});
-clearWrongQuestionsButton.addEventListener("click", () => {});
-exitWrongReviewButton.addEventListener("click", () => {});
+startWrongReviewButton?.addEventListener("click", () => {});
+resultWrongReviewButton?.addEventListener("click", () => {});
+clearWrongQuestionsButton?.addEventListener("click", () => {});
+exitWrongReviewButton?.addEventListener("click", () => {});
 window.addEventListener("beforeunload", clearTimer);
 
 updateQuestionSummary();
