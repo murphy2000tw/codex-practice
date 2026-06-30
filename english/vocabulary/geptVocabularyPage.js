@@ -2,6 +2,8 @@ const vocabularyEntrancePanel = document.querySelector("#vocabularyEntrancePanel
 const vocabularyAppPanel = document.querySelector("#vocabularyAppPanel");
 const vocabularyCard = document.querySelector("#vocabularyCard");
 const currentProgress = document.querySelector("#currentProgress");
+const subpageTitle = document.querySelector("#subpage-title");
+const practiceOnlyElements = document.querySelectorAll("[data-vocabulary-practice-only]");
 const previousWordButton = document.querySelector("#previousWord");
 const nextWordButton = document.querySelector("#nextWord");
 const toggleChineseButton = document.querySelector("#toggleChinese");
@@ -713,8 +715,42 @@ function updateModeButtons() {
   listeningTestModeButton.setAttribute("aria-pressed", String(isListeningTestMode));
 }
 
+function updateModeScopedVisibility() {
+  const isCardMode = currentMode === cardMode;
+
+  practiceOnlyElements.forEach((element) => {
+    element.hidden = !isCardMode;
+  });
+
+  if (currentProgress) {
+    currentProgress.hidden = !isCardMode;
+  }
+
+  if (!subpageTitle) {
+    return;
+  }
+
+  if (currentMode === quizMode) {
+    subpageTitle.textContent = "單字測驗";
+    return;
+  }
+
+  if (currentMode === listeningMode) {
+    subpageTitle.textContent = "單字聽力練習";
+    return;
+  }
+
+  if (currentMode === listeningTestMode) {
+    subpageTitle.textContent = "單字聽力測驗";
+    return;
+  }
+
+  subpageTitle.textContent = "單字卡學習";
+}
+
 function renderCurrentMode() {
   updateModeButtons();
+  updateModeScopedVisibility();
 
   const isQuizMode = currentMode === quizMode;
   const isListeningMode = currentMode === listeningMode;
