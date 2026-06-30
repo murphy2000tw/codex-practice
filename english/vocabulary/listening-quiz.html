@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" href="../../app-icon.png">
+  <link rel="icon" type="image/png" href="../../app-icon.png">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <title>單字聽力測驗｜GEPT 初級單字｜英文學習</title>
+  <link rel="stylesheet" href="../../style.css?v=2.1">
+</head>
+<body data-vocabulary-page="listening-quiz">
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">English Vocabulary Listening Quiz</p>
+      <h1 id="page-title">單字聽力測驗</h1>
+      <p class="hero-text">聽英文單字發音，從選項中選出正確中文意思。每題聲音限播放一次。</p>
+    </section>
+
+    <section id="vocabularyAppPanel" class="category-panel subpage-panel" aria-labelledby="geptListeningTitle">
+      <section id="geptListeningPanel" class="quiz-panel gept-listening-panel" aria-labelledby="geptListeningTitle" aria-live="polite">
+        <div class="quiz-header">
+          <div>
+            <span class="card-number">聽力測驗</span>
+            <h2 id="geptListeningTitle" class="quiz-title">單字聽力測驗</h2>
+          </div>
+        </div>
+        <p class="gept-quiz-instruction">測驗說明：按下「播放單字」聽英文發音，再選出正確中文意思。完成 10 題後會顯示結果並保存學習紀錄。</p>
+        <div id="geptListeningContent" class="quiz-content"></div>
+        <div class="quiz-actions">
+          <button id="nextGeptListeningQuestion" class="answer-button" type="button" disabled>下一題</button>
+        </div>
+      </section>
+
+
+      <a class="secondary-button back-link" href="./">返回單字入口頁</a>
+    </section>
+  </main>
+
+  <script src="../englishQuizProgress.js?v=1.1"></script>
+  <script src="../englishLearningProgress.js?v=1.0"></script>
+  <script src="data/geptVocabularyBeginner001.js?v=1.0"></script>
+  <script src="data/geptVocabularyBeginner002.js?v=1.0"></script>
+  <script src="data/geptVocabularyBeginner003.js?v=1.0"></script>
+  <script src="data/geptVocabularyBeginner004.js?v=1.0"></script>
+  <script src="geptVocabulary.js?v=1.6"></script>
+  <script src="geptVocabularyPage.js?v=3.1"></script>
+</body>
+</html>

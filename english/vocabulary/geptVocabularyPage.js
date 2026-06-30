@@ -114,7 +114,12 @@ function getInitialVocabularyMode() {
 }
 
 const isStandaloneVocabularyQuizPage = document.body?.dataset.vocabularyPage === "quiz";
-const initialVocabularyMode = isStandaloneVocabularyQuizPage ? quizMode : getInitialVocabularyMode();
+const isStandaloneVocabularyListeningQuizPage = document.body?.dataset.vocabularyPage === "listening-quiz";
+const initialVocabularyMode = isStandaloneVocabularyQuizPage
+  ? quizMode
+  : isStandaloneVocabularyListeningQuizPage
+    ? listeningTestMode
+    : getInitialVocabularyMode();
 let currentMode = initialVocabularyMode === "entrance" ? cardMode : initialVocabularyMode;
 let currentWordIndex = 0;
 let chineseVisible = false;
@@ -1119,16 +1124,30 @@ function updateQuizActionVisibility() {
     quizNavigationActions.hidden = isReady || isComplete || (!isWrongReviewMode && isRunning);
   }
 
-  reviewWrongQuestionsButton.hidden = !canReviewWrongQuestions;
-  clearWrongQuestionsButton.hidden = !canReviewWrongQuestions;
-  returnQuizButton.hidden = !isWrongReviewMode;
+  if (reviewWrongQuestionsButton) {
+    reviewWrongQuestionsButton.hidden = !canReviewWrongQuestions;
+  }
+  if (clearWrongQuestionsButton) {
+    clearWrongQuestionsButton.hidden = !canReviewWrongQuestions;
+  }
+  if (returnQuizButton) {
+    returnQuizButton.hidden = !isWrongReviewMode;
+  }
 }
 
 function updateWrongQuestionControls() {
-  wrongQuestionCount.textContent = `${wrongQuestions.length} 題`;
-  reviewWrongQuestionsButton.disabled = !wrongQuestions.length;
-  clearWrongQuestionsButton.disabled = !wrongQuestions.length;
-  returnQuizButton.hidden = !isWrongReviewMode;
+  if (wrongQuestionCount) {
+    wrongQuestionCount.textContent = `${wrongQuestions.length} 題`;
+  }
+  if (reviewWrongQuestionsButton) {
+    reviewWrongQuestionsButton.disabled = !wrongQuestions.length;
+  }
+  if (clearWrongQuestionsButton) {
+    clearWrongQuestionsButton.disabled = !wrongQuestions.length;
+  }
+  if (returnQuizButton) {
+    returnQuizButton.hidden = !isWrongReviewMode;
+  }
   updateQuizActionVisibility();
 }
 
@@ -1390,6 +1409,17 @@ function getUniqueVocabListeningTestSource() {
   return uniqueWords;
 }
 
+function createVocabListeningMeaningOptions(word, sourceWords = getUniqueVocabListeningTestSource()) {
+  const correctMeaning = getVocabularyMeaning(word);
+  const wrongOptions = shuffleVocabulary(sourceWords)
+    .map((optionWord) => getVocabularyMeaning(optionWord))
+    .filter((meaning) => meaning && meaning !== correctMeaning)
+    .filter((meaning, index, meanings) => meanings.indexOf(meaning) === index)
+    .slice(0, 3);
+
+  return shuffleVocabulary([correctMeaning, ...wrongOptions].filter(Boolean));
+}
+
 function generateVocabListeningTestQuestions() {
   const uniqueWords = getUniqueVocabListeningTestSource();
 
@@ -1399,18 +1429,10 @@ function generateVocabListeningTestQuestions() {
 
   return shuffleVocabulary(uniqueWords)
     .slice(0, Math.min(vocabListeningTestQuestionLimit, uniqueWords.length))
-    .map((word) => {
-      const correctEnglish = getVocabularyEnglish(word);
-      const wrongOptions = shuffleVocabulary(uniqueWords)
-        .map((optionWord) => getVocabularyEnglish(optionWord))
-        .filter((english) => english && english !== correctEnglish)
-        .slice(0, 3);
-
-      return {
-        word,
-        options: shuffleVocabulary([correctEnglish, ...wrongOptions]),
-      };
-    })
+    .map((word) => ({
+      word,
+      options: createVocabListeningMeaningOptions(word, uniqueWords),
+    }))
     .filter((question) => question.options.length === 4);
 }
 
@@ -1432,7 +1454,9 @@ function renderVocabListeningTestStart() {
   stopEnglishWordAudio();
   vocabularyQuizPhase = "idle";
   listeningTitle.textContent = "單字聽力測驗";
-  currentProgress.textContent = "單字聽力測驗準備";
+  if (currentProgress) {
+    currentProgress.textContent = "單字聽力測驗準備";
+  }
   nextListeningQuestionButton.hidden = true;
   nextListeningQuestionButton.disabled = true;
   updateRandomStatus();
@@ -1450,7 +1474,7 @@ function renderVocabListeningTestStart() {
   const details = document.createElement("div");
   details.className = "quiz-ready-details";
   [
-    "聽發音，選出正確的英文單字。",
+    "聽英文單字發音，選出正確的中文意思。",
     "每題只能播放一次，答題後不會立即顯示答案或中文意思。",
     `本次預設 ${vocabListeningTestQuestionLimit} 題；若可用單字不足，會以目前可用單字數量出題。`,
   ].forEach((text) => {
@@ -1500,8 +1524,8 @@ function handleVocabListeningTestAnswer(option) {
     return;
   }
 
-  const correctEnglish = getVocabularyEnglish(question.word);
-  const isCorrect = option === correctEnglish;
+  const correctMeaning = getVocabularyMeaning(question.word);
+  const isCorrect = option === correctMeaning;
   vocabListeningTestSelectedAnswer = option;
   if (isCorrect) {
     vocabListeningTestCorrectCount += 1;
@@ -1540,7 +1564,9 @@ function renderVocabListeningTestQuestion() {
   }
 
   listeningTitle.textContent = "單字聽力測驗";
-  currentProgress.textContent = `單字聽力測驗：第 ${vocabListeningTestIndex + 1} / ${vocabListeningTestQuestions.length} 題`;
+  if (currentProgress) {
+    currentProgress.textContent = `單字聽力測驗：第 ${vocabListeningTestIndex + 1} / ${vocabListeningTestQuestions.length} 題`;
+  }
   nextListeningQuestionButton.hidden = false;
   nextListeningQuestionButton.disabled = !vocabListeningTestSelectedAnswer;
   nextListeningQuestionButton.textContent = vocabListeningTestIndex >= vocabListeningTestQuestions.length - 1 ? "查看結果" : "下一題";
@@ -1551,7 +1577,7 @@ function renderVocabListeningTestQuestion() {
   prompt.className = "quiz-prompt gept-listening-prompt";
   const promptLabel = document.createElement("p");
   promptLabel.className = "quiz-prompt-label";
-  promptLabel.textContent = `第 ${vocabListeningTestIndex + 1} / ${vocabListeningTestQuestions.length} 題｜聽發音，選出正確的英文單字`;
+  promptLabel.textContent = `第 ${vocabListeningTestIndex + 1} / ${vocabListeningTestQuestions.length} 題｜聽發音，選出正確的中文意思`;
   const playButton = createEnglishWordAudioButton(getVocabularyEnglish(question.word), {
     disabled: vocabListeningTestHasPlayedAudio,
     onPlay: () => {
@@ -1591,7 +1617,9 @@ function renderVocabListeningTestResult() {
   stopEnglishWordAudio();
   vocabListeningTestPhase = "result";
   listeningTitle.textContent = "單字聽力測驗結果";
-  currentProgress.textContent = `單字聽力測驗完成：${vocabListeningTestQuestions.length} / ${vocabListeningTestQuestions.length}`;
+  if (currentProgress) {
+    currentProgress.textContent = `單字聽力測驗完成：${vocabListeningTestQuestions.length} / ${vocabListeningTestQuestions.length}`;
+  }
   nextListeningQuestionButton.hidden = true;
   nextListeningQuestionButton.disabled = true;
 
@@ -1600,7 +1628,7 @@ function renderVocabListeningTestResult() {
   const wrongResults = vocabListeningTestResults.filter((result) => !result.isCorrect);
   const endedAt = new Date().toISOString();
   recordEnglishLearningSession({
-    module: "listening",
+    module: "vocabulary",
     mode: "quiz",
     totalQuestions: total,
     correctCount: vocabListeningTestCorrectCount,
@@ -1631,7 +1659,7 @@ function renderVocabListeningTestResult() {
     list.className = "quiz-result-list";
     wrongResults.forEach((result) => {
       const item = document.createElement("li");
-      item.textContent = `第 ${result.order} 題｜正確英文單字：${getVocabularyEnglish(result.word)}｜中文意思：${getVocabularyMeaning(result.word) || "—"}｜你選的答案：${result.userAnswer}`;
+      item.textContent = `第 ${result.order} 題｜正確英文單字：${getVocabularyEnglish(result.word)}｜正確中文意思：${getVocabularyMeaning(result.word) || "—"}｜你選的答案：${result.userAnswer}`;
       list.append(item);
     });
     wrongList.append(list);
@@ -1644,20 +1672,34 @@ function renderVocabListeningTestResult() {
   retryButton.type = "button";
   retryButton.textContent = "再測一次";
   retryButton.addEventListener("click", startVocabListeningTest);
-  const practiceButton = document.createElement("button");
-  practiceButton.className = "secondary-button";
-  practiceButton.type = "button";
-  practiceButton.textContent = "回到單字聽力練習";
-  practiceButton.addEventListener("click", () => {
-    currentMode = listeningMode;
-    resetListeningState();
-    renderCurrentMode();
+  const reviewButton = document.createElement("button");
+  reviewButton.className = "secondary-button";
+  reviewButton.type = "button";
+  reviewButton.textContent = "錯題複習";
+  reviewButton.hidden = !wrongResults.length;
+  reviewButton.addEventListener("click", () => {
+    const uniqueWords = getUniqueVocabListeningTestSource();
+    vocabListeningTestQuestions = wrongResults.map((result) => ({
+      word: result.word,
+      options: createVocabListeningMeaningOptions(result.word, uniqueWords),
+    })).filter((question) => question.options.length === 4);
+    vocabListeningTestIndex = 0;
+    vocabListeningTestCorrectCount = 0;
+    vocabListeningTestResults = [];
+    vocabListeningTestSelectedAnswer = "";
+    vocabListeningTestHasPlayedAudio = false;
+    vocabularyListeningTestStartedAt = new Date().toISOString();
+    renderVocabListeningTestQuestion();
   });
   const homeLink = document.createElement("a");
   homeLink.className = "secondary-button";
-  homeLink.href = "../";
-  homeLink.textContent = "返回英文學習首頁";
-  actions.append(retryButton, practiceButton, homeLink);
+  homeLink.href = "./";
+  homeLink.textContent = "返回單字入口頁";
+  actions.append(retryButton);
+  if (wrongResults.length) {
+    actions.append(reviewButton);
+  }
+  actions.append(homeLink);
   card.append(title, summary, wrongTitle, wrongList, actions);
   listeningContent.replaceChildren(card);
 }
