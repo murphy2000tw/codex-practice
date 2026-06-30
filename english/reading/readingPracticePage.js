@@ -1,5 +1,7 @@
 const READING_QUIZ_CATEGORY = "reading";
-const READING_QUIZ_TITLE = "閱讀測驗";
+const readingPage = document.querySelector(".reading-practice-section");
+const readingPageMode = readingPage?.dataset.readingPage === "practice" ? "practice" : "quiz";
+const READING_QUIZ_TITLE = readingPageMode === "practice" ? "閱讀練習" : "閱讀測驗";
 const readingArticles = Array.isArray(window.readingQuestions) ? window.readingQuestions : [];
 
 function flattenReadingQuestions(articles) {
@@ -49,6 +51,15 @@ const nextQuestionButton = document.querySelector("#nextReadingQuestion");
 const nextArticleButton = document.querySelector("#nextReadingArticle");
 const restartButtons = document.querySelectorAll(".js-restart-reading-practice");
 const practicePanel = document.querySelector("#readingPracticePanel");
+const passageCard = document.querySelector(".reading-passage-card");
+const questionCard = document.querySelector(".reading-question-card");
+const questionPrompt = document.querySelector(".reading-question-prompt");
+const feedbackArea = document.querySelector(".article-feedback-area");
+const readingActions = document.querySelector(".reading-actions");
+const quizStats = document.querySelector(".quiz-stats");
+const readingModePanel = document.querySelector(".reading-mode-panel");
+const readingReviewControls = document.querySelector(".reading-review-controls");
+const practiceTestModeButton = document.querySelector('.reading-mode-button[data-reading-mode="test"]');
 const completePanel = document.querySelector("#readingCompletePanel");
 const resultTitle = document.querySelector("#readingResultTitle");
 const resultModeText = document.querySelector("#readingResultMode");
@@ -148,12 +159,30 @@ function scrollToPreparationPanel() {
   practicePanel?.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
+function setQuizViewState(state) {
+  const isReady = state === "ready";
+  if (readingPageMode === "practice" && practiceTestModeButton) {
+    practiceTestModeButton.hidden = true;
+  }
+  if (readingPageMode === "quiz") {
+    if (passageCard) passageCard.hidden = isReady;
+    if (questionPrompt) questionPrompt.hidden = isReady;
+    if (feedbackArea) feedbackArea.hidden = isReady;
+    if (readingActions) readingActions.hidden = isReady;
+    if (quizStats) quizStats.hidden = isReady;
+    if (readingModePanel) readingModePanel.hidden = true;
+    if (readingReviewControls) readingReviewControls.hidden = true;
+    if (wrongMessage) wrongMessage.hidden = true;
+  }
+}
+
 function renderPreparationPanel() {
   quizPhase = "ready";
+  setQuizViewState("ready");
   practicePanel.hidden = false;
   completePanel.hidden = true;
   const total = quizQuestions.length;
-  articleTitle.textContent = "英文測驗準備";
+  articleTitle.textContent = `${READING_QUIZ_TITLE}準備`;
   articleMeta.textContent = `${READING_QUIZ_TITLE}｜測驗準備中`;
   passageText.textContent = total ? "請按下方按鈕開始測驗。" : "目前沒有可用題目";
   translationText.textContent = "";
@@ -174,7 +203,7 @@ function renderPreparationPanel() {
   readyCard.className = "quiz-card quiz-ready-card";
   readyCard.innerHTML = `
     <span class="card-number">測驗準備</span>
-    <h3 class="quiz-title">英文測驗準備</h3>
+    <h3 class="quiz-title">${READING_QUIZ_TITLE}準備</h3>
     <div class="quiz-ready-details">
       <p>測驗類型：${READING_QUIZ_TITLE}</p>
       <p>本次測驗：${total} 題</p>
@@ -185,7 +214,7 @@ function renderPreparationPanel() {
     const startButton = document.createElement("button");
     startButton.className = "answer-button quiz-start-button";
     startButton.type = "button";
-    startButton.textContent = "開始測驗";
+    startButton.textContent = readingPageMode === "practice" ? "開始練習" : "開始測驗";
     startButton.addEventListener("click", () => {
       if (quizPhase === "running") return;
       quizPhase = "running";
@@ -216,6 +245,7 @@ function renderQuestion() {
     return;
   }
 
+  setQuizViewState("running");
   practicePanel.hidden = false;
   completePanel.hidden = true;
   articleTitle.textContent = question.passageTitle || READING_QUIZ_TITLE;
@@ -249,7 +279,7 @@ function handleAnswer(answer) {
   });
   feedback.className = `quiz-feedback reading-feedback ${isCorrect ? "is-correct" : "is-wrong"}`;
   feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${question.answer}`;
-  explanation.textContent = question.explanation || "";
+  explanation.textContent = readingPageMode === "practice" ? (question.explanation || "") : "";
   nextQuestionButton.disabled = false;
   nextArticleButton.disabled = false;
 }
@@ -273,7 +303,7 @@ function renderCompletePanel() {
   const endedAt = new Date().toISOString();
   recordEnglishLearningSession({
     module: "reading",
-    mode: "quiz",
+    mode: readingPageMode === "practice" ? "practice" : "quiz",
     totalQuestions: total,
     correctCount,
     wrongCount,
@@ -281,6 +311,7 @@ function renderCompletePanel() {
     startedAt: quizStartedAt || endedAt,
     endedAt,
   });
+  setQuizViewState("complete");
   practicePanel.hidden = true;
   completePanel.hidden = false;
   resultTitle.textContent = `${READING_QUIZ_TITLE}完成！`;
@@ -312,7 +343,7 @@ function restartPractice(shouldScroll = false) {
   hasAnsweredCurrentQuestion = false;
   quizResults = [];
   quizStartedAt = null;
-  modeDescription.textContent = "分類測驗：請慢慢閱讀文章，完成後再作答。";
+  modeDescription.textContent = readingPageMode === "practice" ? "閱讀練習：作答後可以查看解答說明。" : "閱讀測驗：請慢慢閱讀文章，完成後再作答。";
   modeButtons.forEach((button) => { button.disabled = true; });
   startWrongReviewButton.disabled = true;
   clearWrongListButton.disabled = true;
