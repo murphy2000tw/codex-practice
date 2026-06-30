@@ -1715,7 +1715,7 @@ function renderQuizPreparation() {
   badge.textContent = "測驗準備";
   const title = document.createElement("h3");
   title.className = "quiz-title";
-  title.textContent = "英文測驗準備";
+  title.textContent = "單字測驗準備";
   const details = document.createElement("div");
   details.className = "quiz-ready-details";
   [
