@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" href="../../app-icon.png">
+  <link rel="icon" type="image/png" href="../../app-icon.png">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <title>聽力練習｜英文學習</title>
+  <link rel="stylesheet" href="../../style.css?v=2.3">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">English Listening Practice</p>
+      <h1 id="page-title">聽力練習</h1>
+      <p class="hero-text">請聽音訊後選出正確答案，練習模式可重複播放。</p>
+    </section>
+
+    <section class="category-panel subpage-panel" aria-labelledby="listening-title">
+      <div class="category-header">
+        <h2 id="listening-title">聽力練習</h2>
+        <p id="listeningProgress" class="category-count" aria-live="polite">準備中</p>
+      </div>
+      <div id="listeningSupportMessage" class="status-message quiz-status-message" role="status" hidden></div>
+      <div id="listeningContent" class="quiz-content" aria-live="polite"></div>
+      <a class="secondary-button back-link" href="./">返回聽力入口頁</a>
+    </section>
+  </main>
+
+  <script src="../englishLearningProgress.js?v=1.0"></script>
+  <script src="../vocabulary/data/geptVocabularyBeginner001.js?v=1.0"></script>
+  <script src="../vocabulary/data/geptVocabularyBeginner002.js?v=1.0"></script>
+  <script src="../vocabulary/data/geptVocabularyBeginner003.js?v=1.0"></script>
+  <script src="../vocabulary/data/geptVocabularyBeginner004.js?v=1.0"></script>
+  <script src="../vocabulary/geptVocabulary.js?v=1.6"></script>
+  <script src="listeningPage.js?v=1.5"></script>
+</body>
+</html>
