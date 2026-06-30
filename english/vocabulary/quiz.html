@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" href="../../app-icon.png">
+  <link rel="icon" type="image/png" href="../../app-icon.png">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <title>單字測驗｜GEPT 初級單字｜英文學習</title>
+  <link rel="stylesheet" href="../../style.css?v=2.1">
+</head>
+<body data-vocabulary-page="quiz">
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">English Vocabulary Quiz</p>
+      <h1 id="page-title">單字測驗</h1>
+      <p class="hero-text">選擇測驗類型後開始作答，系統會記錄本次測驗結果。</p>
+    </section>
+
+    <section id="vocabularyAppPanel" class="category-panel subpage-panel" aria-labelledby="geptQuizTitle">
+      <section id="geptQuizPanel" class="quiz-panel gept-quiz-panel" aria-live="polite">
+        <div class="quiz-header">
+          <div>
+            <span class="card-number">測驗題目</span>
+            <h2 id="geptQuizTitle" class="quiz-title">單字測驗</h2>
+          </div>
+          <div class="quiz-stats" aria-label="GEPT 測驗分數統計">
+            <span>目前分數：<strong id="geptQuizScore">0 / 0</strong></span>
+            <span>題目進度：<strong id="geptQuizProgress">0 / 0</strong></span>
+            <span>本次錯題：<strong id="geptWrongQuestionCount">0 題</strong></span>
+          </div>
+        </div>
+        <p class="gept-quiz-instruction">測驗說明：每題限時作答，完成後會顯示測驗結果並保存本次學習紀錄。</p>
+        <div class="quiz-type-controls gept-quiz-type-controls" role="group" aria-label="選擇 GEPT 測驗類型">
+          <span class="filter-label gept-quiz-type-label">測驗類型：</span>
+          <button id="geptEnglishToChineseQuiz" class="quiz-type-button is-active" type="button" data-gept-quiz-type="english-to-chinese" aria-pressed="true">看英文選中文</button>
+          <button id="geptChineseToEnglishQuiz" class="quiz-type-button" type="button" data-gept-quiz-type="chinese-to-english" aria-pressed="false">看中文選英文</button>
+        </div>
+        <div id="geptQuizContent" class="quiz-content"></div>
+        <div class="quiz-actions gept-wrong-question-actions">
+          <button id="reviewGeptWrongQuestions" class="secondary-button" type="button" disabled>錯題複習</button>
+          <button id="returnGeptQuiz" class="secondary-button" type="button" hidden>返回一般測驗</button>
+          <button id="clearGeptWrongQuestions" class="secondary-button" type="button" disabled>清除錯題</button>
+        </div>
+        <div class="quiz-actions">
+          <button id="reshuffleGeptQuizVocabulary" class="secondary-button" type="button">重新隨機</button>
+          <button id="nextGeptQuizQuestion" class="answer-button" type="button">下一題</button>
+        </div>
+      </section>
+
+      <a class="secondary-button back-link" href="./">返回單字入口頁</a>
+    </section>
+  </main>
+
+  <script src="../englishQuizProgress.js?v=1.1"></script>
+  <script src="../englishLearningProgress.js?v=1.0"></script>
+  <script src="data/geptVocabularyBeginner001.js?v=1.0"></script>
+  <script src="data/geptVocabularyBeginner002.js?v=1.0"></script>
+  <script src="data/geptVocabularyBeginner003.js?v=1.0"></script>
+  <script src="data/geptVocabularyBeginner004.js?v=1.0"></script>
+  <script src="geptVocabulary.js?v=1.6"></script>
+  <script src="geptVocabularyPage.js?v=3.0"></script>
+</body>
+</html>
