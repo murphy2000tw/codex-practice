@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" href="../../app-icon.png">
+  <link rel="icon" type="image/png" href="../../app-icon.png">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <title>填空測驗｜英文學習</title>
+  <link rel="stylesheet" href="../../style.css?v=2.6">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">English Learning</p>
+      <h1 id="page-title">填空測驗</h1>
+      <p class="hero-text">開始測驗後完成所有填空題，確認填空理解與作答能力。</p>
+    </section>
+
+    <section class="quiz-panel fill-blank-practice-section" aria-labelledby="fill-blank-quiz-title" data-fill-blank-page="quiz">
+      <div class="quiz-header">
+        <div>
+          <span class="card-number">GEPT 初級填空</span>
+          <h2 id="fill-blank-quiz-title" class="quiz-title">填空測驗</h2>
+        </div>
+        <div class="quiz-stats" aria-label="填空測驗分數、進度與時間">
+          <span>目前分數：<strong id="fillBlankScore">0 / 0</strong></span>
+          <span>題目進度：<strong id="fillBlankProgress">0 / 0</strong></span>
+          <span>本次錯題：<strong id="fillBlankWrongCount">0 題</strong></span>
+        </div>
+      </div>
+
+      <p id="fillBlankModeDescription" class="mode-description fill-blank-mode-description">測驗準備：請按下方按鈕開始測驗。</p>
+
+      <div id="fillBlankPracticePanel" class="quiz-content fill-blank-practice-panel" aria-live="polite">
+        <article class="quiz-card fill-blank-question-card">
+          <div class="quiz-prompt fill-blank-prompt">
+            <p id="fillBlankQuestionCategory" class="quiz-prompt-label">填空測驗｜測驗準備中</p>
+            <p id="fillBlankQuestionSentence" class="quiz-title fill-blank-question-sentence">請按下方按鈕開始測驗。</p>
+          </div>
+          <div class="fill-blank-answer-area">
+            <label class="search-label" for="fillBlankAnswerInput">答案輸入框</label>
+            <input id="fillBlankAnswerInput" class="search-input fill-blank-answer-input" type="text" autocomplete="off" placeholder="請輸入英文答案">
+          </div>
+          <div class="quiz-actions fill-blank-check-actions">
+            <button id="showFillBlankHint" class="secondary-button" type="button" hidden>顯示提示</button>
+            <button id="checkFillBlankAnswer" class="answer-button" type="button">送出答案</button>
+          </div>
+          <p id="fillBlankHint" class="random-status fill-blank-hint" hidden></p>
+          <div class="article-feedback-area fill-blank-feedback-area" aria-live="polite">
+            <p id="fillBlankFeedback" class="quiz-feedback fill-blank-feedback"></p>
+            <p id="fillBlankExplanation" class="article-explanation fill-blank-explanation"></p>
+            <p id="fillBlankTranslation" class="article-explanation fill-blank-translation"></p>
+          </div>
+        </article>
+        <div class="quiz-actions article-actions fill-blank-actions">
+          <button id="nextFillBlankQuestion" class="answer-button" type="button">答題後自動下一題</button>
+        </div>
+      </div>
+
+      <div id="fillBlankCompletePanel" class="article-complete-panel fill-blank-complete-panel" aria-live="polite" hidden>
+        <article class="quiz-card article-result-card">
+          <span class="card-number">完成</span>
+          <h2 id="fillBlankCompleteTitle" class="quiz-title">填空測驗完成！</h2>
+          <p id="fillBlankResultMode" class="article-result-message fill-blank-result-mode">測驗類型：填空測驗</p>
+          <p id="fillBlankWrongResultMessage" class="article-result-message fill-blank-result-mode">本次錯題：0 題</p>
+          <div class="vocabulary-summary article-result-summary" aria-label="填空測驗完成結果">
+            <div class="summary-item"><span id="fillBlankTotalAnswered" class="summary-value">0 題</span><span class="summary-label">總作答</span></div>
+            <div class="summary-item"><span id="fillBlankTotalCorrect" class="summary-value">0 題</span><span class="summary-label">答對</span></div>
+            <div class="summary-item"><span id="fillBlankTotalWrong" class="summary-value">0 題</span><span class="summary-label">答錯</span></div>
+            <div class="summary-item"><span id="fillBlankAccuracy" class="summary-value">0%</span><span class="summary-label">正確率</span></div>
+            <div class="summary-item"><span id="fillBlankRemainingWrong" class="summary-value">0 題</span><span class="summary-label">逾時</span></div>
+          </div>
+          <div class="quiz-actions article-actions">
+            <button id="reviewWrongFromFillBlankResult" class="answer-button" type="button" hidden>錯題複習</button>
+            <button class="answer-button js-restart-fill-blank-practice" type="button">重新測驗</button>
+          </div>
+        </article>
+      </div>
+
+      <a class="secondary-button back-link" href="./">返回填空入口頁</a>
+    </section>
+  </main>
+
+  <script src="../englishQuizProgress.js?v=1.1"></script>
+  <script src="../englishLearningProgress.js?v=1.0"></script>
+  <script src="fillBlankQuestions.js?v=1.0"></script>
+  <script src="fillBlankPracticePage.js?v=1.4"></script>
+</body>
+</html>

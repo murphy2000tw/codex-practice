@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" href="../../app-icon.png">
+  <link rel="icon" type="image/png" href="../../app-icon.png">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <title>填空練習｜英文學習</title>
+  <link rel="stylesheet" href="../../style.css?v=2.6">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">English Learning</p>
+      <h1 id="page-title">填空練習</h1>
+      <p class="hero-text">練習句子填空，熟悉單字、文法與語意判斷。</p>
+    </section>
+
+    <section class="quiz-panel fill-blank-practice-section" aria-labelledby="fill-blank-practice-title" data-fill-blank-page="practice">
+      <div class="quiz-header">
+        <div>
+          <span class="card-number">GEPT 初級填空</span>
+          <h2 id="fill-blank-practice-title" class="quiz-title">填空練習</h2>
+        </div>
+        <div class="quiz-stats" aria-label="填空練習分數與進度">
+          <span>目前分數：<strong id="fillBlankScore">0 / 0</strong></span>
+          <span>題目進度：<strong id="fillBlankProgress">0 / 0</strong></span>
+        </div>
+      </div>
+
+      <div id="fillBlankPracticePanel" class="quiz-content fill-blank-practice-panel" aria-live="polite">
+        <article class="quiz-card fill-blank-question-card">
+          <div class="quiz-prompt fill-blank-prompt">
+            <p id="fillBlankQuestionCategory" class="quiz-prompt-label">分類：—</p>
+            <p id="fillBlankQuestionSentence" class="quiz-title fill-blank-question-sentence">載入中</p>
+          </div>
+
+          <div class="fill-blank-answer-area">
+            <label class="search-label" for="fillBlankAnswerInput">答案輸入框</label>
+            <input id="fillBlankAnswerInput" class="search-input fill-blank-answer-input" type="text" autocomplete="off" placeholder="請輸入英文答案">
+          </div>
+
+          <div class="quiz-actions fill-blank-check-actions">
+            <button id="showFillBlankHint" class="secondary-button" type="button" aria-expanded="false" aria-controls="fillBlankHint">顯示提示</button>
+            <button id="checkFillBlankAnswer" class="answer-button" type="button">檢查答案</button>
+          </div>
+
+          <p id="fillBlankHint" class="random-status fill-blank-hint" hidden></p>
+          <div class="article-feedback-area fill-blank-feedback-area" aria-live="polite">
+            <p id="fillBlankFeedback" class="quiz-feedback fill-blank-feedback"></p>
+            <p id="fillBlankExplanation" class="article-explanation fill-blank-explanation"></p>
+            <p id="fillBlankTranslation" class="article-explanation fill-blank-translation"></p>
+          </div>
+        </article>
+
+        <div class="quiz-actions article-actions fill-blank-actions">
+          <button id="restartFillBlankPractice" class="secondary-button" type="button">重新開始</button>
+          <button id="nextFillBlankQuestion" class="answer-button" type="button">下一題</button>
+        </div>
+      </div>
+
+      <a class="secondary-button back-link" href="./">返回填空入口頁</a>
+    </section>
+  </main>
+
+  <script src="fillBlankQuestions.js?v=1.0"></script>
+  <script src="fillBlankPracticeOnlyPage.js?v=1.0"></script>
+</body>
+</html>
