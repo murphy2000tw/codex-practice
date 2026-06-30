@@ -61,9 +61,9 @@
         <h2 id="subpage-title">單字卡學習</h2>
         <p id="currentProgress" class="category-count" aria-live="polite">載入中</p>
       </div>
-      <p class="subpage-text">從 <span id="geptVocabularyTotalInline">GEPT 初級單字</span> 中隨機顯示單字卡；可依 category／分類篩選、搜尋英文或中文，並使用上一個／下一個快速複習。</p>
+      <p class="subpage-text" data-vocabulary-practice-only>從 <span id="geptVocabularyTotalInline">GEPT 初級單字</span> 中隨機顯示單字卡；可依 category／分類篩選、搜尋英文或中文，並使用上一個／下一個快速複習。</p>
 
-      <div class="mode-panel gept-mode-panel" aria-labelledby="geptModeTitle">
+      <div class="mode-panel gept-mode-panel" data-vocabulary-practice-only aria-labelledby="geptModeTitle">
         <div>
           <p class="filter-label" id="geptModeTitle">模式切換</p>
           <p class="mode-description">可用單字卡複習，也可以切換成單字測驗、單字聽力練習或單字聽力測驗。</p>
@@ -76,7 +76,7 @@
         </div>
       </div>
 
-      <div class="vocabulary-info-panel" aria-label="GEPT 初級單字說明資訊">
+      <div class="vocabulary-info-panel" data-vocabulary-practice-only aria-label="GEPT 初級單字說明資訊">
         <p class="vocabulary-info-title">英文單字資料</p>
         <div class="vocabulary-info-list">
           <span>目前共有 <strong id="geptVocabularyTotalValue">載入中</strong> 個 GEPT 初級單字</span>
@@ -85,7 +85,7 @@
         </div>
       </div>
 
-      <section class="english-progress-panel" aria-labelledby="englishProgressTitle">
+      <section class="english-progress-panel" data-vocabulary-practice-only aria-labelledby="englishProgressTitle">
         <div class="english-progress-header">
           <div>
             <p class="filter-label" id="englishProgressTitle">英文單字進度</p>
@@ -112,9 +112,9 @@
         </div>
       </section>
 
-      <p id="geptRandomStatus" class="random-status" aria-live="polite">單字將以隨機順序顯示。</p>
+      <p id="geptRandomStatus" class="random-status" data-vocabulary-practice-only aria-live="polite">單字將以隨機順序顯示。</p>
 
-      <div class="search-controls gept-search-controls">
+      <div class="search-controls gept-search-controls" data-vocabulary-practice-only>
         <label id="geptSearchLabel" class="search-label" for="geptVocabularySearch">單字搜尋</label>
         <div class="search-row">
           <input
@@ -128,7 +128,7 @@
         </div>
       </div>
 
-      <div class="filter-group gept-category-filter-group">
+      <div class="filter-group gept-category-filter-group" data-vocabulary-practice-only>
         <p id="geptCategoryFilterLabel" class="filter-label">分類篩選</p>
         <div
           id="geptCategoryFilters"
@@ -190,7 +190,7 @@
         <button id="nextWord" class="answer-button" type="button">下一個</button>
       </div>
 
-      <a class="secondary-button back-link" href="../">返回英文學習首頁</a>
+      <a class="secondary-button back-link" href="./">返回單字入口頁</a>
     </section>
   </main>
 
