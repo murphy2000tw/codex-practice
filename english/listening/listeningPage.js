@@ -1333,6 +1333,18 @@ function handleTestAnswer(selectedButton, currentItem) {
   }, 450);
 }
 
+function createListeningResultReplayButton(result) {
+  const button = document.createElement("button");
+  button.className = "secondary-button listening-replay-button";
+  button.type = "button";
+  button.textContent = "🔊 重聽音訊";
+  button.setAttribute("aria-label", `重聽第 ${result.order} 題音訊`);
+  button.addEventListener("click", () => {
+    speakEnglish(getItemText(result.item, result.type));
+  });
+  return button;
+}
+
 function createTestResultList() {
   const config = getActivityConfig();
   const list = document.createElement("ol");
@@ -1341,17 +1353,22 @@ function createTestResultList() {
     const item = document.createElement("li");
     const userAnswer = formatAnswerForReview(result.item, result.userAnswer, result.type);
     const correctAnswer = formatAnswerForReview(result.item, result.correctAnswer, result.type);
-    const transcriptLabel = config.type === listeningTypeGeptPicture
-      ? "英文播放稿"
-      : config.type === listeningTypeQa || config.type === listeningTypeGeptQuestionResponse
-        ? "英文問句"
-        : config.type === listeningTypeGeptConversation
-          ? "英文對話播放稿"
-          : config.type === listeningTypeGeptShortTalk
-            ? "英文短文播放稿"
-            : "英文播放稿";
-    const transcriptText = config.type === listeningTypeVocabulary || config.type === listeningTypeSentence ? "" : `${transcriptLabel}：${result.question}｜`;
-    item.textContent = `第 ${result.order} 題｜${transcriptText}你的答案：${userAnswer}｜正確${config.answerLabel}：${correctAnswer}｜結果：${result.result === "correct" ? "答對" : "答錯"}`;
+    const transcriptLabel = config.type === listeningTypeVocabulary
+      ? "英文單字"
+      : config.type === listeningTypeSentence
+        ? "正確句子"
+        : config.type === listeningTypeGeptPicture
+          ? "聽力文字"
+          : config.type === listeningTypeQa || config.type === listeningTypeGeptQuestionResponse
+            ? "英文問句"
+            : config.type === listeningTypeGeptConversation
+              ? "英文對話播放稿"
+              : config.type === listeningTypeGeptShortTalk
+                ? "英文短文播放稿"
+                : "聽力文字";
+    const detail = document.createElement("span");
+    detail.textContent = `第 ${result.order} 題｜${transcriptLabel}：${result.question}｜你的答案：${userAnswer}｜正確${config.answerLabel}：${correctAnswer}｜結果：${result.result === "correct" ? "答對" : "答錯，請確認正確答案"}`;
+    item.append(detail, createListeningResultReplayButton(result));
     list.append(item);
   });
   return list;
@@ -1693,8 +1710,10 @@ function createMockResultList() {
     const item = document.createElement("li");
     const userAnswer = formatAnswerForReview(result.item, result.userAnswer, result.type);
     const correctAnswer = formatAnswerForReview(result.item, result.correctAnswer, result.type);
-    const transcriptText = result.type === listeningTypeGeptPicture ? "" : `${getMockTranscriptLabel(result.type)}：${result.question}｜`;
-    item.textContent = `第 ${result.order} 題｜${result.sectionLabel}｜${transcriptText}你的答案：${userAnswer}｜正確答案：${correctAnswer}｜結果：${result.result === "correct" ? "答對" : "答錯"}`;
+    const transcriptText = `${result.type === listeningTypeGeptPicture ? "聽力文字" : getMockTranscriptLabel(result.type)}：${result.question}｜`;
+    const detail = document.createElement("span");
+    detail.textContent = `第 ${result.order} 題｜${result.sectionLabel}｜${transcriptText}你的答案：${userAnswer}｜正確答案：${correctAnswer}｜結果：${result.result === "correct" ? "答對" : "答錯，請確認正確答案"}`;
+    item.append(detail, createListeningResultReplayButton(result));
     list.append(item);
   });
   return list;
