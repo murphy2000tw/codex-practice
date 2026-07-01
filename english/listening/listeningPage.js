@@ -1152,6 +1152,15 @@ function renderPracticeQuestion() {
   listeningContent.replaceChildren(card);
 }
 
+function applyListeningAnswerFeedback(selectedButton, correctAnswer) {
+  listeningContent.querySelectorAll(".gept-quiz-option").forEach((button) => {
+    const buttonIsCorrect = button.dataset.answer === correctAnswer;
+    button.classList.toggle("is-correct", buttonIsCorrect);
+    button.classList.toggle("is-wrong", button === selectedButton && !buttonIsCorrect);
+    button.disabled = true;
+  });
+}
+
 function handlePracticeAnswer(selectedButton, currentItem, feedback) {
   if (practiceAnsweredCurrentQuestion) {
     return;
@@ -1163,12 +1172,7 @@ function handlePracticeAnswer(selectedButton, currentItem, feedback) {
   const isCorrect = selectedButton.dataset.answer === correctAnswer;
   recordListeningAnswer(currentItem, isCorrect);
 
-  listeningContent.querySelectorAll(".gept-quiz-option").forEach((button) => {
-    const buttonIsCorrect = button.dataset.answer === correctAnswer;
-    button.classList.toggle("is-correct", buttonIsCorrect);
-    button.classList.toggle("is-wrong", button === selectedButton && !buttonIsCorrect);
-    button.disabled = true;
-  });
+  applyListeningAnswerFeedback(selectedButton, correctAnswer);
 
   feedback.classList.toggle("is-correct", isCorrect);
   feedback.classList.toggle("is-wrong", !isCorrect);
@@ -1319,9 +1323,7 @@ function handleTestAnswer(selectedButton, currentItem) {
     result: isCorrect ? "correct" : "wrong",
   });
 
-  listeningContent.querySelectorAll(".gept-quiz-option").forEach((button) => {
-    button.disabled = true;
-  });
+  applyListeningAnswerFeedback(selectedButton, correctAnswer);
 
   window.setTimeout(() => {
     if (testQuestionIndex >= testQuestions.length - 1) {
@@ -1655,9 +1657,7 @@ function handleMockAnswer(selectedButton, entry) {
     type: entry.type,
     result: isCorrect ? "correct" : "wrong",
   });
-  listeningContent.querySelectorAll(".gept-quiz-option").forEach((button) => {
-    button.disabled = true;
-  });
+  applyListeningAnswerFeedback(selectedButton, correctAnswer);
 
   window.setTimeout(() => {
     const nextIndex = mockQuestionIndex + 1;
