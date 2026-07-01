@@ -34593,5 +34593,126 @@
     "example": "透明な袋に入れてください。",
     "exampleKana": "とうめいなふくろにいれてください。",
     "exampleMeaning": "請放進透明袋子裡。"
+  },
+  {
+    "id": 3146,
+    "level": "N4",
+    "word": "クリーニング店",
+    "kana": "クリーニングてん",
+    "meaning": "洗衣店",
+    "partOfSpeech": "名詞",
+    "example": "クリーニング店にコートを出しました。",
+    "exampleKana": "クリーニングてんにコートをだしました。",
+    "exampleMeaning": "我把大衣送到洗衣店了。"
+  },
+  {
+    "id": 3147,
+    "level": "N4",
+    "word": "開店前",
+    "kana": "かいてんまえ",
+    "meaning": "開店前",
+    "partOfSpeech": "名詞/副詞",
+    "example": "開店前に店の前で待ちます。",
+    "exampleKana": "かいてんまえにみせのまえでまちます。",
+    "exampleMeaning": "開店前在店門口等。"
+  },
+  {
+    "id": 3148,
+    "level": "N4",
+    "word": "自転車置き場",
+    "kana": "じてんしゃおきば",
+    "meaning": "自行車停放處",
+    "partOfSpeech": "名詞",
+    "example": "自転車は自転車置き場に置いてください。",
+    "exampleKana": "じてんしゃはじてんしゃおきばにおいてください。",
+    "exampleMeaning": "自行車請停在自行車停放處。"
+  },
+  {
+    "id": 3149,
+    "level": "N4",
+    "word": "乗り方",
+    "kana": "のりかた",
+    "meaning": "乘坐方法、搭乘方式",
+    "partOfSpeech": "名詞",
+    "example": "このバスの乗り方を教えてください。",
+    "exampleKana": "このバスののりかたをおしえてください。",
+    "exampleMeaning": "請告訴我這班公車的搭乘方式。"
+  },
+  {
+    "id": 3150,
+    "level": "N4",
+    "word": "前日",
+    "kana": "ぜんじつ",
+    "meaning": "前一天",
+    "partOfSpeech": "名詞",
+    "example": "予約の前日に確認のメールが来ました。",
+    "exampleKana": "よやくのぜんじつにかくにんのメールがきました。",
+    "exampleMeaning": "預約的前一天收到了確認郵件。"
+  },
+  {
+    "id": 3151,
+    "level": "N4",
+    "word": "宅配会社",
+    "kana": "たくはいがいしゃ",
+    "meaning": "宅配公司",
+    "partOfSpeech": "名詞",
+    "example": "宅配会社に荷物の時間を確認しました。",
+    "exampleKana": "たくはいがいしゃににもつのじかんをかくにんしました。",
+    "exampleMeaning": "我向宅配公司確認了包裹時間。"
+  },
+  {
+    "id": 3152,
+    "level": "N4",
+    "word": "着替え",
+    "kana": "きがえ",
+    "meaning": "換洗衣物、換衣服",
+    "partOfSpeech": "名詞",
+    "example": "旅行に着替えを三枚持って行きます。",
+    "exampleKana": "りょこうにきがえをさんまいもっていきます。",
+    "exampleMeaning": "旅行會帶三件換洗衣物。"
+  },
+  {
+    "id": 3153,
+    "level": "N4",
+    "word": "昼休み",
+    "kana": "ひるやすみ",
+    "meaning": "午休、午餐休息時間",
+    "partOfSpeech": "名詞",
+    "example": "昼休みに近くの公園で休みます。",
+    "exampleKana": "ひるやすみにちかくのこうえんでやすみます。",
+    "exampleMeaning": "午休時在附近的公園休息。"
+  },
+  {
+    "id": 3154,
+    "level": "N4",
+    "word": "道路工事",
+    "kana": "どうろこうじ",
+    "meaning": "道路施工、道路工程",
+    "partOfSpeech": "名詞",
+    "example": "道路工事のため、バスが遅れています。",
+    "exampleKana": "どうろこうじのため、バスがおくれています。",
+    "exampleMeaning": "因為道路施工，公車正在誤點。"
+  },
+  {
+    "id": 3155,
+    "level": "N4",
+    "word": "鍋",
+    "kana": "なべ",
+    "meaning": "鍋子",
+    "partOfSpeech": "名詞",
+    "example": "大きい鍋でスープを作ります。",
+    "exampleKana": "おおきいなべでスープをつくります。",
+    "exampleMeaning": "用大鍋子煮湯。"
+  },
+  {
+    "id": 3156,
+    "level": "N4",
+    "word": "郵便物",
+    "kana": "ゆうびんぶつ",
+    "meaning": "郵件、郵寄物",
+    "partOfSpeech": "名詞",
+    "example": "郵便物は郵便受けに入っています。",
+    "exampleKana": "ゆうびんぶつはゆうびんうけにはいっています。",
+    "exampleMeaning": "郵件在信箱裡。"
   }
 ]
