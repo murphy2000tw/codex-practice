@@ -721,10 +721,11 @@ h1 {
   font-weight: 800;
   line-height: 1.5;
   text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-.quiz-option:hover,
 .quiz-option:focus-visible {
   border-color: var(--accent);
   background: #fff8f5;
@@ -732,14 +733,34 @@ h1 {
   transform: translateY(-2px);
 }
 
+.quiz-option:focus:not(:focus-visible) {
+  outline: none;
+}
+
 .quiz-option:focus-visible {
   outline: 3px solid rgba(220, 107, 79, 0.28);
   outline-offset: 3px;
 }
 
+.quiz-option:not(.is-correct):not(.is-wrong):not(:focus-visible) {
+  border-color: var(--border);
+  color: var(--text);
+  background: #ffffff;
+  box-shadow: none;
+}
+
 .quiz-option:disabled {
   cursor: default;
   transform: none;
+}
+
+.quiz-option:disabled:not(.is-correct):not(.is-wrong),
+.quiz-option:disabled:not(.is-correct):not(.is-wrong):hover,
+.quiz-option:disabled:not(.is-correct):not(.is-wrong):focus {
+  border-color: var(--border);
+  color: var(--text);
+  background: #ffffff;
+  box-shadow: none;
 }
 
 .quiz-option.is-correct {
@@ -752,6 +773,15 @@ h1 {
   border-color: var(--accent);
   color: var(--accent-dark);
   background: #fff1eb;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .quiz-option:not(:disabled):not(.is-correct):not(.is-wrong):hover {
+    border-color: var(--accent);
+    background: #fff8f5;
+    box-shadow: 0 10px 24px rgba(220, 107, 79, 0.16);
+    transform: translateY(-2px);
+  }
 }
 
 .quiz-feedback {
