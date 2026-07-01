@@ -34714,5 +34714,115 @@
     "example": "郵便物は郵便受けに入っています。",
     "exampleKana": "ゆうびんぶつはゆうびんうけにはいっています。",
     "exampleMeaning": "郵件在信箱裡。"
+  },
+  {
+    "id": 3157,
+    "level": "N4",
+    "word": "料理教室",
+    "kana": "りょうりきょうしつ",
+    "meaning": "料理教室、烹飪教室",
+    "partOfSpeech": "名詞",
+    "example": "土曜日に料理教室へ行きます。",
+    "exampleKana": "どようびにりょうりきょうしつへいきます。",
+    "exampleMeaning": "星期六去料理教室。"
+  },
+  {
+    "id": 3158,
+    "level": "N4",
+    "word": "ヨガ教室",
+    "kana": "ヨガきょうしつ",
+    "meaning": "瑜伽教室",
+    "partOfSpeech": "名詞",
+    "example": "ヨガ教室で体を動かします。",
+    "exampleKana": "ヨガきょうしつでからだをうごかします。",
+    "exampleMeaning": "在瑜伽教室活動身體。"
+  },
+  {
+    "id": 3159,
+    "level": "N4",
+    "word": "留守番電話",
+    "kana": "るすばんでんわ",
+    "meaning": "留言電話、答錄機",
+    "partOfSpeech": "名詞",
+    "example": "留守番電話にメッセージを残しました。",
+    "exampleKana": "るすばんでんわにメッセージをのこしました。",
+    "exampleMeaning": "在答錄機裡留下了訊息。"
+  },
+  {
+    "id": 3160,
+    "level": "N4",
+    "word": "各駅停車",
+    "kana": "かくえきていしゃ",
+    "meaning": "各站停車、慢車",
+    "partOfSpeech": "名詞",
+    "example": "各駅停車に乗って学校へ行きます。",
+    "exampleKana": "かくえきていしゃにのってがっこうへいきます。",
+    "exampleMeaning": "搭各站停車去學校。"
+  },
+  {
+    "id": 3161,
+    "level": "N4",
+    "word": "急行",
+    "kana": "きゅうこう",
+    "meaning": "急行、快車",
+    "partOfSpeech": "名詞",
+    "example": "急行に乗ると早く着きます。",
+    "exampleKana": "きゅうこうにのるとはやくつきます。",
+    "exampleMeaning": "搭快車的話會比較快到。"
+  },
+  {
+    "id": 3162,
+    "level": "N4",
+    "word": "お腹",
+    "kana": "おなか",
+    "meaning": "肚子",
+    "partOfSpeech": "名詞",
+    "example": "お腹が痛いので、少し休みます。",
+    "exampleKana": "おなかがいたいので、すこしやすみます。",
+    "exampleMeaning": "因為肚子痛，所以休息一下。"
+  },
+  {
+    "id": 3163,
+    "level": "N4",
+    "word": "分別",
+    "kana": "ぶんべつ",
+    "meaning": "分類、分類回收",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "ごみを正しく分別してください。",
+    "exampleKana": "ごみをただしくぶんべつしてください。",
+    "exampleMeaning": "請正確地分類垃圾。"
+  },
+  {
+    "id": 3164,
+    "level": "N4",
+    "word": "写真部",
+    "kana": "しゃしんぶ",
+    "meaning": "攝影社、攝影社團",
+    "partOfSpeech": "名詞",
+    "example": "兄は学校の写真部に入っています。",
+    "exampleKana": "あにはがっこうのしゃしんぶにはいっています。",
+    "exampleMeaning": "哥哥加入了學校的攝影社。"
+  },
+  {
+    "id": 3165,
+    "level": "N4",
+    "word": "数",
+    "kana": "かず",
+    "meaning": "數量、數目",
+    "partOfSpeech": "名詞",
+    "example": "参加する人の数を数えます。",
+    "exampleKana": "さんかするひとのかずをかぞえます。",
+    "exampleMeaning": "數參加人數。"
+  },
+  {
+    "id": 3166,
+    "level": "N4",
+    "word": "各自",
+    "kana": "かくじ",
+    "meaning": "各自、每個人",
+    "partOfSpeech": "名詞/副詞",
+    "example": "道具は各自で持ってきてください。",
+    "exampleKana": "どうぐはかくじでもってきてください。",
+    "exampleMeaning": "工具請各自帶來。"
   }
 ]
