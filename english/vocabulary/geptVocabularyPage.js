@@ -1120,29 +1120,30 @@ function updateQuizActionVisibility() {
   const isComplete = vocabularyQuizPhase === "complete";
   const showManagementActions = isReady || isComplete;
   const canReviewWrongQuestions = wrongQuestions.length > 0;
+  const shouldShowManualNextQuestion = isWrongReviewMode && isRunning;
 
   if (wrongQuestionActions) {
     wrongQuestionActions.hidden = !showManagementActions || (isComplete && !canReviewWrongQuestions && !isWrongReviewMode);
   }
 
   if (quizNavigationActions) {
-    quizNavigationActions.hidden = !showManagementActions && !isWrongReviewMode;
+    quizNavigationActions.hidden = !showManagementActions && !shouldShowManualNextQuestion;
   }
 
   if (reviewWrongQuestionsButton) {
-    reviewWrongQuestionsButton.hidden = !canReviewWrongQuestions;
+    reviewWrongQuestionsButton.hidden = !showManagementActions || !canReviewWrongQuestions;
   }
   if (clearWrongQuestionsButton) {
-    clearWrongQuestionsButton.hidden = !canReviewWrongQuestions;
+    clearWrongQuestionsButton.hidden = !showManagementActions || !canReviewWrongQuestions;
   }
   if (returnQuizButton) {
-    returnQuizButton.hidden = !isWrongReviewMode || !showManagementActions;
+    returnQuizButton.hidden = !showManagementActions || !isWrongReviewMode;
   }
   if (reshuffleQuizVocabularyButton) {
     reshuffleQuizVocabularyButton.hidden = isRunning;
   }
   if (nextQuizQuestionButton) {
-    nextQuizQuestionButton.hidden = !isWrongReviewMode || !isRunning;
+    nextQuizQuestionButton.hidden = !shouldShowManualNextQuestion;
   }
   if (quizInstruction) {
     quizInstruction.hidden = isRunning || isComplete;
