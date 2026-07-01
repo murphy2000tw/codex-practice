@@ -586,7 +586,8 @@ h1 {
 
 .quiz-panel[hidden],
 .cards-grid[hidden],
-.controls[hidden] {
+.controls[hidden],
+.quiz-actions[hidden] {
   display: none;
 }
 
