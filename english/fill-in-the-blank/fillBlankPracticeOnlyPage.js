@@ -74,7 +74,8 @@ function renderFillBlankPracticeQuestion() {
   fillBlankPracticeElements.input.value = "";
   fillBlankPracticeElements.input.disabled = false;
   fillBlankPracticeElements.check.disabled = false;
-  fillBlankPracticeElements.next.disabled = false;
+  fillBlankPracticeElements.next.disabled = true;
+  fillBlankPracticeElements.next.textContent = "答題後下一題";
   fillBlankPracticeElements.hintButton.disabled = false;
   fillBlankPracticeElements.input.focus();
 }
@@ -91,6 +92,8 @@ function checkFillBlankPracticeAnswer() {
 
   fillBlankPracticeElements.input.disabled = true;
   fillBlankPracticeElements.check.disabled = true;
+  fillBlankPracticeElements.next.disabled = false;
+  fillBlankPracticeElements.next.textContent = fillBlankPracticeIndex >= fillBlankPracticeOrder.length - 1 ? "回到第一題" : "下一題";
   fillBlankPracticeElements.feedback.className = `quiz-feedback fill-blank-feedback ${isCorrect ? "is-correct" : "is-wrong"}`;
   fillBlankPracticeElements.feedback.textContent = isCorrect ? "答對了！" : `答錯了，正確答案是：${question.answer}`;
   fillBlankPracticeElements.explanation.textContent = question.explanation || "";
