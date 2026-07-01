@@ -1125,32 +1125,29 @@ function getWrongQuestionRecordKey(record) {
 }
 
 function updateQuizActionVisibility() {
-  const isReady = vocabularyQuizPhase === "ready";
   const isRunning = vocabularyQuizPhase === "running";
   const isComplete = vocabularyQuizPhase === "complete";
-  const showManagementActions = isReady || isComplete;
-  const canReviewWrongQuestions = wrongQuestions.length > 0;
   const shouldShowManualNextQuestion = isWrongReviewMode && isRunning;
 
   if (wrongQuestionActions) {
-    wrongQuestionActions.hidden = !showManagementActions || (isComplete && !canReviewWrongQuestions && !isWrongReviewMode);
+    wrongQuestionActions.hidden = true;
   }
 
   if (quizNavigationActions) {
-    quizNavigationActions.hidden = !showManagementActions && !shouldShowManualNextQuestion;
+    quizNavigationActions.hidden = !shouldShowManualNextQuestion;
   }
 
   if (reviewWrongQuestionsButton) {
-    reviewWrongQuestionsButton.hidden = !showManagementActions || !canReviewWrongQuestions;
+    reviewWrongQuestionsButton.hidden = true;
   }
   if (clearWrongQuestionsButton) {
-    clearWrongQuestionsButton.hidden = !showManagementActions || !canReviewWrongQuestions;
+    clearWrongQuestionsButton.hidden = true;
   }
   if (returnQuizButton) {
-    returnQuizButton.hidden = !showManagementActions || !isWrongReviewMode;
+    returnQuizButton.hidden = true;
   }
   if (reshuffleQuizVocabularyButton) {
-    reshuffleQuizVocabularyButton.hidden = isRunning;
+    reshuffleQuizVocabularyButton.hidden = true;
   }
   if (nextQuizQuestionButton) {
     nextQuizQuestionButton.hidden = !shouldShowManualNextQuestion;
@@ -1886,11 +1883,29 @@ function renderVocabularyQuizCompletePanel() {
     resetQuizState();
     renderQuizPreparation();
   });
+  const reviewButton = document.createElement("button");
+  reviewButton.className = "secondary-button";
+  reviewButton.type = "button";
+  reviewButton.textContent = "錯題複習";
+  reviewButton.hidden = isWrongReviewMode || !wrongQuestions.length;
+  reviewButton.addEventListener("click", () => {
+    if (!wrongQuestions.length) {
+      return;
+    }
+    isWrongReviewMode = true;
+    wrongReviewQuestions = shuffleVocabulary(wrongQuestions);
+    resetQuizState();
+    renderQuizPreparation();
+  });
   const homeLink = document.createElement("a");
   homeLink.className = "secondary-button";
   homeLink.href = "./";
   homeLink.textContent = "返回單字入口頁";
-  actions.append(retryButton, homeLink);
+  actions.append(retryButton);
+  if (!reviewButton.hidden) {
+    actions.append(reviewButton);
+  }
+  actions.append(homeLink);
   card.append(title, summary, createVocabularyQuizResultList(), actions);
   quizContent.replaceChildren(card);
   nextQuizQuestionButton.disabled = true;
