@@ -42,15 +42,9 @@ let currentQuestionIndex = 0;
 let correctCount = 0;
 let timeoutCount = 0;
 let hasAnsweredCurrentQuestion = false;
-let currentTimer = null;
-let remainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
 let quizResults = [];
 let quizPhase = "idle";
 let quizStartedAt = null;
-
-const timerText = document.createElement("span");
-timerText.innerHTML = `<span id="fillBlankTimerStatus">尚未開始</span>`;
-progressText?.closest(".quiz-stats")?.append(timerText);
 
 function normalizeAnswer(answer) {
   return String(answer)
@@ -75,30 +69,6 @@ function updateQuestionSummary() {
 
 function getCurrentQuestion() {
   return quizQuestions[currentQuestionIndex];
-}
-
-function clearTimer() {
-  if (currentTimer) {
-    window.clearInterval(currentTimer);
-    currentTimer = null;
-  }
-}
-
-function updateTimerText() {
-  const timerStatus = document.querySelector("#fillBlankTimerStatus");
-  if (timerStatus) timerStatus.innerHTML = `剩餘：<strong id="fillBlankTimer">${remainingSeconds}</strong> 秒`;
-}
-
-function startTimer() {
-  if (quizPhase !== "running") return;
-  clearTimer();
-  remainingSeconds = ENGLISH_QUIZ_TIME_LIMIT_SECONDS;
-  updateTimerText();
-  currentTimer = window.setInterval(() => {
-    remainingSeconds -= 1;
-    updateTimerText();
-    if (remainingSeconds <= 0) handleTimeout();
-  }, 1000);
 }
 
 function clearFeedback() {
@@ -131,7 +101,6 @@ function scheduleNextQuestion() {
 function recordResult(question, userAnswer, result) {
   if (quizPhase !== "running" || !question || hasAnsweredCurrentQuestion) return;
   hasAnsweredCurrentQuestion = true;
-  clearTimer();
   const isCorrect = result === "correct";
 
   if (result === "timeout") {
@@ -158,7 +127,6 @@ function scrollToPreparationPanel() {
 }
 
 function renderPreparationPanel() {
-  clearTimer();
   quizPhase = "ready";
   practicePanel.hidden = false;
   completePanel.hidden = true;
@@ -174,15 +142,12 @@ function renderPreparationPanel() {
   scoreText.textContent = "0 / 0";
   progressText.textContent = `0 / ${total}`;
   wrongCountText.textContent = "0 題";
-  if (modeDescription) modeDescription.textContent = "測驗準備：只抽填空題，每題 10 秒，完成後顯示總表。";
+  if (modeDescription) modeDescription.textContent = "測驗準備：只抽填空題，完成後顯示總表。";
   modeButtons.forEach((button) => { button.disabled = true; });
   hintButton.hidden = true;
   hintButton.disabled = true;
   nextButton.disabled = true;
   nextButton.textContent = "答題後自動下一題";
-  const timerStatus = document.querySelector("#fillBlankTimerStatus");
-  if (timerStatus) timerStatus.textContent = "尚未開始";
-
   const existingReadyCard = practicePanel.querySelector(".quiz-ready-card");
   existingReadyCard?.remove();
   const readyCard = document.createElement("article");
@@ -193,7 +158,6 @@ function renderPreparationPanel() {
     <div class="quiz-ready-details">
       <p>測驗類型：${CLOZE_QUIZ_TITLE}</p>
       <p>本次測驗：${total} 題</p>
-      <p>每題限時：${ENGLISH_QUIZ_TIME_LIMIT_SECONDS} 秒</p>
       <p>${total ? "請按下方按鈕開始測驗。" : "目前沒有可用題目。"}</p>
     </div>
   `;
@@ -221,7 +185,6 @@ function renderQuestion() {
   }
   const question = getCurrentQuestion();
   practicePanel.querySelector(".quiz-ready-card")?.remove();
-  clearTimer();
 
   if (!question) {
     practicePanel.hidden = false;
@@ -249,14 +212,13 @@ function renderQuestion() {
   hasAnsweredCurrentQuestion = false;
   clearFeedback();
   updateScoreAndProgress();
-  if (modeDescription) modeDescription.textContent = "測驗進行中：請在時間內輸入答案。";
+  if (modeDescription) modeDescription.textContent = "測驗進行中：請輸入答案後送出。";
   modeButtons.forEach((button) => { button.disabled = true; });
   hintButton.hidden = true;
   hintButton.disabled = true;
   nextButton.disabled = true;
   nextButton.textContent = "答題後自動下一題";
   recordQuestionSeen(question.questionId, CLOZE_QUIZ_CATEGORY);
-  startTimer();
   answerInput.focus();
 }
 
@@ -274,17 +236,6 @@ function handleCheckAnswer() {
   scheduleNextQuestion();
 }
 
-function handleTimeout() {
-  const question = getCurrentQuestion();
-  if (quizPhase !== "running" || !question || hasAnsweredCurrentQuestion) return;
-  recordResult(question, "未作答", "timeout");
-  answerInput.disabled = true;
-  checkButton.disabled = true;
-  feedback.className = "quiz-feedback fill-blank-feedback is-wrong";
-  feedback.textContent = `逾時，正確答案是：${question.answer}`;
-  scheduleNextQuestion();
-}
-
 function createResultList() {
   const list = document.createElement("ol");
   list.className = "quiz-result-list";
@@ -297,7 +248,6 @@ function createResultList() {
 }
 
 function renderCompletePanel() {
-  clearTimer();
   quizPhase = "complete";
   const total = quizResults.length;
   const wrongCount = total - correctCount;
@@ -330,7 +280,6 @@ function renderCompletePanel() {
 }
 
 function restartPractice(shouldScroll = false) {
-  clearTimer();
   quizPhase = "ready";
   quizQuestions = selectEnglishQuizQuestions(allFillBlankQuestions, CLOZE_QUIZ_CATEGORY);
   currentQuestionIndex = 0;
@@ -359,7 +308,5 @@ startWrongReviewButton?.addEventListener("click", () => {});
 resultWrongReviewButton?.addEventListener("click", () => {});
 clearWrongQuestionsButton?.addEventListener("click", () => {});
 exitWrongReviewButton?.addEventListener("click", () => {});
-window.addEventListener("beforeunload", clearTimer);
-
 updateQuestionSummary();
 restartPractice();
