@@ -170,6 +170,7 @@ function setQuizViewState(state) {
   }
   if (readingPageMode === "quiz") {
     if (passageCard) passageCard.hidden = isReady;
+    if (questionCard) questionCard.hidden = isReady;
     if (questionPrompt) questionPrompt.hidden = isReady;
     if (feedbackArea) feedbackArea.hidden = isReady;
     if (readingActions) readingActions.hidden = isReady;
@@ -188,7 +189,7 @@ function renderPreparationPanel() {
   const total = quizQuestions.length;
   if (articleTitle) articleTitle.textContent = `${READING_QUIZ_TITLE}準備`;
   if (articleMeta) articleMeta.textContent = `${READING_QUIZ_TITLE}｜測驗準備中`;
-  if (passageText) passageText.textContent = total ? "請按下方按鈕開始測驗。" : "目前沒有可用題目";
+  if (passageText) passageText.textContent = "";
   if (translationText) {
     translationText.textContent = "";
     translationText.hidden = true;
@@ -205,6 +206,7 @@ function renderPreparationPanel() {
   if (nextQuestionButton) nextQuestionButton.disabled = true;
   if (nextArticleButton) nextArticleButton.disabled = true;
 
+  practicePanel?.querySelector(".quiz-ready-card")?.remove();
   const readyCard = document.createElement("article");
   readyCard.className = "quiz-card quiz-ready-card";
   readyCard.innerHTML = `
@@ -229,7 +231,7 @@ function renderPreparationPanel() {
     });
     readyCard.append(startButton);
   }
-  optionList?.replaceChildren(readyCard);
+  practicePanel?.prepend(readyCard);
 }
 
 function renderQuestion() {
@@ -237,6 +239,7 @@ function renderQuestion() {
     renderPreparationPanel();
     return;
   }
+  practicePanel?.querySelector(".quiz-ready-card")?.remove();
   const question = getCurrentQuestion();
   if (!question) {
     if (practicePanel) practicePanel.hidden = false;
