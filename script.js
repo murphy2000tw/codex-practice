@@ -171,6 +171,7 @@ const japaneseMainContent = document.querySelector("#japaneseMainContent");
 const japaneseReadingPanel = document.querySelector("#japaneseReadingPanel");
 const japaneseListeningPanel = document.querySelector("#japaneseListeningPanel");
 const japaneseTabButtons = document.querySelectorAll(".japanese-tab-button");
+const japaneseEntryButtons = document.querySelectorAll("[data-japanese-entry]");
 const modeButtons = document.querySelectorAll(".mode-button[data-mode-group]");
 const modePanels = document.querySelectorAll("[data-mode-panel]");
 
@@ -226,6 +227,12 @@ async function switchJapaneseTab(tab) {
     const isActive = button.dataset.japaneseTab === tab;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-selected", String(isActive));
+  });
+
+  japaneseEntryButtons.forEach((button) => {
+    const isActive = button.dataset.japaneseEntry === tab;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
 
   const isVocabOrGrammarTab = tab === "vocab" || tab === "grammar";
@@ -1406,6 +1413,9 @@ grammarMeaningQuizTypeButton.addEventListener("click", () => switchGrammarQuizTy
 grammarClozeQuizTypeButton.addEventListener("click", () => switchGrammarQuizType("cloze"));
 japaneseTabButtons.forEach((button) => {
   button.addEventListener("click", () => switchJapaneseTab(button.dataset.japaneseTab));
+});
+japaneseEntryButtons.forEach((button) => {
+  button.addEventListener("click", () => switchJapaneseTab(button.dataset.japaneseEntry));
 });
 
 clearSearchButton.disabled = true;

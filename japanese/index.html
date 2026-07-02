@@ -17,9 +17,42 @@
       <a class="site-nav-link" href="../english/">英文學習</a>
     </nav>
     <section class="hero" aria-labelledby="page-title">
-      <p class="eyebrow">Japanese N5 Vocabulary</p>
-      <h1 id="page-title">日文 N5 單字卡</h1>
-      <p class="hero-text">每天練習基礎單字與文法，先看日文與假名，再按下按鈕確認中文意思、詞性或文法用法。</p>
+      <p class="eyebrow">Japanese Learning</p>
+      <h1 id="page-title">日文學習主入口</h1>
+      <p class="hero-text">從單字、文法、閱讀與聽力四大主線進入日文學習；已完成的功能可直接練習，尚在整理中的功能會清楚標示狀態。</p>
+    </section>
+
+    <section class="entry-section japanese-main-entry-section" aria-labelledby="japanese-main-entry-title">
+      <div class="category-header">
+        <h2 id="japanese-main-entry-title">日文四大功能</h2>
+        <p class="category-count">主入口整理：單字、文法、閱讀、聽力</p>
+      </div>
+      <div class="entry-grid japanese-main-entry-grid">
+        <button class="word-card entry-card japanese-main-entry-card is-active" type="button" data-japanese-entry="vocab" aria-pressed="true">
+          <span class="card-number">01</span>
+          <h3 class="entry-card-title">單字</h3>
+          <p class="entry-card-text">進入現有日文單字卡與單字測驗，保留正式單字資料顯示。</p>
+          <span class="entry-card-action">進入單字</span>
+        </button>
+        <button class="word-card entry-card japanese-main-entry-card is-foundation" type="button" data-japanese-entry="grammar" aria-pressed="false">
+          <span class="card-number">02</span>
+          <h3 class="entry-card-title">文法</h3>
+          <p class="entry-card-text">基礎文法卡與文法測驗入口；正式內容持續整理中。</p>
+          <span class="entry-card-action">基礎頁</span>
+        </button>
+        <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="reading" aria-pressed="false">
+          <span class="card-number">03</span>
+          <h3 class="entry-card-title">閱讀</h3>
+          <p class="entry-card-text">進入現有閱讀練習與閱讀測驗，練習模式保留 ruby 輔助。</p>
+          <span class="entry-card-action">進入閱讀</span>
+        </button>
+        <article class="word-card entry-card japanese-main-entry-card is-coming-soon" aria-label="聽力準備中">
+          <span class="card-number">04</span>
+          <h3 class="entry-card-title">聽力</h3>
+          <p class="entry-card-text">日文聽力練習與聽力測驗尚未開放，暫不提供假音檔或假流程。</p>
+          <span class="entry-card-action is-muted">準備中</span>
+        </article>
+      </div>
     </section>
 
     <section class="japanese-tab-panel" aria-labelledby="japanese-tab-title">
@@ -66,7 +99,7 @@
     <section class="mode-panel" data-mode-panel="vocab" aria-labelledby="vocab-mode-title">
       <div>
         <p class="filter-label" id="vocab-mode-title">單字功能</p>
-        <p class="mode-description">在單字分頁中切換單字卡複習或單字測驗。</p>
+        <p class="mode-description">單字區只保留主要入口：單字練習與單字測驗。</p>
       </div>
       <div class="mode-switch" role="group" aria-label="選擇單字練習模式">
         <button id="cardModeButton" class="mode-button is-active" data-mode-group="vocab" type="button" aria-pressed="true">單字練習</button>
@@ -77,7 +110,7 @@
     <section class="mode-panel" data-mode-panel="grammar" aria-labelledby="grammar-mode-title" hidden>
       <div>
         <p class="filter-label" id="grammar-mode-title">文法功能</p>
-        <p class="mode-description">在文法分頁中切換文法卡整理或文法測驗。</p>
+        <p class="mode-description">文法區保留基礎頁與文法測驗入口；內容仍以現有資料為準。</p>
       </div>
       <div class="mode-switch" role="group" aria-label="選擇文法練習模式">
         <button id="grammarModeButton" class="mode-button" data-mode-group="grammar" type="button" aria-pressed="false">文法練習</button>
@@ -121,7 +154,7 @@
       <div class="mode-panel reading-mode-panel" aria-labelledby="reading-mode-title">
         <div>
           <p class="filter-label" id="reading-mode-title">閱讀功能</p>
-          <p class="mode-description">在閱讀分頁中切換閱讀練習或 10 題閱讀測驗。</p>
+          <p class="mode-description">閱讀區保留閱讀練習與閱讀測驗入口；測驗模式不顯示 ruby。</p>
         </div>
         <div class="mode-switch" role="group" aria-label="選擇閱讀模式">
           <button id="readingPracticeModeButton" class="mode-button is-active" type="button" aria-pressed="true">閱讀練習</button>
