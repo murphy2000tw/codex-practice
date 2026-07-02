@@ -2367,3 +2367,69 @@ h1 {
 #vocabularyAppPanel[hidden] {
   display: none;
 }
+
+.japanese-main-entry-section {
+  margin: 0 0 24px;
+}
+
+.japanese-main-entry-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.japanese-main-entry-card {
+  width: 100%;
+  min-height: 250px;
+  border: 1px solid var(--border);
+  padding: 22px;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.japanese-main-entry-card.is-active {
+  border-color: var(--accent);
+  box-shadow: 0 22px 48px rgba(189, 84, 59, 0.18);
+  transform: translateY(-4px);
+}
+
+.japanese-main-entry-card.is-foundation .entry-card-action {
+  background: #8f6a3f;
+}
+
+.japanese-main-entry-card.is-coming-soon {
+  cursor: default;
+  opacity: 0.82;
+}
+
+.japanese-main-entry-card.is-coming-soon:hover {
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+  transform: none;
+}
+
+.entry-card-action.is-muted {
+  color: var(--muted);
+  background: #f2ebe4;
+  box-shadow: none;
+}
+
+@media (max-width: 900px) {
+  .japanese-main-entry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .japanese-main-entry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .japanese-main-entry-card {
+    min-height: 210px;
+  }
+
+  .japanese-main-entry-card .entry-card-action {
+    width: 100%;
+    text-align: center;
+  }
+}
