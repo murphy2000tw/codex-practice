@@ -1613,11 +1613,6 @@ window.JAPANESE_READING_SETS = [
         "meaning": "重點詞"
       },
       {
-        "word": "一時半",
-        "kana": "いちじはん",
-        "meaning": "重點詞"
-      },
-      {
         "word": "参加",
         "kana": "さんか",
         "meaning": "重點詞"
@@ -1647,10 +1642,6 @@ window.JAPANESE_READING_SETS = [
       {
         "text": "午後",
         "reading": "ごご"
-      },
-      {
-        "text": "一時半",
-        "reading": "いちじはん"
       },
       {
         "text": "参加",
@@ -6820,8 +6811,8 @@ window.JAPANESE_READING_SETS = [
         "meaning": "重點詞"
       },
       {
-        "word": "調べる",
-        "kana": "しらべる",
+        "word": "調べ",
+        "kana": "しらべ",
         "meaning": "重點詞"
       },
       {
@@ -6857,8 +6848,8 @@ window.JAPANESE_READING_SETS = [
         "reading": "のりかた"
       },
       {
-        "text": "調べる",
-        "reading": "しらべる"
+        "text": "調べ",
+        "reading": "しらべ"
       },
       {
         "text": "来週",
@@ -9181,10 +9172,6 @@ window.JAPANESE_READING_SETS = [
       {
         "text": "場合",
         "reading": "ばあい"
-      },
-      {
-        "text": "十分前",
-        "reading": "じゅっぷんまえ"
       },
       {
         "text": "工事",
