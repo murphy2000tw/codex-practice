@@ -34824,5 +34824,126 @@
     "example": "道具は各自で持ってきてください。",
     "exampleKana": "どうぐはかくじでもってきてください。",
     "exampleMeaning": "工具請各自帶來。"
+  },
+  {
+    "id": 3167,
+    "level": "N4",
+    "word": "利用",
+    "kana": "りよう",
+    "meaning": "利用、使用",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "図書館を利用するにはカードが必要です。",
+    "exampleKana": "としょかんをりようするにはカードがひつようです。",
+    "exampleMeaning": "要使用圖書館需要卡片。"
+  },
+  {
+    "id": 3168,
+    "level": "N4",
+    "word": "地域",
+    "kana": "ちいき",
+    "meaning": "地區、區域",
+    "partOfSpeech": "名詞",
+    "example": "この地域では毎月清掃活動があります。",
+    "exampleKana": "このちいきではまいつきせいそうかつどうがあります。",
+    "exampleMeaning": "這個地區每個月有清掃活動。"
+  },
+  {
+    "id": 3169,
+    "level": "N4",
+    "word": "清掃",
+    "kana": "せいそう",
+    "meaning": "清掃、打掃",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "公園の清掃は朝九時から始まります。",
+    "exampleKana": "こうえんのせいそうはあさくじからはじまります。",
+    "exampleMeaning": "公園的清掃從早上九點開始。"
+  },
+  {
+    "id": 3170,
+    "level": "N4",
+    "word": "室内",
+    "kana": "しつない",
+    "meaning": "室內",
+    "partOfSpeech": "名詞",
+    "example": "雨の日は室内で活動します。",
+    "exampleKana": "あめのひはしつないでかつどうします。",
+    "exampleMeaning": "下雨天在室內活動。"
+  },
+  {
+    "id": 3171,
+    "level": "N4",
+    "word": "通知",
+    "kana": "つうち",
+    "meaning": "通知",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "学校から新しい通知が届きました。",
+    "exampleKana": "がっこうからあたらしいつうちがとどきました。",
+    "exampleMeaning": "收到了學校的新通知。"
+  },
+  {
+    "id": 3172,
+    "level": "N4",
+    "word": "活動",
+    "kana": "かつどう",
+    "meaning": "活動",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "週末に地域の活動に参加します。",
+    "exampleKana": "しゅうまつにちいきのかつどうにさんかします。",
+    "exampleMeaning": "週末參加地區的活動。"
+  },
+  {
+    "id": 3173,
+    "level": "N4",
+    "word": "会員",
+    "kana": "かいいん",
+    "meaning": "會員",
+    "partOfSpeech": "名詞",
+    "example": "会員はこの部屋を無料で利用できます。",
+    "exampleKana": "かいいんはこのへやをむりょうでりようできます。",
+    "exampleMeaning": "會員可以免費使用這個房間。"
+  },
+  {
+    "id": 3174,
+    "level": "N4",
+    "word": "登録",
+    "kana": "とうろく",
+    "meaning": "登錄、註冊",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "利用する前に名前を登録してください。",
+    "exampleKana": "りようするまえになまえをとうろくしてください。",
+    "exampleMeaning": "使用前請登錄姓名。"
+  },
+  {
+    "id": 3175,
+    "level": "N4",
+    "word": "募集",
+    "kana": "ぼしゅう",
+    "meaning": "招募、募集",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "文化教室の参加者を募集しています。",
+    "exampleKana": "ぶんかきょうしつのさんかしゃをぼしゅうしています。",
+    "exampleMeaning": "正在招募文化教室的參加者。"
+  },
+  {
+    "id": 3176,
+    "level": "N4",
+    "word": "集合",
+    "kana": "しゅうごう",
+    "meaning": "集合",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "参加者は駅の前に集合してください。",
+    "exampleKana": "さんかしゃはえきのまえにしゅうごうしてください。",
+    "exampleMeaning": "參加者請在車站前集合。"
+  },
+  {
+    "id": 3177,
+    "level": "N4",
+    "word": "着く",
+    "kana": "つく",
+    "meaning": "到達",
+    "partOfSpeech": "動詞",
+    "example": "荷物は明日の午後に着く予定です。",
+    "exampleKana": "にもつはあしたのごごにつくよていです。",
+    "exampleMeaning": "包裹預計明天下午到達。"
   }
 ]

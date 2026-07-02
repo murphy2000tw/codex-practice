@@ -10,7 +10,7 @@ const expectedQuestionBanks = {
   "reading articles": 50,
   "reading questions": 200,
   "fill-in-the-blank questions": 200,
-  "Japanese vocabulary cards": 3166,
+  "Japanese vocabulary cards": 3177,
   "Japanese grammar cards": 290,
 };
 
