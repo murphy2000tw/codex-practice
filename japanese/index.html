@@ -28,7 +28,7 @@
         <p class="category-count">主入口整理：單字、文法、閱讀、聽力</p>
       </div>
       <div class="entry-grid japanese-main-entry-grid">
-        <button class="word-card entry-card japanese-main-entry-card is-active" type="button" data-japanese-entry="vocab" aria-pressed="true">
+        <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="vocab" aria-pressed="false">
           <span class="card-number">01</span>
           <h3 class="entry-card-title">單字</h3>
           <p class="entry-card-text">進入現有日文單字卡與單字測驗，保留正式單字資料顯示。</p>
@@ -38,7 +38,7 @@
           <span class="card-number">02</span>
           <h3 class="entry-card-title">文法</h3>
           <p class="entry-card-text">基礎文法卡與文法測驗入口；正式內容持續整理中。</p>
-          <span class="entry-card-action">基礎頁</span>
+          <span class="entry-card-action is-muted">基礎頁（整理中）</span>
         </button>
         <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="reading" aria-pressed="false">
           <span class="card-number">03</span>
@@ -55,19 +55,7 @@
       </div>
     </section>
 
-    <section class="japanese-tab-panel" aria-labelledby="japanese-tab-title">
-      <div>
-        <p class="filter-label" id="japanese-tab-title">日文學習</p>
-      </div>
-      <div class="japanese-tab-switch" role="tablist" aria-label="日文學習分類切換">
-        <button id="japaneseVocabTab" class="japanese-tab-button is-active" type="button" role="tab" aria-selected="true" aria-controls="japaneseMainContent" data-japanese-tab="vocab">單字</button>
-        <button id="japaneseGrammarTab" class="japanese-tab-button" type="button" role="tab" aria-selected="false" aria-controls="japaneseMainContent" data-japanese-tab="grammar">文法</button>
-        <button id="japaneseReadingTab" class="japanese-tab-button" type="button" role="tab" aria-selected="false" aria-controls="japaneseReadingPanel" data-japanese-tab="reading">閱讀</button>
-        <button id="japaneseListeningTab" class="japanese-tab-button" type="button" role="tab" aria-selected="false" aria-controls="japaneseListeningPanel" data-japanese-tab="listening">聽力</button>
-      </div>
-    </section>
-
-    <div id="japaneseMainContent">
+    <div id="japaneseMainContent" hidden>
     <section class="category-panel" aria-labelledby="category-title">
       <div class="category-header">
         <h2 id="category-title">分類篩選</h2>

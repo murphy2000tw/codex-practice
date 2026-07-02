@@ -195,7 +195,7 @@ let activeGrammarLevelId = "all";
 let searchQuery = "";
 let grammarSearchQuery = "";
 let activeMode = "cards";
-let activeJapaneseTab = "vocab";
+let activeJapaneseTab = "home";
 let currentQuizQuestion = null;
 let quizAnsweredCountValue = 0;
 let quizCorrectCountValue = 0;
@@ -236,9 +236,9 @@ async function switchJapaneseTab(tab) {
   });
 
   const isVocabOrGrammarTab = tab === "vocab" || tab === "grammar";
-  japaneseMainContent.hidden = !isVocabOrGrammarTab;
-  japaneseReadingPanel.hidden = tab !== "reading";
-  japaneseListeningPanel.hidden = tab !== "listening";
+  if (japaneseMainContent) japaneseMainContent.hidden = !isVocabOrGrammarTab;
+  if (japaneseReadingPanel) japaneseReadingPanel.hidden = tab !== "reading";
+  if (japaneseListeningPanel) japaneseListeningPanel.hidden = tab !== "listening";
   updateModeButtonsForJapaneseTab();
 
   if (tab === "vocab" && isGrammarMode()) {
