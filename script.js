@@ -167,11 +167,14 @@ const quizAccuracy = document.querySelector("#quizAccuracy");
 const grammarQuizTypeControls = document.querySelector("#grammarQuizTypeControls");
 const grammarMeaningQuizTypeButton = document.querySelector("#grammarMeaningQuizTypeButton");
 const grammarClozeQuizTypeButton = document.querySelector("#grammarClozeQuizTypeButton");
+const japaneseContent = document.querySelector("#japaneseContent");
+const japaneseHomeContent = document.querySelector("#japaneseHomeContent");
 const japaneseMainContent = document.querySelector("#japaneseMainContent");
 const japaneseReadingPanel = document.querySelector("#japaneseReadingPanel");
 const japaneseListeningPanel = document.querySelector("#japaneseListeningPanel");
 const japaneseTabButtons = document.querySelectorAll(".japanese-tab-button");
 const japaneseEntryButtons = document.querySelectorAll("[data-japanese-entry]");
+const japaneseBackHomeButtons = document.querySelectorAll("[data-japanese-back-home]");
 const modeButtons = document.querySelectorAll(".mode-button[data-mode-group]");
 const modePanels = document.querySelectorAll("[data-mode-panel]");
 
@@ -195,6 +198,7 @@ let activeGrammarLevelId = "all";
 let searchQuery = "";
 let grammarSearchQuery = "";
 let activeMode = "cards";
+let currentJapaneseView = "home";
 let activeJapaneseTab = "home";
 let currentQuizQuestion = null;
 let quizAnsweredCountValue = 0;
@@ -210,9 +214,19 @@ let grammarQuizRoundSeenKeys = new Set();
 let grammarHasLoaded = false;
 let grammarIsLoading = false;
 
+function isJapaneseHomeTab() {
+  return currentJapaneseView === "home";
+}
+
+function getModePanelView(view) {
+  return view === "vocabulary" ? "vocab" : view;
+}
+
 function updateModeButtonsForJapaneseTab() {
+  const activeModePanelView = getModePanelView(currentJapaneseView);
+
   modePanels.forEach((panel) => {
-    panel.hidden = panel.dataset.modePanel !== activeJapaneseTab;
+    panel.hidden = isJapaneseHomeTab() || panel.dataset.modePanel !== activeModePanelView;
   });
 
   modeButtons.forEach((button) => {
@@ -220,31 +234,55 @@ function updateModeButtonsForJapaneseTab() {
   });
 }
 
-async function switchJapaneseTab(tab) {
-  activeJapaneseTab = tab;
+function normalizeJapaneseView(view) {
+  if (view === "vocab") return "vocabulary";
+  if (["home", "vocabulary", "reading", "listening"].includes(view)) return view;
+  return "home";
+}
+
+function getJapaneseViewElement(view) {
+  if (view === "home") return japaneseHomeContent;
+  if (view === "vocabulary") return japaneseMainContent;
+  if (view === "reading") return japaneseReadingPanel;
+  if (view === "listening") return japaneseListeningPanel;
+  return japaneseHomeContent;
+}
+
+function renderJapaneseView(view) {
+  const normalizedView = normalizeJapaneseView(view);
+  const nextView = getJapaneseViewElement(normalizedView) ? normalizedView : "home";
+  currentJapaneseView = nextView;
+  activeJapaneseTab = getModePanelView(nextView);
+
+  const nextViewElement = getJapaneseViewElement(nextView);
+  if (japaneseContent && nextViewElement) {
+    japaneseContent.replaceChildren(nextViewElement);
+  }
+
+  if (japaneseHomeContent) japaneseHomeContent.hidden = nextView !== "home";
+  if (japaneseMainContent) japaneseMainContent.hidden = nextView !== "vocabulary";
+  if (japaneseReadingPanel) japaneseReadingPanel.hidden = nextView !== "reading";
+  if (japaneseListeningPanel) japaneseListeningPanel.hidden = nextView !== "listening";
 
   japaneseTabButtons.forEach((button) => {
-    const isActive = button.dataset.japaneseTab === tab;
+    const isActive = button.dataset.japaneseTab === nextView;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-selected", String(isActive));
   });
 
   japaneseEntryButtons.forEach((button) => {
-    const isActive = button.dataset.japaneseEntry === tab;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
+    button.classList.remove("is-active");
+    button.setAttribute("aria-pressed", "false");
   });
 
-  const isVocabOrGrammarTab = tab === "vocab" || tab === "grammar";
-  if (japaneseMainContent) japaneseMainContent.hidden = !isVocabOrGrammarTab;
-  if (japaneseReadingPanel) japaneseReadingPanel.hidden = tab !== "reading";
-  if (japaneseListeningPanel) japaneseListeningPanel.hidden = tab !== "listening";
   updateModeButtonsForJapaneseTab();
+}
 
-  if (tab === "vocab" && isGrammarMode()) {
-    await switchMode("cards");
-  } else if (tab === "grammar" && !isGrammarMode()) {
-    await switchMode("grammar");
+async function switchJapaneseTab(tab) {
+  renderJapaneseView(tab);
+
+  if (normalizeJapaneseView(tab) === "vocabulary") {
+    await switchMode(isGrammarMode() ? "cards" : activeMode);
   } else if (tab === "reading" && typeof initializeReadingPanel === "function") {
     initializeReadingPanel();
   }
@@ -253,6 +291,11 @@ async function switchJapaneseTab(tab) {
 function isGrammarMode() {
   return activeMode === "grammar" || activeMode === "grammar-quiz";
 }
+
+window.isGrammarMode = isGrammarMode;
+Object.defineProperty(window, "activeMode", {
+  get: () => activeMode,
+});
 
 function isQuizMode() {
   return activeMode === "quiz" || activeMode === "grammar-quiz";
@@ -1323,8 +1366,12 @@ async function loadVocabulary() {
     }
 
     vocabulary = await response.json();
-    renderCategoryFilters();
-    applyCategory(activeCategoryId);
+    filteredVocabulary = getFilteredVocabulary();
+
+    if (!isJapaneseHomeTab()) {
+      renderCategoryFilters();
+      applyCategory(activeCategoryId);
+    }
   } catch (error) {
     console.error(error);
     renderStatus("目前無法載入單字資料，請確認 vocabulary.json 是否存在且格式正確。");
@@ -1401,6 +1448,8 @@ clearSearchButton.addEventListener("click", () => {
   wordSearchInput.focus();
 });
 
+window.switchMode = switchMode;
+
 cardModeButton.addEventListener("click", () => switchMode("cards"));
 quizModeButton.addEventListener("click", () => switchMode("quiz"));
 grammarModeButton.addEventListener("click", () => switchMode("grammar"));
@@ -1417,9 +1466,12 @@ japaneseTabButtons.forEach((button) => {
 japaneseEntryButtons.forEach((button) => {
   button.addEventListener("click", () => switchJapaneseTab(button.dataset.japaneseEntry));
 });
+japaneseBackHomeButtons.forEach((button) => {
+  button.addEventListener("click", () => renderJapaneseView("home"));
+});
 
 clearSearchButton.disabled = true;
-updateModeButtonsForJapaneseTab();
+renderJapaneseView("home");
 updateQuizStats();
 
 loadVocabulary();
@@ -1883,3 +1935,5 @@ function initializeReadingPanel() {
   readingPanelInitialized = true;
   setReadingMode("practice");
 }
+
+window.initializeReadingPanel = initializeReadingPanel;

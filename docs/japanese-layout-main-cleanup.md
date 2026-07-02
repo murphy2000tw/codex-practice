@@ -129,3 +129,297 @@
 ### 是否仍有殘留問題
 
 靜態檢查與既有 audit script 未發現主入口舊 tab、分類篩選、詞性分類或單字統計預設顯示的殘留問題。此環境未提供可直接執行的瀏覽器實測工具；如需視覺驗收，建議後續再以實機或 Playwright 補做桌機與手機寬度截圖確認。
+
+## 後續修正：主入口殘留區塊與按鈕顏色根因修正
+
+### 問題原因
+
+實際根因在日文入口的初始化流程：`activeJapaneseTab` 預設為 `home`，但 `loadVocabulary()` 載入 `vocabulary.json` 後仍立即呼叫 `renderCategoryFilters()` 與 `applyCategory(activeCategoryId)`，進而更新分類篩選、單字統計、搜尋狀態與單字卡。也就是說，四大功能方塊已經出現在主入口後，舊單字頁的 render 流程仍會被初始化路徑觸發。
+
+此外，主入口文法卡仍使用可點擊的 `data-japanese-entry="grammar"` 入口與 `is-foundation` 樣式，導致尚未正式開放的文法功能看起來像可用按鈕，且按鈕顏色與 disabled / muted 規則不一致。
+
+### 修正內容
+
+1. 新增日文首頁狀態判斷，讓首頁狀態下不顯示任何 mode panel，也不在資料載入完成時執行單字分類與單字卡 render。
+2. `loadVocabulary()` 現在只在非主入口狀態下呼叫 `renderCategoryFilters()` 與 `applyCategory(activeCategoryId)`；主入口載入資料後僅保留資料於記憶體，不展開舊單字區塊。
+3. 點擊「進入單字」時才呼叫單字頁模式切換與 render，因此搜尋、分類篩選、詞性分類、程度篩選、單字卡與單字測驗入口只會在單字頁出現。
+4. 點擊「進入閱讀」時才顯示閱讀 panel，閱讀練習與閱讀測驗內容不會混入主入口。
+5. 文法卡改為準備中卡片，不再掛 `data-japanese-entry="grammar"`，避免開啟尚未完成的文法基礎頁或假流程。
+6. 文法與聽力的準備中按鈕統一使用淡灰底與灰色文字，不使用咖啡色、深棕色或主 CTA 色。
+7. 補上 `scripts/check-japanese-main-entry.js` 靜態檢查，確認日文主入口不把未完成入口當成可導航卡片，並保留首頁 render guard。
+
+### 目前主入口顯示內容
+
+日文主入口現在只應顯示頂部導覽、日文學習主入口標題與說明，以及「單字、文法、閱讀、聽力」四大功能方塊。主入口不應再顯示舊 tab、分類篩選、詞性分類、程度篩選、3179 個單字統計、單字卡、單字搜尋、單字測驗入口、閱讀練習或閱讀測驗內容。
+
+### 單字頁與閱讀頁狀態
+
+單字頁仍由「進入單字」開啟，並保留搜尋、分類篩選、詞性分類、程度篩選、單字卡與單字測驗入口。閱讀頁仍由「進入閱讀」開啟，並保留閱讀練習與閱讀測驗切換；本次未修改閱讀測驗 ruby 規則。
+
+### 檢查結果
+
+- 日文主入口不再顯示舊 tab：已由 render guard 與靜態檢查確認。
+- 日文主入口不再顯示分類篩選：已由 `loadVocabulary()` 首頁 guard 與靜態檢查確認。
+- 日文主入口不再顯示 3179 單字統計：首頁不再觸發分類統計 render；`vocabulary.json` 筆數仍維持 3179。
+- 點進單字後，單字頁功能仍正常：單字入口會呼叫既有 `switchMode()` 流程，保留既有單字功能。
+- 點進閱讀後，閱讀頁功能仍正常：閱讀入口仍呼叫既有閱讀初始化流程。
+- 文法 / 聽力準備中樣式：兩者皆使用 muted disabled 風格，不使用主 CTA 或咖啡色系。
+- `node scripts/auditSiteHealth.js`：通過。
+- `node scripts/audit-reading-vocabulary.js`：通過。
+- `node scripts/check-reading-ruby.js`：通過，無 warning。
+- `node scripts/check-japanese-main-entry.js`：通過。
+- `vocabulary.json` 筆數確認：3179。
+- 仍有殘留問題：未發現主入口殘留舊單字區塊；本次環境未執行真實瀏覽器截圖。
+
+## 後續修正：四大功能切換狀態
+
+### 問題原因
+
+前一版已阻止日文首頁初始載入時直接展開單字分類與單字卡，但四大功能方塊本身仍是頁面上方的固定 DOM。點擊「進入單字」時，程式只把 `#japaneseMainContent` 從 hidden 切成顯示，並啟動既有 `switchMode()` 單字流程；它沒有把首頁 hero 與四大功能方塊切出畫面。因此使用者看到的效果就是「首頁仍在，上方四大卡片不消失，單字內容追加在下方」。
+
+### 修正的 view state 與 render 條件
+
+本次新增單一日文 view render 入口 `renderJapaneseView(view)`，由同一個狀態決定日文首頁、單字頁、閱讀頁與聽力 placeholder 哪一個可以顯示。首頁 hero 與四大功能方塊被包在 `#japaneseHomeContent`，切到 `vocab` 或 `reading` 時會關閉首頁容器；返回時切回 `home`，只顯示首頁容器，不顯示單字或閱讀 panel。
+
+點擊「進入單字」現在會先切到 `vocab` view，讓四大功能方塊消失，再啟動既有單字模式；點擊「進入閱讀」會切到 `reading` view，讓四大功能方塊消失，再初始化閱讀內容。功能頁新增「返回日文首頁」按鈕，可切回 `home` view。
+
+### 日文首頁現在顯示內容
+
+日文首頁只顯示頂部導覽、日文學習主入口標題與說明，以及單字、文法、閱讀、聽力四大功能方塊。首頁不顯示單字分類、單字篩選、單字卡、單字統計、舊 tab、閱讀練習或閱讀測驗內容。
+
+### 單字頁現在顯示內容
+
+單字頁顯示日文單字標題、返回日文首頁按鈕、搜尋、分類篩選、詞性分類、程度篩選、單字練習 / 單字測驗切換、單字卡與既有單字測驗流程。單字頁不再同時顯示日文首頁四大功能方塊、主入口說明、文法卡、閱讀卡或聽力卡。
+
+### 閱讀頁現在顯示內容
+
+閱讀頁顯示日文閱讀標題、返回日文首頁按鈕、閱讀練習 / 閱讀測驗切換，以及既有閱讀資料與題目。閱讀練習模式仍依既有邏輯顯示 ruby；閱讀測驗模式仍不顯示 ruby。本次未修改閱讀測驗 ruby 規則。
+
+### 文法 / 聽力狀態
+
+文法與聽力維持準備中 / muted 狀態，不展開正式文法內容、聽力內容、假音檔或假流程，也不會觸發單字頁或閱讀頁內容。
+
+### 檢查結果
+
+- `node scripts/auditSiteHealth.js`：通過。
+- `node scripts/audit-reading-vocabulary.js`：通過。
+- `node scripts/check-reading-ruby.js`：通過，無 warning。
+- `node scripts/check-japanese-main-entry.js`：通過，並新增檢查首頁容器隔離、返回首頁控制與 `renderJapaneseView(view)` guard。
+- `vocabulary.json` 筆數確認：3179。
+- 仍有殘留問題：未發現點進單字或閱讀後四大功能方塊仍同時顯示的靜態殘留；本次環境未執行真實瀏覽器 viewport 截圖。
+
+## 後續修正：單一 View 狀態切換
+
+### 真正問題原因
+
+前一版雖然新增了 `renderJapaneseView(view)` 並切換各區塊的 `hidden` 狀態，但 DOM 結構仍然是「首頁容器、單字容器、閱讀容器」並列存在於同一個頁面下。點擊「進入單字」時，程式只是把單字容器顯示出來，若瀏覽器或既有樣式 / 實機渲染沒有完全反映首頁容器 hidden 狀態，就會看到首頁四大功能方塊仍留在上方，而單字分類、篩選與單字卡被顯示在其下方。根因是仍有多個日文 view 容器同時掛在畫面主區域中，沒有真正用單一容器替換目前 view。
+
+### 原本為什麼會追加單字內容
+
+「進入單字」按鈕是 `button`，不是外部連結，也不是頁內錨點；問題不是 scroll，而是 click handler 只切換既有容器顯示狀態。原本 `#japaneseHomeContent` 與 `#japaneseMainContent` 同時存在於 DOM 主流程中，單字 view 啟動後 `switchMode()` 會繼續渲染分類、統計與單字卡到 `#japaneseMainContent`，因此在實機上呈現為單字頁內容被追加到首頁下方。
+
+### 修正後使用的 view state 與 render 條件
+
+本次新增明確的 `currentJapaneseView = 'home'` 狀態，並建立唯一日文主內容容器 `#japaneseContent`。`renderJapaneseView(view)` 會先透過 `normalizeJapaneseView(view)` 取得標準 view，再用 `japaneseContent.replaceChildren(nextViewElement)` 將日文主內容容器清空並替換成唯一 view。也就是說，切到 `vocabulary` 時，首頁節點會被移出主內容容器；切回 `home` 時，單字節點會被移出主內容容器。這不是只靠 CSS 隱藏，而是以單一容器替換節點，避免首頁與單字頁同時 render。
+
+### 日文首頁現在只顯示哪些內容
+
+`home` view 只顯示日文學習主入口標題、日文學習說明，以及單字、文法、閱讀、聽力四大功能方塊。首頁 view 不顯示單字搜尋、分類篩選、詞性篩選、程度篩選、3179 單字統計、單字卡、閱讀練習或閱讀測驗。
+
+### 單字頁現在只顯示哪些內容
+
+`vocabulary` view 只顯示日文單字頁標題、返回日文首頁按鈕、單字搜尋、分類篩選、詞性分類、程度篩選、單字練習 / 單字測驗入口與單字卡。單字頁不顯示日文主入口四大功能方塊、文法卡、閱讀卡、聽力卡或主入口說明。
+
+### 閱讀頁現在只顯示哪些內容
+
+`reading` view 只顯示日文閱讀頁標題、返回日文首頁按鈕、閱讀練習 / 閱讀測驗切換與既有閱讀內容。閱讀練習 ruby 與閱讀測驗不顯示 ruby 的規則維持既有邏輯，本次未修改閱讀 ruby 規則。
+
+### 文法 / 聽力目前狀態
+
+文法與聽力維持準備中 / muted 樣式，不進入正式功能頁，不展開假文法、假聽力、假測驗流程，也不會觸發單字頁或閱讀頁內容。
+
+### 按鈕顏色修正結果
+
+「進入單字」與「進入閱讀」保留日文主色橘紅 CTA。文法與聽力準備中按鈕維持淡灰底、灰色文字與非正式可用狀態，不使用咖啡色、深棕色或主 CTA 顏色。
+
+### 防呆檢查結果
+
+`node scripts/check-japanese-main-entry.js` 已更新並通過。檢查項目包含：存在 `currentJapaneseView` 狀態、存在單一 `#japaneseContent` 容器、`renderJapaneseView(view)` 使用 `replaceChildren()` 替換唯一 view、首頁與單字容器不應同時作為主內容顯示，以及首頁 render path 不直接呼叫 vocabulary filter / cards render。
+
+### 三個主要 script 結果
+
+- `node scripts/auditSiteHealth.js`：通過。
+- `node scripts/audit-reading-vocabulary.js`：通過。
+- `node scripts/check-reading-ruby.js`：通過，無 warning。
+
+### `vocabulary.json` 筆數確認
+
+Python 檢查確認 `vocabulary.json` 仍為 3179 筆。本次未修改 `vocabulary.json`，未新增或刪除任何日文單字。
+
+### 是否仍有殘留問題
+
+靜態檢查與既有 audit script 未發現首頁與單字頁同時 render 的殘留路徑。此環境未提供可直接執行的瀏覽器或手機 viewport smoke test 工具；實機視覺仍建議後續以瀏覽器補驗。
+
+## 後續修正：日文首頁與單字頁實際切換
+
+### 真正問題原因
+
+本次重新追查後確認，「進入單字」入口是 `<button>`，不是 `<a href="#...">`，因此問題不是頁內錨點或 scroll。程式也已加入 `currentJapaneseView` 與單一 `#japaneseContent` 容器，但日文頁引用的共用資產仍停在舊 query string：`style.css?v=1.8` 與 `script.js?v=1.9`。實機若沿用快取資產，就會繼續執行舊的 click handler：只把單字區塊展開在主入口下方，而沒有執行新的 `japaneseContent.replaceChildren(nextViewElement)` 單一 view 替換邏輯。因此使用者看到四大功能方塊仍在上方，單字分類與單字卡追加在下方，也看不到新版單字頁頁首的「返回日文首頁」按鈕。
+
+### 為什麼點單字後會在首頁下方追加內容
+
+舊資產中的流程仍是靜態首頁區塊與單字區塊同時存在於 DOM，點擊「進入單字」只切換單字區塊顯示並觸發既有單字 render，沒有用單一容器替換首頁 view。當瀏覽器未載入新版 `script.js` 時，就不會執行 `currentJapaneseView = 'vocabulary'` 與 `#japaneseContent.replaceChildren(...)`，所以畫面仍像「首頁 + 下方單字內容」。
+
+### 修正使用的 view 切換方式
+
+目前保留單一日文內容容器 `#japaneseContent` 與 `currentJapaneseView`。`renderJapaneseView(view)` 會標準化 view 名稱，取得唯一 view 節點，並以 `japaneseContent.replaceChildren(nextViewElement)` 清空並替換日文主內容。此次追加修正日文頁資產版本，將日文頁載入的 CSS 與 JS query string 更新到 `v=2.0`，確保實機會載入包含單一 view 切換與返回按鈕的新資產，而不是沿用舊版追加式邏輯。
+
+### 單字頁返回日文首頁按鈕
+
+單字頁上方保留明確的「返回日文首頁」按鈕，按鈕使用 `data-japanese-back-home`，click handler 會呼叫 `renderJapaneseView('home')`。返回後 `#japaneseContent` 只保留首頁 view，單字搜尋、分類、統計與單字卡會從日文主內容容器移出。
+
+### 日文首頁現在顯示內容
+
+日文首頁 view 只顯示頂部導覽下方的日文學習標題 / 說明，以及單字、文法、閱讀、聽力四大功能方塊。首頁不顯示單字搜尋、分類篩選、詞性分類、3179 個單字統計、單字卡、單字測驗入口、閱讀練習、閱讀測驗或舊日文 tab。
+
+### 單字頁現在顯示內容
+
+單字 view 只顯示日文單字頁標題、返回日文首頁按鈕、單字搜尋、分類篩選、詞性分類、程度篩選、單字練習 / 單字測驗入口與單字卡。單字頁不顯示首頁四大功能方塊、文法卡、閱讀卡、聽力卡或日文首頁說明。
+
+### 閱讀頁是否仍正常
+
+閱讀 view 仍由同一個 view 切換入口顯示，保留閱讀頁標題、返回日文首頁按鈕、閱讀練習 / 閱讀測驗切換與既有閱讀內容；本次未修改閱讀 ruby 規則。
+
+### 按鈕顏色是否修正
+
+「進入單字」與「進入閱讀」仍使用日文主色橘紅。文法與聽力維持準備中 disabled / muted 樣式，使用淡灰底與灰色文字，不使用咖啡色、深棕色或主 CTA 顏色。
+
+### 三個主要 script 結果
+
+- `node scripts/auditSiteHealth.js`：通過。
+- `node scripts/audit-reading-vocabulary.js`：通過。
+- `node scripts/check-reading-ruby.js`：通過，無 warning。
+- `node scripts/check-japanese-main-entry.js`：通過，並新增檢查日文頁必須載入 `script.js?v=2.0` 與 `style.css?v=2.0`，避免實機沿用舊快取資產。
+
+### `vocabulary.json` 筆數確認
+
+Python 檢查確認 `vocabulary.json` 仍為 3179 筆。本次未修改 `vocabulary.json`，未新增或刪除日文單字。
+
+### 是否仍有殘留問題
+
+靜態檢查與既有 audit script 未發現首頁與單字頁同時顯示的程式路徑；本次主要補上實機快取破除，確保瀏覽器載入包含單一 view 切換的新 JS / CSS。此環境未提供可直接執行的瀏覽器或手機 viewport smoke test 工具，仍建議部署後以實機重新整理確認。
+
+## 後續修正：保留全站導覽與日文 view 互斥
+
+### 真正問題原因
+
+本次再追查時，先釐清「首頁 / 日文學習 / 英文學習」是全站導覽，應永久保留，不是錯誤，也不是單字頁的返回按鈕。真正問題仍集中在全站導覽下方的日文內容區：舊版 click handler 或快取腳本可能只展開 `#japaneseMainContent`，讓它出現在 `#japaneseHomeContent` 後面；也就是日文首頁四大功能方塊與單字內容是兩個同時存在的日文內容 section，而不是互斥 view。
+
+### 為什麼點單字後會在四大方塊下方追加內容
+
+「進入單字」是 `button`，不是頁內錨點；錯誤不是全站導覽，也不是 scroll。錯誤來源是日文內容區的 click flow 沒有在最後一步強制替換唯一 view：當舊 handler 先顯示單字區塊時，首頁區塊可能仍留在 DOM 主流程中，於是畫面變成「四大功能方塊 + 單字頁內容」。此外若實機載入舊資產，就看不到單字頁內的「返回日文首頁」按鈕。
+
+### 全站導覽與日文內容區的差異
+
+全站導覽位於 `#japaneseContent` 外面，包含「首頁 / 日文學習 / 英文學習」，本次不移除、不隱藏、不拿來當返回日文首頁按鈕。日文 view 互斥只作用於 `#japaneseContent` 內的 `home`、`vocabulary`、`reading`、`listening` 內容。
+
+### 修正的 wrapper / render 條件 / click handler
+
+本次在日文頁補上頁面層級的 `window.showJapaneseContentView(view)` 保險切換器，直接管理 `#japaneseContent` 內的 view。它會先標準化 `vocab` / `vocabulary`，再用 `japaneseContent.replaceChildren(nextElement)` 只保留單一 view，並同步設定其他日文 view 的 `hidden` 狀態。頁面層級 click delegation 會攔截 `[data-japanese-entry]` 與 `[data-japanese-back-home]`，呼叫同一個互斥切換器，確保即使舊 handler 先跑，最後仍由頁面層級保險切換把首頁四大方塊移出日文內容區。
+
+同時日文頁資產版本升到 `style.css?v=2.1` 與 `script.js?v=2.1`，確保實機載入包含這次保險切換的新 HTML / JS / CSS。
+
+### 單字頁返回日文首頁按鈕目前位置
+
+單字頁的「返回日文首頁」按鈕位於 `#japaneseMainContent` 內的 `.feature-page-header`，在「日文單字」標題旁。這是單字頁內容內的返回按鈕，不是全站導覽。點擊後會呼叫 `window.showJapaneseContentView('home')`，只顯示日文首頁四大功能方塊並移除單字內容。
+
+### 日文首頁目前顯示內容
+
+日文首頁 view 在全站導覽下方只顯示日文學習標題 / 說明，以及單字、文法、閱讀、聽力四大功能方塊；不顯示返回日文首頁按鈕、單字搜尋、分類、詞性、3179 統計、單字卡、閱讀練習、閱讀測驗或舊日文 tab。
+
+### 單字頁目前顯示內容
+
+單字頁 view 在全站導覽下方顯示「返回日文首頁」按鈕、日文單字標題、搜尋、分類 / 詞性 / 程度篩選、單字練習 / 單字測驗入口與單字卡；不顯示日文首頁四大方塊、文法卡、閱讀卡、聽力卡或首頁說明。
+
+### 閱讀頁是否同步確認
+
+閱讀頁同樣由 `window.showJapaneseContentView('reading')` 管理，會保留全站導覽但移除日文首頁四大方塊，顯示閱讀頁標題、返回日文首頁按鈕、閱讀練習 / 閱讀測驗與既有閱讀內容。本次未修改閱讀 ruby 規則：練習模式仍顯示 ruby，測驗模式仍不顯示 ruby。
+
+### 按鈕顏色修正結果
+
+「進入單字」與「進入閱讀」維持日文主色橘紅。文法與聽力維持 disabled / muted 樣式，使用淡灰底與灰色文字。「返回日文首頁」使用既有次要按鈕樣式，不使用咖啡色或深棕色異常樣式。
+
+### 三個主要 script 結果
+
+- `node scripts/auditSiteHealth.js`：通過。
+- `node scripts/audit-reading-vocabulary.js`：通過。
+- `node scripts/check-reading-ruby.js`：通過，無 warning。
+- `node scripts/check-japanese-main-entry.js`：通過，並檢查日文頁有 `window.showJapaneseContentView(view)`、`replaceChildren()` 與 `v=2.1` 資產版本。
+
+### `vocabulary.json` 筆數確認
+
+Python 檢查確認 `vocabulary.json` 仍為 3179 筆。本次未修改 `vocabulary.json`，未新增、刪除或調整任何日文單字。
+
+### 是否仍有殘留問題
+
+靜態檢查與既有 audit script 未發現首頁與單字頁同時存在於日文內容區的程式路徑。此環境未提供可直接執行的瀏覽器或手機 viewport smoke test 工具；部署後仍建議以實機重新整理並點擊「進入單字」「返回日文首頁」「進入閱讀」確認。
+
+## 後續修正：四大方塊不再作為 tab 使用
+
+### 真正問題原因
+
+實機仍看到「單字」卡片變成 active 外框，代表四大功能方塊仍被舊 click handler 當作同頁 tab / feature switch 使用。雖然頁面已有單一 view 切換器，但舊的 `japaneseEntryButtons` target listener 仍可能先執行，先把卡片加上 `is-active`、更新 `aria-pressed`，並顯示下方 vocabulary section；若後續互斥切換沒有在事件最前面攔截，就會呈現「四大卡片留在上方 + 單字內容在下方」。
+
+### 為什麼點單字後四大方塊會保留並出現 active 外框
+
+「進入單字」按鈕不是錨點，也不是 scroll；問題是四大卡片仍有可被舊 tab 邏輯處理的 `data-japanese-entry` click flow。舊 handler 會把被點擊的單字卡設為 active，這對 tab 是合理的，但對主入口導覽是錯誤的。主入口卡片不應在功能頁維持 selected / active 狀態，因為點擊後應離開 home view。
+
+### 修正的 click handler / view state / render 條件
+
+本次把日文頁的頁面層級 click delegation 改成 capture phase，並在攔截 `[data-japanese-entry]` 或 `[data-japanese-back-home]` 後呼叫 `event.stopImmediatePropagation()`。這會讓主入口卡片先被真正 view 導覽處理，不再落入舊 tab handler。切換時仍使用 `window.showJapaneseContentView(view)` 與 `japaneseContent.replaceChildren(nextElement)`，確保日文內容區一次只保留一個 view。
+
+同時在 `script.js` 中移除四大入口卡片的 active tab 呈現：`renderJapaneseView()` 會對所有 `japaneseEntryButtons` 移除 `is-active` 並將 `aria-pressed` 設為 `false`。四大方塊現在只作為 home view 的主入口導覽，不再作為同頁 tab。
+
+### 四大方塊目前只在哪個 view 顯示
+
+四大方塊只存在於 `home` view，也就是 `#japaneseHomeContent`。切到 `vocabulary` 或 `reading` 時，日文內容容器會替換為 `#japaneseMainContent` 或 `#japaneseReadingPanel`，因此不顯示四大方塊，也不會留下單字卡 active 外框。
+
+### 單字頁返回日文首頁按鈕位置
+
+單字頁的「返回日文首頁」按鈕位於 `#japaneseMainContent` 的 `.feature-page-header` 中，在日文單字頁標題旁。這個按鈕只在 vocabulary view 內出現，點擊後切回 home view，單字分類、搜尋、單字功能與單字卡會消失。
+
+### 閱讀頁返回日文首頁按鈕位置
+
+閱讀頁的「返回日文首頁」按鈕位於 `#japaneseReadingPanel` 的 `.feature-page-header` 中，在日文閱讀頁標題旁。閱讀頁同樣不顯示四大功能方塊。
+
+### 單字頁是否仍正常
+
+單字頁仍保留分類篩選、搜尋單字、單字功能、單字練習 / 單字測驗切換與單字卡。此次未修改日文單字測驗邏輯，也未修改 `vocabulary.json`。
+
+### 閱讀頁是否仍正常
+
+閱讀頁仍保留閱讀練習 / 閱讀測驗切換與既有閱讀內容。本次未修改閱讀 ruby 規則：閱讀練習模式仍顯示 ruby，閱讀測驗模式仍不顯示 ruby。
+
+### 按鈕顏色修正結果
+
+「進入單字」與「進入閱讀」保留日文主色橘紅。文法與聽力維持 disabled / muted 樣式。由於點擊單字後會離開 home view，單字卡片不會留在畫面上呈現 active 外框。
+
+### 防呆檢查結果
+
+新增並執行 `node scripts/check-japanese-view-isolation.js`。檢查內容包含：日文頁有單一 `#japaneseContent`、有 `window.showJapaneseContentView(view)`、有 `replaceChildren()`、入口 click 使用 capture + `stopImmediatePropagation()` 攔截舊 tab handler、四大入口只允許 `vocabulary` / `reading` 可導覽、文法 / 聽力維持準備中，以及 `script.js` 會移除入口卡片 `is-active`。
+
+### 三個主要 script 結果
+
+- `node scripts/auditSiteHealth.js`：通過。
+- `node scripts/audit-reading-vocabulary.js`：通過。
+- `node scripts/check-reading-ruby.js`：通過，無 warning。
+- `node scripts/check-japanese-main-entry.js`：通過。
+- `node scripts/check-japanese-view-isolation.js`：通過。
+
+### `vocabulary.json` 筆數確認
+
+Python 檢查確認 `vocabulary.json` 仍為 3179 筆。本次未修改 `vocabulary.json`，未新增、刪除或調整日文單字。
+
+### 是否仍有殘留問題
+
+靜態檢查未發現四大方塊作為 tab 留在 vocabulary / reading view 的路徑。此環境未提供可直接執行的瀏覽器或手機 viewport smoke test 工具；部署後建議以實機確認點擊「進入單字」後四大方塊與 active 外框都消失。
