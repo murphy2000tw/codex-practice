@@ -34945,5 +34945,27 @@
     "example": "荷物は明日の午後に着く予定です。",
     "exampleKana": "にもつはあしたのごごにつくよていです。",
     "exampleMeaning": "包裹預計明天下午到達。"
+  },
+  {
+    "id": 3178,
+    "level": "N4",
+    "word": "運動センター",
+    "kana": "うんどうセンター",
+    "meaning": "運動中心",
+    "partOfSpeech": "名詞",
+    "example": "週末に運動センターで泳ぎます。",
+    "exampleKana": "しゅうまつにうんどうセンターでおよぎます。",
+    "exampleMeaning": "週末在運動中心游泳。"
+  },
+  {
+    "id": 3179,
+    "level": "N4",
+    "word": "学生料金",
+    "kana": "がくせいりょうきん",
+    "meaning": "學生票價、學生費用",
+    "partOfSpeech": "名詞",
+    "example": "この映画館には学生料金があります。",
+    "exampleKana": "このえいがかんにはがくせいりょうきんがあります。",
+    "exampleMeaning": "這間電影院有學生票價。"
   }
 ]
