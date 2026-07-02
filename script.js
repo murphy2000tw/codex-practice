@@ -1814,7 +1814,7 @@ function renderReadingQuizQuestion() {
     const answer = readingQuizAnswers[answeredInPreviousSets + questionIndex];
     if (answer !== undefined) selectedAnswers[question.id] = answer;
   });
-  const card = createReadingSetCard(readingSet, { showFeedback: true, selectedAnswers, showRuby: true, onAnswer: (questionIndex, selectedIndex) => {
+  const card = createReadingSetCard(readingSet, { showFeedback: true, selectedAnswers, showRuby: false, onAnswer: (questionIndex, selectedIndex) => {
     if (readingQuizAnswers[answeredInPreviousSets + questionIndex] !== undefined) return;
     readingQuizAnswers[answeredInPreviousSets + questionIndex] = selectedIndex;
     renderReadingQuizQuestion();
