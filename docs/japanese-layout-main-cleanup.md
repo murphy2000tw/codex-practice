@@ -423,3 +423,51 @@ Python 檢查確認 `vocabulary.json` 仍為 3179 筆。本次未修改 `vocabul
 ### 是否仍有殘留問題
 
 靜態檢查未發現四大方塊作為 tab 留在 vocabulary / reading view 的路徑。此環境未提供可直接執行的瀏覽器或手機 viewport smoke test 工具；部署後建議以實機確認點擊「進入單字」後四大方塊與 active 外框都消失。
+
+## 後續修正：四大方塊納入 home view 容器
+
+### 真正問題原因
+
+本次重新檢查 `japanese/index.html` 與 `script.js` 後確認，日文四大功能卡片本身位於 `#japaneseHomeContent`，而單字內容位於同一個日文內容 root `#japaneseContent` 底下的另一個同層容器 `#japaneseMainContent`。靜態 DOM 初始結構是：全站導覽在 `#japaneseContent` 外面；日文內容 root `#japaneseContent` 裡面依序放 `#japaneseHomeContent`、`#japaneseMainContent`、`#japaneseReadingPanel` 與 `#japaneseListeningPanel`。
+
+正式站仍出現「四大方塊 + 單字頁內容」的關鍵風險，是頁面在載入 `script.js` 後又執行一段頁面內 inline view 切換器。外部 `script.js` 會先呼叫 `renderJapaneseView("home")`，把 `#japaneseContent` 替換成只剩 `#japaneseHomeContent`；這會讓 `#japaneseMainContent` 與 `#japaneseReadingPanel` 從 document 中移出。接著 inline script 再用 `document.querySelector("#japaneseMainContent")` 與 `document.querySelector("#japaneseReadingPanel")` 建立 views map 時，可能取得不到已被移出主 document 的功能頁節點。這會讓頁面層級保險切換器不再可靠，正式站若又受到快取或舊 handler 影響，就可能退回「首頁容器留在上方、單字內容顯示在下方」的錯誤體驗。
+
+### 四大方塊原本所在 DOM 容器
+
+四大方塊原本就在 `#japaneseHomeContent` 內的 `<section class="entry-section japanese-main-entry-section">`，四張卡片的外層 grid 是 `<div class="entry-grid japanese-main-entry-grid">`。其中可導覽的兩張卡是 `data-japanese-entry="vocabulary"` 與 `data-japanese-entry="reading"`；文法與聽力是準備中卡片，沒有正式導覽入口。
+
+### 為什麼之前只替換下方內容仍會留下四大方塊
+
+若 click flow 只處理 `#japaneseMainContent`，或只把單字頁內容 append / 顯示在首頁容器後方，`#japaneseHomeContent` 裡的 hero 與四大方塊不會被移出。因此畫面會變成「日文主入口標題、日文四大功能方塊、單字頁內容」。正確做法必須讓 `#japaneseHomeContent`、`#japaneseMainContent` 與 `#japaneseReadingPanel` 成為同一個 root 底下互斥的 top-level view，而不是讓單字內容只替換四大方塊下方的小容器。
+
+### 本次修正方式
+
+本次保留單一日文內容 root `#japaneseContent`，並移除日文頁底部重複的 inline view 切換器，避免它在外部 `script.js` 已移動 view 節點後重新查詢 DOM 而拿到不完整 views map。日文 view 切換統一由 `script.js` 的 `renderJapaneseView(view)` 與 `window.showJapaneseContentView = switchJapaneseTab` 負責，切換時會對同一個 `#japaneseContent` 使用 `replaceChildren(nextViewElement)`，讓 home / vocabulary / reading / listening 同一時間只會有一個 view 留在日文內容 root 中。
+
+### 單字頁目前 view 結構
+
+單字頁是 `#japaneseMainContent`。它是 `#japaneseContent` 的 top-level vocabulary view，內容最上方是 `.feature-page-header`，其中包含「返回日文首頁」按鈕，按鈕具有 `data-japanese-back-home`。返回按鈕下方才是「日文單字」、分類篩選、搜尋單字、單字功能、單字測驗區與 `#vocabularyCards` 單字卡容器。
+
+### 閱讀頁目前 view 結構
+
+閱讀頁是 `#japaneseReadingPanel`。它是 `#japaneseContent` 的 top-level reading view，內容最上方同樣有 `.feature-page-header` 與 `data-japanese-back-home` 的「返回日文首頁」按鈕。閱讀功能區保留「閱讀練習」與「閱讀測驗」切換；本次沒有修改閱讀測驗 ruby 規則，閱讀練習仍顯示 ruby，閱讀測驗仍不顯示 ruby。
+
+### 返回日文首頁按鈕位置
+
+「返回日文首頁」位於功能頁本身的 `.feature-page-header` 內：單字頁位於 `#japaneseMainContent`，閱讀頁位於 `#japaneseReadingPanel`。它不是全站導覽，也不會取代「首頁 / 日文學習 / 英文學習」的全站導覽。
+
+### 版本標記與 asset query string
+
+本次將日文頁加入 `data-japanese-layout-version="2.3"` 與 `<meta name="japanese-layout-version" content="2.3">`，並把日文頁載入的 `style.css` 與 `script.js` query string 更新為 `v=2.3`，降低 GitHub Pages 或瀏覽器快取造成正式站誤判的機率。
+
+### 防呆檢查強化
+
+`scripts/check-japanese-view-isolation.js` 已改成檢查實際 DOM 結構，而不是只檢查 click handler 片段。新版檢查會確認：`#japaneseContent` 是單一日文 view root；`#japaneseHomeContent` 內含四大入口；`#japaneseMainContent` 不含 `data-japanese-entry`、不含「日文四大功能 / 進入單字 / 進入閱讀」；`#japaneseReadingPanel` 不含四大入口；單字與閱讀 view 都有 `data-japanese-back-home` 與「返回日文首頁」；`script.js` 會用同一個 root 執行 `replaceChildren(nextViewElement)`；頁面版本與 asset 版本皆為 `2.3`。
+
+### 主要 script 結果與 vocabulary 筆數
+
+本次執行 `node scripts/auditSiteHealth.js`、`node scripts/audit-reading-vocabulary.js`、`node scripts/check-reading-ruby.js`、`node scripts/check-japanese-main-entry.js` 與 `node scripts/check-japanese-view-isolation.js`。`vocabulary.json` 仍確認為 3179 筆，本次沒有修改 `vocabulary.json`，也沒有新增或刪除日文單字。
+
+### 是否仍有殘留問題
+
+靜態 DOM 與 script 檢查已確認四大方塊只屬於 home view，單字頁與閱讀頁不包含四大入口。此環境未提供可直接操作 GitHub Pages 實機的瀏覽器或手機 viewport；部署後仍建議以正式網址強制重新整理，確認 `japanese-layout-version` 與資產 query string 已更新為 `2.3`，再點擊「進入單字」「返回日文首頁」「進入閱讀」驗收。

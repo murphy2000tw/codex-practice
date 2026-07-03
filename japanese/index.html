@@ -7,9 +7,10 @@
   <link rel="icon" type="image/png" href="../app-icon.png">
   <link rel="manifest" href="../manifest.webmanifest">
   <title>日文學習｜Marco and Vivi學習網</title>
-  <link rel="stylesheet" href="../style.css?v=2.2">
+  <meta name="japanese-layout-version" content="2.3">
+  <link rel="stylesheet" href="../style.css?v=2.3">
 </head>
-<body>
+<body data-japanese-layout-version="2.3">
   <main class="page-shell">
     <nav class="site-nav" aria-label="主選單">
       <a class="site-nav-link" href="../">首頁</a>
@@ -183,60 +184,6 @@
     window.JAPANESE_GRAMMAR_URL = "../grammar.json";
   </script>
   <script src="../japaneseReadingQuestions.js?v=1.0"></script>
-  <script src="../script.js?v=2.2"></script>
-  <script>
-    (() => {
-      const japaneseContent = document.querySelector("#japaneseContent");
-      const views = {
-        home: document.querySelector("#japaneseHomeContent"),
-        vocabulary: document.querySelector("#japaneseMainContent"),
-        reading: document.querySelector("#japaneseReadingPanel"),
-        listening: document.querySelector("#japaneseListeningPanel"),
-      };
-
-      function normalizeJapaneseContentView(view) {
-        return view === "vocab" ? "vocabulary" : view;
-      }
-
-      window.showJapaneseContentView = (view) => {
-        const nextView = normalizeJapaneseContentView(view);
-        const nextElement = views[nextView] || views.home;
-
-        if (!japaneseContent || !nextElement) return;
-
-        japaneseContent.replaceChildren(nextElement);
-        Object.entries(views).forEach(([viewName, element]) => {
-          if (element) element.hidden = viewName !== nextView;
-        });
-
-        if (nextView === "vocabulary" && typeof window.switchMode === "function") {
-          window.switchMode(window.isGrammarMode?.() ? "cards" : window.activeMode || "cards");
-        }
-
-        if (nextView === "reading" && typeof window.initializeReadingPanel === "function") {
-          window.initializeReadingPanel();
-        }
-      };
-
-      document.addEventListener("click", (event) => {
-        const entryButton = event.target.closest("[data-japanese-entry]");
-        if (entryButton) {
-          event.preventDefault();
-          event.stopImmediatePropagation();
-          window.showJapaneseContentView(entryButton.dataset.japaneseEntry);
-          return;
-        }
-
-        const backButton = event.target.closest("[data-japanese-back-home]");
-        if (backButton) {
-          event.preventDefault();
-          event.stopImmediatePropagation();
-          window.showJapaneseContentView("home");
-        }
-      }, { capture: true });
-
-      window.showJapaneseContentView("home");
-    })();
-  </script>
+  <script src="../script.js?v=2.3"></script>
 </body>
 </html>
