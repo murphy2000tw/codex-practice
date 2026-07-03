@@ -69,6 +69,7 @@
       </div>
       <button class="secondary-button" type="button" data-japanese-back-home>返回日文首頁</button>
     </section>
+    <div id="japaneseVocabularyStudyView" data-japanese-vocabulary-view="study">
     <section class="category-panel" aria-labelledby="category-title">
       <div class="category-header">
         <h2 id="category-title">分類篩選</h2>
@@ -125,12 +126,16 @@
       <button id="toggleAnswers" class="answer-button" type="button" aria-pressed="false">顯示答案</button>
     </section>
 
-    <section class="quiz-panel" id="quizPanel" aria-live="polite" hidden>
+    <section class="cards-grid" id="vocabularyCards" aria-live="polite"></section>
+    </div>
+
+    <section class="quiz-panel" id="quizPanel" data-japanese-vocabulary-view="quiz" aria-live="polite" hidden>
       <div class="quiz-header">
         <div>
           <span class="card-number">測驗題目</span>
           <h2 class="quiz-title">請選出正確的中文意思</h2>
         </div>
+        <button id="backToVocabularyStudy" class="secondary-button" type="button">返回單字學習</button>
         <div class="quiz-stats" aria-label="測驗分數統計">
           <span>已答題數：<strong id="quizAnsweredCount">0</strong></span>
           <span>答對題數：<strong id="quizCorrectCount">0</strong></span>
@@ -147,8 +152,6 @@
         <button id="restartQuiz" class="secondary-button" type="button">重新開始測驗</button>
       </div>
     </section>
-
-    <section class="cards-grid" id="vocabularyCards" aria-live="polite"></section>
     </div>
 
     <section id="japaneseReadingPanel" class="reading-panel" role="tabpanel" aria-labelledby="reading-mode-title" hidden>
