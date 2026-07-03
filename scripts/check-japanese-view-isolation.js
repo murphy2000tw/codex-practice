@@ -88,7 +88,7 @@ if (!home.includes('data-japanese-entry="grammar"') || !home.includes('基礎頁
 }
 
 const renderBody = script.match(/function renderJapaneseView\(view\) \{[\s\S]*?\n\}/)?.[0] ?? '';
-if (!script.includes('initializeReadingPanel();') || !script.includes('function bindReadingModeButtons(') || !script.includes('event.target.closest("[data-reading-mode]")')) {
+if (!script.includes('initializeReadingPanel();') || !script.includes('function bindReadingModeButtons(') || !script.includes('event.target.closest("[data-reading-mode]")') || !script.includes('function renderJapaneseReadingView(')) {
   failures.push('Reading view render must initialize scoped reading practice / quiz mode handlers.');
 }
 
