@@ -310,6 +310,8 @@ async function switchJapaneseTab(tab) {
     renderJapaneseGrammarView("menu");
   } else if (normalizedTab === "reading" && typeof initializeReadingPanel === "function") {
     initializeReadingPanel();
+  } else if (normalizedTab === "listening" && typeof initializeListeningPanel === "function") {
+    initializeListeningPanel();
   }
 }
 
@@ -2207,3 +2209,187 @@ window.bindReadingModeButtons = bindReadingModeButtons;
 
 window.renderJapaneseReadingView = renderJapaneseReadingView;
 window.initializeReadingPanel = initializeReadingPanel;
+
+const JAPANESE_LISTENING_QUESTIONS = [
+  { id: "jl-001", level: "N5", category: "日常", japanese: "今日は雨です。", kana: "きょうは あめです。", zh: "今天下雨。", question: "這句日文的意思是什麼？", options: ["今天下雨。", "明天放晴。", "今天很熱。", "昨天很冷。"], answerIndex: 0 },
+  { id: "jl-002", level: "N5", category: "交通", japanese: "駅まで歩いて行きます。", kana: "えきまで あるいて いきます。", zh: "我走路去車站。", question: "這句日文的意思是什麼？", options: ["我坐車去學校。", "我走路去車站。", "我在車站等朋友。", "我騎腳踏車回家。"], answerIndex: 1 },
+  { id: "jl-003", level: "N5", category: "餐廳", japanese: "水を一杯ください。", kana: "みずを いっぱい ください。", zh: "請給我一杯水。", question: "這句日文的意思是什麼？", options: ["請給我一杯水。", "請給我一杯茶。", "請給我菜單。", "請再說一次。"], answerIndex: 0 },
+  { id: "jl-004", level: "N5", category: "學校", japanese: "明日は学校へ行きません。", kana: "あしたは がっこうへ いきません。", zh: "明天不去學校。", question: "這句日文的意思是什麼？", options: ["今天要去學校。", "明天不去學校。", "昨天沒去公司。", "明天要去圖書館。"], answerIndex: 1 },
+  { id: "jl-005", level: "N5", category: "交通", japanese: "この電車は東京へ行きますか。", kana: "この でんしゃは とうきょうへ いきますか。", zh: "這班電車會去東京嗎？", question: "這句日文的意思是什麼？", options: ["這班巴士幾點來？", "這班電車會去東京嗎？", "東京車站在哪裡？", "我想買電車票。"], answerIndex: 1 },
+  { id: "jl-006", level: "N5", category: "日常", japanese: "昨日、友だちと映画を見ました。", kana: "きのう、ともだちと えいがを みました。", zh: "昨天和朋友看了電影。", question: "這句日文的意思是什麼？", options: ["昨天和朋友看了電影。", "今天和家人吃飯。", "明天想去看電影。", "昨天在家讀書。"], answerIndex: 0 },
+  { id: "jl-007", level: "N5", category: "日常", japanese: "すみません、トイレはどこですか。", kana: "すみません、トイレは どこですか。", zh: "不好意思，廁所在哪裡？", question: "這句日文的意思是什麼？", options: ["不好意思，車站在哪裡？", "不好意思，廁所在哪裡？", "請問現在幾點？", "請問這個多少錢？"], answerIndex: 1 },
+  { id: "jl-008", level: "N4", category: "日常", japanese: "朝ごはんを食べてから、会社へ行きます。", kana: "あさごはんを たべてから、かいしゃへ いきます。", zh: "吃完早餐後去公司。", question: "這句日文的意思是什麼？", options: ["吃完早餐後去公司。", "下班後去吃晚餐。", "沒吃早餐就去學校。", "吃完午餐後回家。"], answerIndex: 0 },
+  { id: "jl-009", level: "N5", category: "日常", japanese: "もう一度言ってください。", kana: "もういちど いってください。", zh: "請再說一次。", question: "這句日文的意思是什麼？", options: ["請慢慢寫。", "請再說一次。", "請等一下。", "請看這裡。"], answerIndex: 1 },
+  { id: "jl-010", level: "N5", category: "時間", japanese: "バスは十時に来ます。", kana: "バスは じゅうじに きます。", zh: "公車十點會來。", question: "這句日文的意思是什麼？", options: ["電車九點出發。", "公車十點會來。", "朋友十點回家。", "學校八點開始。"], answerIndex: 1 },
+];
+
+let japaneseListeningMenuView = document.querySelector("#japaneseListeningMenuView");
+let japaneseListeningContent = document.querySelector("#japaneseListeningContent");
+let japaneseListeningView = "menu";
+let currentListeningIndex = 0;
+let listeningQuizIndex = 0;
+let listeningQuizCorrectCount = 0;
+let listeningQuizAnswered = false;
+let listeningQuizSelectedIndex = null;
+
+function normalizeJapaneseListeningView(view) {
+  return ["menu", "practice", "quiz"].includes(view) ? view : "menu";
+}
+
+function createListeningBackMenuButton() {
+  const button = document.createElement("button");
+  button.className = "secondary-button reading-back-menu-button listening-back-menu-button";
+  button.type = "button";
+  button.textContent = "返回聽力選單";
+  button.addEventListener("click", () => renderJapaneseListeningView("menu"));
+  return button;
+}
+
+function setListeningContentNodes(...nodes) {
+  if (!japaneseListeningContent) return;
+  japaneseListeningContent.replaceChildren(...nodes);
+  japaneseListeningContent.hidden = false;
+}
+
+function speakJapaneseListening(text, statusElement) {
+  if (!statusElement) return;
+  if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+    statusElement.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
+    return;
+  }
+  try {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "ja-JP";
+    utterance.rate = 0.86;
+    utterance.pitch = 1;
+    utterance.onerror = () => {
+      statusElement.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
+    };
+    utterance.onstart = () => { statusElement.textContent = "正在播放日文音訊…"; };
+    utterance.onend = () => { statusElement.textContent = "播放完成，可再次播放。"; };
+    window.speechSynthesis.speak(utterance);
+  } catch (error) {
+    statusElement.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
+  }
+}
+
+function createListeningPlayButton(item, status) {
+  const button = document.createElement("button");
+  button.className = "answer-button listening-play-button";
+  button.type = "button";
+  button.textContent = "播放音訊";
+  button.addEventListener("click", () => speakJapaneseListening(item.japanese, status));
+  return button;
+}
+
+function renderJapaneseListeningMenu() {
+  if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = currentJapaneseView !== "listening";
+  if (japaneseListeningContent) japaneseListeningContent.hidden = true;
+}
+
+function renderJapaneseListeningPractice() {
+  const item = JAPANESE_LISTENING_QUESTIONS[currentListeningIndex % JAPANESE_LISTENING_QUESTIONS.length];
+  if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = true;
+  const status = Object.assign(document.createElement("p"), { className: "status-message", textContent: "請按播放音訊，可重複播放。" });
+  const title = Object.assign(document.createElement("h3"), { className: "reading-content-title", textContent: "聽力練習" });
+  const card = document.createElement("article");
+  card.className = "reading-card listening-card";
+  card.innerHTML = `<div class="reading-card-header"><span class="card-number">${item.level}・${item.category}</span><h2>題目卡片</h2></div><p class="listening-japanese">${item.japanese}</p><p class="reading-kana listening-kana">${item.kana}</p><p class="reading-translation listening-translation">${item.zh}</p>`;
+  card.insertBefore(createListeningPlayButton(item, status), card.children[1]);
+  card.appendChild(status);
+  const next = Object.assign(document.createElement("button"), { className: "secondary-button", type: "button", textContent: "下一題 / 換一題" });
+  next.addEventListener("click", () => { currentListeningIndex = (currentListeningIndex + 1) % JAPANESE_LISTENING_QUESTIONS.length; renderJapaneseListeningPractice(); });
+  setListeningContentNodes(createListeningBackMenuButton(), title, card, next);
+}
+
+function startJapaneseListeningQuiz() {
+  listeningQuizIndex = 0;
+  listeningQuizCorrectCount = 0;
+  listeningQuizAnswered = false;
+  listeningQuizSelectedIndex = null;
+  renderJapaneseListeningQuizQuestion();
+}
+
+function renderJapaneseListeningQuizQuestion() {
+  const item = JAPANESE_LISTENING_QUESTIONS[listeningQuizIndex];
+  if (!item) return renderJapaneseListeningQuizResults();
+  if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = true;
+  const status = Object.assign(document.createElement("p"), { className: "status-message", textContent: "請先聽音訊，再選擇中文意思。" });
+  const title = Object.assign(document.createElement("h3"), { className: "reading-content-title", textContent: "聽力測驗" });
+  const progress = Object.assign(document.createElement("p"), { className: "set-status", textContent: `第 ${listeningQuizIndex + 1} 題 / ${JAPANESE_LISTENING_QUESTIONS.length} 題` });
+  const card = document.createElement("article");
+  card.className = "quiz-card listening-card";
+  const prompt = document.createElement("div");
+  prompt.className = "quiz-prompt";
+  prompt.innerHTML = `<p class="quiz-prompt-label">${item.question}</p>`;
+  const options = document.createElement("div");
+  options.className = "quiz-options";
+  const feedback = Object.assign(document.createElement("div"), { className: "quiz-feedback", textContent: "" });
+  const detail = document.createElement("div");
+  detail.className = "reading-details listening-answer-details";
+  detail.hidden = !listeningQuizAnswered;
+  detail.innerHTML = `<p>正確答案：${item.options[item.answerIndex]}</p><p>日文句子：${item.japanese}</p><p>假名：${item.kana}</p><p>中文意思：${item.zh}</p>`;
+  item.options.forEach((option, index) => {
+    const button = Object.assign(document.createElement("button"), { className: "quiz-option", type: "button", textContent: option, disabled: listeningQuizAnswered });
+    if (listeningQuizAnswered) {
+      button.classList.toggle("is-correct", index === item.answerIndex);
+      button.classList.toggle("is-wrong", index === listeningQuizSelectedIndex && index !== item.answerIndex);
+    }
+    button.addEventListener("click", () => {
+      listeningQuizAnswered = true;
+      listeningQuizSelectedIndex = index;
+      if (index === item.answerIndex) listeningQuizCorrectCount += 1;
+      renderJapaneseListeningQuizQuestion();
+    });
+    options.appendChild(button);
+  });
+  if (listeningQuizAnswered) feedback.textContent = listeningQuizSelectedIndex === item.answerIndex ? "答對了！" : "答錯了，請查看正確答案。";
+  card.append(createListeningPlayButton(item, status), status, prompt, options, feedback, detail);
+  const nodes = [createListeningBackMenuButton(), title, progress, card];
+  if (listeningQuizAnswered) {
+    const next = Object.assign(document.createElement("button"), { className: "answer-button", type: "button", textContent: listeningQuizIndex + 1 >= JAPANESE_LISTENING_QUESTIONS.length ? "查看結果" : "下一題" });
+    next.addEventListener("click", () => { listeningQuizIndex += 1; listeningQuizAnswered = false; listeningQuizSelectedIndex = null; renderJapaneseListeningQuizQuestion(); });
+    nodes.push(next);
+  }
+  setListeningContentNodes(...nodes);
+}
+
+function renderJapaneseListeningQuizResults() {
+  const total = JAPANESE_LISTENING_QUESTIONS.length;
+  const accuracy = Math.round((listeningQuizCorrectCount / total) * 100);
+  const result = document.createElement("section");
+  result.className = "reading-card listening-result-card";
+  result.innerHTML = `<h3>聽力測驗完成</h3><p>總答題數：${total}</p><p>答對題數：${listeningQuizCorrectCount}</p><p>正確率：${accuracy}%</p>`;
+  const restart = Object.assign(document.createElement("button"), { className: "answer-button", type: "button", textContent: "重新開始測驗" });
+  restart.addEventListener("click", startJapaneseListeningQuiz);
+  result.appendChild(restart);
+  setListeningContentNodes(createListeningBackMenuButton(), result);
+}
+
+function renderJapaneseListeningView(view = japaneseListeningView) {
+  japaneseListeningView = normalizeJapaneseListeningView(view);
+  if (japaneseListeningView === "menu") return renderJapaneseListeningMenu();
+  if (japaneseListeningView === "practice") return renderJapaneseListeningPractice();
+  startJapaneseListeningQuiz();
+}
+
+function bindListeningModeButtons(listeningViewElement = document.querySelector("#japaneseListeningPanel")) {
+  if (!listeningViewElement) return;
+  japaneseListeningMenuView = listeningViewElement.querySelector("#japaneseListeningMenuView");
+  japaneseListeningContent = listeningViewElement.querySelector("#japaneseListeningContent");
+  listeningViewElement.querySelectorAll("[data-listening-mode]").forEach((button) => {
+    if (button.dataset.listeningBound === "true") return;
+    button.dataset.listeningBound = "true";
+    button.addEventListener("click", () => renderJapaneseListeningView(button.dataset.listeningMode === "quiz" ? "quiz" : "practice"));
+  });
+}
+
+function initializeListeningPanel() {
+  bindListeningModeButtons();
+  renderJapaneseListeningView("menu");
+}
+
+window.JAPANESE_LISTENING_QUESTIONS = JAPANESE_LISTENING_QUESTIONS;
+window.initializeListeningPanel = initializeListeningPanel;
+window.renderJapaneseListeningView = renderJapaneseListeningView;
