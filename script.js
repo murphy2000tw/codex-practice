@@ -1126,10 +1126,14 @@ async function switchMode(mode) {
   const isGrammarCardModeValue = activeMode === "grammar";
   const isGrammarQuizModeValue = isGrammarQuizMode();
 
-  cardModeButton.classList.toggle("is-active", activeMode === "cards");
-  cardModeButton.setAttribute("aria-pressed", String(activeMode === "cards"));
-  quizModeButton.classList.toggle("is-active", isWordQuizModeValue);
-  quizModeButton.setAttribute("aria-pressed", String(isWordQuizModeValue));
+  if (cardModeButton) {
+    cardModeButton.classList.toggle("is-active", activeMode === "cards");
+    cardModeButton.setAttribute("aria-pressed", String(activeMode === "cards"));
+  }
+  if (quizModeButton) {
+    quizModeButton.classList.toggle("is-active", isWordQuizModeValue);
+    quizModeButton.setAttribute("aria-pressed", String(isWordQuizModeValue));
+  }
   grammarModeButton.classList.toggle("is-active", isGrammarCardModeValue);
   grammarModeButton.setAttribute("aria-pressed", String(isGrammarCardModeValue));
   grammarQuizModeButton.classList.toggle("is-active", isGrammarQuizModeValue);
@@ -1447,8 +1451,8 @@ async function loadVocabulary() {
     shuffleButton.disabled = true;
     wordSearchInput.disabled = true;
     clearSearchButton.disabled = true;
-    cardModeButton.disabled = true;
-    quizModeButton.disabled = true;
+    if (cardModeButton) cardModeButton.disabled = true;
+    if (quizModeButton) quizModeButton.disabled = true;
     grammarModeButton.disabled = true;
     grammarQuizModeButton.disabled = true;
     nextQuizQuestionButton.disabled = true;
@@ -1516,8 +1520,12 @@ clearSearchButton.addEventListener("click", () => {
 
 window.switchMode = switchMode;
 
-cardModeButton.addEventListener("click", () => switchMode("cards"));
-quizModeButton.addEventListener("click", () => switchMode("quiz"));
+if (cardModeButton) {
+  cardModeButton.addEventListener("click", () => switchMode("cards"));
+}
+if (quizModeButton) {
+  quizModeButton.addEventListener("click", () => switchMode("quiz"));
+}
 grammarModeButton.addEventListener("click", () => switchMode("grammar"));
 grammarQuizModeButton.addEventListener("click", () => switchMode("grammar-quiz"));
 nextQuizQuestionButton.addEventListener("click", createActiveQuizQuestion);
