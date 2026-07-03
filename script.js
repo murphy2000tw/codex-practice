@@ -1706,7 +1706,7 @@ function createReadingContentTitle(titleText) {
 
 function createReadingBackMenuButton() {
   const button = document.createElement("button");
-  button.className = "secondary-button vocabulary-back-menu-button";
+  button.className = "secondary-button vocabulary-back-menu-button reading-back-menu-button";
   button.type = "button";
   button.textContent = "返回閱讀選單";
   button.addEventListener("click", () => renderJapaneseReadingView("menu"));

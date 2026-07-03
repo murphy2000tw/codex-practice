@@ -27,7 +27,7 @@ body {
 .page-shell {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 56px 0 64px;
+  padding: calc(56px + env(safe-area-inset-top)) 0 calc(64px + env(safe-area-inset-bottom));
 }
 
 .hero {
@@ -2436,7 +2436,7 @@ h1 {
 }
 
 .japanese-main-entry-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .japanese-main-entry-card {
@@ -2483,6 +2483,20 @@ h1 {
 }
 
 @media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 24px, 1120px);
+    padding-top: calc(28px + env(safe-area-inset-top));
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+  }
+
+  .category-panel,
+  .quiz-panel,
+  .reading-card,
+  .feature-page-header,
+  .entry-section {
+    border-radius: 22px;
+  }
+
   .japanese-main-entry-grid {
     grid-template-columns: 1fr;
   }
@@ -2494,6 +2508,20 @@ h1 {
   .japanese-main-entry-card .entry-card-action {
     width: 100%;
     text-align: center;
+  }
+
+  .feature-page-header .secondary-button,
+  .vocabulary-back-menu-button,
+  .reading-back-menu-button,
+  .controls .answer-button,
+  .controls .secondary-button,
+  .search-row .secondary-button {
+    width: 100%;
+  }
+
+  .search-row {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }
 
