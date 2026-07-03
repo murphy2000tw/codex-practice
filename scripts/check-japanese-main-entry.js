@@ -49,8 +49,8 @@ if (!entrySectionMatch) {
     failures.push(`Only finished entry cards may navigate; unexpected targets: ${unexpectedTargets.join(', ')}`);
   }
 
-  if (!entrySection.includes('data-japanese-entry="grammar"') || !entrySection.includes('基礎頁（整理中）') || !entrySection.includes('aria-label="聽力準備中"')) {
-    failures.push('Grammar must navigate to the foundation page while listening remains coming soon.');
+  if (!entrySection.includes('data-japanese-entry="grammar"') || !entrySection.includes('進入文法') || !entrySection.includes('aria-label="聽力準備中"')) {
+    failures.push('Grammar must navigate to the grammar menu while listening remains coming soon.');
   }
 }
 
@@ -62,10 +62,10 @@ const requiredScriptGuards = [
   'japaneseContent.replaceChildren(nextViewElement)',
   'japaneseHomeContent.hidden = nextView !== "home"',
   'japaneseMainContent.hidden = nextView !== "vocabulary" && nextView !== "grammar"',
-  'panel.hidden = isJapaneseHomeTab() || panel.dataset.modePanel !== activeModePanelView',
   'if (!isJapaneseHomeTab()) {',
   'renderCategoryFilters();',
   'applyCategory(activeCategoryId);',
+  'renderJapaneseGrammarView("menu");',
   'bindReadingModeButtons(readingViewElement);',
   'renderJapaneseReadingView("menu");',
 ];
