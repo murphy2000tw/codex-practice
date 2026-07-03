@@ -1691,7 +1691,7 @@ function updateReadingHeader() {
   if (!title || !description) return;
 
   const readingHeader = document.querySelector("#japaneseReadingPanel .feature-page-header");
-  if (readingHeader) readingHeader.hidden = japaneseReadingView !== "menu";
+  if (readingHeader) readingHeader.hidden = currentJapaneseView !== "reading";
 
   title.textContent = "日文閱讀";
   description.textContent = "閱讀練習保留 ruby 輔助；閱讀測驗模式維持不顯示 ruby。";
@@ -1702,6 +1702,15 @@ function createReadingContentTitle(titleText) {
   title.className = "reading-page-mode-title";
   title.textContent = titleText;
   return title;
+}
+
+function createReadingBackMenuButton() {
+  const button = document.createElement("button");
+  button.className = "secondary-button vocabulary-back-menu-button";
+  button.type = "button";
+  button.textContent = "返回閱讀選單";
+  button.addEventListener("click", () => renderJapaneseReadingView("menu"));
+  return button;
 }
 
 function setReadingContentNodes(...nodes) {
@@ -2049,6 +2058,7 @@ function showReadingPracticeQuestion() {
   currentReadingSet = pickLeastSeenItem(japaneseReadingSets, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
   incrementSeenCount(JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey(currentReadingSet));
   readingPracticeAnswers = {};
+  const backToReadingMenu = createReadingBackMenuButton();
   const title = createReadingContentTitle("閱讀練習");
   const card = createReadingSetCard(currentReadingSet, { showFeedback: true, onAnswer: handleReadingPracticeAnswer, showRuby: true });
   const next = document.createElement("button");
@@ -2056,7 +2066,7 @@ function showReadingPracticeQuestion() {
   next.type = "button";
   next.textContent = "換一篇閱讀";
   next.addEventListener("click", showReadingPracticeQuestion);
-  setReadingContentNodes(title, card, next);
+  setReadingContentNodes(backToReadingMenu, title, card, next);
 }
 
 function handleReadingPracticeAnswer(questionIndex, selectedIndex, optionButtons, feedback) {
@@ -2104,6 +2114,7 @@ function renderReadingQuizQuestion() {
   const readingSet = readingQuizSets[currentReadingQuizSetIndex];
   if (!readingSet) return renderReadingQuizResults();
   const answeredInPreviousSets = readingQuizSets.slice(0, currentReadingQuizSetIndex).reduce((sum, set) => sum + set.questions.length, 0);
+  const backToReadingMenu = createReadingBackMenuButton();
   const title = createReadingContentTitle("閱讀測驗");
   const status = document.createElement("p");
   status.className = "set-status reading-quiz-status";
@@ -2119,7 +2130,7 @@ function renderReadingQuizQuestion() {
     renderReadingQuizQuestion();
   }});
   const setComplete = readingSet.questions.every((_question, index) => readingQuizAnswers[answeredInPreviousSets + index] !== undefined);
-  const quizNodes = [title, status, card];
+  const quizNodes = [backToReadingMenu, title, status, card];
   if (setComplete) {
     const next = document.createElement("button");
     next.className = "answer-button";
@@ -2136,6 +2147,7 @@ function renderReadingQuizQuestion() {
 
 function renderReadingQuizResults() {
   const correctCount = readingQuizItems.filter((item, i) => isReadingSelectedIndexCorrect(item.question, readingQuizAnswers[i])).length;
+  const backToReadingMenu = createReadingBackMenuButton();
   const result = document.createElement("article");
   result.className = "reading-card reading-result-card";
   result.innerHTML = `<h2>閱讀測驗完成</h2><p class="reading-score">總分：${correctCount} / ${readingQuizItems.length}</p>`;
@@ -2160,7 +2172,7 @@ function renderReadingQuizResults() {
   restart.textContent = "重新開始閱讀測驗";
   restart.addEventListener("click", startReadingQuiz);
   result.append(list, restart);
-  setReadingContentNodes(result);
+  setReadingContentNodes(backToReadingMenu, result);
 }
 
 function bindReadingModeButtons(readingViewElement = document.querySelector("#japaneseReadingPanel")) {
