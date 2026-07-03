@@ -28,7 +28,7 @@ if (!html.includes('data-japanese-back-home')) {
   failures.push('Feature pages must provide a return-to-home control.');
 }
 
-if (!html.includes('../script.js?v=2.2') || !html.includes('../style.css?v=2.2')) {
+if (!html.includes('../script.js?v=2.3') || !html.includes('../style.css?v=2.3')) {
   failures.push('Japanese page must bump script/style asset versions so deployed browsers load the view-switching fix.');
 }
 
@@ -74,19 +74,22 @@ requiredScriptGuards.forEach((snippet) => {
   }
 });
 
-const requiredHtmlGuards = [
-  'window.showJapaneseContentView = (view) =>',
-  'japaneseContent.replaceChildren(nextElement)',
-  'document.addEventListener("click", (event) =>',
-  'event.stopImmediatePropagation();',
-  '}, { capture: true });',
+const requiredUnifiedViewGuards = [
+  'window.showJapaneseContentView = switchJapaneseTab',
+  'button.addEventListener("click", (event) => {',
+  'window.showJapaneseContentView(button.dataset.japaneseEntry)',
+  'window.showJapaneseContentView("home")',
 ];
 
-requiredHtmlGuards.forEach((snippet) => {
-  if (!html.includes(snippet)) {
-    failures.push(`Missing page-level view guard snippet: ${snippet}`);
+requiredUnifiedViewGuards.forEach((snippet) => {
+  if (!script.includes(snippet)) {
+    failures.push(`Missing unified script view guard snippet: ${snippet}`);
   }
 });
+
+if (html.includes('window.showJapaneseContentView = (view) =>')) {
+  failures.push('Japanese page must not keep a second inline view switcher that can query moved view nodes.');
+}
 
 if (failures.length > 0) {
   console.error('Japanese main entry audit failed:');

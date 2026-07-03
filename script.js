@@ -279,14 +279,17 @@ function renderJapaneseView(view) {
 }
 
 async function switchJapaneseTab(tab) {
-  renderJapaneseView(tab);
+  const normalizedTab = normalizeJapaneseView(tab);
+  renderJapaneseView(normalizedTab);
 
-  if (normalizeJapaneseView(tab) === "vocabulary") {
+  if (normalizedTab === "vocabulary") {
     await switchMode(isGrammarMode() ? "cards" : activeMode);
-  } else if (tab === "reading" && typeof initializeReadingPanel === "function") {
+  } else if (normalizedTab === "reading" && typeof initializeReadingPanel === "function") {
     initializeReadingPanel();
   }
 }
+
+window.showJapaneseContentView = switchJapaneseTab;
 
 function isGrammarMode() {
   return activeMode === "grammar" || activeMode === "grammar-quiz";
@@ -1464,10 +1467,16 @@ japaneseTabButtons.forEach((button) => {
   button.addEventListener("click", () => switchJapaneseTab(button.dataset.japaneseTab));
 });
 japaneseEntryButtons.forEach((button) => {
-  button.addEventListener("click", () => switchJapaneseTab(button.dataset.japaneseEntry));
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.showJapaneseContentView(button.dataset.japaneseEntry);
+  });
 });
 japaneseBackHomeButtons.forEach((button) => {
-  button.addEventListener("click", () => renderJapaneseView("home"));
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.showJapaneseContentView("home");
+  });
 });
 
 clearSearchButton.disabled = true;
