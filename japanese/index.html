@@ -46,7 +46,7 @@
         <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="reading" aria-pressed="false">
           <span class="card-number">03</span>
           <h3 class="entry-card-title">閱讀</h3>
-          <p class="entry-card-text">進入現有閱讀練習與閱讀測驗，練習模式保留 ruby 輔助。</p>
+          <p class="entry-card-text">先進入閱讀選單，再選擇閱讀練習或閱讀測驗。</p>
           <span class="entry-card-action">進入閱讀</span>
         </button>
         <article class="word-card entry-card japanese-main-entry-card is-coming-soon" aria-label="聽力準備中">
@@ -168,21 +168,27 @@
         <div>
           <p class="eyebrow">Japanese Reading</p>
           <h2 id="reading-page-title">日文閱讀</h2>
-          <p class="feature-page-description">閱讀練習保留 ruby 輔助；閱讀測驗模式維持不顯示 ruby。</p>
+          <p class="feature-page-description">選擇要進行閱讀練習或閱讀測驗。</p>
         </div>
         <button class="secondary-button" type="button" data-japanese-back-home>返回日文首頁</button>
       </div>
-      <div class="mode-panel reading-mode-panel" aria-labelledby="reading-mode-title">
-        <div>
-          <p class="filter-label" id="reading-mode-title">閱讀功能</p>
-          <p class="mode-description">閱讀區保留閱讀練習與閱讀測驗入口；測驗模式不顯示 ruby。</p>
+      <section id="japaneseReadingMenuView" class="reading-menu-view" data-japanese-reading-view="menu" aria-labelledby="reading-menu-title">
+        <div class="entry-grid reading-menu-grid">
+          <button class="word-card entry-card japanese-main-entry-card reading-menu-card" type="button" data-reading-mode="practice">
+            <span class="card-number">01</span>
+            <h3 id="reading-menu-title" class="entry-card-title">閱讀練習</h3>
+            <p class="entry-card-text">可閱讀文章，搭配 ruby / 假名輔助進行練習。</p>
+            <span class="entry-card-action">開始閱讀練習</span>
+          </button>
+          <button class="word-card entry-card japanese-main-entry-card reading-menu-card" type="button" data-reading-mode="quiz">
+            <span class="card-number">02</span>
+            <h3 class="entry-card-title">閱讀測驗</h3>
+            <p class="entry-card-text">不顯示 ruby / 假名，進行閱讀理解測驗。</p>
+            <span class="entry-card-action">開始閱讀測驗</span>
+          </button>
         </div>
-        <div class="mode-switch" role="group" aria-label="選擇閱讀模式">
-          <button id="readingPracticeModeButton" class="mode-button is-active" type="button" data-reading-mode="practice" aria-pressed="true">閱讀練習</button>
-          <button id="readingQuizModeButton" class="mode-button" type="button" data-reading-mode="quiz" aria-pressed="false">閱讀測驗</button>
-        </div>
-      </div>
-      <div id="readingContent" class="reading-content" aria-live="polite"></div>
+      </section>
+      <div id="readingContent" class="reading-content" data-japanese-reading-view="content" aria-live="polite" hidden></div>
     </section>
 
     <section id="japaneseListeningPanel" class="japanese-placeholder-panel" role="tabpanel" aria-labelledby="japaneseListeningTab" hidden>

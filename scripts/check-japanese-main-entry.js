@@ -67,7 +67,7 @@ const requiredScriptGuards = [
   'renderCategoryFilters();',
   'applyCategory(activeCategoryId);',
   'bindReadingModeButtons(readingViewElement);',
-  'setReadingMode(activeReadingMode === "quiz" ? "quiz" : "practice");',
+  'renderJapaneseReadingView("menu");',
 ];
 
 requiredScriptGuards.forEach((snippet) => {

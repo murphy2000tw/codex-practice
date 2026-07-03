@@ -1574,13 +1574,14 @@ loadVocabulary();
 
 const JAPANESE_READING_SEEN_COUNTS_KEY = "japanese_reading_seen_counts";
 const READING_QUIZ_SIZE = 10;
-let readingPracticeModeButton = document.querySelector("#readingPracticeModeButton");
-let readingQuizModeButton = document.querySelector("#readingQuizModeButton");
+let japaneseReadingMenuView = document.querySelector("#japaneseReadingMenuView");
+let readingPracticeModeButton = document.querySelector('[data-reading-mode="practice"]');
+let readingQuizModeButton = document.querySelector('[data-reading-mode="quiz"]');
 let readingContent = document.querySelector("#readingContent");
 const japaneseReadingSets = Array.isArray(window.JAPANESE_READING_SETS)
   ? window.JAPANESE_READING_SETS
   : (Array.isArray(window.JAPANESE_READING_QUESTIONS) ? window.JAPANESE_READING_QUESTIONS : []);
-let activeReadingMode = "practice";
+let japaneseReadingView = "menu";
 let currentReadingSet = null;
 let readingPracticeAnswers = {};
 let readingQuizItems = [];
@@ -1600,21 +1601,91 @@ function getReadingSetById(readingSetId) {
   return japaneseReadingSets.find((readingSet) => getReadingSeenKey(readingSet) === readingSetId);
 }
 
-function setReadingMode(mode) {
-  activeReadingMode = mode;
-  readingPracticeModeButton?.classList.toggle("is-active", mode === "practice");
-  readingPracticeModeButton?.setAttribute("aria-pressed", String(mode === "practice"));
-  readingQuizModeButton?.classList.toggle("is-active", mode === "quiz");
-  readingQuizModeButton?.setAttribute("aria-pressed", String(mode === "quiz"));
-  if (mode === "quiz") {
-    startReadingQuiz();
-  } else {
-    showReadingPracticeQuestion();
+function normalizeJapaneseReadingView(view) {
+  if (["menu", "practice", "quiz"].includes(view)) return view;
+  return "menu";
+}
+
+function updateReadingHeader() {
+  const title = document.querySelector("#reading-page-title");
+  const description = document.querySelector("#japaneseReadingPanel .feature-page-description");
+  if (!title || !description) return;
+
+  if (japaneseReadingView === "practice") {
+    title.textContent = "閱讀練習";
+    description.textContent = "閱讀文章與題目會保留 ruby / 假名輔助。";
+    return;
+  }
+
+  if (japaneseReadingView === "quiz") {
+    title.textContent = "閱讀測驗";
+    description.textContent = "測驗模式不顯示 ruby / 假名，請直接作答。";
+    return;
+  }
+
+  title.textContent = "日文閱讀";
+  description.textContent = "選擇要進行閱讀練習或閱讀測驗。";
+}
+
+function createBackToReadingMenuButton() {
+  const back = document.createElement("button");
+  back.className = "secondary-button reading-back-menu-button";
+  back.type = "button";
+  back.textContent = "返回閱讀選單";
+  back.addEventListener("click", () => renderJapaneseReadingView("menu"));
+  return back;
+}
+
+function setReadingContentNodes(...nodes) {
+  if (!readingContent) return;
+  readingContent.replaceChildren(createBackToReadingMenuButton(), ...nodes);
+}
+
+function renderJapaneseReadingMenu() {
+  if (japaneseReadingMenuView) japaneseReadingMenuView.hidden = currentJapaneseView !== "reading";
+  if (readingContent) {
+    readingContent.hidden = true;
+    readingContent.replaceChildren();
   }
 }
 
+function renderJapaneseReadingPractice() {
+  if (japaneseReadingMenuView) japaneseReadingMenuView.hidden = true;
+  if (readingContent) readingContent.hidden = false;
+  showReadingPracticeQuestion();
+}
+
+function renderJapaneseReadingQuiz() {
+  if (japaneseReadingMenuView) japaneseReadingMenuView.hidden = true;
+  if (readingContent) readingContent.hidden = false;
+  startReadingQuiz();
+}
+
+function renderJapaneseReadingView(view = japaneseReadingView) {
+  japaneseReadingView = normalizeJapaneseReadingView(view);
+  updateReadingHeader();
+
+  if (japaneseReadingView === "menu") {
+    renderJapaneseReadingMenu();
+    return;
+  }
+
+  if (japaneseReadingView === "practice") {
+    renderJapaneseReadingPractice();
+    return;
+  }
+
+  if (japaneseReadingView === "quiz") {
+    renderJapaneseReadingQuiz();
+  }
+}
+
+function setReadingMode(mode) {
+  renderJapaneseReadingView(mode === "quiz" ? "quiz" : "practice");
+}
+
 function renderReadingUnavailable() {
-  readingContent.replaceChildren(Object.assign(document.createElement("p"), { className: "status-message", textContent: "目前無法載入閱讀題庫。" }));
+  setReadingContentNodes(Object.assign(document.createElement("p"), { className: "status-message", textContent: "目前無法載入閱讀題庫。" }));
 }
 
 
@@ -1916,7 +1987,7 @@ function showReadingPracticeQuestion() {
   next.type = "button";
   next.textContent = "換一篇閱讀";
   next.addEventListener("click", showReadingPracticeQuestion);
-  readingContent.replaceChildren(card, next);
+  setReadingContentNodes(card, next);
 }
 
 function handleReadingPracticeAnswer(questionIndex, selectedIndex, optionButtons, feedback) {
@@ -1990,7 +2061,7 @@ function renderReadingQuizQuestion() {
     });
     quizNodes.push(next);
   }
-  readingContent.replaceChildren(...quizNodes);
+  setReadingContentNodes(...quizNodes);
 }
 
 function renderReadingQuizResults() {
@@ -2019,12 +2090,13 @@ function renderReadingQuizResults() {
   restart.textContent = "重新開始閱讀測驗";
   restart.addEventListener("click", startReadingQuiz);
   result.append(list, restart);
-  readingContent.replaceChildren(result);
+  setReadingContentNodes(result);
 }
 
 function bindReadingModeButtons(readingViewElement = document.querySelector("#japaneseReadingPanel")) {
   if (!readingViewElement) return;
 
+  japaneseReadingMenuView = readingViewElement.querySelector("#japaneseReadingMenuView");
   readingPracticeModeButton = readingViewElement.querySelector('[data-reading-mode="practice"]');
   readingQuizModeButton = readingViewElement.querySelector('[data-reading-mode="quiz"]');
   readingContent = readingViewElement.querySelector("#readingContent");
@@ -2036,7 +2108,7 @@ function bindReadingModeButtons(readingViewElement = document.querySelector("#ja
     if (!button || !readingViewElement.contains(button)) return;
 
     event.preventDefault();
-    setReadingMode(button.dataset.readingMode === "quiz" ? "quiz" : "practice");
+    renderJapaneseReadingView(button.dataset.readingMode === "quiz" ? "quiz" : "practice");
   });
 }
 
@@ -2046,9 +2118,10 @@ function initializeReadingPanel() {
   bindReadingModeButtons(readingViewElement);
   readingPanelInitialized = true;
 
-  setReadingMode(activeReadingMode === "quiz" ? "quiz" : "practice");
+  renderJapaneseReadingView("menu");
 }
 
 window.bindReadingModeButtons = bindReadingModeButtons;
 
+window.renderJapaneseReadingView = renderJapaneseReadingView;
 window.initializeReadingPanel = initializeReadingPanel;
