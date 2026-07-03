@@ -177,6 +177,9 @@ const japaneseEntryButtons = document.querySelectorAll("[data-japanese-entry]");
 const japaneseBackHomeButtons = document.querySelectorAll("[data-japanese-back-home]");
 const modeButtons = document.querySelectorAll(".mode-button[data-mode-group]");
 const modePanels = document.querySelectorAll("[data-mode-panel]");
+const japaneseFeatureEyebrow = document.querySelector("#japanese-feature-eyebrow");
+const japaneseFeatureTitle = document.querySelector("#vocabulary-page-title");
+const japaneseFeatureDescription = document.querySelector("#japanese-feature-description");
 
 let vocabulary = [];
 let filteredVocabulary = [];
@@ -236,13 +239,13 @@ function updateModeButtonsForJapaneseTab() {
 
 function normalizeJapaneseView(view) {
   if (view === "vocab") return "vocabulary";
-  if (["home", "vocabulary", "reading", "listening"].includes(view)) return view;
+  if (["home", "vocabulary", "grammar", "reading", "listening"].includes(view)) return view;
   return "home";
 }
 
 function getJapaneseViewElement(view) {
   if (view === "home") return japaneseHomeContent;
-  if (view === "vocabulary") return japaneseMainContent;
+  if (view === "vocabulary" || view === "grammar") return japaneseMainContent;
   if (view === "reading") return japaneseReadingPanel;
   if (view === "listening") return japaneseListeningPanel;
   return japaneseHomeContent;
@@ -260,7 +263,15 @@ function renderJapaneseView(view) {
   }
 
   if (japaneseHomeContent) japaneseHomeContent.hidden = nextView !== "home";
-  if (japaneseMainContent) japaneseMainContent.hidden = nextView !== "vocabulary";
+  if (japaneseMainContent) japaneseMainContent.hidden = nextView !== "vocabulary" && nextView !== "grammar";
+  if (japaneseFeatureEyebrow && japaneseFeatureTitle && japaneseFeatureDescription) {
+    const isGrammarView = nextView === "grammar";
+    japaneseFeatureEyebrow.textContent = isGrammarView ? "Japanese Grammar" : "Japanese Vocabulary";
+    japaneseFeatureTitle.textContent = isGrammarView ? "日文文法" : "日文單字";
+    japaneseFeatureDescription.textContent = isGrammarView
+      ? "文法基礎頁整理中；先保留現有文法卡片與文法測驗入口。"
+      : "搜尋、篩選並練習正式日文單字，也可切換到單字測驗。";
+  }
   if (japaneseReadingPanel) japaneseReadingPanel.hidden = nextView !== "reading";
   if (japaneseListeningPanel) japaneseListeningPanel.hidden = nextView !== "listening";
 
@@ -284,6 +295,8 @@ async function switchJapaneseTab(tab) {
 
   if (normalizedTab === "vocabulary") {
     await switchMode(isGrammarMode() ? "cards" : activeMode);
+  } else if (normalizedTab === "grammar") {
+    await switchMode(isGrammarMode() ? activeMode : "grammar");
   } else if (normalizedTab === "reading" && typeof initializeReadingPanel === "function") {
     initializeReadingPanel();
   }
@@ -1940,9 +1953,11 @@ readingQuizModeButton?.addEventListener("click", () => setReadingMode("quiz"));
 
 let readingPanelInitialized = false;
 function initializeReadingPanel() {
-  if (readingPanelInitialized) { return; }
-  readingPanelInitialized = true;
-  setReadingMode("practice");
+  if (!readingPanelInitialized) {
+    readingPanelInitialized = true;
+  }
+
+  setReadingMode(activeReadingMode === "quiz" ? "quiz" : "practice");
 }
 
 window.initializeReadingPanel = initializeReadingPanel;

@@ -37,12 +37,12 @@
           <p class="entry-card-text">進入現有日文單字卡與單字測驗，保留正式單字資料顯示。</p>
           <span class="entry-card-action">進入單字</span>
         </button>
-        <article class="word-card entry-card japanese-main-entry-card is-coming-soon" aria-label="文法準備中">
+        <button class="word-card entry-card japanese-main-entry-card is-foundation" type="button" data-japanese-entry="grammar" aria-pressed="false">
           <span class="card-number">02</span>
           <h3 class="entry-card-title">文法</h3>
-          <p class="entry-card-text">日文文法內容仍在整理中，暫不展開基礎頁或測驗假流程。</p>
-          <span class="entry-card-action is-muted">準備中</span>
-        </article>
+          <p class="entry-card-text">進入現有文法基礎頁；內容仍在整理中，但可練習既有基礎文法卡片。</p>
+          <span class="entry-card-action">基礎頁（整理中）</span>
+        </button>
         <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="reading" aria-pressed="false">
           <span class="card-number">03</span>
           <h3 class="entry-card-title">閱讀</h3>
@@ -63,9 +63,9 @@
     <div id="japaneseMainContent" hidden>
     <section class="feature-page-header" aria-labelledby="vocabulary-page-title">
       <div>
-        <p class="eyebrow">Japanese Vocabulary</p>
+        <p id="japanese-feature-eyebrow" class="eyebrow">Japanese Vocabulary</p>
         <h2 id="vocabulary-page-title">日文單字</h2>
-        <p class="feature-page-description">搜尋、篩選並練習正式日文單字，也可切換到單字測驗。</p>
+        <p id="japanese-feature-description" class="feature-page-description">搜尋、篩選並練習正式日文單字，也可切換到單字測驗。</p>
       </div>
       <button class="secondary-button" type="button" data-japanese-back-home>返回日文首頁</button>
     </section>
