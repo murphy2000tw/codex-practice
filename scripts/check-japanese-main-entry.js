@@ -66,6 +66,8 @@ const requiredScriptGuards = [
   'if (!isJapaneseHomeTab()) {',
   'renderCategoryFilters();',
   'applyCategory(activeCategoryId);',
+  'bindReadingModeButtons(readingViewElement);',
+  'setReadingMode(activeReadingMode === "quiz" ? "quiz" : "practice");',
 ];
 
 requiredScriptGuards.forEach((snippet) => {
@@ -86,6 +88,14 @@ requiredUnifiedViewGuards.forEach((snippet) => {
     failures.push(`Missing unified script view guard snippet: ${snippet}`);
   }
 });
+
+if (!html.includes('data-reading-mode="practice"') || !html.includes('data-reading-mode="quiz"')) {
+  failures.push('Reading practice and quiz buttons must expose data-reading-mode targets.');
+}
+
+if (!script.includes('function bindReadingModeButtons(') || !script.includes('event.target.closest("[data-reading-mode]")')) {
+  failures.push('Reading view must bind mode buttons after render with scoped event handling.');
+}
 
 if (html.includes('window.showJapaneseContentView = (view) =>')) {
   failures.push('Japanese page must not keep a second inline view switcher that can query moved view nodes.');

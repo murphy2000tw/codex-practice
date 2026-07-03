@@ -1500,9 +1500,9 @@ loadVocabulary();
 
 const JAPANESE_READING_SEEN_COUNTS_KEY = "japanese_reading_seen_counts";
 const READING_QUIZ_SIZE = 10;
-const readingPracticeModeButton = document.querySelector("#readingPracticeModeButton");
-const readingQuizModeButton = document.querySelector("#readingQuizModeButton");
-const readingContent = document.querySelector("#readingContent");
+let readingPracticeModeButton = document.querySelector("#readingPracticeModeButton");
+let readingQuizModeButton = document.querySelector("#readingQuizModeButton");
+let readingContent = document.querySelector("#readingContent");
 const japaneseReadingSets = Array.isArray(window.JAPANESE_READING_SETS)
   ? window.JAPANESE_READING_SETS
   : (Array.isArray(window.JAPANESE_READING_QUESTIONS) ? window.JAPANESE_READING_QUESTIONS : []);
@@ -1948,16 +1948,33 @@ function renderReadingQuizResults() {
   readingContent.replaceChildren(result);
 }
 
-readingPracticeModeButton?.addEventListener("click", () => setReadingMode("practice"));
-readingQuizModeButton?.addEventListener("click", () => setReadingMode("quiz"));
+function bindReadingModeButtons(readingViewElement = document.querySelector("#japaneseReadingPanel")) {
+  if (!readingViewElement) return;
+
+  readingPracticeModeButton = readingViewElement.querySelector('[data-reading-mode="practice"]');
+  readingQuizModeButton = readingViewElement.querySelector('[data-reading-mode="quiz"]');
+  readingContent = readingViewElement.querySelector("#readingContent");
+
+  if (readingViewElement.dataset.readingModeBound === "true") return;
+  readingViewElement.dataset.readingModeBound = "true";
+  readingViewElement.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-reading-mode]");
+    if (!button || !readingViewElement.contains(button)) return;
+
+    event.preventDefault();
+    setReadingMode(button.dataset.readingMode === "quiz" ? "quiz" : "practice");
+  });
+}
 
 let readingPanelInitialized = false;
 function initializeReadingPanel() {
-  if (!readingPanelInitialized) {
-    readingPanelInitialized = true;
-  }
+  const readingViewElement = document.querySelector("#japaneseReadingPanel");
+  bindReadingModeButtons(readingViewElement);
+  readingPanelInitialized = true;
 
   setReadingMode(activeReadingMode === "quiz" ? "quiz" : "practice");
 }
+
+window.bindReadingModeButtons = bindReadingModeButtons;
 
 window.initializeReadingPanel = initializeReadingPanel;
