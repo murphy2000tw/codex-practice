@@ -60,8 +60,12 @@ if (!vocabulary || !menu || !practice || !quiz) failures.push('Could not extract
   if (menu.includes(forbidden)) failures.push(`Menu view must not contain practice/quiz content: ${forbidden}`);
 });
 
-['返回單字選單', '分類篩選', '詞性分類', '程度篩選', '搜尋單字', '單字功能', 'id="vocabularyCards"'].forEach((required) => {
+['返回單字選單', '分類篩選', '詞性分類', '程度篩選', '搜尋單字', 'id="vocabularyCards"'].forEach((required) => {
   if (!practice.includes(required)) failures.push(`Practice view missing required content: ${required}`);
+});
+
+['單字功能', 'id="cardModeButton"', 'id="quizModeButton"', 'data-mode-panel="vocab"'].forEach((forbidden) => {
+  if (practice.includes(forbidden)) failures.push(`Practice view must not contain duplicate vocabulary switch entry: ${forbidden}`);
 });
 
 ['分類篩選', '詞性分類', '程度篩選', '搜尋單字', '單字功能', 'id="vocabularyCards"', '3179'].forEach((forbidden) => {
