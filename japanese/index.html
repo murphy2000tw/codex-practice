@@ -22,13 +22,13 @@
     <section class="hero" aria-labelledby="page-title">
       <p class="eyebrow">Japanese Learning</p>
       <h1 id="page-title">日文學習主入口</h1>
-      <p class="hero-text">從單字、閱讀與文法三大主線進入日文學習；請先進入各中頁，再選擇練習或測驗。</p>
+      <p class="hero-text">從單字、閱讀、文法與聽力四大主線進入日文學習；請先進入各中頁，再選擇練習或測驗。</p>
     </section>
 
     <section class="entry-section japanese-main-entry-section" aria-labelledby="japanese-main-entry-title">
       <div class="category-header">
         <h2 id="japanese-main-entry-title">日文學習功能</h2>
-        <p class="category-count">主入口整理：單字、閱讀、文法</p>
+        <p class="category-count">主入口整理：單字、閱讀、文法、聽力</p>
       </div>
       <div class="entry-grid japanese-main-entry-grid">
         <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="vocabulary" aria-pressed="false">
@@ -48,6 +48,12 @@
           <h3 class="entry-card-title">文法</h3>
           <p class="entry-card-text">先進入文法選單，再選擇文法練習或文法測驗。</p>
           <span class="entry-card-action">進入文法</span>
+        </button>
+        <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="listening" aria-pressed="false">
+          <span class="card-number">04</span>
+          <h3 class="entry-card-title">聽力</h3>
+          <p class="entry-card-text">先進入聽力選單，再選擇聽力練習或聽力測驗。</p>
+          <span class="entry-card-action">進入聽力</span>
         </button>
       </div>
     </section>
@@ -191,8 +197,32 @@
       <div id="readingContent" class="reading-content" data-japanese-reading-view="content" aria-live="polite" hidden></div>
     </section>
 
-    <section id="japaneseListeningPanel" class="japanese-placeholder-panel" role="tabpanel" aria-labelledby="japaneseListeningTab" hidden>
-      <p>聽力練習與測驗準備中</p>
+    <section id="japaneseListeningPanel" class="reading-panel" role="tabpanel" aria-labelledby="japanese-listening-page-title" hidden>
+      <div class="feature-page-header" aria-labelledby="japanese-listening-page-title">
+        <div>
+          <p class="eyebrow">JAPANESE LISTENING</p>
+          <h2 id="japanese-listening-page-title">日文聽力</h2>
+          <p class="feature-page-description">聽力練習可重複播放音訊並查看輔助文字；聽力測驗模式專注聽音作答。</p>
+        </div>
+        <button class="secondary-button" type="button" data-japanese-back-home>返回日文首頁</button>
+      </div>
+      <section id="japaneseListeningMenuView" class="reading-menu-view" data-japanese-listening-view="menu" aria-labelledby="listening-menu-title">
+        <div class="entry-grid reading-menu-grid">
+          <button class="word-card entry-card japanese-main-entry-card reading-menu-card" type="button" data-listening-mode="practice">
+            <span class="card-number">01</span>
+            <h3 id="listening-menu-title" class="entry-card-title">聽力練習</h3>
+            <p class="entry-card-text">可重複播放音訊，搭配日文、假名與中文意思練習。</p>
+            <span class="entry-card-action">開始聽力練習</span>
+          </button>
+          <button class="word-card entry-card japanese-main-entry-card reading-menu-card" type="button" data-listening-mode="quiz">
+            <span class="card-number">02</span>
+            <h3 class="entry-card-title">聽力測驗</h3>
+            <p class="entry-card-text">先聽日文音訊，再從中文選項中作答。</p>
+            <span class="entry-card-action">開始聽力測驗</span>
+          </button>
+        </div>
+      </section>
+      <div id="japaneseListeningContent" class="reading-content" data-japanese-listening-view="content" aria-live="polite" hidden></div>
     </section>
     </section>
   </main>

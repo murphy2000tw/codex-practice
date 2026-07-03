@@ -2436,7 +2436,7 @@ h1 {
 }
 
 .japanese-main-entry-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .japanese-main-entry-card {
@@ -2551,6 +2551,50 @@ h1 {
   }
 
   .reading-back-menu-button {
+    width: 100%;
+  }
+}
+
+.listening-card .answer-button,
+.listening-play-button {
+  justify-self: start;
+}
+
+.listening-japanese {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.45rem, 5vw, 2.2rem);
+  font-weight: 900;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.listening-translation,
+.listening-answer-details p,
+.listening-result-card p {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.listening-answer-details {
+  display: grid;
+  gap: 8px;
+  border-radius: 20px;
+  padding: 16px;
+  background: #fff8f5;
+}
+
+.listening-answer-details[hidden] {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .listening-card .answer-button,
+  .listening-card .secondary-button,
+  .listening-play-button {
     width: 100%;
   }
 }
