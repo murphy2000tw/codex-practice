@@ -34,7 +34,7 @@
         <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="vocabulary" aria-pressed="false">
           <span class="card-number">01</span>
           <h3 class="entry-card-title">單字</h3>
-          <p class="entry-card-text">進入現有日文單字卡與單字測驗，保留正式單字資料顯示。</p>
+          <p class="entry-card-text">先進入單字選單，再選擇單字練習或單字測驗。</p>
           <span class="entry-card-action">進入單字</span>
         </button>
         <button class="word-card entry-card japanese-main-entry-card is-foundation" type="button" data-japanese-entry="grammar" aria-pressed="false">
@@ -65,11 +65,30 @@
       <div>
         <p id="japanese-feature-eyebrow" class="eyebrow">Japanese Vocabulary</p>
         <h2 id="vocabulary-page-title">日文單字</h2>
-        <p id="japanese-feature-description" class="feature-page-description">搜尋、篩選並練習正式日文單字，也可切換到單字測驗。</p>
+        <p id="japanese-feature-description" class="feature-page-description">選擇要進行單字練習或單字測驗。</p>
       </div>
       <button class="secondary-button" type="button" data-japanese-back-home>返回日文首頁</button>
     </section>
-    <div id="japaneseVocabularyStudyView" data-japanese-vocabulary-view="study">
+
+    <section id="japaneseVocabularyMenuView" class="vocabulary-menu-view" data-japanese-vocabulary-view="menu" aria-labelledby="vocabulary-menu-title">
+      <div class="entry-grid vocabulary-menu-grid">
+        <button class="word-card entry-card japanese-main-entry-card vocabulary-menu-card" type="button" data-japanese-vocabulary-entry="practice">
+          <span class="card-number">01</span>
+          <h3 id="vocabulary-menu-title" class="entry-card-title">單字練習</h3>
+          <p class="entry-card-text">可瀏覽單字、搜尋、分類、複習例句。</p>
+          <span class="entry-card-action">開始單字練習</span>
+        </button>
+        <button class="word-card entry-card japanese-main-entry-card vocabulary-menu-card" type="button" data-japanese-vocabulary-entry="quiz">
+          <span class="card-number">02</span>
+          <h3 class="entry-card-title">單字測驗</h3>
+          <p class="entry-card-text">開始單字測驗，檢查記憶狀況。</p>
+          <span class="entry-card-action">開始單字測驗</span>
+        </button>
+      </div>
+    </section>
+
+    <div id="japaneseVocabularyStudyView" data-japanese-vocabulary-view="practice" hidden>
+      <button id="backToVocabularyMenuFromPractice" class="secondary-button vocabulary-back-menu-button" type="button">返回單字選單</button>
     <section class="category-panel" aria-labelledby="category-title">
       <div class="category-header">
         <h2 id="category-title">分類篩選</h2>
@@ -135,7 +154,7 @@
           <span class="card-number">測驗題目</span>
           <h2 class="quiz-title">請選出正確的中文意思</h2>
         </div>
-        <button id="backToVocabularyStudy" class="secondary-button" type="button">返回單字學習</button>
+        <button id="backToVocabularyStudy" class="secondary-button" type="button">返回單字選單</button>
         <div class="quiz-stats" aria-label="測驗分數統計">
           <span>已答題數：<strong id="quizAnsweredCount">0</strong></span>
           <span>答對題數：<strong id="quizCorrectCount">0</strong></span>

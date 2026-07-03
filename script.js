@@ -157,7 +157,10 @@ const grammarModeButton = document.querySelector("#grammarModeButton");
 const grammarQuizModeButton = document.querySelector("#grammarQuizModeButton");
 const controlsPanel = document.querySelector(".controls");
 const quizPanel = document.querySelector("#quizPanel");
+const japaneseVocabularyMenuView = document.querySelector("#japaneseVocabularyMenuView");
 const japaneseVocabularyStudyView = document.querySelector("#japaneseVocabularyStudyView");
+const japaneseVocabularyEntryButtons = document.querySelectorAll("[data-japanese-vocabulary-entry]");
+const backToVocabularyMenuFromPracticeButton = document.querySelector("#backToVocabularyMenuFromPractice");
 const backToVocabularyStudyButton = document.querySelector("#backToVocabularyStudy");
 const quizContent = document.querySelector("#quizContent");
 const quizTitle = document.querySelector(".quiz-title");
@@ -203,7 +206,7 @@ let activeGrammarLevelId = "all";
 let searchQuery = "";
 let grammarSearchQuery = "";
 let activeMode = "cards";
-let japaneseVocabularyView = "study";
+let japaneseVocabularyView = "menu";
 let currentJapaneseView = "home";
 let activeJapaneseTab = "home";
 let currentQuizQuestion = null;
@@ -273,7 +276,7 @@ function renderJapaneseView(view) {
     japaneseFeatureTitle.textContent = isGrammarView ? "日文文法" : "日文單字";
     japaneseFeatureDescription.textContent = isGrammarView
       ? "文法基礎頁整理中；先保留現有文法卡片與文法測驗入口。"
-      : "搜尋、篩選並練習正式日文單字，也可切換到單字測驗。";
+      : "選擇要進行單字練習或單字測驗。";
   }
   if (japaneseReadingPanel) japaneseReadingPanel.hidden = nextView !== "reading";
   if (japaneseListeningPanel) japaneseListeningPanel.hidden = nextView !== "listening";
@@ -297,7 +300,8 @@ async function switchJapaneseTab(tab) {
   renderJapaneseView(normalizedTab);
 
   if (normalizedTab === "vocabulary") {
-    await switchMode("cards");
+    activeMode = "cards";
+    renderJapaneseVocabularyView("menu");
   } else if (normalizedTab === "grammar") {
     await switchMode(isGrammarMode() ? activeMode : "grammar");
   } else if (normalizedTab === "reading" && typeof initializeReadingPanel === "function") {
@@ -1076,21 +1080,42 @@ function switchGrammarQuizType(type) {
   restartQuiz();
 }
 
-function renderJapaneseVocabularyView(view = activeMode === "quiz" ? "quiz" : "study") {
-  japaneseVocabularyView = view === "quiz" ? "quiz" : "study";
+function normalizeJapaneseVocabularyView(view) {
+  if (view === "study" || view === "cards") return "practice";
+  if (["menu", "practice", "quiz"].includes(view)) return view;
+  return "menu";
+}
+
+function renderJapaneseVocabularyView(view = japaneseVocabularyView) {
+  japaneseVocabularyView = normalizeJapaneseVocabularyView(view);
+  const isMenuView = japaneseVocabularyView === "menu";
+  const isPracticeView = japaneseVocabularyView === "practice";
   const isQuizView = japaneseVocabularyView === "quiz";
 
+  if (japaneseVocabularyMenuView) {
+    japaneseVocabularyMenuView.hidden = !isMenuView || currentJapaneseView !== "vocabulary";
+  }
+
   if (japaneseVocabularyStudyView) {
-    japaneseVocabularyStudyView.hidden = isQuizView;
+    japaneseVocabularyStudyView.hidden = currentJapaneseView === "vocabulary" ? !isPracticeView : false;
   }
 
   if (quizPanel) {
-    quizPanel.hidden = !isQuizView && !isGrammarQuizMode();
+    quizPanel.hidden = currentJapaneseView === "vocabulary" ? !isQuizView : !isGrammarQuizMode();
   }
 }
 
-function returnToJapaneseVocabularyStudy() {
+function returnToJapaneseVocabularyMenu() {
+  activeMode = "cards";
+  renderJapaneseVocabularyView("menu");
+}
+
+function openJapaneseVocabularyPractice() {
   switchMode("cards");
+}
+
+function openJapaneseVocabularyQuiz() {
+  switchMode("quiz");
 }
 
 async function switchMode(mode) {
@@ -1114,7 +1139,11 @@ async function switchMode(mode) {
   controlsPanel.hidden = isQuizModeValue;
   cardsContainer.hidden = isQuizModeValue;
   quizPanel.hidden = !isQuizModeValue;
-  renderJapaneseVocabularyView(isWordQuizModeValue ? "quiz" : "study");
+  if (currentJapaneseView === "vocabulary") {
+    renderJapaneseVocabularyView(isWordQuizModeValue ? "quiz" : "practice");
+  } else {
+    renderJapaneseVocabularyView("practice");
+  }
   grammarQuizTypeControls.hidden = !isGrammarQuizModeValue;
   updateGrammarQuizTypeButtons();
   quizTitle.textContent = getQuizTitle();
@@ -1495,9 +1524,22 @@ nextQuizQuestionButton.addEventListener("click", createActiveQuizQuestion);
 restartQuizButton.addEventListener("click", () => {
   confirmResetJapaneseQuizProgress(restartQuiz);
 });
-if (backToVocabularyStudyButton) {
-  backToVocabularyStudyButton.addEventListener("click", returnToJapaneseVocabularyStudy);
+if (backToVocabularyMenuFromPracticeButton) {
+  backToVocabularyMenuFromPracticeButton.addEventListener("click", returnToJapaneseVocabularyMenu);
 }
+if (backToVocabularyStudyButton) {
+  backToVocabularyStudyButton.addEventListener("click", returnToJapaneseVocabularyMenu);
+}
+japaneseVocabularyEntryButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (button.dataset.japaneseVocabularyEntry === "quiz") {
+      openJapaneseVocabularyQuiz();
+      return;
+    }
+    openJapaneseVocabularyPractice();
+  });
+});
 grammarMeaningQuizTypeButton.addEventListener("click", () => switchGrammarQuizType("meaning"));
 grammarClozeQuizTypeButton.addEventListener("click", () => switchGrammarQuizType("cloze"));
 japaneseTabButtons.forEach((button) => {
