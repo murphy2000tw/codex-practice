@@ -38,7 +38,7 @@ requireSnippet(html, 'data-japanese-reading-view="menu"', 'menu state marker');
 requireSnippet(html, 'data-japanese-reading-view="content"', 'reading content state marker');
 requireSnippet(html, 'data-reading-mode="practice"', 'practice entry');
 requireSnippet(html, 'data-reading-mode="quiz"', 'quiz entry');
-requireSnippet(html, '選擇要進行閱讀練習或閱讀測驗', 'reading menu description');
+requireSnippet(html, '閱讀練習保留 ruby 輔助；閱讀測驗模式維持不顯示 ruby', 'reading menu description');
 
 if (!readingPanel.includes('返回日文首頁') || !readingPanel.includes('日文閱讀')) {
   failures.push('Reading panel must have home return control and main reading title.');
@@ -60,9 +60,8 @@ if (!readingContent.includes('hidden')) failures.push('Reading content container
   'function renderJapaneseReadingPractice()',
   'function renderJapaneseReadingQuiz()',
   'renderJapaneseReadingView("menu");',
-  'function createBackToReadingMenuButton()',
-  '返回閱讀選單',
-  'setReadingContentNodes(card, next)',
+  'function createReadingContentTitle(titleText)',
+  'setReadingContentNodes(title, card, next)',
   'setReadingContentNodes(...quizNodes)',
   'setReadingContentNodes(result)',
   'showRuby: true',

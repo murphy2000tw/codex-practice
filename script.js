@@ -1611,34 +1611,23 @@ function updateReadingHeader() {
   const description = document.querySelector("#japaneseReadingPanel .feature-page-description");
   if (!title || !description) return;
 
-  if (japaneseReadingView === "practice") {
-    title.textContent = "閱讀練習";
-    description.textContent = "閱讀文章與題目會保留 ruby / 假名輔助。";
-    return;
-  }
-
-  if (japaneseReadingView === "quiz") {
-    title.textContent = "閱讀測驗";
-    description.textContent = "測驗模式不顯示 ruby / 假名，請直接作答。";
-    return;
-  }
+  const readingHeader = document.querySelector("#japaneseReadingPanel .feature-page-header");
+  if (readingHeader) readingHeader.hidden = japaneseReadingView !== "menu";
 
   title.textContent = "日文閱讀";
-  description.textContent = "選擇要進行閱讀練習或閱讀測驗。";
+  description.textContent = "閱讀練習保留 ruby 輔助；閱讀測驗模式維持不顯示 ruby。";
 }
 
-function createBackToReadingMenuButton() {
-  const back = document.createElement("button");
-  back.className = "secondary-button reading-back-menu-button";
-  back.type = "button";
-  back.textContent = "返回閱讀選單";
-  back.addEventListener("click", () => renderJapaneseReadingView("menu"));
-  return back;
+function createReadingContentTitle(titleText) {
+  const title = document.createElement("h2");
+  title.className = "reading-page-mode-title";
+  title.textContent = titleText;
+  return title;
 }
 
 function setReadingContentNodes(...nodes) {
   if (!readingContent) return;
-  readingContent.replaceChildren(createBackToReadingMenuButton(), ...nodes);
+  readingContent.replaceChildren(...nodes);
 }
 
 function renderJapaneseReadingMenu() {
@@ -1981,13 +1970,14 @@ function showReadingPracticeQuestion() {
   currentReadingSet = pickLeastSeenItem(japaneseReadingSets, JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey);
   incrementSeenCount(JAPANESE_READING_SEEN_COUNTS_KEY, getReadingSeenKey(currentReadingSet));
   readingPracticeAnswers = {};
+  const title = createReadingContentTitle("閱讀練習");
   const card = createReadingSetCard(currentReadingSet, { showFeedback: true, onAnswer: handleReadingPracticeAnswer, showRuby: true });
   const next = document.createElement("button");
   next.className = "answer-button";
   next.type = "button";
   next.textContent = "換一篇閱讀";
   next.addEventListener("click", showReadingPracticeQuestion);
-  setReadingContentNodes(card, next);
+  setReadingContentNodes(title, card, next);
 }
 
 function handleReadingPracticeAnswer(questionIndex, selectedIndex, optionButtons, feedback) {
@@ -2035,6 +2025,7 @@ function renderReadingQuizQuestion() {
   const readingSet = readingQuizSets[currentReadingQuizSetIndex];
   if (!readingSet) return renderReadingQuizResults();
   const answeredInPreviousSets = readingQuizSets.slice(0, currentReadingQuizSetIndex).reduce((sum, set) => sum + set.questions.length, 0);
+  const title = createReadingContentTitle("閱讀測驗");
   const status = document.createElement("p");
   status.className = "set-status reading-quiz-status";
   status.textContent = `閱讀測驗 第 ${currentReadingQuizSetIndex + 1} 篇（${answeredInPreviousSets + 1}～${answeredInPreviousSets + readingSet.questions.length} / ${readingQuizItems.length} 題）`;
@@ -2049,7 +2040,7 @@ function renderReadingQuizQuestion() {
     renderReadingQuizQuestion();
   }});
   const setComplete = readingSet.questions.every((_question, index) => readingQuizAnswers[answeredInPreviousSets + index] !== undefined);
-  const quizNodes = [status, card];
+  const quizNodes = [title, status, card];
   if (setComplete) {
     const next = document.createElement("button");
     next.className = "answer-button";
@@ -2068,7 +2059,7 @@ function renderReadingQuizResults() {
   const correctCount = readingQuizItems.filter((item, i) => isReadingSelectedIndexCorrect(item.question, readingQuizAnswers[i])).length;
   const result = document.createElement("article");
   result.className = "reading-card reading-result-card";
-  result.innerHTML = `<h2>測驗完成</h2><p class="reading-score">總分：${correctCount} / ${readingQuizItems.length}</p>`;
+  result.innerHTML = `<h2>閱讀測驗完成</h2><p class="reading-score">總分：${correctCount} / ${readingQuizItems.length}</p>`;
   const list = document.createElement("div");
   list.className = "reading-result-list";
   const groupedItems = readingQuizItems.reduce((groups, item, index) => {
