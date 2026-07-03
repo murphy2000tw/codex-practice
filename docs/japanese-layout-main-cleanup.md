@@ -471,3 +471,55 @@ Python 檢查確認 `vocabulary.json` 仍為 3179 筆。本次未修改 `vocabul
 ### 是否仍有殘留問題
 
 靜態 DOM 與 script 檢查已確認四大方塊只屬於 home view，單字頁與閱讀頁不包含四大入口。此環境未提供可直接操作 GitHub Pages 實機的瀏覽器或手機 viewport；部署後仍建議以正式網址強制重新整理，確認 `japanese-layout-version` 與資產 query string 已更新為 `2.3`，再點擊「進入單字」「返回日文首頁」「進入閱讀」驗收。
+
+## 後續修正：閱讀與文法入口回歸
+
+### 本次問題原因
+
+前次為了修正日文主入口切換，將日文頁改為由 `renderJapaneseView(view)` 搭配 `#japaneseContent.replaceChildren(nextViewElement)` 管理單一主要 view。這個方向保留了首頁與單字 / 閱讀頁不混在一起的成功狀態，但合併時把文法入口從可點擊的 `data-japanese-entry="grammar"` 卡片改成準備中 `<article>`，因此文法不再會觸發 `window.showJapaneseContentView()`。
+
+閱讀頁的問題則和同一個 wrapper / view 切換有關：閱讀 panel 會被 `replaceChildren()` 移入唯一容器，閱讀頁雖能進入，但閱讀 panel 初始化 guard 只在第一次執行時呼叫 `setReadingMode("practice")`。若後續切換 view 或閱讀內容需要重新同步目前 mode，guard 會直接 return，造成閱讀練習 / 閱讀測驗按鈕狀態與內容渲染容易不同步。
+
+### 文法入口為何變成不可進入
+
+文法卡片原本已有既有文法資料與基礎頁流程，使用 `grammar.json` 與 `switchMode("grammar")` / `switchMode("grammar-quiz")`。前次整理把文法卡改成 `aria-label="文法準備中"` 的不可點擊卡，移除了 `data-japanese-entry="grammar"`，所以既有 click handler 找不到可導向 grammar view 的入口。
+
+### 閱讀練習 / 閱讀測驗為何無法進入
+
+閱讀頁內的兩個按鈕仍存在，但 `initializeReadingPanel()` 的一次性 guard 會讓後續回到閱讀 view 時不再執行 `setReadingMode()`。在單一容器移動 DOM 的架構下，進入閱讀 view 應每次同步目前閱讀 mode，否則 practice / quiz 的渲染與按鈕狀態可能停在舊狀態。
+
+### 修正的 handler / view / mode 切換
+
+- 恢復首頁文法卡為可點擊入口：`data-japanese-entry="grammar"`。
+- `normalizeJapaneseView()` 增加 `grammar` view。
+- `getJapaneseViewElement()` 讓 `grammar` 使用既有 `#japaneseMainContent`。
+- `renderJapaneseView()` 在 grammar view 顯示既有主內容容器，並把頁首文字切成「日文文法 / Japanese Grammar」。
+- `switchJapaneseTab()` 在 grammar view 呼叫 `switchMode("grammar")`，保留既有文法基礎資料，不新增大量題庫或假流程。
+- `initializeReadingPanel()` 改為每次進入閱讀 view 都同步目前 practice / quiz mode，不再因已初始化就跳過渲染。
+
+### 文法目前狀態
+
+文法入口已恢復可進入。頁面使用既有文法資料與既有文法練習 / 文法測驗模式，頁首標示為日文文法，並說明文法基礎頁仍在整理中。本次沒有新增大量文法題庫，也沒有新增假測驗流程。
+
+### 閱讀練習狀態
+
+閱讀頁可由首頁「進入閱讀」進入；閱讀練習按鈕會顯示現有文章與題目，並維持原本 ruby / 假名輔助規則。
+
+### 閱讀測驗狀態
+
+閱讀測驗按鈕可切換到測驗模式並顯示題目。測驗模式仍沿用既有渲染流程，不顯示 ruby / 假名輔助；本次未修改閱讀題庫與 ruby 規則。
+
+### 主入口 view 切換狀態
+
+仍保留已成功的主入口切換：日文首頁只顯示四大功能方塊；進入單字、文法或閱讀後，首頁四大方塊會從主要內容容器移出；返回日文首頁後四大方塊重新出現。
+
+### 主要 script 結果與 vocabulary 筆數
+
+- `node scripts/auditSiteHealth.js`：通過。
+- `node scripts/audit-reading-vocabulary.js`：通過。
+- `node scripts/check-reading-ruby.js`：通過且無 warning。
+- `vocabulary.json` 筆數確認：3179。
+
+### 殘留問題
+
+日文單字區內部的測驗區排版問題仍刻意保留未處理：單字測驗區仍可能顯示分類篩選、程度篩選、搜尋單字和單字功能。該問題將另開任務，本次沒有修改單字測驗排版、沒有新增單字、沒有進行 Batch 07。

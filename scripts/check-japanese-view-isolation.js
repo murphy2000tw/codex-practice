@@ -56,7 +56,7 @@ if (!root.includes('id="japaneseHomeContent"') || !root.includes('id="japaneseMa
   failures.push('Japanese view root must initially contain home, vocabulary, and reading top-level views so the renderer can move exactly one view into the root.');
 }
 
-if (!home.includes('日文學習主入口') || !home.includes('日文四大功能') || !home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"')) {
+if (!home.includes('日文學習主入口') || !home.includes('日文四大功能') || !home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"') || !home.includes('data-japanese-entry="grammar"')) {
   failures.push('Home view must contain the title and the navigable four-card entry area.');
 }
 
@@ -81,10 +81,10 @@ if (reading.includes('data-japanese-entry=') || reading.includes('日文四大�
 });
 
 const navigableEntries = [...home.matchAll(/data-japanese-entry="([^"]+)"/g)].map((match) => match[1]);
-const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'reading'].includes(entry));
+const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'grammar', 'reading'].includes(entry));
 if (unexpectedEntries.length > 0) failures.push(`Unexpected navigable Japanese entries: ${unexpectedEntries.join(', ')}`);
-if (!home.includes('aria-label="文法準備中"') || !home.includes('aria-label="聽力準備中"')) {
-  failures.push('Grammar and listening must remain coming-soon cards, not tabs.');
+if (!home.includes('data-japanese-entry="grammar"') || !home.includes('基礎頁（整理中）') || !home.includes('aria-label="聽力準備中"')) {
+  failures.push('Grammar must be a navigable foundation card and listening must remain coming soon.');
 }
 
 const renderBody = script.match(/function renderJapaneseView\(view\) \{[\s\S]*?\n\}/)?.[0] ?? '';
