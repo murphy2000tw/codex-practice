@@ -40,8 +40,8 @@
         <button class="word-card entry-card japanese-main-entry-card is-foundation" type="button" data-japanese-entry="grammar" aria-pressed="false">
           <span class="card-number">02</span>
           <h3 class="entry-card-title">文法</h3>
-          <p class="entry-card-text">進入現有文法基礎頁；內容仍在整理中，但可練習既有基礎文法卡片。</p>
-          <span class="entry-card-action">基礎頁（整理中）</span>
+          <p class="entry-card-text">先進入文法選單，再選擇文法練習或文法測驗。</p>
+          <span class="entry-card-action">進入文法</span>
         </button>
         <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="reading" aria-pressed="false">
           <span class="card-number">03</span>
@@ -87,8 +87,25 @@
       </div>
     </section>
 
+    <section id="japaneseGrammarMenuView" class="reading-menu-view" data-japanese-grammar-view="menu" aria-labelledby="grammar-menu-title" hidden>
+      <div class="entry-grid reading-menu-grid">
+        <button class="word-card entry-card japanese-main-entry-card reading-menu-card" type="button" data-japanese-grammar-entry="practice">
+          <span class="card-number">01</span>
+          <h3 id="grammar-menu-title" class="entry-card-title">文法練習</h3>
+          <p class="entry-card-text">可查看文法說明、例句與解析，逐步熟悉用法。</p>
+          <span class="entry-card-action">開始文法練習</span>
+        </button>
+        <button class="word-card entry-card japanese-main-entry-card reading-menu-card" type="button" data-japanese-grammar-entry="quiz">
+          <span class="card-number">02</span>
+          <h3 class="entry-card-title">文法測驗</h3>
+          <p class="entry-card-text">專注作答並在完成後檢查測驗回饋。</p>
+          <span class="entry-card-action">開始文法測驗</span>
+        </button>
+      </div>
+    </section>
     <div id="japaneseVocabularyStudyView" data-japanese-vocabulary-view="practice" hidden>
       <button id="backToVocabularyMenuFromPractice" class="secondary-button vocabulary-back-menu-button" type="button">返回單字選單</button>
+
     <section class="category-panel" aria-labelledby="category-title">
       <div class="category-header">
         <h2 id="category-title">分類篩選</h2>
@@ -117,17 +134,6 @@
       </div>
     </section>
 
-
-    <section class="mode-panel" data-mode-panel="grammar" aria-labelledby="grammar-mode-title" hidden>
-      <div>
-        <p class="filter-label" id="grammar-mode-title">文法功能</p>
-        <p class="mode-description">文法區保留基礎頁與文法測驗入口；內容仍以現有資料為準。</p>
-      </div>
-      <div class="mode-switch" role="group" aria-label="選擇文法練習模式">
-        <button id="grammarModeButton" class="mode-button" data-mode-group="grammar" type="button" aria-pressed="false">文法練習</button>
-        <button id="grammarQuizModeButton" class="mode-button" data-mode-group="grammar" type="button" aria-pressed="false">文法測驗</button>
-      </div>
-    </section>
 
     <section class="controls" aria-label="單字卡控制">
       <p id="wordSetStatus" class="set-status" aria-live="polite">正在載入單字資料…</p>

@@ -160,6 +160,8 @@ const quizPanel = document.querySelector("#quizPanel");
 const japaneseVocabularyMenuView = document.querySelector("#japaneseVocabularyMenuView");
 const japaneseVocabularyStudyView = document.querySelector("#japaneseVocabularyStudyView");
 const japaneseVocabularyEntryButtons = document.querySelectorAll("[data-japanese-vocabulary-entry]");
+const japaneseGrammarMenuView = document.querySelector("#japaneseGrammarMenuView");
+const japaneseGrammarEntryButtons = document.querySelectorAll("[data-japanese-grammar-entry]");
 const backToVocabularyMenuFromPracticeButton = document.querySelector("#backToVocabularyMenuFromPractice");
 const backToVocabularyStudyButton = document.querySelector("#backToVocabularyStudy");
 const quizContent = document.querySelector("#quizContent");
@@ -207,6 +209,7 @@ let searchQuery = "";
 let grammarSearchQuery = "";
 let activeMode = "cards";
 let japaneseVocabularyView = "menu";
+let japaneseGrammarView = "menu";
 let currentJapaneseView = "home";
 let activeJapaneseTab = "home";
 let currentQuizQuestion = null;
@@ -272,10 +275,10 @@ function renderJapaneseView(view) {
   if (japaneseMainContent) japaneseMainContent.hidden = nextView !== "vocabulary" && nextView !== "grammar";
   if (japaneseFeatureEyebrow && japaneseFeatureTitle && japaneseFeatureDescription) {
     const isGrammarView = nextView === "grammar";
-    japaneseFeatureEyebrow.textContent = isGrammarView ? "Japanese Grammar" : "Japanese Vocabulary";
+    japaneseFeatureEyebrow.textContent = isGrammarView ? "JAPANESE GRAMMAR" : "Japanese Vocabulary";
     japaneseFeatureTitle.textContent = isGrammarView ? "日文文法" : "日文單字";
     japaneseFeatureDescription.textContent = isGrammarView
-      ? "文法基礎頁整理中；先保留現有文法卡片與文法測驗入口。"
+      ? "文法區保留文法練習與文法測驗入口；練習模式可查看說明，測驗模式專注作答。"
       : "選擇要進行單字練習或單字測驗。";
   }
   if (japaneseReadingPanel) japaneseReadingPanel.hidden = nextView !== "reading";
@@ -303,7 +306,8 @@ async function switchJapaneseTab(tab) {
     activeMode = "cards";
     renderJapaneseVocabularyView("menu");
   } else if (normalizedTab === "grammar") {
-    await switchMode(isGrammarMode() ? activeMode : "grammar");
+    activeMode = "grammar";
+    renderJapaneseGrammarView("menu");
   } else if (normalizedTab === "reading" && typeof initializeReadingPanel === "function") {
     initializeReadingPanel();
   }
@@ -1105,9 +1109,56 @@ function renderJapaneseVocabularyView(view = japaneseVocabularyView) {
   }
 }
 
+function normalizeJapaneseGrammarView(view) {
+  if (view === "study" || view === "cards") return "practice";
+  if (["menu", "practice", "quiz"].includes(view)) return view;
+  return "menu";
+}
+
+function renderJapaneseGrammarView(view = japaneseGrammarView) {
+  japaneseGrammarView = normalizeJapaneseGrammarView(view);
+  const isMenuView = japaneseGrammarView === "menu";
+  const isPracticeView = japaneseGrammarView === "practice";
+  const isQuizView = japaneseGrammarView === "quiz";
+
+  if (japaneseVocabularyMenuView && currentJapaneseView === "grammar") {
+    japaneseVocabularyMenuView.hidden = true;
+  }
+
+  if (japaneseGrammarMenuView) {
+    japaneseGrammarMenuView.hidden = currentJapaneseView !== "grammar" || !isMenuView;
+  }
+
+  if (japaneseVocabularyStudyView) {
+    japaneseVocabularyStudyView.hidden = currentJapaneseView === "grammar" ? !isPracticeView : japaneseVocabularyStudyView.hidden;
+  }
+
+  if (quizPanel) {
+    quizPanel.hidden = currentJapaneseView === "grammar" ? !isQuizView : quizPanel.hidden;
+  }
+
+  if (backToVocabularyMenuFromPracticeButton) {
+    backToVocabularyMenuFromPracticeButton.textContent = currentJapaneseView === "grammar" ? "返回文法選單" : "返回單字選單";
+  }
+
+  if (backToVocabularyStudyButton) {
+    backToVocabularyStudyButton.textContent = currentJapaneseView === "grammar" ? "返回文法選單" : "返回單字選單";
+  }
+}
+
 function returnToJapaneseVocabularyMenu() {
+  if (currentJapaneseView === "grammar") {
+    returnToJapaneseGrammarMenu();
+    return;
+  }
+
   activeMode = "cards";
   renderJapaneseVocabularyView("menu");
+}
+
+function returnToJapaneseGrammarMenu() {
+  activeMode = "grammar";
+  renderJapaneseGrammarView("menu");
 }
 
 function openJapaneseVocabularyPractice() {
@@ -1116,6 +1167,14 @@ function openJapaneseVocabularyPractice() {
 
 function openJapaneseVocabularyQuiz() {
   switchMode("quiz");
+}
+
+function openJapaneseGrammarPractice() {
+  switchMode("grammar");
+}
+
+function openJapaneseGrammarQuiz() {
+  switchMode("grammar-quiz");
 }
 
 async function switchMode(mode) {
@@ -1134,10 +1193,14 @@ async function switchMode(mode) {
     quizModeButton.classList.toggle("is-active", isWordQuizModeValue);
     quizModeButton.setAttribute("aria-pressed", String(isWordQuizModeValue));
   }
-  grammarModeButton.classList.toggle("is-active", isGrammarCardModeValue);
-  grammarModeButton.setAttribute("aria-pressed", String(isGrammarCardModeValue));
-  grammarQuizModeButton.classList.toggle("is-active", isGrammarQuizModeValue);
-  grammarQuizModeButton.setAttribute("aria-pressed", String(isGrammarQuizModeValue));
+  if (grammarModeButton) {
+    grammarModeButton.classList.toggle("is-active", isGrammarCardModeValue);
+    grammarModeButton.setAttribute("aria-pressed", String(isGrammarCardModeValue));
+  }
+  if (grammarQuizModeButton) {
+    grammarQuizModeButton.classList.toggle("is-active", isGrammarQuizModeValue);
+    grammarQuizModeButton.setAttribute("aria-pressed", String(isGrammarQuizModeValue));
+  }
   updateModeButtonsForJapaneseTab();
 
   controlsPanel.hidden = isQuizModeValue;
@@ -1145,8 +1208,13 @@ async function switchMode(mode) {
   quizPanel.hidden = !isQuizModeValue;
   if (currentJapaneseView === "vocabulary") {
     renderJapaneseVocabularyView(isWordQuizModeValue ? "quiz" : "practice");
+    renderJapaneseGrammarView("menu");
+  } else if (currentJapaneseView === "grammar") {
+    renderJapaneseVocabularyView("menu");
+    renderJapaneseGrammarView(isGrammarQuizModeValue ? "quiz" : "practice");
   } else {
     renderJapaneseVocabularyView("practice");
+    renderJapaneseGrammarView("menu");
   }
   grammarQuizTypeControls.hidden = !isGrammarQuizModeValue;
   updateGrammarQuizTypeButtons();
@@ -1453,8 +1521,8 @@ async function loadVocabulary() {
     clearSearchButton.disabled = true;
     if (cardModeButton) cardModeButton.disabled = true;
     if (quizModeButton) quizModeButton.disabled = true;
-    grammarModeButton.disabled = true;
-    grammarQuizModeButton.disabled = true;
+    if (grammarModeButton) grammarModeButton.disabled = true;
+    if (grammarQuizModeButton) grammarQuizModeButton.disabled = true;
     nextQuizQuestionButton.disabled = true;
     restartQuizButton.disabled = true;
   }
@@ -1488,7 +1556,7 @@ async function ensureGrammarLoaded() {
     shuffleButton.disabled = true;
     wordSearchInput.disabled = true;
     clearSearchButton.disabled = true;
-    grammarQuizModeButton.disabled = true;
+    if (grammarQuizModeButton) grammarQuizModeButton.disabled = true;
   } finally {
     grammarIsLoading = false;
   }
@@ -1526,8 +1594,8 @@ if (cardModeButton) {
 if (quizModeButton) {
   quizModeButton.addEventListener("click", () => switchMode("quiz"));
 }
-grammarModeButton.addEventListener("click", () => switchMode("grammar"));
-grammarQuizModeButton.addEventListener("click", () => switchMode("grammar-quiz"));
+if (grammarModeButton) grammarModeButton.addEventListener("click", () => switchMode("grammar"));
+if (grammarQuizModeButton) grammarQuizModeButton.addEventListener("click", () => switchMode("grammar-quiz"));
 nextQuizQuestionButton.addEventListener("click", createActiveQuizQuestion);
 restartQuizButton.addEventListener("click", () => {
   confirmResetJapaneseQuizProgress(restartQuiz);
@@ -1546,6 +1614,17 @@ japaneseVocabularyEntryButtons.forEach((button) => {
       return;
     }
     openJapaneseVocabularyPractice();
+  });
+});
+japaneseGrammarEntryButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (button.dataset.japaneseGrammarEntry === "quiz") {
+      openJapaneseGrammarQuiz();
+      return;
+    }
+
+    openJapaneseGrammarPractice();
   });
 });
 grammarMeaningQuizTypeButton.addEventListener("click", () => switchGrammarQuizType("meaning"));
