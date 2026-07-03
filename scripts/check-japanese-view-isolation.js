@@ -51,12 +51,13 @@ const root = extractById(html, 'japaneseContent');
 const home = extractById(html, 'japaneseHomeContent');
 const vocabulary = extractById(html, 'japaneseMainContent');
 const reading = extractById(html, 'japaneseReadingPanel');
+const listening = extractById(html, 'japaneseListeningPanel');
 
-if (!root.includes('id="japaneseHomeContent"') || !root.includes('id="japaneseMainContent"') || !root.includes('id="japaneseReadingPanel"')) {
-  failures.push('Japanese view root must initially contain home, vocabulary, and reading top-level views so the renderer can move exactly one view into the root.');
+if (!root.includes('id="japaneseHomeContent"') || !root.includes('id="japaneseMainContent"') || !root.includes('id="japaneseReadingPanel"') || !root.includes('id="japaneseListeningPanel"')) {
+  failures.push('Japanese view root must initially contain home, vocabulary, reading, and listening top-level views so the renderer can move exactly one view into the root.');
 }
 
-if (!home.includes('日文學習主入口') || !home.includes('日文學習功能') || !home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"') || !home.includes('data-japanese-entry="grammar"')) {
+if (!home.includes('日文學習主入口') || !home.includes('日文學習功能') || !home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"') || !home.includes('data-japanese-entry="grammar"') || !home.includes('data-japanese-entry="listening"')) {
   failures.push('Home view must contain the title and the navigable Japanese learning entry area.');
 }
 
@@ -80,19 +81,28 @@ if (reading.includes('data-japanese-entry=') || reading.includes('日文學習�
   if (!reading.includes(required)) failures.push(`Reading view missing required content: ${required}`);
 });
 
-const navigableEntries = [...home.matchAll(/data-japanese-entry="([^"]+)"/g)].map((match) => match[1]);
-const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'grammar', 'reading'].includes(entry));
-if (unexpectedEntries.length > 0) failures.push(`Unexpected navigable Japanese entries: ${unexpectedEntries.join(', ')}`);
-if (!home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"') || !home.includes('data-japanese-entry="grammar"')) {
-  failures.push('Japanese home must expose vocabulary, reading, and grammar menu entries.');
+if (listening.includes('data-japanese-entry=') || listening.includes('日文學習功能') || listening.includes('進入單字') || listening.includes('進入閱讀')) {
+  failures.push('Listening view must not contain Japanese home entry cards.');
 }
-if (home.includes('data-japanese-entry="listening"') || home.includes('聽力')) {
-  failures.push('Japanese home must not expose a listening feature entry during this health check.');
+
+['返回日文首頁', 'data-japanese-back-home', '日文聽力', '聽力練習', '聽力測驗', 'data-listening-mode="practice"', 'data-listening-mode="quiz"'].forEach((required) => {
+  if (!listening.includes(required)) failures.push(`Listening view missing required content: ${required}`);
+});
+
+const navigableEntries = [...home.matchAll(/data-japanese-entry="([^"]+)"/g)].map((match) => match[1]);
+const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'grammar', 'reading', 'listening'].includes(entry));
+if (unexpectedEntries.length > 0) failures.push(`Unexpected navigable Japanese entries: ${unexpectedEntries.join(', ')}`);
+if (!home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"') || !home.includes('data-japanese-entry="grammar"') || !home.includes('data-japanese-entry="listening"')) {
+  failures.push('Japanese home must expose vocabulary, reading, grammar, and listening menu entries.');
 }
 
 const renderBody = script.match(/function renderJapaneseView\(view\) \{[\s\S]*?\n\}/)?.[0] ?? '';
 if (!script.includes('initializeReadingPanel();') || !script.includes('function bindReadingModeButtons(') || !script.includes('event.target.closest("[data-reading-mode]")') || !script.includes('function renderJapaneseReadingView(')) {
   failures.push('Reading view render must initialize scoped reading practice / quiz mode handlers.');
+}
+
+if (!script.includes('initializeListeningPanel();') || !script.includes('function bindListeningModeButtons(') || !script.includes('function renderJapaneseListeningView(') || !script.includes('"listeningMenu"') || !script.includes('"listeningPractice"') || !script.includes('"listeningQuiz"')) {
+  failures.push('Listening view render must initialize scoped listening menu / practice / quiz handlers.');
 }
 
 if (!renderBody.includes('japaneseContent.replaceChildren(nextViewElement)')) {

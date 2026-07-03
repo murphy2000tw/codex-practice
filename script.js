@@ -248,7 +248,7 @@ function updateModeButtonsForJapaneseTab() {
 
 function normalizeJapaneseView(view) {
   if (view === "vocab") return "vocabulary";
-  if (["home", "vocabulary", "grammar", "reading", "listening"].includes(view)) return view;
+  if (["home", "vocabulary", "grammar", "reading", "listening", "listeningMenu", "listeningPractice", "listeningQuiz"].includes(view)) return view;
   return "home";
 }
 
@@ -256,36 +256,37 @@ function getJapaneseViewElement(view) {
   if (view === "home") return japaneseHomeContent;
   if (view === "vocabulary" || view === "grammar") return japaneseMainContent;
   if (view === "reading") return japaneseReadingPanel;
-  if (view === "listening") return japaneseListeningPanel;
+  if (["listening", "listeningMenu", "listeningPractice", "listeningQuiz"].includes(view)) return japaneseListeningPanel;
   return japaneseHomeContent;
 }
 
 function renderJapaneseView(view) {
   const normalizedView = normalizeJapaneseView(view);
   const nextView = getJapaneseViewElement(normalizedView) ? normalizedView : "home";
+  const panelView = ["listeningMenu", "listeningPractice", "listeningQuiz"].includes(nextView) ? "listening" : nextView;
   currentJapaneseView = nextView;
-  activeJapaneseTab = getModePanelView(nextView);
+  activeJapaneseTab = getModePanelView(panelView);
 
   const nextViewElement = getJapaneseViewElement(nextView);
   if (japaneseContent && nextViewElement) {
     japaneseContent.replaceChildren(nextViewElement);
   }
 
-  if (japaneseHomeContent) japaneseHomeContent.hidden = nextView !== "home";
-  if (japaneseMainContent) japaneseMainContent.hidden = nextView !== "vocabulary" && nextView !== "grammar";
+  if (japaneseHomeContent) japaneseHomeContent.hidden = panelView !== "home";
+  if (japaneseMainContent) japaneseMainContent.hidden = panelView !== "vocabulary" && panelView !== "grammar";
   if (japaneseFeatureEyebrow && japaneseFeatureTitle && japaneseFeatureDescription) {
-    const isGrammarView = nextView === "grammar";
+    const isGrammarView = panelView === "grammar";
     japaneseFeatureEyebrow.textContent = isGrammarView ? "JAPANESE GRAMMAR" : "Japanese Vocabulary";
     japaneseFeatureTitle.textContent = isGrammarView ? "日文文法" : "日文單字";
     japaneseFeatureDescription.textContent = isGrammarView
       ? "文法區保留文法練習與文法測驗入口；練習模式可查看說明，測驗模式專注作答。"
       : "選擇要進行單字練習或單字測驗。";
   }
-  if (japaneseReadingPanel) japaneseReadingPanel.hidden = nextView !== "reading";
-  if (japaneseListeningPanel) japaneseListeningPanel.hidden = nextView !== "listening";
+  if (japaneseReadingPanel) japaneseReadingPanel.hidden = panelView !== "reading";
+  if (japaneseListeningPanel) japaneseListeningPanel.hidden = panelView !== "listening";
 
   japaneseTabButtons.forEach((button) => {
-    const isActive = button.dataset.japaneseTab === nextView;
+    const isActive = button.dataset.japaneseTab === panelView;
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-selected", String(isActive));
   });
@@ -2284,11 +2285,16 @@ function createListeningPlayButton(item, status) {
 }
 
 function renderJapaneseListeningMenu() {
-  if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = currentJapaneseView !== "listening";
-  if (japaneseListeningContent) japaneseListeningContent.hidden = true;
+  currentJapaneseView = "listeningMenu";
+  if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = false;
+  if (japaneseListeningContent) {
+    japaneseListeningContent.replaceChildren();
+    japaneseListeningContent.hidden = true;
+  }
 }
 
 function renderJapaneseListeningPractice() {
+  currentJapaneseView = "listeningPractice";
   const item = JAPANESE_LISTENING_QUESTIONS[currentListeningIndex % JAPANESE_LISTENING_QUESTIONS.length];
   if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = true;
   const status = Object.assign(document.createElement("p"), { className: "status-message", textContent: "請按播放音訊，可重複播放。" });
@@ -2312,6 +2318,7 @@ function startJapaneseListeningQuiz() {
 }
 
 function renderJapaneseListeningQuizQuestion() {
+  currentJapaneseView = "listeningQuiz";
   const item = JAPANESE_LISTENING_QUESTIONS[listeningQuizIndex];
   if (!item) return renderJapaneseListeningQuizResults();
   if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = true;
@@ -2356,6 +2363,8 @@ function renderJapaneseListeningQuizQuestion() {
 }
 
 function renderJapaneseListeningQuizResults() {
+  currentJapaneseView = "listeningQuiz";
+  if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = true;
   const total = JAPANESE_LISTENING_QUESTIONS.length;
   const accuracy = Math.round((listeningQuizCorrectCount / total) * 100);
   const result = document.createElement("section");
