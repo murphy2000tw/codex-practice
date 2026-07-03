@@ -2403,6 +2403,34 @@ h1 {
   line-height: 1.7;
 }
 
+.vocabulary-menu-view {
+  margin: 0 0 24px;
+}
+
+.vocabulary-menu-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.vocabulary-menu-card {
+  min-height: 230px;
+}
+
+.vocabulary-back-menu-button {
+  margin: 0 0 18px;
+}
+
+#japaneseVocabularyMenuView[hidden],
+#japaneseVocabularyStudyView[hidden] {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .vocabulary-menu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .japanese-main-entry-section {
   margin: 0 0 24px;
 }
