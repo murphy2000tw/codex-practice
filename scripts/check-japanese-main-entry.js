@@ -49,8 +49,8 @@ if (!entrySectionMatch) {
     failures.push(`Only finished entry cards may navigate; unexpected targets: ${unexpectedTargets.join(', ')}`);
   }
 
-  if (!entrySection.includes('data-japanese-entry="grammar"') || !entrySection.includes('進入文法') || !entrySection.includes('aria-label="聽力準備中"')) {
-    failures.push('Grammar must navigate to the grammar menu while listening remains coming soon.');
+  if (!entrySection.includes('data-japanese-entry="grammar"') || !entrySection.includes('進入文法') || !entrySection.includes('data-japanese-entry="reading"')) {
+    failures.push('Grammar and reading must navigate to their menu pages.');
   }
 }
 
