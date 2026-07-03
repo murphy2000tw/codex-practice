@@ -557,3 +557,55 @@ Python 檢查確認 `vocabulary.json` 仍為 3179 筆。本次未修改 `vocabul
 - 三個主要 script 結果：`auditSiteHealth.js`、`check-japanese-main-entry.js`、`check-japanese-view-isolation.js` 皆需在提交前通過；`check-reading-ruby.js` 仍應無 warning。
 - `vocabulary.json` 筆數：本次不修改，提交前確認仍為 3179 筆。
 - 殘留問題：單字測驗區排版問題未在本次處理，需另開任務。
+
+## 後續修正：單字學習與測驗 view 分離
+
+### 1. 本次問題原因
+
+追查後確認，日文單字測驗原本不是獨立的內部 view，而是放在同一個 `#japaneseMainContent` 單字頁容器下方。單字測驗按鈕只切換 `activeMode = "quiz"`，再把 `#quizPanel` 顯示出來，並隱藏單字卡控制與單字卡列表；但分類篩選、程度篩選、搜尋單字與「單字功能」區塊仍屬於整個單字頁容器，沒有被任何 `study` / `quiz` 互斥 view 包住，因此進入單字測驗後仍會留在畫面上。
+
+### 2. 為什麼單字測驗頁會顯示分類 / 搜尋 / 單字功能
+
+原本的單字測驗區只有 `#quizPanel` 本身被 `hidden` 切換；分類篩選、程度篩選、搜尋單字與單字功能不在 `#quizPanel` 裡，也沒有獨立的 `vocabularyView` 狀態控制。也就是說，測驗區只是同頁下方的面板，並不是互斥的測驗 view。這使得測驗模式顯示時，學習頁工具仍然維持顯示。
+
+### 3. 修正後的單字學習 view 結構
+
+本次新增 `#japaneseVocabularyStudyView` 作為日文單字區內部的學習 / 練習 view。此 view 保留返回日文首頁、日文單字標題下方的學習工具內容，包括分類篩選、詞性分類、程度篩選、搜尋單字、單字功能、單字卡列表與既有「單字測驗」入口。進入單字頁時會回到 `cards` 模式，確保使用者先看到乾淨的單字學習 / 練習 view。
+
+### 4. 修正後的單字測驗 view 結構
+
+`#quizPanel` 現在標記為 `data-japanese-vocabulary-view="quiz"`，並與 `#japaneseVocabularyStudyView` 成為同層的互斥區塊。進入單字測驗時，`renderJapaneseVocabularyView("quiz")` 會隱藏整個學習 view，因此分類篩選、程度篩選、搜尋單字、單字功能與單字卡列表不會出現在測驗畫面。測驗 view 只保留測驗標題、題目內容、選項、作答回饋、下一題、重新開始與返回單字學習等必要元素。
+
+### 5. 單字測驗返回方式
+
+單字測驗 view 新增「返回單字學習」按鈕。點擊後會呼叫既有 `switchMode("cards")` 流程，切回單字學習 / 練習 view，並恢復分類篩選、程度篩選、搜尋單字、單字功能與單字卡列表。
+
+### 6. 單字測驗作答流程是否正常
+
+本次未改動出題、選項、答題判定、答題回饋、下一題、重新開始測驗或分數統計邏輯。修正只調整日文單字區內部 view 的顯示條件，測驗仍沿用既有 `createQuizQuestion` / `createActiveQuizQuestion` / `restartQuiz` 流程。
+
+### 7. 是否保留主入口 view 切換成功狀態
+
+已保留日文首頁 `home`、單字 `vocabulary`、文法 `grammar`、閱讀 `reading` 與聽力 `listening` 的 top-level view 切換。日文首頁仍只顯示四大方塊；點「進入單字」後四大方塊消失並顯示單字學習 view；返回日文首頁仍正常。
+
+### 8. 文法 / 閱讀是否未受影響
+
+本次未修改正式文法內容、閱讀題庫或閱讀 ruby 規則。文法入口仍可進入整理中頁；閱讀練習仍使用 ruby；閱讀測驗仍維持不顯示 ruby。
+
+### 9. 防呆檢查結果
+
+新增 `scripts/check-japanese-vocabulary-view-split.js`，檢查日文單字區具有 study / quiz 互斥 view、測驗 view 不包含分類篩選 / 程度篩選 / 搜尋單字 / 單字功能 / 單字卡列表、測驗 view 具備返回單字學習，以及單字學習 view 仍保留分類、搜尋、單字卡與單字測驗入口。
+
+### 10. 三個主要 script 結果
+
+- `node scripts/auditSiteHealth.js`：通過。
+- `node scripts/audit-reading-vocabulary.js`：通過。
+- `node scripts/check-reading-ruby.js`：通過，沒有 warning。
+
+### 11. `vocabulary.json` 筆數確認
+
+`vocabulary.json` 未修改；檢查結果仍為 3179 筆。
+
+### 12. 是否仍有殘留問題
+
+本次目標範圍內未發現殘留問題。單字測驗 view 已與單字學習 / 練習 view 分離；分類篩選、程度篩選、搜尋單字、單字功能與單字卡列表不會出現在單字測驗 view。
