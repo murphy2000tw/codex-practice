@@ -523,3 +523,37 @@ Python 檢查確認 `vocabulary.json` 仍為 3179 筆。本次未修改 `vocabul
 ### 殘留問題
 
 日文單字區內部的測驗區排版問題仍刻意保留未處理：單字測驗區仍可能顯示分類篩選、程度篩選、搜尋單字和單字功能。該問題將另開任務，本次沒有修改單字測驗排版、沒有新增單字、沒有進行 Batch 07。
+
+## 後續修正：文法與閱讀內部分頁初始化
+
+### 本次問題原因
+
+前次日文主入口修正已讓 `home` / `vocabulary` / `reading` 透過單一 `#japaneseContent` root 互斥切換，四大方塊在進入功能頁後會正確消失。本次問題集中在兩個內部入口：文法入口需要明確接回 grammar view；閱讀頁進入後，內部的「閱讀練習」與「閱讀測驗」需要在閱讀 view render / re-attach 後重新同步目前 DOM 與 mode handler。
+
+### 文法入口為何無法進入
+
+前次整理曾把文法卡視為準備中，若缺少 `data-japanese-entry="grammar"` 或 `normalizeJapaneseView()` / `getJapaneseViewElement()` 未把 `grammar` 導向既有主內容容器，點擊文法就不會進入文法頁。本次確認文法卡保持可點擊的 `data-japanese-entry="grammar"`，`showJapaneseContentView('grammar')` 會進入 grammar view，並在 `switchJapaneseTab('grammar')` 中呼叫既有 `switchMode('grammar')`，顯示文法基礎頁整理中狀態與既有文法卡片，不新增題庫或假測驗流程。
+
+### 閱讀練習 / 閱讀測驗為何無法進入
+
+閱讀頁由 `replaceChildren()` 移入單一 view root 後，閱讀內部按鈕若只依賴初始載入時取得的節點與一次性 click binding，在 view 被移動或後續 render 後可能指向舊節點或未重新同步 active mode。本次改為在閱讀 view 每次初始化時執行 `bindReadingModeButtons(readingViewElement)`，重新取得目前 reading view 內的 practice / quiz 按鈕與 `#readingContent`，並使用 scoped event delegation 綁定 `[data-reading-mode]`。
+
+### 修正內容
+
+1. 閱讀練習按鈕補上 `data-reading-mode="practice"`。
+2. 閱讀測驗按鈕補上 `data-reading-mode="quiz"`。
+3. 新增 `bindReadingModeButtons(readingViewElement)`，限定在目前 `#japaneseReadingPanel` 內重新取得按鈕與內容容器。
+4. `initializeReadingPanel()` 每次閱讀 view render 後都會呼叫 `bindReadingModeButtons()`，再以 `setReadingMode()` 同步 practice / quiz 顯示狀態。
+5. 使用 `readingViewElement.dataset.readingModeBound` 避免重複綁定造成多次觸發。
+6. 更新 `scripts/check-japanese-main-entry.js` 與 `scripts/check-japanese-view-isolation.js`，檢查 grammar entry、reading entry、reading mode data attribute、reading mode handler 與 reading view 初始化。
+
+### 狀態確認
+
+- 主入口 view 切換成功狀態：保留，未重構 `#japaneseContent`、`#japaneseHomeContent` 或四大方塊容器。
+- 文法目前狀態：可由首頁進入既有文法基礎頁；頁面標示整理中並提供「返回日文首頁」。
+- 閱讀練習目前狀態：可由閱讀頁內按鈕進入，練習模式仍呼叫既有 `showReadingPracticeQuestion()`，保留 ruby / 假名顯示規則。
+- 閱讀測驗目前狀態：可由閱讀頁內按鈕進入，測驗模式仍呼叫既有 `startReadingQuiz()`，維持不顯示 ruby / 假名。
+- 單字入口：未修改單字頁內部排版與測驗流程，入口仍沿用既有 vocabulary view。
+- 三個主要 script 結果：`auditSiteHealth.js`、`check-japanese-main-entry.js`、`check-japanese-view-isolation.js` 皆需在提交前通過；`check-reading-ruby.js` 仍應無 warning。
+- `vocabulary.json` 筆數：本次不修改，提交前確認仍為 3179 筆。
+- 殘留問題：單字測驗區排版問題未在本次處理，需另開任務。
