@@ -12,10 +12,6 @@ const categoryFilters = document.querySelector("#geptCategoryFilters");
 const vocabularySearchInput = document.querySelector("#geptVocabularySearch");
 const clearSearchButton = document.querySelector("#clearGeptSearch");
 const randomStatus = document.querySelector("#geptRandomStatus");
-const cardModeButton = document.querySelector("#geptCardModeButton");
-const quizModeButton = document.querySelector("#geptQuizModeButton");
-const listeningModeButton = document.querySelector("#geptListeningModeButton");
-const listeningTestModeButton = document.querySelector("#geptListeningTestModeButton");
 const listeningPanel = document.querySelector("#geptListeningPanel");
 const listeningTitle = document.querySelector("#geptListeningTitle");
 const listeningContent = document.querySelector("#geptListeningContent");
@@ -50,6 +46,8 @@ const englishProgressCompletion = document.querySelector("#englishProgressComple
 const englishProgressFilters = document.querySelector("#englishProgressFilters");
 const resetEnglishProgressButton = document.querySelector("#resetEnglishProgress");
 const resetEnglishQuizProgressButton = document.querySelector("#resetEnglishQuizProgress");
+removeVocabularyModeSwitchBlock();
+
 const vocabulary = Array.isArray(geptVocabulary) ? geptVocabulary : [];
 const allCategoriesLabel = "全部";
 const allLevelsLabel = "全部級數";
@@ -724,19 +722,31 @@ function reshuffleCurrentVocabulary() {
   resetCurrentVocabulary();
 }
 
-function updateModeButtons() {
-  const isCardMode = currentMode === cardMode;
-  const isQuizMode = currentMode === quizMode;
-  const isListeningMode = currentMode === listeningMode;
-  const isListeningTestMode = currentMode === listeningTestMode;
-  cardModeButton?.classList.toggle("is-active", isCardMode);
-  cardModeButton?.setAttribute("aria-pressed", String(isCardMode));
-  quizModeButton?.classList.toggle("is-active", isQuizMode);
-  quizModeButton?.setAttribute("aria-pressed", String(isQuizMode));
-  listeningModeButton?.classList.toggle("is-active", isListeningMode);
-  listeningModeButton?.setAttribute("aria-pressed", String(isListeningMode));
-  listeningTestModeButton?.classList.toggle("is-active", isListeningTestMode);
-  listeningTestModeButton?.setAttribute("aria-pressed", String(isListeningTestMode));
+
+function removeVocabularyModeSwitchBlock() {
+  if (!vocabularyAppPanel) {
+    return;
+  }
+
+  const staleControls = [
+    "#geptCardModeButton",
+    "#geptQuizModeButton",
+    "#geptListeningModeButton",
+    "#geptListeningTestModeButton",
+  ];
+
+  staleControls.forEach((selector) => {
+    const control = vocabularyAppPanel.querySelector(selector);
+    const element = control?.closest(".gept-mode-panel, .mode-panel, section, div");
+    element?.remove();
+  });
+
+  Array.from(vocabularyAppPanel.querySelectorAll("section, article, div")).forEach((element) => {
+    const text = element.textContent || "";
+    if (text.includes("模式切換") && text.includes("單字卡模式") && text.includes("測驗模式")) {
+      element.remove();
+    }
+  });
 }
 
 function updateModeScopedVisibility() {
@@ -773,7 +783,6 @@ function updateModeScopedVisibility() {
 }
 
 function renderCurrentMode() {
-  updateModeButtons();
   updateModeScopedVisibility();
 
   const isQuizMode = currentMode === quizMode;
@@ -2203,54 +2212,6 @@ clearSearchButton?.addEventListener("click", () => {
   searchQuery = "";
   resetCurrentVocabulary();
   renderCurrentMode();
-});
-
-cardModeButton?.addEventListener("click", () => {
-  if (currentMode === cardMode) {
-    return;
-  }
-
-  currentMode = cardMode;
-  isWrongReviewMode = false;
-  renderCurrentMode();
-});
-
-quizModeButton?.addEventListener("click", () => {
-  if (currentMode === quizMode) {
-    return;
-  }
-
-  currentMode = quizMode;
-  isWrongReviewMode = false;
-  resetQuizState();
-  renderCurrentMode();
-  scrollToVocabularyQuizStart();
-});
-
-listeningModeButton?.addEventListener("click", () => {
-  if (currentMode === listeningMode) {
-    return;
-  }
-
-  currentMode = listeningMode;
-  isWrongReviewMode = false;
-  resetQuizState();
-  resetListeningState();
-  renderCurrentMode();
-  listeningPanel?.scrollIntoView({ behavior: "smooth", block: "center" });
-});
-
-listeningTestModeButton?.addEventListener("click", () => {
-  if (currentMode === listeningTestMode) {
-    return;
-  }
-
-  currentMode = listeningTestMode;
-  isWrongReviewMode = false;
-  resetQuizState();
-  resetListeningState();
-  renderCurrentMode();
-  listeningPanel?.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
 nextListeningQuestionButton?.addEventListener("click", () => {
