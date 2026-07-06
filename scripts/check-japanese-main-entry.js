@@ -5,97 +5,145 @@ const repoRoot = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(repoRoot, 'japanese', 'index.html'), 'utf8');
 const script = fs.readFileSync(path.join(repoRoot, 'script.js'), 'utf8');
 
-const singleContentMatch = html.match(/<section id="japaneseContent" class="japanese-content"[\s\S]*?<div id="japaneseHomeContent">[\s\S]*?<div id="japaneseMainContent" hidden>[\s\S]*?<section id="japaneseReadingPanel"/);
-const homeContentMatch = html.match(/<div id="japaneseHomeContent">[\s\S]*?<\/div>\s*<div id="japaneseMainContent" hidden>/);
-const mainContentMatch = html.match(/<div id="japaneseMainContent" hidden>[\s\S]*?<section id="japaneseReadingPanel"/);
-const entrySectionMatch = html.match(/<section class="entry-section japanese-main-entry-section"[\s\S]*?<\/section>/);
-
 const failures = [];
 
-if (!singleContentMatch) {
-  failures.push('Japanese views must live under one japaneseContent container before runtime replacement.');
+function extractById(source, id) {
+  const idIndex = source.indexOf(`id="${id}"`);
+  if (idIndex === -1) return '';
+  const tagStart = source.lastIndexOf('<', idIndex);
+  const openTag = source.slice(tagStart).match(/^<([a-z0-9-]+)/i);
+  if (!openTag) return '';
+  const tag = openTag[1];
+  let depth = 0;
+  const tagPattern = new RegExp(`<\\/?${tag}(?=[\\s>])[^>]*>`, 'gi');
+  tagPattern.lastIndex = tagStart;
+  let match;
+  while ((match = tagPattern.exec(source))) {
+    if (match[0][1] === '/') depth -= 1;
+    else depth += 1;
+    if (depth === 0) return source.slice(tagStart, tagPattern.lastIndex);
+  }
+  return '';
 }
 
-if (!homeContentMatch) {
-  failures.push('Japanese home content must be isolated from feature panels.');
+function extractFunction(source, name) {
+  const marker = `function ${name}`;
+  const markerIndex = source.indexOf(marker);
+  if (markerIndex === -1) return '';
+  const signatureEnd = source.indexOf(')', markerIndex);
+  const braceStart = source.indexOf('{', signatureEnd);
+  if (braceStart === -1) return '';
+  let depth = 0;
+  for (let index = braceStart; index < source.length; index += 1) {
+    if (source[index] === '{') depth += 1;
+    if (source[index] === '}') depth -= 1;
+    if (depth === 0) return source.slice(markerIndex, index + 1);
+  }
+  return '';
 }
 
-if (!mainContentMatch) {
-  failures.push('japaneseMainContent must remain hidden at initial render and wrap legacy vocabulary panels.');
+function requireIncludes(source, snippet, label) {
+  if (!source.includes(snippet)) failures.push(`Missing ${label}: ${snippet}`);
 }
 
-if (!html.includes('data-japanese-back-home')) {
-  failures.push('Feature pages must provide a return-to-home control.');
+function requireNotIn(source, snippet, label) {
+  if (source.includes(snippet)) failures.push(`Unexpected ${label}: ${snippet}`);
 }
 
-if (!html.includes('../script.js?v=2.3') || !html.includes('../style.css?v=2.3')) {
-  failures.push('Japanese page must bump script/style asset versions so deployed browsers load the view-switching fix.');
+function requireEntries(container, expectedEntries, label) {
+  const entries = [...container.matchAll(/data-japanese-entry="([^"]+)"/g)].map((match) => match[1]);
+  const unexpected = entries.filter((entry) => !expectedEntries.includes(entry));
+  const missing = expectedEntries.filter((entry) => !entries.includes(entry));
+  if (unexpected.length > 0) failures.push(`${label} has unexpected entries: ${unexpected.join(', ')}`);
+  if (missing.length > 0) failures.push(`${label} is missing entries: ${missing.join(', ')}`);
 }
 
-if (!entrySectionMatch) {
+const root = extractById(html, 'japaneseContent');
+const home = extractById(html, 'japaneseHomeContent');
+const entrySection = home.match(/<section class="entry-section japanese-main-entry-section"[\s\S]*?<\/section>/)?.[0] ?? '';
+const vocabulary = extractById(html, 'japaneseMainContent');
+const reading = extractById(html, 'japaneseReadingPanel');
+const listening = extractById(html, 'japaneseListeningPanel');
+const renderJapaneseView = extractFunction(script, 'renderJapaneseView');
+const switchJapaneseTab = extractFunction(script, 'switchJapaneseTab');
+const listeningMenu = extractById(html, 'japaneseListeningMenuView');
+
+requireIncludes(html, 'data-japanese-layout-version="2.3"', 'Japanese layout version marker');
+requireIncludes(html, 'name="japanese-layout-version" content="2.3"', 'Japanese layout meta version marker');
+requireIncludes(html, '../script.js?v=2.3', 'script cache-busting version');
+requireIncludes(html, '../style.css?v=2.3', 'style cache-busting version');
+requireIncludes(html, 'data-japanese-back-home', 'feature-page return-to-home controls');
+
+if (!root || !home || !vocabulary || !reading || !listening) {
+  failures.push('Japanese page must declare home, vocabulary/grammar, reading, and listening top-level views inside japaneseContent.');
+}
+
+if (root && (!root.includes('id="japaneseHomeContent"') || !root.includes('id="japaneseMainContent"') || !root.includes('id="japaneseReadingPanel"') || !root.includes('id="japaneseListeningPanel"'))) {
+  failures.push('Japanese view root must initially contain every top-level view so runtime navigation can move one clean view into place.');
+}
+
+if (!entrySection) {
   failures.push('Japanese main entry section is missing.');
 } else {
-  const entrySection = entrySectionMatch[0];
-  const forbiddenMainEntryText = ['日文學習 tab', '分類篩選', '詞性分類', '程度篩選', '3179', '搜尋單字', '單字測驗入口'];
-  forbiddenMainEntryText.forEach((text) => {
-    if (entrySection.includes(text)) {
-      failures.push(`Japanese main entry section unexpectedly contains legacy text: ${text}`);
-    }
+  ['日文學習主入口', '日文學習功能', '單字', '閱讀', '文法', '聽力', '進入單字', '進入閱讀', '進入文法', '進入聽力'].forEach((required) => {
+    if (!home.includes(required)) failures.push(`Japanese home is missing required entry text: ${required}`);
   });
-
-  const entryTargets = [...entrySection.matchAll(/data-japanese-entry="([^"]+)"/g)].map((match) => match[1]);
-  const unexpectedTargets = entryTargets.filter((target) => !['vocabulary', 'grammar', 'reading'].includes(target));
-  if (unexpectedTargets.length > 0) {
-    failures.push(`Only finished entry cards may navigate; unexpected targets: ${unexpectedTargets.join(', ')}`);
-  }
-
-  if (!entrySection.includes('data-japanese-entry="grammar"') || !entrySection.includes('進入文法') || !entrySection.includes('data-japanese-entry="reading"')) {
-    failures.push('Grammar and reading must navigate to their menu pages.');
-  }
+  requireEntries(entrySection, ['vocabulary', 'reading', 'grammar', 'listening'], 'Japanese main entry section');
 }
 
-const requiredScriptGuards = [
+['分類篩選', '詞性分類', '程度篩選', '搜尋單字', 'id="vocabularyCards"', '測驗題目', 'id="quizContent"', '閱讀練習 第', '閱讀測驗完成', '聽力測驗完成', '播放音訊', '第 1 題 / 10 題', '正確答案：'].forEach((forbidden) => {
+  requireNotIn(home, forbidden, `home residual practice/quiz content ${forbidden}`);
+});
+
+[
+  { name: 'Vocabulary/grammar view', source: vocabulary, required: ['返回日文首頁', 'data-japanese-back-home', '日文單字', 'data-japanese-vocabulary-entry="practice"', 'data-japanese-vocabulary-entry="quiz"', 'data-japanese-grammar-entry="practice"', 'data-japanese-grammar-entry="quiz"'] },
+  { name: 'Reading view', source: reading, required: ['返回日文首頁', 'data-japanese-back-home', '日文閱讀', 'data-reading-mode="practice"', 'data-reading-mode="quiz"', 'id="readingContent"'] },
+  { name: 'Listening view', source: listening, required: ['返回日文首頁', 'data-japanese-back-home', '日文聽力', 'data-listening-mode="practice"', 'data-listening-mode="quiz"', 'id="japaneseListeningContent"'] },
+].forEach(({ name, source, required }) => {
+  required.forEach((snippet) => requireIncludes(source, snippet, `${name} menu/navigation content`));
+  ['data-japanese-entry=', '日文學習功能', '進入單字', '進入閱讀', '進入文法', '進入聽力'].forEach((forbidden) => {
+    requireNotIn(source, forbidden, `${name} leaked home entry content`);
+  });
+});
+
+['播放音訊', '第 1 題 / 10 題', '聽力測驗完成', '正確答案：', '今天下雨。', '今日は雨です。', 'きょうは あめです。'].forEach((forbidden) => {
+  requireNotIn(listeningMenu, forbidden, `listening menu residual practice/quiz state ${forbidden}`);
+});
+
+[
   'let currentJapaneseView = "home"',
   'function normalizeJapaneseView(view)',
   'function getJapaneseViewElement(view)',
-  'function renderJapaneseView(view)',
-  'japaneseContent.replaceChildren(nextViewElement)',
-  'japaneseHomeContent.hidden = nextView !== "home"',
-  'japaneseMainContent.hidden = nextView !== "vocabulary" && nextView !== "grammar"',
-  'if (!isJapaneseHomeTab()) {',
-  'renderCategoryFilters();',
-  'applyCategory(activeCategoryId);',
-  'renderJapaneseGrammarView("menu");',
-  'bindReadingModeButtons(readingViewElement);',
-  'renderJapaneseReadingView("menu");',
-];
-
-requiredScriptGuards.forEach((snippet) => {
-  if (!script.includes(snippet)) {
-    failures.push(`Missing render guard snippet: ${snippet}`);
-  }
-});
-
-const requiredUnifiedViewGuards = [
   'window.showJapaneseContentView = switchJapaneseTab',
-  'button.addEventListener("click", (event) => {',
   'window.showJapaneseContentView(button.dataset.japaneseEntry)',
   'window.showJapaneseContentView("home")',
-];
+  'initializeReadingPanel();',
+  'initializeListeningPanel();',
+  'resetJapaneseListeningState({ resetPracticeIndex: true });',
+].forEach((snippet) => requireIncludes(script, snippet, 'current Japanese navigation/state-isolation script behavior'));
 
-requiredUnifiedViewGuards.forEach((snippet) => {
-  if (!script.includes(snippet)) {
-    failures.push(`Missing unified script view guard snippet: ${snippet}`);
-  }
+if (!renderJapaneseView.includes('japaneseContent.replaceChildren(nextViewElement)')) {
+  failures.push('renderJapaneseView() must replace the single Japanese root with the selected top-level view.');
+}
+if (!renderJapaneseView.includes('japaneseHomeContent.hidden = panelView !== "home"')) {
+  failures.push('renderJapaneseView() must hide the home view whenever a feature view is active.');
+}
+if (!renderJapaneseView.includes('japaneseMainContent.hidden = panelView !== "vocabulary" && panelView !== "grammar"')) {
+  failures.push('renderJapaneseView() must show the shared vocabulary/grammar middle page only for vocabulary or grammar.');
+}
+if (!renderJapaneseView.includes('japaneseReadingPanel.hidden = panelView !== "reading"')) {
+  failures.push('renderJapaneseView() must isolate the reading middle page from other modules.');
+}
+if (!renderJapaneseView.includes('japaneseListeningPanel.hidden = panelView !== "listening"')) {
+  failures.push('renderJapaneseView() must isolate the listening middle page from other modules.');
+}
+if (!renderJapaneseView.includes('button.classList.remove("is-active")') || !renderJapaneseView.includes('button.setAttribute("aria-pressed", "false")')) {
+  failures.push('renderJapaneseView() must clear stale home-entry active/pressed state after navigation.');
+}
+
+['renderJapaneseVocabularyView("menu")', 'renderJapaneseGrammarView("menu")', 'initializeReadingPanel();', 'initializeListeningPanel();'].forEach((snippet) => {
+  requireIncludes(switchJapaneseTab, snippet, 'entry navigation opens a clean middle/menu view');
 });
-
-if (!html.includes('data-reading-mode="practice"') || !html.includes('data-reading-mode="quiz"')) {
-  failures.push('Reading practice and quiz buttons must expose data-reading-mode targets.');
-}
-
-if (!script.includes('function bindReadingModeButtons(') || !script.includes('event.target.closest("[data-reading-mode]")')) {
-  failures.push('Reading view must bind mode buttons after render with scoped event handling.');
-}
 
 if (html.includes('window.showJapaneseContentView = (view) =>')) {
   failures.push('Japanese page must not keep a second inline view switcher that can query moved view nodes.');
