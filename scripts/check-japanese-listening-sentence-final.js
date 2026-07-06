@@ -88,13 +88,14 @@ else {
   catch (error) { fail(`JAPANESE_LISTENING_QUESTIONS could not be parsed: ${error.message}`); }
 }
 
-if (questions.length !== 30) fail(`JAPANESE_LISTENING_QUESTIONS should contain exactly 30 questions, found ${questions.length}.`);
+if (questions.length !== 60) fail(`JAPANESE_LISTENING_QUESTIONS should contain exactly 60 questions, found ${questions.length}.`);
 const quizSize = extractConstNumber(script, 'LISTENING_QUIZ_SIZE');
 if (quizSize !== 10) fail(`LISTENING_QUIZ_SIZE should be 10, found ${quizSize}.`);
 
 const requiredFields = ['id', 'level', 'category', 'japanese', 'kana', 'zh', 'question', 'options', 'answerIndex'];
 const ids = new Set();
 const japaneseSentences = new Set();
+const zhSentences = new Set();
 questions.forEach((question, index) => {
   requiredFields.forEach((field) => {
     if (question[field] === undefined || question[field] === null || question[field] === '') fail(`Question ${index + 1} has invalid ${field}.`);
@@ -106,6 +107,8 @@ questions.forEach((question, index) => {
   if (question.question !== '這句日文的意思是什麼？') fail(`Question ${index + 1} question should be 這句日文的意思是什麼？`);
   if (japaneseSentences.has(question.japanese)) fail(`Question ${index + 1} has duplicate Japanese sentence.`);
   japaneseSentences.add(question.japanese);
+  if (zhSentences.has(question.zh)) fail(`Question ${index + 1} has duplicate Chinese meaning.`);
+  zhSentences.add(question.zh);
   if (!Array.isArray(question.options)) fail(`Question ${index + 1} options is not an array.`);
   else {
     if (question.options.length !== 4) fail(`Question ${index + 1} should have 4 options, found ${question.options.length}.`);
@@ -114,6 +117,10 @@ questions.forEach((question, index) => {
   if (!Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex > 3) fail(`Question ${index + 1} answerIndex is invalid.`);
   if (question.options && question.options[question.answerIndex] !== question.zh) fail(`Question ${index + 1} correct option does not match zh.`);
 });
+for (let index = 1; index <= 60; index += 1) {
+  const expectedId = `jl-${String(index).padStart(3, '0')}`;
+  if (!ids.has(expectedId)) fail(`Missing required question id ${expectedId}.`);
+}
 
 const listeningMenu = extractById(html, 'japaneseListeningMenuView');
 const practiceRenderer = extractFunction(script, 'renderJapaneseListeningPractice');
