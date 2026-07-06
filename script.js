@@ -2240,6 +2240,10 @@ function normalizeJapaneseListeningView(view) {
   return ["menu", "practice", "quiz"].includes(view) ? view : "menu";
 }
 
+function cancelJapaneseListeningSpeech() {
+  if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+}
+
 function resetJapaneseListeningState({ resetPracticeIndex = false } = {}) {
   japaneseListeningView = "menu";
   if (resetPracticeIndex) currentListeningIndex = 0;
@@ -2247,7 +2251,7 @@ function resetJapaneseListeningState({ resetPracticeIndex = false } = {}) {
   listeningQuizCorrectCount = 0;
   listeningQuizAnswered = false;
   listeningQuizSelectedIndex = null;
-  if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+  cancelJapaneseListeningSpeech();
   if (japaneseListeningContent) {
     japaneseListeningContent.replaceChildren();
     japaneseListeningContent.hidden = true;
@@ -2267,6 +2271,7 @@ function createListeningBackMenuButton() {
 }
 
 function setListeningContentNodes(...nodes) {
+  cancelJapaneseListeningSpeech();
   if (!japaneseListeningContent) return;
   japaneseListeningContent.replaceChildren(...nodes);
   japaneseListeningContent.hidden = false;

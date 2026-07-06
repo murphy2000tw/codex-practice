@@ -62,7 +62,7 @@ const initializer = extractFunction(script, 'initializeListeningPanel');
   requireNotIn(menuHtml, forbidden, `listening menu residual question content ${forbidden}`);
 });
 
-['japaneseListeningView = "menu"', 'listeningQuizIndex = 0', 'listeningQuizCorrectCount = 0', 'listeningQuizAnswered = false', 'listeningQuizSelectedIndex = null', 'window.speechSynthesis.cancel()', 'japaneseListeningContent.replaceChildren()', 'japaneseListeningContent.hidden = true'].forEach((required) => {
+['japaneseListeningView = "menu"', 'listeningQuizIndex = 0', 'listeningQuizCorrectCount = 0', 'listeningQuizAnswered = false', 'listeningQuizSelectedIndex = null', 'cancelJapaneseListeningSpeech();', 'japaneseListeningContent.replaceChildren()', 'japaneseListeningContent.hidden = true'].forEach((required) => {
   requireSnippet(resetFn, required, `listening reset clears state ${required}`);
 });
 
