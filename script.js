@@ -1644,6 +1644,9 @@ japaneseEntryButtons.forEach((button) => {
 japaneseBackHomeButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     event.preventDefault();
+    if (["listening", "listeningMenu", "listeningPractice", "listeningQuiz"].includes(currentJapaneseView) && typeof resetJapaneseListeningState === "function") {
+      resetJapaneseListeningState();
+    }
     window.showJapaneseContentView("home");
   });
 });
@@ -2237,12 +2240,29 @@ function normalizeJapaneseListeningView(view) {
   return ["menu", "practice", "quiz"].includes(view) ? view : "menu";
 }
 
+function resetJapaneseListeningState({ resetPracticeIndex = false } = {}) {
+  japaneseListeningView = "menu";
+  if (resetPracticeIndex) currentListeningIndex = 0;
+  listeningQuizIndex = 0;
+  listeningQuizCorrectCount = 0;
+  listeningQuizAnswered = false;
+  listeningQuizSelectedIndex = null;
+  if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+  if (japaneseListeningContent) {
+    japaneseListeningContent.replaceChildren();
+    japaneseListeningContent.hidden = true;
+  }
+}
+
 function createListeningBackMenuButton() {
   const button = document.createElement("button");
   button.className = "secondary-button reading-back-menu-button listening-back-menu-button";
   button.type = "button";
   button.textContent = "返回聽力選單";
-  button.addEventListener("click", () => renderJapaneseListeningView("menu"));
+  button.addEventListener("click", () => {
+    resetJapaneseListeningState();
+    renderJapaneseListeningView("menu");
+  });
   return button;
 }
 
@@ -2285,15 +2305,16 @@ function createListeningPlayButton(item, status) {
 }
 
 function renderJapaneseListeningMenu() {
+  resetJapaneseListeningState();
   currentJapaneseView = "listeningMenu";
   if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = false;
-  if (japaneseListeningContent) {
-    japaneseListeningContent.replaceChildren();
-    japaneseListeningContent.hidden = true;
-  }
 }
 
 function renderJapaneseListeningPractice() {
+  listeningQuizIndex = 0;
+  listeningQuizCorrectCount = 0;
+  listeningQuizAnswered = false;
+  listeningQuizSelectedIndex = null;
   currentJapaneseView = "listeningPractice";
   const item = JAPANESE_LISTENING_QUESTIONS[currentListeningIndex % JAPANESE_LISTENING_QUESTIONS.length];
   if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = true;
@@ -2380,7 +2401,8 @@ function renderJapaneseListeningView(view = japaneseListeningView) {
   japaneseListeningView = normalizeJapaneseListeningView(view);
   if (japaneseListeningView === "menu") return renderJapaneseListeningMenu();
   if (japaneseListeningView === "practice") return renderJapaneseListeningPractice();
-  startJapaneseListeningQuiz();
+  if (japaneseListeningView === "quiz") return startJapaneseListeningQuiz();
+  return renderJapaneseListeningMenu();
 }
 
 function bindListeningModeButtons(listeningViewElement = document.querySelector("#japaneseListeningPanel")) {
@@ -2396,9 +2418,11 @@ function bindListeningModeButtons(listeningViewElement = document.querySelector(
 
 function initializeListeningPanel() {
   bindListeningModeButtons();
+  resetJapaneseListeningState({ resetPracticeIndex: true });
   renderJapaneseListeningView("menu");
 }
 
 window.JAPANESE_LISTENING_QUESTIONS = JAPANESE_LISTENING_QUESTIONS;
 window.initializeListeningPanel = initializeListeningPanel;
 window.renderJapaneseListeningView = renderJapaneseListeningView;
+window.resetJapaneseListeningState = resetJapaneseListeningState;
