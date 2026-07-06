@@ -2222,10 +2222,32 @@ const JAPANESE_LISTENING_QUESTIONS = [
   { id: "jl-005", level: "N5", category: "交通", japanese: "この電車は東京へ行きますか。", kana: "この でんしゃは とうきょうへ いきますか。", zh: "這班電車會去東京嗎？", question: "這句日文的意思是什麼？", options: ["這班巴士幾點來？", "這班電車會去東京嗎？", "東京車站在哪裡？", "我想買電車票。"], answerIndex: 1 },
   { id: "jl-006", level: "N5", category: "日常", japanese: "昨日、友だちと映画を見ました。", kana: "きのう、ともだちと えいがを みました。", zh: "昨天和朋友看了電影。", question: "這句日文的意思是什麼？", options: ["昨天和朋友看了電影。", "今天和家人吃飯。", "明天想去看電影。", "昨天在家讀書。"], answerIndex: 0 },
   { id: "jl-007", level: "N5", category: "日常", japanese: "すみません、トイレはどこですか。", kana: "すみません、トイレは どこですか。", zh: "不好意思，廁所在哪裡？", question: "這句日文的意思是什麼？", options: ["不好意思，車站在哪裡？", "不好意思，廁所在哪裡？", "請問現在幾點？", "請問這個多少錢？"], answerIndex: 1 },
-  { id: "jl-008", level: "N4", category: "日常", japanese: "朝ごはんを食べてから、会社へ行きます。", kana: "あさごはんを たべてから、かいしゃへ いきます。", zh: "吃完早餐後去公司。", question: "這句日文的意思是什麼？", options: ["吃完早餐後去公司。", "下班後去吃晚餐。", "沒吃早餐就去學校。", "吃完午餐後回家。"], answerIndex: 0 },
+  { id: "jl-008", level: "N4", category: "工作", japanese: "朝ごはんを食べてから、会社へ行きます。", kana: "あさごはんを たべてから、かいしゃへ いきます。", zh: "吃完早餐後去公司。", question: "這句日文的意思是什麼？", options: ["吃完早餐後去公司。", "下班後去吃晚餐。", "沒吃早餐就去學校。", "吃完午餐後回家。"], answerIndex: 0 },
   { id: "jl-009", level: "N5", category: "日常", japanese: "もう一度言ってください。", kana: "もういちど いってください。", zh: "請再說一次。", question: "這句日文的意思是什麼？", options: ["請慢慢寫。", "請再說一次。", "請等一下。", "請看這裡。"], answerIndex: 1 },
   { id: "jl-010", level: "N5", category: "時間", japanese: "バスは十時に来ます。", kana: "バスは じゅうじに きます。", zh: "公車十點會來。", question: "這句日文的意思是什麼？", options: ["電車九點出發。", "公車十點會來。", "朋友十點回家。", "學校八點開始。"], answerIndex: 1 },
+  { id: "jl-011", level: "N5", category: "日常", japanese: "毎朝七時に起きます。", kana: "まいあさ しちじに おきます。", zh: "我每天早上七點起床。", question: "這句日文的意思是什麼？", options: ["我每天早上七點起床。", "我每天晚上七點睡覺。", "我今天早上八點出門。", "我昨天七點回家。"], answerIndex: 0 },
+  { id: "jl-012", level: "N5", category: "家庭", japanese: "母は料理が上手です。", kana: "ははは りょうりが じょうずです。", zh: "媽媽很會做菜。", question: "這句日文的意思是什麼？", options: ["爸爸正在買菜。", "媽媽很會做菜。", "姐姐不喜歡做菜。", "弟弟想吃晚餐。"], answerIndex: 1 },
+  { id: "jl-013", level: "N5", category: "學校", japanese: "図書館で本を読みます。", kana: "としょかんで ほんを よみます。", zh: "我在圖書館看書。", question: "這句日文的意思是什麼？", options: ["我在教室寫字。", "我在書店買書。", "我在圖書館看書。", "我在公園散步。"], answerIndex: 2 },
+  { id: "jl-014", level: "N5", category: "日常", japanese: "今日はとても忙しいです。", kana: "きょうは とても いそがしいです。", zh: "今天非常忙。", question: "這句日文的意思是什麼？", options: ["今天非常忙。", "今天非常安靜。", "明天很有空。", "昨天很開心。"], answerIndex: 0 },
+  { id: "jl-015", level: "N5", category: "日常", japanese: "犬と公園へ行きました。", kana: "いぬと こうえんへ いきました。", zh: "我和狗去了公園。", question: "這句日文的意思是什麼？", options: ["我和貓在家。", "我和朋友去了學校。", "我和狗去了公園。", "我在公園看見狗。"], answerIndex: 2 },
+  { id: "jl-016", level: "N5", category: "交通", japanese: "次の駅で降ります。", kana: "つぎの えきで おります。", zh: "我在下一站下車。", question: "這句日文的意思是什麼？", options: ["我在下一站下車。", "我在這站上車。", "電車很快到站。", "車站在前面。"], answerIndex: 0 },
+  { id: "jl-017", level: "N5", category: "交通", japanese: "自転車で学校へ行きます。", kana: "じてんしゃで がっこうへ いきます。", zh: "我騎腳踏車去學校。", question: "這句日文的意思是什麼？", options: ["我搭公車去公司。", "我騎腳踏車去學校。", "我走路去車站。", "我坐電車回家。"], answerIndex: 1 },
+  { id: "jl-018", level: "N5", category: "交通", japanese: "切符を二枚買いました。", kana: "きっぷを にまい かいました。", zh: "我買了兩張票。", question: "這句日文的意思是什麼？", options: ["我買了兩張票。", "我拿了一張地圖。", "我忘了車票。", "我賣了兩本書。"], answerIndex: 0 },
+  { id: "jl-019", level: "N5", category: "購物", japanese: "このかばんはいくらですか。", kana: "この かばんは いくらですか。", zh: "這個包包多少錢？", question: "這句日文的意思是什麼？", options: ["這個包包多少錢？", "這個包包在哪裡？", "這雙鞋多少錢？", "那個包包很重嗎？"], answerIndex: 0 },
+  { id: "jl-020", level: "N5", category: "餐廳", japanese: "ラーメンを一つお願いします。", kana: "ラーメンを ひとつ おねがいします。", zh: "請給我一碗拉麵。", question: "這句日文的意思是什麼？", options: ["請給我一碗拉麵。", "請給我一杯咖啡。", "請給我兩份壽司。", "請把菜單給我。"], answerIndex: 0 },
+  { id: "jl-021", level: "N5", category: "購物", japanese: "白いシャツを探しています。", kana: "しろい シャツを さがしています。", zh: "我正在找白色襯衫。", question: "這句日文的意思是什麼？", options: ["我正在找白色襯衫。", "我正在穿藍色外套。", "我想買黑色鞋子。", "我看見紅色帽子。"], answerIndex: 0 },
+  { id: "jl-022", level: "N5", category: "餐廳", japanese: "ここで食べてもいいですか。", kana: "ここで たべても いいですか。", zh: "可以在這裡吃嗎？", question: "這句日文的意思是什麼？", options: ["可以在這裡吃嗎？", "可以在這裡拍照嗎？", "要在那裡等嗎？", "要一起吃飯嗎？"], answerIndex: 0 },
+  { id: "jl-023", level: "N5", category: "天氣", japanese: "明日は暑くなるでしょう。", kana: "あしたは あつく なるでしょう。", zh: "明天可能會變熱。", question: "這句日文的意思是什麼？", options: ["明天可能會變熱。", "今天可能會下雪。", "昨天變得很冷。", "明天早上會下雨。"], answerIndex: 0 },
+  { id: "jl-024", level: "N5", category: "時間", japanese: "今、何時ですか。", kana: "いま、なんじですか。", zh: "現在幾點？", question: "這句日文的意思是什麼？", options: ["現在幾點？", "今天星期幾？", "你幾點起床？", "車站在哪裡？"], answerIndex: 0 },
+  { id: "jl-025", level: "N5", category: "天氣", japanese: "外は少し寒いです。", kana: "そとは すこし さむいです。", zh: "外面有點冷。", question: "這句日文的意思是什麼？", options: ["外面有點冷。", "房間裡很熱。", "外面非常吵。", "今天有點忙。"], answerIndex: 0 },
+  { id: "jl-026", level: "N4", category: "日常", japanese: "宿題が終わったら、テレビを見ます。", kana: "しゅくだいが おわったら、テレビを みます。", zh: "作業做完後看電視。", question: "這句日文的意思是什麼？", options: ["作業做完後看電視。", "看完電視後做作業。", "作業還沒做完。", "我一邊看電視一邊寫信。"], answerIndex: 0 },
+  { id: "jl-027", level: "N4", category: "工作", japanese: "会議は三時から始まります。", kana: "かいぎは さんじから はじまります。", zh: "會議從三點開始。", question: "這句日文的意思是什麼？", options: ["會議從三點開始。", "會議在三點結束。", "工作從九點開始。", "課程在三點取消。"], answerIndex: 0 },
+  { id: "jl-028", level: "N4", category: "旅行", japanese: "ホテルを予約してあります。", kana: "ホテルを よやくして あります。", zh: "我已經訂好飯店了。", question: "這句日文的意思是什麼？", options: ["我已經訂好飯店了。", "我正在找飯店。", "我取消了機票。", "我想換房間。"], answerIndex: 0 },
+  { id: "jl-029", level: "N4", category: "旅行", japanese: "道に迷ったので、地図を見ました。", kana: "みちに まよったので、ちずを みました。", zh: "因為迷路了，所以看了地圖。", question: "這句日文的意思是什麼？", options: ["因為迷路了，所以看了地圖。", "因為下雨了，所以回飯店。", "因為很累，所以搭計程車。", "因為地圖不見了，所以問路。"], answerIndex: 0 },
+  { id: "jl-030", level: "N4", category: "工作", japanese: "仕事が終わってから、友だちに会います。", kana: "しごとが おわってから、ともだちに あいます。", zh: "工作結束後去見朋友。", question: "這句日文的意思是什麼？", options: ["工作結束後去見朋友。", "見完朋友後去工作。", "工作開始前去買東西。", "朋友下班後回家。"], answerIndex: 0 },
 ];
+
+const LISTENING_QUIZ_SIZE = 10;
 
 let japaneseListeningMenuView = document.querySelector("#japaneseListeningMenuView");
 let japaneseListeningContent = document.querySelector("#japaneseListeningContent");
@@ -2235,6 +2257,7 @@ let listeningQuizIndex = 0;
 let listeningQuizCorrectCount = 0;
 let listeningQuizAnswered = false;
 let listeningQuizSelectedIndex = null;
+let listeningQuizItems = [];
 
 function normalizeJapaneseListeningView(view) {
   return ["menu", "practice", "quiz"].includes(view) ? view : "menu";
@@ -2244,6 +2267,14 @@ function cancelJapaneseListeningSpeech() {
   if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
 }
 
+function shuffleItems(items) {
+  return [...items].sort(() => Math.random() - 0.5);
+}
+
+function createListeningQuizItems() {
+  return shuffleItems(JAPANESE_LISTENING_QUESTIONS).slice(0, Math.min(LISTENING_QUIZ_SIZE, JAPANESE_LISTENING_QUESTIONS.length));
+}
+
 function resetJapaneseListeningState({ resetPracticeIndex = false } = {}) {
   japaneseListeningView = "menu";
   if (resetPracticeIndex) currentListeningIndex = 0;
@@ -2251,6 +2282,7 @@ function resetJapaneseListeningState({ resetPracticeIndex = false } = {}) {
   listeningQuizCorrectCount = 0;
   listeningQuizAnswered = false;
   listeningQuizSelectedIndex = null;
+  listeningQuizItems = [];
   cancelJapaneseListeningSpeech();
   if (japaneseListeningContent) {
     japaneseListeningContent.replaceChildren();
@@ -2340,17 +2372,18 @@ function startJapaneseListeningQuiz() {
   listeningQuizCorrectCount = 0;
   listeningQuizAnswered = false;
   listeningQuizSelectedIndex = null;
+  listeningQuizItems = createListeningQuizItems();
   renderJapaneseListeningQuizQuestion();
 }
 
 function renderJapaneseListeningQuizQuestion() {
   currentJapaneseView = "listeningQuiz";
-  const item = JAPANESE_LISTENING_QUESTIONS[listeningQuizIndex];
+  const item = listeningQuizItems[listeningQuizIndex];
   if (!item) return renderJapaneseListeningQuizResults();
   if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = true;
   const status = Object.assign(document.createElement("p"), { className: "status-message", textContent: "請先聽音訊，再選擇中文意思。" });
   const title = Object.assign(document.createElement("h3"), { className: "reading-content-title", textContent: "聽力測驗" });
-  const progress = Object.assign(document.createElement("p"), { className: "set-status", textContent: `第 ${listeningQuizIndex + 1} 題 / ${JAPANESE_LISTENING_QUESTIONS.length} 題` });
+  const progress = Object.assign(document.createElement("p"), { className: "set-status", textContent: `第 ${listeningQuizIndex + 1} 題 / ${listeningQuizItems.length} 題` });
   const card = document.createElement("article");
   card.className = "quiz-card listening-card";
   const prompt = document.createElement("div");
@@ -2381,7 +2414,7 @@ function renderJapaneseListeningQuizQuestion() {
   card.append(createListeningPlayButton(item, status), status, prompt, options, feedback, detail);
   const nodes = [createListeningBackMenuButton(), title, progress, card];
   if (listeningQuizAnswered) {
-    const next = Object.assign(document.createElement("button"), { className: "answer-button", type: "button", textContent: listeningQuizIndex + 1 >= JAPANESE_LISTENING_QUESTIONS.length ? "查看結果" : "下一題" });
+    const next = Object.assign(document.createElement("button"), { className: "answer-button", type: "button", textContent: listeningQuizIndex + 1 >= listeningQuizItems.length ? "查看結果" : "下一題" });
     next.addEventListener("click", () => { listeningQuizIndex += 1; listeningQuizAnswered = false; listeningQuizSelectedIndex = null; renderJapaneseListeningQuizQuestion(); });
     nodes.push(next);
   }
@@ -2391,7 +2424,7 @@ function renderJapaneseListeningQuizQuestion() {
 function renderJapaneseListeningQuizResults() {
   currentJapaneseView = "listeningQuiz";
   if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = true;
-  const total = JAPANESE_LISTENING_QUESTIONS.length;
+  const total = listeningQuizItems.length;
   const accuracy = Math.round((listeningQuizCorrectCount / total) * 100);
   const result = document.createElement("section");
   result.className = "reading-card listening-result-card";
@@ -2428,6 +2461,7 @@ function initializeListeningPanel() {
 }
 
 window.JAPANESE_LISTENING_QUESTIONS = JAPANESE_LISTENING_QUESTIONS;
+window.LISTENING_QUIZ_SIZE = LISTENING_QUIZ_SIZE;
 window.initializeListeningPanel = initializeListeningPanel;
 window.renderJapaneseListeningView = renderJapaneseListeningView;
 window.resetJapaneseListeningState = resetJapaneseListeningState;
