@@ -34742,7 +34742,7 @@
     "level": "N4",
     "word": "留守番電話",
     "kana": "るすばんでんわ",
-    "meaning": "留言電話、答錄機",
+    "meaning": "答錄機、語音留言服務",
     "partOfSpeech": "名詞",
     "example": "留守番電話にメッセージを残しました。",
     "exampleKana": "るすばんでんわにメッセージをのこしました。",
@@ -34775,7 +34775,7 @@
     "level": "N4",
     "word": "お腹",
     "kana": "おなか",
-    "meaning": "肚子",
+    "meaning": "肚子、腹部",
     "partOfSpeech": "名詞",
     "example": "お腹が痛いので、少し休みます。",
     "exampleKana": "おなかがいたいので、すこしやすみます。",
@@ -34830,11 +34830,11 @@
     "level": "N4",
     "word": "利用",
     "kana": "りよう",
-    "meaning": "利用、使用",
-    "partOfSpeech": "名詞/する動詞",
-    "example": "図書館を利用するにはカードが必要です。",
-    "exampleKana": "としょかんをりようするにはカードがひつようです。",
-    "exampleMeaning": "要使用圖書館需要卡片。"
+    "meaning": "使用、利用",
+    "partOfSpeech": "名詞",
+    "example": "施設の利用は午後九時までです。",
+    "exampleKana": "しせつのりようはごごくじまでです。",
+    "exampleMeaning": "設施的使用到晚上九點為止。"
   },
   {
     "id": 3168,
@@ -34911,7 +34911,7 @@
     "partOfSpeech": "名詞/する動詞",
     "example": "利用する前に名前を登録してください。",
     "exampleKana": "りようするまえになまえをとうろくしてください。",
-    "exampleMeaning": "使用前請登錄姓名。"
+    "exampleMeaning": "使用前請登記姓名。"
   },
   {
     "id": 3175,
@@ -34940,11 +34940,11 @@
     "level": "N4",
     "word": "着く",
     "kana": "つく",
-    "meaning": "到達",
+    "meaning": "到、抵達",
     "partOfSpeech": "動詞",
     "example": "荷物は明日の午後に着く予定です。",
     "exampleKana": "にもつはあしたのごごにつくよていです。",
-    "exampleMeaning": "包裹預計明天下午到達。"
+    "exampleMeaning": "包裹預計明天下午送到。"
   },
   {
     "id": 3178,
