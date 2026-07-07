@@ -88,7 +88,7 @@ else {
   catch (error) { fail(`JAPANESE_LISTENING_QUESTIONS could not be parsed: ${error.message}`); }
 }
 
-if (questions.length !== 60) fail(`JAPANESE_LISTENING_QUESTIONS should contain exactly 60 questions, found ${questions.length}.`);
+if (questions.length !== 100) fail(`JAPANESE_LISTENING_QUESTIONS should contain exactly 100 questions, found ${questions.length}.`);
 const quizSize = extractConstNumber(script, 'LISTENING_QUIZ_SIZE');
 if (quizSize !== 10) fail(`LISTENING_QUIZ_SIZE should be 10, found ${quizSize}.`);
 
@@ -117,7 +117,7 @@ questions.forEach((question, index) => {
   if (!Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex > 3) fail(`Question ${index + 1} answerIndex is invalid.`);
   if (question.options && question.options[question.answerIndex] !== question.zh) fail(`Question ${index + 1} correct option does not match zh.`);
 });
-for (let index = 1; index <= 60; index += 1) {
+for (let index = 1; index <= 100; index += 1) {
   const expectedId = `jl-${String(index).padStart(3, '0')}`;
   if (!ids.has(expectedId)) fail(`Missing required question id ${expectedId}.`);
 }
