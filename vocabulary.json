@@ -11312,7 +11312,7 @@
     "level": "N4",
     "word": "吸う",
     "kana": "すう",
-    "meaning": "吸",
+    "meaning": "吸；抽（菸）",
     "partOfSpeech": "動詞",
     "example": "ここでたばこを吸わないでください。",
     "exampleKana": "ここでたばこをすわないでください。",
@@ -11338,7 +11338,7 @@
     "partOfSpeech": "動詞",
     "example": "母は庭で花を育てています。",
     "exampleKana": "はははにわではなをそだてています。",
-    "exampleMeaning": "媽媽在院子裡種花。"
+    "exampleMeaning": "媽媽在院子裡培育花草。"
   },
   {
     "id": 1032,
@@ -11807,11 +11807,11 @@
     "level": "N4",
     "word": "市",
     "kana": "いち",
-    "meaning": "市場",
+    "meaning": "市集；市場",
     "partOfSpeech": "名詞",
     "example": "日曜日に市へ行きます。",
     "exampleKana": "にちようびにいちへいきます。",
-    "exampleMeaning": "星期日去市場。"
+    "exampleMeaning": "星期日去市集。"
   },
   {
     "id": 1075,
@@ -11921,7 +11921,7 @@
     "partOfSpeech": "名詞",
     "example": "遠慮しないで食べてください。",
     "exampleKana": "えんりょしないでたべてください。",
-    "exampleMeaning": "請不要客氣地吃。"
+    "exampleMeaning": "請不要客氣，吃吧。"
   },
   {
     "id": 1085,
@@ -12093,11 +12093,11 @@
     "level": "N4",
     "word": "気",
     "kana": "き",
-    "meaning": "心情；精神",
+    "meaning": "心情；精神；性情、氣質",
     "partOfSpeech": "名詞",
     "example": "彼は気が強い人です。",
     "exampleKana": "かれはきがつよいひとです。",
-    "exampleMeaning": "他是意志堅強的人。"
+    "exampleMeaning": "他是個個性強勢的人。"
   },
   {
     "id": 1101,
@@ -15173,11 +15173,11 @@
     "level": "N4",
     "word": "すごい",
     "kana": "すごい",
-    "meaning": "厲害；驚人",
+    "meaning": "厲害的；驚人的",
     "partOfSpeech": "い形容詞",
-    "example": "すごいと思います。",
-    "exampleKana": "すごいとおもいます。",
-    "exampleMeaning": "我覺得厲害。"
+    "example": "彼はすごい人だと思います。",
+    "exampleKana": "かれはすごいひとだとおもいます。",
+    "exampleMeaning": "我覺得他是很厲害的人。"
   },
   {
     "id": 1381,
@@ -15393,11 +15393,11 @@
     "level": "N4",
     "word": "塩辛い",
     "kana": "しおからい",
-    "meaning": "鹹",
+    "meaning": "鹹的",
     "partOfSpeech": "い形容詞",
-    "example": "塩辛いと思います。",
-    "exampleKana": "しおからいとおもいます。",
-    "exampleMeaning": "我覺得鹹。"
+    "example": "このスープは塩辛いです。",
+    "exampleKana": "このすーぷはしおからいです。",
+    "exampleMeaning": "這碗湯很鹹。"
   },
   {
     "id": 1401,
@@ -16099,9 +16099,9 @@
     "kana": "ほうほう",
     "meaning": "方法",
     "partOfSpeech": "名詞",
-    "example": "方法について調べます。",
-    "exampleKana": "ほうほうについてしらべます。",
-    "exampleMeaning": "查詢關於方法的資料。"
+    "example": "いい方法を考えます。",
+    "exampleKana": "いいほうほうをかんがえます。",
+    "exampleMeaning": "想一個好方法。"
   },
   {
     "id": 1465,
@@ -16165,9 +16165,9 @@
     "kana": "ぎむ",
     "meaning": "義務",
     "partOfSpeech": "名詞",
-    "example": "義務について調べます。",
-    "exampleKana": "ぎむについてしらべます。",
-    "exampleMeaning": "查詢關於義務的資料。"
+    "example": "子どもには学校へ行く義務があります。",
+    "exampleKana": "こどもにはがっこうへいくぎむがあります。",
+    "exampleMeaning": "孩子有上學的義務。"
   },
   {
     "id": 1471,
@@ -16933,11 +16933,11 @@
     "level": "N4",
     "word": "ナイフ",
     "kana": "ないふ",
-    "meaning": "刀子",
+    "meaning": "刀子；餐刀",
     "partOfSpeech": "名詞",
-    "example": "ナイフについて調べます。",
-    "exampleKana": "ないふについてしらべます。",
-    "exampleMeaning": "查詢關於刀子的資料。"
+    "example": "ナイフでパンを切ります。",
+    "exampleKana": "ないふでぱんをきります。",
+    "exampleMeaning": "用刀子切麵包。"
   },
   {
     "id": 1541,
@@ -18255,9 +18255,9 @@
     "kana": "かいさんばしょ",
     "meaning": "解散地點",
     "partOfSpeech": "名詞",
-    "example": "解散場所について調べます。",
-    "exampleKana": "かいさんばしょについてしらべます。",
-    "exampleMeaning": "查詢關於解散地點的資料。"
+    "example": "解散場所は駅の前です。",
+    "exampleKana": "かいさんばしょはえきのまえです。",
+    "exampleMeaning": "解散地點在車站前。"
   },
   {
     "id": 1661,
@@ -24457,11 +24457,11 @@
     "level": "N4",
     "word": "片づく",
     "kana": "かたづく",
-    "meaning": "整理好",
+    "meaning": "整理好；收拾好（「片付く」的假名交代表記）",
     "partOfSpeech": "動詞",
-    "example": "会話では「片づく」を正しく使いたいです。",
-    "exampleKana": "かいわでは「かたづく」をただしくつかいたいです。",
-    "exampleMeaning": "我想在會話中正確使用「整理好」。"
+    "example": "部屋がきれいに片づきました。",
+    "exampleKana": "へやがきれいにかたづきました。",
+    "exampleMeaning": "房間整理乾淨了。"
   },
   {
     "id": 2225,
@@ -25361,9 +25361,9 @@
     "kana": "もうしこみする",
     "meaning": "申請；報名",
     "partOfSpeech": "動詞",
-    "example": "作文で「申し込みする」を使ってみます。",
-    "exampleKana": "さくぶんで「もうしこみする」をつかってみます。",
-    "exampleMeaning": "我會試著在作文裡使用「申請」。"
+    "example": "試験に申し込みします。",
+    "exampleKana": "しけんにもうしこみします。",
+    "exampleMeaning": "報名考試。"
   },
   {
     "id": 2307,
@@ -25603,9 +25603,9 @@
     "kana": "かいぎする",
     "meaning": "開會；舉行會議",
     "partOfSpeech": "動詞",
-    "example": "先生は「会議する」という動詞を黒板に書きました。",
-    "exampleKana": "せんせいは「かいぎする」というどうしをこくばんにかきました。",
-    "exampleMeaning": "老師把「開會」這個動詞寫在黑板上。"
+    "example": "午後にみんなで会議します。",
+    "exampleKana": "ごごにみんなでかいぎします。",
+    "exampleMeaning": "下午大家一起開會。"
   },
   {
     "id": 2329,
@@ -25988,9 +25988,9 @@
     "kana": "やさしい",
     "meaning": "溫柔的；容易的（假名表記）",
     "partOfSpeech": "い形容詞",
-    "example": "「やさしい」は物の様子を表す言葉です。",
-    "exampleKana": "「やさしい」はもののようすをあらわすことばです。",
-    "exampleMeaning": "「溫柔的；容易的」是表示物品狀態的詞。"
+    "example": "この先生はとてもやさしいです。",
+    "exampleKana": "このせんせいはとてもやさしいです。",
+    "exampleMeaning": "這位老師非常溫柔。"
   },
   {
     "id": 2364,
@@ -26681,9 +26681,9 @@
     "kana": "きれい",
     "meaning": "漂亮的；乾淨的（假名表記）",
     "partOfSpeech": "な形容詞",
-    "example": "会話で「きれい」を使う場面を考えました。",
-    "exampleKana": "かいわで「きれい」をつかうばめんをかんがえました。",
-    "exampleMeaning": "我想了在會話中使用「漂亮；乾淨」的情境。"
+    "example": "この部屋はきれいです。",
+    "exampleKana": "このへやはきれいです。",
+    "exampleMeaning": "這個房間很乾淨。"
   },
   {
     "id": 2427,
@@ -33829,11 +33829,11 @@
     "level": "N4",
     "word": "いかなる",
     "kana": "いかなる",
-    "meaning": "任何",
+    "meaning": "任何；無論什麼樣的（書面語）",
     "partOfSpeech": "連體詞",
     "example": "いかなる理由でも休めません。",
     "exampleKana": "いかなるりゆうでもやすめません。",
-    "exampleMeaning": "任何理由都不能休息。"
+    "exampleMeaning": "無論任何理由都不能請假。"
   },
   {
     "id": 3077,
@@ -33884,7 +33884,7 @@
     "level": "N4",
     "word": "たいした",
     "kana": "たいした",
-    "meaning": "了不起的",
+    "meaning": "重大；了不起；常用於否定",
     "partOfSpeech": "連體詞",
     "example": "たいしたけがではありません。",
     "exampleKana": "たいしたけがではありません。",
@@ -34203,8 +34203,8 @@
     "level": "N4",
     "word": "人気",
     "kana": "にんき",
-    "meaning": "人氣、受歡迎",
-    "partOfSpeech": "名詞/な形容詞",
+    "meaning": "人氣；受歡迎",
+    "partOfSpeech": "名詞",
     "example": "この映画は人気があります。",
     "exampleKana": "このえいがはにんきがあります。",
     "exampleMeaning": "這部電影很受歡迎。"
@@ -34357,8 +34357,8 @@
     "level": "N4",
     "word": "一緒",
     "kana": "いっしょ",
-    "meaning": "一起",
-    "partOfSpeech": "名詞/副詞",
+    "meaning": "一起；同一、一起的",
+    "partOfSpeech": "名詞/な形容詞",
     "example": "友だちと一緒に行きます。",
     "exampleKana": "ともだちといっしょにいきます。",
     "exampleMeaning": "和朋友一起去。"
@@ -34456,7 +34456,7 @@
     "level": "N4",
     "word": "迂回",
     "kana": "うかい",
-    "meaning": "繞路、迂迴",
+    "meaning": "繞路；迂迴",
     "partOfSpeech": "名詞/する動詞",
     "example": "工事のためバスは迂回します。",
     "exampleKana": "こうじのためバスはうかいします。",
@@ -34786,7 +34786,7 @@
     "level": "N4",
     "word": "分別",
     "kana": "ぶんべつ",
-    "meaning": "分類、分類回收",
+    "meaning": "分類；分類回收（垃圾等）",
     "partOfSpeech": "名詞/する動詞",
     "example": "ごみを正しく分別してください。",
     "exampleKana": "ごみをただしくぶんべつしてください。",
@@ -34907,7 +34907,7 @@
     "level": "N4",
     "word": "登録",
     "kana": "とうろく",
-    "meaning": "登錄、註冊",
+    "meaning": "登記；註冊",
     "partOfSpeech": "名詞/する動詞",
     "example": "利用する前に名前を登録してください。",
     "exampleKana": "りようするまえになまえをとうろくしてください。",
