@@ -15703,9 +15703,9 @@
     "kana": "ゆしゅつ",
     "meaning": "輸出；出口貿易",
     "partOfSpeech": "名詞",
-    "example": "輸出について調べます。",
-    "exampleKana": "ゆしゅつについてしらべます。",
-    "exampleMeaning": "查詢關於出口的資料。"
+    "example": "この会社は車を輸出しています。",
+    "exampleKana": "このかいしゃはくるまをゆしゅつしています。",
+    "exampleMeaning": "這家公司正在出口汽車。"
   },
   {
     "id": 1429,
@@ -16000,9 +16000,9 @@
     "kana": "ちょうし",
     "meaning": "狀況；調子",
     "partOfSpeech": "名詞",
-    "example": "調子について調べます。",
-    "exampleKana": "ちょうしについてしらべます。",
-    "exampleMeaning": "查詢關於狀況的資料。"
+    "example": "今日は体の調子がいいです。",
+    "exampleKana": "きょうはからだのちょうしがいいです。",
+    "exampleMeaning": "今天身體狀況很好。"
   },
   {
     "id": 1456,
@@ -16022,9 +16022,9 @@
     "kana": "ばあい",
     "meaning": "情況；場合",
     "partOfSpeech": "名詞",
-    "example": "場合について調べます。",
-    "exampleKana": "ばあいについてしらべます。",
-    "exampleMeaning": "查詢關於情況的資料。"
+    "example": "雨の場合は中止です。",
+    "exampleKana": "あめのばあいはちゅうしです。",
+    "exampleMeaning": "下雨的情況下就取消。"
   },
   {
     "id": 1458,
@@ -16198,9 +16198,9 @@
     "kana": "かかり",
     "meaning": "負責人；職務",
     "partOfSpeech": "名詞",
-    "example": "係について調べます。",
-    "exampleKana": "かかりについてしらべます。",
-    "exampleMeaning": "查詢關於負責人的資料。"
+    "example": "私は掃除係です。",
+    "exampleKana": "わたしはそうじがかりです。",
+    "exampleMeaning": "我是打掃負責人。"
   },
   {
     "id": 1474,
@@ -16240,11 +16240,11 @@
     "level": "N4",
     "word": "審判",
     "kana": "しんぱん",
-    "meaning": "裁判；裁判員",
+    "meaning": "比賽裁判；裁判員",
     "partOfSpeech": "名詞",
-    "example": "審判について調べます。",
-    "exampleKana": "しんぱんについてしらべます。",
-    "exampleMeaning": "查詢關於裁判的資料。"
+    "example": "審判が試合を止めました。",
+    "exampleKana": "しんぱんがしあいをとめました。",
+    "exampleMeaning": "比賽裁判中止了比賽。"
   },
   {
     "id": 1478,
@@ -16517,9 +16517,9 @@
     "kana": "きんじょ",
     "meaning": "附近；鄰居",
     "partOfSpeech": "名詞",
-    "example": "近所について調べます。",
-    "exampleKana": "きんじょについてしらべます。",
-    "exampleMeaning": "查詢關於附近的資料。"
+    "example": "近所にスーパーがあります。",
+    "exampleKana": "きんじょにすーぱーがあります。",
+    "exampleMeaning": "附近有超市。"
   },
   {
     "id": 1503,
@@ -16539,9 +16539,9 @@
     "kana": "かど",
     "meaning": "角落；轉角",
     "partOfSpeech": "名詞",
-    "example": "角について調べます。",
-    "exampleKana": "かどについてしらべます。",
-    "exampleMeaning": "查詢關於角落的資料。"
+    "example": "次の角を右に曲がってください。",
+    "exampleKana": "つぎのかどをみぎにまがってください。",
+    "exampleMeaning": "請在下一個轉角右轉。"
   },
   {
     "id": 1505,
@@ -16627,9 +16627,9 @@
     "kana": "かいさつ",
     "meaning": "剪票口；驗票",
     "partOfSpeech": "名詞",
-    "example": "改札について調べます。",
-    "exampleKana": "かいさつについてしらべます。",
-    "exampleMeaning": "查詢關於剪票口的資料。"
+    "example": "改札で友だちを待ちます。",
+    "exampleKana": "かいさつでともだちをまちます。",
+    "exampleMeaning": "在剪票口等朋友。"
   },
   {
     "id": 1513,
@@ -16693,9 +16693,9 @@
     "kana": "きんえん",
     "meaning": "禁菸",
     "partOfSpeech": "名詞",
-    "example": "禁煙について調べます。",
-    "exampleKana": "きんえんについてしらべます。",
-    "exampleMeaning": "查詢關於禁菸的資料。"
+    "example": "この店は禁煙です。",
+    "exampleKana": "このみせはきんえんです。",
+    "exampleMeaning": "這家店禁菸。"
   },
   {
     "id": 1519,
@@ -16704,9 +16704,9 @@
     "kana": "きつえん",
     "meaning": "吸菸",
     "partOfSpeech": "名詞",
-    "example": "喫煙について調べます。",
-    "exampleKana": "きつえんについてしらべます。",
-    "exampleMeaning": "查詢關於吸菸的資料。"
+    "example": "ここで喫煙できますか。",
+    "exampleKana": "ここできつえんできますか。",
+    "exampleMeaning": "可以在這裡吸菸嗎？"
   },
   {
     "id": 1520,
@@ -16715,9 +16715,9 @@
     "kana": "かいけい",
     "meaning": "結帳；會計",
     "partOfSpeech": "名詞",
-    "example": "会計について調べます。",
-    "exampleKana": "かいけいについてしらべます。",
-    "exampleMeaning": "查詢關於結帳的資料。"
+    "example": "会計をお願いします。",
+    "exampleKana": "かいけいをおねがいします。",
+    "exampleMeaning": "請幫我結帳。"
   },
   {
     "id": 1521,
@@ -16726,9 +16726,9 @@
     "kana": "ちゅうもん",
     "meaning": "點餐；訂購",
     "partOfSpeech": "名詞",
-    "example": "注文について調べます。",
-    "exampleKana": "ちゅうもんについてしらべます。",
-    "exampleMeaning": "查詢關於點餐的資料。"
+    "example": "店員に料理を注文しました。",
+    "exampleKana": "てんいんにりょうりをちゅうもんしました。",
+    "exampleMeaning": "向店員點了餐。"
   },
   {
     "id": 1522,
@@ -16748,9 +16748,9 @@
     "kana": "へんぴん",
     "meaning": "退貨",
     "partOfSpeech": "名詞",
-    "example": "返品について調べます。",
-    "exampleKana": "へんぴんについてしらべます。",
-    "exampleMeaning": "查詢關於退貨的資料。"
+    "example": "この商品は返品できますか。",
+    "exampleKana": "このしょうひんはへんぴんできますか。",
+    "exampleMeaning": "這項商品可以退貨嗎？"
   },
   {
     "id": 1524,
@@ -16858,9 +16858,9 @@
     "kana": "おつり",
     "meaning": "找零",
     "partOfSpeech": "名詞",
-    "example": "お釣りについて調べます。",
-    "exampleKana": "おつりについてしらべます。",
-    "exampleMeaning": "查詢關於找零的資料。"
+    "example": "お釣りをもらいました。",
+    "exampleKana": "おつりをもらいました。",
+    "exampleMeaning": "收到了找零。"
   },
   {
     "id": 1534,
@@ -17067,9 +17067,9 @@
     "kana": "ち",
     "meaning": "血",
     "partOfSpeech": "名詞",
-    "example": "血について調べます。",
-    "exampleKana": "ちについてしらべます。",
-    "exampleMeaning": "查詢關於血的資料。"
+    "example": "指から血が出ました。",
+    "exampleKana": "ゆびからちがでました。",
+    "exampleMeaning": "手指出血了。"
   },
   {
     "id": 1553,
@@ -17122,20 +17122,20 @@
     "kana": "むね",
     "meaning": "胸口",
     "partOfSpeech": "名詞",
-    "example": "胸について調べます。",
-    "exampleKana": "むねについてしらべます。",
-    "exampleMeaning": "查詢關於胸口的資料。"
+    "example": "胸が痛いです。",
+    "exampleKana": "むねがいたいです。",
+    "exampleMeaning": "胸口痛。"
   },
   {
     "id": 1558,
     "level": "N4",
     "word": "腹",
     "kana": "はら",
-    "meaning": "肚子",
+    "meaning": "肚子；生氣（慣用語）",
     "partOfSpeech": "名詞",
-    "example": "腹について調べます。",
-    "exampleKana": "はらについてしらべます。",
-    "exampleMeaning": "查詢關於肚子的資料。"
+    "example": "腹が立ちます。",
+    "exampleKana": "はらがたちます。",
+    "exampleMeaning": "我生氣了。"
   },
   {
     "id": 1559,
@@ -17199,9 +17199,9 @@
     "kana": "くすり",
     "meaning": "藥",
     "partOfSpeech": "名詞",
-    "example": "薬について調べます。",
-    "exampleKana": "くすりについてしらべます。",
-    "exampleMeaning": "查詢關於藥的資料。"
+    "example": "食後に薬を飲みます。",
+    "exampleKana": "しょくごにくすりをのみます。",
+    "exampleMeaning": "飯後吃藥。"
   },
   {
     "id": 1565,
@@ -17242,10 +17242,10 @@
     "word": "退院",
     "kana": "たいいん",
     "meaning": "出院",
-    "partOfSpeech": "名詞",
-    "example": "退院について調べます。",
-    "exampleKana": "たいいんについてしらべます。",
-    "exampleMeaning": "查詢關於出院的資料。"
+    "partOfSpeech": "名詞/する動詞",
+    "example": "父は明日退院します。",
+    "exampleKana": "ちちはあしたたいいんします。",
+    "exampleMeaning": "父親明天出院。"
   },
   {
     "id": 1569,
@@ -17298,9 +17298,9 @@
     "kana": "おや",
     "meaning": "父母；親人",
     "partOfSpeech": "名詞",
-    "example": "親について調べます。",
-    "exampleKana": "おやについてしらべます。",
-    "exampleMeaning": "查詢關於父母的資料。"
+    "example": "親に電話しました。",
+    "exampleKana": "おやにでんわしました。",
+    "exampleMeaning": "打電話給父母。"
   },
   {
     "id": 1574,
@@ -17540,9 +17540,9 @@
     "kana": "じゅぎょう",
     "meaning": "課程；上課",
     "partOfSpeech": "名詞",
-    "example": "授業について調べます。",
-    "exampleKana": "じゅぎょうについてしらべます。",
-    "exampleMeaning": "查詢關於課程的資料。"
+    "example": "授業は九時に始まります。",
+    "exampleKana": "じゅぎょうはくじにはじまります。",
+    "exampleMeaning": "課九點開始。"
   },
   {
     "id": 1596,
@@ -17758,11 +17758,11 @@
     "level": "N4",
     "word": "停留所",
     "kana": "ていりゅうじょ",
-    "meaning": "公車站牌",
+    "meaning": "公車站；停靠站",
     "partOfSpeech": "名詞",
-    "example": "停留所について調べます。",
-    "exampleKana": "ていりゅうじょについてしらべます。",
-    "exampleMeaning": "查詢關於公車站牌的資料。"
+    "example": "次の停留所で降ります。",
+    "exampleKana": "つぎのていりゅうじょでおります。",
+    "exampleMeaning": "在下一站下車。"
   },
   {
     "id": 1616,
@@ -17793,9 +17793,9 @@
     "kana": "しゅうでん",
     "meaning": "末班電車",
     "partOfSpeech": "名詞",
-    "example": "終電について調べます。",
-    "exampleKana": "しゅうでんについてしらべます。",
-    "exampleMeaning": "查詢關於末班電車的資料。"
+    "example": "終電に間に合いました。",
+    "exampleKana": "しゅうでんにまにあいました。",
+    "exampleMeaning": "趕上了末班電車。"
   },
   {
     "id": 1619,
@@ -17815,9 +17815,9 @@
     "kana": "のりかえ",
     "meaning": "轉乘",
     "partOfSpeech": "名詞",
-    "example": "乗り換えについて調べます。",
-    "exampleKana": "のりかえについてしらべます。",
-    "exampleMeaning": "查詢關於轉乘的資料。"
+    "example": "新宿駅で乗り換えます。",
+    "exampleKana": "しんじゅくえきでのりかえます。",
+    "exampleMeaning": "在新宿站轉乘。"
   },
   {
     "id": 1621,
@@ -18001,10 +18001,10 @@
     "word": "宿泊",
     "kana": "しゅくはく",
     "meaning": "住宿",
-    "partOfSpeech": "名詞",
-    "example": "宿泊について調べます。",
-    "exampleKana": "しゅくはくについてしらべます。",
-    "exampleMeaning": "查詢關於住宿的資料。"
+    "partOfSpeech": "名詞/する動詞",
+    "example": "このホテルに宿泊します。",
+    "exampleKana": "このほてるにしゅくはくします。",
+    "exampleMeaning": "住宿在這家飯店。"
   },
   {
     "id": 1638,
