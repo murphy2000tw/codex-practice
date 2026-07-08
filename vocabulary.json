@@ -34108,7 +34108,7 @@
     "partOfSpeech": "名詞",
     "example": "店長に予定を確認します。",
     "exampleKana": "てんちょうによていをかくにんします。",
-    "exampleMeaning": "我向店長確認預定。"
+    "exampleMeaning": "我向店長確認安排。"
   },
   {
     "id": 3102,
@@ -34141,7 +34141,7 @@
     "partOfSpeech": "數量詞",
     "example": "一週間、アルバイトを休みます。",
     "exampleKana": "いっしゅうかん、アルバイトをやすみます。",
-    "exampleMeaning": "我請一週打工假。"
+    "exampleMeaning": "我向打工的地方請一週假。"
   },
   {
     "id": 3105,
@@ -34291,11 +34291,11 @@
     "level": "N4",
     "word": "回る",
     "kana": "まわる",
-    "meaning": "巡遊、繞行",
+    "meaning": "繞、巡迴、到處走訪",
     "partOfSpeech": "動詞",
     "example": "京都の有名な場所を回ります。",
     "exampleKana": "きょうとのゆうめいなばしょをまわります。",
-    "exampleMeaning": "巡遊京都有名的地方。"
+    "exampleMeaning": "走訪京都有名的地方。"
   },
   {
     "id": 3119,
@@ -34313,7 +34313,7 @@
     "level": "N4",
     "word": "参加",
     "kana": "さんか",
-    "meaning": "參加",
+    "meaning": "參加、出席活動",
     "partOfSpeech": "名詞/する動詞",
     "example": "イベントに参加します。",
     "exampleKana": "イベントにさんかします。",
@@ -34324,18 +34324,18 @@
     "level": "N4",
     "word": "修理",
     "kana": "しゅうり",
-    "meaning": "修理",
+    "meaning": "修理、維修",
     "partOfSpeech": "名詞/する動詞",
     "example": "自転車の修理を頼みます。",
     "exampleKana": "じてんしゃのしゅうりをたのみます。",
-    "exampleMeaning": "拜託修理腳踏車。"
+    "exampleMeaning": "請人修理腳踏車。"
   },
   {
     "id": 3122,
     "level": "N4",
     "word": "印刷",
     "kana": "いんさつ",
-    "meaning": "印刷、列印",
+    "meaning": "印刷、列印文件",
     "partOfSpeech": "名詞/する動詞",
     "example": "資料を印刷します。",
     "exampleKana": "しりょうをいんさつします。",
@@ -34346,11 +34346,11 @@
     "level": "N4",
     "word": "窓口",
     "kana": "まどぐち",
-    "meaning": "窗口、櫃台",
+    "meaning": "櫃台、服務窗口",
     "partOfSpeech": "名詞",
     "example": "荷物は窓口で受け取ります。",
     "exampleKana": "にもつはまどぐちでうけとります。",
-    "exampleMeaning": "包裹在窗口領取。"
+    "exampleMeaning": "包裹在櫃台領取。"
   },
   {
     "id": 3124,
@@ -34368,7 +34368,7 @@
     "level": "N4",
     "word": "運動",
     "kana": "うんどう",
-    "meaning": "運動",
+    "meaning": "運動、身體活動",
     "partOfSpeech": "名詞/する動詞",
     "example": "毎朝少し運動します。",
     "exampleKana": "まいあさすこしうんどうします。",
@@ -34390,7 +34390,7 @@
     "level": "N4",
     "word": "確認",
     "kana": "かくにん",
-    "meaning": "確認",
+    "meaning": "確認、核對",
     "partOfSpeech": "名詞/する動詞",
     "example": "予約の時間を確認します。",
     "exampleKana": "よやくのじかんをかくにんします。",
@@ -34412,7 +34412,7 @@
     "level": "N4",
     "word": "返事",
     "kana": "へんじ",
-    "meaning": "回覆、答覆",
+    "meaning": "回覆、回信",
     "partOfSpeech": "名詞/する動詞",
     "example": "友だちに返事を書きます。",
     "exampleKana": "ともだちにへんじをかきます。",
@@ -34434,7 +34434,7 @@
     "level": "N4",
     "word": "夕食",
     "kana": "ゆうしょく",
-    "meaning": "晚餐",
+    "meaning": "晚餐、晚間餐點",
     "partOfSpeech": "名詞",
     "example": "夕食の後で散歩します。",
     "exampleKana": "ゆうしょくのあとでさんぽします。",
@@ -34445,7 +34445,7 @@
     "level": "N4",
     "word": "料金",
     "kana": "りょうきん",
-    "meaning": "費用、料金",
+    "meaning": "費用、收費",
     "partOfSpeech": "名詞",
     "example": "映画の料金を払います。",
     "exampleKana": "えいがのりょうきんをはらいます。",
@@ -34467,7 +34467,7 @@
     "level": "N4",
     "word": "菓子",
     "kana": "かし",
-    "meaning": "點心、糕點",
+    "meaning": "點心、糕點（較書面）",
     "partOfSpeech": "名詞",
     "example": "箱の中に菓子があります。",
     "exampleKana": "はこのなかにかしがあります。",
