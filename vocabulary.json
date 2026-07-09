@@ -15965,11 +15965,11 @@
     "level": "N4",
     "word": "香り",
     "kana": "かおり",
-    "meaning": "香氣",
+    "meaning": "香氣；香味",
     "partOfSpeech": "名詞",
-    "example": "香りについて調べます。",
-    "exampleKana": "かおりについてしらべます。",
-    "exampleMeaning": "查詢關於香氣的資料。"
+    "example": "この花はいい香りがします。",
+    "exampleKana": "このはなはいいかおりがします。",
+    "exampleMeaning": "這朵花有很好的香氣。"
   },
   {
     "id": 1453,
@@ -15987,11 +15987,11 @@
     "level": "N4",
     "word": "匂い",
     "kana": "におい",
-    "meaning": "氣味",
+    "meaning": "氣味；味道",
     "partOfSpeech": "名詞",
-    "example": "匂いについて調べます。",
-    "exampleKana": "においについてしらべます。",
-    "exampleMeaning": "查詢關於氣味的資料。"
+    "example": "台所からカレーの匂いがします。",
+    "exampleKana": "だいどころからかれーのにおいがします。",
+    "exampleMeaning": "從廚房傳來咖哩的味道。"
   },
   {
     "id": 1455,
@@ -16229,11 +16229,11 @@
     "level": "N4",
     "word": "監督",
     "kana": "かんとく",
-    "meaning": "教練；監督",
+    "meaning": "教練；導演；監督者",
     "partOfSpeech": "名詞",
-    "example": "監督について調べます。",
-    "exampleKana": "かんとくについてしらべます。",
-    "exampleMeaning": "查詢關於教練的資料。"
+    "example": "サッカーの監督が選手に話しています。",
+    "exampleKana": "さっかーのかんとくがせんしゅにはなしています。",
+    "exampleMeaning": "足球教練正在和選手說話。"
   },
   {
     "id": 1477,
@@ -16570,11 +16570,11 @@
     "level": "N4",
     "word": "線路",
     "kana": "せんろ",
-    "meaning": "鐵軌；路線",
+    "meaning": "鐵軌；軌道",
     "partOfSpeech": "名詞",
-    "example": "線路について調べます。",
-    "exampleKana": "せんろについてしらべます。",
-    "exampleMeaning": "查詢關於鐵軌的資料。"
+    "example": "線路の近くで遊ばないでください。",
+    "exampleKana": "せんろのちかくであそばないでください。",
+    "exampleMeaning": "請不要在鐵軌附近玩。"
   },
   {
     "id": 1508,
@@ -16735,11 +16735,11 @@
     "level": "N4",
     "word": "配達",
     "kana": "はいたつ",
-    "meaning": "配送",
-    "partOfSpeech": "名詞",
-    "example": "配達について調べます。",
-    "exampleKana": "はいたつについてしらべます。",
-    "exampleMeaning": "查詢關於配送的資料。"
+    "meaning": "配送；送達",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "荷物を家まで配達します。",
+    "exampleKana": "にもつをいえまではいたつします。",
+    "exampleMeaning": "把包裹配送到家裡。"
   },
   {
     "id": 1523,
@@ -17340,11 +17340,11 @@
     "level": "N4",
     "word": "孫",
     "kana": "まご",
-    "meaning": "孫子；孫女",
+    "meaning": "孫子；孫女；孫輩",
     "partOfSpeech": "名詞",
-    "example": "孫について調べます。",
-    "exampleKana": "まごについてしらべます。",
-    "exampleMeaning": "查詢關於孫子的資料。"
+    "example": "祖母は孫と公園へ行きました。",
+    "exampleKana": "そぼはまごとこうえんへいきました。",
+    "exampleMeaning": "祖母和孫輩去了公園。"
   },
   {
     "id": 1578,
@@ -17846,11 +17846,11 @@
     "level": "N4",
     "word": "車掌",
     "kana": "しゃしょう",
-    "meaning": "車掌",
+    "meaning": "列車長；乘務員",
     "partOfSpeech": "名詞",
-    "example": "車掌について調べます。",
-    "exampleKana": "しゃしょうについてしらべます。",
-    "exampleMeaning": "查詢關於車掌的資料。"
+    "example": "車掌が切符を確認しました。",
+    "exampleKana": "しゃしょうがきっぷをかくにんしました。",
+    "exampleMeaning": "列車長確認了車票。"
   },
   {
     "id": 1624,
@@ -18627,33 +18627,33 @@
     "level": "N4",
     "word": "税込み",
     "kana": "ぜいこみ",
-    "meaning": "含稅",
+    "meaning": "含稅；含稅價格",
     "partOfSpeech": "名詞",
-    "example": "税込みについて調べます。",
-    "exampleKana": "ぜいこみについてしらべます。",
-    "exampleMeaning": "查詢關於含稅的資料。"
+    "example": "この値段は税込みです。",
+    "exampleKana": "このねだんはぜいこみです。",
+    "exampleMeaning": "這個價格是含稅的。"
   },
   {
     "id": 1695,
     "level": "N4",
     "word": "税抜き",
     "kana": "ぜいぬき",
-    "meaning": "未稅",
+    "meaning": "未稅；未稅價格",
     "partOfSpeech": "名詞",
-    "example": "税抜きについて調べます。",
-    "exampleKana": "ぜいぬきについてしらべます。",
-    "exampleMeaning": "查詢關於未稅的資料。"
+    "example": "この値段は税抜きです。",
+    "exampleKana": "このねだんはぜいぬきです。",
+    "exampleMeaning": "這個價格是未稅的。"
   },
   {
     "id": 1696,
     "level": "N4",
     "word": "支払い",
     "kana": "しはらい",
-    "meaning": "付款",
+    "meaning": "付款；支付",
     "partOfSpeech": "名詞",
-    "example": "支払いについて調べます。",
-    "exampleKana": "しはらいについてしらべます。",
-    "exampleMeaning": "查詢關於付款的資料。"
+    "example": "支払いはカードでお願いします。",
+    "exampleKana": "しはらいはかーどでおねがいします。",
+    "exampleMeaning": "請用卡付款。"
   },
   {
     "id": 1697,
@@ -18748,11 +18748,11 @@
     "level": "N4",
     "word": "売り切れ",
     "kana": "うりきれ",
-    "meaning": "售完",
+    "meaning": "售罄；賣完",
     "partOfSpeech": "名詞",
-    "example": "売り切れについて調べます。",
-    "exampleKana": "うりきれについてしらべます。",
-    "exampleMeaning": "查詢關於售完的資料。"
+    "example": "そのパンはもう売り切れです。",
+    "exampleKana": "そのぱんはもううりきれです。",
+    "exampleMeaning": "那個麵包已經賣完了。"
   },
   {
     "id": 1706,
@@ -18957,11 +18957,11 @@
     "level": "N4",
     "word": "理科室",
     "kana": "りかしつ",
-    "meaning": "自然教室",
+    "meaning": "理科教室；自然科教室",
     "partOfSpeech": "名詞",
-    "example": "理科室について調べます。",
-    "exampleKana": "りかしつについてしらべます。",
-    "exampleMeaning": "查詢關於自然教室的資料。"
+    "example": "理科室で実験をします。",
+    "exampleKana": "りかしつでじっけんをします。",
+    "exampleMeaning": "在理科教室做實驗。"
   },
   {
     "id": 1725,
@@ -19133,11 +19133,11 @@
     "level": "N4",
     "word": "会社勤め",
     "kana": "かいしゃづとめ",
-    "meaning": "在公司上班",
+    "meaning": "公司任職；上班族工作型態",
     "partOfSpeech": "名詞",
-    "example": "会社勤めについて調べます。",
-    "exampleKana": "かいしゃづとめについてしらべます。",
-    "exampleMeaning": "查詢關於在公司上班的資料。"
+    "example": "兄は会社勤めをしています。",
+    "exampleKana": "あにはかいしゃづとめをしています。",
+    "exampleMeaning": "哥哥在公司任職。"
   },
   {
     "id": 1741,
@@ -19210,11 +19210,11 @@
     "level": "N4",
     "word": "残業",
     "kana": "ざんぎょう",
-    "meaning": "加班",
-    "partOfSpeech": "名詞",
-    "example": "残業について調べます。",
-    "exampleKana": "ざんぎょうについてしらべます。",
-    "exampleMeaning": "查詢關於加班的資料。"
+    "meaning": "加班；加班時間",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "今日は二時間残業しました。",
+    "exampleKana": "きょうはにじかんざんぎょうしました。",
+    "exampleMeaning": "今天加班了兩個小時。"
   },
   {
     "id": 1748,
@@ -19518,11 +19518,11 @@
     "level": "N4",
     "word": "寒気",
     "kana": "さむけ",
-    "meaning": "發冷",
+    "meaning": "發冷；寒顫",
     "partOfSpeech": "名詞",
-    "example": "寒気について調べます。",
-    "exampleKana": "さむけについてしらべます。",
-    "exampleMeaning": "查詢關於發冷的資料。"
+    "example": "熱があって寒気がします。",
+    "exampleKana": "ねつがあってさむけがします。",
+    "exampleMeaning": "發燒而且覺得發冷。"
   },
   {
     "id": 1776,
@@ -19661,11 +19661,11 @@
     "level": "N4",
     "word": "稲妻",
     "kana": "いなずま",
-    "meaning": "閃電",
+    "meaning": "閃電；電光",
     "partOfSpeech": "名詞",
-    "example": "稲妻について調べます。",
-    "exampleKana": "いなずまについてしらべます。",
-    "exampleMeaning": "查詢關於閃電的資料。"
+    "example": "夜の空に稲妻が見えました。",
+    "exampleKana": "よるのそらにいなずまがみえました。",
+    "exampleMeaning": "夜空中看到了閃電。"
   },
   {
     "id": 1789,
@@ -20288,11 +20288,11 @@
     "level": "N4",
     "word": "返信",
     "kana": "へんしん",
-    "meaning": "回信",
-    "partOfSpeech": "名詞",
-    "example": "返信について調べます。",
-    "exampleKana": "へんしんについてしらべます。",
-    "exampleMeaning": "查詢關於回信的資料。"
+    "meaning": "回覆；回信",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "友だちのメールに返信しました。",
+    "exampleKana": "ともだちのめーるにへんしんしました。",
+    "exampleMeaning": "回覆了朋友的電子郵件。"
   },
   {
     "id": 1846,
@@ -20387,11 +20387,11 @@
     "level": "N4",
     "word": "参加申込",
     "kana": "さんかもうしこみ",
-    "meaning": "報名參加",
+    "meaning": "參加報名；報名申請",
     "partOfSpeech": "名詞",
-    "example": "参加申込について調べます。",
-    "exampleKana": "さんかもうしこみについてしらべます。",
-    "exampleMeaning": "查詢關於報名參加的資料。"
+    "example": "参加申込は明日までです。",
+    "exampleKana": "さんかもうしこみはあしたまでです。",
+    "exampleMeaning": "參加報名到明天截止。"
   },
   {
     "id": 1855,
@@ -20585,11 +20585,11 @@
     "level": "N4",
     "word": "回覧",
     "kana": "かいらん",
-    "meaning": "傳閱",
-    "partOfSpeech": "名詞",
-    "example": "回覧について調べます。",
-    "exampleKana": "かいらんについてしらべます。",
-    "exampleMeaning": "查詢關於傳閱的資料。"
+    "meaning": "傳閱；傳閱文件",
+    "partOfSpeech": "名詞/する動詞",
+    "example": "この書類をクラスで回覧します。",
+    "exampleKana": "このしょるいをくらすでかいらんします。",
+    "exampleMeaning": "在班上傳閱這份文件。"
   },
   {
     "id": 1873,
@@ -34170,8 +34170,8 @@
     "level": "N4",
     "word": "午前中",
     "kana": "ごぜんちゅう",
-    "meaning": "上午之內、上午",
-    "partOfSpeech": "名詞/副詞",
+    "meaning": "上午；上午之內",
+    "partOfSpeech": "名詞",
     "example": "荷物は午前中に届きます。",
     "exampleKana": "にもつはごぜんちゅうにとどきます。",
     "exampleMeaning": "包裹會在上午送達。"
@@ -34533,8 +34533,8 @@
     "level": "N4",
     "word": "向こう",
     "kana": "むこう",
-    "meaning": "對面、那邊",
-    "partOfSpeech": "副詞/名詞",
+    "meaning": "對面；那邊",
+    "partOfSpeech": "名詞",
     "example": "向こうに郵便局があります。",
     "exampleKana": "むこうにゆうびんきょくがあります。",
     "exampleMeaning": "那邊有郵局。"
@@ -34610,8 +34610,8 @@
     "level": "N4",
     "word": "開店前",
     "kana": "かいてんまえ",
-    "meaning": "開店前",
-    "partOfSpeech": "名詞/副詞",
+    "meaning": "開店前；開門營業前",
+    "partOfSpeech": "名詞",
     "example": "開店前に店の前で待ちます。",
     "exampleKana": "かいてんまえにみせのまえでまちます。",
     "exampleMeaning": "開店前在店門口等。"
@@ -34874,8 +34874,8 @@
     "level": "N4",
     "word": "通知",
     "kana": "つうち",
-    "meaning": "通知",
-    "partOfSpeech": "名詞/する動詞",
+    "meaning": "通知；通知訊息",
+    "partOfSpeech": "名詞",
     "example": "学校から新しい通知が届きました。",
     "exampleKana": "がっこうからあたらしいつうちがとどきました。",
     "exampleMeaning": "收到了學校的新通知。"
@@ -34886,7 +34886,7 @@
     "word": "活動",
     "kana": "かつどう",
     "meaning": "活動",
-    "partOfSpeech": "名詞/する動詞",
+    "partOfSpeech": "名詞",
     "example": "週末に地域の活動に参加します。",
     "exampleKana": "しゅうまつにちいきのかつどうにさんかします。",
     "exampleMeaning": "週末參加地區的活動。"
@@ -34929,7 +34929,7 @@
     "level": "N4",
     "word": "集合",
     "kana": "しゅうごう",
-    "meaning": "集合",
+    "meaning": "集合；集合地點；集合時間",
     "partOfSpeech": "名詞/する動詞",
     "example": "参加者は駅の前に集合してください。",
     "exampleKana": "さんかしゃはえきのまえにしゅうごうしてください。",
