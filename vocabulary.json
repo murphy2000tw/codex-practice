@@ -16031,11 +16031,11 @@
     "level": "N4",
     "word": "場所",
     "kana": "ばしょ",
-    "meaning": "場所",
+    "meaning": "地方；場所",
     "partOfSpeech": "名詞",
-    "example": "場所について調べます。",
-    "exampleKana": "ばしょについてしらべます。",
-    "exampleMeaning": "查詢關於場所的資料。"
+    "example": "待ち合わせの場所を決めましょう。",
+    "exampleKana": "まちあわせのばしょをきめましょう。",
+    "exampleMeaning": "來決定集合的地方吧。"
   },
   {
     "id": 1459,
@@ -16185,11 +16185,11 @@
     "level": "N4",
     "word": "役割",
     "kana": "やくわり",
-    "meaning": "角色；作用",
+    "meaning": "職責；角色；作用",
     "partOfSpeech": "名詞",
-    "example": "役割について調べます。",
-    "exampleKana": "やくわりについてしらべます。",
-    "exampleMeaning": "查詢關於角色的資料。"
+    "example": "チームの中で自分の役割を考えます。",
+    "exampleKana": "ちーむのなかでじぶんのやくわりをかんがえます。",
+    "exampleMeaning": "思考自己在團隊中的職責。"
   },
   {
     "id": 1473,
@@ -16636,11 +16636,11 @@
     "level": "N4",
     "word": "ホーム",
     "kana": "ほーむ",
-    "meaning": "月台",
+    "meaning": "車站月台；月台",
     "partOfSpeech": "名詞",
-    "example": "ホームについて調べます。",
-    "exampleKana": "ほーむについてしらべます。",
-    "exampleMeaning": "查詢關於月台的資料。"
+    "example": "電車がホームに入ってきました。",
+    "exampleKana": "でんしゃがほーむにはいってきました。",
+    "exampleMeaning": "電車進站到月台了。"
   },
   {
     "id": 1514,
@@ -18121,11 +18121,11 @@
     "level": "N4",
     "word": "受付時間",
     "kana": "うけつけじかん",
-    "meaning": "受理時間",
+    "meaning": "受理時間；櫃台服務時間",
     "partOfSpeech": "名詞",
-    "example": "受付時間について調べます。",
-    "exampleKana": "うけつけじかんについてしらべます。",
-    "exampleMeaning": "查詢關於受理時間的資料。"
+    "example": "病院の受付時間を確認しました。",
+    "exampleKana": "びょういんのうけつけじかんをかくにんしました。",
+    "exampleMeaning": "確認了醫院的受理時間。"
   },
   {
     "id": 1649,
@@ -20948,22 +20948,22 @@
     "level": "N4",
     "word": "身分確認",
     "kana": "みぶんかくにん",
-    "meaning": "身分確認",
+    "meaning": "身分確認；確認身分",
     "partOfSpeech": "名詞",
-    "example": "身分確認について確認します。",
-    "exampleKana": "みぶんかくにんについてかくにんします。",
-    "exampleMeaning": "確認關於身分確認的事。"
+    "example": "受付で身分確認をします。",
+    "exampleKana": "うけつけでみぶんかくにんをします。",
+    "exampleMeaning": "在櫃台確認身分。"
   },
   {
     "id": 1906,
     "level": "N4",
-    "word": "本人書類",
-    "kana": "ほんにんしょるい",
-    "meaning": "本人文件",
+    "word": "本人確認書類",
+    "kana": "ほんにんかくにんしょるい",
+    "meaning": "本人確認文件；身分證明文件",
     "partOfSpeech": "名詞",
-    "example": "本人書類について確認します。",
-    "exampleKana": "ほんにんしょるいについてかくにんします。",
-    "exampleMeaning": "確認關於本人文件的事。"
+    "example": "本人確認書類を受付に出してください。",
+    "exampleKana": "ほんにんかくにんしょるいをうけつけにだしてください。",
+    "exampleMeaning": "請把身分證明文件交給櫃台。"
   },
   {
     "id": 1907,
@@ -20981,22 +20981,22 @@
     "level": "N4",
     "word": "委任状",
     "kana": "いにんじょう",
-    "meaning": "委託書",
+    "meaning": "委任書；授權書",
     "partOfSpeech": "名詞",
-    "example": "委任状について確認します。",
-    "exampleKana": "いにんじょうについてかくにんします。",
-    "exampleMeaning": "確認關於委託書的事。"
+    "example": "代理人は委任状を提出しました。",
+    "exampleKana": "だいりにんはいにんじょうをていしゅつしました。",
+    "exampleMeaning": "代理人提交了委任書。"
   },
   {
     "id": 1909,
     "level": "N4",
     "word": "受付番号",
     "kana": "うけつけばんごう",
-    "meaning": "受理號碼",
+    "meaning": "受理號碼；掛號號碼",
     "partOfSpeech": "名詞",
-    "example": "受付番号について確認します。",
-    "exampleKana": "うけつけばんごうについてかくにんします。",
-    "exampleMeaning": "確認關於受理號碼的事。"
+    "example": "受付番号を呼ばれるまで待ってください。",
+    "exampleKana": "うけつけばんごうをよばれるまでまってください。",
+    "exampleMeaning": "請等到受理號碼被叫到。"
   },
   {
     "id": 1910,
@@ -21036,11 +21036,11 @@
     "level": "N4",
     "word": "提出先",
     "kana": "ていしゅつさき",
-    "meaning": "提交處",
+    "meaning": "提交地點；提交對象",
     "partOfSpeech": "名詞",
-    "example": "提出先について確認します。",
-    "exampleKana": "ていしゅつさきについてかくにんします。",
-    "exampleMeaning": "確認關於提交處的事。"
+    "example": "書類の提出先を確認します。",
+    "exampleKana": "しょるいのていしゅつさきをかくにんします。",
+    "exampleMeaning": "確認文件要提交的地點。"
   },
   {
     "id": 1914,
@@ -21091,11 +21091,11 @@
     "level": "N4",
     "word": "登録番号",
     "kana": "とうろくばんごう",
-    "meaning": "登錄號碼",
+    "meaning": "登記號碼；註冊號碼",
     "partOfSpeech": "名詞",
-    "example": "登録番号について確認します。",
-    "exampleKana": "とうろくばんごうについてかくにんします。",
-    "exampleMeaning": "確認關於登錄號碼的事。"
+    "example": "申込書に登録番号を書いてください。",
+    "exampleKana": "もうしこみしょにとうろくばんごうをかいてください。",
+    "exampleMeaning": "請在申請書上寫登記號碼。"
   },
   {
     "id": 1919,
@@ -21190,11 +21190,11 @@
     "level": "N4",
     "word": "呼出番号",
     "kana": "よびだしばんごう",
-    "meaning": "叫號號碼",
+    "meaning": "叫號號碼；叫號",
     "partOfSpeech": "名詞",
-    "example": "呼出番号について確認します。",
-    "exampleKana": "よびだしばんごうについてかくにんします。",
-    "exampleMeaning": "確認關於叫號號碼的事。"
+    "example": "呼出番号が表示されたら窓口へ行ってください。",
+    "exampleKana": "よびだしばんごうがひょうじされたらまどぐちへいってください。",
+    "exampleMeaning": "叫號顯示後，請到窗口。"
   },
   {
     "id": 1928,
@@ -21245,11 +21245,11 @@
     "level": "N4",
     "word": "支払窓口",
     "kana": "しはらいまどぐち",
-    "meaning": "付款窗口",
+    "meaning": "付款櫃台；繳費窗口",
     "partOfSpeech": "名詞",
-    "example": "支払窓口について確認します。",
-    "exampleKana": "しはらいまどぐちについてかくにんします。",
-    "exampleMeaning": "確認關於付款窗口的事。"
+    "example": "支払窓口で診察料を払います。",
+    "exampleKana": "しはらいまどぐちでしんさつりょうをはらいます。",
+    "exampleMeaning": "在繳費窗口支付看診費。"
   },
   {
     "id": 1933,
@@ -21289,11 +21289,11 @@
     "level": "N4",
     "word": "控え",
     "kana": "ひかえ",
-    "meaning": "副本",
+    "meaning": "留存聯；副本",
     "partOfSpeech": "名詞",
-    "example": "控えについて確認します。",
-    "exampleKana": "ひかえについてかくにんします。",
-    "exampleMeaning": "確認關於副本的事。"
+    "example": "申込書の控えを大切に保管してください。",
+    "exampleKana": "もうしこみしょのひかえをたいせつにほかんしてください。",
+    "exampleMeaning": "請妥善保管申請書的留存聯。"
   },
   {
     "id": 1937,
@@ -21388,11 +21388,11 @@
     "level": "N4",
     "word": "混雑状況",
     "kana": "こんざつじょうきょう",
-    "meaning": "擁擠情況",
+    "meaning": "擁擠狀況；人潮狀況",
     "partOfSpeech": "名詞",
-    "example": "混雑状況について確認します。",
-    "exampleKana": "こんざつじょうきょうについてかくにんします。",
-    "exampleMeaning": "確認關於擁擠情況的事。"
+    "example": "駅の混雑状況をアプリで確認します。",
+    "exampleKana": "えきのこんざつじょうきょうをあぷりでかくにんします。",
+    "exampleMeaning": "用 App 確認車站的人潮狀況。"
   },
   {
     "id": 1946,
@@ -21421,11 +21421,11 @@
     "level": "N4",
     "word": "担当者",
     "kana": "たんとうしゃ",
-    "meaning": "負責人",
+    "meaning": "承辦人；負責人",
     "partOfSpeech": "名詞",
-    "example": "担当者について確認します。",
-    "exampleKana": "たんとうしゃについてかくにんします。",
-    "exampleMeaning": "確認關於負責人的事。"
+    "example": "担当者に詳しい話を聞きました。",
+    "exampleKana": "たんとうしゃにくわしいはなしをききました。",
+    "exampleMeaning": "向承辦人詢問了詳細情況。"
   },
   {
     "id": 1949,
@@ -21498,11 +21498,11 @@
     "level": "N4",
     "word": "初診",
     "kana": "しょしん",
-    "meaning": "初診",
+    "meaning": "第一次看診；初診",
     "partOfSpeech": "名詞",
-    "example": "初診について確認します。",
-    "exampleKana": "しょしんについてかくにんします。",
-    "exampleMeaning": "確認關於初診的事。"
+    "example": "初診の方は受付で保険証を出してください。",
+    "exampleKana": "しょしんのかたはうけつけでほけんしょうをだしてください。",
+    "exampleMeaning": "第一次看診的人請在櫃台出示健保卡。"
   },
   {
     "id": 1956,
@@ -21575,11 +21575,11 @@
     "level": "N4",
     "word": "診察料",
     "kana": "しんさつりょう",
-    "meaning": "診療費",
+    "meaning": "看診費；診察費",
     "partOfSpeech": "名詞",
-    "example": "診察料について確認します。",
-    "exampleKana": "しんさつりょうについてかくにんします。",
-    "exampleMeaning": "確認關於診療費的事。"
+    "example": "診察料は支払窓口で払います。",
+    "exampleKana": "しんさつりょうはしはらいまどぐちではらいます。",
+    "exampleMeaning": "看診費在繳費窗口支付。"
   },
   {
     "id": 1963,
@@ -21718,11 +21718,11 @@
     "level": "N4",
     "word": "湿布",
     "kana": "しっぷ",
-    "meaning": "濕布貼",
+    "meaning": "痠痛貼布；濕布貼",
     "partOfSpeech": "名詞",
-    "example": "湿布について確認します。",
-    "exampleKana": "しっぷについてかくにんします。",
-    "exampleMeaning": "確認關於濕布貼的事。"
+    "example": "肩が痛いので湿布を貼りました。",
+    "exampleKana": "かたがいたいのでしっぷをはりました。",
+    "exampleMeaning": "因為肩膀痛，所以貼了痠痛貼布。"
   },
   {
     "id": 1976,
@@ -21806,11 +21806,11 @@
     "level": "N4",
     "word": "特売品",
     "kana": "とくばいひん",
-    "meaning": "特價品",
+    "meaning": "特賣商品；特價品",
     "partOfSpeech": "名詞",
-    "example": "特売品について確認します。",
-    "exampleKana": "とくばいひんについてかくにんします。",
-    "exampleMeaning": "確認關於特價品的事。"
+    "example": "入口の近くに特売品が並んでいます。",
+    "exampleKana": "いりぐちのちかくにとくばいひんがならんでいます。",
+    "exampleMeaning": "入口附近陳列著特賣商品。"
   },
   {
     "id": 1984,
@@ -21861,11 +21861,11 @@
     "level": "N4",
     "word": "配達時間",
     "kana": "はいたつじかん",
-    "meaning": "配送時間",
+    "meaning": "配送時間；送達時間",
     "partOfSpeech": "名詞",
-    "example": "配達時間について確認します。",
-    "exampleKana": "はいたつじかんについてかくにんします。",
-    "exampleMeaning": "確認關於配送時間的事。"
+    "example": "荷物の配達時間を変更しました。",
+    "exampleKana": "にもつのはいたつじかんをへんこうしました。",
+    "exampleMeaning": "更改了包裹的配送時間。"
   },
   {
     "id": 1989,
@@ -21905,11 +21905,11 @@
     "level": "N4",
     "word": "入荷",
     "kana": "にゅうか",
-    "meaning": "進貨",
+    "meaning": "到貨；進貨",
     "partOfSpeech": "名詞",
-    "example": "入荷について確認します。",
-    "exampleKana": "にゅうかについてかくにんします。",
-    "exampleMeaning": "確認關於進貨的事。"
+    "example": "人気の商品は明日入荷します。",
+    "exampleKana": "にんきのしょうひんはあしたにゅうかします。",
+    "exampleMeaning": "受歡迎的商品明天到貨。"
   },
   {
     "id": 1993,
@@ -21993,11 +21993,11 @@
     "level": "N4",
     "word": "支払明細",
     "kana": "しはらいめいさい",
-    "meaning": "付款明細",
+    "meaning": "付款明細；繳費明細",
     "partOfSpeech": "名詞",
-    "example": "支払明細について確認します。",
-    "exampleKana": "しはらいめいさいについてかくにんします。",
-    "exampleMeaning": "確認關於付款明細的事。"
+    "example": "支払明細をメールで受け取りました。",
+    "exampleKana": "しはらいめいさいをめーるでうけとりました。",
+    "exampleMeaning": "透過電子郵件收到了付款明細。"
   },
   {
     "id": 2001,
@@ -22169,11 +22169,11 @@
     "level": "N4",
     "word": "共益費",
     "kana": "きょうえきひ",
-    "meaning": "公共管理費",
+    "meaning": "公共管理費；共益費（租屋公共費用）",
     "partOfSpeech": "名詞",
-    "example": "共益費について確認します。",
-    "exampleKana": "きょうえきひについてかくにんします。",
-    "exampleMeaning": "確認關於公共管理費的事。"
+    "example": "家賃のほかに共益費がかかります。",
+    "exampleKana": "やちんのほかにきょうえきひがかかります。",
+    "exampleMeaning": "房租之外還需要公共管理費。"
   },
   {
     "id": 2017,
@@ -23225,11 +23225,11 @@
     "level": "N4",
     "word": "土産店",
     "kana": "みやげてん",
-    "meaning": "土產店",
+    "meaning": "伴手禮店；土產店",
     "partOfSpeech": "名詞",
-    "example": "土産店について確認します。",
-    "exampleKana": "みやげてんについてかくにんします。",
-    "exampleMeaning": "確認關於土產店的事。"
+    "example": "駅前の土産店でお菓子を買いました。",
+    "exampleKana": "えきまえのみやげてんでおかしをかいました。",
+    "exampleMeaning": "在車站前的伴手禮店買了點心。"
   },
   {
     "id": 2113,
@@ -24061,11 +24061,11 @@
     "level": "N4",
     "word": "机上",
     "kana": "きじょう",
-    "meaning": "桌上",
+    "meaning": "桌上；書面上；理論上",
     "partOfSpeech": "名詞",
-    "example": "机上について確認します。",
-    "exampleKana": "きじょうについてかくにんします。",
-    "exampleMeaning": "確認關於桌上的事。"
+    "example": "机上の計画だけではうまくいきません。",
+    "exampleKana": "きじょうのけいかくだけではうまくいきません。",
+    "exampleMeaning": "只有紙上計畫無法順利進行。"
   },
   {
     "id": 2189,
