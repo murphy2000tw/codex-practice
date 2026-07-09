@@ -21827,11 +21827,11 @@
     "id": 1985,
     "level": "N4",
     "word": "カード払い",
-    "kana": "カードばらい",
+    "kana": "かーどばらい",
     "meaning": "刷卡支付",
     "partOfSpeech": "名詞",
     "example": "カード払いについて確認します。",
-    "exampleKana": "カードばらいについてかくにんします。",
+    "exampleKana": "かーどばらいについてかくにんします。",
     "exampleMeaning": "確認關於刷卡支付的事。"
   },
   {
@@ -22256,11 +22256,11 @@
     "id": 2024,
     "level": "N4",
     "word": "段ボール",
-    "kana": "だんボール",
+    "kana": "だんぼーる",
     "meaning": "紙箱",
     "partOfSpeech": "名詞",
     "example": "段ボールについて確認します。",
-    "exampleKana": "だんボールについてかくにんします。",
+    "exampleKana": "だんぼーるについてかくにんします。",
     "exampleMeaning": "確認關於紙箱的事。"
   },
   {
@@ -22388,33 +22388,33 @@
     "id": 2036,
     "level": "N4",
     "word": "布団カバー",
-    "kana": "ふとんカバー",
+    "kana": "ふとんかばー",
     "meaning": "棉被套",
     "partOfSpeech": "名詞",
     "example": "布団カバーについて確認します。",
-    "exampleKana": "ふとんカバーについてかくにんします。",
+    "exampleKana": "ふとんかばーについてかくにんします。",
     "exampleMeaning": "確認關於棉被套的事。"
   },
   {
     "id": 2037,
     "level": "N4",
     "word": "枕カバー",
-    "kana": "まくらカバー",
+    "kana": "まくらかばー",
     "meaning": "枕套",
     "partOfSpeech": "名詞",
     "example": "枕カバーについて確認します。",
-    "exampleKana": "まくらカバーについてかくにんします。",
+    "exampleKana": "まくらかばーについてかくにんします。",
     "exampleMeaning": "確認關於枕套的事。"
   },
   {
     "id": 2038,
     "level": "N4",
     "word": "ガス代",
-    "kana": "ガスだい",
+    "kana": "がすだい",
     "meaning": "瓦斯費",
     "partOfSpeech": "名詞",
     "example": "ガス代について確認します。",
-    "exampleKana": "ガスだいについてかくにんします。",
+    "exampleKana": "がすだいについてかくにんします。",
     "exampleMeaning": "確認關於瓦斯費的事。"
   },
   {
@@ -22894,11 +22894,11 @@
     "id": 2082,
     "level": "N4",
     "word": "コピー機",
-    "kana": "コピーき",
+    "kana": "こぴーき",
     "meaning": "影印機",
     "partOfSpeech": "名詞",
     "example": "コピー機について確認します。",
-    "exampleKana": "コピーきについてかくにんします。",
+    "exampleKana": "こぴーきについてかくにんします。",
     "exampleMeaning": "確認關於影印機的事。"
   },
   {
@@ -23015,11 +23015,11 @@
     "id": 2093,
     "level": "N4",
     "word": "忘れ物センター",
-    "kana": "わすれものセンター",
+    "kana": "わすれものせんたー",
     "meaning": "遺失物中心",
     "partOfSpeech": "名詞",
     "example": "忘れ物センターについて確認します。",
-    "exampleKana": "わすれものセンターについてかくにんします。",
+    "exampleKana": "わすれものせんたーについてかくにんします。",
     "exampleMeaning": "確認關於遺失物中心的事。"
   },
   {
@@ -23355,13 +23355,13 @@
   {
     "id": 2124,
     "level": "N4",
-    "word": "国民保険",
-    "kana": "こくみんほけん",
-    "meaning": "國民保險",
+    "word": "国民健康保険",
+    "kana": "こくみんけんこうほけん",
+    "meaning": "國民健康保險",
     "partOfSpeech": "名詞",
-    "example": "国民保険について確認します。",
-    "exampleKana": "こくみんほけんについてかくにんします。",
-    "exampleMeaning": "確認關於國民保險的事。"
+    "example": "国民健康保険について確認します。",
+    "exampleKana": "こくみんけんこうほけんについてかくにんします。",
+    "exampleMeaning": "確認關於國民健康保險的事。"
   },
   {
     "id": 2125,
@@ -23642,11 +23642,11 @@
     "id": 2150,
     "level": "N4",
     "word": "セール品",
-    "kana": "セールひん",
+    "kana": "せーるひん",
     "meaning": "特賣商品",
     "partOfSpeech": "名詞",
     "example": "セール品について確認します。",
-    "exampleKana": "セールひんについてかくにんします。",
+    "exampleKana": "せーるひんについてかくにんします。",
     "exampleMeaning": "確認關於特賣商品的事。"
   },
   {
@@ -24104,11 +24104,11 @@
     "id": 2192,
     "level": "N4",
     "word": "バス停名",
-    "kana": "バスていめい",
+    "kana": "ばすていめい",
     "meaning": "公車站名",
     "partOfSpeech": "名詞",
     "example": "バス停名について確認します。",
-    "exampleKana": "バスていめいについてかくにんします。",
+    "exampleKana": "ばすていめいについてかくにんします。",
     "exampleMeaning": "確認關於公車站名的事。"
   },
   {
@@ -34598,11 +34598,11 @@
     "id": 3146,
     "level": "N4",
     "word": "クリーニング店",
-    "kana": "クリーニングてん",
+    "kana": "くりーにんぐてん",
     "meaning": "洗衣店",
     "partOfSpeech": "名詞",
     "example": "クリーニング店にコートを出しました。",
-    "exampleKana": "クリーニングてんにコートをだしました。",
+    "exampleKana": "くりーにんぐてんにこーとをだしました。",
     "exampleMeaning": "我把大衣送到洗衣店了。"
   },
   {
@@ -34730,11 +34730,11 @@
     "id": 3158,
     "level": "N4",
     "word": "ヨガ教室",
-    "kana": "ヨガきょうしつ",
+    "kana": "よがきょうしつ",
     "meaning": "瑜伽教室",
     "partOfSpeech": "名詞",
     "example": "ヨガ教室で体を動かします。",
-    "exampleKana": "ヨガきょうしつでからだをうごかします。",
+    "exampleKana": "よがきょうしつでからだをうごかします。",
     "exampleMeaning": "在瑜伽教室活動身體。"
   },
   {
@@ -34950,11 +34950,11 @@
     "id": 3178,
     "level": "N4",
     "word": "運動センター",
-    "kana": "うんどうセンター",
+    "kana": "うんどうせんたー",
     "meaning": "運動中心",
     "partOfSpeech": "名詞",
     "example": "週末に運動センターで泳ぎます。",
-    "exampleKana": "しゅうまつにうんどうセンターでおよぎます。",
+    "exampleKana": "しゅうまつにうんどうせんたーでおよぎます。",
     "exampleMeaning": "週末在運動中心游泳。"
   },
   {
