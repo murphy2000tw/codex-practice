@@ -2347,6 +2347,7 @@ function createListeningQuizItems() {
 
 function resetJapaneseListeningState({ resetPracticeIndex = false } = {}) {
   japaneseListeningView = "menu";
+  currentJapaneseView = "listeningMenu";
   if (resetPracticeIndex) currentListeningIndex = 0;
   listeningQuizIndex = 0;
   listeningQuizCorrectCount = 0;
