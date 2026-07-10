@@ -2270,10 +2270,10 @@
     "level": "N5",
     "word": "仕事する",
     "kana": "しごとする",
-    "meaning": "工作；做工作",
+    "meaning": "工作",
     "partOfSpeech": "動詞",
-    "example": "会社で仕事します。",
-    "exampleKana": "かいしゃでしごとします。",
+    "example": "会社で仕事をします。",
+    "exampleKana": "かいしゃでしごとをします。",
     "exampleMeaning": "在公司工作。"
   },
   {
@@ -14812,20 +14812,20 @@
     "kana": "たいいんする",
     "meaning": "出院",
     "partOfSpeech": "動詞",
-    "example": "退院することがあります。",
-    "exampleKana": "たいいんすることがあります。",
-    "exampleMeaning": "有時會出院。"
+    "example": "父は明日退院します。",
+    "exampleKana": "ちちはあしたたいいんします。",
+    "exampleMeaning": "父親明天出院。"
   },
   {
     "id": 1348,
     "level": "N4",
     "word": "拝見する",
     "kana": "はいけんする",
-    "meaning": "拜見；看",
+    "meaning": "拜讀；拜見；看（謙讓語）",
     "partOfSpeech": "動詞",
-    "example": "拝見することがあります。",
-    "exampleKana": "はいけんすることがあります。",
-    "exampleMeaning": "有時會拜見。"
+    "example": "資料を拝見しました。",
+    "exampleKana": "しりょうをはいけんしました。",
+    "exampleMeaning": "我拜讀了資料。"
   },
   {
     "id": 1349,
@@ -16736,10 +16736,10 @@
     "word": "配達",
     "kana": "はいたつ",
     "meaning": "配送；送達",
-    "partOfSpeech": "名詞/する動詞",
-    "example": "荷物を家まで配達します。",
-    "exampleKana": "にもつをいえまではいたつします。",
-    "exampleMeaning": "把包裹配送到家裡。"
+    "partOfSpeech": "名詞",
+    "example": "午前中に荷物の配達があります。",
+    "exampleKana": "ごぜんちゅうににもつのはいたつがあります。",
+    "exampleMeaning": "上午有包裹配送。"
   },
   {
     "id": 1523,
@@ -17242,10 +17242,10 @@
     "word": "退院",
     "kana": "たいいん",
     "meaning": "出院",
-    "partOfSpeech": "名詞/する動詞",
-    "example": "父は明日退院します。",
-    "exampleKana": "ちちはあしたたいいんします。",
-    "exampleMeaning": "父親明天出院。"
+    "partOfSpeech": "名詞",
+    "example": "退院の日が決まりました。",
+    "exampleKana": "たいいんのひがきまりました。",
+    "exampleMeaning": "出院的日期決定了。"
   },
   {
     "id": 1569,
@@ -18000,11 +18000,11 @@
     "level": "N4",
     "word": "宿泊",
     "kana": "しゅくはく",
-    "meaning": "住宿",
+    "meaning": "住宿；投宿",
     "partOfSpeech": "名詞/する動詞",
-    "example": "このホテルに宿泊します。",
-    "exampleKana": "このほてるにしゅくはくします。",
-    "exampleMeaning": "住宿在這家飯店。"
+    "example": "このホテルに二泊宿泊します。",
+    "exampleKana": "このほてるににはくしゅくはくします。",
+    "exampleMeaning": "在這家飯店住宿兩晚。"
   },
   {
     "id": 1638,
@@ -19211,10 +19211,10 @@
     "word": "残業",
     "kana": "ざんぎょう",
     "meaning": "加班；加班時間",
-    "partOfSpeech": "名詞/する動詞",
-    "example": "今日は二時間残業しました。",
-    "exampleKana": "きょうはにじかんざんぎょうしました。",
-    "exampleMeaning": "今天加班了兩個小時。"
+    "partOfSpeech": "名詞",
+    "example": "今月は残業が多いです。",
+    "exampleKana": "こんげつはざんぎょうがおおいです。",
+    "exampleMeaning": "這個月加班很多。"
   },
   {
     "id": 1748,
@@ -20289,10 +20289,10 @@
     "word": "返信",
     "kana": "へんしん",
     "meaning": "回覆；回信",
-    "partOfSpeech": "名詞/する動詞",
-    "example": "友だちのメールに返信しました。",
-    "exampleKana": "ともだちのめーるにへんしんしました。",
-    "exampleMeaning": "回覆了朋友的電子郵件。"
+    "partOfSpeech": "名詞",
+    "example": "メールの返信がまだ来ていません。",
+    "exampleKana": "めーるのへんしんがまだきていません。",
+    "exampleMeaning": "電子郵件的回覆還沒來。"
   },
   {
     "id": 1846,
@@ -20587,9 +20587,9 @@
     "kana": "かいらん",
     "meaning": "傳閱；傳閱文件",
     "partOfSpeech": "名詞/する動詞",
-    "example": "この書類をクラスで回覧します。",
-    "exampleKana": "このしょるいをくらすでかいらんします。",
-    "exampleMeaning": "在班上傳閱這份文件。"
+    "example": "学校のお知らせをクラスで回覧します。",
+    "exampleKana": "がっこうのおしらせをくらすでかいらんします。",
+    "exampleMeaning": "在班上傳閱學校通知。"
   },
   {
     "id": 1873,
@@ -24336,11 +24336,11 @@
     "level": "N4",
     "word": "約束する",
     "kana": "やくそくする",
-    "meaning": "約定",
+    "meaning": "約定；答應",
     "partOfSpeech": "動詞",
-    "example": "授業で「約束する」の使い方を練習しました。",
-    "exampleKana": "じゅぎょうで「やくそくする」のつかいかたをれんしゅうしました。",
-    "exampleMeaning": "我在課堂上練習了「約定」這個詞的用法。"
+    "example": "友だちと会う時間を約束しました。",
+    "exampleKana": "ともだちとあうじかんをやくそくしました。",
+    "exampleMeaning": "和朋友約好了見面的時間。"
   },
   {
     "id": 2214,
@@ -24349,20 +24349,20 @@
     "kana": "れんらくする",
     "meaning": "聯絡",
     "partOfSpeech": "動詞",
-    "example": "先生は「連絡する」という動詞を黒板に書きました。",
-    "exampleKana": "せんせいは「れんらくする」というどうしをこくばんにかきました。",
-    "exampleMeaning": "老師把「聯絡」這個動詞寫在黑板上。"
+    "example": "遅れるときは先生に連絡します。",
+    "exampleKana": "おくれるときはせんせいにれんらくします。",
+    "exampleMeaning": "遲到時會聯絡老師。"
   },
   {
     "id": 2215,
     "level": "N4",
     "word": "相談する",
     "kana": "そうだんする",
-    "meaning": "商量",
+    "meaning": "商量；諮詢",
     "partOfSpeech": "動詞",
-    "example": "友だちに「相談する」の意味を説明しました。",
-    "exampleKana": "ともだちに「そうだんする」のいみをせつめいしました。",
-    "exampleMeaning": "我向朋友說明了「商量」的意思。"
+    "example": "先生に進学について相談しました。",
+    "exampleKana": "せんせいにしんがくについてそうだんしました。",
+    "exampleMeaning": "向老師諮詢了升學的事。"
   },
   {
     "id": 2216,
@@ -24382,9 +24382,9 @@
     "kana": "しょうかいする",
     "meaning": "介紹",
     "partOfSpeech": "動詞",
-    "example": "「紹介する」を覚えるために、例文を作りました。",
-    "exampleKana": "「しょうかいする」をおぼえるために、れいぶんをつくりました。",
-    "exampleMeaning": "為了記住「介紹」，我造了一個例句。"
+    "example": "友だちに新しい先生を紹介しました。",
+    "exampleKana": "ともだちにあたらしいせんせいをしょうかいしました。",
+    "exampleMeaning": "向朋友介紹了新老師。"
   },
   {
     "id": 2218,
@@ -24393,9 +24393,9 @@
     "kana": "あんないする",
     "meaning": "帶路；導覽",
     "partOfSpeech": "動詞",
-    "example": "会話では「案内する」を正しく使いたいです。",
-    "exampleKana": "かいわでは「あんないする」をただしくつかいたいです。",
-    "exampleMeaning": "我想在會話中正確使用「帶路；導覽」。"
+    "example": "友だちを駅まで案内しました。",
+    "exampleKana": "ともだちをえきまであんないしました。",
+    "exampleMeaning": "我帶朋友到車站。"
   },
   {
     "id": 2219,
@@ -24415,9 +24415,9 @@
     "kana": "よやくする",
     "meaning": "預約",
     "partOfSpeech": "動詞",
-    "example": "先生は「予約する」という動詞を黒板に書きました。",
-    "exampleKana": "せんせいは「よやくする」というどうしをこくばんにかきました。",
-    "exampleMeaning": "老師把「預約」這個動詞寫在黑板上。"
+    "example": "レストランを予約しました。",
+    "exampleKana": "れすとらんをよやくしました。",
+    "exampleMeaning": "預約了餐廳。"
   },
   {
     "id": 2221,
@@ -24426,9 +24426,9 @@
     "kana": "ちゅうもんする",
     "meaning": "點餐；訂購",
     "partOfSpeech": "動詞",
-    "example": "友だちに「注文する」の意味を説明しました。",
-    "exampleKana": "ともだちに「ちゅうもんする」のいみをせつめいしました。",
-    "exampleMeaning": "我向朋友說明了「點餐；訂購」的意思。"
+    "example": "レストランでカレーを注文しました。",
+    "exampleKana": "れすとらんでかれーをちゅうもんしました。",
+    "exampleMeaning": "在餐廳點了咖哩。"
   },
   {
     "id": 2222,
@@ -24437,20 +24437,20 @@
     "kana": "じゅんびする",
     "meaning": "準備",
     "partOfSpeech": "動詞",
-    "example": "作文で「準備する」を使ってみます。",
-    "exampleKana": "さくぶんで「じゅんびする」をつかってみます。",
-    "exampleMeaning": "我會試著在作文裡使用「準備」。"
+    "example": "明日の試験の準備をします。",
+    "exampleKana": "あしたのしけんのじゅんびをします。",
+    "exampleMeaning": "準備明天的考試。"
   },
   {
     "id": 2223,
     "level": "N4",
     "word": "用意する",
     "kana": "よういする",
-    "meaning": "準備",
+    "meaning": "準備；備妥",
     "partOfSpeech": "動詞",
-    "example": "「用意する」を覚えるために、例文を作りました。",
-    "exampleKana": "「よういする」をおぼえるために、れいぶんをつくりました。",
-    "exampleMeaning": "為了記住「準備」，我造了一個例句。"
+    "example": "お客様のためにお茶を用意しました。",
+    "exampleKana": "おきゃくさまのためにおちゃをよういしました。",
+    "exampleMeaning": "為客人準備了茶。"
   },
   {
     "id": 2224,
@@ -24558,9 +24558,9 @@
     "kana": "しちゃくする",
     "meaning": "試穿",
     "partOfSpeech": "動詞",
-    "example": "友だちに「試着する」の意味を説明しました。",
-    "exampleKana": "ともだちに「しちゃくする」のいみをせつめいしました。",
-    "exampleMeaning": "我向朋友說明了「試穿」的意思。"
+    "example": "店でこのコートを試着しました。",
+    "exampleKana": "みせでこのこーとをしちゃくしました。",
+    "exampleMeaning": "在店裡試穿了這件大衣。"
   },
   {
     "id": 2234,
@@ -24613,9 +24613,9 @@
     "kana": "かくにんする",
     "meaning": "確認",
     "partOfSpeech": "動詞",
-    "example": "先生は「確認する」という動詞を黒板に書きました。",
-    "exampleKana": "せんせいは「かくにんする」というどうしをこくばんにかきました。",
-    "exampleMeaning": "老師把「確認」這個動詞寫在黑板上。"
+    "example": "出発の時間を確認しました。",
+    "exampleKana": "しゅっぱつのじかんをかくにんしました。",
+    "exampleMeaning": "確認了出發時間。"
   },
   {
     "id": 2239,
@@ -24646,9 +24646,9 @@
     "kana": "れんしゅうする",
     "meaning": "練習",
     "partOfSpeech": "動詞",
-    "example": "「練習する」を覚えるために、例文を作りました。",
-    "exampleKana": "「れんしゅうする」をおぼえるために、れいぶんをつくりました。",
-    "exampleMeaning": "為了記住「練習」，我造了一個例句。"
+    "example": "毎日ひらがなを練習します。",
+    "exampleKana": "まいにちひらがなをれんしゅうします。",
+    "exampleMeaning": "每天練習平假名。"
   },
   {
     "id": 2242,
@@ -24677,11 +24677,11 @@
     "level": "N4",
     "word": "合格する",
     "kana": "ごうかくする",
-    "meaning": "及格；合格",
+    "meaning": "合格；考上",
     "partOfSpeech": "動詞",
-    "example": "先生は「合格する」という動詞を黒板に書きました。",
-    "exampleKana": "せんせいは「ごうかくする」というどうしをこくばんにかきました。",
-    "exampleMeaning": "老師把「及格；合格」這個動詞寫在黑板上。"
+    "example": "日本語の試験に合格しました。",
+    "exampleKana": "にほんごのしけんにごうかくしました。",
+    "exampleMeaning": "通過了日文考試。"
   },
   {
     "id": 2245,
@@ -24712,9 +24712,9 @@
     "kana": "しゅっせきする",
     "meaning": "出席",
     "partOfSpeech": "動詞",
-    "example": "「出席する」を覚えるために、例文を作りました。",
-    "exampleKana": "「しゅっせきする」をおぼえるために、れいぶんをつくりました。",
-    "exampleMeaning": "為了記住「出席」，我造了一個例句。"
+    "example": "明日の会議に出席します。",
+    "exampleKana": "あしたのかいぎにしゅっせきします。",
+    "exampleMeaning": "會出席明天的會議。"
   },
   {
     "id": 2248,
@@ -24723,9 +24723,9 @@
     "kana": "けっせきする",
     "meaning": "缺席",
     "partOfSpeech": "動詞",
-    "example": "会話では「欠席する」を正しく使いたいです。",
-    "exampleKana": "かいわでは「けっせきする」をただしくつかいたいです。",
-    "exampleMeaning": "我想在會話中正確使用「缺席」。"
+    "example": "風邪で授業を欠席しました。",
+    "exampleKana": "かぜでじゅぎょうをけっせきしました。",
+    "exampleMeaning": "因為感冒缺席了課。"
   },
   {
     "id": 2249,
@@ -24734,9 +24734,9 @@
     "kana": "ちこくする",
     "meaning": "遲到",
     "partOfSpeech": "動詞",
-    "example": "授業で「遅刻する」の使い方を練習しました。",
-    "exampleKana": "じゅぎょうで「ちこくする」のつかいかたをれんしゅうしました。",
-    "exampleMeaning": "我在課堂上練習了「遲到」這個詞的用法。"
+    "example": "電車が遅れて授業に遅刻しました。",
+    "exampleKana": "でんしゃがおくれてじゅぎょうにちこくしました。",
+    "exampleMeaning": "電車誤點，所以我上課遲到了。"
   },
   {
     "id": 2250,
