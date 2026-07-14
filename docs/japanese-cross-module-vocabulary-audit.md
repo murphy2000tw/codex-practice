@@ -25,62 +25,38 @@ Node Intl.Segmenter 支援狀態：支援。主要使用 `Intl.Segmenter` 的 wo
 - 聽力題目數：100
 
 ## 各模組可靠 lexical token 與基本形數量
-- 文法獨立基本形數量：975
-- 閱讀獨立基本形數量：764
+- 文法獨立基本形數量：974
+- 閱讀獨立基本形數量：763
 - 聽力獨立基本形數量：175
-- 跨模組去重後基本形總數：1503
+- 跨模組去重後基本形總數：1501
 
 ## Exact／Normalized／Review-adjusted coverage
 | 模組 | Reliable lexical tokens | Exact | Normalized | Review-adjusted |
 |---|---:|---:|---:|---:|
-| grammar | 4189 | 1250/4189 (29.8%) | 1298/4189 (31.0%) | 3418/4189 (81.6%) |
-| reading | 10977 | 6007/10977 (54.7%) | 6009/10977 (54.7%) | 10246/10977 (93.3%) |
-| listening | 533 | 228/533 (42.8%) | 228/533 (42.8%) | 512/533 (96.1%) |
-| overall | 15699 | 7485/15699 (47.7%) | 7535/15699 (48.0%) | 14176/15699 (90.3%) |
+| grammar | 4189 | 1271/4189 (30.3%) | 1319/4189 (31.5%) | 3439/4189 (82.1%) |
+| reading | 10982 | 6313/10982 (57.5%) | 6315/10982 (57.5%) | 10560/10982 (96.2%) |
+| listening | 536 | 243/536 (45.3%) | 243/536 (45.3%) | 530/536 (98.9%) |
+| overall | 15707 | 7827/15707 (49.8%) | 7877/15707 (50.1%) | 14529/15707 (92.5%) |
 
 ## Missing candidates
-去重後 missing-candidate 數量：180；下表列前 120 項。
+去重後 missing-candidate 數量：117；下表列前 117 項。
 
 | 建議基本形 | 假名 | 詞性 | 中文意思 | JLPT 程度 | 出現模組 | 出現次數 | 代表來源 ID | 一個代表句 | 信心 | 備註 |
 |---|---|---|---|---|---|---:|---|---|---|---|
-| メモ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar, reading | 34 | n4-grammar-105, jp-reading-set-n4-024, jp-reading-set-n4-033 | 忘れないように、メモを書きます。 | 中 | 來自segmenter token |
-| スーパー | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar, reading | 27 | n4-grammar-100, jp-reading-set-n4-017, jp-reading-q-n4-017-01 | スーパーで野菜や果物などを買いました。 | 中 | 來自segmenter token |
 | 時半 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading, listening | 20 | jp-reading-set-n4-002, jp-reading-q-n4-002-01, jp-reading-q-n4-019-01 | 由美さんは友だちと映画を見る予定です。七時の回は人気で席が前の方しかありませんでした。少し待てば八時半の回で真ん中の席が取れるので、二人は遅い回にしました。 | 中 | 來自segmenter token |
-| スマホ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 19 | jp-reading-set-n4-005, jp-reading-q-n4-005-01, jp-reading-set-n4-021 | スマホの音 | 中 | 來自segmenter token |
 | センター | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 19 | jp-reading-set-n4-020, jp-reading-q-n4-020-01, jp-reading-set-n4-066 | 運動センター | 中 | 來自segmenter token |
 | 誕生 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 15 | jp-reading-set-n4-004, jp-reading-set-n4-058, jp-reading-q-n4-058-01 | 誕生日のプレゼント | 中 | 來自segmenter token |
-| 朝食 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 14 | jp-reading-set-n4-007, jp-reading-q-n4-007-01, jp-reading-set-n4-029 | 旅館の朝食券 | 中 | 來自segmenter token |
-| お知らせ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 13 | jp-reading-set-n4-006, jp-reading-q-n4-006-01, jp-reading-set-n4-026 | 町内会のお知らせです。来週だけ、燃えるごみの収集日は火曜日ではなく水曜日になります。朝八時までに、いつもの場所へ出してください。雨の場合も集めます。 | 中 | 來自segmenter token |
-| メール | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 13 | jp-reading-set-n4-042, jp-reading-set-n4-095, jp-reading-q-n4-095-01 | レストランから予約確認のメールが来ました。人数を変える場合は、前日の午後五時までに連絡しなければなりません。当日の変更はできません。 | 中 | 來自segmenter token |
 | 何時 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar, reading, listening | 13 | n5-grammar-224, n5-grammar-225, n5-grammar-226 | 何時 | 中 | 來自segmenter token |
-| カフェ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 12 | jp-reading-set-n4-070, jp-reading-q-n4-070-01, jp-reading-set-n4-091 | カフェの営業時間 | 中 | 來自segmenter token |
-| チェックイン | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading, listening | 12 | jp-reading-set-n4-029, jp-reading-set-n4-048, jp-reading-set-n4-086 | チェックインは午後三時からです。早く着いたお客様は、受付で荷物を預けることができます。朝食は二階で七時から九時までです。部屋の鍵をなくしたときは、すぐ受付に知ら | 中 | 來自segmenter token |
-| カレー | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 10 | jp-reading-set-n4-033, jp-reading-q-n4-033-01, jp-reading-set-n4-074 | 学校から帰ると、テーブルに母のメモがありました。『カレーは鍋の中です。温めて食べてください。七時ごろ帰ります。』私はお腹がすいていたので、手を洗ってから台所へ行 | 中 | 來自segmenter token |
-| クラス | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar, reading | 10 | n5-grammar-049, jp-reading-set-n4-016, jp-reading-set-n4-021 | クラスで山田さんがいちばん元気です。 | 中 | 來自segmenter token |
 | 開店 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 10 | jp-reading-set-n4-012, jp-reading-q-n4-012-01, jp-reading-set-n4-044 | 駅前のパン屋は、来月から日曜日だけ開店時間が一時間遅くなります。平日は今まで通り朝七時からです。急いでいる人は前の日に買っておくとよさそうです。 | 中 | 來自segmenter token |
-| 公民館 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 9 | jp-reading-set-n4-009, jp-reading-q-n4-009-01, jp-reading-q-n4-011-01 | 公民館の料理教室では、土曜日に春の弁当を作ります。参加したい人は、木曜日までに名前と電話番号を書いて申し込んでください。材料費は八百円です。 | 中 | 來自segmenter token |
-| 返却 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 9 | jp-reading-set-n4-026, jp-reading-q-n4-026-01, jp-reading-q-n4-026-02 | 【市民図書館】六月二十九日は本の整理のため休みです。返す本は入口の返却箱に入れてください。DVDと雑誌は返却箱には入れないで、次の日以降に受付へ持って来てくださ | 中 | 來自segmenter token |
-| エプロン | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 8 | jp-reading-set-n4-062, jp-reading-q-n4-062-02, jp-reading-set-n4-089 | 文化祭の準備で、二年三組は教室を小さな喫茶店にします。金曜日の放課後に机を動かし、土曜日の朝に看板を付けます。食べ物を持って来る必要はありませんが、エプロンは各 | 中 | 來自segmenter token |
-| ヨガ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 8 | jp-reading-set-n4-066, jp-reading-q-n4-066-02, jp-reading-set-n4-103 | 運動センターを初めて使う人は、受付で名前と住所を書いてください。プールは予約しなくてもいいですが、ヨガ教室は前の日までに予約が必要です。タオルは借りられません。 | 中 | 來自segmenter token |
 | 期末 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 8 | jp-reading-set-n4-037, jp-reading-set-n4-096 | 期末試験の計画 | 中 | 來自segmenter token |
-| 整理 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 8 | jp-reading-set-n4-026, jp-reading-set-n4-101, jp-reading-q-n4-101-02 | 【市民図書館】六月二十九日は本の整理のため休みです。返す本は入口の返却箱に入れてください。DVDと雑誌は返却箱には入れないで、次の日以降に受付へ持って来てくださ | 中 | 來自segmenter token |
-| ジム | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 7 | jp-reading-set-n4-020, jp-reading-q-n4-020-01 | 中村さんは健康のために運動センターへ通い始めました。プールは夜八時まで使えますが、ジムは九時まで開いています。今日は水着を忘れてしまったので、プールではなくジム | 中 | 來自segmenter token |
 | 時刻 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 7 | jp-reading-set-n4-050, jp-reading-set-n4-102, jp-reading-q-n4-102-01 | 映画館の時刻 | 中 | 來自segmenter token |
 | 週間 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 7 | jp-reading-set-n4-040, jp-reading-set-n4-063, jp-reading-set-n4-069 | 佐藤さんは図書館で料理の本を借りました。二週間借りることができますが、旅行に行くので、来週返すつもりです。 | 中 | 來自segmenter token |
-| 変更 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 7 | jp-reading-set-n4-006, jp-reading-set-n4-042, jp-reading-set-n4-102 | ごみ収集日の変更 | 中 | 來自segmenter token |
-| インターネット | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 6 | jp-reading-set-n4-028, jp-reading-set-n4-045 | この映画館では、水曜日の午後六時までの回は学生料金が安くなります。学生証を見せなければなりません。インターネットで席を予約した人も、入口で学生証を見せてください | 中 | 來自segmenter token |
-| ケーキ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar, reading | 6 | n4-grammar-075, jp-reading-q-n4-003-01, jp-reading-set-n4-091 | このケーキはおいしそうです。 | 中 | 來自segmenter token |
 | 自習 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 6 | jp-reading-set-n4-060, jp-reading-q-n4-060-01 | 自習室の規則 | 中 | 來自segmenter token |
 | 予報 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar, reading | 6 | n4-grammar-076, n4-grammar-204, jp-reading-set-n4-015 | 天気予報によると、明日は雨だそうです。 | 中 | 來自segmenter token |
-| お願い | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading, listening | 5 | jp-reading-set-n4-022, jl-020, jl-083 | 鈴木さんは金曜日の夜、家族とレストランへ行きます。人気の店なので、昼休みに電話で四人分の席を予約しました。店員は「七時はいっぱいですが、七時半なら空いています」 | 中 | 來自segmenter token |
-| テスト | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar, listening | 5 | n4-grammar-144, n5-grammar-219, n4-grammar-272 | テスト中は話さないこと。 | 中 | 來自segmenter token |
 | パック | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 5 | jp-reading-set-n4-044, jp-reading-q-n4-044-01 | スーパーの特売日は水曜日です。卵は一人一パックまでです。午前中に売り切れることがあります。近藤さんは開店してすぐ買いに行く予定です。 | 中 | 來自segmenter token |
-| メニュー | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading, listening | 5 | jp-reading-set-n4-074, jl-067 | ジョンさんからのメッセージです。土曜日に新しいカレー屋へ行きませんか。辛い料理が苦手な人のために、甘いメニューもあるそうです。行ける場合は金曜日の夜までに返事を | 中 | 來自segmenter token |
 | 携帯 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 5 | jp-reading-set-n4-084 | 携帯電話の故障 | 中 | 來自segmenter token |
-| 交流 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 5 | jp-reading-set-n4-011 | 留学生交流会 | 中 | 來自segmenter token |
 | 事務 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 5 | jp-reading-q-n4-030-01, jp-reading-set-n4-053, jp-reading-q-n4-053-01 | 学校の事務室 | 中 | 來自segmenter token |
 | 収集 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 5 | jp-reading-set-n4-006, jp-reading-q-n4-006-01 | ごみ収集日の変更 | 中 | 來自segmenter token |
-| 水着 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 5 | jp-reading-set-n4-020, jp-reading-q-n4-020-02 | 中村さんは健康のために運動センターへ通い始めました。プールは夜八時まで使えますが、ジムは九時まで開いています。今日は水着を忘れてしまったので、プールではなくジム | 中 | 來自segmenter token |
 | 宅配 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 5 | jp-reading-set-n4-045, jp-reading-set-n4-075 | 宅配会社から不在票が入っていました。荷物を受け取るために、渡辺さんはインターネットで明日の夜七時から九時を選びました。 | 中 | 來自segmenter token |
 | 置き場 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 5 | jp-reading-set-n4-090 | 自転車置き場 | 中 | 來自segmenter token |
 | 町内 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 5 | jp-reading-set-n4-006, jp-reading-q-n4-006-01, jp-reading-set-n4-023 | 町内会のお知らせです。来週だけ、燃えるごみの収集日は火曜日ではなく水曜日になります。朝八時までに、いつもの場所へ出してください。雨の場合も集めます。 | 中 | 來自segmenter token |
@@ -89,65 +65,40 @@ Node Intl.Segmenter 支援狀態：支援。主要使用 `Intl.Segmenter` 的 wo
 | 留守番 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 5 | jp-reading-set-n4-094 | 留守番電話 | 中 | 來自segmenter token |
 | エコバッグ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-024, jp-reading-q-n4-024-01 | 母は冷蔵庫にメモを貼りました。「卵はまだあります。牛乳とパンだけ買ってください。大きいジュースは、安くても買わなくていいです。」弟はメモを読んで、財布とエコバッ | 中 | 來自segmenter token |
 | おう | おう | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-017, jp-reading-set-n4-038, jp-reading-set-n4-078 | おう | 中 | 來自explicit field |
-| シール | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-090, jp-reading-q-n4-090-01 | 学校の自転車置き場は朝七時から夜九時まで使えます。名前のシールがない自転車は、入口の近くに置いてはいけません。 | 中 | 來自segmenter token |
-| テーマ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-021, jp-reading-q-n4-021-01 | 林さんの日本語クラスでは、毎週金曜日に短い発表があります。今週のテーマは好きな町です。林さんは写真を見せながら話したいので、昨日スマホの写真を三枚選びました。発 | 中 | 來自segmenter token |
-| ネット | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-104, jp-reading-q-n4-104-02 | 映画館の午前の回は千円で見ることができます。切符はネットで買ってもいいですが、始まる十分前までに来なければなりません。 | 中 | 來自segmenter token |
-| バス停 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading, listening | 4 | jp-reading-set-n4-008, jp-reading-q-n4-008-01, jl-033 | 駅の東出口は工事のため、今月いっぱい使うことができません。バス停へ行く人は、西出口を出て右へ曲がってください。いつもより五分ぐらいかかるかもしれません。 | 中 | 來自segmenter token |
 | フラッシュ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-093, jp-reading-q-n4-093-01 | 町の博物館は今月、学生は無料で入れます。写真を撮ってもいいですが、フラッシュを使ってはいけません。 | 中 | 來自segmenter token |
-| プリント | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-095, jp-reading-q-n4-095-01 | 先生からメールが来ました。明日の授業で使うプリントを忘れた学生が多かったので、今夜かばんに入れておくようにと書いてありました。 | 中 | 來自segmenter token |
-| ポスト | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-058, jp-reading-q-n4-058-01 | 誕生日の手紙を書いたあとで、伊藤さんは封筒に切手を貼りました。明日の朝ポストに入れれば、週末までに友だちへ届くそうです。 | 中 | 來自segmenter token |
 | マリア | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-013, jp-reading-q-n4-013-01 | マリアさんは国にいる家族へ電話したかったのですが、時差を忘れて夜中にかけてしまいました。次からは、電話する前に向こうの時間を確認しようと思っています。 | 中 | 來自segmenter token |
-| レジ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-063, jp-reading-q-n4-063-01 | 店長のメモです。今週は新しい店員が入るので、火曜日の開店前にレジの使い方を説明してください。昼は客が多すぎるかもしれないため、質問はノートに書いておくと分かりや | 中 | 來自segmenter token |
 | 営業 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-012, jp-reading-set-n4-070 | 店の営業時間 | 中 | 來自segmenter token |
 | 各駅 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-046, jp-reading-q-n4-046-01 | 初めて行く会場なので、小林さんは駅で乗り換え方を調べました。急行に乗ると早いですが、会場の近くの駅には止まらないので、各駅停車に乗ります。 | 中 | 來自segmenter token |
-| 使い方 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-q-n4-043-01, jp-reading-set-n4-063, jp-reading-q-n4-063-01 | コピー機の使い方が分からない場合、どうしてもいいですか。 | 中 | 來自segmenter token |
 | 前田 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-057, jp-reading-q-n4-057-01 | 前田さんは引っ越したあとで、管理人に新しい住所を書いた紙を渡しました。郵便物が前の部屋へ届くと困るので、郵便局にも知らせます。 | 中 | 來自segmenter token |
 | 茶道 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-030, jp-reading-q-n4-030-01, jp-reading-q-n4-030-02 | 来月から公民館で茶道教室が始まります。毎週土曜日の午前十時から一時間です。初めての人も参加できます。申し込みは電話ではなく、公民館の受付で名前を書いてください。 | 中 | 來自segmenter token |
 | 中央公園 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-047, jp-reading-q-n4-047-01 | 雨で道路が混んでいるため、五番バスは市役所前を通りません。図書館へ行く人は、中央公園で降りて十分歩いてください。 | 中 | 來自segmenter token |
 | 停車 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-046, jp-reading-q-n4-046-01 | 初めて行く会場なので、小林さんは駅で乗り換え方を調べました。急行に乗ると早いですが、会場の近くの駅には止まらないので、各駅停車に乗ります。 | 中 | 來自segmenter token |
 | 当日 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-042, jp-reading-q-n4-042-01 | レストランから予約確認のメールが来ました。人数を変える場合は、前日の午後五時までに連絡しなければなりません。当日の変更はできません。 | 中 | 來自segmenter token |
 | 曜日 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar, reading | 4 | n5-grammar-225, jp-reading-q-n4-103-01 | 何曜日 | 中 | 來自segmenter token |
-| お寺 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-018, jp-reading-q-n4-018-02 | 田中さんたちは春休みに京都へ行く予定です。最初は日帰りで行こうと思っていましたが、見たい場所が多いので、一泊することにしました。ホテルは駅の近くにしました。朝早 | 中 | 來自segmenter token |
 | クラスメート | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-083 | クラスメートは文化祭でカレーを作ることにしました。野菜を切る人が足りないので、李さんも手伝う予定です。 | 中 | 來自segmenter token |
 | ごろ | ごろ | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 3 | n5-grammar-228, n5-grammar-229 | ごろ | 中 | 來自explicit field |
-| コンビニ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-043 | コンビニのコピー機は、写真を印刷するとき先に画面でサイズを選びます。分からない場合は、店員に聞いてもいいですが、混んでいる時間は少し待ちます。 | 中 | 來自segmenter token |
 | のに | のに | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 3 | n4-grammar-108 | のに | 中 | 來自explicit field |
 | べつ | べつ | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-035, jp-reading-set-n4-052 | べつ | 中 | 來自explicit field |
-| メッセージ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-074 | ジョンさんからのメッセージです。土曜日に新しいカレー屋へ行きませんか。辛い料理が苦手な人のために、甘いメニューもあるそうです。行ける場合は金曜日の夜までに返事を | 中 | 來自segmenter token |
-| ランチ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-070 | カフェ森は、店内の工事のため来週だけ午後二時に閉店します。ランチは一時半まで注文できます。持ち帰りの飲み物は、閉店の十分前まで買えます。 | 中 | 來自segmenter token |
 | 以降 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-026, jp-reading-q-n4-026-02 | 【市民図書館】六月二十九日は本の整理のため休みです。返す本は入口の返却箱に入れてください。DVDと雑誌は返却箱には入れないで、次の日以降に受付へ持って来てくださ | 中 | 來自segmenter token |
 | 屋内 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-065, jp-reading-q-n4-065-02 | 旅行メモ：午前九時に京都駅で集合。十時に博物館、昼は駅近くの店で定食を食べる。午後は雨の場合、寺ではなく屋内の市場へ行く予定です。切符は父が買っておきます。 | 中 | 來自segmenter token |
 | 何月何日 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 3 | n5-grammar-226 | 何月何日 | 中 | 來自segmenter token |
 | 学習 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-067, jp-reading-q-n4-067-01 | 市立図書館では、今月から学習室の席を予約できます。予約は一人一日二時間までです。飲み物はふたがある物なら持ち込んでもいいですが、席で食事はできません。 | 中 | 來自segmenter token |
-| 時差 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-013 | マリアさんは国にいる家族へ電話したかったのですが、時差を忘れて夜中にかけてしまいました。次からは、電話する前に向こうの時間を確認しようと思っています。 | 中 | 來自segmenter token |
 | 次回 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-020, jp-reading-q-n4-020-02 | 中村さんは健康のために運動センターへ通い始めました。プールは夜八時まで使えますが、ジムは九時まで開いています。今日は水着を忘れてしまったので、プールではなくジム | 中 | 來自segmenter token |
 | 職員 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-031, jp-reading-q-n4-031-01 | 授業が終わったあと、教室に一人だけ学生が残っていました。机の上には消しゴムとノートがあり、窓は開いたままでした。学生は『田中さんの物かもしれない』と思い、職員室 | 中 | 來自segmenter token |
-| 中止 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-023, jp-reading-q-n4-023-02 | 日曜日の朝、町内で公園の掃除があります。参加する人は軍手を持って、八時五十分までに公園の入口に集まります。雨が強いときは中止ですが、小雨なら行います。終わったあ | 中 | 來自segmenter token |
-| 入力 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-075, jp-reading-q-n4-075-01 | 宅配会社からのお知らせです。今日届ける予定だった荷物は、雪で道路が混んでいるため、明日の午前中に届く予定です。時間を変えたい場合は、番号を入力して手続きしてくだ | 中 | 來自segmenter token |
 | 筆者 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-q-n4-061-01, jp-reading-q-n4-061-02, jp-reading-q-n4-064-01 | はじめ、筆者は何に困っていましたか。 | 中 | 來自segmenter token |
 | 不在 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-045 | 宅配会社から不在票が入っていました。荷物を受け取るために、渡辺さんはインターネットで明日の夜七時から九時を選びました。 | 中 | 來自segmenter token |
-| イベント | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-019 | 図書館イベント | 中 | 來自segmenter token |
-| ゲーム | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 2 | n4-grammar-071, n4-grammar-255 | 弟は新しいゲームを買いたがっています。 | 中 | 來自segmenter token |
-| コンビニコピー | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-043 | コンビニコピー | 中 | 來自segmenter token |
 | ずに | ずに | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 2 | n4-grammar-246 | ずに | 中 | 來自explicit field |
 | た形 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 2 | n5-grammar-033, n5-grammar-039 | た形 | 中 | 來自explicit field |
 | パン＿＿ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 2 | n5-grammar-009, n5-grammar-235 | パン＿＿卵を食べます。 | 中 | 來自segmenter token |
 | みか | みか | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-032 | みか | 中 | 來自explicit field |
 | やら | やら | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 2 | n4-grammar-177 | やら | 中 | 來自explicit field |
 | ゆみ | ゆみ | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-002 | ゆみ | 中 | 來自explicit field |
-| ラーメン | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | listening | 2 | jl-020 | ラーメンを一つお願いします。 | 中 | 來自segmenter token |
-| ルール | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-105 | ごみ出しのルール | 中 | 來自segmenter token |
-| レシート | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | listening | 2 | jl-057 | レシートをください。 | 中 | 來自segmenter token |
 | 岡田 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-071 | 受付の人から岡田さんへ伝言です。明日の歯医者の予約は午前十時から十時半に変わりました。都合が悪い場合は、今日の五時までに電話してください。 | 中 | 來自segmenter token |
 | 計算 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-016 | 来週の学校祭で、私のクラスは焼きそばを売ります。昨日、みんなで役割を決めました。私はお金を集める係になりましたが、計算が苦手なので、佐藤さんと二人でやることにな | 中 | 來自segmenter token |
-| 合格 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 2 | n4-grammar-181, n4-grammar-285 | 試験に合格しますように。 | 中 | 來自segmenter token |
 | 三組 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-062 | 文化祭の準備で、二年三組は教室を小さな喫茶店にします。金曜日の放課後に机を動かし、土曜日の朝に看板を付けます。食べ物を持って来る必要はありませんが、エプロンは各 | 中 | 來自segmenter token |
 | 市立 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-067 | 市立図書館では、今月から学習室の席を予約できます。予約は一人一日二時間までです。飲み物はふたがある物なら持ち込んでもいいですが、席で食事はできません。 | 中 | 來自segmenter token |
-| 持ち込む | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-q-n4-060-01, jp-reading-q-n4-103-02 | 飲み物を持ち込むこと | 中 | 來自segmenter token |
 | 初日 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-003 | アルバイト初日 | 中 | 來自segmenter token |
-| 消しゴム | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-031 | 授業が終わったあと、教室に一人だけ学生が残っていました。机の上には消しゴムとノートがあり、窓は開いたままでした。学生は『田中さんの物かもしれない』と思い、職員室 | 中 | 來自segmenter token |
 | 申込 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-009 | 料理教室の申込 | 中 | 來自segmenter token |
-| 真ん中 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-002 | 由美さんは友だちと映画を見る予定です。七時の回は人気で席が前の方しかありませんでした。少し待てば八時半の回で真ん中の席が取れるので、二人は遅い回にしました。 | 中 | 來自segmenter token |
 | 調べ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-076 | 調べ | 中 | 來自explicit field |
 | 店内 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-070 | カフェ森は、店内の工事のため来週だけ午後二時に閉店します。ランチは一時半まで注文できます。持ち帰りの飲み物は、閉店の十分前まで買えます。 | 中 | 來自segmenter token |
 | 二年 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-062 | 文化祭の準備で、二年三組は教室を小さな喫茶店にします。金曜日の放課後に机を動かし、土曜日の朝に看板を付けます。食べ物を持って来る必要はありませんが、エプロンは各 | 中 | 來自segmenter token |
@@ -163,9 +114,55 @@ Node Intl.Segmenter 支援狀態：支援。主要使用 `Intl.Segmenter` 的 wo
 | クラス＿＿ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-214 | クラス＿＿だれがいちばん元気ですか。 | 中 | 來自segmenter token |
 | けしゴム | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-set-n4-031 | じゅぎょうがおわったあと、きょうしつにひとりだけがくせいがのこっていました。つくえのうえにはけしゴムとノートがあり、まどはあいたままでした。がくせいは『たなかさ | 中 | 來自segmenter token |
 | けど | けど | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-197 | けど | 中 | 來自explicit field |
+| ける | ける | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-057 | ける | 中 | 來自explicit field |
+| こう | こう | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-230 | こう | 中 | 來自explicit field |
+| ずつ | ずつ | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-247 | ずつ | 中 | 來自explicit field |
+| って | って | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-199 | って | 中 | 來自explicit field |
+| てき | てき | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-243 | てき | 中 | 來自explicit field |
+| てみ | てみ | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-243 | てみ | 中 | 來自explicit field |
+| でも | でも | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-046 | でも | 中 | 來自explicit field |
+| など | など | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-100 | など | 中 | 來自explicit field |
+| のが | のが | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-150 | のが | 中 | 來自explicit field |
+| のは | のは | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-210 | のは | 中 | 來自explicit field |
+| はず | はず | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-248 | はず | 中 | 來自explicit field |
+| ホール | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-q-n4-011-01 | 公民館のホール | 中 | 來自segmenter token |
+| まま | まま | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-208 | まま | 中 | 來自explicit field |
+| める | める | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-051 | める | 中 | 來自explicit field |
+| やる | やる | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-096 | やる | 中 | 來自explicit field |
+| ヨガマット | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-q-n4-103-03 | ヨガマット | 中 | 來自segmenter token |
+| 位置 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-212 | に（存在位置） | 中 | 來自segmenter token |
+| 何月 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-225 | 何月 | 中 | 來自explicit field |
+| 何枚 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-224 | 何枚 | 中 | 來自explicit field |
+| 環境 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-275 | 環境問題＿＿話しましょう。 | 中 | 來自segmenter token |
+| 祈願 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-181 | 〜ように（祈願） | 中 | 來自segmenter token |
+| 起點 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-013 | から（起點） | 中 | 來自segmenter token |
+| 逆接 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-198 | 〜ながら（逆接） | 中 | 來自segmenter token |
+| 教師 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-278 | 兄は教師＿＿学校で働いています。 | 中 | 來自segmenter token |
+| 行事 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-q-n4-021-01 | 学校の行事 | 中 | 來自segmenter token |
+| 手段 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-008 | で（手段） | 中 | 來自segmenter token |
+| 受け取り | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-q-n4-045-01 | 渡辺さんはいつ荷物を受け取りますか。 | 中 | 來自segmenter token |
+| 所屬 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-012 | の（所屬） | 中 | 來自segmenter token |
+| 状態 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-244 | 〜ている（結果状態） | 中 | 來自segmenter token |
+| 睡眠 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-288 | 健康でいる＿＿、睡眠が大切です。 | 中 | 來自segmenter token |
+| 存在 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-212 | に（存在位置） | 中 | 來自segmenter token |
+| 但是 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-046 | が（但是） | 中 | 來自segmenter token |
+| 通過 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-211 | を（通過） | 中 | 來自segmenter token |
+| 土産 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | listening | 1 | jl-069 | この店でお土産を買います。 | 中 | 來自segmenter token |
+| 範圍 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-214 | で（範圍） | 中 | 來自segmenter token |
+| 富士山 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-214 | 日本で富士山がいちばん高いです。 | 中 | 來自segmenter token |
+| 部室 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-q-n4-097-01 | 写真部の部室 | 中 | 來自segmenter token |
+| 並列 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-009 | と（並列） | 中 | 來自segmenter token |
+| 命令 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-126 | 命令形 | 中 | 來自segmenter token |
+| 目的地 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-005 | に（目的地） | 中 | 來自segmenter token |
+| 誘い | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-set-n4-074 | 誘い | 中 | 來自explicit field |
+| 来店 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-q-n4-042-01 | 来店したあと | 中 | 來自segmenter token |
+| 傳聞 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-076 | 〜そうだ（傳聞） | 中 | 來自segmenter token |
+| 對象 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-213 | に（對象） | 中 | 來自segmenter token |
+| 對比 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-215 | は（對比） | 中 | 來自segmenter token |
+| 數量 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-229 | 〜ぐらい（數量） | 中 | 來自segmenter token |
 
 ## Manual review
-manual-review 去重項目數：664；下表最多列 200 項。
+manual-review 去重項目數：659；下表最多列 200 項。
 
 | 表面形式 | 可能基本形 | 假名 | 出現模組 | 出現次數 | 代表來源 ID | 一個代表句 | 需要確認原因 |
 |---|---|---|---|---:|---|---|---|
@@ -371,7 +368,7 @@ manual-review 去重項目數：664；下表最多列 200 項。
 | すか | すか | すか | grammar, reading, listening | 7 | n5-grammar-219, jp-reading-q-n4-018-02, jp-reading-set-n4-035 | テストは＿＿ありますか。 | unresolved token |
 
 ## Unresolved / unsegmented
-- unresolved token 數量：664
+- unresolved token 數量：659
 - unsegmented span 數量：0
 
 ## 複合詞與固定表現
@@ -412,7 +409,6 @@ manual-review 去重項目數：664；下表最多列 200 項。
 | compound | 本棚 | reading | 4 | jp-reading-set-n4-025, jp-reading-q-n4-025-01, jp-reading-q-n4-025-02 |
 | compound | 夜中 | reading | 4 | jp-reading-set-n4-013, jp-reading-q-n4-013-01 |
 | compound | ことがある | grammar | 3 | n4-grammar-066, n4-grammar-068, n4-grammar-257 |
-| compound | せいり | reading | 3 | jp-reading-set-n4-026, jp-reading-set-n4-101 |
 | compound | ています | grammar | 3 | n4-grammar-241, n4-grammar-244, n4-grammar-245 |
 | compound | てください | grammar | 3 | n5-grammar-041, n4-grammar-244, n4-grammar-245 |
 | compound | てみます | grammar | 3 | n4-grammar-241, n4-grammar-244, n4-grammar-245 |
@@ -442,6 +438,7 @@ manual-review 去重項目數：664；下表最多列 200 項。
 | compound | こばやし | reading | 2 | jp-reading-set-n4-046 |
 | compound | ごばんバス | reading | 2 | jp-reading-set-n4-047 |
 | compound | コピーき | reading | 2 | jp-reading-set-n4-043 |
+| compound | コンビニコピー | reading | 2 | jp-reading-set-n4-043 |
 | compound | さんばんバス | reading | 2 | jp-reading-set-n4-069 |
 | compound | しつないよう | reading | 2 | jp-reading-set-n4-072 |
 | compound | しました | grammar | 2 | n5-grammar-034, n5-grammar-042 |
