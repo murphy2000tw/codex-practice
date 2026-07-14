@@ -1,0 +1,1882 @@
+{
+  "batch": "12B",
+  "status": "pre-import",
+  "sourceDocument": "docs/japanese-vocabulary-batch12-review-plan.md",
+  "baseline": {
+    "vocabularyCount": 3179,
+    "n5Count": 1007,
+    "n4Count": 2172
+  },
+  "summary": {
+    "total": 62,
+    "approveAdd": 48,
+    "approveAddCompound": 14
+  },
+  "entries": [
+    {
+      "sequence": 1,
+      "decision": "approve-add",
+      "originalCandidate": "メモ",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar",
+          "reading"
+        ],
+        "sourceIds": [
+          "n4-grammar-105",
+          "jp-reading-set-n4-024",
+          "jp-reading-set-n4-033"
+        ],
+        "occurrenceCount": 34
+      },
+      "proposedEntry": {
+        "id": 3180,
+        "level": "N4",
+        "word": "メモ",
+        "kana": "めも",
+        "meaning": "備忘錄；筆記",
+        "partOfSpeech": "名詞",
+        "example": "忘れないように、メモを書きます。",
+        "exampleKana": "わすれないように、めもをかきます。",
+        "exampleMeaning": "為了不要忘記，我會寫備忘錄。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：メモ為名詞，表示備忘錄／筆記。Jisho：memo/note；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 2,
+      "decision": "approve-add",
+      "originalCandidate": "スーパー",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar",
+          "reading"
+        ],
+        "sourceIds": [
+          "n4-grammar-100",
+          "jp-reading-set-n4-017",
+          "jp-reading-q-n4-017-01"
+        ],
+        "occurrenceCount": 27
+      },
+      "proposedEntry": {
+        "id": 3181,
+        "level": "N5",
+        "word": "スーパー",
+        "kana": "すーぱー",
+        "meaning": "超市",
+        "partOfSpeech": "名詞",
+        "example": "スーパーで野菜を買いました。",
+        "exampleKana": "すーぱーでやさいをかいました。",
+        "exampleMeaning": "我在超市買了蔬菜。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：スーパー為名詞，常指超級市場。Jisho：supermarket；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 3,
+      "decision": "approve-add",
+      "originalCandidate": "スマホ",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-005",
+          "jp-reading-q-n4-005-01",
+          "jp-reading-set-n4-021"
+        ],
+        "occurrenceCount": 19
+      },
+      "proposedEntry": {
+        "id": 3182,
+        "level": "N4",
+        "word": "スマホ",
+        "kana": "すまほ",
+        "meaning": "智慧型手機",
+        "partOfSpeech": "名詞",
+        "example": "電車の中でスマホを見ます。",
+        "exampleKana": "でんしゃのなかですまほをみます。",
+        "exampleMeaning": "我在電車裡看手機。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：スマホ為スマートフォン縮略語。Jisho：smartphone；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 4,
+      "decision": "approve-add",
+      "originalCandidate": "朝食",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-007",
+          "jp-reading-q-n4-007-01",
+          "jp-reading-set-n4-029"
+        ],
+        "occurrenceCount": 14
+      },
+      "proposedEntry": {
+        "id": 3183,
+        "level": "N5",
+        "word": "朝食",
+        "kana": "ちょうしょく",
+        "meaning": "早餐",
+        "partOfSpeech": "名詞",
+        "example": "ホテルで朝食を食べました。",
+        "exampleKana": "ほてるでちょうしょくをたべました。",
+        "exampleMeaning": "我在飯店吃了早餐。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：朝食讀作ちょうしょく，名詞。Jisho：breakfast；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 5,
+      "decision": "approve-add-compound",
+      "originalCandidate": "お知らせ",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-006",
+          "jp-reading-q-n4-006-01",
+          "jp-reading-set-n4-026"
+        ],
+        "occurrenceCount": 13
+      },
+      "proposedEntry": {
+        "id": 3184,
+        "level": "N4",
+        "word": "お知らせ",
+        "kana": "おしらせ",
+        "meaning": "通知；公告",
+        "partOfSpeech": "名詞",
+        "example": "学校からお知らせが来ました。",
+        "exampleKana": "がっこうからおしらせがきました。",
+        "exampleMeaning": "學校寄來了通知。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：お知らせ為通知、案内。Jisho：notice/announcement；整體表現具獨立查詢價值。"
+      }
+    },
+    {
+      "sequence": 6,
+      "decision": "approve-add",
+      "originalCandidate": "メール",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-042",
+          "jp-reading-set-n4-095",
+          "jp-reading-q-n4-095-01"
+        ],
+        "occurrenceCount": 13
+      },
+      "proposedEntry": {
+        "id": 3185,
+        "level": "N4",
+        "word": "メール",
+        "kana": "めーる",
+        "meaning": "電子郵件；訊息",
+        "partOfSpeech": "名詞",
+        "example": "先生にメールを送りました。",
+        "exampleKana": "せんせいにめーるをおくりました。",
+        "exampleMeaning": "我寄了電子郵件給老師。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：メール為名詞，電子郵件。Jisho：e-mail/message；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 7,
+      "decision": "approve-add",
+      "originalCandidate": "カフェ",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-070",
+          "jp-reading-q-n4-070-01",
+          "jp-reading-set-n4-091"
+        ],
+        "occurrenceCount": 12
+      },
+      "proposedEntry": {
+        "id": 3186,
+        "level": "N4",
+        "word": "カフェ",
+        "kana": "かふぇ",
+        "meaning": "咖啡館",
+        "partOfSpeech": "名詞",
+        "example": "友だちとカフェで話しました。",
+        "exampleKana": "ともだちとかふぇではなしました。",
+        "exampleMeaning": "我和朋友在咖啡館聊天。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：カフェ為名詞，咖啡館。Jisho：cafe；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 8,
+      "decision": "approve-add-compound",
+      "originalCandidate": "チェックイン",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading",
+          "listening"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-029",
+          "jp-reading-set-n4-048",
+          "jp-reading-set-n4-086"
+        ],
+        "occurrenceCount": 12
+      },
+      "proposedEntry": {
+        "id": 3187,
+        "level": "N4",
+        "word": "チェックイン",
+        "kana": "ちぇっくいん",
+        "meaning": "入住；報到",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "ホテルに三時にチェックインします。",
+        "exampleKana": "ほてるにさんじにちぇっくいんします。",
+        "exampleMeaning": "我三點在飯店辦理入住。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：チェックイン為名詞／サ変，辦理入住或報到。Jisho：check-in, suru verb；一致。"
+      }
+    },
+    {
+      "sequence": 9,
+      "decision": "approve-add",
+      "originalCandidate": "カレー",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-033",
+          "jp-reading-q-n4-033-01",
+          "jp-reading-set-n4-074"
+        ],
+        "occurrenceCount": 10
+      },
+      "proposedEntry": {
+        "id": 3188,
+        "level": "N5",
+        "word": "カレー",
+        "kana": "かれー",
+        "meaning": "咖哩",
+        "partOfSpeech": "名詞",
+        "example": "母がカレーを作りました。",
+        "exampleKana": "ははがかれーをつくりました。",
+        "exampleMeaning": "媽媽做了咖哩。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：カレー為名詞。Jisho：curry；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 10,
+      "decision": "approve-add",
+      "originalCandidate": "クラス",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar",
+          "reading"
+        ],
+        "sourceIds": [
+          "n5-grammar-049",
+          "jp-reading-set-n4-016",
+          "jp-reading-set-n4-021"
+        ],
+        "occurrenceCount": 10
+      },
+      "proposedEntry": {
+        "id": 3189,
+        "level": "N5",
+        "word": "クラス",
+        "kana": "くらす",
+        "meaning": "班級；課堂",
+        "partOfSpeech": "名詞",
+        "example": "私のクラスには学生が三十人います。",
+        "exampleKana": "わたしのくらすにはがくせいがさんじゅうにんいます。",
+        "exampleMeaning": "我的班上有三十位學生。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：クラス為名詞，班級／課堂。Jisho：class；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 11,
+      "decision": "approve-add-compound",
+      "originalCandidate": "公民館",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-009",
+          "jp-reading-q-n4-009-01",
+          "jp-reading-q-n4-011-01"
+        ],
+        "occurrenceCount": 9
+      },
+      "proposedEntry": {
+        "id": 3190,
+        "level": "N4",
+        "word": "公民館",
+        "kana": "こうみんかん",
+        "meaning": "公民館；社區活動中心",
+        "partOfSpeech": "名詞",
+        "example": "公民館で料理教室があります。",
+        "exampleKana": "こうみんかんでりょうりきょうしつがあります。",
+        "exampleMeaning": "公民館有料理教室。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：公民館讀こうみんかん，公共社區設施。Jisho：community center；作為整體設施名保留。"
+      }
+    },
+    {
+      "sequence": 12,
+      "decision": "approve-add",
+      "originalCandidate": "返却",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-026",
+          "jp-reading-q-n4-026-01",
+          "jp-reading-q-n4-026-02"
+        ],
+        "occurrenceCount": 9
+      },
+      "proposedEntry": {
+        "id": 3191,
+        "level": "N4",
+        "word": "返却",
+        "kana": "へんきゃく",
+        "meaning": "歸還",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "本を図書館に返却しました。",
+        "exampleKana": "ほんをとしょかんにへんきゃくしました。",
+        "exampleMeaning": "我把書歸還給圖書館了。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：返却讀へんきゃく，名詞／サ変。Jisho：returning something；讀音與詞性一致。"
+      }
+    },
+    {
+      "sequence": 13,
+      "decision": "approve-add",
+      "originalCandidate": "エプロン",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-062",
+          "jp-reading-q-n4-062-02",
+          "jp-reading-set-n4-089"
+        ],
+        "occurrenceCount": 8
+      },
+      "proposedEntry": {
+        "id": 3192,
+        "level": "N4",
+        "word": "エプロン",
+        "kana": "えぷろん",
+        "meaning": "圍裙",
+        "partOfSpeech": "名詞",
+        "example": "料理をする前にエプロンをつけます。",
+        "exampleKana": "りょうりをするまえにえぷろんをつけます。",
+        "exampleMeaning": "做料理前我會穿上圍裙。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：エプロン為名詞，圍裙。Jisho：apron；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 14,
+      "decision": "approve-add",
+      "originalCandidate": "ヨガ",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-066",
+          "jp-reading-q-n4-066-02",
+          "jp-reading-set-n4-103"
+        ],
+        "occurrenceCount": 8
+      },
+      "proposedEntry": {
+        "id": 3193,
+        "level": "N4",
+        "word": "ヨガ",
+        "kana": "よが",
+        "meaning": "瑜伽",
+        "partOfSpeech": "名詞",
+        "example": "日曜日にヨガ教室へ行きます。",
+        "exampleKana": "にちようびによがきょうしつへいきます。",
+        "exampleMeaning": "星期日我要去瑜伽教室。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：ヨガ為名詞。Jisho：yoga；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 15,
+      "decision": "approve-add",
+      "originalCandidate": "整理",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-026",
+          "jp-reading-set-n4-101",
+          "jp-reading-q-n4-101-02"
+        ],
+        "occurrenceCount": 8
+      },
+      "proposedEntry": {
+        "id": 3194,
+        "level": "N4",
+        "word": "整理",
+        "kana": "せいり",
+        "meaning": "整理",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "週末に部屋を整理しました。",
+        "exampleKana": "しゅうまつにへやをせいりしました。",
+        "exampleMeaning": "週末我整理了房間。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：整理讀せいり，名詞／サ変。Jisho：sorting/arranging, suru verb；一致。"
+      }
+    },
+    {
+      "sequence": 16,
+      "decision": "approve-add",
+      "originalCandidate": "ジム",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-020",
+          "jp-reading-q-n4-020-01"
+        ],
+        "occurrenceCount": 7
+      },
+      "proposedEntry": {
+        "id": 3195,
+        "level": "N4",
+        "word": "ジム",
+        "kana": "じむ",
+        "meaning": "健身房",
+        "partOfSpeech": "名詞",
+        "example": "仕事のあとでジムへ行きます。",
+        "exampleKana": "しごとのあとでじむへいきます。",
+        "exampleMeaning": "下班後我會去健身房。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：ジム為名詞，健身房。Jisho：gym；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 17,
+      "decision": "approve-add",
+      "originalCandidate": "変更",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-006",
+          "jp-reading-set-n4-042",
+          "jp-reading-set-n4-102"
+        ],
+        "occurrenceCount": 7
+      },
+      "proposedEntry": {
+        "id": 3196,
+        "level": "N4",
+        "word": "変更",
+        "kana": "へんこう",
+        "meaning": "變更",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "予定を明日に変更しました。",
+        "exampleKana": "よていをあしたにへんこうしました。",
+        "exampleMeaning": "我把預定改到明天了。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：変更讀へんこう，名詞／サ変。Jisho：change/modification, suru verb；一致。"
+      }
+    },
+    {
+      "sequence": 18,
+      "decision": "approve-add",
+      "originalCandidate": "インターネット",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-028",
+          "jp-reading-set-n4-045"
+        ],
+        "occurrenceCount": 6
+      },
+      "proposedEntry": {
+        "id": 3197,
+        "level": "N4",
+        "word": "インターネット",
+        "kana": "いんたーねっと",
+        "meaning": "網際網路",
+        "partOfSpeech": "名詞",
+        "example": "インターネットで席を予約しました。",
+        "exampleKana": "いんたーねっとでせきをよやくしました。",
+        "exampleMeaning": "我在網路上預約了座位。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：インターネット為名詞。Jisho：Internet；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 19,
+      "decision": "approve-add",
+      "originalCandidate": "ケーキ",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar",
+          "reading"
+        ],
+        "sourceIds": [
+          "n4-grammar-075",
+          "jp-reading-q-n4-003-01",
+          "jp-reading-set-n4-091"
+        ],
+        "occurrenceCount": 6
+      },
+      "proposedEntry": {
+        "id": 3198,
+        "level": "N5",
+        "word": "ケーキ",
+        "kana": "けーき",
+        "meaning": "蛋糕",
+        "partOfSpeech": "名詞",
+        "example": "誕生日にケーキを食べました。",
+        "exampleKana": "たんじょうびにけーきをたべました。",
+        "exampleMeaning": "生日那天我吃了蛋糕。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：ケーキ為名詞。Jisho：cake；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 20,
+      "decision": "approve-add",
+      "originalCandidate": "お願い",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading",
+          "listening"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-022",
+          "jl-020",
+          "jl-083"
+        ],
+        "occurrenceCount": 5
+      },
+      "proposedEntry": {
+        "id": 3199,
+        "level": "N4",
+        "word": "お願い",
+        "kana": "おねがい",
+        "meaning": "請求；拜託",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "店員にお願いしました。",
+        "exampleKana": "てんいんにおねがいしました。",
+        "exampleMeaning": "我拜託了店員。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：お願い讀おねがい，請求／拜託。Jisho：request/favour, suru use；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 21,
+      "decision": "approve-add",
+      "originalCandidate": "テスト",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar",
+          "listening"
+        ],
+        "sourceIds": [
+          "n4-grammar-144",
+          "n5-grammar-219",
+          "n4-grammar-272"
+        ],
+        "occurrenceCount": 5
+      },
+      "proposedEntry": {
+        "id": 3200,
+        "level": "N5",
+        "word": "テスト",
+        "kana": "てすと",
+        "meaning": "考試；測驗",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "明日は日本語のテストがあります。",
+        "exampleKana": "あしたはにほんごのてすとがあります。",
+        "exampleMeaning": "明天有日文考試。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：テスト為名詞／サ変，測驗。Jisho：test；詞性與主要義一致。"
+      }
+    },
+    {
+      "sequence": 22,
+      "decision": "approve-add",
+      "originalCandidate": "メニュー",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading",
+          "listening"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-074",
+          "jl-067"
+        ],
+        "occurrenceCount": 5
+      },
+      "proposedEntry": {
+        "id": 3201,
+        "level": "N5",
+        "word": "メニュー",
+        "kana": "めにゅー",
+        "meaning": "菜單",
+        "partOfSpeech": "名詞",
+        "example": "レストランでメニューを見ました。",
+        "exampleKana": "れすとらんでめにゅーをみました。",
+        "exampleMeaning": "我在餐廳看了菜單。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：メニュー為名詞，菜單。Jisho：menu；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 23,
+      "decision": "approve-add",
+      "originalCandidate": "交流",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-011"
+        ],
+        "occurrenceCount": 5
+      },
+      "proposedEntry": {
+        "id": 3202,
+        "level": "N4",
+        "word": "交流",
+        "kana": "こうりゅう",
+        "meaning": "交流",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "留学生と交流しました。",
+        "exampleKana": "りゅうがくせいとこうりゅうしました。",
+        "exampleMeaning": "我和留學生交流了。"
+      },
+      "verification": {
+        "confidence": "medium",
+        "summary": "Weblio：交流讀こうりゅう，名詞／サ変。Jisho：exchange/interchange, suru verb；一致。"
+      }
+    },
+    {
+      "sequence": 24,
+      "decision": "approve-add-compound",
+      "originalCandidate": "水着",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-020",
+          "jp-reading-q-n4-020-02"
+        ],
+        "occurrenceCount": 5
+      },
+      "proposedEntry": {
+        "id": 3203,
+        "level": "N4",
+        "word": "水着",
+        "kana": "みずぎ",
+        "meaning": "泳衣",
+        "partOfSpeech": "名詞",
+        "example": "プールへ行くので、水着を持って行きます。",
+        "exampleKana": "ぷーるへいくので、みずぎをもっていきます。",
+        "exampleMeaning": "因為要去游泳池，所以我會帶泳衣去。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：水着讀みずぎ，泳衣。Jisho：swimsuit；整體詞義固定，保留 compound。"
+      }
+    },
+    {
+      "sequence": 25,
+      "decision": "approve-add",
+      "originalCandidate": "シール",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-090",
+          "jp-reading-q-n4-090-01"
+        ],
+        "occurrenceCount": 4
+      },
+      "proposedEntry": {
+        "id": 3204,
+        "level": "N4",
+        "word": "シール",
+        "kana": "しーる",
+        "meaning": "貼紙；標籤",
+        "partOfSpeech": "名詞",
+        "example": "名前のシールを自転車に貼ります。",
+        "exampleKana": "なまえのしーるをじてんしゃにはります。",
+        "exampleMeaning": "我把姓名貼紙貼在腳踏車上。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：シール為名詞，貼紙／封條。Jisho：sticker/seal；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 26,
+      "decision": "approve-add",
+      "originalCandidate": "テーマ",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-021",
+          "jp-reading-q-n4-021-01"
+        ],
+        "occurrenceCount": 4
+      },
+      "proposedEntry": {
+        "id": 3205,
+        "level": "N4",
+        "word": "テーマ",
+        "kana": "てーま",
+        "meaning": "主題",
+        "partOfSpeech": "名詞",
+        "example": "発表のテーマは好きな町です。",
+        "exampleKana": "はっぴょうのてーまはすきなまちです。",
+        "exampleMeaning": "發表的主題是喜歡的城鎮。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：テーマ為名詞，主題。Jisho：theme/topic；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 27,
+      "decision": "approve-add",
+      "originalCandidate": "ネット",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-104",
+          "jp-reading-q-n4-104-02"
+        ],
+        "occurrenceCount": 4
+      },
+      "proposedEntry": {
+        "id": 3206,
+        "level": "N4",
+        "word": "ネット",
+        "kana": "ねっと",
+        "meaning": "網路",
+        "partOfSpeech": "名詞",
+        "example": "切符はネットで買えます。",
+        "exampleKana": "きっぷはねっとでかえます。",
+        "exampleMeaning": "票可以在網路上買。"
+      },
+      "verification": {
+        "confidence": "medium",
+        "summary": "Weblio：ネット為名詞，可指網路。Jisho：net/Internet；依來源用作網路。"
+      }
+    },
+    {
+      "sequence": 28,
+      "decision": "approve-add-compound",
+      "originalCandidate": "バス停",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading",
+          "listening"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-008",
+          "jp-reading-q-n4-008-01",
+          "jl-033"
+        ],
+        "occurrenceCount": 4
+      },
+      "proposedEntry": {
+        "id": 3207,
+        "level": "N4",
+        "word": "バス停",
+        "kana": "ばすてい",
+        "meaning": "公車站牌；公車站",
+        "partOfSpeech": "名詞",
+        "example": "駅の前にバス停があります。",
+        "exampleKana": "えきのまえにばすていがあります。",
+        "exampleMeaning": "車站前有公車站。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：バス停讀ばすてい，巴士站。Jisho：bus stop；整體地點名具獨立查詢價值。"
+      }
+    },
+    {
+      "sequence": 29,
+      "decision": "approve-add",
+      "originalCandidate": "プリント",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-095",
+          "jp-reading-q-n4-095-01"
+        ],
+        "occurrenceCount": 4
+      },
+      "proposedEntry": {
+        "id": 3208,
+        "level": "N4",
+        "word": "プリント",
+        "kana": "ぷりんと",
+        "meaning": "講義資料；列印",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "先生がプリントを配りました。",
+        "exampleKana": "せんせいがぷりんとをくばりました。",
+        "exampleMeaning": "老師發了講義資料。"
+      },
+      "verification": {
+        "confidence": "medium",
+        "summary": "Weblio：プリント為名詞／サ変，印刷物或列印。Jisho：print/handout；來源為課堂講義。"
+      }
+    },
+    {
+      "sequence": 30,
+      "decision": "approve-add",
+      "originalCandidate": "ポスト",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-058",
+          "jp-reading-q-n4-058-01"
+        ],
+        "occurrenceCount": 4
+      },
+      "proposedEntry": {
+        "id": 3209,
+        "level": "N4",
+        "word": "ポスト",
+        "kana": "ぽすと",
+        "meaning": "郵筒",
+        "partOfSpeech": "名詞",
+        "example": "手紙をポストに入れました。",
+        "exampleKana": "てがみをぽすとにいれました。",
+        "exampleMeaning": "我把信放進郵筒了。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：ポスト為名詞，郵筒等義。Jisho：postbox/mailbox；依來源採郵筒義。"
+      }
+    },
+    {
+      "sequence": 31,
+      "decision": "approve-add",
+      "originalCandidate": "レジ",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-063",
+          "jp-reading-q-n4-063-01"
+        ],
+        "occurrenceCount": 4
+      },
+      "proposedEntry": {
+        "id": 3210,
+        "level": "N4",
+        "word": "レジ",
+        "kana": "れじ",
+        "meaning": "收銀台",
+        "partOfSpeech": "名詞",
+        "example": "レジでお金を払いました。",
+        "exampleKana": "れじでおかねをはらいました。",
+        "exampleMeaning": "我在收銀台付了錢。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：レジ為名詞，收銀台／收銀機。Jisho：cash register；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 32,
+      "decision": "approve-add-compound",
+      "originalCandidate": "使い方",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-q-n4-043-01",
+          "jp-reading-set-n4-063",
+          "jp-reading-q-n4-063-01"
+        ],
+        "occurrenceCount": 4
+      },
+      "proposedEntry": {
+        "id": 3211,
+        "level": "N4",
+        "word": "使い方",
+        "kana": "つかいかた",
+        "meaning": "使用方法",
+        "partOfSpeech": "名詞",
+        "example": "この機械の使い方を教えてください。",
+        "exampleKana": "このきかいのつかいかたをおしえてください。",
+        "exampleMeaning": "請告訴我這台機器的使用方法。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：使い方讀つかいかた，使用方式。Jisho：way to use；動詞連用形＋方，整體查詢價值高。"
+      }
+    },
+    {
+      "sequence": 33,
+      "decision": "approve-add",
+      "originalCandidate": "お寺",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-018",
+          "jp-reading-q-n4-018-02"
+        ],
+        "occurrenceCount": 3
+      },
+      "proposedEntry": {
+        "id": 3212,
+        "level": "N4",
+        "word": "お寺",
+        "kana": "おてら",
+        "meaning": "寺廟",
+        "partOfSpeech": "名詞",
+        "example": "京都で古いお寺を見ました。",
+        "exampleKana": "きょうとでふるいおてらをみました。",
+        "exampleMeaning": "我在京都看了古老的寺廟。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：お寺讀おてら，寺院。Jisho：temple；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 34,
+      "decision": "approve-add",
+      "originalCandidate": "コンビニ",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-043"
+        ],
+        "occurrenceCount": 3
+      },
+      "proposedEntry": {
+        "id": 3213,
+        "level": "N5",
+        "word": "コンビニ",
+        "kana": "こんびに",
+        "meaning": "便利商店",
+        "partOfSpeech": "名詞",
+        "example": "コンビニで飲み物を買いました。",
+        "exampleKana": "こんびにでのみものをかいました。",
+        "exampleMeaning": "我在便利商店買了飲料。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：コンビニ為名詞，便利商店。Jisho：convenience store；一致。"
+      }
+    },
+    {
+      "sequence": 35,
+      "decision": "approve-add",
+      "originalCandidate": "メッセージ",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-074"
+        ],
+        "occurrenceCount": 3
+      },
+      "proposedEntry": {
+        "id": 3214,
+        "level": "N4",
+        "word": "メッセージ",
+        "kana": "めっせーじ",
+        "meaning": "訊息；留言",
+        "partOfSpeech": "名詞",
+        "example": "友だちにメッセージを送りました。",
+        "exampleKana": "ともだちにめっせーじをおくりました。",
+        "exampleMeaning": "我傳了訊息給朋友。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：メッセージ為名詞，訊息。Jisho：message；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 36,
+      "decision": "approve-add",
+      "originalCandidate": "ランチ",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-070"
+        ],
+        "occurrenceCount": 3
+      },
+      "proposedEntry": {
+        "id": 3215,
+        "level": "N4",
+        "word": "ランチ",
+        "kana": "らんち",
+        "meaning": "午餐",
+        "partOfSpeech": "名詞",
+        "example": "今日は友だちとランチを食べます。",
+        "exampleKana": "きょうはともだちとらんちをたべます。",
+        "exampleMeaning": "今天我要和朋友吃午餐。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：ランチ為名詞，午餐。Jisho：lunch；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 37,
+      "decision": "approve-add",
+      "originalCandidate": "時差",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-013"
+        ],
+        "occurrenceCount": 3
+      },
+      "proposedEntry": {
+        "id": 3216,
+        "level": "N4",
+        "word": "時差",
+        "kana": "じさ",
+        "meaning": "時差",
+        "partOfSpeech": "名詞",
+        "example": "日本と台湾には一時間の時差があります。",
+        "exampleKana": "にほんとたいわんにはいちじかんのじさがあります。",
+        "exampleMeaning": "日本和台灣有一小時的時差。"
+      },
+      "verification": {
+        "confidence": "medium",
+        "summary": "Weblio：時差讀じさ，時間差。Jisho：time difference；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 38,
+      "decision": "approve-add",
+      "originalCandidate": "中止",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-023",
+          "jp-reading-q-n4-023-02"
+        ],
+        "occurrenceCount": 3
+      },
+      "proposedEntry": {
+        "id": 3217,
+        "level": "N4",
+        "word": "中止",
+        "kana": "ちゅうし",
+        "meaning": "中止；取消",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "雨で運動会が中止になりました。",
+        "exampleKana": "あめでうんどうかいがちゅうしになりました。",
+        "exampleMeaning": "運動會因為下雨而取消了。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：中止讀ちゅうし，名詞／サ変。Jisho：cancellation/suspension；一致。"
+      }
+    },
+    {
+      "sequence": 39,
+      "decision": "approve-add",
+      "originalCandidate": "入力",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-075",
+          "jp-reading-q-n4-075-01"
+        ],
+        "occurrenceCount": 3
+      },
+      "proposedEntry": {
+        "id": 3218,
+        "level": "N4",
+        "word": "入力",
+        "kana": "にゅうりょく",
+        "meaning": "輸入；輸入資料",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "番号を入力してください。",
+        "exampleKana": "ばんごうをにゅうりょくしてください。",
+        "exampleMeaning": "請輸入號碼。"
+      },
+      "verification": {
+        "confidence": "medium",
+        "summary": "Weblio：入力讀にゅうりょく，名詞／サ変。Jisho：input, suru verb；讀音與詞性一致。"
+      }
+    },
+    {
+      "sequence": 40,
+      "decision": "approve-add",
+      "originalCandidate": "イベント",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-019"
+        ],
+        "occurrenceCount": 2
+      },
+      "proposedEntry": {
+        "id": 3219,
+        "level": "N4",
+        "word": "イベント",
+        "kana": "いべんと",
+        "meaning": "活動；事件",
+        "partOfSpeech": "名詞",
+        "example": "週末に図書館でイベントがあります。",
+        "exampleKana": "しゅうまつにとしょかんでいべんとがあります。",
+        "exampleMeaning": "週末圖書館有活動。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：イベント為名詞，活動／事件。Jisho：event；依來源採活動義。"
+      }
+    },
+    {
+      "sequence": 41,
+      "decision": "approve-add",
+      "originalCandidate": "ゲーム",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar"
+        ],
+        "sourceIds": [
+          "n4-grammar-071",
+          "n4-grammar-255"
+        ],
+        "occurrenceCount": 2
+      },
+      "proposedEntry": {
+        "id": 3220,
+        "level": "N5",
+        "word": "ゲーム",
+        "kana": "げーむ",
+        "meaning": "遊戲",
+        "partOfSpeech": "名詞",
+        "example": "弟は新しいゲームを買いました。",
+        "exampleKana": "おとうとはあたらしいげーむをかいました。",
+        "exampleMeaning": "弟弟買了新的遊戲。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：ゲーム為名詞。Jisho：game；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 42,
+      "decision": "approve-add",
+      "originalCandidate": "ラーメン",
+      "sourceReferences": {
+        "sourceModules": [
+          "listening"
+        ],
+        "sourceIds": [
+          "jl-020"
+        ],
+        "occurrenceCount": 2
+      },
+      "proposedEntry": {
+        "id": 3221,
+        "level": "N5",
+        "word": "ラーメン",
+        "kana": "らーめん",
+        "meaning": "拉麵",
+        "partOfSpeech": "名詞",
+        "example": "昼ご飯にラーメンを食べました。",
+        "exampleKana": "ひるごはんにらーめんをたべました。",
+        "exampleMeaning": "午餐我吃了拉麵。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：ラーメン為名詞。Jisho：ramen；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 43,
+      "decision": "approve-add",
+      "originalCandidate": "ルール",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-105"
+        ],
+        "occurrenceCount": 2
+      },
+      "proposedEntry": {
+        "id": 3222,
+        "level": "N4",
+        "word": "ルール",
+        "kana": "るーる",
+        "meaning": "規則",
+        "partOfSpeech": "名詞",
+        "example": "ごみ出しのルールを守りましょう。",
+        "exampleKana": "ごみだしのるーるをまもりましょう。",
+        "exampleMeaning": "請遵守丟垃圾的規則。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：ルール為名詞，規則。Jisho：rule；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 44,
+      "decision": "approve-add",
+      "originalCandidate": "レシート",
+      "sourceReferences": {
+        "sourceModules": [
+          "listening"
+        ],
+        "sourceIds": [
+          "jl-057"
+        ],
+        "occurrenceCount": 2
+      },
+      "proposedEntry": {
+        "id": 3223,
+        "level": "N4",
+        "word": "レシート",
+        "kana": "れしーと",
+        "meaning": "收據；發票",
+        "partOfSpeech": "名詞",
+        "example": "買い物のあとでレシートをもらいました。",
+        "exampleKana": "かいもののあとでれしーとをもらいました。",
+        "exampleMeaning": "購物後我拿到了收據。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：レシート為名詞，收據。Jisho：receipt；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 45,
+      "decision": "approve-add",
+      "originalCandidate": "合格",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar"
+        ],
+        "sourceIds": [
+          "n4-grammar-181",
+          "n4-grammar-285"
+        ],
+        "occurrenceCount": 2
+      },
+      "proposedEntry": {
+        "id": 3224,
+        "level": "N4",
+        "word": "合格",
+        "kana": "ごうかく",
+        "meaning": "合格",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "試験に合格しました。",
+        "exampleKana": "しけんにごうかくしました。",
+        "exampleMeaning": "我考試合格了。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：合格讀ごうかく，名詞／サ変。Jisho：passing an exam, suru verb；一致。"
+      }
+    },
+    {
+      "sequence": 46,
+      "decision": "approve-add-compound",
+      "originalCandidate": "持ち込む",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-q-n4-060-01",
+          "jp-reading-q-n4-103-02"
+        ],
+        "occurrenceCount": 2
+      },
+      "proposedEntry": {
+        "id": 3225,
+        "level": "N4",
+        "word": "持ち込む",
+        "kana": "もちこむ",
+        "meaning": "攜入；帶入",
+        "partOfSpeech": "動詞",
+        "example": "図書館に食べ物を持ち込まないでください。",
+        "exampleKana": "としょかんにたべものをもちこまないでください。",
+        "exampleMeaning": "請不要把食物帶進圖書館。"
+      },
+      "verification": {
+        "confidence": "medium",
+        "summary": "Weblio：持ち込む讀もちこむ，五段動詞。Jisho：to bring in/carry in；複合動詞整體義固定。"
+      }
+    },
+    {
+      "sequence": 47,
+      "decision": "approve-add-compound",
+      "originalCandidate": "消しゴム",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-031"
+        ],
+        "occurrenceCount": 2
+      },
+      "proposedEntry": {
+        "id": 3226,
+        "level": "N5",
+        "word": "消しゴム",
+        "kana": "けしごむ",
+        "meaning": "橡皮擦",
+        "partOfSpeech": "名詞",
+        "example": "机の上に消しゴムがあります。",
+        "exampleKana": "つくえのうえにけしごむがあります。",
+        "exampleMeaning": "桌上有橡皮擦。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：消しゴム讀けしごむ，橡皮擦。Jisho：eraser；整體名詞固定。"
+      }
+    },
+    {
+      "sequence": 48,
+      "decision": "approve-add-compound",
+      "originalCandidate": "真ん中",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-set-n4-002"
+        ],
+        "occurrenceCount": 2
+      },
+      "proposedEntry": {
+        "id": 3227,
+        "level": "N4",
+        "word": "真ん中",
+        "kana": "まんなか",
+        "meaning": "正中間",
+        "partOfSpeech": "名詞",
+        "example": "写真の真ん中に犬がいます。",
+        "exampleKana": "しゃしんのまんなかにいぬがいます。",
+        "exampleMeaning": "照片正中間有一隻狗。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：真ん中讀まんなか，正中央。Jisho：middle/centre；整體常用詞。"
+      }
+    },
+    {
+      "sequence": 49,
+      "decision": "approve-add-compound",
+      "originalCandidate": "たこ焼き",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar"
+        ],
+        "sourceIds": [
+          "n4-grammar-205"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3228,
+        "level": "N4",
+        "word": "たこ焼き",
+        "kana": "たこやき",
+        "meaning": "章魚燒",
+        "partOfSpeech": "名詞",
+        "example": "祭りでたこ焼きを買いました。",
+        "exampleKana": "まつりでたこやきをかいました。",
+        "exampleMeaning": "我在祭典買了章魚燒。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：たこ焼き讀たこやき，食品名。Jisho：takoyaki；整體食品名固定。"
+      }
+    },
+    {
+      "sequence": 50,
+      "decision": "approve-add",
+      "originalCandidate": "ピアノ",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar"
+        ],
+        "sourceIds": [
+          "n4-grammar-179"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3229,
+        "level": "N5",
+        "word": "ピアノ",
+        "kana": "ぴあの",
+        "meaning": "鋼琴",
+        "partOfSpeech": "名詞",
+        "example": "妹は毎日ピアノを弾きます。",
+        "exampleKana": "いもうとはまいにちぴあのをひきます。",
+        "exampleMeaning": "妹妹每天彈鋼琴。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：ピアノ為名詞。Jisho：piano；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 51,
+      "decision": "approve-add",
+      "originalCandidate": "ボタン",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar"
+        ],
+        "sourceIds": [
+          "n4-grammar-086"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3230,
+        "level": "N4",
+        "word": "ボタン",
+        "kana": "ぼたん",
+        "meaning": "按鈕",
+        "partOfSpeech": "名詞",
+        "example": "このボタンを押すと、ドアが開きます。",
+        "exampleKana": "このぼたんをおすと、どあがあきます。",
+        "exampleMeaning": "按這個按鈕，門就會打開。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：ボタン為名詞，按鈕。Jisho：button；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 52,
+      "decision": "approve-add",
+      "originalCandidate": "レポート",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar"
+        ],
+        "sourceIds": [
+          "n4-grammar-189"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3231,
+        "level": "N4",
+        "word": "レポート",
+        "kana": "れぽーと",
+        "meaning": "報告；報告書",
+        "partOfSpeech": "名詞",
+        "example": "金曜日までにレポートを出します。",
+        "exampleKana": "きんようびまでにれぽーとをだします。",
+        "exampleMeaning": "我會在星期五以前交報告。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：レポート為名詞，報告。Jisho：report/paper；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 53,
+      "decision": "approve-add-compound",
+      "originalCandidate": "作り方",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-q-n4-078-01"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3232,
+        "level": "N4",
+        "word": "作り方",
+        "kana": "つくりかた",
+        "meaning": "作法；製作方法",
+        "partOfSpeech": "名詞",
+        "example": "カレーの作り方を母に聞きました。",
+        "exampleKana": "かれーのつくりかたをははにききました。",
+        "exampleMeaning": "我問媽媽咖哩的作法。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：作り方讀つくりかた，做法。Jisho：way of making; recipe；整體查詢價值高。"
+      }
+    },
+    {
+      "sequence": 54,
+      "decision": "approve-add-compound",
+      "originalCandidate": "持ち主",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-q-n4-053-01"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3233,
+        "level": "N4",
+        "word": "持ち主",
+        "kana": "もちぬし",
+        "meaning": "物主；所有者",
+        "partOfSpeech": "名詞",
+        "example": "このかばんの持ち主を探しています。",
+        "exampleKana": "このかばんのもちぬしをさがしています。",
+        "exampleMeaning": "正在尋找這個包包的主人。"
+      },
+      "verification": {
+        "confidence": "medium",
+        "summary": "Weblio：持ち主讀もちぬし，所有者。Jisho：owner；整體常用詞。"
+      }
+    },
+    {
+      "sequence": 55,
+      "decision": "approve-add",
+      "originalCandidate": "充電",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-q-n4-054-01"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3234,
+        "level": "N4",
+        "word": "充電",
+        "kana": "じゅうでん",
+        "meaning": "充電；替電池補充電力",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "寝る前にスマホを充電します。",
+        "exampleKana": "ねるまえにすまほをじゅうでんします。",
+        "exampleMeaning": "睡前我會替手機充電。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：充電讀じゅうでん，名詞／サ変。Jisho：charging, suru verb；讀音與詞性一致。"
+      }
+    },
+    {
+      "sequence": 56,
+      "decision": "approve-add",
+      "originalCandidate": "出張",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar"
+        ],
+        "sourceIds": [
+          "n4-grammar-129"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3235,
+        "level": "N4",
+        "word": "出張",
+        "kana": "しゅっちょう",
+        "meaning": "出差",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "父は来週、大阪へ出張します。",
+        "exampleKana": "ちちはらいしゅう、おおさかへしゅっちょうします。",
+        "exampleMeaning": "爸爸下週要到大阪出差。"
+      },
+      "verification": {
+        "confidence": "medium",
+        "summary": "Weblio：出張讀しゅっちょう，名詞／サ変。Jisho：business trip, suru verb；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 57,
+      "decision": "approve-add",
+      "originalCandidate": "出発",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar"
+        ],
+        "sourceIds": [
+          "n4-grammar-252"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3236,
+        "level": "N5",
+        "word": "出発",
+        "kana": "しゅっぱつ",
+        "meaning": "出發",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "電車は七時に出発します。",
+        "exampleKana": "でんしゃはしちじにしゅっぱつします。",
+        "exampleMeaning": "電車七點出發。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：出発讀しゅっぱつ，名詞／サ変。Jisho：departure, suru verb；一致。"
+      }
+    },
+    {
+      "sequence": 58,
+      "decision": "approve-add",
+      "originalCandidate": "寝坊",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar"
+        ],
+        "sourceIds": [
+          "n4-grammar-183"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3237,
+        "level": "N4",
+        "word": "寝坊",
+        "kana": "ねぼう",
+        "meaning": "睡過頭；晚起",
+        "partOfSpeech": "名詞／する動詞",
+        "example": "今朝寝坊して、学校に遅れました。",
+        "exampleKana": "けさねぼうして、がっこうにおくれました。",
+        "exampleMeaning": "今天早上睡過頭，上學遲到了。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：寝坊讀ねぼう，名詞／サ変。Jisho：oversleeping, suru verb；一致。"
+      }
+    },
+    {
+      "sequence": 59,
+      "decision": "approve-add-compound",
+      "originalCandidate": "大学生",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar"
+        ],
+        "sourceIds": [
+          "n4-grammar-282"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3238,
+        "level": "N5",
+        "word": "大学生",
+        "kana": "だいがくせい",
+        "meaning": "大學生",
+        "partOfSpeech": "名詞",
+        "example": "兄は東京の大学生です。",
+        "exampleKana": "あにはとうきょうのだいがくせいです。",
+        "exampleMeaning": "哥哥是東京的大學生。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：大学生讀だいがくせい，名詞。Jisho：university student；固定身分名，保留 compound 分類。"
+      }
+    },
+    {
+      "sequence": 60,
+      "decision": "approve-add-compound",
+      "originalCandidate": "買い替える",
+      "sourceReferences": {
+        "sourceModules": [
+          "reading"
+        ],
+        "sourceIds": [
+          "jp-reading-q-n4-054-01"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3239,
+        "level": "N4",
+        "word": "買い替える",
+        "kana": "かいかえる",
+        "meaning": "換購；汰換成新的",
+        "partOfSpeech": "動詞",
+        "example": "古いパソコンを新しいものに買い替えました。",
+        "exampleKana": "ふるいぱそこんをあたらしいものにかいかえました。",
+        "exampleMeaning": "我把舊電腦換成了新的。"
+      },
+      "verification": {
+        "confidence": "medium",
+        "summary": "Weblio：買い替える讀かいかえる，一段動詞。Jisho：to replace by buying new；複合動詞整體義固定。"
+      }
+    },
+    {
+      "sequence": 61,
+      "decision": "approve-add",
+      "originalCandidate": "毛布",
+      "sourceReferences": {
+        "sourceModules": [
+          "listening"
+        ],
+        "sourceIds": [
+          "jl-096"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3240,
+        "level": "N4",
+        "word": "毛布",
+        "kana": "もうふ",
+        "meaning": "毛毯",
+        "partOfSpeech": "名詞",
+        "example": "寒いので、毛布をかけて寝ます。",
+        "exampleKana": "さむいので、もうふをかけてねます。",
+        "exampleMeaning": "因為很冷，我蓋著毛毯睡覺。"
+      },
+      "verification": {
+        "confidence": "high",
+        "summary": "Weblio：毛布讀もうふ，名詞。Jisho：blanket；讀音與主要義一致。"
+      }
+    },
+    {
+      "sequence": 62,
+      "decision": "approve-add",
+      "originalCandidate": "要点",
+      "sourceReferences": {
+        "sourceModules": [
+          "grammar"
+        ],
+        "sourceIds": [
+          "n4-grammar-287"
+        ],
+        "occurrenceCount": 1
+      },
+      "proposedEntry": {
+        "id": 3241,
+        "level": "N4",
+        "word": "要点",
+        "kana": "ようてん",
+        "meaning": "重點；要點",
+        "partOfSpeech": "名詞",
+        "example": "先生の話の要点をノートに書きました。",
+        "exampleKana": "せんせいのはなしのようてんをのーとにかきました。",
+        "exampleMeaning": "我把老師談話的重點寫在筆記本上。"
+      },
+      "verification": {
+        "confidence": "medium",
+        "summary": "Weblio：要点讀ようてん，重點。Jisho：main point/gist；讀音與主要義一致。"
+      }
+    }
+  ]
+}
