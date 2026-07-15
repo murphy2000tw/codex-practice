@@ -6,6 +6,177 @@ const GRAMMAR_URL = window.JAPANESE_GRAMMAR_URL || "grammar.json";
 const JAPANESE_VOCAB_SEEN_COUNTS_KEY = "japanese_vocab_seen_counts";
 const JAPANESE_GRAMMAR_SEEN_COUNTS_KEY = "japanese_grammar_seen_counts";
 
+const JAPANESE_VOCABULARY_BOOK_KEY = "japanese_vocabulary_book_v1";
+const JAPANESE_VOCABULARY_BOOK_SCHEMA_VERSION = 1;
+const JAPANESE_VOCABULARY_BOOK_SOURCES = Object.freeze(["vocabulary-card", "reading-lookup"]);
+let japaneseVocabularyBookMemoryRaw = null;
+let japaneseVocabularyBookStorageFallback = false;
+
+function createEmptyJapaneseVocabularyBook() {
+  return { schemaVersion: JAPANESE_VOCABULARY_BOOK_SCHEMA_VERSION, itemsById: {} };
+}
+
+function normalizeJapaneseVocabularyBookId(id) {
+  return String(id ?? "").trim();
+}
+
+function isAllowedJapaneseVocabularyBookSource(source) {
+  return JAPANESE_VOCABULARY_BOOK_SOURCES.includes(source);
+}
+
+function normalizeJapaneseVocabularyBookData(data) {
+  if (!data || typeof data !== "object" || Array.isArray(data)) return createEmptyJapaneseVocabularyBook();
+  if (data.schemaVersion !== JAPANESE_VOCABULARY_BOOK_SCHEMA_VERSION) return createEmptyJapaneseVocabularyBook();
+  if (!data.itemsById || typeof data.itemsById !== "object" || Array.isArray(data.itemsById)) return createEmptyJapaneseVocabularyBook();
+
+  const normalized = createEmptyJapaneseVocabularyBook();
+  Object.entries(data.itemsById).forEach(([key, item]) => {
+    if (!item || typeof item !== "object" || Array.isArray(item)) return;
+    const vocabularyId = normalizeJapaneseVocabularyBookId(item.vocabularyId ?? key);
+    if (!vocabularyId || vocabularyId !== normalizeJapaneseVocabularyBookId(key)) return;
+    if (!isAllowedJapaneseVocabularyBookSource(item.source)) return;
+    const createdAt = String(item.createdAt ?? "");
+    const updatedAt = String(item.updatedAt ?? "");
+    if (!createdAt || Number.isNaN(Date.parse(createdAt)) || !updatedAt || Number.isNaN(Date.parse(updatedAt))) return;
+    normalized.itemsById[vocabularyId] = { vocabularyId, source: item.source, createdAt, updatedAt };
+  });
+  return normalized;
+}
+
+function readJapaneseVocabularyBookRaw() {
+  if (japaneseVocabularyBookStorageFallback) return japaneseVocabularyBookMemoryRaw;
+  try {
+    return window.localStorage?.getItem(JAPANESE_VOCABULARY_BOOK_KEY) ?? null;
+  } catch (error) {
+    japaneseVocabularyBookStorageFallback = true;
+    return japaneseVocabularyBookMemoryRaw;
+  }
+}
+
+function writeJapaneseVocabularyBookRaw(rawData) {
+  if (japaneseVocabularyBookStorageFallback) {
+    japaneseVocabularyBookMemoryRaw = rawData;
+    return;
+  }
+  try {
+    window.localStorage?.setItem(JAPANESE_VOCABULARY_BOOK_KEY, rawData);
+  } catch (error) {
+    japaneseVocabularyBookStorageFallback = true;
+    japaneseVocabularyBookMemoryRaw = rawData;
+  }
+}
+
+function readJapaneseVocabularyBook() {
+  try {
+    const rawData = readJapaneseVocabularyBookRaw();
+    return rawData ? normalizeJapaneseVocabularyBookData(JSON.parse(rawData)) : createEmptyJapaneseVocabularyBook();
+  } catch (error) {
+    return createEmptyJapaneseVocabularyBook();
+  }
+}
+
+function writeJapaneseVocabularyBook(book) {
+  const normalized = normalizeJapaneseVocabularyBookData(book);
+  writeJapaneseVocabularyBookRaw(JSON.stringify(normalized));
+  return normalized;
+}
+
+function isJapaneseVocabularySaved(id) {
+  const vocabularyId = normalizeJapaneseVocabularyBookId(id);
+  if (!vocabularyId) return false;
+  return Boolean(readJapaneseVocabularyBook().itemsById[vocabularyId]);
+}
+
+function addJapaneseVocabularyToBook(id, source, now = new Date()) {
+  const vocabularyId = normalizeJapaneseVocabularyBookId(id);
+  if (!vocabularyId || !isAllowedJapaneseVocabularyBookSource(source)) return readJapaneseVocabularyBook();
+  const book = readJapaneseVocabularyBook();
+  const timestamp = now.toISOString();
+  const existing = book.itemsById[vocabularyId];
+  book.itemsById[vocabularyId] = {
+    vocabularyId,
+    source,
+    createdAt: existing?.createdAt || timestamp,
+    updatedAt: timestamp,
+  };
+  return writeJapaneseVocabularyBook(book);
+}
+
+function removeJapaneseVocabularyFromBook(id) {
+  const vocabularyId = normalizeJapaneseVocabularyBookId(id);
+  const book = readJapaneseVocabularyBook();
+  if (vocabularyId) delete book.itemsById[vocabularyId];
+  return writeJapaneseVocabularyBook(book);
+}
+
+function clearJapaneseVocabularyBook() {
+  return writeJapaneseVocabularyBook(createEmptyJapaneseVocabularyBook());
+}
+
+function resolveJapaneseVocabularyBookItems(currentVocabulary = vocabulary) {
+  const byId = new Map((Array.isArray(currentVocabulary) ? currentVocabulary : []).map((entry) => [normalizeJapaneseVocabularyBookId(entry?.id), entry]));
+  return Object.values(readJapaneseVocabularyBook().itemsById).map((item) => {
+    const entry = byId.get(item.vocabularyId);
+    return entry
+      ? { ...item, status: "available", entry }
+      : { ...item, status: "missing", entry: null };
+  });
+}
+
+function getJapaneseVocabularyBookStorageNotice() {
+  return japaneseVocabularyBookStorageFallback ? "此瀏覽器無法永久保存，資料只保留到關閉頁面" : "";
+}
+
+function syncJapaneseVocabularyBookButtons(vocabularyId, message = "") {
+  const normalizedId = normalizeJapaneseVocabularyBookId(vocabularyId);
+  const saved = isJapaneseVocabularySaved(normalizedId);
+  document.querySelectorAll(`[data-vocabulary-book-id="${CSS.escape(normalizedId)}"]`).forEach((button) => {
+    button.textContent = saved ? "移出生字本" : "加入生字本";
+    button.setAttribute("aria-pressed", saved ? "true" : "false");
+    const status = button.parentElement?.querySelector(".vocabulary-book-status");
+    if (status) status.textContent = [message, getJapaneseVocabularyBookStorageNotice()].filter(Boolean).join(" ");
+  });
+}
+
+function createJapaneseVocabularyBookControl(vocabularyId, source) {
+  const normalizedId = normalizeJapaneseVocabularyBookId(vocabularyId);
+  const wrapper = document.createElement("div");
+  wrapper.className = "vocabulary-book-control";
+  const button = document.createElement("button");
+  button.className = "secondary-button vocabulary-book-button";
+  button.type = "button";
+  button.dataset.vocabularyBookId = normalizedId;
+  button.dataset.vocabularyBookSource = source;
+  const status = document.createElement("p");
+  status.className = "vocabulary-book-status";
+  status.setAttribute("aria-live", "polite");
+  button.addEventListener("click", () => {
+    const wasSaved = isJapaneseVocabularySaved(normalizedId);
+    if (wasSaved) removeJapaneseVocabularyFromBook(normalizedId);
+    else addJapaneseVocabularyToBook(normalizedId, source);
+    syncJapaneseVocabularyBookButtons(normalizedId, wasSaved ? "已從生字本移除" : "已加入生字本");
+  });
+  const saved = isJapaneseVocabularySaved(normalizedId);
+  button.textContent = saved ? "移出生字本" : "加入生字本";
+  button.setAttribute("aria-pressed", saved ? "true" : "false");
+  status.textContent = getJapaneseVocabularyBookStorageNotice();
+  wrapper.append(button, status);
+  return wrapper;
+}
+
+Object.assign(window, {
+  JAPANESE_VOCABULARY_BOOK_KEY,
+  createEmptyJapaneseVocabularyBook,
+  normalizeJapaneseVocabularyBookData,
+  readJapaneseVocabularyBook,
+  writeJapaneseVocabularyBook,
+  isJapaneseVocabularySaved,
+  addJapaneseVocabularyToBook,
+  removeJapaneseVocabularyFromBook,
+  resolveJapaneseVocabularyBookItems,
+  clearJapaneseVocabularyBook,
+});
+
 function readSeenCounts(storageKey) {
   try {
     const rawCounts = window.localStorage?.getItem(storageKey);
@@ -694,6 +865,9 @@ function createCard(word, index) {
       ${createDetailRow("中文翻譯", word.exampleMeaning)}
     </div>
   `;
+
+  const vocabularyBookControl = createJapaneseVocabularyBookControl(word.id, "vocabulary-card");
+  card.appendChild(vocabularyBookControl);
 
   return card;
 }
@@ -2020,7 +2194,8 @@ function showReadingLookupCard(card, lookup) {
   close.textContent = "關閉";
   close.addEventListener("click", clearReadingLookupCard);
 
-  lookupCard.append(heading, list, close);
+  const vocabularyBookControl = createJapaneseVocabularyBookControl(entry.id, "reading-lookup");
+  lookupCard.append(heading, list, vocabularyBookControl, close);
   const passage = card.querySelector(".reading-passage");
   if (passage?.nextSibling) card.insertBefore(lookupCard, passage.nextSibling);
   else card.appendChild(lookupCard);
