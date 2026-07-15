@@ -27,7 +27,13 @@ function loadHarness({ brokenStorage = false, initial = new Map() } = {}) {
       parentElement: null,
       children: [],
       hidden: false,
-      classList: { add() {}, remove() {}, toggle() {}, contains() { return false; } },
+      classList: {
+        values: new Set(),
+        add(...names) { names.forEach((name) => this.values.add(name)); },
+        remove(...names) { names.forEach((name) => this.values.delete(name)); },
+        toggle(name, force) { const shouldAdd = force === undefined ? !this.values.has(name) : Boolean(force); if (shouldAdd) this.values.add(name); else this.values.delete(name); return shouldAdd; },
+        contains(name) { return this.values.has(name); },
+      },
       setAttribute(name, value) { this[name] = String(value); },
       removeAttribute(name) { delete this[name]; },
       append(...nodes) { nodes.forEach((node) => { if (node) node.parentElement = this; this.children.push(node); }); },
@@ -40,11 +46,19 @@ function loadHarness({ brokenStorage = false, initial = new Map() } = {}) {
       remove() {},
     };
   }
+  const elementsById = new Map();
   const document = {
+    body: makeElement('body'),
     querySelector: () => makeElement(),
     querySelectorAll: () => [],
+    getElementById(id) { return elementsById.get(id) || null; },
     createElement(tag) {
-      return makeElement(tag);
+      const element = makeElement(tag);
+      Object.defineProperty(element, 'id', {
+        get() { return this._id || ''; },
+        set(value) { this._id = String(value); elementsById.set(this._id, this); },
+      });
+      return element;
     },
   };
   const localStorage = {
@@ -68,7 +82,7 @@ function loadHarness({ brokenStorage = false, initial = new Map() } = {}) {
   context.vocabulary = vocabulary;
   vm.createContext(context);
   vm.runInContext(script, context, { filename: SCRIPT_PATH });
-  return { context, store, listeners };
+  return { context, store, listeners, document };
 }
 
 function checkStorageUtilities() {
@@ -130,20 +144,47 @@ function checkFallbackAndSeenKeys() {
   assert(seen.get('japanese_reading_seen_counts') === '{"c":3}', 'reading seen-count key must not be modified');
 }
 
+function checkButtonAndToastFeedback() {
+  const { context, document } = loadHarness();
+  const api = context.window;
+  const control = context.createJapaneseVocabularyBookControl('toast-1', 'vocabulary-card');
+  const button = control.children[0];
+  assert(button.textContent === '生字本', 'unsaved vocabulary-card button text must be 生字本');
+  assert(button['aria-pressed'] === 'false', 'unsaved button aria-pressed must be false');
+  assert(button['aria-label'] === '加入生字本', 'unsaved button aria-label must be 加入生字本');
+
+  api.addJapaneseVocabularyToBook('toast-1', 'vocabulary-card', new Date('2026-01-01T00:00:00.000Z'));
+  context.updateJapaneseVocabularyBookButtonState(button, true);
+  assert(button.textContent === '移除', 'saved vocabulary-card button text must be 移除');
+  assert(button['aria-pressed'] === 'true', 'saved button aria-pressed must be true');
+  assert(button['aria-label'] === '移出生字本', 'saved button aria-label must be 移出生字本');
+
+  context.showJapaneseVocabularyBookToast('已加入生字本');
+  const toast = document.getElementById('japaneseVocabularyBookToast');
+  assert(toast, 'visible feedback toast must be created');
+  assert(toast.textContent === '已加入生字本', 'add toast text mismatch');
+  assert(toast.role === 'status', 'toast role must be status');
+  assert(toast['aria-live'] === 'polite', 'toast aria-live must be polite');
+  assert(document.body.children.filter((node) => node.id === 'japaneseVocabularyBookToast').length === 1, 'toast must be a singleton DOM element');
+  context.showJapaneseVocabularyBookToast('已從生字本移除');
+  assert(document.getElementById('japaneseVocabularyBookToast') === toast, 'repeated feedback must reuse the same toast element');
+  assert(toast.textContent === '已從生字本移除', 'remove toast text mismatch');
+}
+
 function checkIntegrationBoundaries() {
   assert(/function createCard\(word, index\)[\s\S]*createJapaneseVocabularyBookControl\(word\.id, "vocabulary-card"\)/.test(script), 'vocabulary-card control must be in createCard using word.id');
   assert(/<div class="vocabulary-card-header">[\s\S]*<span class="card-number">單字/.test(script), 'vocabulary card number must be inside the top header container');
   assert(/card\.querySelector\("\.vocabulary-card-header"\)\?\.appendChild\(vocabularyBookControl\)/.test(script), 'vocabulary-card control must be appended beside the number in the top header');
   assert(!/card\.appendChild\(vocabularyBookControl\)/.test(script), 'vocabulary card must not append a full-width vocabulary book control below the card body');
-  assert(/button\.textContent = button\.dataset\.vocabularyBookSource === "vocabulary-card"[\s\S]*\? "生字本"/.test(script), 'vocabulary-card button text must stay fixed as 生字本');
+  assert(/button\.textContent = saved \? "移除" : "生字本"/.test(script), 'vocabulary book button text must switch between 生字本 and 移除');
   assert(/button\.setAttribute\("aria-pressed", saved \? "true" : "false"\)/.test(script), 'vocabulary book buttons must keep aria-pressed in sync');
   assert(/button\.setAttribute\("aria-label", saved \? "移出生字本" : "加入生字本"\)/.test(script), 'vocabulary book buttons must expose dynamic aria-label');
   assert(/\.vocabulary-card-header\s*{[\s\S]*display:\s*flex;[\s\S]*align-items:\s*center;[\s\S]*gap:\s*8px;/.test(style), 'vocabulary card header must use left-aligned flex layout with 8px gap');
   assert(!/\.vocabulary-card-header\s*{[^}]*justify-content:\s*space-between/.test(style), 'vocabulary card header must not use space-between');
-  assert(/\.vocabulary-card-book-control \.vocabulary-book-button\s*{[\s\S]*width:\s*auto;[\s\S]*font-size:\s*0\.85rem;/.test(style), 'vocabulary card book button must remain compact and not full width');
+  assert(/\.vocabulary-card-book-control \.vocabulary-book-button\s*{[\s\S]*width:\s*4\.25rem;[\s\S]*min-width:\s*4\.25rem;[\s\S]*font-size:\s*0\.85rem;/.test(style), 'vocabulary card book button must remain compact with stable width');
   assert(/\.vocabulary-book-control:not\(\.vocabulary-card-book-control\) \.vocabulary-book-button/.test(style), 'mobile full-width rule must not apply to vocabulary-card book button');
   assert(/function showReadingLookupCard\(card, lookup\)[\s\S]*createJapaneseVocabularyBookControl\(entry\.id, "reading-lookup"\)/.test(script), 'reading lookup control must use canonical lookup.entry.id');
-  assert(/: \(saved \? "移出生字本" : "加入生字本"\)/.test(script), 'reading lookup button must keep existing dynamic visible text');
+  assert(!/button\.textContent[^{;]*移出生字本/.test(script), 'visible button text must not use long add/remove labels');
   const allControlCalls = [...script.matchAll(/createJapaneseVocabularyBookControl\(/g)].length;
   assert(allControlCalls === 3, 'vocabulary book control should only be defined plus used by two approved flows');
   assert(!/japanese_mistake_book_v1/.test(script + style + japaneseIndex), 'must not add mistake-book key');
@@ -157,8 +198,12 @@ function checkIntegrationBoundaries() {
   assert(!/data-japanese-entry="listening"[\s\S]{0,250}生字本/.test(japaneseIndex), 'listening page must not expose vocabulary book entry');
   assert(/<meta name="japanese-layout-version" content="2\.3">/.test(japaneseIndex), 'japanese-layout-version meta must remain 2.3');
   assert(/<body data-japanese-layout-version="2\.3">/.test(japaneseIndex), 'japanese-layout-version body marker must remain 2.3');
-  assert(/\.\.\/style\.css\?v=2\.5/.test(japaneseIndex), 'style cache query must update to v=2.5');
-  assert(/\.\.\/script\.js\?v=2\.5/.test(japaneseIndex), 'script cache query must update to v=2.5');
+  assert(/\.\.\/style\.css\?v=2\.6/.test(japaneseIndex), 'style cache query must update to v=2.6');
+  assert(/\.\.\/script\.js\?v=2\.6/.test(japaneseIndex), 'script cache query must update to v=2.6');
+  assert(/function getJapaneseVocabularyBookToast\(\)[\s\S]*getElementById\?\.\("japaneseVocabularyBookToast"\)[\s\S]*document\.body\?\.appendChild\(toast\)/.test(script), 'toast must be created once and appended without moving card layout');
+  assert(/function showJapaneseVocabularyBookToast\(message\)[\s\S]*toast\.textContent = message[\s\S]*setTimeout\([\s\S]*1800/.test(script), 'toast must use textContent and disappear automatically');
+  assert(!/vocabulary-book-toast[\s\S]{0,500}innerHTML/.test(script), 'toast must not use innerHTML');
+  assert(/\.vocabulary-book-toast\s*{[\s\S]*position:\s*fixed;[\s\S]*bottom:\s*calc\(1rem \+ env\(safe-area-inset-bottom, 0px\)\)/.test(style), 'toast must be fixed near the safe-area-aware bottom center');
 }
 
 function checkVocabularyBaseline() {
@@ -188,6 +233,7 @@ function checkVocabularyBaseline() {
 
 checkStorageUtilities();
 checkFallbackAndSeenKeys();
+checkButtonAndToastFeedback();
 checkIntegrationBoundaries();
 checkVocabularyBaseline();
 console.log('Batch 15A-2A Japanese vocabulary book checks passed.');
