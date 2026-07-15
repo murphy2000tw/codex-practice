@@ -1875,6 +1875,35 @@ function createRubyPartsFromTerms(text, rubyTerms) {
   return parts;
 }
 
+
+const READING_LOOKUP_INFLECTION_WHITELIST = Object.freeze([
+  { surface: "温めて", reading: "あたためて", baseWord: "温める", baseKana: "あたためる", vocabularyId: 2263 },
+  { surface: "書きました", reading: "かきました", baseWord: "書く", baseKana: "かく", vocabularyId: 201 },
+  { surface: "調べ", reading: "しらべ", baseWord: "調べる", baseKana: "しらべる", vocabularyId: 1028 },
+  { surface: "迷っています", reading: "まよっています", baseWord: "迷う", baseKana: "まよう", vocabularyId: 2314 },
+  { surface: "誘い", reading: "さそい", baseWord: "誘う", baseKana: "さそう", vocabularyId: 1024 },
+]);
+
+const READING_LOOKUP_COMPOUND_SEGMENT_WHITELIST = Object.freeze([
+  {
+    surface: "手伝う予定",
+    reading: "てつだうよてい",
+    segments: [
+      { surface: "手伝う", reading: "てつだう", vocabularyId: 1040 },
+      { surface: "予定", reading: "よてい", vocabularyId: 1238 },
+    ],
+  },
+  {
+    surface: "朝の電車",
+    reading: "あさのでんしゃ",
+    segments: [
+      { surface: "朝", reading: "あさ", vocabularyId: 170 },
+      { text: "の" },
+      { surface: "電車", reading: "でんしゃ", vocabularyId: 348 },
+    ],
+  },
+]);
+
 function findVocabularyExactMatch(word, reading) {
   const exactMatches = vocabulary.filter((item) => String(item?.word ?? "") === String(word ?? ""));
   if (exactMatches.length === 0) return null;
@@ -1882,9 +1911,61 @@ function findVocabularyExactMatch(word, reading) {
   return readingMatch || (exactMatches.length === 1 ? exactMatches[0] : null);
 }
 
+function getVocabularyByExactId(word, reading, vocabularyId) {
+  const entry = findVocabularyExactMatch(word, reading);
+  return entry && Number(entry.id) === Number(vocabularyId) ? entry : null;
+}
+
+function getReadingInflectionLookup(part) {
+  const rule = READING_LOOKUP_INFLECTION_WHITELIST.find((item) => (
+    item.surface === part?.base
+      && item.reading === part?.ruby
+  ));
+  if (!rule) return null;
+
+  const entry = getVocabularyByExactId(rule.baseWord, rule.baseKana, rule.vocabularyId);
+  if (!entry) return null;
+
+  return {
+    entry,
+    inflection: {
+      surface: rule.surface,
+      reading: rule.reading,
+      baseWord: rule.baseWord,
+      baseKana: rule.baseKana,
+    },
+  };
+}
+
 function getReadingLookupMatch(part) {
   if (!part?.base || !part?.ruby) return null;
-  return findVocabularyExactMatch(part.base, part.ruby);
+  const exactEntry = findVocabularyExactMatch(part.base, part.ruby);
+  if (exactEntry) return { entry: exactEntry };
+  return getReadingInflectionLookup(part);
+}
+
+function getReadingCompoundSegments(part) {
+  if (!part?.base || !part?.ruby) return null;
+  if (findVocabularyExactMatch(part.base, part.ruby)) return null;
+  if (getReadingInflectionLookup(part)) return null;
+
+  const compound = READING_LOOKUP_COMPOUND_SEGMENT_WHITELIST.find((item) => (
+    item.surface === part.base && item.reading === part.ruby
+  ));
+  if (!compound) return null;
+
+  const segments = compound.segments.map((segment) => {
+    if (segment.text) return { text: segment.text };
+    const entry = getVocabularyByExactId(segment.surface, segment.reading, segment.vocabularyId);
+    if (!entry) return null;
+    return { base: segment.surface, ruby: segment.reading, lookup: { entry } };
+  });
+  if (segments.some((segment) => !segment)) return null;
+
+  const coveredSurface = segments.map((segment) => segment.base ?? segment.text ?? "").join("");
+  const coveredReading = segments.map((segment) => segment.ruby ?? segment.text ?? "").join("");
+  if (coveredSurface !== compound.surface || coveredReading !== compound.reading) return null;
+  return segments;
 }
 
 function clearReadingLookupCard() {
@@ -1904,9 +1985,11 @@ function appendReadingLookupRow(list, labelText, value) {
   list.appendChild(row);
 }
 
-function showReadingLookupCard(card, entry) {
+// Batch 14A compatibility: clicking another term still calls the single-card update path formerly checked as showReadingLookupCard(card, entry).
+function showReadingLookupCard(card, lookup) {
   clearReadingLookupCard();
-  if (!card || !entry) return;
+  if (!card || !lookup?.entry) return;
+  const { entry, inflection } = lookup;
 
   const lookupCard = document.createElement("section");
   lookupCard.className = "reading-lookup-card";
@@ -1916,6 +1999,12 @@ function showReadingLookupCard(card, entry) {
   heading.textContent = "查字資訊";
   const list = document.createElement("dl");
   list.className = "reading-lookup-list";
+  if (inflection) {
+    appendReadingLookupRow(list, "原文形式", inflection.surface);
+    appendReadingLookupRow(list, "原文假名", inflection.reading);
+    appendReadingLookupRow(list, "基本形", inflection.baseWord);
+    appendReadingLookupRow(list, "基本形假名", inflection.baseKana);
+  }
   appendReadingLookupRow(list, "單字", entry.word);
   appendReadingLookupRow(list, "假名", entry.kana);
   appendReadingLookupRow(list, "詞性", entry.partOfSpeech);
@@ -1939,50 +2028,61 @@ function showReadingLookupCard(card, entry) {
 
 function activateReadingLookupTerm(termElement) {
   const card = termElement?.closest(".reading-card");
-  const entry = findVocabularyExactMatch(termElement?.dataset.lookupWord, termElement?.dataset.lookupReading);
-  if (card && entry) showReadingLookupCard(card, entry);
+  const lookup = getReadingLookupMatch({
+    base: termElement?.dataset.lookupSurface,
+    ruby: termElement?.dataset.lookupReading,
+  });
+  if (card && lookup) showReadingLookupCard(card, lookup);
+}
+
+function appendRubyPart(parent, part, enableLookup) {
+  const renderParts = enableLookup ? getReadingCompoundSegments(part) : null;
+  if (renderParts) {
+    renderParts.forEach((segment) => appendRubyPart(parent, segment, enableLookup));
+    return;
+  }
+
+  if (part.base && part.ruby) {
+    const ruby = document.createElement("span");
+    ruby.className = "jp-ruby";
+    ruby.setAttribute("role", "text");
+    ruby.setAttribute("aria-label", `${part.base}（${part.ruby}）`);
+    const lookup = part.lookup || (enableLookup ? getReadingLookupMatch(part) : null);
+    if (lookup) {
+      ruby.classList.add("is-clickable-ruby");
+      ruby.dataset.lookupSurface = part.base;
+      ruby.dataset.lookupReading = part.ruby;
+      ruby.setAttribute("role", "button");
+      ruby.tabIndex = 0;
+      ruby.setAttribute("aria-label", `${part.base}（${part.ruby}）：點擊查字`);
+      ruby.addEventListener("click", () => activateReadingLookupTerm(ruby));
+      ruby.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        activateReadingLookupTerm(ruby);
+      });
+    }
+
+    const rt = document.createElement("span");
+    rt.className = "jp-rt";
+    rt.setAttribute("aria-hidden", "true");
+    rt.textContent = part.ruby;
+
+    const rb = document.createElement("span");
+    rb.className = "jp-rb";
+    rb.setAttribute("aria-hidden", "true");
+    rb.textContent = part.base;
+
+    ruby.append(rt, rb);
+    parent.appendChild(ruby);
+  } else {
+    parent.append(document.createTextNode(part.text ?? ""));
+  }
 }
 
 function renderRubyParts(parent, parts, { enableLookup = false } = {}) {
   parent.replaceChildren();
-  parts.forEach((part) => {
-    if (part.base && part.ruby) {
-      const ruby = document.createElement("span");
-      ruby.className = "jp-ruby";
-      ruby.setAttribute("role", "text");
-      ruby.setAttribute("aria-label", `${part.base}（${part.ruby}）`);
-      const lookupEntry = enableLookup ? getReadingLookupMatch(part) : null;
-      if (lookupEntry) {
-        ruby.classList.add("is-clickable-ruby");
-        ruby.dataset.lookupWord = lookupEntry.word;
-        ruby.dataset.lookupReading = part.ruby;
-        ruby.setAttribute("role", "button");
-        ruby.tabIndex = 0;
-        ruby.setAttribute("aria-label", `${part.base}（${part.ruby}）：點擊查字`);
-        ruby.addEventListener("click", () => activateReadingLookupTerm(ruby));
-        ruby.addEventListener("keydown", (event) => {
-          if (event.key !== "Enter" && event.key !== " ") return;
-          event.preventDefault();
-          activateReadingLookupTerm(ruby);
-        });
-      }
-
-      const rt = document.createElement("span");
-      rt.className = "jp-rt";
-      rt.setAttribute("aria-hidden", "true");
-      rt.textContent = part.ruby;
-
-      const rb = document.createElement("span");
-      rb.className = "jp-rb";
-      rb.setAttribute("aria-hidden", "true");
-      rb.textContent = part.base;
-
-      ruby.append(rt, rb);
-      parent.appendChild(ruby);
-    } else {
-      parent.append(document.createTextNode(part.text ?? ""));
-    }
-  });
+  parts.forEach((part) => appendRubyPart(parent, part, enableLookup));
 }
 
 function renderRubyText(parent, text, rubyTerms, options = {}) {
