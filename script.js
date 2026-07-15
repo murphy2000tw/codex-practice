@@ -127,12 +127,19 @@ function getJapaneseVocabularyBookStorageNotice() {
   return japaneseVocabularyBookStorageFallback ? "此瀏覽器無法永久保存，資料只保留到關閉頁面" : "";
 }
 
+function updateJapaneseVocabularyBookButtonState(button, saved) {
+  button.textContent = button.dataset.vocabularyBookSource === "vocabulary-card"
+    ? "生字本"
+    : (saved ? "移出生字本" : "加入生字本");
+  button.setAttribute("aria-pressed", saved ? "true" : "false");
+  button.setAttribute("aria-label", saved ? "移出生字本" : "加入生字本");
+}
+
 function syncJapaneseVocabularyBookButtons(vocabularyId, message = "") {
   const normalizedId = normalizeJapaneseVocabularyBookId(vocabularyId);
   const saved = isJapaneseVocabularySaved(normalizedId);
   document.querySelectorAll(`[data-vocabulary-book-id="${CSS.escape(normalizedId)}"]`).forEach((button) => {
-    button.textContent = saved ? "移出生字本" : "加入生字本";
-    button.setAttribute("aria-pressed", saved ? "true" : "false");
+    updateJapaneseVocabularyBookButtonState(button, saved);
     const status = button.parentElement?.querySelector(".vocabulary-book-status");
     if (status) status.textContent = [message, getJapaneseVocabularyBookStorageNotice()].filter(Boolean).join(" ");
   });
@@ -141,7 +148,7 @@ function syncJapaneseVocabularyBookButtons(vocabularyId, message = "") {
 function createJapaneseVocabularyBookControl(vocabularyId, source) {
   const normalizedId = normalizeJapaneseVocabularyBookId(vocabularyId);
   const wrapper = document.createElement("div");
-  wrapper.className = "vocabulary-book-control";
+  wrapper.className = `vocabulary-book-control${source === "vocabulary-card" ? " vocabulary-card-book-control" : ""}`;
   const button = document.createElement("button");
   button.className = "secondary-button vocabulary-book-button";
   button.type = "button";
@@ -157,8 +164,7 @@ function createJapaneseVocabularyBookControl(vocabularyId, source) {
     syncJapaneseVocabularyBookButtons(normalizedId, wasSaved ? "已從生字本移除" : "已加入生字本");
   });
   const saved = isJapaneseVocabularySaved(normalizedId);
-  button.textContent = saved ? "移出生字本" : "加入生字本";
-  button.setAttribute("aria-pressed", saved ? "true" : "false");
+  updateJapaneseVocabularyBookButtonState(button, saved);
   status.textContent = getJapaneseVocabularyBookStorageNotice();
   wrapper.append(button, status);
   return wrapper;
@@ -852,7 +858,9 @@ function createCard(word, index) {
 
   card.innerHTML = `
     <div>
-      <span class="card-number">單字 ${index + 1}</span>
+      <div class="vocabulary-card-header">
+        <span class="card-number">單字 ${index + 1}</span>
+      </div>
       <h2 class="japanese-word">${word.word}</h2>
       <p class="kana">${word.kana}</p>
     </div>
@@ -867,7 +875,7 @@ function createCard(word, index) {
   `;
 
   const vocabularyBookControl = createJapaneseVocabularyBookControl(word.id, "vocabulary-card");
-  card.appendChild(vocabularyBookControl);
+  card.querySelector(".vocabulary-card-header")?.appendChild(vocabularyBookControl);
 
   return card;
 }
