@@ -2598,3 +2598,84 @@ h1 {
     width: 100%;
   }
 }
+
+.is-clickable-ruby {
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: underline dotted rgba(220, 107, 79, 0.55) 2px;
+  text-underline-offset: 0.18em;
+  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.is-clickable-ruby:hover,
+.is-clickable-ruby:focus-visible {
+  color: var(--accent-dark);
+  background: rgba(220, 107, 79, 0.1);
+  box-shadow: 0 0 0 4px rgba(220, 107, 79, 0.08);
+  outline: none;
+}
+
+.reading-lookup-card {
+  display: grid;
+  gap: 14px;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid rgba(220, 107, 79, 0.28);
+  border-radius: 22px;
+  padding: 18px;
+  background: #fff8f5;
+  box-shadow: 0 12px 28px rgba(67, 52, 40, 0.1);
+  overflow-wrap: anywhere;
+}
+
+.reading-lookup-card h3,
+.reading-lookup-list,
+.reading-lookup-row dd {
+  margin: 0;
+}
+
+.reading-lookup-card h3 {
+  color: var(--accent-dark);
+  font-size: 1.15rem;
+}
+
+.reading-lookup-list {
+  display: grid;
+  gap: 10px;
+}
+
+.reading-lookup-row {
+  display: grid;
+  grid-template-columns: minmax(5.5rem, max-content) minmax(0, 1fr);
+  gap: 10px 14px;
+  align-items: baseline;
+  line-height: 1.7;
+}
+
+.reading-lookup-row dt {
+  color: var(--accent-dark);
+  font-weight: 900;
+}
+
+.reading-lookup-row dd {
+  min-width: 0;
+  color: var(--text);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.reading-lookup-close {
+  justify-self: start;
+}
+
+@media (max-width: 640px) {
+  .reading-lookup-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .reading-lookup-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
