@@ -127,10 +127,38 @@ function getJapaneseVocabularyBookStorageNotice() {
   return japaneseVocabularyBookStorageFallback ? "此瀏覽器無法永久保存，資料只保留到關閉頁面" : "";
 }
 
+let japaneseVocabularyBookToastTimer = null;
+
+function getJapaneseVocabularyBookToast() {
+  let toast = document.getElementById?.("japaneseVocabularyBookToast");
+  if (toast) return toast;
+  toast = document.createElement("div");
+  toast.id = "japaneseVocabularyBookToast";
+  toast.className = "vocabulary-book-toast";
+  toast.setAttribute("role", "status");
+  toast.setAttribute("aria-live", "polite");
+  toast.hidden = true;
+  document.body?.appendChild(toast);
+  return toast;
+}
+
+function showJapaneseVocabularyBookToast(message) {
+  if (!message) return;
+  const toast = getJapaneseVocabularyBookToast();
+  if (!toast) return;
+  toast.textContent = message;
+  toast.hidden = false;
+  toast.classList.add("is-visible");
+  clearTimeout(japaneseVocabularyBookToastTimer);
+  japaneseVocabularyBookToastTimer = setTimeout(() => {
+    toast.classList.remove("is-visible");
+    toast.hidden = true;
+    toast.textContent = "";
+  }, 1800);
+}
+
 function updateJapaneseVocabularyBookButtonState(button, saved) {
-  button.textContent = button.dataset.vocabularyBookSource === "vocabulary-card"
-    ? "生字本"
-    : (saved ? "移出生字本" : "加入生字本");
+  button.textContent = saved ? "移除" : "生字本";
   button.setAttribute("aria-pressed", saved ? "true" : "false");
   button.setAttribute("aria-label", saved ? "移出生字本" : "加入生字本");
 }
@@ -143,6 +171,7 @@ function syncJapaneseVocabularyBookButtons(vocabularyId, message = "") {
     const status = button.parentElement?.querySelector(".vocabulary-book-status");
     if (status) status.textContent = [message, getJapaneseVocabularyBookStorageNotice()].filter(Boolean).join(" ");
   });
+  showJapaneseVocabularyBookToast(message);
 }
 
 function createJapaneseVocabularyBookControl(vocabularyId, source) {
