@@ -1725,6 +1725,7 @@ function setReadingContentNodes(...nodes) {
 }
 
 function renderJapaneseReadingMenu() {
+  clearReadingLookupCard();
   if (japaneseReadingMenuView) japaneseReadingMenuView.hidden = currentJapaneseView !== "reading";
   if (readingContent) {
     readingContent.hidden = true;
@@ -1745,6 +1746,7 @@ function renderJapaneseReadingQuiz() {
 }
 
 function renderJapaneseReadingView(view = japaneseReadingView) {
+  clearReadingLookupCard();
   japaneseReadingView = normalizeJapaneseReadingView(view);
   updateReadingHeader();
 
@@ -1873,7 +1875,75 @@ function createRubyPartsFromTerms(text, rubyTerms) {
   return parts;
 }
 
-function renderRubyParts(parent, parts) {
+function findVocabularyExactMatch(word, reading) {
+  const exactMatches = vocabulary.filter((item) => String(item?.word ?? "") === String(word ?? ""));
+  if (exactMatches.length === 0) return null;
+  const readingMatch = exactMatches.find((item) => String(item?.kana ?? "") === String(reading ?? ""));
+  return readingMatch || (exactMatches.length === 1 ? exactMatches[0] : null);
+}
+
+function getReadingLookupMatch(part) {
+  if (!part?.base || !part?.ruby) return null;
+  return findVocabularyExactMatch(part.base, part.ruby);
+}
+
+function clearReadingLookupCard() {
+  document.querySelectorAll(".reading-lookup-card").forEach((card) => card.remove());
+}
+
+function appendReadingLookupRow(list, labelText, value) {
+  const text = String(value ?? "").trim();
+  if (!text) return;
+  const row = document.createElement("div");
+  row.className = "reading-lookup-row";
+  const label = document.createElement("dt");
+  label.textContent = labelText;
+  const description = document.createElement("dd");
+  description.textContent = text;
+  row.append(label, description);
+  list.appendChild(row);
+}
+
+function showReadingLookupCard(card, entry) {
+  clearReadingLookupCard();
+  if (!card || !entry) return;
+
+  const lookupCard = document.createElement("section");
+  lookupCard.className = "reading-lookup-card";
+  lookupCard.setAttribute("aria-label", "查字資訊");
+
+  const heading = document.createElement("h3");
+  heading.textContent = "查字資訊";
+  const list = document.createElement("dl");
+  list.className = "reading-lookup-list";
+  appendReadingLookupRow(list, "單字", entry.word);
+  appendReadingLookupRow(list, "假名", entry.kana);
+  appendReadingLookupRow(list, "詞性", entry.partOfSpeech);
+  appendReadingLookupRow(list, "中文意思", entry.meaning);
+  appendReadingLookupRow(list, "程度", entry.level);
+  appendReadingLookupRow(list, "日文例句", entry.example);
+  appendReadingLookupRow(list, "例句假名", entry.exampleKana);
+  appendReadingLookupRow(list, "例句中文", entry.exampleMeaning);
+
+  const close = document.createElement("button");
+  close.className = "secondary-button reading-lookup-close";
+  close.type = "button";
+  close.textContent = "關閉";
+  close.addEventListener("click", clearReadingLookupCard);
+
+  lookupCard.append(heading, list, close);
+  const passage = card.querySelector(".reading-passage");
+  if (passage?.nextSibling) card.insertBefore(lookupCard, passage.nextSibling);
+  else card.appendChild(lookupCard);
+}
+
+function activateReadingLookupTerm(termElement) {
+  const card = termElement?.closest(".reading-card");
+  const entry = findVocabularyExactMatch(termElement?.dataset.lookupWord, termElement?.dataset.lookupReading);
+  if (card && entry) showReadingLookupCard(card, entry);
+}
+
+function renderRubyParts(parent, parts, { enableLookup = false } = {}) {
   parent.replaceChildren();
   parts.forEach((part) => {
     if (part.base && part.ruby) {
@@ -1881,6 +1951,21 @@ function renderRubyParts(parent, parts) {
       ruby.className = "jp-ruby";
       ruby.setAttribute("role", "text");
       ruby.setAttribute("aria-label", `${part.base}（${part.ruby}）`);
+      const lookupEntry = enableLookup ? getReadingLookupMatch(part) : null;
+      if (lookupEntry) {
+        ruby.classList.add("is-clickable-ruby");
+        ruby.dataset.lookupWord = lookupEntry.word;
+        ruby.dataset.lookupReading = part.ruby;
+        ruby.setAttribute("role", "button");
+        ruby.tabIndex = 0;
+        ruby.setAttribute("aria-label", `${part.base}（${part.ruby}）：點擊查字`);
+        ruby.addEventListener("click", () => activateReadingLookupTerm(ruby));
+        ruby.addEventListener("keydown", (event) => {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          event.preventDefault();
+          activateReadingLookupTerm(ruby);
+        });
+      }
 
       const rt = document.createElement("span");
       rt.className = "jp-rt";
@@ -1900,8 +1985,8 @@ function renderRubyParts(parent, parts) {
   });
 }
 
-function renderRubyText(parent, text, rubyTerms) {
-  renderRubyParts(parent, createRubyPartsFromTerms(text, rubyTerms));
+function renderRubyText(parent, text, rubyTerms, options = {}) {
+  renderRubyParts(parent, createRubyPartsFromTerms(text, rubyTerms), options);
 }
 
 function getReadingTitleRubyParts(readingSet) {
@@ -2003,13 +2088,13 @@ function createReadingSetCard(readingSet, { reveal = false, showFeedback = false
   meta.className = "card-number";
   meta.textContent = `${readingSet.level}・${readingSet.type}`;
   const title = document.createElement("h2");
-  if (showRuby) renderRubyText(title, readingSet.title, getReadingRubyTerms(readingSet));
+  if (showRuby) renderRubyText(title, readingSet.title, getReadingRubyTerms(readingSet), { enableLookup: true });
   else title.textContent = readingSet.title;
   header.append(meta, title);
 
   const passage = document.createElement("p");
   passage.className = "reading-passage";
-  if (showRuby) renderRubyText(passage, readingSet.passage, getReadingRubyTerms(readingSet));
+  if (showRuby) renderRubyText(passage, readingSet.passage, getReadingRubyTerms(readingSet), { enableLookup: true });
   else passage.textContent = readingSet.passage;
   card.append(header, passage);
   readingSet.questions.forEach((question, questionIndex) => {
