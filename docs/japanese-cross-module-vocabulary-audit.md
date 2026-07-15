@@ -14,6 +14,13 @@
 ## 使用的斷詞方式
 Node Intl.Segmenter 支援狀態：支援。主要使用 `Intl.Segmenter` 的 word-like token；明確詞條欄位直接作為候選 token。未使用外部 API 或大型第三方套件。
 
+## Batch 13B-2 safe-auto-resolve 規則
+- 規則順序：exact → lemma → kana normalization → orthographic-alias-match → grammar-element-source-bound → known compound → explicit compound → missing-candidate。
+- orthographic-alias-match 去重數：3
+- grammar-element-source-bound 去重數：30
+- safe-auto-resolve 去重合計：33
+- 規則均限定候選文字、來源模組與來源 ID；未新增 vocabulary alias，未修改正式資料，未使用全域文字黑名單或無來源限定的 grammar 元素排除。
+
 ## 方法限制
 `Intl.Segmenter` 並非完整日語形態分析器，部分活用、同音詞、複合詞仍需人工確認。coverage 分母只包含可靠 lexical token，排除中文欄位、metadata、grammar-element、proper-noun、punctuation、pure number、unsegmented span 與無法確認的句子殘片。
 
@@ -25,28 +32,27 @@ Node Intl.Segmenter 支援狀態：支援。主要使用 `Intl.Segmenter` 的 wo
 - 聽力題目數：100
 
 ## 各模組可靠 lexical token 與基本形數量
-- 文法獨立基本形數量：974
-- 閱讀獨立基本形數量：763
+- 文法獨立基本形數量：972
+- 閱讀獨立基本形數量：762
 - 聽力獨立基本形數量：175
-- 跨模組去重後基本形總數：1501
+- 跨模組去重後基本形總數：1498
 
 ## Exact／Normalized／Review-adjusted coverage
 | 模組 | Reliable lexical tokens | Exact | Normalized | Review-adjusted |
 |---|---:|---:|---:|---:|
-| grammar | 4189 | 1271/4189 (30.3%) | 1319/4189 (31.5%) | 3439/4189 (82.1%) |
+| grammar | 4224 | 1271/4224 (30.1%) | 1319/4224 (31.2%) | 3439/4224 (81.4%) |
 | reading | 10982 | 6313/10982 (57.5%) | 6315/10982 (57.5%) | 10560/10982 (96.2%) |
 | listening | 536 | 243/536 (45.3%) | 243/536 (45.3%) | 530/536 (98.9%) |
-| overall | 15707 | 7827/15707 (49.8%) | 7877/15707 (50.1%) | 14529/15707 (92.5%) |
+| overall | 15742 | 7827/15742 (49.7%) | 7877/15742 (50.0%) | 14529/15742 (92.3%) |
 
 ## Missing candidates
-去重後 missing-candidate 數量：117；下表列前 117 項。
+去重後 missing-candidate 數量：84；下表列前 84 項。
 
 | 建議基本形 | 假名 | 詞性 | 中文意思 | JLPT 程度 | 出現模組 | 出現次數 | 代表來源 ID | 一個代表句 | 信心 | 備註 |
 |---|---|---|---|---|---|---:|---|---|---|---|
 | 時半 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading, listening | 20 | jp-reading-set-n4-002, jp-reading-q-n4-002-01, jp-reading-q-n4-019-01 | 由美さんは友だちと映画を見る予定です。七時の回は人気で席が前の方しかありませんでした。少し待てば八時半の回で真ん中の席が取れるので、二人は遅い回にしました。 | 中 | 來自segmenter token |
 | センター | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 19 | jp-reading-set-n4-020, jp-reading-q-n4-020-01, jp-reading-set-n4-066 | 運動センター | 中 | 來自segmenter token |
 | 誕生 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 15 | jp-reading-set-n4-004, jp-reading-set-n4-058, jp-reading-q-n4-058-01 | 誕生日のプレゼント | 中 | 來自segmenter token |
-| 何時 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar, reading, listening | 13 | n5-grammar-224, n5-grammar-225, n5-grammar-226 | 何時 | 中 | 來自segmenter token |
 | 開店 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 10 | jp-reading-set-n4-012, jp-reading-q-n4-012-01, jp-reading-set-n4-044 | 駅前のパン屋は、来月から日曜日だけ開店時間が一時間遅くなります。平日は今まで通り朝七時からです。急いでいる人は前の日に買っておくとよさそうです。 | 中 | 來自segmenter token |
 | 期末 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 8 | jp-reading-set-n4-037, jp-reading-set-n4-096 | 期末試験の計画 | 中 | 來自segmenter token |
 | 時刻 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 7 | jp-reading-set-n4-050, jp-reading-set-n4-102, jp-reading-q-n4-102-01 | 映画館の時刻 | 中 | 來自segmenter token |
@@ -76,22 +82,15 @@ Node Intl.Segmenter 支援狀態：支援。主要使用 `Intl.Segmenter` 的 wo
 | 当日 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 4 | jp-reading-set-n4-042, jp-reading-q-n4-042-01 | レストランから予約確認のメールが来ました。人数を変える場合は、前日の午後五時までに連絡しなければなりません。当日の変更はできません。 | 中 | 來自segmenter token |
 | 曜日 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar, reading | 4 | n5-grammar-225, jp-reading-q-n4-103-01 | 何曜日 | 中 | 來自segmenter token |
 | クラスメート | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-083 | クラスメートは文化祭でカレーを作ることにしました。野菜を切る人が足りないので、李さんも手伝う予定です。 | 中 | 來自segmenter token |
-| ごろ | ごろ | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 3 | n5-grammar-228, n5-grammar-229 | ごろ | 中 | 來自explicit field |
-| のに | のに | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 3 | n4-grammar-108 | のに | 中 | 來自explicit field |
 | べつ | べつ | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-035, jp-reading-set-n4-052 | べつ | 中 | 來自explicit field |
 | 以降 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-026, jp-reading-q-n4-026-02 | 【市民図書館】六月二十九日は本の整理のため休みです。返す本は入口の返却箱に入れてください。DVDと雑誌は返却箱には入れないで、次の日以降に受付へ持って来てくださ | 中 | 來自segmenter token |
 | 屋内 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-065, jp-reading-q-n4-065-02 | 旅行メモ：午前九時に京都駅で集合。十時に博物館、昼は駅近くの店で定食を食べる。午後は雨の場合、寺ではなく屋内の市場へ行く予定です。切符は父が買っておきます。 | 中 | 來自segmenter token |
-| 何月何日 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 3 | n5-grammar-226 | 何月何日 | 中 | 來自segmenter token |
 | 学習 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-067, jp-reading-q-n4-067-01 | 市立図書館では、今月から学習室の席を予約できます。予約は一人一日二時間までです。飲み物はふたがある物なら持ち込んでもいいですが、席で食事はできません。 | 中 | 來自segmenter token |
 | 次回 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-020, jp-reading-q-n4-020-02 | 中村さんは健康のために運動センターへ通い始めました。プールは夜八時まで使えますが、ジムは九時まで開いています。今日は水着を忘れてしまったので、プールではなくジム | 中 | 來自segmenter token |
 | 職員 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-031, jp-reading-q-n4-031-01 | 授業が終わったあと、教室に一人だけ学生が残っていました。机の上には消しゴムとノートがあり、窓は開いたままでした。学生は『田中さんの物かもしれない』と思い、職員室 | 中 | 來自segmenter token |
 | 筆者 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-q-n4-061-01, jp-reading-q-n4-061-02, jp-reading-q-n4-064-01 | はじめ、筆者は何に困っていましたか。 | 中 | 來自segmenter token |
 | 不在 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 3 | jp-reading-set-n4-045 | 宅配会社から不在票が入っていました。荷物を受け取るために、渡辺さんはインターネットで明日の夜七時から九時を選びました。 | 中 | 來自segmenter token |
-| ずに | ずに | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 2 | n4-grammar-246 | ずに | 中 | 來自explicit field |
-| た形 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 2 | n5-grammar-033, n5-grammar-039 | た形 | 中 | 來自explicit field |
-| パン＿＿ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 2 | n5-grammar-009, n5-grammar-235 | パン＿＿卵を食べます。 | 中 | 來自segmenter token |
 | みか | みか | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-032 | みか | 中 | 來自explicit field |
-| やら | やら | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 2 | n4-grammar-177 | やら | 中 | 來自explicit field |
 | ゆみ | ゆみ | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-002 | ゆみ | 中 | 來自explicit field |
 | 岡田 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-071 | 受付の人から岡田さんへ伝言です。明日の歯医者の予約は午前十時から十時半に変わりました。都合が悪い場合は、今日の五時までに電話してください。 | 中 | 來自segmenter token |
 | 計算 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-016 | 来週の学校祭で、私のクラスは焼きそばを売ります。昨日、みんなで役割を決めました。私はお金を集める係になりましたが、計算が苦手なので、佐藤さんと二人でやることにな | 中 | 來自segmenter token |
@@ -104,35 +103,10 @@ Node Intl.Segmenter 支援狀態：支援。主要使用 `Intl.Segmenter` 的 wo
 | 二年 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-062 | 文化祭の準備で、二年三組は教室を小さな喫茶店にします。金曜日の放課後に机を動かし、土曜日の朝に看板を付けます。食べ物を持って来る必要はありませんが、エプロンは各 | 中 | 來自segmenter token |
 | 配送 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 2 | jp-reading-set-n4-075 | 配送の知らせ | 中 | 來自segmenter token |
 | 留学 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 2 | n4-grammar-090, n4-grammar-248 | 留学するとしたら、日本へ行きたいです。 | 中 | 來自segmenter token |
-| いた | いた | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-203 | いた | 中 | 來自explicit field |
-| えて | えて | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-180 | えて | 中 | 來自explicit field |
-| える | える | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-165 | える | 中 | 來自explicit field |
-| おく | おく | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-053 | おく | 中 | 來自explicit field |
 | お客 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-q-n4-016-02 | お客さん | 中 | 來自segmenter token |
-| きゃ | きゃ | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-138 | きゃ | 中 | 來自explicit field |
-| くて | くて | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-087 | くて | 中 | 來自explicit field |
-| クラス＿＿ | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-214 | クラス＿＿だれがいちばん元気ですか。 | 中 | 來自segmenter token |
-| けしゴム | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-set-n4-031 | じゅぎょうがおわったあと、きょうしつにひとりだけがくせいがのこっていました。つくえのうえにはけしゴムとノートがあり、まどはあいたままでした。がくせいは『たなかさ | 中 | 來自segmenter token |
-| けど | けど | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-197 | けど | 中 | 來自explicit field |
-| ける | ける | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-057 | ける | 中 | 來自explicit field |
-| こう | こう | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-230 | こう | 中 | 來自explicit field |
-| ずつ | ずつ | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-247 | ずつ | 中 | 來自explicit field |
-| って | って | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-199 | って | 中 | 來自explicit field |
-| てき | てき | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-243 | てき | 中 | 來自explicit field |
-| てみ | てみ | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-243 | てみ | 中 | 來自explicit field |
-| でも | でも | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-046 | でも | 中 | 來自explicit field |
-| など | など | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-100 | など | 中 | 來自explicit field |
-| のが | のが | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-150 | のが | 中 | 來自explicit field |
-| のは | のは | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-210 | のは | 中 | 來自explicit field |
-| はず | はず | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-248 | はず | 中 | 來自explicit field |
 | ホール | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-q-n4-011-01 | 公民館のホール | 中 | 來自segmenter token |
-| まま | まま | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-208 | まま | 中 | 來自explicit field |
-| める | める | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-051 | める | 中 | 來自explicit field |
-| やる | やる | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-096 | やる | 中 | 來自explicit field |
 | ヨガマット | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | reading | 1 | jp-reading-q-n4-103-03 | ヨガマット | 中 | 來自segmenter token |
 | 位置 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-212 | に（存在位置） | 中 | 來自segmenter token |
-| 何月 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-225 | 何月 | 中 | 來自explicit field |
-| 何枚 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-224 | 何枚 | 中 | 來自explicit field |
 | 環境 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-275 | 環境問題＿＿話しましょう。 | 中 | 來自segmenter token |
 | 祈願 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n4-grammar-181 | 〜ように（祈願） | 中 | 來自segmenter token |
 | 起點 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-013 | から（起點） | 中 | 來自segmenter token |
@@ -162,7 +136,7 @@ Node Intl.Segmenter 支援狀態：支援。主要使用 `Intl.Segmenter` 的 wo
 | 數量 | 待人工確認 | 待人工確認 | 待人工確認 | 待人工確認 | grammar | 1 | n5-grammar-229 | 〜ぐらい（數量） | 中 | 來自segmenter token |
 
 ## Manual review
-manual-review 去重項目數：659；下表最多列 200 項。
+manual-review 去重項目數：655；下表最多列 200 項。
 
 | 表面形式 | 可能基本形 | 假名 | 出現模組 | 出現次數 | 代表來源 ID | 一個代表句 | 需要確認原因 |
 |---|---|---|---|---:|---|---|---|
@@ -170,7 +144,7 @@ manual-review 去重項目數：659；下表最多列 200 項。
 | し | し | し | grammar, reading, listening | 328 | n5-grammar-004, n5-grammar-007, n5-grammar-008 | しちじにおきます。 | unresolved token |
 | い | い | い | grammar, reading, listening | 261 | n5-grammar-002, n5-grammar-016, n5-grammar-020 | 雨が降っています。 | unresolved token |
 | せん | せん | せん | grammar, reading, listening | 210 | n5-grammar-017, n5-grammar-028, n5-grammar-030 | ではありません | ambiguous kana-match |
-| って | って | って | grammar, reading, listening | 184 | n5-grammar-002, n5-grammar-044, n4-grammar-053 | 雨が降っています。 | unresolved token |
+| って | って | って | grammar, reading, listening | 182 | n5-grammar-002, n5-grammar-044, n4-grammar-053 | 雨が降っています。 | unresolved token |
 | さい | さい | さい | grammar, reading, listening | 176 | n5-grammar-040, n5-grammar-041, n4-grammar-095 | てください | unresolved token |
 | れ | れ | れ | grammar, reading, listening | 171 | n4-grammar-057, n4-grammar-059, n4-grammar-060 | かれはさんじかんべんきょうしつづけました。 | unresolved token |
 | くだ | くだ | くだ | grammar, reading, listening | 164 | n5-grammar-040, n5-grammar-041, n4-grammar-095 | てください | unresolved token |
@@ -228,12 +202,12 @@ manual-review 去重項目數：659；下表最多列 200 項。
 | 出 | 出 | 待人工確認 | grammar, reading, listening | 27 | n5-grammar-038, n4-grammar-056, n4-grammar-059 | 今日は外へ出たくないです。 | unresolved token |
 | おき | おき | おき | grammar, reading, listening | 26 | n5-grammar-004, n4-grammar-053, n4-grammar-061 | しちじにおきます。 | unresolved token |
 | ず | ず | ず | grammar, reading, listening | 26 | n5-grammar-003, n5-grammar-026, n4-grammar-108 | みずをのみます。 | unresolved token |
-| おく | おく | おく | grammar, reading, listening | 25 | n4-grammar-053, n4-grammar-064, n4-grammar-168 | 〜ておく | unresolved token |
 | ほしい | ほしい | ほしい | grammar, reading | 25 | n4-grammar-072, n4-grammar-073, n4-grammar-159 | 〜ほしい | unresolved token |
 | 買 | 買 | 待人工確認 | grammar, reading | 25 | n4-grammar-053, n4-grammar-263, jp-reading-set-n4-012 | 旅行の前に切符を買っておきます。 | unresolved token |
 | しょ | しょ | しょ | grammar, reading, listening | 24 | n5-grammar-007, n5-grammar-021, n5-grammar-022 | としょかんでべんきょうします。 | unresolved token |
 | 時 | 時 | 待人工確認 | grammar, reading, listening | 24 | n4-grammar-134, n4-grammar-152, n5-grammar-227 | 家を出ようとした時、電話が鳴りました。 | unresolved token |
 | 時に | 時に | 待人工確認 | grammar, reading, listening | 24 | n5-grammar-004, n4-grammar-249, jp-reading-set-n4-010 | 七時に起きます。 | unresolved token |
+| おく | おく | おく | grammar, reading, listening | 23 | n4-grammar-064, n4-grammar-168, n4-grammar-184 | すこしおくれてもかまいません。 | unresolved token |
 | ど | ど | ど | grammar, reading, listening | 23 | n5-grammar-045, n4-grammar-086, n4-grammar-172 | あついですから、まどをあけます。 | unresolved token |
 | びん | びん | びん | grammar, reading, listening | 23 | n5-grammar-233, jp-reading-set-n4-001, jp-reading-set-n4-052 | ぎんこうはゆうびんきょくのみぎにあります。 | unresolved token |
 | る | る | る | grammar, reading, listening | 23 | n4-grammar-077, n4-grammar-085, n4-grammar-122 | そとはあめがふっているようです。 | unresolved token |
@@ -268,7 +242,6 @@ manual-review 去重項目數：659；下表最多列 200 項。
 | 祭 | 祭 | 待人工確認 | reading | 16 | jp-reading-set-n4-016, jp-reading-q-n4-016-01, jp-reading-set-n4-062 | 学校祭の準備 | unresolved token |
 | いしゅう | いしゅう | いしゅう | grammar, reading, listening | 15 | n4-grammar-079, n4-grammar-175, jp-reading-set-n4-006 | たなかさんはらいしゅうけっこんするらしいです。 | unresolved token |
 | げ | げ | げ | grammar, reading | 15 | n4-grammar-071, n4-grammar-091, n4-grammar-129 | おとうとはあたらしいげーむをかいたがっています。 | unresolved token |
-| ごろ | ごろ | ごろ | grammar, reading | 15 | n5-grammar-228, jp-reading-set-n4-028, jp-reading-set-n4-033 | 〜ごろ | unresolved token |
 | てん | てん | てん | grammar, reading | 15 | n4-grammar-287, jp-reading-set-n4-003, jp-reading-set-n4-022 | ぜんぶよまなくてもいいですが、ようてんはみてください。 | unresolved token |
 | とう | とう | とう | grammar, reading, listening | 15 | n5-grammar-047, n4-grammar-071, n4-grammar-096 | とうきょうはおおさかよりおおきいです。 | unresolved token |
 | のみ | のみ | のみ | grammar, reading, listening | 15 | n5-grammar-003, n5-grammar-031, n4-grammar-194 | みずをのみます。 | unresolved token |
@@ -317,6 +290,7 @@ manual-review 去重項目數：659；下表最多列 200 項。
 | いち | いち | いち | grammar, reading, listening | 10 | n5-grammar-229, jp-reading-set-n4-030, jp-reading-set-n4-032 | まいにちいちじかん＿＿べんきょうします。 | ambiguous kana-match |
 | うち | うち | うち | grammar | 10 | n4-grammar-142, n4-grammar-187, n4-grammar-188 | じゅぎょうちゅうにはなしちゃいけません。 | unresolved token |
 | ぐち | ぐち | ぐち | grammar, reading | 10 | n5-grammar-231, jp-reading-set-n4-001, jp-reading-set-n4-008 | でぐちは＿＿です。 | unresolved token |
+| ごろ | ごろ | ごろ | reading | 10 | jp-reading-set-n4-028, jp-reading-set-n4-033, jp-reading-set-n4-059 | このえいがかんでは、すいようびのごごろくじまでのかいはがくせいりょうきんがやすくなります。がくせいしょうをみせなければなりません。インターネットでせきをよやくし | unresolved token |
 | しな | しな | しな | grammar, reading, listening | 10 | n4-grammar-127, n4-grammar-138, jp-reading-q-n4-007-01 | 早く宿題をしなさい。 | unresolved token |
 | じゅっ | じゅっ | じゅっ | grammar, reading | 10 | n4-grammar-118, n5-grammar-229, jp-reading-set-n4-019 | えきまでじゅっぷんくらいかかります。 | unresolved token |
 | とい | とい | とい | grammar, reading | 10 | n4-grammar-136, n4-grammar-201, n5-grammar-217 | 〜ないといけない | unresolved token |
@@ -350,7 +324,6 @@ manual-review 去重項目數：659；下表最多列 200 項。
 | でも | でも | でも | reading | 8 | jp-reading-set-n4-004, jp-reading-q-n4-044-01, jp-reading-set-n4-061 | 兄の誕生日に、私は青いシャツを買うつもりでした。でも母から、兄が最近料理を始めたと聞きました。それで、シャツではなく使いやすい包丁を選びました。 | unresolved token |
 | ばん | ばん | ばん | reading, listening | 8 | jp-reading-set-n4-007, jp-reading-set-n4-009, jp-reading-set-n4-037 | フロントのせつめいでは、ちょうしょくはいっかいのしょくどうでしちじからくじまでです。しょくどうにはいるまえに、へやのばんごうがかいてあるちょうしょくけんをうけつ | unresolved token |
 | めい | めい | めい | grammar, reading | 8 | n5-grammar-021, n5-grammar-022, n4-grammar-073 | ばしょにめいしがあります／います | unresolved token |
-| やら | やら | やら | grammar | 8 | n4-grammar-177 | 〜やら〜やら | unresolved token |
 | ゆう | ゆう | ゆう | grammar, reading, listening | 8 | n5-grammar-233, jp-reading-set-n4-001, jp-reading-set-n4-027 | ぎんこうはゆうびんきょくのみぎにあります。 | unresolved token |
 | 形容詞 | 形容詞 | 待人工確認 | grammar | 8 | n5-grammar-023, n5-grammar-024, n5-grammar-025 | い形容詞現在肯定 | unresolved token |
 | 降 | 降 | 待人工確認 | grammar, listening | 8 | n5-grammar-002, n4-grammar-077, n4-grammar-083 | 雨が降っています。 | unresolved token |
@@ -362,17 +335,18 @@ manual-review 去重項目數：659；下表最多列 200 項。
 | 乗り | 乗り | 待人工確認 | reading | 8 | jp-reading-set-n4-046, jp-reading-q-n4-046-01, jp-reading-set-n4-076 | 初めて行く会場なので、小林さんは駅で乗り換え方を調べました。急行に乗ると早いですが、会場の近くの駅には止まらないので、各駅停車に乗ります。 | unresolved token |
 | 待 | 待 | 待人工確認 | grammar, reading | 8 | n4-grammar-261, jp-reading-set-n4-002, jp-reading-set-n4-043 | 待っ＿＿ありがとう。 | unresolved token |
 | 置 | 置 | 待人工確認 | grammar, reading | 8 | n4-grammar-135, n4-grammar-259, jp-reading-q-n4-010-01 | 読みかけの本を机に置きました。 | unresolved token |
-| えて | えて | えて | grammar, reading | 7 | n4-grammar-091, n4-grammar-180, n4-grammar-265 | わたしはともだちににほんごをおしえてあげました。 | unresolved token |
 | しく | しく | しく | grammar, reading | 7 | n5-grammar-026, n4-grammar-149, n4-grammar-191 | 試験は難しくなかったです。 | unresolved token |
 | すい | すい | すい | grammar, reading | 7 | n4-grammar-288, jp-reading-set-n4-028, jp-reading-set-n4-033 | けんこうでいる＿＿、すいみんがたいせつです。 | unresolved token |
 | すか | すか | すか | grammar, reading, listening | 7 | n5-grammar-219, jp-reading-q-n4-018-02, jp-reading-set-n4-035 | テストは＿＿ありますか。 | unresolved token |
+| すぎ | すぎ | すぎ | grammar, reading | 7 | n4-grammar-120, jp-reading-q-n4-001-01, jp-reading-q-n4-035-01 | このかばんは重すぎます。 | unresolved token |
+| たち | たち | たち | reading | 7 | jp-reading-set-n4-018, jp-reading-q-n4-018-01, jp-reading-set-n4-034 | 田中さんたちは春休みに京都へ行く予定です。最初は日帰りで行こうと思っていましたが、見たい場所が多いので、一泊することにしました。ホテルは駅の近くにしました。朝早 | unresolved token |
 
 ## Unresolved / unsegmented
-- unresolved token 數量：659
+- unresolved token 數量：655
 - unsegmented span 數量：0
 
 ## 複合詞與固定表現
-- compound 數量：605
+- compound 數量：604
 - compound 判定條件：明確 vocabulary/rubyTerms 欄位、Intl.Segmenter 完整詞、或可由兩個以上已知詞完整組成。不得只依字數判定。
 - fixed-expression 抽樣數：100
 
