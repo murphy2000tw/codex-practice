@@ -70,8 +70,8 @@ const listeningMenu = extractById(html, 'japaneseListeningMenuView');
 
 requireIncludes(html, 'data-japanese-layout-version="2.3"', 'Japanese layout version marker');
 requireIncludes(html, 'name="japanese-layout-version" content="2.3"', 'Japanese layout meta version marker');
-requireIncludes(html, '../script.js?v=2.4', 'script cache-busting version');
-requireIncludes(html, '../style.css?v=2.4', 'style cache-busting version');
+requireIncludes(html, '../script.js?v=2.5', 'script cache-busting version');
+requireIncludes(html, '../style.css?v=2.5', 'style cache-busting version');
 requireIncludes(html, 'data-japanese-back-home', 'feature-page return-to-home controls');
 
 if (!root || !home || !vocabulary || !reading || !listening) {

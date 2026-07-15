@@ -132,7 +132,18 @@ function checkFallbackAndSeenKeys() {
 
 function checkIntegrationBoundaries() {
   assert(/function createCard\(word, index\)[\s\S]*createJapaneseVocabularyBookControl\(word\.id, "vocabulary-card"\)/.test(script), 'vocabulary-card control must be in createCard using word.id');
+  assert(/<div class="vocabulary-card-header">[\s\S]*<span class="card-number">單字/.test(script), 'vocabulary card number must be inside the top header container');
+  assert(/card\.querySelector\("\.vocabulary-card-header"\)\?\.appendChild\(vocabularyBookControl\)/.test(script), 'vocabulary-card control must be appended beside the number in the top header');
+  assert(!/card\.appendChild\(vocabularyBookControl\)/.test(script), 'vocabulary card must not append a full-width vocabulary book control below the card body');
+  assert(/button\.textContent = button\.dataset\.vocabularyBookSource === "vocabulary-card"[\s\S]*\? "生字本"/.test(script), 'vocabulary-card button text must stay fixed as 生字本');
+  assert(/button\.setAttribute\("aria-pressed", saved \? "true" : "false"\)/.test(script), 'vocabulary book buttons must keep aria-pressed in sync');
+  assert(/button\.setAttribute\("aria-label", saved \? "移出生字本" : "加入生字本"\)/.test(script), 'vocabulary book buttons must expose dynamic aria-label');
+  assert(/\.vocabulary-card-header\s*{[\s\S]*display:\s*flex;[\s\S]*align-items:\s*center;[\s\S]*gap:\s*8px;/.test(style), 'vocabulary card header must use left-aligned flex layout with 8px gap');
+  assert(!/\.vocabulary-card-header\s*{[^}]*justify-content:\s*space-between/.test(style), 'vocabulary card header must not use space-between');
+  assert(/\.vocabulary-card-book-control \.vocabulary-book-button\s*{[\s\S]*width:\s*auto;[\s\S]*font-size:\s*0\.85rem;/.test(style), 'vocabulary card book button must remain compact and not full width');
+  assert(/\.vocabulary-book-control:not\(\.vocabulary-card-book-control\) \.vocabulary-book-button/.test(style), 'mobile full-width rule must not apply to vocabulary-card book button');
   assert(/function showReadingLookupCard\(card, lookup\)[\s\S]*createJapaneseVocabularyBookControl\(entry\.id, "reading-lookup"\)/.test(script), 'reading lookup control must use canonical lookup.entry.id');
+  assert(/: \(saved \? "移出生字本" : "加入生字本"\)/.test(script), 'reading lookup button must keep existing dynamic visible text');
   const allControlCalls = [...script.matchAll(/createJapaneseVocabularyBookControl\(/g)].length;
   assert(allControlCalls === 3, 'vocabulary book control should only be defined plus used by two approved flows');
   assert(!/japanese_mistake_book_v1/.test(script + style + japaneseIndex), 'must not add mistake-book key');
@@ -142,6 +153,12 @@ function checkIntegrationBoundaries() {
   assert(/READING_LOOKUP_COMPOUND_SEGMENT_WHITELIST[\s\S]*segments[\s\S]*vocabularyId/.test(script), 'compound segment lookup must preserve segment canonical ids');
   assert(!/data-japanese-vocabulary-entry="quiz"[\s\S]{0,200}生字本/.test(japaneseIndex), 'vocabulary quiz must not expose vocabulary book entry');
   assert(!/data-reading-mode="quiz"[\s\S]{0,250}生字本/.test(japaneseIndex), 'reading quiz must not expose vocabulary book entry');
+  assert(!/data-japanese-entry="grammar"[\s\S]{0,250}生字本/.test(japaneseIndex), 'grammar page must not expose vocabulary book entry');
+  assert(!/data-japanese-entry="listening"[\s\S]{0,250}生字本/.test(japaneseIndex), 'listening page must not expose vocabulary book entry');
+  assert(/<meta name="japanese-layout-version" content="2\.3">/.test(japaneseIndex), 'japanese-layout-version meta must remain 2.3');
+  assert(/<body data-japanese-layout-version="2\.3">/.test(japaneseIndex), 'japanese-layout-version body marker must remain 2.3');
+  assert(/\.\.\/style\.css\?v=2\.5/.test(japaneseIndex), 'style cache query must update to v=2.5');
+  assert(/\.\.\/script\.js\?v=2\.5/.test(japaneseIndex), 'script cache query must update to v=2.5');
 }
 
 function checkVocabularyBaseline() {
