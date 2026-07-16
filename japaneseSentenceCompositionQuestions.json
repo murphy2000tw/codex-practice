@@ -1,0 +1,949 @@
+[
+  {
+    "id": "sc-n5-001",
+    "level": "N5",
+    "before": "わたしは",
+    "after": "。",
+    "slots": [
+      "★",
+      "",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "毎朝"
+      },
+      {
+        "id": "b",
+        "text": "七時に"
+      },
+      {
+        "id": "d",
+        "text": "出ます"
+      },
+      {
+        "id": "c",
+        "text": "家を"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 0,
+    "completeSentence": "わたしは毎朝七時に家を出ます。",
+    "kana": "わたしはまいあさしちじにいえをでます。",
+    "meaning": "我每天早上七點出門。",
+    "explanation": "時間副詞、具體時間、受詞位置依序放在動詞前，語順自然。",
+    "grammarIds": [
+      "n5-grammar-004",
+      "n5-grammar-211"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「毎朝」と「七時に」先說時間範圍再說具體時間，「家を出ます」是固定自然搭配，排除把受詞放在時間前後造成的生硬排列。"
+  },
+  {
+    "id": "sc-n5-002",
+    "level": "N5",
+    "before": "あには",
+    "after": "。",
+    "slots": [
+      "",
+      "★",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "図書館で"
+      },
+      {
+        "id": "b",
+        "text": "友だちと"
+      },
+      {
+        "id": "d",
+        "text": "勉強しています"
+      },
+      {
+        "id": "c",
+        "text": "日本語を"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 1,
+    "completeSentence": "あには図書館で友だちと日本語を勉強しています。",
+    "kana": "あにはとしょかんでともだちとにほんごをべんきょうしています。",
+    "meaning": "哥哥正在圖書館和朋友學日文。",
+    "explanation": "場所で、共同者と、受詞を接在動詞ている前，表示正在進行。",
+    "grammarIds": [
+      "n5-grammar-007",
+      "n5-grammar-010",
+      "n5-grammar-042"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "場所、對象與受詞各有固定助詞，「日本語を勉強しています」不可拆成其他自然核心，已排除主要語序歧義。"
+  },
+  {
+    "id": "sc-n5-003",
+    "level": "N5",
+    "before": "机の上に",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "★",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "新しい"
+      },
+      {
+        "id": "d",
+        "text": "あります"
+      },
+      {
+        "id": "c",
+        "text": "ノートが"
+      },
+      {
+        "id": "b",
+        "text": "青い"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 2,
+    "completeSentence": "机の上に新しい青いノートがあります。",
+    "kana": "つくえのうえにあたらしいあおいノートがあります。",
+    "meaning": "桌上有一本新的藍色筆記本。",
+    "explanation": "い形容詞修飾名詞時放在名詞前，存在句用「が あります」。",
+    "grammarIds": [
+      "n5-grammar-019",
+      "n5-grammar-023",
+      "n5-grammar-212"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "兩個形容詞都修飾ノート，名詞加が後接あります，若把あります提前或讓形容詞離開名詞都不自然。"
+  },
+  {
+    "id": "sc-n5-004",
+    "level": "N5",
+    "before": "田中さんは",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "",
+      "★"
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "きのう"
+      },
+      {
+        "id": "c",
+        "text": "先生に"
+      },
+      {
+        "id": "b",
+        "text": "駅で"
+      },
+      {
+        "id": "d",
+        "text": "会いました"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 3,
+    "completeSentence": "田中さんはきのう駅で先生に会いました。",
+    "kana": "たなかさんはきのうえきでせんせいにあいました。",
+    "meaning": "田中先生昨天在車站見到了老師。",
+    "explanation": "時間、場所、對象に之後接會う的過去式，形成基本敘述語順。",
+    "grammarIds": [
+      "n5-grammar-007",
+      "n5-grammar-213",
+      "n5-grammar-033"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「先生に会いました」是必要搭配，時間與場所放在謂語前自然，已排除把に片語放在動詞後等錯誤排列。"
+  },
+  {
+    "id": "sc-n5-005",
+    "level": "N5",
+    "before": "この店は",
+    "after": "。",
+    "slots": [
+      "★",
+      "",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "安いです"
+      },
+      {
+        "id": "b",
+        "text": "が"
+      },
+      {
+        "id": "d",
+        "text": "広くないです"
+      },
+      {
+        "id": "c",
+        "text": "あまり"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 0,
+    "completeSentence": "この店は安いですがあまり広くないです。",
+    "kana": "このみせはやすいですがあまりひろくないです。",
+    "meaning": "這家店便宜，但是不太寬敞。",
+    "explanation": "「が」連接轉折，あまり與否定形搭配。",
+    "grammarIds": [
+      "n5-grammar-046",
+      "n5-grammar-024"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「安いですが」後接相反評價，「あまり広くないです」是固定搭配，其他排列會破壞轉折或否定呼應。"
+  },
+  {
+    "id": "sc-n5-006",
+    "level": "N5",
+    "before": "妹は",
+    "after": "。",
+    "slots": [
+      "",
+      "★",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "ケーキを"
+      },
+      {
+        "id": "b",
+        "text": "食べて"
+      },
+      {
+        "id": "d",
+        "text": "飲みました"
+      },
+      {
+        "id": "c",
+        "text": "お茶を"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 1,
+    "completeSentence": "妹はケーキを食べてお茶を飲みました。",
+    "kana": "いもうとはケーキをたべておちゃをのみました。",
+    "meaning": "妹妹吃了蛋糕後喝了茶。",
+    "explanation": "て形連接前後兩個動作，兩個受詞各在動詞前。",
+    "grammarIds": [
+      "n5-grammar-003",
+      "n5-grammar-039",
+      "n5-grammar-033"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「ケーキを食べて」和「お茶を飲みました」各自成組，て形表示動作順接，排除受詞錯配。"
+  },
+  {
+    "id": "sc-n5-007",
+    "level": "N5",
+    "before": "日曜日に",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "★",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "公園へ"
+      },
+      {
+        "id": "d",
+        "text": "行きます"
+      },
+      {
+        "id": "c",
+        "text": "撮りに"
+      },
+      {
+        "id": "b",
+        "text": "写真を"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 2,
+    "completeSentence": "日曜日に公園へ写真を撮りに行きます。",
+    "kana": "にちようびにこうえんへしゃしんをとりにいきます。",
+    "meaning": "星期天去公園拍照。",
+    "explanation": "目的地へ與「動詞ます形に行く」表示移動目的。",
+    "grammarIds": [
+      "n5-grammar-006",
+      "n5-grammar-234"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「写真を撮りに行きます」是目的表現，公園へ標示方向；其他排列會拆開目的動詞片語。"
+  },
+  {
+    "id": "sc-n5-008",
+    "level": "N5",
+    "before": "母は",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "",
+      "★"
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "料理が"
+      },
+      {
+        "id": "c",
+        "text": "よく"
+      },
+      {
+        "id": "b",
+        "text": "上手なので"
+      },
+      {
+        "id": "d",
+        "text": "作ってくれます"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 3,
+    "completeSentence": "母は料理が上手なのでよく作ってくれます。",
+    "kana": "はははりょうりがじょうずなのでよくつくってくれます。",
+    "meaning": "媽媽很會做菜，所以常做給我吃。",
+    "explanation": "が標示擅長對象，原因句後接結果。",
+    "grammarIds": [
+      "n5-grammar-238",
+      "n5-grammar-045"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「料理が上手」先說理由，「よく作ってくれます」是結果；其他排列會使原因與頻率副詞位置不自然。"
+  },
+  {
+    "id": "sc-n4-001",
+    "level": "N4",
+    "before": "雨が",
+    "after": "。",
+    "slots": [
+      "★",
+      "",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "やんだら"
+      },
+      {
+        "id": "b",
+        "text": "駅まで"
+      },
+      {
+        "id": "d",
+        "text": "行きましょう"
+      },
+      {
+        "id": "c",
+        "text": "歩いて"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 0,
+    "completeSentence": "雨がやんだら駅まで歩いて行きましょう。",
+    "kana": "あめがやんだらえきまであるいていきましょう。",
+    "meaning": "雨停了的話，就走到車站吧。",
+    "explanation": "主要判斷點是 n4-grammar-083 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-083",
+      "n5-grammar-014",
+      "n5-grammar-035"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  },
+  {
+    "id": "sc-n4-002",
+    "level": "N4",
+    "before": "旅行の前に",
+    "after": "。",
+    "slots": [
+      "",
+      "★",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "ホテルを"
+      },
+      {
+        "id": "b",
+        "text": "予約して"
+      },
+      {
+        "id": "d",
+        "text": "ほうがいいです"
+      },
+      {
+        "id": "c",
+        "text": "おいた"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 1,
+    "completeSentence": "旅行の前にホテルを予約しておいたほうがいいです。",
+    "kana": "りょこうのまえにホテルをよやくしておいたほうがいいです。",
+    "meaning": "旅行前最好先訂好飯店。",
+    "explanation": "主要判斷點是 n4-grammar-053 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-053",
+      "n4-grammar-257"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  },
+  {
+    "id": "sc-n4-003",
+    "level": "N4",
+    "before": "この漢字は",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "★",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "何度も"
+      },
+      {
+        "id": "d",
+        "text": "はずです"
+      },
+      {
+        "id": "c",
+        "text": "覚えられる"
+      },
+      {
+        "id": "b",
+        "text": "書けば"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 2,
+    "completeSentence": "この漢字は何度も書けば覚えられるはずです。",
+    "kana": "このかんじはなんどもかけばおぼえられるはずです。",
+    "meaning": "這個漢字多寫幾次應該就能記住。",
+    "explanation": "主要判斷點是 n4-grammar-084 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-084",
+      "n4-grammar-146",
+      "n4-grammar-082"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  },
+  {
+    "id": "sc-n4-004",
+    "level": "N4",
+    "before": "山田さんは",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "",
+      "★"
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "忙しいのに"
+      },
+      {
+        "id": "c",
+        "text": "走り続けて"
+      },
+      {
+        "id": "b",
+        "text": "毎日"
+      },
+      {
+        "id": "d",
+        "text": "います"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 3,
+    "completeSentence": "山田さんは忙しいのに毎日走り続けています。",
+    "kana": "やまださんはいそがしいのにまいにちはしりつづけています。",
+    "meaning": "山田先生雖然忙，仍每天持續跑步。",
+    "explanation": "主要判斷點是 n4-grammar-108 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-108",
+      "n4-grammar-057"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  },
+  {
+    "id": "sc-n4-005",
+    "level": "N4",
+    "before": "弟は",
+    "after": "。",
+    "slots": [
+      "★",
+      "",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "ゲームを"
+      },
+      {
+        "id": "b",
+        "text": "しながら"
+      },
+      {
+        "id": "d",
+        "text": "聞いています"
+      },
+      {
+        "id": "c",
+        "text": "音楽を"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 0,
+    "completeSentence": "弟はゲームをしながら音楽を聞いています。",
+    "kana": "おとうとはゲームをしながらおんがくをきいています。",
+    "meaning": "弟弟一邊玩遊戲一邊聽音樂。",
+    "explanation": "主要判斷點是 n4-grammar-055 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-055",
+      "n5-grammar-042"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  },
+  {
+    "id": "sc-n4-006",
+    "level": "N4",
+    "before": "明日は",
+    "after": "。",
+    "slots": [
+      "",
+      "★",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "早く"
+      },
+      {
+        "id": "b",
+        "text": "起きなければ"
+      },
+      {
+        "id": "d",
+        "text": "予定です"
+      },
+      {
+        "id": "c",
+        "text": "ならない"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 1,
+    "completeSentence": "明日は早く起きなければならない予定です。",
+    "kana": "あしたははやくおきなければならないよていです。",
+    "meaning": "明天預定必須早起。",
+    "explanation": "主要判斷點是 n4-grammar-059 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-059",
+      "n4-grammar-249"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  },
+  {
+    "id": "sc-n4-007",
+    "level": "N4",
+    "before": "先生に",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "★",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "作文を"
+      },
+      {
+        "id": "d",
+        "text": "つもりです"
+      },
+      {
+        "id": "c",
+        "text": "いただく"
+      },
+      {
+        "id": "b",
+        "text": "見て"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 2,
+    "completeSentence": "先生に作文を見ていただくつもりです。",
+    "kana": "せんせいにさくぶんをみていただくつもりです。",
+    "meaning": "我打算請老師看作文。",
+    "explanation": "主要判斷點是 n4-grammar-094 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-094",
+      "n4-grammar-248"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  },
+  {
+    "id": "sc-n4-008",
+    "level": "N4",
+    "before": "この道は",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "",
+      "★"
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "夜になると"
+      },
+      {
+        "id": "c",
+        "text": "歩きにくく"
+      },
+      {
+        "id": "b",
+        "text": "暗くて"
+      },
+      {
+        "id": "d",
+        "text": "なります"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 3,
+    "completeSentence": "この道は夜になると暗くて歩きにくくなります。",
+    "kana": "このみちはよるになるとくらくてあるきにくくなります。",
+    "meaning": "這條路到了晚上會很暗，不好走。",
+    "explanation": "主要判斷點是 n4-grammar-086 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-086",
+      "n4-grammar-280"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  },
+  {
+    "id": "sc-n4-009",
+    "level": "N4",
+    "before": "薬を",
+    "after": "。",
+    "slots": [
+      "★",
+      "",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "飲んでも"
+      },
+      {
+        "id": "b",
+        "text": "熱が"
+      },
+      {
+        "id": "d",
+        "text": "かもしれません"
+      },
+      {
+        "id": "c",
+        "text": "下がらない"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 0,
+    "completeSentence": "薬を飲んでも熱が下がらないかもしれません。",
+    "kana": "くすりをのんでもねつがさがらないかもしれません。",
+    "meaning": "即使吃藥，燒也可能不會退。",
+    "explanation": "主要判斷點是 n4-grammar-087 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-087",
+      "n4-grammar-080"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  },
+  {
+    "id": "sc-n4-010",
+    "level": "N4",
+    "before": "会議が",
+    "after": "。",
+    "slots": [
+      "",
+      "★",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "終わってから"
+      },
+      {
+        "id": "b",
+        "text": "資料を"
+      },
+      {
+        "id": "d",
+        "text": "ことにしています"
+      },
+      {
+        "id": "c",
+        "text": "コピーする"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 1,
+    "completeSentence": "会議が終わってから資料をコピーすることにしています。",
+    "kana": "かいぎがおわってからしりょうをコピーすることにしています。",
+    "meaning": "我習慣在會議結束後影印資料。",
+    "explanation": "主要判斷點是 n4-grammar-113 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-113",
+      "n4-grammar-250"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  },
+  {
+    "id": "sc-n4-011",
+    "level": "N4",
+    "before": "友だちが",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "★",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "引っ越すので"
+      },
+      {
+        "id": "d",
+        "text": "思います"
+      },
+      {
+        "id": "c",
+        "text": "あげたいと"
+      },
+      {
+        "id": "b",
+        "text": "手伝って"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 2,
+    "completeSentence": "友だちが引っ越すので手伝ってあげたいと思います。",
+    "kana": "ともだちがひっこすのでてつだってあげたいとおもいます。",
+    "meaning": "朋友要搬家，所以我想幫他。",
+    "explanation": "主要判斷點是 n4-grammar-107 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-107",
+      "n4-grammar-263",
+      "n4-grammar-202"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  },
+  {
+    "id": "sc-n4-012",
+    "level": "N4",
+    "before": "窓を",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "",
+      "★"
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "開けたまま"
+      },
+      {
+        "id": "c",
+        "text": "風邪を"
+      },
+      {
+        "id": "b",
+        "text": "寝ると"
+      },
+      {
+        "id": "d",
+        "text": "ひきますよ"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 3,
+    "completeSentence": "窓を開けたまま寝ると風邪をひきますよ。",
+    "kana": "まどをあけたままねるとかぜをひきますよ。",
+    "meaning": "窗戶開著睡的話會感冒喔。",
+    "explanation": "主要判斷點是 n4-grammar-208 的接續，並配合前後名詞、助詞與述語形成自然複句。",
+    "grammarIds": [
+      "n4-grammar-208",
+      "n4-grammar-086"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "已人工檢視主要片語邊界與接續；關鍵接續只能接在指定片語後，其他排列會造成助詞錯配、述語缺失或語意不自然。"
+  }
+]
