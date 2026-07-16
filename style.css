@@ -2774,3 +2774,95 @@ h1 {
     width: 100%;
   }
 }
+
+.japanese-review-panel,
+.japanese-review-book {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+  padding-bottom: calc(28px + env(safe-area-inset-bottom));
+}
+
+.japanese-review-entry-grid,
+.vocabulary-book-list,
+.mistake-book-list {
+  min-width: 0;
+}
+
+.vocabulary-book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.review-card,
+.mistake-module-group {
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 14px 34px rgba(67, 52, 40, 0.08);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.review-field {
+  margin: 8px 0;
+  color: var(--muted);
+  font-weight: 700;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.review-field strong {
+  color: var(--text);
+}
+
+.review-storage-notice:empty,
+.review-status:empty {
+  display: none;
+}
+
+.review-storage-notice,
+.empty-state,
+.review-status {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+.danger-button {
+  border-color: rgba(176, 52, 52, 0.28);
+  color: #9f2f2f;
+  background: #fff4f1;
+}
+
+.danger-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.mistake-book-list,
+.mistake-module-group {
+  display: grid;
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .japanese-review-entry-grid,
+  .vocabulary-book-list {
+    grid-template-columns: 1fr;
+  }
+  .review-actions .secondary-button,
+  .review-back-button {
+    width: 100%;
+  }
+}

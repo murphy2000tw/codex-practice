@@ -8,7 +8,7 @@
   <link rel="manifest" href="../manifest.webmanifest">
   <title>日文學習｜Marco and Vivi學習網</title>
   <meta name="japanese-layout-version" content="2.3">
-  <link rel="stylesheet" href="../style.css?v=2.6">
+  <link rel="stylesheet" href="../style.css?v=2.8">
 </head>
 <body data-japanese-layout-version="2.3">
   <main class="page-shell">
@@ -55,10 +55,22 @@
           <p class="entry-card-text">先進入聽力選單，再選擇聽力練習或聽力測驗。</p>
           <span class="entry-card-action">進入聽力</span>
         </button>
+        <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="reviewMenu" aria-pressed="false">
+          <span class="card-number">05</span>
+          <h3 class="entry-card-title">複習中心</h3>
+          <p class="entry-card-text">查看生字本與錯題本，整理需要再次複習的內容。</p>
+          <span class="entry-card-action">開始複習</span>
+        </button>
       </div>
     </section>
 
     </div>
+
+
+    <section id="japaneseReviewPanel" class="japanese-review-panel" hidden aria-labelledby="japanese-review-title">
+      <div id="japaneseReviewMenuView" class="japanese-review-menu-view"></div>
+      <div id="japaneseReviewContent" class="japanese-review-content"></div>
+    </section>
 
     <div id="japaneseMainContent" hidden>
     <section class="feature-page-header" aria-labelledby="vocabulary-page-title">
@@ -232,6 +244,6 @@
     window.JAPANESE_GRAMMAR_URL = "../grammar.json";
   </script>
   <script src="../japaneseReadingQuestions.js?v=1.0"></script>
-  <script src="../script.js?v=2.7"></script>
+  <script src="../script.js?v=2.8"></script>
 </body>
 </html>

@@ -27,6 +27,8 @@ seenCountKeys.forEach((key) => {
   assert(storageKeys.includes(key), `Existing seen-count storage key must remain present and unchanged: ${key}.`);
   assert(plan.includes(`\`${key}\``), `Plan must list existing storage key ${key}.`);
 });
+const batch15a2cCheckerPath = path.join(root, 'scripts/check-japanese-review-center-batch15a-2c.js');
+const hasBatch15a2cImplementation = fs.existsSync(batch15a2cCheckerPath) && script.includes('reviewMenu') && script.includes('japaneseReviewPanel');
 const hasBatch15a2bImplementation = script.includes(batch15a2bKey);
 const allowedStorageKeys = new Set(hasBatch15a2bImplementation ? [...seenCountKeys, batch15a2aKey, batch15a2bKey] : hasBatch15a2aImplementation ? [...seenCountKeys, batch15a2aKey] : seenCountKeys);
 storageKeys.forEach((key) => assert(allowedStorageKeys.has(key), `Unexpected Japanese storage key: ${key}.`));
@@ -68,6 +70,7 @@ if (hasBatch15a2aImplementation) {
     'scripts/check-japanese-main-entry.js',
     'scripts/check-japanese-view-isolation.js',
     'scripts/check-japanese-mistake-book-batch15a-2b.js',
+    'scripts/check-japanese-review-center-batch15a-2c.js',
   ].forEach((file) => allowed.add(file));
 }
 touched.forEach((file) => assert(allowed.has(file), `Formal program/question-bank file must not be modified: ${file}`));
@@ -76,7 +79,8 @@ if (!hasBatch15a2bImplementation) {
   assert(!script.includes(batch15a2bKey), 'Pre-15A-2B must not add mistake-book storage key.');
   assert(!/mistakeBook|recordJapaneseMistake|錯題紀錄/.test(script), 'Pre-15A-2B must not add mistake record hook.');
 }
-assert(!/data-japanese-review-center|review-center-view|複習中心/.test(script), 'Batch 15A must not add review center view.');
+if (!hasBatch15a2cImplementation) assert(!/data-japanese-review-center|review-center-view|複習中心/.test(script), 'Batch 15A must not add review center view before 15A-2C.');
+if (hasBatch15a2cImplementation) assert(script.includes('renderJapaneseReviewView') && script.includes('japaneseReviewPanel'), 'Batch 15A-2C review UI must be complete when review views are enabled.');
 
 const required = ['id', 'word', 'kana', 'meaning', 'partOfSpeech', 'level'];
 const duplicate = (items) => items.length - new Set(items).size;

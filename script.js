@@ -546,6 +546,9 @@ const japaneseContent = document.querySelector("#japaneseContent");
 const japaneseHomeContent = document.querySelector("#japaneseHomeContent");
 const japaneseMainContent = document.querySelector("#japaneseMainContent");
 const japaneseReadingPanel = document.querySelector("#japaneseReadingPanel");
+const japaneseReviewPanel = document.querySelector("#japaneseReviewPanel");
+const japaneseReviewMenuView = document.querySelector("#japaneseReviewMenuView");
+const japaneseReviewContent = document.querySelector("#japaneseReviewContent");
 const japaneseListeningPanel = document.querySelector("#japaneseListeningPanel");
 const japaneseTabButtons = document.querySelectorAll(".japanese-tab-button");
 const japaneseEntryButtons = document.querySelectorAll("[data-japanese-entry]");
@@ -616,7 +619,7 @@ function updateModeButtonsForJapaneseTab() {
 
 function normalizeJapaneseView(view) {
   if (view === "vocab") return "vocabulary";
-  if (["home", "vocabulary", "grammar", "reading", "listening", "listeningMenu", "listeningPractice", "listeningQuiz"].includes(view)) return view;
+  if (["home", "vocabulary", "grammar", "reading", "listening", "listeningMenu", "listeningPractice", "listeningQuiz", "reviewMenu", "vocabularyBook", "mistakeBook"].includes(view)) return view;
   return "home";
 }
 
@@ -625,13 +628,14 @@ function getJapaneseViewElement(view) {
   if (view === "vocabulary" || view === "grammar") return japaneseMainContent;
   if (view === "reading") return japaneseReadingPanel;
   if (["listening", "listeningMenu", "listeningPractice", "listeningQuiz"].includes(view)) return japaneseListeningPanel;
+  if (["reviewMenu", "vocabularyBook", "mistakeBook"].includes(view)) return japaneseReviewPanel;
   return japaneseHomeContent;
 }
 
 function renderJapaneseView(view) {
   const normalizedView = normalizeJapaneseView(view);
   const nextView = getJapaneseViewElement(normalizedView) ? normalizedView : "home";
-  const panelView = ["listeningMenu", "listeningPractice", "listeningQuiz"].includes(nextView) ? "listening" : nextView;
+  const panelView = ["listeningMenu", "listeningPractice", "listeningQuiz"].includes(nextView) ? "listening" : (["reviewMenu", "vocabularyBook", "mistakeBook"].includes(nextView) ? "review" : nextView);
   currentJapaneseView = nextView;
   activeJapaneseTab = getModePanelView(panelView);
 
@@ -652,6 +656,8 @@ function renderJapaneseView(view) {
   }
   if (japaneseReadingPanel) japaneseReadingPanel.hidden = panelView !== "reading";
   if (japaneseListeningPanel) japaneseListeningPanel.hidden = panelView !== "listening";
+  if (japaneseReviewPanel) japaneseReviewPanel.hidden = panelView !== "review";
+  if (panelView !== "review") resetJapaneseReviewPanel();
 
   japaneseTabButtons.forEach((button) => {
     const isActive = button.dataset.japaneseTab === panelView;
@@ -681,10 +687,134 @@ async function switchJapaneseTab(tab) {
     initializeReadingPanel();
   } else if (normalizedTab === "listening" && typeof initializeListeningPanel === "function") {
     initializeListeningPanel();
+  } else if (["reviewMenu", "vocabularyBook", "mistakeBook"].includes(normalizedTab)) {
+    await renderJapaneseReviewView(normalizedTab);
   }
 }
 
 window.showJapaneseContentView = switchJapaneseTab;
+
+
+const JAPANESE_REVIEW_QUESTION_TYPE_LABELS = Object.freeze({
+  vocabularyMeaning: "單字測驗", grammarMeaning: "文法意思", grammarCloze: "文法填空", readingQuestion: "閱讀測驗", listeningMeaning: "聽力測驗",
+});
+const JAPANESE_REVIEW_MODULE_LABELS = Object.freeze({ vocabulary: "單字", grammar: "文法", reading: "閱讀", listening: "聽力" });
+const JAPANESE_REVIEW_MODULE_ORDER = Object.freeze(["vocabulary", "grammar", "reading", "listening"]);
+
+function resetJapaneseReviewPanel() {
+  if (japaneseReviewMenuView) japaneseReviewMenuView.replaceChildren();
+  if (japaneseReviewContent) japaneseReviewContent.replaceChildren();
+}
+
+function createReviewButton(text, className, onClick) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = className || "secondary-button";
+  button.textContent = text;
+  button.addEventListener("click", onClick);
+  return button;
+}
+
+function appendReviewField(parent, label, value) {
+  const p = document.createElement("p");
+  p.className = "review-field";
+  const strong = document.createElement("strong");
+  strong.textContent = `${label}：`;
+  const span = document.createElement("span");
+  span.textContent = String(value ?? "—");
+  p.append(strong, span);
+  parent.appendChild(p);
+}
+
+function getJapaneseReviewCounts() {
+  return { vocabulary: Object.keys(readJapaneseVocabularyBook().itemsById).length, mistakes: Object.keys(readJapaneseMistakeBook().itemsById).length };
+}
+
+async function renderJapaneseReviewView(view) {
+  if (!japaneseReviewMenuView || !japaneseReviewContent) return;
+  resetJapaneseReviewPanel();
+  if (view === "reviewMenu") return renderJapaneseReviewMenu();
+  if (view === "vocabularyBook") return renderJapaneseVocabularyBookPage();
+  if (view === "mistakeBook") return renderJapaneseMistakeBookPage();
+}
+
+function renderJapaneseReviewMenu() {
+  const counts = getJapaneseReviewCounts();
+  const section = document.createElement("section");
+  section.className = "entry-section japanese-review-menu";
+  const header = document.createElement("div");
+  header.className = "category-header";
+  const title = document.createElement("h2");
+  title.id = "japanese-review-title";
+  title.textContent = "複習中心";
+  const count = document.createElement("p");
+  count.className = "category-count";
+  count.textContent = `生字 ${counts.vocabulary} 筆・錯題 ${counts.mistakes} 筆`;
+  header.append(title, count);
+  const grid = document.createElement("div");
+  grid.className = "entry-grid japanese-review-entry-grid";
+  [["01","生字本",`目前收藏總數：${counts.vocabulary}`,"查看生字本","vocabularyBook"],["02","錯題本",`目前錯題總數：${counts.mistakes}`,"查看錯題本","mistakeBook"]].forEach(([num,name,text,action,target]) => {
+    const card = createReviewButton("", "word-card entry-card japanese-main-entry-card review-menu-card", () => switchJapaneseTab(target));
+    const n = Object.assign(document.createElement("span"), { className: "card-number", textContent: num });
+    const h = Object.assign(document.createElement("h3"), { className: "entry-card-title", textContent: name });
+    const p = Object.assign(document.createElement("p"), { className: "entry-card-text", textContent: text });
+    const a = Object.assign(document.createElement("span"), { className: "entry-card-action", textContent: action });
+    card.append(n,h,p,a); grid.appendChild(card);
+  });
+  section.append(header, grid, createReviewButton("返回日文首頁", "secondary-button review-back-button", () => switchJapaneseTab("home")));
+  japaneseReviewMenuView.replaceChildren(section);
+}
+
+function sourceLabel(source) { return source === "reading-lookup" ? "閱讀查字" : "單字練習"; }
+function dateText(value) { const date = new Date(value); return Number.isNaN(date.getTime()) ? "日期無效" : new Intl.DateTimeFormat("zh-Hant-TW", { dateStyle:"medium", timeStyle:"short" }).format(date); }
+
+function renderJapaneseVocabularyBookPage(message = "") {
+  const items = resolveJapaneseVocabularyBookItems().sort((a,b)=>Date.parse(b.updatedAt)-Date.parse(a.updatedAt));
+  const section = document.createElement("section"); section.className="japanese-review-book";
+  const status = Object.assign(document.createElement("p"), { className:"status-message review-status", textContent: message }); status.setAttribute("role","status"); status.setAttribute("aria-live","polite");
+  const title = Object.assign(document.createElement("h2"), { textContent:"生字本" });
+  const count = Object.assign(document.createElement("p"), { className:"category-count", textContent:`收藏總數：${items.length}` });
+  const actions = document.createElement("div"); actions.className="review-actions";
+  actions.append(createReviewButton("返回複習中心","secondary-button",()=>switchJapaneseTab("reviewMenu")));
+  const clear = createReviewButton("清空生字本","secondary-button danger-button",()=>{ if(window.confirm("確定要清空生字本嗎？此操作無法復原。")){ clearJapaneseVocabularyBook(); renderJapaneseVocabularyBookPage("已清空生字本"); }});
+  clear.disabled = items.length === 0; actions.append(clear);
+  const notice = Object.assign(document.createElement("p"), { className:"review-storage-notice", textContent:getJapaneseVocabularyBookStorageNotice() });
+  const list = document.createElement("div"); list.className="vocabulary-book-list";
+  if (!items.length) list.appendChild(Object.assign(document.createElement("p"), { className:"empty-state", textContent:"生字本目前是空的，可以從單字練習卡或閱讀查字卡加入單字。" }));
+  items.forEach((item)=>{ const card=document.createElement("article"); card.className="review-card vocabulary-book-card"; if(item.status==="missing"){ appendReviewField(card,"狀態","此單字已從題庫移除"); appendReviewField(card,"vocabulary ID",item.vocabularyId); } else { const e=item.entry; appendReviewField(card,"單字",e.word); appendReviewField(card,"假名",e.kana); appendReviewField(card,"中文意思",e.meaning); appendReviewField(card,"詞性",e.partOfSpeech); appendReviewField(card,"程度",e.level); appendReviewField(card,"加入來源",sourceLabel(item.source)); const details=document.createElement("details"); const summary=document.createElement("summary"); summary.textContent="查看例句"; details.appendChild(summary); appendReviewField(details,"日文例句",e.example); appendReviewField(details,"例句假名",e.exampleKana); appendReviewField(details,"中文翻譯",e.exampleMeaning); card.appendChild(details);} const rm=createReviewButton("移除","secondary-button",()=>{removeJapaneseVocabularyFromBook(item.vocabularyId); renderJapaneseVocabularyBookPage("已從生字本移除");}); card.appendChild(rm); list.appendChild(card); });
+  section.append(title,count,actions,status,notice,list); japaneseReviewContent.replaceChildren(section);
+}
+
+function findVocabularyById(id){ return vocabulary.find((x)=>String(x.id)===String(id)); }
+function findGrammarById(id){ return grammarItems.find((x)=>String(x.id ?? x.grammarId)===String(id)); }
+function findReadingQuestion(record){ const set=(window.JAPANESE_READING_SETS||[]).find((x)=>String(x.id)===String(record.relatedId)); const q=set?.questions?.find((x)=>String(x.id)===String(record.itemId)); return set&&q?{set,q}:null; }
+function findListeningById(id){ return (window.JAPANESE_LISTENING_QUESTIONS||JAPANESE_LISTENING_QUESTIONS||[]).find((x)=>String(x.id)===String(id)); }
+
+function appendMistakeResolvedFields(card, record) {
+  let found = false;
+  if (record.questionType === "vocabularyMeaning") { const e=findVocabularyById(record.itemId); if(e){found=true; ["word","kana","meaning","level","partOfSpeech"].forEach(k=>appendReviewField(card,k,e[k]));} }
+  if (record.questionType === "grammarMeaning") { const e=findGrammarById(record.itemId); if(e){found=true; appendReviewField(card,"grammar",e.grammar); appendReviewField(card,"kana",e.kana); appendReviewField(card,"meaning",e.meaning); appendReviewField(card,"level",e.level); appendReviewField(card,"category",e.category);} }
+  if (record.questionType === "grammarCloze") { const e=findGrammarById(record.itemId); if(e){found=true; appendReviewField(card,"quiz.clozePrompt",e.quiz?.clozePrompt); appendReviewField(card,"quiz.clozePromptKana",e.quiz?.clozePromptKana); appendReviewField(card,"quiz.clozeMeaning",e.quiz?.clozeMeaning); appendReviewField(card,"quiz.explanation",e.quiz?.explanation); appendReviewField(card,"level",e.level); appendReviewField(card,"category",e.category);} }
+  if (record.questionType === "readingQuestion") { const r=findReadingQuestion(record); if(r){found=true; appendReviewField(card,"readingSet.title",r.set.title); appendReviewField(card,"readingSet.level",r.set.level); appendReviewField(card,"readingSet.type",r.set.type); appendReviewField(card,"question.question",r.q.question); appendReviewField(card,"question.explanation",r.q.explanation);} }
+  if (record.questionType === "listeningMeaning") { const e=findListeningById(record.itemId); if(e){found=true; ["japanese","kana","zh","level","category","question"].forEach(k=>appendReviewField(card,k,e[k]));} }
+  if (!found) { appendReviewField(card,"狀態","此題已從題庫移除或目前無法載入"); ["module","questionType","itemId","relatedId"].forEach(k=>appendReviewField(card,k,record[k])); }
+}
+
+async function renderJapaneseMistakeBookPage(message = "") {
+  if (!grammarHasLoaded && typeof ensureGrammarLoaded === "function") await ensureGrammarLoaded();
+  const records = getAllJapaneseMistakeRecords();
+  const section=document.createElement("section"); section.className="japanese-review-book";
+  const title=Object.assign(document.createElement("h2"),{textContent:"錯題本"}); const count=Object.assign(document.createElement("p"),{className:"category-count",textContent:`錯題總數：${records.length}`});
+  const actions=document.createElement("div"); actions.className="review-actions"; actions.append(createReviewButton("返回複習中心","secondary-button",()=>switchJapaneseTab("reviewMenu")));
+  const clear=createReviewButton("清空錯題本","secondary-button danger-button",()=>{ if(window.confirm("確定要清空錯題本嗎？此操作無法復原。")){ clearJapaneseMistakeBook(); renderJapaneseMistakeBookPage("已清空錯題本"); }}); clear.disabled=records.length===0; actions.append(clear);
+  const status=Object.assign(document.createElement("p"),{className:"status-message review-status",textContent:message}); status.setAttribute("role","status"); status.setAttribute("aria-live","polite");
+  const notice=Object.assign(document.createElement("p"),{className:"review-storage-notice",textContent:japaneseMistakeBookStorageFallback ? "此瀏覽器無法永久保存，資料只保留到關閉頁面" : ""});
+  const body=document.createElement("div"); body.className="mistake-book-list";
+  if(!records.length) body.appendChild(Object.assign(document.createElement("p"),{className:"empty-state",textContent:"錯題本目前是空的；日文測驗答錯的題目會記錄在這裡。"}));
+  JAPANESE_REVIEW_MODULE_ORDER.forEach((module)=>{ const group=records.filter(r=>r.module===module).sort((a,b)=>Date.parse(b.lastWrongAt)-Date.parse(a.lastWrongAt)); if(!group.length)return; const sec=document.createElement("section"); sec.className="mistake-module-group"; const h=Object.assign(document.createElement("h3"),{textContent:`${JAPANESE_REVIEW_MODULE_LABELS[module]}（${group.length}）`}); sec.appendChild(h); group.forEach((record)=>{ const card=document.createElement("article"); card.className="review-card mistake-book-card"; appendReviewField(card,"題型標籤",JAPANESE_REVIEW_QUESTION_TYPE_LABELS[record.questionType] || record.questionType); appendMistakeResolvedFields(card,record); appendReviewField(card,"你的答案",record.userAnswer); appendReviewField(card,"正確答案",record.correctAnswer); appendReviewField(card,"答錯次數",record.wrongCount); appendReviewField(card,"最近答錯時間",dateText(record.lastWrongAt)); const key=createJapaneseMistakeDedupeKey(record); card.appendChild(createReviewButton("移除","secondary-button",()=>{removeJapaneseMistake(key); renderJapaneseMistakeBookPage("已從錯題本移除");})); sec.appendChild(card); }); body.appendChild(sec); });
+  section.append(title,count,actions,status,notice,body); japaneseReviewContent.replaceChildren(section);
+}
+
 
 function isGrammarMode() {
   return activeMode === "grammar" || activeMode === "grammar-quiz";
@@ -3097,7 +3227,6 @@ function initializeListeningPanel() {
   renderJapaneseListeningView("menu");
 }
 
-window.JAPANESE_LISTENING_QUESTIONS = JAPANESE_LISTENING_QUESTIONS;
 window.LISTENING_QUIZ_SIZE = LISTENING_QUIZ_SIZE;
 window.initializeListeningPanel = initializeListeningPanel;
 window.renderJapaneseListeningView = renderJapaneseListeningView;

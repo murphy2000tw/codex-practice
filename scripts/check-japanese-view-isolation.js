@@ -34,11 +34,12 @@ requireSnippet(html, 'id="japaneseContent"', 'single Japanese view root');
 requireSnippet(html, 'id="japaneseHomeContent"', 'home view wrapper');
 requireSnippet(html, 'id="japaneseMainContent" hidden', 'vocabulary view wrapper');
 requireSnippet(html, 'id="japaneseReadingPanel"', 'reading view wrapper');
+requireSnippet(html, 'id="japaneseReviewPanel"', 'review view wrapper');
 requireSnippet(html, 'data-japanese-back-home', 'feature-page back-home button');
 requireSnippet(html, 'data-japanese-layout-version="2.3"', 'page version marker');
 requireSnippet(html, 'name="japanese-layout-version" content="2.3"', 'meta version marker');
-requireSnippet(html, '../script.js?v=2.7', 'JS cache-busting version');
-requireSnippet(html, '../style.css?v=2.6', 'CSS cache-busting version');
+requireSnippet(html, '../script.js?v=2.8', 'JS cache-busting version');
+requireSnippet(html, '../style.css?v=2.8', 'CSS cache-busting version');
 
 requireSnippet(script, 'let currentJapaneseView = "home"', 'current view state');
 requireSnippet(script, 'function renderJapaneseView(view)', 'top-level Japanese view renderer');
@@ -53,8 +54,8 @@ const vocabulary = extractById(html, 'japaneseMainContent');
 const reading = extractById(html, 'japaneseReadingPanel');
 const listening = extractById(html, 'japaneseListeningPanel');
 
-if (!root.includes('id="japaneseHomeContent"') || !root.includes('id="japaneseMainContent"') || !root.includes('id="japaneseReadingPanel"') || !root.includes('id="japaneseListeningPanel"')) {
-  failures.push('Japanese view root must initially contain home, vocabulary, reading, and listening top-level views so the renderer can move exactly one view into the root.');
+if (!root.includes('id="japaneseHomeContent"') || !root.includes('id="japaneseMainContent"') || !root.includes('id="japaneseReadingPanel"') || !root.includes('id="japaneseListeningPanel"') || !root.includes('id="japaneseReviewPanel"')) {
+  failures.push('Japanese view root must initially contain home, vocabulary, reading, listening, and review top-level views so the renderer can move exactly one view into the root.');
 }
 
 if (!home.includes('日文學習主入口') || !home.includes('日文學習功能') || !home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"') || !home.includes('data-japanese-entry="grammar"') || !home.includes('data-japanese-entry="listening"')) {
@@ -90,15 +91,19 @@ if (listening.includes('data-japanese-entry=') || listening.includes('日文學�
 });
 
 const navigableEntries = [...home.matchAll(/data-japanese-entry="([^"]+)"/g)].map((match) => match[1]);
-const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'grammar', 'reading', 'listening'].includes(entry));
+const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'grammar', 'reading', 'listening', 'reviewMenu'].includes(entry));
 if (unexpectedEntries.length > 0) failures.push(`Unexpected navigable Japanese entries: ${unexpectedEntries.join(', ')}`);
-if (!home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"') || !home.includes('data-japanese-entry="grammar"') || !home.includes('data-japanese-entry="listening"')) {
-  failures.push('Japanese home must expose vocabulary, reading, grammar, and listening menu entries.');
+if (!home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"') || !home.includes('data-japanese-entry="grammar"') || !home.includes('data-japanese-entry="listening"') || !home.includes('data-japanese-entry="reviewMenu"')) {
+  failures.push('Japanese home must expose vocabulary, reading, grammar, listening, and review menu entries.');
 }
 
 const renderBody = script.match(/function renderJapaneseView\(view\) \{[\s\S]*?\n\}/)?.[0] ?? '';
 if (!script.includes('initializeReadingPanel();') || !script.includes('function bindReadingModeButtons(') || !script.includes('event.target.closest("[data-reading-mode]")') || !script.includes('function renderJapaneseReadingView(')) {
   failures.push('Reading view render must initialize scoped reading practice / quiz mode handlers.');
+}
+
+if (!script.includes('renderJapaneseReviewView') || !script.includes('resetJapaneseReviewPanel') || !script.includes('reviewMenu')) {
+  failures.push('Review view render must initialize isolated review menu, vocabulary book, and mistake book views.');
 }
 
 if (!script.includes('initializeListeningPanel();') || !script.includes('function bindListeningModeButtons(') || !script.includes('function renderJapaneseListeningView(') || !script.includes('"listeningMenu"') || !script.includes('"listeningPractice"') || !script.includes('"listeningQuiz"')) {
