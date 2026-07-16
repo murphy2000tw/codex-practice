@@ -6,7 +6,7 @@ const dataPath = path.join(root, 'japaneseSentenceCompositionQuestions.json');
 const grammarPath = path.join(root, 'grammar.json');
 const vocabPath = path.join(root, 'vocabulary.json');
 const errors = [];
-const summary = { total: 0, N5: 0, N4: 0, starSlot: [0,0,0,0], answerOptionPosition: [0,0,0,0], grammarIdsUsed: new Set(), duplicateQuestionId: 0, duplicateCompleteSentence: 0, missing: 0, reconstruction: 0, duplicateChunkId: 0, duplicateChunkText: 0 };
+const summary = { total: 0, N5: 0, N4: 0, starSlot: [0,0,0,0], answerOptionPosition: [0,0,0,0], grammarIdsUsed: new Set(), duplicateQuestionId: 0, duplicateCompleteSentence: 0, duplicateExplanation: 0, duplicateReviewNote: 0, missing: 0, reconstruction: 0, duplicateChunkId: 0, duplicateChunkText: 0 };
 function fail(msg){ errors.push(msg); }
 function readJson(file){ try { return JSON.parse(fs.readFileSync(file,'utf8')); } catch(e){ fail(`${path.basename(file)} is not valid JSON: ${e.message}`); return null; } }
 const questions = readJson(dataPath);
@@ -22,7 +22,7 @@ const vocabN5 = Array.isArray(vocab) ? vocab.filter(v=>v.level === 'N5').length 
 const vocabN4 = Array.isArray(vocab) ? vocab.filter(v=>v.level === 'N4').length : 0;
 if (vocab.length !== 3241 || vocabN5 !== 1021 || vocabN4 !== 2220) fail(`vocabulary baseline changed: total=${vocab.length}, N5=${vocabN5}, N4=${vocabN4}`);
 const expectedIds = [...Array.from({length:8},(_,i)=>`sc-n5-${String(i+1).padStart(3,'0')}`), ...Array.from({length:12},(_,i)=>`sc-n4-${String(i+1).padStart(3,'0')}`)];
-const idSeen = new Set(); const sentenceSeen = new Set();
+const idSeen = new Set(); const sentenceSeen = new Set(); const explanationSeen = new Set(); const reviewNoteSeen = new Set();
 const unsafe = /<[^>]+>|innerHTML|script|javascript:|\bon[a-z]+\s*=/i;
 const fields = ['id','level','before','after','slots','chunks','correctOrder','starSlot','completeSentence','kana','meaning','explanation','grammarIds','uniqueAnswerReviewed','reviewNote'];
 if (Array.isArray(questions)) {
@@ -33,6 +33,8 @@ if (Array.isArray(questions)) {
     if (q.id !== expectedIds[i]) fail(`question order/id mismatch at ${i}: expected ${expectedIds[i]}, got ${q.id}`);
     if (idSeen.has(q.id)) { summary.duplicateQuestionId++; fail(`${q.id}: duplicate id`); } else idSeen.add(q.id);
     if (sentenceSeen.has(q.completeSentence)) { summary.duplicateCompleteSentence++; fail(`${q.id}: duplicate completeSentence`); } else sentenceSeen.add(q.completeSentence);
+    if (explanationSeen.has(q.explanation)) { summary.duplicateExplanation++; fail(`${q.id}: duplicate explanation`); } else explanationSeen.add(q.explanation);
+    if (reviewNoteSeen.has(q.reviewNote)) { summary.duplicateReviewNote++; fail(`${q.id}: duplicate reviewNote`); } else reviewNoteSeen.add(q.reviewNote);
     if (q.level !== (i < 8 ? 'N5' : 'N4')) fail(`${q.id}: incorrect level ${q.level}`);
     if (q.level === 'N5') summary.N5++; if (q.level === 'N4') summary.N4++;
     for (const [k,v] of Object.entries(q)) if (typeof v === 'string' && unsafe.test(v)) fail(`${q.id}: unsafe string in ${k}`);
@@ -52,6 +54,8 @@ if (Array.isArray(questions)) {
     if (rebuilt !== q.completeSentence) { summary.reconstruction++; fail(`${q.id}: reconstruction mismatch`); }
     const ans = (q.correctOrder || [])[q.starSlot]; const pos = chunkIds.indexOf(ans); if (pos >= 0) summary.answerOptionPosition[pos]++;
     for (const f of ['kana','meaning','explanation','reviewNote']) if (typeof q[f] !== 'string' || !q[f].trim()) fail(`${q.id}: ${f} is blank`);
+    if (typeof q.explanation !== 'string' || q.explanation.trim().length < 35) fail(`${q.id}: explanation is too short for review quality`);
+    if (typeof q.reviewNote !== 'string' || q.reviewNote.trim().length < 45) fail(`${q.id}: reviewNote is too short for uniqueness review quality`);
     if (q.uniqueAnswerReviewed !== true) fail(`${q.id}: uniqueAnswerReviewed must be true`);
     if (!Array.isArray(q.grammarIds) || q.grammarIds.length < 1) fail(`${q.id}: grammarIds required`);
     for (const gid of q.grammarIds || []) { summary.grammarIdsUsed.add(gid); if (!grammarIds.has(gid)) fail(`${q.id}: unknown grammarId ${gid}`); }
@@ -66,7 +70,7 @@ console.log(`N5 / N4: ${summary.N5} / ${summary.N4}`);
 console.log(`starSlot distribution: ${summary.starSlot.join(', ')}`);
 console.log(`answer option position distribution: ${summary.answerOptionPosition.join(', ')}`);
 console.log(`grammarIds used: ${summary.grammarIdsUsed.size}`);
-console.log(`duplicates: questionId=${summary.duplicateQuestionId}, completeSentence=${summary.duplicateCompleteSentence}, chunkId=${summary.duplicateChunkId}, chunkText=${summary.duplicateChunkText}`);
+console.log(`duplicates: questionId=${summary.duplicateQuestionId}, completeSentence=${summary.duplicateCompleteSentence}, explanation=${summary.duplicateExplanation}, reviewNote=${summary.duplicateReviewNote}, chunkId=${summary.duplicateChunkId}, chunkText=${summary.duplicateChunkText}`);
 console.log(`missing: ${summary.missing}`);
 console.log(`reconstruction errors: ${summary.reconstruction}`);
 if (errors.length) { console.error(`FAIL: ${errors.length} error(s)`); for (const e of errors) console.error(`- ${e}`); process.exit(1); }
