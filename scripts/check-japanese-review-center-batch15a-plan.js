@@ -20,16 +20,18 @@ const seenCountKeys = [
   'japanese_reading_seen_counts',
 ];
 const batch15a2aKey = 'japanese_vocabulary_book_v1';
+const batch15a2bKey = 'japanese_mistake_book_v1';
 const batch15a2aCheckerPath = path.join(root, 'scripts/check-japanese-vocabulary-book-batch15a-2a.js');
 const hasBatch15a2aImplementation = fs.existsSync(batch15a2aCheckerPath) && script.includes(batch15a2aKey);
 seenCountKeys.forEach((key) => {
   assert(storageKeys.includes(key), `Existing seen-count storage key must remain present and unchanged: ${key}.`);
   assert(plan.includes(`\`${key}\``), `Plan must list existing storage key ${key}.`);
 });
-const allowedStorageKeys = new Set(hasBatch15a2aImplementation ? [...seenCountKeys, batch15a2aKey] : seenCountKeys);
+const hasBatch15a2bImplementation = script.includes(batch15a2bKey);
+const allowedStorageKeys = new Set(hasBatch15a2bImplementation ? [...seenCountKeys, batch15a2aKey, batch15a2bKey] : hasBatch15a2aImplementation ? [...seenCountKeys, batch15a2aKey] : seenCountKeys);
 storageKeys.forEach((key) => assert(allowedStorageKeys.has(key), `Unexpected Japanese storage key: ${key}.`));
 assert(storageKeys.length === allowedStorageKeys.size, `Expected ${allowedStorageKeys.size} allowed Japanese storage keys; got ${storageKeys.length}.`);
-assert(!script.includes('japanese_mistake_book_v1'), 'Batch 15A-2A must not add mistake-book storage key.');
+if (!hasBatch15a2bImplementation) assert(!script.includes(batch15a2bKey), 'Pre-15A-2B must not add mistake-book storage key.');
 assert(/不得被生字本／錯題本清除/.test(plan), 'Plan must state seen-count keys are not clearable by review data.');
 assert(!/seen-count key[\s\S]{0,80}(清空生字本|清空錯題本)/i.test(plan), 'Plan must not treat seen-count keys as vocabulary/mistake data.');
 
@@ -65,13 +67,16 @@ if (hasBatch15a2aImplementation) {
     'scripts/check-japanese-vocabulary-book-batch15a-2a.js',
     'scripts/check-japanese-main-entry.js',
     'scripts/check-japanese-view-isolation.js',
+    'scripts/check-japanese-mistake-book-batch15a-2b.js',
   ].forEach((file) => allowed.add(file));
 }
 touched.forEach((file) => assert(allowed.has(file), `Formal program/question-bank file must not be modified: ${file}`));
 assert(!touched.includes('vocabulary.json'), 'vocabulary.json must not be modified.');
-assert(!script.includes('japanese_mistake_book_v1'), 'Batch 15A-2A must not add mistake-book storage key.');
-assert(!/data-japanese-review-center|review-center-view|複習中心/.test(script), 'Batch 15A-2A must not add review center view.');
-assert(!/mistakeBook|recordJapaneseMistake|錯題紀錄/.test(script), 'Batch 15A-2A must not add mistake record hook.');
+if (!hasBatch15a2bImplementation) {
+  assert(!script.includes(batch15a2bKey), 'Pre-15A-2B must not add mistake-book storage key.');
+  assert(!/mistakeBook|recordJapaneseMistake|錯題紀錄/.test(script), 'Pre-15A-2B must not add mistake record hook.');
+}
+assert(!/data-japanese-review-center|review-center-view|複習中心/.test(script), 'Batch 15A must not add review center view.');
 
 const required = ['id', 'word', 'kana', 'meaning', 'partOfSpeech', 'level'];
 const duplicate = (items) => items.length - new Set(items).size;
@@ -87,4 +92,4 @@ if (failures.length) {
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
-console.log(`Batch 15A-1 review center plan check passed: ${lineCount} lines, ${storageKeys.length} storage keys, five quizzes, schemas, safety rules, ${hasBatch15a2aImplementation ? 'Batch 15A-2A implementation allowance, ' : ''}and vocabulary baseline verified.`);
+console.log(`Batch 15A-1 review center plan check passed: ${lineCount} lines, ${storageKeys.length} storage keys, five quizzes, schemas, safety rules, ${hasBatch15a2bImplementation ? 'Batch 15A-2B implementation allowance, ' : hasBatch15a2aImplementation ? 'Batch 15A-2A implementation allowance, ' : ''}and vocabulary baseline verified.`);

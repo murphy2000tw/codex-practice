@@ -199,6 +199,155 @@ function createJapaneseVocabularyBookControl(vocabularyId, source) {
   return wrapper;
 }
 
+
+const JAPANESE_MISTAKE_BOOK_KEY = "japanese_mistake_book_v1";
+const JAPANESE_MISTAKE_BOOK_SCHEMA_VERSION = 1;
+const JAPANESE_MISTAKE_QUESTION_TYPES = Object.freeze({
+  vocabularyMeaning: { module: "vocabulary", keyParts: ["module", "questionType", "itemId"] },
+  grammarMeaning: { module: "grammar", keyParts: ["module", "questionType", "itemId"] },
+  grammarCloze: { module: "grammar", keyParts: ["module", "questionType", "itemId"] },
+  readingQuestion: { module: "reading", keyParts: ["module", "questionType", "relatedId", "itemId"] },
+  listeningMeaning: { module: "listening", keyParts: ["module", "questionType", "itemId"] },
+});
+let japaneseMistakeBookMemoryRaw = null;
+let japaneseMistakeBookStorageFallback = false;
+const japaneseMistakeBookMissingIdWarnings = new Set();
+
+function createEmptyJapaneseMistakeBook() {
+  return { schemaVersion: JAPANESE_MISTAKE_BOOK_SCHEMA_VERSION, itemsById: {} };
+}
+
+function normalizeJapaneseMistakeBookId(id) {
+  return String(id ?? "").trim();
+}
+
+function isValidJapaneseMistakeTimestamp(value) {
+  return typeof value === "string" && value && !Number.isNaN(Date.parse(value));
+}
+
+function getJapaneseMistakeTypeDefinition(questionType) {
+  return JAPANESE_MISTAKE_QUESTION_TYPES[questionType] || null;
+}
+
+function createJapaneseMistakeDedupeKey({ module, questionType, itemId, relatedId }) {
+  const definition = getJapaneseMistakeTypeDefinition(questionType);
+  const normalizedModule = normalizeJapaneseMistakeBookId(module);
+  const normalizedItemId = normalizeJapaneseMistakeBookId(itemId);
+  const normalizedRelatedId = normalizeJapaneseMistakeBookId(relatedId ?? itemId);
+  if (!definition || definition.module !== normalizedModule || !normalizedItemId || !normalizedRelatedId) return "";
+  const values = { module: normalizedModule, questionType, itemId: normalizedItemId, relatedId: normalizedRelatedId };
+  return definition.keyParts.map((part) => values[part]).join(":");
+}
+
+function normalizeJapaneseMistakeBookData(data) {
+  if (!data || typeof data !== "object" || Array.isArray(data)) return createEmptyJapaneseMistakeBook();
+  if (data.schemaVersion !== JAPANESE_MISTAKE_BOOK_SCHEMA_VERSION) return createEmptyJapaneseMistakeBook();
+  if (!data.itemsById || typeof data.itemsById !== "object" || Array.isArray(data.itemsById)) return createEmptyJapaneseMistakeBook();
+  const normalized = createEmptyJapaneseMistakeBook();
+  Object.entries(data.itemsById).forEach(([key, item]) => {
+    if (!item || typeof item !== "object" || Array.isArray(item)) return;
+    const module = normalizeJapaneseMistakeBookId(item.module);
+    const questionType = normalizeJapaneseMistakeBookId(item.questionType);
+    const itemId = normalizeJapaneseMistakeBookId(item.itemId);
+    const relatedId = normalizeJapaneseMistakeBookId(item.relatedId ?? itemId);
+    const dedupeKey = createJapaneseMistakeDedupeKey({ module, questionType, itemId, relatedId });
+    const wrongCount = Number(item.wrongCount);
+    const createdAt = String(item.createdAt ?? "");
+    const updatedAt = String(item.updatedAt ?? "");
+    const lastWrongAt = String(item.lastWrongAt ?? "");
+    if (!dedupeKey || dedupeKey !== normalizeJapaneseMistakeBookId(key)) return;
+    if (!Number.isInteger(wrongCount) || wrongCount < 1) return;
+    if (![createdAt, updatedAt, lastWrongAt].every(isValidJapaneseMistakeTimestamp)) return;
+    normalized.itemsById[dedupeKey] = {
+      module, questionType, itemId, relatedId, wrongCount, lastWrongAt,
+      userAnswer: String(item.userAnswer ?? ""),
+      correctAnswer: String(item.correctAnswer ?? ""),
+      createdAt, updatedAt,
+    };
+  });
+  return normalized;
+}
+
+function readJapaneseMistakeBookRaw() {
+  if (japaneseMistakeBookStorageFallback) return japaneseMistakeBookMemoryRaw;
+  try { return window.localStorage?.getItem(JAPANESE_MISTAKE_BOOK_KEY) ?? null; }
+  catch (error) { japaneseMistakeBookStorageFallback = true; return japaneseMistakeBookMemoryRaw; }
+}
+
+function writeJapaneseMistakeBookRaw(rawData) {
+  if (japaneseMistakeBookStorageFallback) { japaneseMistakeBookMemoryRaw = rawData; return; }
+  try { window.localStorage?.setItem(JAPANESE_MISTAKE_BOOK_KEY, rawData); }
+  catch (error) { japaneseMistakeBookStorageFallback = true; japaneseMistakeBookMemoryRaw = rawData; }
+}
+
+function readJapaneseMistakeBook() {
+  try { const rawData = readJapaneseMistakeBookRaw(); return rawData ? normalizeJapaneseMistakeBookData(JSON.parse(rawData)) : createEmptyJapaneseMistakeBook(); }
+  catch (error) { return createEmptyJapaneseMistakeBook(); }
+}
+
+function writeJapaneseMistakeBook(book) {
+  const normalized = normalizeJapaneseMistakeBookData(book);
+  writeJapaneseMistakeBookRaw(JSON.stringify(normalized));
+  return normalized;
+}
+
+function warnJapaneseMistakeMissingIdOnce(context) {
+  if (!context || japaneseMistakeBookMissingIdWarnings.has(context)) return;
+  japaneseMistakeBookMissingIdWarnings.add(context);
+  console.warn(`Japanese mistake book skipped missing stable ID: ${context}`);
+}
+
+function recordJapaneseMistake(payload, now = new Date()) {
+  const timestamp = now.toISOString();
+  const module = normalizeJapaneseMistakeBookId(payload?.module);
+  const questionType = normalizeJapaneseMistakeBookId(payload?.questionType);
+  const itemId = normalizeJapaneseMistakeBookId(payload?.itemId);
+  const relatedId = normalizeJapaneseMistakeBookId(payload?.relatedId ?? payload?.itemId);
+  const dedupeKey = createJapaneseMistakeDedupeKey({ module, questionType, itemId, relatedId });
+  if (!dedupeKey) { warnJapaneseMistakeMissingIdOnce(`${module || "unknown"}:${questionType || "unknown"}`); return readJapaneseMistakeBook(); }
+  const book = readJapaneseMistakeBook();
+  const existing = book.itemsById[dedupeKey];
+  book.itemsById[dedupeKey] = {
+    module, questionType, itemId, relatedId,
+    wrongCount: existing ? existing.wrongCount + 1 : 1,
+    lastWrongAt: timestamp,
+    userAnswer: String(payload?.userAnswer ?? ""),
+    correctAnswer: String(payload?.correctAnswer ?? ""),
+    createdAt: existing?.createdAt || timestamp,
+    updatedAt: timestamp,
+  };
+  return writeJapaneseMistakeBook(book);
+}
+
+function hasJapaneseMistake(dedupeKey) {
+  return Boolean(readJapaneseMistakeBook().itemsById[normalizeJapaneseMistakeBookId(dedupeKey)]);
+}
+
+function getAllJapaneseMistakeRecords() {
+  return Object.values(readJapaneseMistakeBook().itemsById);
+}
+
+function removeJapaneseMistake(dedupeKey) {
+  const book = readJapaneseMistakeBook();
+  delete book.itemsById[normalizeJapaneseMistakeBookId(dedupeKey)];
+  return writeJapaneseMistakeBook(book);
+}
+
+function clearJapaneseMistakeBook() {
+  return writeJapaneseMistakeBook(createEmptyJapaneseMistakeBook());
+}
+
+function recordActiveQuizMistake(selectedOption, correctAnswer) {
+  const activeQuestion = isGrammarQuizMode() ? currentGrammarQuizQuestion : currentQuizQuestion;
+  if (isGrammarQuizMode()) {
+    const grammarId = activeQuestion?.grammar?.id;
+    recordJapaneseMistake({ module: "grammar", questionType: isGrammarClozeQuizType() ? "grammarCloze" : "grammarMeaning", itemId: grammarId, relatedId: grammarId, userAnswer: selectedOption?.meaning, correctAnswer });
+  } else {
+    const vocabularyId = activeQuestion?.word?.id;
+    recordJapaneseMistake({ module: "vocabulary", questionType: "vocabularyMeaning", itemId: vocabularyId, relatedId: vocabularyId, userAnswer: selectedOption?.meaning, correctAnswer });
+  }
+}
+
 Object.assign(window, {
   JAPANESE_VOCABULARY_BOOK_KEY,
   createEmptyJapaneseVocabularyBook,
@@ -210,7 +359,20 @@ Object.assign(window, {
   removeJapaneseVocabularyFromBook,
   resolveJapaneseVocabularyBookItems,
   clearJapaneseVocabularyBook,
+  JAPANESE_MISTAKE_BOOK_KEY,
+  JAPANESE_MISTAKE_QUESTION_TYPES,
+  createEmptyJapaneseMistakeBook,
+  normalizeJapaneseMistakeBookData,
+  readJapaneseMistakeBook,
+  writeJapaneseMistakeBook,
+  createJapaneseMistakeDedupeKey,
+  recordJapaneseMistake,
+  hasJapaneseMistake,
+  getAllJapaneseMistakeRecords,
+  removeJapaneseMistake,
+  clearJapaneseMistakeBook,
 });
+
 
 function readSeenCounts(storageKey) {
   try {
@@ -1229,6 +1391,7 @@ function handleQuizAnswer(selectedOption, optionButtons, feedback) {
     const correctMeaning = isGrammarClozeQuizType()
       ? activeQuestion.grammar.quiz.answer
       : isGrammarQuizMode() ? activeQuestion.grammar.meaning : activeQuestion.word.meaning;
+    recordActiveQuizMistake(selectedOption, correctMeaning);
     feedback.textContent = `答錯了，正確答案是：${correctMeaning}`;
     feedback.classList.add("is-wrong");
   }
@@ -2530,6 +2693,11 @@ function renderReadingQuizQuestion() {
   const card = createReadingSetCard(readingSet, { showFeedback: true, selectedAnswers, showRuby: false, onAnswer: (questionIndex, selectedIndex) => {
     if (readingQuizAnswers[answeredInPreviousSets + questionIndex] !== undefined) return;
     readingQuizAnswers[answeredInPreviousSets + questionIndex] = selectedIndex;
+    const question = readingSet.questions[questionIndex];
+    const correctIndex = getReadingQuestionCorrectIndex(question);
+    if (!isReadingSelectedIndexCorrect(question, selectedIndex)) {
+      recordJapaneseMistake({ module: "reading", questionType: "readingQuestion", itemId: question?.id, relatedId: readingSet?.id, userAnswer: question?.options?.[selectedIndex], correctAnswer: question?.options?.[correctIndex] });
+    }
     renderReadingQuizQuestion();
   }});
   const setComplete = readingSet.questions.every((_question, index) => readingQuizAnswers[answeredInPreviousSets + index] !== undefined);
@@ -2874,6 +3042,7 @@ function renderJapaneseListeningQuizQuestion() {
       listeningQuizAnswered = true;
       listeningQuizSelectedIndex = index;
       if (index === item.answerIndex) listeningQuizCorrectCount += 1;
+      else recordJapaneseMistake({ module: "listening", questionType: "listeningMeaning", itemId: item?.id, relatedId: item?.id, userAnswer: item?.options?.[index], correctAnswer: item?.options?.[item.answerIndex] });
       renderJapaneseListeningQuizQuestion();
     });
     options.appendChild(button);
