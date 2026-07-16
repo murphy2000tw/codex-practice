@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const vm = require('vm');
+const path = require('path');
+const root = path.join(__dirname, '..');
 
 const SCRIPT_PATH = 'script.js';
 const STYLE_PATH = 'style.css';
@@ -188,7 +190,8 @@ function checkIntegrationBoundaries() {
   const allControlCalls = [...script.matchAll(/createJapaneseVocabularyBookControl\(/g)].length;
   assert(allControlCalls === 3, 'vocabulary book control should only be defined plus used by two approved flows');
   assert(/japanese_vocabulary_book_v1/.test(script), 'vocabulary-book key must remain present');
-  assert(!/review center|複習中心/.test(japaneseIndex), 'must not add review center entry or view');
+  const hasBatch15a2cImplementation = fs.existsSync(path.join(root, 'scripts/check-japanese-review-center-batch15a-2c.js')) && /japaneseReviewPanel/.test(japaneseIndex) && /renderJapaneseReviewView/.test(script);
+if (!hasBatch15a2cImplementation) assert(!/review center|複習中心/.test(japaneseIndex), 'must not add review center entry or view before 15A-2C');
   assert(!/innerHTML\s*=\s*[^;]*(VocabularyBook|vocabularyBook|itemsById|japanese_vocabulary_book_v1)/.test(script), 'storage/book data must not be inserted with innerHTML');
   assert(/READING_LOOKUP_INFLECTION_WHITELIST[\s\S]*vocabularyId/.test(script), 'inflection lookup whitelist must preserve canonical ids');
   assert(/READING_LOOKUP_COMPOUND_SEGMENT_WHITELIST[\s\S]*segments[\s\S]*vocabularyId/.test(script), 'compound segment lookup must preserve segment canonical ids');
@@ -198,8 +201,8 @@ function checkIntegrationBoundaries() {
   assert(!/data-japanese-entry="listening"[\s\S]{0,250}生字本/.test(japaneseIndex), 'listening page must not expose vocabulary book entry');
   assert(/<meta name="japanese-layout-version" content="2\.3">/.test(japaneseIndex), 'japanese-layout-version meta must remain 2.3');
   assert(/<body data-japanese-layout-version="2\.3">/.test(japaneseIndex), 'japanese-layout-version body marker must remain 2.3');
-  assert(/\.\.\/style\.css\?v=2\.6/.test(japaneseIndex), 'style cache query must update to v=2.6');
-  assert(/\.\.\/script\.js\?v=2\.7/.test(japaneseIndex), 'script cache query must update to v=2.6');
+  assert(/\.\.\/style\.css\?v=2\.8/.test(japaneseIndex), 'style cache query must update to v=2.8');
+  assert(/\.\.\/script\.js\?v=2\.8/.test(japaneseIndex), 'script cache query must update to v=2.8');
   assert(/function getJapaneseVocabularyBookToast\(\)[\s\S]*getElementById\?\.\("japaneseVocabularyBookToast"\)[\s\S]*document\.body\?\.appendChild\(toast\)/.test(script), 'toast must be created once and appended without moving card layout');
   assert(/function showJapaneseVocabularyBookToast\(message\)[\s\S]*toast\.textContent = message[\s\S]*setTimeout\([\s\S]*1800/.test(script), 'toast must use textContent and disappear automatically');
   assert(!/vocabulary-book-toast[\s\S]{0,500}innerHTML/.test(script), 'toast must not use innerHTML');

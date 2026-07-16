@@ -56,14 +56,16 @@ assert(script.includes('const JAPANESE_MISTAKE_BOOK_KEY = "japanese_mistake_book
 assert(script.includes('const JAPANESE_MISTAKE_BOOK_SCHEMA_VERSION = 1'), 'schemaVersion must be 1');
 assert(/const JAPANESE_MISTAKE_QUESTION_TYPES = Object\.freeze\(\{[\s\S]*vocabularyMeaning[\s\S]*grammarMeaning[\s\S]*grammarCloze[\s\S]*readingQuestion[\s\S]*listeningMeaning[\s\S]*\}\);/.test(script), 'questionType definitions must be centralized');
 assert(!/sentenceComposition/.test(script + html), 'must not add sentenceComposition');
-assert(!/data-japanese-review-center|review-center-view|錯題本|JLPT 模擬|jlpt-simulation/i.test(html + style), 'must not add UI/review center/JLPT simulation');
+const hasBatch15a2cImplementation = fs.existsSync(path.join(root, 'scripts/check-japanese-review-center-batch15a-2c.js')) && /japaneseReviewPanel/.test(html) && /renderJapaneseReviewView/.test(script);
+if (!hasBatch15a2cImplementation) assert(!/data-japanese-review-center|review-center-view|錯題本|JLPT 模擬|jlpt-simulation/i.test(html + style), 'must not add UI/review center/JLPT simulation before 15A-2C');
+assert(!/sentenceComposition|JLPT 模擬|jlpt-simulation/i.test(html + style + script), 'must not add sentenceComposition/JLPT simulation');
 assert(/recordActiveQuizMistake\(selectedOption, correctMeaning\)/.test(script), 'handleQuizAnswer wrong branch must record');
 assert(/questionType: "readingQuestion"/.test(script), 'reading wrong hook must record');
 assert(/questionType: "listeningMeaning"/.test(script), 'listening wrong hook must record');
 assert(!/handleReadingPracticeAnswer[\s\S]{0,700}recordJapaneseMistake/.test(script), 'reading practice must not record');
 assert(!/renderJapaneseListeningPractice[\s\S]{0,1300}recordJapaneseMistake/.test(script), 'listening practice must not record');
-assert(/\.\.\/script\.js\?v=2\.7/.test(html), 'script cache query must be v=2.7');
-assert(/\.\.\/style\.css\?v=2\.6/.test(html), 'style cache query must remain v=2.6');
+assert(/\.\.\/script\.js\?v=2\.8/.test(html), 'script cache query must be v=2.8');
+assert(/\.\.\/style\.css\?v=2\.8/.test(html), 'style cache query must remain v=2.8');
 
 const { api, store } = loadApi();
 assert(api.JAPANESE_MISTAKE_BOOK_KEY === 'japanese_mistake_book_v1', 'exported storage key mismatch');

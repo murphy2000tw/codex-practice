@@ -70,8 +70,8 @@ const listeningMenu = extractById(html, 'japaneseListeningMenuView');
 
 requireIncludes(html, 'data-japanese-layout-version="2.3"', 'Japanese layout version marker');
 requireIncludes(html, 'name="japanese-layout-version" content="2.3"', 'Japanese layout meta version marker');
-requireIncludes(html, '../script.js?v=2.7', 'script cache-busting version');
-requireIncludes(html, '../style.css?v=2.6', 'style cache-busting version');
+requireIncludes(html, '../script.js?v=2.8', 'script cache-busting version');
+requireIncludes(html, '../style.css?v=2.8', 'style cache-busting version');
 requireIncludes(html, 'data-japanese-back-home', 'feature-page return-to-home controls');
 
 if (!root || !home || !vocabulary || !reading || !listening) {
@@ -85,10 +85,10 @@ if (root && (!root.includes('id="japaneseHomeContent"') || !root.includes('id="j
 if (!entrySection) {
   failures.push('Japanese main entry section is missing.');
 } else {
-  ['日文學習主入口', '日文學習功能', '單字', '閱讀', '文法', '聽力', '進入單字', '進入閱讀', '進入文法', '進入聽力'].forEach((required) => {
+  ['日文學習主入口', '日文學習功能', '單字', '閱讀', '文法', '聽力', '複習中心', '進入單字', '進入閱讀', '進入文法', '進入聽力', '開始複習'].forEach((required) => {
     if (!home.includes(required)) failures.push(`Japanese home is missing required entry text: ${required}`);
   });
-  requireEntries(entrySection, ['vocabulary', 'reading', 'grammar', 'listening'], 'Japanese main entry section');
+  requireEntries(entrySection, ['vocabulary', 'reading', 'grammar', 'listening', 'reviewMenu'], 'Japanese main entry section');
 }
 
 ['分類篩選', '詞性分類', '程度篩選', '搜尋單字', 'id="vocabularyCards"', '測驗題目', 'id="quizContent"', '閱讀練習 第', '閱讀測驗完成', '聽力測驗完成', '播放音訊', '第 1 題 / 10 題', '正確答案：'].forEach((forbidden) => {
