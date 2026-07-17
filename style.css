@@ -2892,9 +2892,7 @@ h1 {
 }
 
 .sentence-composition-filters,
-.sentence-composition-actions,
-.sentence-composition-slots,
-.sentence-composition-line {
+.sentence-composition-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -2904,41 +2902,31 @@ h1 {
 .sentence-composition-line {
   font-size: clamp(1.05rem, 3vw, 1.3rem);
   line-height: 2;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.sentence-composition-text {
+  display: inline;
 }
 
 .sentence-composition-slots {
-  min-width: 0;
-  column-gap: 0.6rem;
-  row-gap: 0.25rem;
-}
-
-.sentence-composition-chunk,
-.sentence-composition-slot {
-  max-width: 100%;
-  white-space: normal;
-  overflow-wrap: anywhere;
-  border: 2px solid rgba(79, 70, 229, 0.24);
-  background: #ffffff;
-  color: #1f2937;
-  font: inherit;
+  display: inline;
 }
 
 .sentence-composition-slot {
   display: inline-block;
-  min-width: 4.5em;
-  border-width: 0 0 3px;
-  border-radius: 0;
-  padding: 0 0.15rem 0.1rem;
-  background: transparent;
-  text-align: center;
-  letter-spacing: 0.04em;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  color: inherit;
+  font: inherit;
+  letter-spacing: 0;
 }
 
 .sentence-composition-slot.is-star {
-  border-color: rgba(220, 38, 38, 0.75);
-  color: #b91c1c;
-  font-weight: 800;
+  color: inherit;
+  font-weight: inherit;
 }
 
 .sentence-composition-prompt {
@@ -2948,26 +2936,34 @@ h1 {
 }
 
 .sentence-composition-chunks {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
-  gap: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
 }
 
 .sentence-composition-chunk {
+  max-width: 100%;
   min-height: 44px;
-  border-radius: 14px;
-  padding: 0.6rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0.45rem 0.55rem;
+  background: transparent;
+  color: #1f2937;
   cursor: pointer;
+  font: inherit;
   text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .sentence-composition-chunk:not(:disabled) {
-  background: #eef2ff;
+  background: transparent;
 }
 
 .sentence-composition-chunk.is-selected {
-  border-color: rgba(79, 70, 229, 0.72);
-  background: #e0e7ff;
+  border-color: rgba(79, 70, 229, 0.5);
+  background: #eef2ff;
 }
 
 .sentence-composition-chunk:disabled {
@@ -3006,15 +3002,11 @@ h1 {
     border-radius: 18px;
   }
 
-  .sentence-composition-line,
-  .sentence-composition-actions,
-  .sentence-composition-chunks,
-  .sentence-composition-slots {
+  .sentence-composition-actions {
     align-items: stretch;
   }
 
   .sentence-composition-chunk,
-  .sentence-composition-slot,
   .sentence-composition-actions .answer-button,
   .sentence-composition-actions .secondary-button {
     width: 100%;
