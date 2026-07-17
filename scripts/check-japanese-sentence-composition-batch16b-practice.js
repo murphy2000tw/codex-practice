@@ -44,6 +44,11 @@ assert(!/localStorage[\s\S]{0,120}SentenceComposition|SentenceComposition[\s\S]{
 assert(/role", "status"/.test(script) && /aria-live", "polite"/.test(script), 'aria-live status missing');
 assert(/createElement\("button"\)/.test(script) && /addEventListener\("click"/.test(script), 'keyboard-operable buttons must use real button elements');
 assert(/sentence-composition/.test(css) && /overflow-wrap: anywhere/.test(css) && /grid-template-columns: repeat\(auto-fit/.test(css) && /env\(safe-area-inset-bottom/.test(css) && /:focus-visible/.test(css) && /@media \(max-width: 640px\)/.test(css), 'mobile/focus/safe-area CSS missing');
+
+const selectedRuleIndex = css.indexOf('.sentence-composition-chunk.is-selected');
+const enabledRuleIndex = css.indexOf('.sentence-composition-chunk:not(:disabled)');
+assert(selectedRuleIndex > enabledRuleIndex, 'selected option background rule must appear after general enabled option background rule');
+assert(/\.sentence-composition-chunk\.is-selected:disabled/.test(css), 'locked selected option must remain visually identifiable');
 assert(questions.length === 20, 'question bank must contain 20 questions');
 assert(questions.filter((q) => q.level === 'N5').length === 8, 'N5 count must be 8');
 assert(questions.filter((q) => q.level === 'N4').length === 12, 'N4 count must be 12');

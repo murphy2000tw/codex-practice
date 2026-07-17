@@ -2961,18 +2961,22 @@ h1 {
   text-align: left;
 }
 
+.sentence-composition-chunk:not(:disabled) {
+  background: #eef2ff;
+}
+
 .sentence-composition-chunk.is-selected {
   border-color: rgba(79, 70, 229, 0.72);
   background: #e0e7ff;
 }
 
-.sentence-composition-chunk:not(:disabled) {
-  background: #eef2ff;
-}
-
 .sentence-composition-chunk:disabled {
   cursor: not-allowed;
   opacity: 0.58;
+}
+
+.sentence-composition-chunk.is-selected:disabled {
+  opacity: 0.9;
 }
 
 .sentence-composition-chunk:focus-visible {
