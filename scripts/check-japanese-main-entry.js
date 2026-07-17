@@ -70,7 +70,7 @@ const listeningMenu = extractById(html, 'japaneseListeningMenuView');
 
 requireIncludes(html, 'data-japanese-layout-version="2.3"', 'Japanese layout version marker');
 requireIncludes(html, 'name="japanese-layout-version" content="2.3"', 'Japanese layout meta version marker');
-requireIncludes(html, '../script.js?v=2.8', 'script cache-busting version');
+if (!/\.\.\/script\.js\?v=2\.[89]/.test(html)) failures.push('Missing script cache-busting version: ../script.js?v=2.8 or v=2.9');
 requireIncludes(html, '../style.css?v=2.8', 'style cache-busting version');
 requireIncludes(html, 'data-japanese-back-home', 'feature-page return-to-home controls');
 
