@@ -113,7 +113,18 @@
           <p class="entry-card-text">專注作答並在完成後檢查測驗回饋。</p>
           <span class="entry-card-action">開始文法測驗</span>
         </button>
+        <button class="word-card entry-card japanese-main-entry-card reading-menu-card" type="button" data-japanese-grammar-entry="sentence-composition">
+          <span class="card-number">03</span>
+          <h3 class="entry-card-title">句子重組</h3>
+          <p class="entry-card-text">排列四個片段，完成正確句子</p>
+          <span class="entry-card-action">開始句子重組</span>
+        </button>
       </div>
+    </section>
+
+    <section id="japaneseSentenceCompositionView" class="sentence-composition-view" data-japanese-grammar-view="sentence-composition" aria-labelledby="sentence-composition-title" hidden>
+      <button id="backToGrammarMenuFromSentenceComposition" class="secondary-button sentence-composition-back-button" type="button">返回文法選單</button>
+      <div id="sentenceCompositionContent" class="sentence-composition-content" aria-live="polite"></div>
     </section>
     <div id="japaneseVocabularyStudyView" data-japanese-vocabulary-view="practice" hidden>
       <button id="backToVocabularyMenuFromPractice" class="secondary-button vocabulary-back-menu-button" type="button">返回單字選單</button>
@@ -242,8 +253,9 @@
   <script>
     window.JAPANESE_VOCABULARY_URL = "../vocabulary.json";
     window.JAPANESE_GRAMMAR_URL = "../grammar.json";
+    window.JAPANESE_SENTENCE_COMPOSITION_URL = "../japaneseSentenceCompositionQuestions.json?v=16b";
   </script>
   <script src="../japaneseReadingQuestions.js?v=1.0"></script>
-  <script src="../script.js?v=2.8"></script>
+  <script src="../script.js?v=2.9"></script>
 </body>
 </html>

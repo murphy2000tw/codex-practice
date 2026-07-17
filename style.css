@@ -2866,3 +2866,121 @@ h1 {
     width: 100%;
   }
 }
+
+.sentence-composition-view {
+  padding-bottom: calc(36px + env(safe-area-inset-bottom, 0px));
+}
+
+.sentence-composition-back-button {
+  margin-bottom: 1rem;
+}
+
+.sentence-composition-card {
+  display: grid;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(79, 70, 229, 0.16);
+  border-radius: 24px;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  box-shadow: 0 18px 44px rgba(79, 70, 229, 0.12);
+}
+
+.sentence-composition-meta,
+.sentence-composition-status {
+  margin: 0;
+  color: #4b5563;
+}
+
+.sentence-composition-filters,
+.sentence-composition-actions,
+.sentence-composition-chunks,
+.sentence-composition-slots,
+.sentence-composition-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.sentence-composition-line {
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  line-height: 1.8;
+}
+
+.sentence-composition-slots {
+  min-width: 0;
+}
+
+.sentence-composition-chunk,
+.sentence-composition-slot {
+  min-height: 48px;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  border: 2px solid rgba(79, 70, 229, 0.24);
+  border-radius: 16px;
+  padding: 0.7rem 1rem;
+  background: #ffffff;
+  color: #1f2937;
+  font: inherit;
+  cursor: pointer;
+}
+
+.sentence-composition-slot {
+  min-width: min(9rem, 100%);
+  background: #f8fafc;
+}
+
+.sentence-composition-slot.is-filled,
+.sentence-composition-chunk:not(:disabled) {
+  background: #eef2ff;
+}
+
+.sentence-composition-chunk:disabled,
+.sentence-composition-slot:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.sentence-composition-chunk:focus-visible,
+.sentence-composition-slot:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.45);
+  outline-offset: 3px;
+}
+
+.sentence-composition-feedback {
+  border-radius: 18px;
+  padding: 1rem;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.sentence-composition-feedback.is-correct {
+  border-color: rgba(22, 163, 74, 0.35);
+  background: #f0fdf4;
+}
+
+.sentence-composition-feedback.is-wrong {
+  border-color: rgba(245, 158, 11, 0.4);
+  background: #fffbeb;
+}
+
+@media (max-width: 640px) {
+  .sentence-composition-card {
+    border-radius: 18px;
+  }
+
+  .sentence-composition-line,
+  .sentence-composition-actions,
+  .sentence-composition-chunks,
+  .sentence-composition-slots {
+    align-items: stretch;
+  }
+
+  .sentence-composition-chunk,
+  .sentence-composition-slot,
+  .sentence-composition-actions .answer-button,
+  .sentence-composition-actions .secondary-button {
+    width: 100%;
+  }
+}

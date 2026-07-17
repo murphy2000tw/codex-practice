@@ -23,8 +23,11 @@ const requireText = (text) => assert(plan.includes(text), `Plan missing required
 
 assert(grammar.length === 290, `grammar.json baseline changed: ${grammar.length}`);
 assert(grammar.filter((item) => item.quiz && item.quiz.clozePrompt && item.quiz.answer).length === 130, 'grammar cloze baseline changed');
-assert(!/sentenceComposition/.test(script), 'script.js must not contain sentenceComposition runtime code in Batch 16A-1');
-assert(!/japanese_sentence_composition/i.test(script), 'script.js must not add sentence-composition storage key');
+const hasBatch16BPractice = fs.existsSync(path.join(root, 'scripts/check-japanese-sentence-composition-batch16b-practice.js'));
+if (!hasBatch16BPractice) {
+  assert(!/sentenceComposition/.test(script), 'script.js must not contain sentenceComposition runtime code before Batch 16B');
+}
+assert(!/localStorage[\s\S]{0,160}japanese_sentence_composition|japanese_sentence_composition[\s\S]{0,160}localStorage/i.test(script), 'script.js must not add sentence-composition storage key');
 
 if (failures.length) {
   console.error('Batch 16A-1 sentence-composition plan check failed:');
