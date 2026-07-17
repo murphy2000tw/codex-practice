@@ -7,7 +7,7 @@ const html = read('japanese/index.html');
 const script = read('script.js');
 const style = read('style.css');
 const vocab = JSON.parse(read('vocabulary.json'));
-assert(/\.\.\/script\.js\?v=2\.[89]/.test(html) && html.includes('../style.css?v=2.8'), 'cache query must be v=2.8 or later compatible');
+assert(/\.\.\/script\.js\?v=(2\.[89]|3\.0)/.test(html) && /\.\.\/style\.css\?v=(2\.8|2\.9)/.test(html), 'cache query must be v=2.8 or later compatible');
 assert(html.includes('data-japanese-layout-version="2.3"'), 'layout version stays 2.3');
 ['單字','閱讀','文法','聽力','複習中心'].forEach((label)=>assert(html.includes(`>${label}<`), `missing entry ${label}`));
 assert(/data-japanese-entry="reviewMenu"/.test(html) && html.includes('查看生字本與錯題本，整理需要再次複習的內容。') && html.includes('開始複習'), 'review home entry missing');

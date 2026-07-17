@@ -17,12 +17,12 @@ const sentenceLineRule = css.match(/\.sentence-composition-line\s*{[\s\S]*?}/)?.
 const slotsRule = css.match(/\.sentence-composition-slots\s*{[\s\S]*?}/)?.[0] || '';
 const slotRule = css.match(/\.sentence-composition-slot\s*{[\s\S]*?}/)?.[0] || '';
 
-assert(/data-japanese-grammar-entry="sentence-composition"/.test(grammarMenu), 'grammar menu must include sentence composition entry');
-assert(/句子重組/.test(grammarMenu) && /選出應放入 ★ 格的片段/.test(grammarMenu) && /開始 ★ 格練習/.test(grammarMenu), 'entry title/description/action mismatch');
+assert(/data-japanese-grammar-entry="sentence-composition-practice"/.test(grammarMenu), 'grammar menu must include sentence composition practice entry');
+assert(/句子重組練習/.test(grammarMenu) && /選出應放入 ★ 格的片段/.test(grammarMenu) && /開始句子重組練習/.test(grammarMenu), 'entry title/description/action mismatch');
 assert((homeGrid.match(/data-japanese-entry=/g) || []).length === 5, 'Japanese home must not gain a sixth main entry');
 assert(/id="japaneseSentenceCompositionView"/.test(html), 'sentence composition view must exist');
 assert(/返回文法選單/.test(html), 'back to grammar menu button must exist');
-assert(/JAPANESE_SENTENCE_COMPOSITION_URL/.test(html) && /japaneseSentenceCompositionQuestions\.json\?v=16b/.test(html) && /script\.js\?v=2\.9/.test(html), 'cache/query URLs must be updated');
+assert(/JAPANESE_SENTENCE_COMPOSITION_URL/.test(html) && /japaneseSentenceCompositionQuestions\.json\?v=16b/.test(html) && /script\.js\?v=3\.0/.test(html), 'cache/query URLs must be updated');
 
 assert(/const SENTENCE_COMPOSITION_URL/.test(script), 'sentence composition URL constant missing');
 assert(/fetch\(SENTENCE_COMPOSITION_URL\)/.test(script), 'must fetch sentence composition JSON');

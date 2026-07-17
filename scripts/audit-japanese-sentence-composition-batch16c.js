@@ -32,14 +32,14 @@ const stateVariables = [
   'sentenceCompositionQuestions','sentenceCompositionHasLoaded','sentenceCompositionIsLoading','activeSentenceCompositionLevel','currentSentenceCompositionQuestion','currentSentenceCompositionAnswer','currentSentenceCompositionLocked','previousSentenceCompositionQuestionId'
 ].filter((name)=>new RegExp(`let\\s+${name}\\b`).test(script));
 const report = {
-  confirmedMainContainsPrs: ['#263 Add Japanese sentence composition practice', '#264 Fix selected sentence composition option styling / star choice', '#265 Fix JLPT sentence composition layout'],
+  confirmedMainContainsPrs: ['#263 Add Japanese sentence composition practice', '#264 Fix selected sentence composition option styling / star choice', '#265 Fix JLPT sentence composition layout', '#266 Add Batch 16C sentence composition plan audit'],
   grammarMenuEntries: { count: grammarEntries.length, entries: grammarEntries },
   japaneseMainEntries: { count: mainEntries.length, entries: mainEntries },
   sentenceCompositionView: {
-    view: 'japaneseSentenceCompositionView / data-japanese-grammar-view="sentence-composition"',
+    view: 'japaneseSentenceCompositionView / practice and quiz setup routed by data-japanese-grammar-entry',
     contentRoot: 'sentenceCompositionContent',
     backButtonFlow: 'feature header [data-japanese-back-home] plus grammar menu rendering; sentence composition state reset when leaving grammar or hiding this view',
-    isolationMarkers: ['resetJapaneseSentenceCompositionState()', 'renderJapaneseGrammarView("sentence-composition")', 'panelView !== "grammar" reset']
+    isolationMarkers: ['resetJapaneseSentenceCompositionState()', 'renderJapaneseGrammarView("sentence-composition-practice")', 'renderJapaneseGrammarView("sentence-composition-quiz")', 'panelView !== "grammar" reset']
   },
   stateVariables,
   starAnswerCalculation: {
@@ -77,4 +77,4 @@ const report = {
 console.log(JSON.stringify(report, null, 2));
 if (questions.length !== 20 || report.questionBaseline.N5 !== 8 || report.questionBaseline.N4 !== 12) process.exitCode = 1;
 if (duplicates.length || missingRequiredFields.length) process.exitCode = 1;
-if (grammarEntries.length !== 3 || mainEntries.length !== 5) process.exitCode = 1;
+if (grammarEntries.length !== 4 || mainEntries.length !== 5) process.exitCode = 1;
