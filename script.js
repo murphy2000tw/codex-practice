@@ -1770,7 +1770,15 @@ function getSentenceCompositionChunkById(question, id) {
   return question.chunks.find((chunk) => chunk.id === id);
 }
 
-function renderJapaneseSentenceCompositionPractice(statusText = "請依序選取四個片段。") {
+function getSentenceCompositionChunkOptionNumber(question, id) {
+  return question.chunks.findIndex((chunk) => chunk.id === id) + 1;
+}
+
+function getSentenceCompositionCorrectStarChunkId(question) {
+  return question.correctOrder[question.starSlot];
+}
+
+function renderJapaneseSentenceCompositionPractice(statusText = "★ に入るものはどれですか。") {
   if (!sentenceCompositionContent) return;
   if (!sentenceCompositionHasLoaded) {
     sentenceCompositionContent.textContent = "正在載入句子重組題目…";
@@ -1785,7 +1793,7 @@ function renderJapaneseSentenceCompositionPractice(statusText = "請依序選取
   wrapper.className = "sentence-composition-card";
   const title = document.createElement("h2");
   title.id = "sentence-composition-title";
-  title.textContent = "句子重組";
+  title.textContent = "文の組み立て ★格選擇";
   const counts = { all: sentenceCompositionQuestions.length, N5: sentenceCompositionQuestions.filter((q) => q.level === "N5").length, N4: sentenceCompositionQuestions.filter((q) => q.level === "N4").length };
   const meta = document.createElement("p");
   meta.className = "sentence-composition-meta";
@@ -1801,66 +1809,75 @@ function renderJapaneseSentenceCompositionPractice(statusText = "請依序選取
   });
   const questionLine = document.createElement("div");
   questionLine.className = "sentence-composition-line";
-  const before = document.createElement("span"); before.textContent = question.before;
-  const answerSlots = document.createElement("div"); answerSlots.className = "sentence-composition-slots";
+  const before = document.createElement("span"); before.className = "sentence-composition-text"; before.textContent = question.before;
+  const answerSlots = document.createElement("span"); answerSlots.className = "sentence-composition-slots";
   for (let index = 0; index < 4; index += 1) {
-    const placedId = currentSentenceCompositionAnswer[index];
-    const chunk = placedId ? getSentenceCompositionChunkById(question, placedId) : null;
-    const slot = createSentenceCompositionButton(chunk ? chunk.text : `第 ${index + 1} 格`, `sentence-composition-slot${chunk ? " is-filled" : ""}`, () => removeSentenceCompositionChunk(index));
-    slot.disabled = currentSentenceCompositionLocked || !chunk;
+    const isStarSlot = index === question.starSlot;
+    const slot = document.createElement("span");
+    slot.className = `sentence-composition-slot${isStarSlot ? " is-star" : ""}`;
+    slot.textContent = isStarSlot ? "★＿＿＿＿" : "＿＿＿＿";
+    slot.setAttribute("aria-label", isStarSlot ? `第 ${index + 1} 格，星號答案格` : `第 ${index + 1} 格空格`);
     answerSlots.append(slot);
   }
-  const after = document.createElement("span"); after.textContent = question.after;
+  const after = document.createElement("span"); after.className = "sentence-composition-text"; after.textContent = question.after;
   questionLine.append(before, answerSlots, after);
+  const prompt = document.createElement("p"); prompt.className = "sentence-composition-prompt"; prompt.textContent = "★ に入るものはどれですか。";
   const bank = document.createElement("div"); bank.className = "sentence-composition-chunks";
-  question.chunks.forEach((chunk) => {
-    const selected = currentSentenceCompositionAnswer.includes(chunk.id);
-    const button = createSentenceCompositionButton(chunk.text, "sentence-composition-chunk", () => selectSentenceCompositionChunk(chunk.id));
-    button.disabled = selected || currentSentenceCompositionLocked;
+  bank.setAttribute("role", "group");
+  bank.setAttribute("aria-label", "★ に入るものはどれですか。");
+  question.chunks.forEach((chunk, index) => {
+    const selected = currentSentenceCompositionAnswer[0] === chunk.id;
+    const button = createSentenceCompositionButton(`${index + 1}. ${chunk.text}`, `sentence-composition-chunk${selected ? " is-selected" : ""}`, () => selectSentenceCompositionChunk(chunk.id));
+    button.disabled = currentSentenceCompositionLocked;
+    button.setAttribute("aria-pressed", String(selected));
     bank.append(button);
   });
   const status = document.createElement("p"); status.className = "sentence-composition-status"; status.setAttribute("role", "status"); status.setAttribute("aria-live", "polite"); status.textContent = statusText;
   const actions = document.createElement("div"); actions.className = "sentence-composition-actions";
-  actions.append(createSentenceCompositionButton("清除重排", "secondary-button", clearSentenceCompositionAnswer), createSentenceCompositionButton("確認答案", "answer-button", submitSentenceCompositionAnswer), createSentenceCompositionButton("下一題", "secondary-button", () => startNextSentenceCompositionQuestion()));
-  wrapper.append(title, meta, filters, questionLine, bank, status, actions);
+  const clearButton = createSentenceCompositionButton("清除選擇", "secondary-button", clearSentenceCompositionAnswer);
+  clearButton.disabled = currentSentenceCompositionLocked || !currentSentenceCompositionAnswer.length;
+  const confirmButton = createSentenceCompositionButton("確認答案", "answer-button", submitSentenceCompositionAnswer);
+  confirmButton.disabled = currentSentenceCompositionLocked || !currentSentenceCompositionAnswer.length;
+  actions.append(clearButton, confirmButton, createSentenceCompositionButton("下一題", "secondary-button", () => startNextSentenceCompositionQuestion()));
+  wrapper.append(title, meta, filters, questionLine, prompt, bank, status, actions);
   if (currentSentenceCompositionLocked) wrapper.append(createSentenceCompositionFeedback());
   sentenceCompositionContent.replaceChildren(wrapper);
 }
 
 function createSentenceCompositionFeedback() {
   const q = currentSentenceCompositionQuestion;
-  const correct = currentSentenceCompositionAnswer.join(",") === q.correctOrder.join(",");
+  const correctStarChunkId = getSentenceCompositionCorrectStarChunkId(q);
+  const correct = currentSentenceCompositionAnswer[0] === correctStarChunkId;
+  const correctChunk = getSentenceCompositionChunkById(q, correctStarChunkId);
+  const correctOptionNumber = getSentenceCompositionChunkOptionNumber(q, correctStarChunkId);
+  const correctOrderText = q.correctOrder.map((id) => getSentenceCompositionChunkById(q, id)?.text || id).join(" → ");
   const box = document.createElement("div"); box.className = `sentence-composition-feedback ${correct ? "is-correct" : "is-wrong"}`; box.setAttribute("role", "status");
   const heading = document.createElement("h3"); heading.textContent = correct ? "答對了" : "再看看正確順序";
+  const starAnswer = document.createElement("p"); starAnswer.textContent = `★格正確答案：${correctOptionNumber}. ${correctChunk?.text || ""}`;
+  const order = document.createElement("p"); order.textContent = `完整正確順序：${correctOrderText}`;
   const sentence = document.createElement("p"); sentence.textContent = q.completeSentence;
   const kana = document.createElement("p"); kana.textContent = `假名：${q.kana}`;
   const meaning = document.createElement("p"); meaning.textContent = `中文：${q.meaning}`;
   const explanation = document.createElement("p"); explanation.textContent = `解析：${q.explanation}`;
-  box.append(heading, sentence, kana, meaning, explanation);
+  box.append(heading, starAnswer, order, sentence, kana, meaning, explanation);
   return box;
 }
 
 function selectSentenceCompositionChunk(chunkId) {
-  if (currentSentenceCompositionLocked || currentSentenceCompositionAnswer.includes(chunkId) || currentSentenceCompositionAnswer.length >= 4) return;
-  currentSentenceCompositionAnswer.push(chunkId);
-  renderJapaneseSentenceCompositionPractice("已放入片段。");
-}
-
-function removeSentenceCompositionChunk(index) {
   if (currentSentenceCompositionLocked) return;
-  currentSentenceCompositionAnswer.splice(index, 1);
-  renderJapaneseSentenceCompositionPractice("已移回待選區。");
+  currentSentenceCompositionAnswer = [chunkId];
+  renderJapaneseSentenceCompositionPractice("已選擇 ★ 格答案，可直接改選或確認。");
 }
 
 function clearSentenceCompositionAnswer() {
   if (currentSentenceCompositionLocked) return;
   currentSentenceCompositionAnswer = [];
-  renderJapaneseSentenceCompositionPractice("已清除，請重新排列。");
+  renderJapaneseSentenceCompositionPractice("請選擇 ★ 格的答案");
 }
 
 function submitSentenceCompositionAnswer() {
   if (!currentSentenceCompositionQuestion || currentSentenceCompositionLocked) return;
-  if (currentSentenceCompositionAnswer.length < 4) { renderJapaneseSentenceCompositionPractice("請先填滿四格再確認。"); return; }
+  if (!currentSentenceCompositionAnswer.length) { renderJapaneseSentenceCompositionPractice("請選擇 ★ 格的答案"); return; }
   currentSentenceCompositionLocked = true;
   renderJapaneseSentenceCompositionPractice();
 }

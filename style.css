@@ -2893,57 +2893,89 @@ h1 {
 
 .sentence-composition-filters,
 .sentence-composition-actions,
-.sentence-composition-chunks,
 .sentence-composition-slots,
 .sentence-composition-line {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
+  gap: 0.5rem;
+  align-items: baseline;
 }
 
 .sentence-composition-line {
-  font-size: clamp(1.1rem, 3vw, 1.35rem);
-  line-height: 1.8;
+  font-size: clamp(1.05rem, 3vw, 1.3rem);
+  line-height: 2;
+  overflow-wrap: anywhere;
 }
 
 .sentence-composition-slots {
   min-width: 0;
+  column-gap: 0.6rem;
+  row-gap: 0.25rem;
 }
 
 .sentence-composition-chunk,
 .sentence-composition-slot {
-  min-height: 48px;
   max-width: 100%;
   white-space: normal;
   overflow-wrap: anywhere;
   border: 2px solid rgba(79, 70, 229, 0.24);
-  border-radius: 16px;
-  padding: 0.7rem 1rem;
   background: #ffffff;
   color: #1f2937;
   font: inherit;
-  cursor: pointer;
 }
 
 .sentence-composition-slot {
-  min-width: min(9rem, 100%);
-  background: #f8fafc;
+  display: inline-block;
+  min-width: 4.5em;
+  border-width: 0 0 3px;
+  border-radius: 0;
+  padding: 0 0.15rem 0.1rem;
+  background: transparent;
+  text-align: center;
+  letter-spacing: 0.04em;
 }
 
-.sentence-composition-slot.is-filled,
+.sentence-composition-slot.is-star {
+  border-color: rgba(220, 38, 38, 0.75);
+  color: #b91c1c;
+  font-weight: 800;
+}
+
+.sentence-composition-prompt {
+  margin: 0;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.sentence-composition-chunks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+  gap: 0.65rem;
+}
+
+.sentence-composition-chunk {
+  min-height: 44px;
+  border-radius: 14px;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sentence-composition-chunk.is-selected {
+  border-color: rgba(79, 70, 229, 0.72);
+  background: #e0e7ff;
+}
+
 .sentence-composition-chunk:not(:disabled) {
   background: #eef2ff;
 }
 
-.sentence-composition-chunk:disabled,
-.sentence-composition-slot:disabled {
+.sentence-composition-chunk:disabled {
   cursor: not-allowed;
   opacity: 0.58;
 }
 
-.sentence-composition-chunk:focus-visible,
-.sentence-composition-slot:focus-visible {
+.sentence-composition-chunk:focus-visible {
   outline: 3px solid rgba(79, 70, 229, 0.45);
   outline-offset: 3px;
 }
