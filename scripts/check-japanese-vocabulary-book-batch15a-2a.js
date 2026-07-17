@@ -201,8 +201,8 @@ if (!hasBatch15a2cImplementation) assert(!/review center|複習中心/.test(japa
   assert(!/data-japanese-entry="listening"[\s\S]{0,250}生字本/.test(japaneseIndex), 'listening page must not expose vocabulary book entry');
   assert(/<meta name="japanese-layout-version" content="2\.3">/.test(japaneseIndex), 'japanese-layout-version meta must remain 2.3');
   assert(/<body data-japanese-layout-version="2\.3">/.test(japaneseIndex), 'japanese-layout-version body marker must remain 2.3');
-  assert(/\.\.\/style\.css\?v=2\.8/.test(japaneseIndex), 'style cache query must update to v=2.8');
-  assert(/\.\.\/script\.js\?v=2\.[89]/.test(japaneseIndex), 'script cache query must update to v=2.8');
+  assert(/\.\.\/style\.css\?v=(2\.8|2\.9)/.test(japaneseIndex), 'style cache query must update to v=2.8');
+  assert(/\.\.\/script\.js\?v=(2\.[89]|3\.0)/.test(japaneseIndex), 'script cache query must update to v=2.8');
   assert(/function getJapaneseVocabularyBookToast\(\)[\s\S]*getElementById\?\.\("japaneseVocabularyBookToast"\)[\s\S]*document\.body\?\.appendChild\(toast\)/.test(script), 'toast must be created once and appended without moving card layout');
   assert(/function showJapaneseVocabularyBookToast\(message\)[\s\S]*toast\.textContent = message[\s\S]*setTimeout\([\s\S]*1800/.test(script), 'toast must use textContent and disappear automatically');
   assert(!/vocabulary-book-toast[\s\S]{0,500}innerHTML/.test(script), 'toast must not use innerHTML');

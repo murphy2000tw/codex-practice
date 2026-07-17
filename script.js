@@ -608,6 +608,9 @@ let currentSentenceCompositionQuestion = null;
 let currentSentenceCompositionAnswer = [];
 let currentSentenceCompositionLocked = false;
 let previousSentenceCompositionQuestionId = null;
+let sentenceCompositionMode = "practice";
+let selectedSentenceCompositionQuizLevel = null;
+let sentenceCompositionQuizStatusText = "";
 
 function isJapaneseHomeTab() {
   return currentJapaneseView === "home";
@@ -1606,7 +1609,7 @@ function switchGrammarQuizType(type) {
 
 function normalizeJapaneseVocabularyView(view) {
   if (view === "study" || view === "cards") return "practice";
-  if (["menu", "practice", "quiz", "sentence-composition"].includes(view)) return view;
+  if (["menu", "practice", "quiz", "sentence-composition-practice", "sentence-composition-quiz"].includes(view)) return view;
   return "menu";
 }
 
@@ -1631,7 +1634,7 @@ function renderJapaneseVocabularyView(view = japaneseVocabularyView) {
 
 function normalizeJapaneseGrammarView(view) {
   if (view === "study" || view === "cards") return "practice";
-  if (["menu", "practice", "quiz", "sentence-composition"].includes(view)) return view;
+  if (["menu", "practice", "quiz", "sentence-composition-practice", "sentence-composition-quiz"].includes(view)) return view;
   return "menu";
 }
 
@@ -1640,7 +1643,7 @@ function renderJapaneseGrammarView(view = japaneseGrammarView) {
   const isMenuView = japaneseGrammarView === "menu";
   const isPracticeView = japaneseGrammarView === "practice";
   const isQuizView = japaneseGrammarView === "quiz";
-  const isSentenceCompositionView = japaneseGrammarView === "sentence-composition";
+  const isSentenceCompositionView = japaneseGrammarView === "sentence-composition-practice" || japaneseGrammarView === "sentence-composition-quiz";
 
   if (japaneseVocabularyMenuView && currentJapaneseView === "grammar") {
     japaneseVocabularyMenuView.hidden = true;
@@ -1704,10 +1707,20 @@ function openJapaneseGrammarQuiz() {
   switchMode("grammar-quiz");
 }
 
-function resetJapaneseSentenceCompositionState() {
+function resetJapaneseSentenceCompositionPracticeState() {
   currentSentenceCompositionQuestion = null;
   currentSentenceCompositionAnswer = [];
   currentSentenceCompositionLocked = false;
+}
+
+function resetJapaneseSentenceCompositionQuizSetupState() {
+  selectedSentenceCompositionQuizLevel = null;
+  sentenceCompositionQuizStatusText = "";
+}
+
+function resetJapaneseSentenceCompositionState() {
+  resetJapaneseSentenceCompositionPracticeState();
+  resetJapaneseSentenceCompositionQuizSetupState();
   if (sentenceCompositionContent) sentenceCompositionContent.replaceChildren();
 }
 
@@ -1793,7 +1806,10 @@ function renderJapaneseSentenceCompositionPractice(statusText = "") {
   wrapper.className = "sentence-composition-card";
   const title = document.createElement("h2");
   title.id = "sentence-composition-title";
-  title.textContent = "文の組み立て ★格選擇";
+  title.textContent = "句子重組";
+  const mode = document.createElement("p");
+  mode.className = "sentence-composition-mode";
+  mode.textContent = "練習模式";
   const counts = { all: sentenceCompositionQuestions.length, N5: sentenceCompositionQuestions.filter((q) => q.level === "N5").length, N4: sentenceCompositionQuestions.filter((q) => q.level === "N4").length };
   const meta = document.createElement("p");
   meta.className = "sentence-composition-meta";
@@ -1839,7 +1855,7 @@ function renderJapaneseSentenceCompositionPractice(statusText = "") {
   const confirmButton = createSentenceCompositionButton("確認答案", "answer-button", submitSentenceCompositionAnswer);
   confirmButton.disabled = currentSentenceCompositionLocked || !currentSentenceCompositionAnswer.length;
   actions.append(clearButton, confirmButton, createSentenceCompositionButton("下一題", "secondary-button", () => startNextSentenceCompositionQuestion()));
-  wrapper.append(title, meta, filters, questionLine, prompt, bank, status, actions);
+  wrapper.append(title, mode, meta, filters, questionLine, prompt, bank, status, actions);
   if (currentSentenceCompositionLocked) wrapper.append(createSentenceCompositionFeedback());
   sentenceCompositionContent.replaceChildren(wrapper);
 }
@@ -1890,11 +1906,86 @@ function startNextSentenceCompositionQuestion(forceFilterReset = false) {
   renderJapaneseSentenceCompositionPractice();
 }
 
+function getSentenceCompositionQuestionCounts() {
+  return {
+    all: sentenceCompositionQuestions.length,
+    N5: sentenceCompositionQuestions.filter((q) => q.level === "N5").length,
+    N4: sentenceCompositionQuestions.filter((q) => q.level === "N4").length,
+  };
+}
+
+function renderJapaneseSentenceCompositionQuizSetup() {
+  if (!sentenceCompositionContent) return;
+  if (!sentenceCompositionHasLoaded) {
+    sentenceCompositionContent.textContent = "正在載入句子重組題庫資訊…";
+    ensureSentenceCompositionLoaded().then((loaded) => { if (loaded) renderJapaneseSentenceCompositionQuizSetup(); });
+    return;
+  }
+  const counts = getSentenceCompositionQuestionCounts();
+  const wrapper = document.createElement("div");
+  wrapper.className = "sentence-composition-card sentence-composition-quiz-setup";
+  const title = document.createElement("h2");
+  title.id = "sentence-composition-title";
+  title.textContent = "句子重組";
+  const mode = document.createElement("p");
+  mode.className = "sentence-composition-mode";
+  mode.textContent = "測驗模式";
+  const description = document.createElement("p");
+  description.className = "sentence-composition-meta";
+  description.textContent = "每次測驗固定 5 題";
+  const levels = document.createElement("div");
+  levels.className = "sentence-composition-filters";
+  levels.setAttribute("role", "group");
+  levels.setAttribute("aria-label", "選擇句子重組測驗等級");
+  [["N5", `N5：${counts.N5} 題`], ["N4", `N4：${counts.N4} 題`], ["mixed", `混合：${counts.all} 題`]].forEach(([level, label]) => {
+    const button = createSentenceCompositionButton(label, `filter-button${selectedSentenceCompositionQuizLevel === level ? " is-active" : ""}`, () => {
+      selectedSentenceCompositionQuizLevel = level;
+      sentenceCompositionQuizStatusText = `已選擇${level === "mixed" ? "混合" : level}，可開始測驗設定。`;
+      renderJapaneseSentenceCompositionQuizSetup();
+    });
+    button.setAttribute("aria-pressed", String(selectedSentenceCompositionQuizLevel === level));
+    levels.append(button);
+  });
+  const status = document.createElement("p");
+  status.className = "sentence-composition-status";
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", "polite");
+  status.textContent = sentenceCompositionQuizStatusText;
+  const actions = document.createElement("div");
+  actions.className = "sentence-composition-actions";
+  const start = createSentenceCompositionButton("開始測驗", "answer-button", startSentenceCompositionQuizSetup);
+  const back = createSentenceCompositionButton("返回文法選單", "secondary-button", returnToJapaneseGrammarMenu);
+  actions.append(start, back);
+  wrapper.append(title, mode, description, levels, status, actions);
+  sentenceCompositionContent.replaceChildren(wrapper);
+}
+
+function startSentenceCompositionQuizSetup() {
+  if (!selectedSentenceCompositionQuizLevel) {
+    sentenceCompositionQuizStatusText = "請先選擇 N5、N4 或混合。";
+    renderJapaneseSentenceCompositionQuizSetup();
+    return;
+  }
+  sentenceCompositionQuizStatusText = "測驗設定完成，題目功能將於下一階段啟用。";
+  renderJapaneseSentenceCompositionQuizSetup();
+}
+
 function openJapaneseSentenceCompositionPractice() {
   activeMode = "grammar";
-  renderJapaneseGrammarView("sentence-composition");
-  resetJapaneseSentenceCompositionState();
+  sentenceCompositionMode = "practice";
+  resetJapaneseSentenceCompositionQuizSetupState();
+  resetJapaneseSentenceCompositionPracticeState();
+  renderJapaneseGrammarView("sentence-composition-practice");
   renderJapaneseSentenceCompositionPractice();
+}
+
+function openJapaneseSentenceCompositionQuizSetup() {
+  activeMode = "grammar";
+  sentenceCompositionMode = "quiz";
+  resetJapaneseSentenceCompositionPracticeState();
+  resetJapaneseSentenceCompositionQuizSetupState();
+  renderJapaneseGrammarView("sentence-composition-quiz");
+  renderJapaneseSentenceCompositionQuizSetup();
 }
 
 async function switchMode(mode) {
@@ -2346,8 +2437,12 @@ japaneseGrammarEntryButtons.forEach((button) => {
       openJapaneseGrammarQuiz();
       return;
     }
-    if (button.dataset.japaneseGrammarEntry === "sentence-composition") {
+    if (button.dataset.japaneseGrammarEntry === "sentence-composition-practice") {
       openJapaneseSentenceCompositionPractice();
+      return;
+    }
+    if (button.dataset.japaneseGrammarEntry === "sentence-composition-quiz") {
+      openJapaneseSentenceCompositionQuizSetup();
       return;
     }
 
@@ -2411,7 +2506,7 @@ function getReadingSetById(readingSetId) {
 }
 
 function normalizeJapaneseReadingView(view) {
-  if (["menu", "practice", "quiz", "sentence-composition"].includes(view)) return view;
+  if (["menu", "practice", "quiz", "sentence-composition-practice", "sentence-composition-quiz"].includes(view)) return view;
   return "menu";
 }
 
