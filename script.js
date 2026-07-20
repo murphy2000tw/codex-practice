@@ -1797,15 +1797,34 @@ function chooseNextSentenceCompositionQuestion() {
 }
 
 function getSentenceCompositionChunkById(question, id) {
-  return question.chunks.find((chunk) => chunk.id === id);
+  return question?.chunks?.find((chunk) => chunk.id === id) || null;
 }
 
 function getSentenceCompositionChunkOptionNumber(question, id) {
-  return question.chunks.findIndex((chunk) => chunk.id === id) + 1;
+  const index = question?.chunks?.findIndex((chunk) => chunk.id === id) ?? -1;
+  return index >= 0 ? index + 1 : null;
 }
 
 function getSentenceCompositionCorrectStarChunkId(question) {
+  if (!question?.correctOrder) return null;
   return question.correctOrder[question.starSlot];
+}
+
+function formatSentenceCompositionLevel(level) {
+  return level === "mixed" ? "混合" : (level || "未選擇");
+}
+
+function formatSentenceCompositionOption(question, chunkId) {
+  const optionNumber = getSentenceCompositionChunkOptionNumber(question, chunkId);
+  const chunk = getSentenceCompositionChunkById(question, chunkId);
+  const numberText = optionNumber ? `選項 ${optionNumber}` : "選項資料缺失";
+  const text = chunk?.text || "（選項內容缺失）";
+  return `${numberText}：${text}`;
+}
+
+function getSentenceCompositionCorrectOrderText(question) {
+  if (!Array.isArray(question?.correctOrder)) return "（正確順序資料缺失）";
+  return question.correctOrder.map((id) => getSentenceCompositionChunkById(question, id)?.text || "（片語缺失）").join(" → ");
 }
 
 function getSentenceCompositionQuizPool(level) {
@@ -2099,23 +2118,81 @@ function confirmSentenceCompositionQuizAnswer() {
 
 function renderJapaneseSentenceCompositionQuizComplete() {
   if (!sentenceCompositionContent) return;
+  const actualQuestionCount = sentenceCompositionQuizQuestions.length;
+  const hasCompleteData = sentenceCompositionQuizCompleted
+    && actualQuestionCount === SENTENCE_COMPOSITION_QUIZ_QUESTION_COUNT
+    && sentenceCompositionQuizAnswers.length === actualQuestionCount;
+  const correctCount = sentenceCompositionQuizAnswers.filter((answer) => answer?.isCorrect === true).length;
+  const wrongCount = actualQuestionCount - correctCount;
+  const accuracy = actualQuestionCount ? Math.round((correctCount / actualQuestionCount) * 100) : 0;
+
   const wrapper = document.createElement("div");
-  wrapper.className = "sentence-composition-card sentence-composition-quiz-complete";
+  wrapper.className = "sentence-composition-card sentence-composition-quiz-results";
   const title = document.createElement("h2");
   title.id = "sentence-composition-title";
   title.textContent = "句子重組";
   const mode = document.createElement("p");
   mode.className = "sentence-composition-mode";
-  mode.textContent = "測驗模式";
-  const message = document.createElement("p");
-  message.className = "sentence-composition-meta";
-  message.setAttribute("role", "status");
-  message.setAttribute("aria-live", "polite");
-  message.textContent = "本次 5 題作答完成，測驗結果將於下一階段顯示。";
+  mode.textContent = "測驗結果";
+  const summary = document.createElement("div");
+  summary.className = "sentence-composition-feedback";
+  summary.setAttribute("role", "status");
+  summary.setAttribute("aria-live", "polite");
+  const level = document.createElement("p");
+  level.textContent = `本次選擇的等級：${formatSentenceCompositionLevel(selectedSentenceCompositionQuizLevel)}`;
+  const total = document.createElement("p");
+  total.textContent = `總題數：${actualQuestionCount} 題`;
+  const correct = document.createElement("p");
+  correct.textContent = `答對：${correctCount} 題`;
+  const wrong = document.createElement("p");
+  wrong.textContent = `答錯：${wrongCount} 題`;
+  const rate = document.createElement("p");
+  rate.textContent = `正確率：${accuracy}%`;
+  summary.append(level, total, correct, wrong, rate);
+  if (!hasCompleteData) {
+    const warning = document.createElement("p");
+    warning.textContent = "測驗題目或答案資料不完整，請再測一次。";
+    summary.append(warning);
+  }
+
+  const results = document.createElement("div");
+  results.className = "sentence-composition-results-list";
+  sentenceCompositionQuizQuestions.forEach((question, index) => {
+    const answer = sentenceCompositionQuizAnswers[index] || {};
+    const correctStarChunkId = getSentenceCompositionCorrectStarChunkId(question);
+    const item = document.createElement("section");
+    item.className = "sentence-composition-feedback";
+    const heading = document.createElement("h3");
+    heading.textContent = `第 ${index + 1} 題`;
+    const itemLevel = document.createElement("p");
+    itemLevel.textContent = `等級：${question?.level || "資料缺失"}`;
+    const result = document.createElement("p");
+    result.textContent = `本題結果：${answer.isCorrect === true ? "答對" : "答錯"}`;
+    const userAnswer = document.createElement("p");
+    userAnswer.textContent = `使用者答案：${formatSentenceCompositionOption(question, answer.selectedChunkId)}`;
+    const starAnswer = document.createElement("p");
+    starAnswer.textContent = `★ 正確答案：${formatSentenceCompositionOption(question, correctStarChunkId)}`;
+    const order = document.createElement("p");
+    order.textContent = `完整正確排列順序：${getSentenceCompositionCorrectOrderText(question)}`;
+    const sentence = document.createElement("p");
+    sentence.textContent = `完整句子：${question?.completeSentence || "（完整句子缺失）"}`;
+    const kana = document.createElement("p");
+    kana.textContent = `假名：${question?.kana || "（假名缺失）"}`;
+    const meaning = document.createElement("p");
+    meaning.textContent = `中文：${question?.meaning || "（中文缺失）"}`;
+    const explanation = document.createElement("p");
+    explanation.textContent = `解析：${question?.explanation || "（解析缺失）"}`;
+    item.append(heading, itemLevel, result, createSentenceCompositionQuestionLine(question), userAnswer, starAnswer, order, sentence, kana, meaning, explanation);
+    results.append(item);
+  });
+
   const actions = document.createElement("div");
   actions.className = "sentence-composition-actions";
-  actions.append(createSentenceCompositionButton("返回文法選單", "secondary-button", returnToJapaneseGrammarMenu));
-  wrapper.append(title, mode, message, actions);
+  actions.append(
+    createSentenceCompositionButton("再測一次", "answer-button", startSentenceCompositionQuizSetup),
+    createSentenceCompositionButton("返回文法選單", "secondary-button", returnToJapaneseGrammarMenu),
+  );
+  wrapper.append(title, mode, summary, results, actions);
   sentenceCompositionContent.replaceChildren(wrapper);
 }
 
