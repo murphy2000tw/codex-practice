@@ -38,7 +38,7 @@ requireSnippet(html, 'id="japaneseReviewPanel"', 'review view wrapper');
 requireSnippet(html, 'data-japanese-back-home', 'feature-page back-home button');
 requireSnippet(html, 'data-japanese-layout-version="2.3"', 'page version marker');
 requireSnippet(html, 'name="japanese-layout-version" content="2.3"', 'meta version marker');
-if (!/\.\.\/script\.js\?v=(2\.[89]|3\.0)/.test(html)) failures.push('Missing JS cache-busting version: ../script.js?v=2.8 or v=2.9');
+if (!/\.\.\/script\.js\?v=(2\.[89]|3\.[01])/.test(html)) failures.push('Missing JS cache-busting version: ../script.js?v=2.8, v=2.9, v=3.0, or v=3.1');
 if (!/\.\.\/style\.css\?v=(2\.8|2\.9)/.test(html)) failures.push('Missing CSS cache-busting version: ../style.css?v=2.8 or v=2.9');
 
 requireSnippet(script, 'let currentJapaneseView = "home"', 'current view state');
