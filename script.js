@@ -611,6 +611,13 @@ let previousSentenceCompositionQuestionId = null;
 let sentenceCompositionMode = "practice";
 let selectedSentenceCompositionQuizLevel = null;
 let sentenceCompositionQuizStatusText = "";
+const SENTENCE_COMPOSITION_QUIZ_QUESTION_COUNT = 5;
+let sentenceCompositionQuizQuestions = [];
+let currentSentenceCompositionQuizIndex = 0;
+let currentSentenceCompositionQuizAnswer = null;
+let sentenceCompositionQuizAnswers = [];
+let sentenceCompositionQuizCompleted = false;
+let sentenceCompositionQuizLocked = false;
 
 function isJapaneseHomeTab() {
   return currentJapaneseView === "home";
@@ -1718,9 +1725,19 @@ function resetJapaneseSentenceCompositionQuizSetupState() {
   sentenceCompositionQuizStatusText = "";
 }
 
+function resetJapaneseSentenceCompositionQuizState() {
+  sentenceCompositionQuizQuestions = [];
+  currentSentenceCompositionQuizIndex = 0;
+  currentSentenceCompositionQuizAnswer = null;
+  sentenceCompositionQuizAnswers = [];
+  sentenceCompositionQuizCompleted = false;
+  sentenceCompositionQuizLocked = false;
+}
+
 function resetJapaneseSentenceCompositionState() {
   resetJapaneseSentenceCompositionPracticeState();
   resetJapaneseSentenceCompositionQuizSetupState();
+  resetJapaneseSentenceCompositionQuizState();
   if (sentenceCompositionContent) sentenceCompositionContent.replaceChildren();
 }
 
@@ -1791,6 +1808,40 @@ function getSentenceCompositionCorrectStarChunkId(question) {
   return question.correctOrder[question.starSlot];
 }
 
+function getSentenceCompositionQuizPool(level) {
+  if (level === "N5" || level === "N4") return sentenceCompositionQuestions.filter((question) => question.level === level);
+  return sentenceCompositionQuestions.slice();
+}
+
+function drawSentenceCompositionQuizQuestions(level) {
+  const pool = getSentenceCompositionQuizPool(level);
+  if (pool.length < SENTENCE_COMPOSITION_QUIZ_QUESTION_COUNT) return [];
+  const shuffled = pool.slice();
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return shuffled.slice(0, SENTENCE_COMPOSITION_QUIZ_QUESTION_COUNT);
+}
+
+function createSentenceCompositionQuestionLine(question) {
+  const questionLine = document.createElement("div");
+  questionLine.className = "sentence-composition-line";
+  const before = document.createElement("span"); before.className = "sentence-composition-text"; before.textContent = question.before;
+  const answerSlots = document.createElement("span"); answerSlots.className = "sentence-composition-slots";
+  for (let index = 0; index < 4; index += 1) {
+    const isStarSlot = index === question.starSlot;
+    const slot = document.createElement("span");
+    slot.className = `sentence-composition-slot${isStarSlot ? " is-star" : ""}`;
+    slot.textContent = isStarSlot ? "（★）" : "（　）";
+    slot.setAttribute("aria-label", isStarSlot ? `第 ${index + 1} 格，星號答案格` : `第 ${index + 1} 格空格`);
+    answerSlots.append(slot);
+  }
+  const after = document.createElement("span"); after.className = "sentence-composition-text"; after.textContent = question.after;
+  questionLine.append(before, answerSlots, after);
+  return questionLine;
+}
+
 function renderJapaneseSentenceCompositionPractice(statusText = "") {
   if (!sentenceCompositionContent) return;
   if (!sentenceCompositionHasLoaded) {
@@ -1823,20 +1874,7 @@ function renderJapaneseSentenceCompositionPractice(statusText = "") {
     button.setAttribute("aria-pressed", String(activeSentenceCompositionLevel === level));
     filters.append(button);
   });
-  const questionLine = document.createElement("div");
-  questionLine.className = "sentence-composition-line";
-  const before = document.createElement("span"); before.className = "sentence-composition-text"; before.textContent = question.before;
-  const answerSlots = document.createElement("span"); answerSlots.className = "sentence-composition-slots";
-  for (let index = 0; index < 4; index += 1) {
-    const isStarSlot = index === question.starSlot;
-    const slot = document.createElement("span");
-    slot.className = `sentence-composition-slot${isStarSlot ? " is-star" : ""}`;
-    slot.textContent = isStarSlot ? "（★）" : "（　）";
-    slot.setAttribute("aria-label", isStarSlot ? `第 ${index + 1} 格，星號答案格` : `第 ${index + 1} 格空格`);
-    answerSlots.append(slot);
-  }
-  const after = document.createElement("span"); after.className = "sentence-composition-text"; after.textContent = question.after;
-  questionLine.append(before, answerSlots, after);
+  const questionLine = createSentenceCompositionQuestionLine(question);
   const prompt = document.createElement("p"); prompt.className = "sentence-composition-prompt"; prompt.textContent = "★ に入るものはどれですか。";
   const bank = document.createElement("div"); bank.className = "sentence-composition-chunks";
   bank.setAttribute("role", "group");
@@ -1966,8 +2004,119 @@ function startSentenceCompositionQuizSetup() {
     renderJapaneseSentenceCompositionQuizSetup();
     return;
   }
-  sentenceCompositionQuizStatusText = "測驗設定完成，題目功能將於下一階段啟用。";
-  renderJapaneseSentenceCompositionQuizSetup();
+  const quizQuestions = drawSentenceCompositionQuizQuestions(selectedSentenceCompositionQuizLevel);
+  if (quizQuestions.length < SENTENCE_COMPOSITION_QUIZ_QUESTION_COUNT) {
+    sentenceCompositionQuizStatusText = "此等級題庫不足 5 題，暫時無法開始測驗。";
+    renderJapaneseSentenceCompositionQuizSetup();
+    return;
+  }
+  sentenceCompositionQuizQuestions = quizQuestions;
+  currentSentenceCompositionQuizIndex = 0;
+  currentSentenceCompositionQuizAnswer = null;
+  sentenceCompositionQuizAnswers = [];
+  sentenceCompositionQuizCompleted = false;
+  sentenceCompositionQuizLocked = false;
+  sentenceCompositionQuizStatusText = "";
+  renderJapaneseSentenceCompositionQuizQuestion();
+}
+
+function renderJapaneseSentenceCompositionQuizQuestion(statusText = "") {
+  if (!sentenceCompositionContent) return;
+  if (sentenceCompositionQuizCompleted) { renderJapaneseSentenceCompositionQuizComplete(); return; }
+  const question = sentenceCompositionQuizQuestions[currentSentenceCompositionQuizIndex];
+  if (!question) {
+    sentenceCompositionQuizStatusText = "目前沒有可作答的測驗題目，請返回設定頁重新開始。";
+    renderJapaneseSentenceCompositionQuizSetup();
+    return;
+  }
+  const wrapper = document.createElement("div");
+  wrapper.className = "sentence-composition-card sentence-composition-quiz-question";
+  const title = document.createElement("h2");
+  title.id = "sentence-composition-title";
+  title.textContent = "句子重組";
+  const mode = document.createElement("p");
+  mode.className = "sentence-composition-mode";
+  mode.textContent = "測驗模式";
+  const progress = document.createElement("p");
+  progress.className = "sentence-composition-meta sentence-composition-quiz-progress";
+  progress.textContent = `第 ${currentSentenceCompositionQuizIndex + 1} 題／共 ${sentenceCompositionQuizQuestions.length} 題`;
+  const prompt = document.createElement("p");
+  prompt.className = "sentence-composition-prompt";
+  prompt.textContent = "★ に入るものはどれですか。";
+  const bank = document.createElement("div");
+  bank.className = "sentence-composition-chunks";
+  bank.setAttribute("role", "group");
+  bank.setAttribute("aria-label", "★ に入るものはどれですか。");
+  question.chunks.forEach((chunk, index) => {
+    const selected = currentSentenceCompositionQuizAnswer === chunk.id;
+    const button = createSentenceCompositionButton(`${index + 1}. ${chunk.text}`, `sentence-composition-chunk${selected ? " is-selected" : ""}`, () => selectSentenceCompositionQuizChunk(chunk.id));
+    button.disabled = sentenceCompositionQuizLocked;
+    button.setAttribute("aria-pressed", String(selected));
+    bank.append(button);
+  });
+  const status = document.createElement("p");
+  status.className = "sentence-composition-status";
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", "polite");
+  status.textContent = statusText;
+  const actions = document.createElement("div");
+  actions.className = "sentence-composition-actions";
+  const confirm = createSentenceCompositionButton("確認答案", "answer-button", confirmSentenceCompositionQuizAnswer);
+  confirm.disabled = sentenceCompositionQuizLocked || !currentSentenceCompositionQuizAnswer;
+  actions.append(confirm);
+  wrapper.append(title, mode, progress, createSentenceCompositionQuestionLine(question), prompt, bank, status, actions);
+  sentenceCompositionContent.replaceChildren(wrapper);
+}
+
+function selectSentenceCompositionQuizChunk(chunkId) {
+  if (sentenceCompositionQuizLocked || sentenceCompositionQuizCompleted) return;
+  currentSentenceCompositionQuizAnswer = chunkId;
+  renderJapaneseSentenceCompositionQuizQuestion("已選擇選項，確認後將進入下一題。");
+}
+
+function confirmSentenceCompositionQuizAnswer() {
+  if (sentenceCompositionQuizLocked || sentenceCompositionQuizCompleted) return;
+  const question = sentenceCompositionQuizQuestions[currentSentenceCompositionQuizIndex];
+  if (!question || !currentSentenceCompositionQuizAnswer) { renderJapaneseSentenceCompositionQuizQuestion("請先選擇 ★ 格的答案。"); return; }
+  sentenceCompositionQuizLocked = true;
+  const correctStarChunkId = getSentenceCompositionCorrectStarChunkId(question);
+  sentenceCompositionQuizAnswers.push({
+    questionId: question.id,
+    selectedChunkId: currentSentenceCompositionQuizAnswer,
+    correctStarChunkId,
+    isCorrect: currentSentenceCompositionQuizAnswer === correctStarChunkId,
+  });
+  if (currentSentenceCompositionQuizIndex >= sentenceCompositionQuizQuestions.length - 1) {
+    sentenceCompositionQuizCompleted = true;
+    renderJapaneseSentenceCompositionQuizComplete();
+    return;
+  }
+  currentSentenceCompositionQuizIndex += 1;
+  currentSentenceCompositionQuizAnswer = null;
+  sentenceCompositionQuizLocked = false;
+  renderJapaneseSentenceCompositionQuizQuestion();
+}
+
+function renderJapaneseSentenceCompositionQuizComplete() {
+  if (!sentenceCompositionContent) return;
+  const wrapper = document.createElement("div");
+  wrapper.className = "sentence-composition-card sentence-composition-quiz-complete";
+  const title = document.createElement("h2");
+  title.id = "sentence-composition-title";
+  title.textContent = "句子重組";
+  const mode = document.createElement("p");
+  mode.className = "sentence-composition-mode";
+  mode.textContent = "測驗模式";
+  const message = document.createElement("p");
+  message.className = "sentence-composition-meta";
+  message.setAttribute("role", "status");
+  message.setAttribute("aria-live", "polite");
+  message.textContent = "本次 5 題作答完成，測驗結果將於下一階段顯示。";
+  const actions = document.createElement("div");
+  actions.className = "sentence-composition-actions";
+  actions.append(createSentenceCompositionButton("返回文法選單", "secondary-button", returnToJapaneseGrammarMenu));
+  wrapper.append(title, mode, message, actions);
+  sentenceCompositionContent.replaceChildren(wrapper);
 }
 
 function openJapaneseSentenceCompositionPractice() {
@@ -1984,6 +2133,7 @@ function openJapaneseSentenceCompositionQuizSetup() {
   sentenceCompositionMode = "quiz";
   resetJapaneseSentenceCompositionPracticeState();
   resetJapaneseSentenceCompositionQuizSetupState();
+  resetJapaneseSentenceCompositionQuizState();
   renderJapaneseGrammarView("sentence-composition-quiz");
   renderJapaneseSentenceCompositionQuizSetup();
 }

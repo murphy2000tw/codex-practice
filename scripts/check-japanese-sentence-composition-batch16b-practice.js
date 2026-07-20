@@ -38,7 +38,7 @@ assert(/display:\s*inline/.test(slotsRule) && /display:\s*inline-block/.test(slo
 assert(/white-space:\s*nowrap/.test(slotRule) && /word-break:\s*keep-all/.test(slotRule), 'parenthesized slots must not break internally on mobile');
 const mobileRule = css.match(/@media \(max-width: 640px\) \{[\s\S]*?\n\}/)?.[0] || '';
 assert(!/sentence-composition-slot[\s\S]{0,120}width:\s*100%/.test(mobileRule), 'mobile CSS must not force each slot to full width');
-assert((script.match(/★ に入るものはどれですか。/g) || []).length === 2 && /aria-label", "★ に入るものはどれですか。"/.test(script), 'visible prompt should exist once and aria-label may reuse it once');
+assert((renderFn.match(/★ に入るものはどれですか。/g) || []).length === 2 && /aria-label", "★ に入るものはどれですか。"/.test(renderFn), 'practice visible prompt should exist once and aria-label may reuse it once');
 assert(/function renderJapaneseSentenceCompositionPractice\(statusText = ""\)/.test(script), 'initial aria-live status must be empty');
 assert(/已選擇選項，可改選或確認。/.test(script), 'selection status message mismatch');
 assert(/question\.chunks\.forEach\(\(chunk, index\)/.test(script) && /`\$\{index \+ 1\}\. \$\{chunk\.text\}`/.test(script), 'chunks must render as numbered answer options in data order');
@@ -56,7 +56,7 @@ assert(/★格正確答案/.test(script) && /完整正確順序/.test(script) &&
 assert(/previousSentenceCompositionQuestionId/.test(script) && /!== previousSentenceCompositionQuestionId/.test(script), 'next question must avoid immediate repeat');
 assert(/resetJapaneseSentenceCompositionState\(\);[\s\S]*renderJapaneseGrammarView\("menu"\)/.test(script) && /panelView !== "grammar"\) resetJapaneseSentenceCompositionState/.test(script), 'view isolation reset missing');
 assert(!/japanese_mistake_book_v1[\s\S]{0,300}sentence/i.test(script) && !/questionType[\s\S]{0,200}sentence/i.test(script), 'must not add mistake-book sentence question type/write');
-assert(!/JLPT|測驗結果|倒數計時/.test(sentenceFns), 'must not add JLPT/test result/countdown flow');
+assert(!/JLPT|測驗結果|倒數計時/.test(renderFn), 'practice must not add JLPT/test result/countdown flow');
 assert(!/innerHTML\s*=/.test(sentenceFns), 'sentence composition must not insert question content via innerHTML');
 assert(!/localStorage[\s\S]{0,120}SentenceComposition|SentenceComposition[\s\S]{0,120}localStorage/.test(script), 'temporary sentence composition state must not use localStorage');
 assert(/role", "status"/.test(script) && /aria-live", "polite"/.test(script), 'aria-live status missing');
