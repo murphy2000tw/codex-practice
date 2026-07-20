@@ -65,7 +65,7 @@ assert(/questionType: "readingQuestion"/.test(script), 'reading wrong hook must 
 assert(/questionType: "listeningMeaning"/.test(script), 'listening wrong hook must record');
 assert(!/handleReadingPracticeAnswer[\s\S]{0,700}recordJapaneseMistake/.test(script), 'reading practice must not record');
 assert(!/renderJapaneseListeningPractice[\s\S]{0,1300}recordJapaneseMistake/.test(script), 'listening practice must not record');
-assert(/\.\.\/script\.js\?v=(2\.[89]|3\.[01])/.test(html), 'script cache query must be v=2.8');
+assert(/\.\.\/script\.js\?v=(2\.[89]|3\.[012])/.test(html), 'script cache query must be v=2.8 or later compatible');
 assert(/\.\.\/style\.css\?v=(2\.8|2\.9)/.test(html), 'style cache query must remain v=2.8');
 
 const { api, store } = loadApi();
