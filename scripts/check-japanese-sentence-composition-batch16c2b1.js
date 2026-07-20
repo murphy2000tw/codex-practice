@@ -44,6 +44,7 @@ const quizQuestionRenderBlock = script.slice(script.indexOf('function renderJapa
 const sentenceCompositionBlock = script.slice(script.indexOf('function resetJapaneseSentenceCompositionPracticeState'), script.indexOf('async function switchMode'));
 
 assert(/const SENTENCE_COMPOSITION_QUIZ_QUESTION_COUNT = 5;/.test(script), 'quiz must be fixed at 5 questions');
+assert(/\.\.\/script\.js\?v=3\.1/.test(html), 'script cache query must be v=3.1');
 assert(/function getSentenceCompositionQuizPool\(level\)[\s\S]*level === "N5" \|\| level === "N4"[\s\S]*question\.level === level[\s\S]*sentenceCompositionQuestions\.slice\(\)/.test(script), 'N5/N4/mixed quiz pools must use the correct ranges');
 assert(/drawSentenceCompositionQuizQuestions[\s\S]*pool\.slice\(\)[\s\S]*shuffled\.slice\(0, SENTENCE_COMPOSITION_QUIZ_QUESTION_COUNT\)/.test(script), 'drawing must copy and slice without mutating the source question array');
 assert(!/sentenceCompositionQuestions\.sort\(|sentenceCompositionQuestions\.splice\(|sentenceCompositionQuestions\.push\(|sentenceCompositionQuestions\.pop\(|sentenceCompositionQuestions\.shift\(|sentenceCompositionQuestions\.unshift\(/.test(quizBlock), 'quiz draw must not mutate the original question array');
