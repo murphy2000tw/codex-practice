@@ -52,10 +52,40 @@ function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
 
-function getChangedFiles() {
-  const output = execFileSync('git', ['status', '--short'], { cwd: root, encoding: 'utf8' }).trim();
+function runGit(args) {
+  return execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
+}
+
+function parseStatusFiles(output) {
   if (!output) return [];
-  return output.split('\n').map((line) => line.slice(3).trim()).filter(Boolean);
+  return output.split('\n').flatMap((line) => {
+    const file = line.slice(3).trim();
+    if (!file) return [];
+    if (file.includes(' -> ')) return [file.split(' -> ').pop()];
+    return [file];
+  });
+}
+
+function getChangedFiles() {
+  const requiredBaseCommit = 'c78ec40a786ee85696bbde582b26e54aaeb02cb4';
+  try {
+    runGit(['merge-base', '--is-ancestor', requiredBaseCommit, 'HEAD']);
+  } catch (error) {
+    throw new Error(`HEAD does not contain required Batch 16D-1 base commit ${requiredBaseCommit}`);
+  }
+
+  let mergeBase;
+  try {
+    mergeBase = runGit(['merge-base', 'HEAD', 'main']);
+  } catch (error) {
+    throw new Error('Unable to determine merge-base between HEAD and main');
+  }
+
+  const committedOutput = runGit(['diff', '--name-only', `${mergeBase}..HEAD`]);
+  const committedFiles = committedOutput ? committedOutput.split('\n').filter(Boolean) : [];
+  const statusOutput = execFileSync('git', ['status', '--short'], { cwd: root, encoding: 'utf8' }).trimEnd();
+  const statusFiles = parseStatusFiles(statusOutput);
+  return [...new Set([...committedFiles, ...statusFiles])].sort();
 }
 
 function countBy(items, selector) {
@@ -78,10 +108,13 @@ function assertMapEquals(actual, expected, label) {
 
 const changedFiles = getChangedFiles();
 const unexpectedFiles = changedFiles.filter((file) => !allowedChangedFiles.has(file));
+const missingExpectedFiles = [...allowedChangedFiles].filter((file) => !changedFiles.includes(file));
 if (unexpectedFiles.length > 0) {
   fail(`Batch 16D-1 may only add the plan and checker; unexpected changes: ${unexpectedFiles.join(', ')}`);
+} else if (missingExpectedFiles.length > 0) {
+  fail(`Batch 16D-1 PR diff must include both expected files; missing: ${missingExpectedFiles.join(', ')}`);
 } else {
-  pass('Only the Batch 16D-1 plan and checker are changed');
+  pass('PR diff and working tree contain exactly the Batch 16D-1 plan and checker');
 }
 
 const protectedChanged = changedFiles.filter((file) => protectedFiles.has(file));
