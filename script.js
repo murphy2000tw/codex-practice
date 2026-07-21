@@ -209,6 +209,7 @@ const JAPANESE_MISTAKE_QUESTION_TYPES = Object.freeze({
   grammarCloze: { module: "grammar", keyParts: ["module", "questionType", "itemId"] },
   readingQuestion: { module: "reading", keyParts: ["module", "questionType", "relatedId", "itemId"] },
   listeningMeaning: { module: "listening", keyParts: ["module", "questionType", "itemId"] },
+  sentenceComposition: { module: "grammar", keyParts: ["module", "questionType", "itemId"] },
 });
 let japaneseMistakeBookMemoryRaw = null;
 let japaneseMistakeBookStorageFallback = false;
@@ -265,6 +266,18 @@ function normalizeJapaneseMistakeBookData(data) {
       correctAnswer: String(item.correctAnswer ?? ""),
       createdAt, updatedAt,
     };
+    if (questionType === "sentenceComposition") {
+      ["questionId", "level", "before", "after", "starSlot", "completeSentence", "kana", "meaning", "explanation", "source", "selectedChunkId", "correctStarChunkId"].forEach((field) => {
+        if (item[field] !== undefined) normalized.itemsById[dedupeKey][field] = String(item[field] ?? "");
+      });
+      if (Array.isArray(item.chunks)) {
+        normalized.itemsById[dedupeKey].chunks = item.chunks
+          .filter((chunk) => chunk && typeof chunk === "object")
+          .map((chunk) => ({ id: String(chunk.id ?? ""), text: String(chunk.text ?? "") }))
+          .filter((chunk) => chunk.id && chunk.text);
+      }
+      if (Array.isArray(item.correctOrder)) normalized.itemsById[dedupeKey].correctOrder = item.correctOrder.map((id) => String(id ?? "")).filter(Boolean);
+    }
   });
   return normalized;
 }
@@ -317,6 +330,9 @@ function recordJapaneseMistake(payload, now = new Date()) {
     createdAt: existing?.createdAt || timestamp,
     updatedAt: timestamp,
   };
+  ["questionId", "level", "before", "after", "chunks", "starSlot", "correctOrder", "selectedChunkId", "correctStarChunkId", "completeSentence", "kana", "meaning", "explanation", "source"].forEach((field) => {
+    if (payload?.[field] !== undefined) book.itemsById[dedupeKey][field] = payload[field];
+  });
   return writeJapaneseMistakeBook(book);
 }
 
@@ -719,7 +735,7 @@ window.showJapaneseContentView = switchJapaneseTab;
 
 
 const JAPANESE_REVIEW_QUESTION_TYPE_LABELS = Object.freeze({
-  vocabularyMeaning: "單字測驗", grammarMeaning: "文法意思", grammarCloze: "文法填空", readingQuestion: "閱讀測驗", listeningMeaning: "聽力測驗",
+  vocabularyMeaning: "單字測驗", grammarMeaning: "文法意思", grammarCloze: "文法填空", readingQuestion: "閱讀測驗", listeningMeaning: "聽力測驗", sentenceComposition: "句子重組",
 });
 const JAPANESE_REVIEW_MODULE_LABELS = Object.freeze({ vocabulary: "單字", grammar: "文法", reading: "閱讀", listening: "聽力" });
 const JAPANESE_REVIEW_MODULE_ORDER = Object.freeze(["vocabulary", "grammar", "reading", "listening"]);
@@ -820,6 +836,7 @@ function appendMistakeResolvedFields(card, record) {
   if (record.questionType === "grammarCloze") { const e=findGrammarById(record.itemId); if(e){found=true; appendReviewField(card,"quiz.clozePrompt",e.quiz?.clozePrompt); appendReviewField(card,"quiz.clozePromptKana",e.quiz?.clozePromptKana); appendReviewField(card,"quiz.clozeMeaning",e.quiz?.clozeMeaning); appendReviewField(card,"quiz.explanation",e.quiz?.explanation); appendReviewField(card,"level",e.level); appendReviewField(card,"category",e.category);} }
   if (record.questionType === "readingQuestion") { const r=findReadingQuestion(record); if(r){found=true; appendReviewField(card,"readingSet.title",r.set.title); appendReviewField(card,"readingSet.level",r.set.level); appendReviewField(card,"readingSet.type",r.set.type); appendReviewField(card,"question.question",r.q.question); appendReviewField(card,"question.explanation",r.q.explanation);} }
   if (record.questionType === "listeningMeaning") { const e=findListeningById(record.itemId); if(e){found=true; ["japanese","kana","zh","level","category","question"].forEach(k=>appendReviewField(card,k,e[k]));} }
+  if (record.questionType === "sentenceComposition") { found=true; appendSentenceCompositionMistakeFields(card, record); }
   if (!found) { appendReviewField(card,"狀態","此題已從題庫移除或目前無法載入"); ["module","questionType","itemId","relatedId"].forEach(k=>appendReviewField(card,k,record[k])); }
 }
 
@@ -2039,6 +2056,80 @@ function startSentenceCompositionQuizSetup() {
   renderJapaneseSentenceCompositionQuizQuestion();
 }
 
+
+function buildSentenceCompositionMistakeSnapshot(question, selectedChunkId, correctStarChunkId) {
+  const safeQuestion = question || {};
+  return {
+    questionId: safeQuestion.id,
+    itemId: safeQuestion.id,
+    relatedId: safeQuestion.id,
+    level: safeQuestion.level,
+    before: safeQuestion.before,
+    after: safeQuestion.after,
+    chunks: Array.isArray(safeQuestion.chunks) ? safeQuestion.chunks.map((chunk) => ({ id: String(chunk?.id ?? ""), text: String(chunk?.text ?? "") })).filter((chunk) => chunk.id && chunk.text) : [],
+    starSlot: safeQuestion.starSlot,
+    correctOrder: Array.isArray(safeQuestion.correctOrder) ? safeQuestion.correctOrder.map((id) => String(id ?? "")).filter(Boolean) : [],
+    selectedChunkId,
+    correctStarChunkId,
+    completeSentence: safeQuestion.completeSentence,
+    kana: safeQuestion.kana,
+    meaning: safeQuestion.meaning,
+    explanation: safeQuestion.explanation,
+    source: safeQuestion.source,
+  };
+}
+
+function recordSentenceCompositionQuizMistake(question, selectedChunkId, correctStarChunkId) {
+  if (!question?.id) { warnJapaneseMistakeMissingIdOnce("grammar:sentenceComposition"); return readJapaneseMistakeBook(); }
+  const selectedText = formatSentenceCompositionOption(question, selectedChunkId);
+  const correctText = formatSentenceCompositionOption(question, correctStarChunkId);
+  return recordJapaneseMistake({
+    module: "grammar",
+    questionType: "sentenceComposition",
+    ...buildSentenceCompositionMistakeSnapshot(question, selectedChunkId, correctStarChunkId),
+    userAnswer: selectedText,
+    correctAnswer: correctText,
+  });
+}
+
+function findSentenceCompositionById(id) {
+  return sentenceCompositionQuestions.find((question) => String(question.id) === String(id));
+}
+
+function resolveSentenceCompositionMistakeQuestion(record) {
+  const live = findSentenceCompositionById(record.itemId);
+  if (live) return live;
+  return {
+    id: record.questionId || record.itemId,
+    level: record.level,
+    before: record.before,
+    after: record.after,
+    chunks: Array.isArray(record.chunks) ? record.chunks : [],
+    starSlot: record.starSlot,
+    correctOrder: Array.isArray(record.correctOrder) ? record.correctOrder : [],
+    completeSentence: record.completeSentence,
+    kana: record.kana,
+    meaning: record.meaning,
+    explanation: record.explanation,
+    source: record.source,
+  };
+}
+
+function appendSentenceCompositionMistakeFields(card, record) {
+  const question = resolveSentenceCompositionMistakeQuestion(record);
+  appendReviewField(card, "難度", question.level);
+  appendReviewField(card, "題目句型／空格位置", `${question.before || ""} ★ ${question.after || ""}`.trim());
+  appendReviewField(card, "使用者選擇", formatSentenceCompositionOption(question, record.selectedChunkId));
+  appendReviewField(card, "正確星號位置選項", formatSentenceCompositionOption(question, record.correctStarChunkId));
+  appendReviewField(card, "完整正確排列", getSentenceCompositionCorrectOrderText(question));
+  appendReviewField(card, "完整句子", question.completeSentence);
+  appendReviewField(card, "假名", question.kana);
+  appendReviewField(card, "中文意思", question.meaning);
+  appendReviewField(card, "解說", question.explanation);
+  appendReviewField(card, "出處", question.source);
+}
+
+
 function renderJapaneseSentenceCompositionQuizQuestion(statusText = "") {
   if (!sentenceCompositionContent) return;
   if (sentenceCompositionQuizCompleted) { renderJapaneseSentenceCompositionQuizComplete(); return; }
@@ -2087,6 +2178,7 @@ function renderJapaneseSentenceCompositionQuizQuestion(statusText = "") {
   sentenceCompositionContent.replaceChildren(wrapper);
 }
 
+
 function selectSentenceCompositionQuizChunk(chunkId) {
   if (sentenceCompositionQuizLocked || sentenceCompositionQuizCompleted) return;
   currentSentenceCompositionQuizAnswer = chunkId;
@@ -2105,6 +2197,7 @@ function confirmSentenceCompositionQuizAnswer() {
     correctStarChunkId,
     isCorrect: currentSentenceCompositionQuizAnswer === correctStarChunkId,
   });
+  if (currentSentenceCompositionQuizAnswer !== correctStarChunkId) recordSentenceCompositionQuizMistake(question, currentSentenceCompositionQuizAnswer, correctStarChunkId);
   if (currentSentenceCompositionQuizIndex >= sentenceCompositionQuizQuestions.length - 1) {
     sentenceCompositionQuizCompleted = true;
     renderJapaneseSentenceCompositionQuizComplete();

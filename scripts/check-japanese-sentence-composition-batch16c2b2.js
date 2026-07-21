@@ -31,7 +31,7 @@ const homeEntries = [...extractById(html, 'japaneseHomeContent').matchAll(/data-
 const grammarEntries = [...extractById(html, 'japaneseGrammarMenuView').matchAll(/data-japanese-grammar-entry="([^"]+)"/g)].map((m) => m[1]);
 const counts = data.reduce((acc, q) => { acc.total += 1; acc[q.level] = (acc[q.level] || 0) + 1; return acc; }, { total: 0, N5: 0, N4: 0 });
 
-assert(/\.\.\/script\.js\?v=3\.2/.test(html), 'japanese/index.html must explicitly reference script.js?v=3.2');
+assert(/\.\.\/script\.js\?v=3\.[23]/.test(html), 'japanese/index.html must explicitly reference script.js?v=3.2 or v3.3');
 assert(/\.\.\/style\.css\?v=2\.9/.test(html), 'style.css cache query must remain v2.9');
 assert(!/本次 5 題作答完成，測驗結果將於下一階段顯示。/.test(script), 'temporary completion message must be removed');
 assert(/if \(sentenceCompositionQuizCompleted\) \{ renderJapaneseSentenceCompositionQuizComplete\(\); return; \}/.test(script) && /sentenceCompositionQuizAnswers\.length === actualQuestionCount/.test(resultRender), 'result page must be gated by completed five-answer state');
@@ -53,7 +53,7 @@ assert(/createSentenceCompositionButton\("再測一次", "answer-button", startS
 assert(/sentenceCompositionQuizQuestions = quizQuestions;[\s\S]*currentSentenceCompositionQuizIndex = 0;[\s\S]*currentSentenceCompositionQuizAnswer = null;[\s\S]*sentenceCompositionQuizAnswers = \[\];[\s\S]*sentenceCompositionQuizCompleted = false;[\s\S]*sentenceCompositionQuizLocked = false;/.test(script), 'retry/start must clear previous quiz state');
 assert(/createSentenceCompositionButton\("返回文法選單", "secondary-button", returnToJapaneseGrammarMenu\)/.test(resultRender) && /resetJapaneseSentenceCompositionState\(\)/.test(block('function returnToJapaneseGrammarMenu', 'function openJapaneseVocabularyPractice')), 'grammar menu return must reset quiz and result state');
 assert(/resetJapaneseSentenceCompositionPracticeState/.test(script) && /resetJapaneseSentenceCompositionQuizState/.test(script), 'practice and quiz result state must be isolated');
-assert(!/recordJapaneseMistake\([\s\S]{0,500}sentenceComposition|sentenceComposition[\s\S]{0,500}recordJapaneseMistake\(/.test(script), 'must not write mistake book');
+assert(/function recordSentenceCompositionQuizMistake/.test(script) || !/recordJapaneseMistake\([\s\S]{0,500}sentenceComposition|sentenceComposition[\s\S]{0,500}recordJapaneseMistake\(/.test(script), 'must not write mistake book before Batch 16C-2B-3');
 assert(!/localStorage\.?setItem\([^)]*sentenceComposition|localStorage\.setItem\([^)]*japanese_mistake_book_v1/.test(script), 'must not add sentence composition localStorage writes');
 assert(counts.total === 20 && counts.N5 === 8 && counts.N4 === 12, `question data must remain total=20 N5=8 N4=12, got ${JSON.stringify(counts)}`);
 assert(homeEntries.length === 5, `Japanese home must keep 5 entries, found ${homeEntries.length}`);
