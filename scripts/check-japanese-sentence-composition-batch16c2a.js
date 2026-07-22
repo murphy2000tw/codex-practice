@@ -54,7 +54,7 @@ assert(script.includes('resetJapaneseSentenceCompositionPracticeState') && scrip
 assert(!/innerHTML\s*=/.test(script.slice(script.indexOf('function renderJapaneseSentenceCompositionPractice'), script.indexOf('async function switchMode'))), 'Sentence composition rendering must not assign innerHTML');
 assert(script.includes('button.type = "button"') && script.includes('aria-pressed') && script.includes('role", "status"') && css.includes(':focus-visible'), 'Mobile and keyboard accessibility contracts must exist');
 const counts = data.reduce((acc, q) => { acc.total += 1; acc[q.level] = (acc[q.level] || 0) + 1; return acc; }, { total: 0 });
-assert(counts.total === 40 && counts.N5 === 20 && counts.N4 === 20, `Question baseline must be total=40, N5=20, N4=20; got total=${counts.total}, N5=${counts.N5}, N4=${counts.N4}`);
+assert(counts.total === 60 && counts.N5 === 30 && counts.N4 === 30, `Question baseline must be total=60, N5=30, N4=30; got total=${counts.total}, N5=${counts.N5}, N4=${counts.N4}`);
 
 
 const starSlots = [0, 0, 0, 0];
@@ -65,9 +65,9 @@ for (const question of data) {
   const optionIndex = (question.chunks || []).findIndex((chunk) => chunk.id === correctId);
   if (optionIndex >= 0) correctOptionPositions[optionIndex] += 1;
 }
-assert(JSON.stringify(starSlots) === JSON.stringify([10, 10, 10, 10]), `starSlot distribution must be 10 each, got ${starSlots}`);
-assert(JSON.stringify(correctOptionPositions) === JSON.stringify([10, 10, 10, 10]), `correct option positions must be 10 each, got ${correctOptionPositions}`);
-assert(/japaneseSentenceCompositionQuestions\.json\?v=16d2a/.test(html), 'question data cache query must be v=16d2a');
+assert(JSON.stringify(starSlots) === JSON.stringify([15, 15, 15, 15]), `starSlot distribution must be 15 each, got ${starSlots}`);
+assert(JSON.stringify(correctOptionPositions) === JSON.stringify([15, 15, 15, 15]), `correct option positions must be 15 each, got ${correctOptionPositions}`);
+assert(/japaneseSentenceCompositionQuestions\.json\?v=16d2b/.test(html), 'question data cache query must be v=16d2b');
 
 if (failures.length) {
   console.error('Batch 16C-2A sentence composition audit failed:');

@@ -55,7 +55,7 @@ assert(/createSentenceCompositionButton\("返回文法選單", "secondary-button
 assert(/resetJapaneseSentenceCompositionPracticeState/.test(script) && /resetJapaneseSentenceCompositionQuizState/.test(script), 'practice and quiz result state must be isolated');
 assert(/function recordSentenceCompositionQuizMistake/.test(script) || !/recordJapaneseMistake\([\s\S]{0,500}sentenceComposition|sentenceComposition[\s\S]{0,500}recordJapaneseMistake\(/.test(script), 'must not write mistake book before Batch 16C-2B-3');
 assert(!/localStorage\.?setItem\([^)]*sentenceComposition|localStorage\.setItem\([^)]*japanese_mistake_book_v1/.test(script), 'must not add sentence composition localStorage writes');
-assert(counts.total === 40 && counts.N5 === 20 && counts.N4 === 20, `question data must remain total=40 N5=20 N4=20, got ${JSON.stringify(counts)}`);
+assert(counts.total === 60 && counts.N5 === 30 && counts.N4 === 30, `question data must remain total=60 N5=30 N4=30, got ${JSON.stringify(counts)}`);
 assert(homeEntries.length === 5, `Japanese home must keep 5 entries, found ${homeEntries.length}`);
 assert(JSON.stringify(grammarEntries) === JSON.stringify(['practice', 'quiz', 'sentence-composition-practice', 'sentence-composition-quiz']), 'grammar menu must keep 4 entries');
 assert(!/innerHTML\s*=/.test(sentenceBlock), 'sentence composition must avoid innerHTML');
@@ -71,9 +71,9 @@ for (const question of data) {
   const optionIndex = (question.chunks || []).findIndex((chunk) => chunk.id === correctId);
   if (optionIndex >= 0) correctOptionPositions[optionIndex] += 1;
 }
-assert(JSON.stringify(starSlots) === JSON.stringify([10, 10, 10, 10]), `starSlot distribution must be 10 each, got ${starSlots}`);
-assert(JSON.stringify(correctOptionPositions) === JSON.stringify([10, 10, 10, 10]), `correct option positions must be 10 each, got ${correctOptionPositions}`);
-assert(/japaneseSentenceCompositionQuestions\.json\?v=16d2a/.test(html), 'question data cache query must be v=16d2a');
+assert(JSON.stringify(starSlots) === JSON.stringify([15, 15, 15, 15]), `starSlot distribution must be 15 each, got ${starSlots}`);
+assert(JSON.stringify(correctOptionPositions) === JSON.stringify([15, 15, 15, 15]), `correct option positions must be 15 each, got ${correctOptionPositions}`);
+assert(/japaneseSentenceCompositionQuestions\.json\?v=16d2b/.test(html), 'question data cache query must be v=16d2b');
 
 if (failures.length) {
   console.error('Batch 16C-2B-2 sentence composition results audit failed:');
