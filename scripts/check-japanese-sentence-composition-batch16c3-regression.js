@@ -101,10 +101,10 @@ for (const q of questions) {
   const chunkIds = new Set((q.chunks || []).map(c => c.id)); if ((q.correctOrder || []).some(id => !chunkIds.has(id)) || new Set(q.correctOrder).size !== 4) badOrder += 1;
   const correctId = q.correctOrder?.[q.starSlot]; const optionIndex = (q.chunks || []).findIndex(c => c.id === correctId); if (optionIndex >= 0) correctOptionPositions[optionIndex] += 1; else badOrder += 1;
 }
-assert(questions.length === 40, `total must be 40, got ${questions.length}`); assert(levels.N5 === 20 && levels.N4 === 20, `N5/N4 counts must be 20/20, got ${levels.N5}/${levels.N4}`);
+assert(questions.length === 60, `total must be 60, got ${questions.length}`); assert(levels.N5 === 30 && levels.N4 === 30, `N5/N4 counts must be 30/30, got ${levels.N5}/${levels.N4}`);
 assert(ids.size === questions.length, 'duplicate question ID count must be 0'); assert(missing === 0, `missing required fields must be 0, got ${missing}`);
-assert(JSON.stringify(starSlots) === JSON.stringify([10,10,10,10]), `starSlot distribution must be 10 each, got ${starSlots}`);
-assert(JSON.stringify(correctOptionPositions) === JSON.stringify([10,10,10,10]), `correct option positions must be 10 each, got ${correctOptionPositions}`);
+assert(JSON.stringify(starSlots) === JSON.stringify([15,15,15,15]), `starSlot distribution must be 15 each, got ${starSlots}`);
+assert(JSON.stringify(correctOptionPositions) === JSON.stringify([15,15,15,15]), `correct option positions must be 15 each, got ${correctOptionPositions}`);
 assert(badOrder === 0, `correctOrder/chunks mapping errors must be 0, got ${badOrder}`);
 
 // Storage harness for dedupe/fallback semantics.
