@@ -23,6 +23,30 @@ const expectedN5 = Array.from({length:12}, (_,i)=>`sc-n5-${String(i+9).padStart(
 const expectedN4 = Array.from({length:8}, (_,i)=>`sc-n4-${String(i+13).padStart(3,'0')}`);
 const expectedNew = new Set([...expectedN5, ...expectedN4]);
 const grammarIds = new Set(grammar.map(g => g.id));
+
+const expectedCompleteSentences = new Map([
+  ['sc-n5-009', 'テーブルの上に花がありますね。'],
+  ['sc-n5-010', '授業は九時に始まります。'],
+  ['sc-n5-011', '兄は電車で会社へ行きます。'],
+  ['sc-n5-012', '図書館は九時から五時まで開いています。'],
+  ['sc-n5-013', '机の上に鉛筆と消しゴムがあります。'],
+  ['sc-n5-014', 'この部屋よりあの部屋のほうが広いです。'],
+  ['sc-n5-015', 'クラスで田中さんがいちばん背が高いです。'],
+  ['sc-n5-016', '父はりんごを三つ買いました。'],
+  ['sc-n5-017', '駅でだれと待ち合わせますか。'],
+  ['sc-n5-018', '週末に京都へ行きたいです。'],
+  ['sc-n5-019', '今夜、いっしょに映画を見ませんか。'],
+  ['sc-n5-020', '妹に新しい本を貸してあげました。'],
+  ['sc-n4-013', '学生は宿題を出さなければならない。'],
+  ['sc-n4-014', '明日は学校へ行かなくてもいいです。'],
+  ['sc-n4-015', '館内で写真を撮ってはいけません。'],
+  ['sc-n4-016', '兄は富士山に登ったことがあります。'],
+  ['sc-n4-017', '友だちに会うために駅へ行きます。'],
+  ['sc-n4-018', '弟は自転車に乗れるようになりました。'],
+  ['sc-n4-019', '空が暗いので雨が降りそうです。'],
+  ['sc-n4-020', '新しい料理を作ってみました。'],
+]);
+
 const ids = new Set(); const sentences = new Set();
 const levels = { N5: 0, N4: 0 }; const allStars = [0,0,0,0]; const allPos = [0,0,0,0]; const newStars = [0,0,0,0]; const newPos = [0,0,0,0];
 let dupIds = 0, dupSentences = 0, missing = 0;
@@ -41,6 +65,8 @@ for (const q of questions) {
   assert(Array.isArray(q.grammarIds) && q.grammarIds.length > 0 && q.grammarIds.every(id => grammarIds.has(id)), `${q.id}: grammarIds must exist in grammar.json`);
   assert(q.uniqueAnswerReviewed === true, `${q.id}: uniqueAnswerReviewed must be true`);
   assert(typeof q.reviewNote === 'string' && q.reviewNote.trim().length >= 25, `${q.id}: reviewNote missing or too short`);
+  if (expectedNew.has(q.id)) assert(/已檢查24種排列/.test(q.reviewNote), `${q.id}: reviewNote must document 24-permutation manual review`);
+  if (expectedCompleteSentences.has(q.id)) assert(q.completeSentence === expectedCompleteSentences.get(q.id), `${q.id}: completeSentence changed from ambiguity-reviewed wording`);
   if (levels[q.level] !== undefined) levels[q.level]++;
   if (q.starSlot >= 0 && q.starSlot < 4) allStars[q.starSlot]++;
   const pos = (q.chunks || []).findIndex(c => c.id === q.correctOrder?.[q.starSlot]); if (pos >= 0) allPos[pos]++;
