@@ -22,7 +22,7 @@ assert(/句子重組練習/.test(grammarMenu) && /選出應放入 ★ 格的片�
 assert((homeGrid.match(/data-japanese-entry=/g) || []).length === 5, 'Japanese home must not gain a sixth main entry');
 assert(/id="japaneseSentenceCompositionView"/.test(html), 'sentence composition view must exist');
 assert(/返回文法選單/.test(html), 'back to grammar menu button must exist');
-assert(/JAPANESE_SENTENCE_COMPOSITION_URL/.test(html) && /japaneseSentenceCompositionQuestions\.json\?v=16b/.test(html) && /script\.js\?v=3\.[123]/.test(html), 'cache/query URLs must be updated');
+assert(/JAPANESE_SENTENCE_COMPOSITION_URL/.test(html) && /japaneseSentenceCompositionQuestions\.json\?v=16d2a/.test(html) && /script\.js\?v=3\.[123]/.test(html), 'cache/query URLs must be updated');
 
 assert(/const SENTENCE_COMPOSITION_URL/.test(script), 'sentence composition URL constant missing');
 assert(/fetch\(SENTENCE_COMPOSITION_URL\)/.test(script), 'must fetch sentence composition JSON');
@@ -66,10 +66,21 @@ const selectedRuleIndex = css.indexOf('.sentence-composition-chunk.is-selected')
 const enabledRuleIndex = css.indexOf('.sentence-composition-chunk:not(:disabled)');
 assert(selectedRuleIndex > enabledRuleIndex, 'selected option background rule must appear after general enabled option background rule');
 assert(/\.sentence-composition-chunk\.is-selected:disabled/.test(css), 'locked selected option must remain visually identifiable');
-assert(questions.length === 20, 'question bank must contain 20 questions');
-assert(questions.filter((q) => q.level === 'N5').length === 8, 'N5 count must be 8');
-assert(questions.filter((q) => q.level === 'N4').length === 12, 'N4 count must be 12');
+assert(questions.length === 40, 'question bank must contain 40 questions');
+assert(questions.filter((q) => q.level === 'N5').length === 20, 'N5 count must be 20');
+assert(questions.filter((q) => q.level === 'N4').length === 20, 'N4 count must be 20');
 assert(questions.every((q) => Array.isArray(q.correctOrder) && q.correctOrder.length === 4 && q.chunks.length === 4 && Object.prototype.hasOwnProperty.call(q, 'starSlot') && Object.prototype.hasOwnProperty.call(q, 'uniqueAnswerReviewed')), 'question schema baseline missing');
+
+
+const starSlots = [0, 0, 0, 0];
+const correctOptionPositions = [0, 0, 0, 0];
+for (const question of questions) {
+  starSlots[question.starSlot] += 1;
+  const correctId = question.correctOrder[question.starSlot];
+  correctOptionPositions[question.chunks.findIndex((chunk) => chunk.id === correctId)] += 1;
+}
+assert(JSON.stringify(starSlots) === JSON.stringify([10, 10, 10, 10]), `starSlot distribution must be 10 each, got ${starSlots}`);
+assert(JSON.stringify(correctOptionPositions) === JSON.stringify([10, 10, 10, 10]), `correct option positions must be 10 each, got ${correctOptionPositions}`);
 
 const scN5003 = questions.find((q) => q.id === 'sc-n5-003');
 assert(scN5003, 'sc-n5-003 must exist');
