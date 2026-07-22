@@ -32,13 +32,13 @@ const expectedCompleteSentences = new Map([
   ['sc-n5-013', '机の上に鉛筆と消しゴムがあります。'],
   ['sc-n5-014', 'この部屋よりあの部屋のほうが広いです。'],
   ['sc-n5-015', 'クラスで田中さんがいちばん背が高いです。'],
-  ['sc-n5-016', '父はりんごを三つ買いました。'],
+  ['sc-n5-016', '父はりんごを三つ買いましたよ。'],
   ['sc-n5-017', '駅でだれと待ち合わせますか。'],
   ['sc-n5-018', '週末に京都へ行きたいです。'],
   ['sc-n5-019', '今夜、いっしょに映画を見ませんか。'],
   ['sc-n5-020', '妹に新しい本を貸してあげました。'],
   ['sc-n4-013', '学生は宿題を出さなければならない。'],
-  ['sc-n4-014', '明日は学校へ行かなくてもいいです。'],
+  ['sc-n4-014', '明日、学校へ行かなくてもいいです。'],
   ['sc-n4-015', '館内で写真を撮ってはいけません。'],
   ['sc-n4-016', '兄は富士山に登ったことがあります。'],
   ['sc-n4-017', '友だちに会うために駅へ行きます。'],
@@ -49,13 +49,33 @@ const expectedCompleteSentences = new Map([
 
 const ids = new Set(); const sentences = new Set();
 const levels = { N5: 0, N4: 0 }; const allStars = [0,0,0,0]; const allPos = [0,0,0,0]; const newStars = [0,0,0,0]; const newPos = [0,0,0,0];
-let dupIds = 0, dupSentences = 0, missing = 0;
+let dupIds = 0, dupSentences = 0, missing = 0, emptyChunks = 0, punctuationOnlyChunks = 0, invalidChunkTextType = 0, chunkWithoutWordChar = 0;
 const mainGrammar = {};
 for (const q of questions) {
   if (ids.has(q.id)) dupIds++; ids.add(q.id);
   if (sentences.has(q.completeSentence)) dupSentences++; sentences.add(q.completeSentence);
   const miss = required.filter(k => !(k in q)); if (miss.length) { missing++; failures.push(`${q.id}: missing ${miss.join(',')}`); }
   assert(Array.isArray(q.chunks) && q.chunks.length === 4, `${q.id}: chunks must be exactly 4`);
+  for (const chunk of q.chunks || []) {
+    if (typeof chunk.text !== 'string') {
+      invalidChunkTextType++;
+      failures.push(`${q.id}/${chunk.id}: chunk.text must be a string`);
+      continue;
+    }
+    const trimmed = chunk.text.trim();
+    if (!trimmed) {
+      emptyChunks++;
+      failures.push(`${q.id}/${chunk.id}: chunk.text must not be empty after trim`);
+    }
+    if (/^[、。！？・\s]+$/.test(trimmed)) {
+      punctuationOnlyChunks++;
+      failures.push(`${q.id}/${chunk.id}: chunk.text must not be punctuation-only`);
+    }
+    if (!/[ぁ-んァ-ン一-龯々〆ヵヶA-Za-z0-9]/.test(trimmed)) {
+      chunkWithoutWordChar++;
+      failures.push(`${q.id}/${chunk.id}: chunk.text must contain Japanese, English, or numeric text`);
+    }
+  }
   const chunkIds = (q.chunks || []).map(c => c.id);
   assert(new Set(chunkIds).size === 4, `${q.id}: chunk ids must be unique`);
   assert(Array.isArray(q.correctOrder) && q.correctOrder.length === 4 && new Set(q.correctOrder).size === 4 && q.correctOrder.every(id => chunkIds.includes(id)), `${q.id}: correctOrder must exactly match chunk ids`);
@@ -79,6 +99,10 @@ assert(JSON.stringify(questions.slice(20).map(q => q.id).sort()) === JSON.string
 assert(dupIds === 0, `duplicate ID must be 0, got ${dupIds}`);
 assert(dupSentences === 0, `duplicate completeSentence must be 0, got ${dupSentences}`);
 assert(missing === 0, `missing required fields must be 0, got ${missing}`);
+assert(invalidChunkTextType === 0, `invalid chunk.text type must be 0, got ${invalidChunkTextType}`);
+assert(emptyChunks === 0, `empty chunk must be 0, got ${emptyChunks}`);
+assert(punctuationOnlyChunks === 0, `punctuation-only chunk must be 0, got ${punctuationOnlyChunks}`);
+assert(chunkWithoutWordChar === 0, `chunk without Japanese/English/number must be 0, got ${chunkWithoutWordChar}`);
 assert(JSON.stringify(newStars) === '[5,5,5,5]', `new starSlot distribution must be 5 each, got ${newStars}`);
 assert(JSON.stringify(newPos) === '[5,5,5,5]', `new correct option positions must be 5 each, got ${newPos}`);
 assert(JSON.stringify(allStars) === '[10,10,10,10]', `all starSlot distribution must be 10 each, got ${allStars}`);
