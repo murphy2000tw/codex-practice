@@ -75,6 +75,8 @@ const report = {
   }
 };
 console.log(JSON.stringify(report, null, 2));
-if (questions.length !== 20 || report.questionBaseline.N5 !== 8 || report.questionBaseline.N4 !== 12) process.exitCode = 1;
+if (questions.length !== 40 || report.questionBaseline.N5 !== 20 || report.questionBaseline.N4 !== 20) process.exitCode = 1;
+if (JSON.stringify(starSlotDistribution) !== JSON.stringify({0:10,1:10,2:10,3:10})) process.exitCode = 1;
+if (JSON.stringify(correctStarOptionPositionDistribution) !== JSON.stringify({1:10,2:10,3:10,4:10})) process.exitCode = 1;
 if (duplicates.length || missingRequiredFields.length) process.exitCode = 1;
 if (grammarEntries.length !== 4 || mainEntries.length !== 5) process.exitCode = 1;

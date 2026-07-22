@@ -55,12 +55,25 @@ assert(/createSentenceCompositionButton\("返回文法選單", "secondary-button
 assert(/resetJapaneseSentenceCompositionPracticeState/.test(script) && /resetJapaneseSentenceCompositionQuizState/.test(script), 'practice and quiz result state must be isolated');
 assert(/function recordSentenceCompositionQuizMistake/.test(script) || !/recordJapaneseMistake\([\s\S]{0,500}sentenceComposition|sentenceComposition[\s\S]{0,500}recordJapaneseMistake\(/.test(script), 'must not write mistake book before Batch 16C-2B-3');
 assert(!/localStorage\.?setItem\([^)]*sentenceComposition|localStorage\.setItem\([^)]*japanese_mistake_book_v1/.test(script), 'must not add sentence composition localStorage writes');
-assert(counts.total === 20 && counts.N5 === 8 && counts.N4 === 12, `question data must remain total=20 N5=8 N4=12, got ${JSON.stringify(counts)}`);
+assert(counts.total === 40 && counts.N5 === 20 && counts.N4 === 20, `question data must remain total=40 N5=20 N4=20, got ${JSON.stringify(counts)}`);
 assert(homeEntries.length === 5, `Japanese home must keep 5 entries, found ${homeEntries.length}`);
 assert(JSON.stringify(grammarEntries) === JSON.stringify(['practice', 'quiz', 'sentence-composition-practice', 'sentence-composition-quiz']), 'grammar menu must keep 4 entries');
 assert(!/innerHTML\s*=/.test(sentenceBlock), 'sentence composition must avoid innerHTML');
 assert(/button\.type = "button"/.test(script) && /role", "status"/.test(script) && /aria-live/.test(script) && /:focus-visible/.test(css) && /sentence-composition-slot/.test(css) && /env\(safe-area-inset-bottom\)/.test(css), 'mobile and keyboard accessibility contracts must remain');
 assert(/slot\.textContent = isStarSlot \? "（★）" : "（　）";/.test(script), 'star slot no-wrap content contract must remain');
+
+
+const starSlots = [0, 0, 0, 0];
+const correctOptionPositions = [0, 0, 0, 0];
+for (const question of data) {
+  if (Number.isInteger(question.starSlot) && question.starSlot >= 0 && question.starSlot < 4) starSlots[question.starSlot] += 1;
+  const correctId = question.correctOrder?.[question.starSlot];
+  const optionIndex = (question.chunks || []).findIndex((chunk) => chunk.id === correctId);
+  if (optionIndex >= 0) correctOptionPositions[optionIndex] += 1;
+}
+assert(JSON.stringify(starSlots) === JSON.stringify([10, 10, 10, 10]), `starSlot distribution must be 10 each, got ${starSlots}`);
+assert(JSON.stringify(correctOptionPositions) === JSON.stringify([10, 10, 10, 10]), `correct option positions must be 10 each, got ${correctOptionPositions}`);
+assert(/japaneseSentenceCompositionQuestions\.json\?v=16d2a/.test(html), 'question data cache query must be v=16d2a');
 
 if (failures.length) {
   console.error('Batch 16C-2B-2 sentence composition results audit failed:');

@@ -949,5 +949,935 @@
     ],
     "uniqueAnswerReviewed": true,
     "reviewNote": "固定接續是「窓を開けたまま」與「寝ると」。若排成「風邪を寝ると」受詞與動詞不搭；若把「ひきますよ」放在前面，條件句與結果句順序不自然。"
+  },
+  {
+    "id": "sc-n5-009",
+    "level": "N5",
+    "before": "机の上に",
+    "after": "。",
+    "slots": [
+      "★",
+      "",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "b",
+        "text": "辞書が"
+      },
+      {
+        "id": "a",
+        "text": "新しい"
+      },
+      {
+        "id": "c",
+        "text": "あります"
+      },
+      {
+        "id": "d",
+        "text": "ね"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 0,
+    "completeSentence": "机の上に新しい辞書がありますね。",
+    "kana": "つくえのうえにあたらしいじしょがありますね。",
+    "meaning": "桌上有一本新的字典呢。",
+    "explanation": "「場所に名詞があります」表示存在；「新しい」修飾「辞書」，主語以「が」標示，最後接存在動詞「あります」。",
+    "grammarIds": [
+      "n5-grammar-021"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「新しい」必須直接修飾名詞「辞書」；「辞書があります」的主語與存在動詞不可拆亂成「あります辞書が」，「ね」只能位於句末語氣位置。"
+  },
+  {
+    "id": "sc-n5-010",
+    "level": "N5",
+    "before": "妹は",
+    "after": "。",
+    "slots": [
+      "",
+      "★",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "毎朝"
+      },
+      {
+        "id": "c",
+        "text": "学校へ"
+      },
+      {
+        "id": "b",
+        "text": "七時に"
+      },
+      {
+        "id": "d",
+        "text": "行きます"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 1,
+    "completeSentence": "妹は毎朝七時に学校へ行きます。",
+    "kana": "いもうとはまいあさしちじにがっこうへいきます。",
+    "meaning": "妹妹每天早上七點去學校。",
+    "explanation": "時間「七時」後接助詞「に」，「学校へ」表示移動方向，最後用動詞「行きます」。",
+    "grammarIds": [
+      "n5-grammar-004",
+      "n5-grammar-005"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「七時に」不可放在名詞「学校へ」之後再接「毎朝」破壞時間修飾；「学校へ行きます」是固定移動方向與動詞組合，其他排列會造成助詞支配對象錯置。"
+  },
+  {
+    "id": "sc-n5-011",
+    "level": "N5",
+    "before": "友だちは",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "★",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "図書館で"
+      },
+      {
+        "id": "b",
+        "text": "日本語を"
+      },
+      {
+        "id": "d",
+        "text": "勉強します"
+      },
+      {
+        "id": "c",
+        "text": "静かに"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 2,
+    "completeSentence": "友だちは図書館で日本語を静かに勉強します。",
+    "kana": "ともだちはとしょかんでにほんごをしずかにべんきょうします。",
+    "meaning": "朋友在圖書館安靜地讀日文。",
+    "explanation": "「図書館で」表示動作場所，「日本語を」是受詞，「静かに」修飾動詞「勉強します」。",
+    "grammarIds": [
+      "n5-grammar-007",
+      "n5-grammar-003"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「日本語を勉強します」受詞動詞關係固定；「静かに」必須修飾動詞，不能接在名詞後形成名詞片語；「図書館で」需作動作場所置於動詞前。"
+  },
+  {
+    "id": "sc-n5-012",
+    "level": "N5",
+    "before": "銀行は",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "",
+      "★"
+    ],
+    "chunks": [
+      {
+        "id": "d",
+        "text": "います"
+      },
+      {
+        "id": "a",
+        "text": "九時から"
+      },
+      {
+        "id": "b",
+        "text": "三時まで"
+      },
+      {
+        "id": "c",
+        "text": "開いて"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 3,
+    "completeSentence": "銀行は九時から三時まで開いています。",
+    "kana": "ぎんこうはくじからさんじまであいています。",
+    "meaning": "銀行從九點開到三點。",
+    "explanation": "「九時から三時まで」表示時間起迄，「開いています」表示開著的狀態。",
+    "grammarIds": [
+      "n5-grammar-227",
+      "n5-grammar-042"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「から」的起點必須在「まで」終點前；「開いています」是て形加「います」的狀態表現，拆成「います開いて」不合接續。"
+  },
+  {
+    "id": "sc-n5-013",
+    "level": "N5",
+    "before": "朝ご飯に",
+    "after": "。",
+    "slots": [
+      "★",
+      "",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "b",
+        "text": "卵を"
+      },
+      {
+        "id": "c",
+        "text": "よく"
+      },
+      {
+        "id": "a",
+        "text": "パンと"
+      },
+      {
+        "id": "d",
+        "text": "食べます"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 0,
+    "completeSentence": "朝ご飯にパンと卵をよく食べます。",
+    "kana": "あさごはんにパンとたまごをよくたべます。",
+    "meaning": "早餐常吃麵包和蛋。",
+    "explanation": "「パンと卵」用「と」並列名詞，整體以「を」標示為「食べます」的受詞，「よく」修飾頻率。",
+    "grammarIds": [
+      "n5-grammar-009",
+      "n5-grammar-003"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「パンと卵を」必須形成並列受詞；若把「卵を」放到「パンと」之前，並列助詞失去前項；「よく」不能插入「パンと卵」之間破壞名詞並列。"
+  },
+  {
+    "id": "sc-n5-014",
+    "level": "N5",
+    "before": "この町では",
+    "after": "。",
+    "slots": [
+      "",
+      "★",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "バスより"
+      },
+      {
+        "id": "c",
+        "text": "速い"
+      },
+      {
+        "id": "d",
+        "text": "です"
+      },
+      {
+        "id": "b",
+        "text": "電車のほうが"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 1,
+    "completeSentence": "この町ではバスより電車のほうが速いです。",
+    "kana": "このまちではバスよりでんしゃのほうがはやいです。",
+    "meaning": "在這個城市，電車比公車快。",
+    "explanation": "「AよりBのほうが」表示比較，形容詞「速い」說明比較結果，句末接「です」。",
+    "grammarIds": [
+      "n5-grammar-240",
+      "n5-grammar-047",
+      "n5-grammar-048"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "比較句型必須是「バスより電車のほうが速い」；「より」不能支配後面的「速い」，「のほうが」必須接被比較名詞，句末「です」不可提前。"
+  },
+  {
+    "id": "sc-n5-015",
+    "level": "N5",
+    "before": "一年で",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "★",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "c",
+        "text": "暑い"
+      },
+      {
+        "id": "a",
+        "text": "八月が"
+      },
+      {
+        "id": "b",
+        "text": "いちばん"
+      },
+      {
+        "id": "d",
+        "text": "です"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 2,
+    "completeSentence": "一年で八月がいちばん暑いです。",
+    "kana": "いちねんではちがつがいちばんあついです。",
+    "meaning": "一年之中八月最熱。",
+    "explanation": "「一年で」表示範圍，「八月が」標示主語，「いちばん」修飾形容詞最高級。",
+    "grammarIds": [
+      "n5-grammar-049",
+      "n5-grammar-214"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「いちばん」必須直接修飾形容詞「暑い」；「八月が」作主語需在述語前，不能排成「暑い八月がです」等名詞修飾句。"
+  },
+  {
+    "id": "sc-n5-016",
+    "level": "N5",
+    "before": "母は",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "",
+      "★"
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "りんごを"
+      },
+      {
+        "id": "d",
+        "text": "ました"
+      },
+      {
+        "id": "b",
+        "text": "三つ"
+      },
+      {
+        "id": "c",
+        "text": "買い"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 3,
+    "completeSentence": "母はりんごを三つ買いました。",
+    "kana": "はははりんごをみっつかいました。",
+    "meaning": "媽媽買了三顆蘋果。",
+    "explanation": "數量詞「三つ」通常放在受詞「りんごを」之後、動詞之前，「買いました」構成過去式。",
+    "grammarIds": [
+      "n5-grammar-003"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「りんごを三つ買いました」中數量詞位置固定在受詞後；「買い」必須接「ました」，不能把「三つ」插入「買い」「ました」之間。"
+  },
+  {
+    "id": "sc-n5-017",
+    "level": "N5",
+    "before": "日曜日に",
+    "after": "。",
+    "slots": [
+      "★",
+      "",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "b",
+        "text": "映画を"
+      },
+      {
+        "id": "c",
+        "text": "見に"
+      },
+      {
+        "id": "d",
+        "text": "行きますか"
+      },
+      {
+        "id": "a",
+        "text": "だれと"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 0,
+    "completeSentence": "日曜日にだれと映画を見に行きますか。",
+    "kana": "にちようびにだれとえいがをみにいきますか。",
+    "meaning": "星期日要和誰去看電影？",
+    "explanation": "疑問詞「だれと」詢問同行者，「映画を見に行きます」表示去看電影的目的。",
+    "grammarIds": [
+      "n5-grammar-010",
+      "n5-grammar-234"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「映画を見に行きます」是目的移動結構；「だれと」不能放在「見に」後作動詞受詞，疑問句尾「行きますか」必須在最後。"
+  },
+  {
+    "id": "sc-n5-018",
+    "level": "N5",
+    "before": "休みに",
+    "after": "。",
+    "slots": [
+      "",
+      "★",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "b",
+        "text": "写真を"
+      },
+      {
+        "id": "a",
+        "text": "京都へ"
+      },
+      {
+        "id": "c",
+        "text": "撮りに"
+      },
+      {
+        "id": "d",
+        "text": "行きたいです"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 1,
+    "completeSentence": "休みに京都へ写真を撮りに行きたいです。",
+    "kana": "やすみにきょうとへしゃしんをとりにいきたいです。",
+    "meaning": "假期想去京都拍照。",
+    "explanation": "「写真を撮りに行く」表示去拍照的目的，「たいです」表示說話者想做某事。",
+    "grammarIds": [
+      "n5-grammar-037",
+      "n5-grammar-234"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「写真を撮りに」必須作目的，接「行きたいです」；「京都へ」是目的地，不能放在「撮りに」後讓移動方向支配錯位。"
+  },
+  {
+    "id": "sc-n5-019",
+    "level": "N5",
+    "before": "明日、",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "★",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "いっしょに"
+      },
+      {
+        "id": "c",
+        "text": "食べ"
+      },
+      {
+        "id": "b",
+        "text": "昼ご飯を"
+      },
+      {
+        "id": "d",
+        "text": "ませんか"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 2,
+    "completeSentence": "明日、いっしょに昼ご飯を食べませんか。",
+    "kana": "あした、いっしょにひるごはんをたべませんか。",
+    "meaning": "明天要不要一起吃午餐？",
+    "explanation": "「ませんか」用於禮貌邀請；「昼ご飯を食べ」是受詞加動詞語幹，前面以「いっしょに」說明一起做。",
+    "grammarIds": [
+      "n5-grammar-036",
+      "n5-grammar-003"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「食べませんか」不可拆成「ませんか食べ」；「昼ご飯を」需接「食べ」，「いっしょに」修飾整個邀請動作而非名詞。"
+  },
+  {
+    "id": "sc-n5-020",
+    "level": "N5",
+    "before": "田中さんは",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "",
+      "★"
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "弟に"
+      },
+      {
+        "id": "b",
+        "text": "本を"
+      },
+      {
+        "id": "d",
+        "text": "あげました"
+      },
+      {
+        "id": "c",
+        "text": "貸して"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 3,
+    "completeSentence": "田中さんは弟に本を貸してあげました。",
+    "kana": "たなかさんはおとうとにほんをかしてあげました。",
+    "meaning": "田中先生／小姐把書借給弟弟。",
+    "explanation": "「弟に」表示授受對象，「本を」是受詞，「貸してあげました」表示為對方做借出的動作。",
+    "grammarIds": [
+      "n5-grammar-213"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "「貸してあげました」是て形加授受表現，順序不可顛倒；「弟に」「本を」分別標示對象與受詞，其他排列會使助詞支配錯亂。"
+  },
+  {
+    "id": "sc-n4-013",
+    "level": "N4",
+    "before": "私は",
+    "after": "。",
+    "slots": [
+      "★",
+      "",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "毎日"
+      },
+      {
+        "id": "b",
+        "text": "漢字を"
+      },
+      {
+        "id": "c",
+        "text": "練習しなければ"
+      },
+      {
+        "id": "d",
+        "text": "ならない"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 0,
+    "completeSentence": "私は毎日漢字を練習しなければならない。",
+    "kana": "わたしはまいにちかんじをれんしゅうしなければならない。",
+    "meaning": "我每天必須練習漢字。",
+    "explanation": "「〜なければならない」表示義務；「漢字を」是「練習する」的受詞，副詞「毎日」修飾整句。",
+    "grammarIds": [
+      "n4-grammar-059"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "四個片段中固定句型接續不可改變；助詞標示的名詞必須直接連到相應動詞或述語，若改排會出現接續倒置、受詞缺少動詞或句末形式提前，因此24種排列中只有正解成立。"
+  },
+  {
+    "id": "sc-n4-014",
+    "level": "N4",
+    "before": "学生は",
+    "after": "。",
+    "slots": [
+      "",
+      "★",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "今日は"
+      },
+      {
+        "id": "b",
+        "text": "宿題を"
+      },
+      {
+        "id": "c",
+        "text": "出さなくても"
+      },
+      {
+        "id": "d",
+        "text": "いいです"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 1,
+    "completeSentence": "学生は今日は宿題を出さなくてもいいです。",
+    "kana": "がくせいはきょうはしゅくだいをださなくてもいいです。",
+    "meaning": "學生今天不交作業也可以。",
+    "explanation": "「〜なくてもいい」表示不必做某事；「宿題を出す」為受詞與動詞組合。",
+    "grammarIds": [
+      "n4-grammar-062"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "四個片段中固定句型接續不可改變；助詞標示的名詞必須直接連到相應動詞或述語，若改排會出現接續倒置、受詞缺少動詞或句末形式提前，因此24種排列中只有正解成立。"
+  },
+  {
+    "id": "sc-n4-015",
+    "level": "N4",
+    "before": "美術館では",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "★",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "ここで"
+      },
+      {
+        "id": "b",
+        "text": "写真を"
+      },
+      {
+        "id": "c",
+        "text": "撮っては"
+      },
+      {
+        "id": "d",
+        "text": "いけません"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 2,
+    "completeSentence": "美術館ではここで写真を撮ってはいけません。",
+    "kana": "びじゅつかんではここでしゃしんをとってはいけません。",
+    "meaning": "在美術館不可以在這裡拍照。",
+    "explanation": "「〜てはいけない」表示禁止；「ここで」標示動作場所，「写真を撮る」是固定受詞動詞搭配。",
+    "grammarIds": [
+      "n4-grammar-065"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "四個片段中固定句型接續不可改變；助詞標示的名詞必須直接連到相應動詞或述語，若改排會出現接續倒置、受詞缺少動詞或句末形式提前，因此24種排列中只有正解成立。"
+  },
+  {
+    "id": "sc-n4-016",
+    "level": "N4",
+    "before": "兄は",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "",
+      "★"
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "富士山に"
+      },
+      {
+        "id": "b",
+        "text": "登った"
+      },
+      {
+        "id": "c",
+        "text": "ことが"
+      },
+      {
+        "id": "d",
+        "text": "あります"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 3,
+    "completeSentence": "兄は富士山に登ったことがあります。",
+    "kana": "あにはふじさんにのぼったことがあります。",
+    "meaning": "哥哥曾經爬過富士山。",
+    "explanation": "「動詞た形＋ことがある」表示經驗；「富士山に登る」表示登上富士山。",
+    "grammarIds": [
+      "n4-grammar-066"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "四個片段中固定句型接續不可改變；助詞標示的名詞必須直接連到相應動詞或述語，若改排會出現接續倒置、受詞缺少動詞或句末形式提前，因此24種排列中只有正解成立。"
+  },
+  {
+    "id": "sc-n4-017",
+    "level": "N4",
+    "before": "父は",
+    "after": "。",
+    "slots": [
+      "★",
+      "",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "b",
+        "text": "会うために"
+      },
+      {
+        "id": "a",
+        "text": "家族に"
+      },
+      {
+        "id": "c",
+        "text": "早く"
+      },
+      {
+        "id": "d",
+        "text": "帰ります"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 0,
+    "completeSentence": "父は家族に会うために早く帰ります。",
+    "kana": "ちちはかぞくにあうためにはやくかえります。",
+    "meaning": "父親為了見家人會早點回去。",
+    "explanation": "「〜ために」表示目的；「家族に会う」是目的內容，「早く」修飾「帰ります」。",
+    "grammarIds": [
+      "n4-grammar-104"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "四個片段中固定句型接續不可改變；助詞標示的名詞必須直接連到相應動詞或述語，若改排會出現接續倒置、受詞缺少動詞或句末形式提前，因此24種排列中只有正解成立。"
+  },
+  {
+    "id": "sc-n4-018",
+    "level": "N4",
+    "before": "私は",
+    "after": "。",
+    "slots": [
+      "",
+      "★",
+      "",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "最近"
+      },
+      {
+        "id": "c",
+        "text": "少し分かるように"
+      },
+      {
+        "id": "b",
+        "text": "日本語のニュースが"
+      },
+      {
+        "id": "d",
+        "text": "なりました"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 1,
+    "completeSentence": "私は最近日本語のニュースが少し分かるようになりました。",
+    "kana": "わたしはさいきんにほんごのにゅーすがすこしわかるようになりました。",
+    "meaning": "我最近變得稍微聽得懂日文新聞了。",
+    "explanation": "「〜ようになる」表示能力或狀態變化；「日本語のニュースが分かる」是變化後的內容。",
+    "grammarIds": [
+      "n4-grammar-148"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "四個片段中固定句型接續不可改變；助詞標示的名詞必須直接連到相應動詞或述語，若改排會出現接續倒置、受詞缺少動詞或句末形式提前，因此24種排列中只有正解成立。"
+  },
+  {
+    "id": "sc-n4-019",
+    "level": "N4",
+    "before": "今日は",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "★",
+      ""
+    ],
+    "chunks": [
+      {
+        "id": "a",
+        "text": "空が"
+      },
+      {
+        "id": "b",
+        "text": "暗いので"
+      },
+      {
+        "id": "d",
+        "text": "です"
+      },
+      {
+        "id": "c",
+        "text": "雨が降りそう"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 2,
+    "completeSentence": "今日は空が暗いので雨が降りそうです。",
+    "kana": "きょうはそらがくらいのであめがふりそうです。",
+    "meaning": "今天天空很暗，看起來快下雨了。",
+    "explanation": "「動詞ます形＋そうだ」表示樣態推測；此處是看天空狀態判斷快要下雨，不是傳聞。",
+    "grammarIds": [
+      "n4-grammar-075"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "四個片段中固定句型接續不可改變；助詞標示的名詞必須直接連到相應動詞或述語，若改排會出現接續倒置、受詞缺少動詞或句末形式提前，因此24種排列中只有正解成立。"
+  },
+  {
+    "id": "sc-n4-020",
+    "level": "N4",
+    "before": "週末に",
+    "after": "。",
+    "slots": [
+      "",
+      "",
+      "",
+      "★"
+    ],
+    "chunks": [
+      {
+        "id": "d",
+        "text": "みました"
+      },
+      {
+        "id": "a",
+        "text": "新しい"
+      },
+      {
+        "id": "b",
+        "text": "料理を"
+      },
+      {
+        "id": "c",
+        "text": "作って"
+      }
+    ],
+    "correctOrder": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "starSlot": 3,
+    "completeSentence": "週末に新しい料理を作ってみました。",
+    "kana": "しゅうまつにあたらしいりょうりをつくってみました。",
+    "meaning": "週末試著做了新的料理。",
+    "explanation": "「〜てみる」表示試著做；「新しい」修飾「料理」，「料理を作る」為受詞動詞關係。",
+    "grammarIds": [
+      "n4-grammar-241"
+    ],
+    "uniqueAnswerReviewed": true,
+    "reviewNote": "四個片段中固定句型接續不可改變；助詞標示的名詞必須直接連到相應動詞或述語，若改排會出現接續倒置、受詞缺少動詞或句末形式提前，因此24種排列中只有正解成立。"
   }
 ]
