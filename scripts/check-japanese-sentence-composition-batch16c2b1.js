@@ -89,7 +89,7 @@ for (const question of data) {
 }
 assert(JSON.stringify(starSlots) === JSON.stringify([15, 15, 15, 15]), `starSlot distribution must be 15 each, got ${starSlots}`);
 assert(JSON.stringify(correctOptionPositions) === JSON.stringify([15, 15, 15, 15]), `correct option positions must be 15 each, got ${correctOptionPositions}`);
-assert(/japaneseSentenceCompositionQuestions\.json\?v=16d2b/.test(html), 'question data cache query must be v=16d2b');
+assert(/japaneseSentenceCompositionQuestions\.json\?v=16d3a/.test(html), 'question data cache query must be v=16d3a');
 
 if (failures.length) {
   console.error('Batch 16C-2B-1 sentence composition quiz audit failed:');

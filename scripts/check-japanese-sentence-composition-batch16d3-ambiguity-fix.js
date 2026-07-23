@@ -3,7 +3,8 @@ const fs = require('fs');
 const { execFileSync } = require('child_process');
 const BASE = '3d5b8c062282609bc1b1b6e725bb0448de97e646';
 const DATA = 'japaneseSentenceCompositionQuestions.json';
-const FROZEN = ['script.js', 'style.css', 'japanese/index.html', 'grammar.json', 'vocabulary.json'];
+const FROZEN = ['script.js', 'style.css', 'grammar.json', 'vocabulary.json'];
+const HTML = 'japanese/index.html';
 const TARGET_IDS = ['sc-n5-004', 'sc-n5-005', 'sc-n4-001', 'sc-n5-015', 'sc-n5-029'];
 const EXPECTED = {
   'sc-n5-004': { before:'田中さんは駅で先生に会', after:'。', chunks:[['a','って'],['c','に帰り'],['b','いっしょ'],['d','ました']], correctOrder:['a','b','c','d'], starSlot:3, completeSentence:'田中さんは駅で先生に会っていっしょに帰りました。' },
@@ -82,8 +83,13 @@ if (stats.total !== 60 || stats.N5 !== 30 || stats.N4 !== 30) fail(`Bad total/N5
 for (const [k,v] of Object.entries(stats)) if (!['total','N5','N4'].includes(k) && v !== 0) fail(`${k} is ${v}`);
 if (!same(starDist, [15,15,15,15])) fail(`starSlot distribution ${JSON.stringify(starDist)} != [15,15,15,15]`);
 if (!same(optionDist, [15,15,15,15])) fail(`correct option distribution ${JSON.stringify(optionDist)} != [15,15,15,15]`);
-const html = read('japanese/index.html');
-if (!html.includes('japaneseSentenceCompositionQuestions.json?v=16d2b')) fail('Question cache version changed');
+const html = read(HTML);
+const baseHtml = execFileSync('git', ['show', `${BASE}:${HTML}`], { encoding:'utf8' });
+const expectedHtml = baseHtml.replace('japaneseSentenceCompositionQuestions.json?v=16d2b', 'japaneseSentenceCompositionQuestions.json?v=16d3a');
+if (baseHtml === expectedHtml) fail('PR #277 baseline HTML did not contain the expected v=16d2b question URL');
+if (html !== expectedHtml) fail('japanese/index.html differs from PR #277 by more than the exact v=16d2b to v=16d3a question URL replacement');
+if ((html.match(/japaneseSentenceCompositionQuestions\.json\?v=16d3a/g) || []).length !== 1) fail('Question cache URL must appear exactly once with v=16d3a');
+if (html.includes('japaneseSentenceCompositionQuestions.json?v=16d2b')) fail('Old question cache URL v=16d2b is still present');
 if (!html.includes('script src="../script.js?v=3.3"')) fail('script.js cache version changed');
 if (!html.includes('href="../style.css?v=2.9"')) fail('style.css cache version changed');
 console.log('\nFinal statistics');
