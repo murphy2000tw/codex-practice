@@ -13,10 +13,35 @@ const failures = [];
 const assert = (ok, msg) => { if (!ok) failures.push(msg); };
 const required = ['id','level','before','after','slots','chunks','correctOrder','starSlot','completeSentence','kana','meaning','explanation','grammarIds','uniqueAnswerReviewed','reviewNote'];
 const grammarIds = new Set(grammar.map(g => g.id));
+const ambiguityFixIds = new Set(['sc-n5-004','sc-n5-005','sc-n4-001','sc-n5-015','sc-n5-029']);
+const ambiguityFixExpected = new Map(Object.entries({
+  'sc-n5-004': { before:'田中さんは駅で先生に会', after:'。', chunks:[['a','って'],['c','に帰り'],['b','いっしょ'],['d','ました']], correctOrder:['a','b','c','d'], starSlot:3, completeSentence:'田中さんは駅で先生に会っていっしょに帰りました。' },
+  'sc-n5-005': { before:'この店は安', after:'。', chunks:[['a','いです'],['b','が'],['d','ないです'],['c','あまり広く']], correctOrder:['a','b','c','d'], starSlot:0, completeSentence:'この店は安いですがあまり広くないです。' },
+  'sc-n4-001': { before:'雨が', after:'。', chunks:[['a','やんだら駅まで'],['b','歩いて'],['d','ましょう'],['c','行き']], correctOrder:['a','b','c','d'], starSlot:0, completeSentence:'雨がやんだら駅まで歩いて行きましょう。' },
+  'sc-n5-015': { before:'クラスで田中さん', after:'。', chunks:[['c','背'],['a','が'],['b','いちばん'],['d','が高いです']], correctOrder:['a','b','c','d'], starSlot:2, completeSentence:'クラスで田中さんがいちばん背が高いです。' },
+  'sc-n5-029': { before:'あした雨', after:'。', chunks:[['a','が'],['b','降りますから'],['c','出かけ'],['d','ません']], correctOrder:['a','b','c','d'], starSlot:0, completeSentence:'あした雨が降りますから出かけません。' }
+}));
+const sameJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+function assertAmbiguityFixShape(q) {
+  const exp = ambiguityFixExpected.get(q.id);
+  if (!exp) return;
+  assert(q.before === exp.before, `${q.id}: ambiguity-fix before changed`);
+  assert(q.after === exp.after, `${q.id}: ambiguity-fix after changed`);
+  assert(q.completeSentence === exp.completeSentence, `${q.id}: ambiguity-fix completeSentence changed`);
+  assert(sameJson(q.correctOrder, exp.correctOrder), `${q.id}: ambiguity-fix correctOrder changed`);
+  assert(q.starSlot === exp.starSlot, `${q.id}: ambiguity-fix starSlot changed`);
+  assert(sameJson((q.chunks || []).map(c => [c.id, c.text]), exp.chunks), `${q.id}: ambiguity-fix chunks changed`);
+  assert(/已檢查24種排列/.test(q.reviewNote || ''), `${q.id}: ambiguity-fix reviewNote must document 24 permutations`);
+}
+
 assert(run('git merge-base --is-ancestor 8741b97b91561decbeb3218756e44f3641ea1b00 HEAD; echo $?') === '0', 'HEAD must contain PR #275 merge commit 8741b97b91561decbeb3218756e44f3641ea1b00');
 let baseQuestions = [];
 try { baseQuestions = JSON.parse(run('git show 8741b97b91561decbeb3218756e44f3641ea1b00:japaneseSentenceCompositionQuestions.json')); } catch (e) { failures.push('cannot read PR #275 baseline questions'); }
-assert(JSON.stringify(questions.slice(0, 40)) === JSON.stringify(baseQuestions), 'original 40 questions must match PR #275 baseline exactly');
+const baseById = new Map(baseQuestions.map(q => [q.id, q]));
+for (const q of questions.slice(0, 40)) {
+  if (ambiguityFixIds.has(q.id)) assertAmbiguityFixShape(q);
+  else assert(JSON.stringify(q) === JSON.stringify(baseById.get(q.id)), `${q.id}: original 40 non-ambiguity-fix question must match PR #275 baseline exactly`);
+}
 const ids = new Set(); const sentences = new Set();
 const levels = { N5: 0, N4: 0 }; const allStars = [0,0,0,0]; const allPos = [0,0,0,0]; const newStars = [0,0,0,0]; const newPos = [0,0,0,0];
 let dupIds=0, dupSentences=0, missing=0, invalidGrammar=0, invalidChunkTextType=0, emptyChunks=0, punctuationOnlyChunks=0, chunkWithoutWordChar=0, mapping=0, reconstruction=0;
@@ -37,6 +62,7 @@ for (const q of questions) {
   if (!(Array.isArray(q.grammarIds) && q.grammarIds.length && q.grammarIds.every(id => grammarIds.has(id)))) invalidGrammar++;
   if (q.starSlot >= 0 && q.starSlot < 4) allStars[q.starSlot]++;
   const pos = (q.chunks || []).findIndex(c => c.id === q.correctOrder?.[q.starSlot]); if (pos >= 0) allPos[pos]++;
+  if (ambiguityFixIds.has(q.id)) assertAmbiguityFixShape(q);
   if (expectedNew.has(q.id)) { newStars[q.starSlot]++; if (pos >= 0) newPos[pos]++; assert(q.uniqueAnswerReviewed === true, `${q.id}: uniqueAnswerReviewed must be true`); assert(/已檢查24種排列/.test(q.reviewNote), `${q.id}: reviewNote must document 24 permutations`); assert(q.completeSentence === expectedSentences.get(q.id), `${q.id}: locked completeSentence changed`); }
 }
 assert(questions.length === 60, `total must be 60, got ${questions.length}`); assert(levels.N5 === 30, `N5 must be 30, got ${levels.N5}`); assert(levels.N4 === 30, `N4 must be 30, got ${levels.N4}`);
