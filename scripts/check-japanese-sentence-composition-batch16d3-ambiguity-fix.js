@@ -6,6 +6,7 @@ const DATA = 'japaneseSentenceCompositionQuestions.json';
 const FROZEN = ['script.js', 'style.css', 'grammar.json', 'vocabulary.json'];
 const HTML = 'japanese/index.html';
 const TARGET_IDS = ['sc-n5-004', 'sc-n5-005', 'sc-n4-001', 'sc-n5-015', 'sc-n5-029'];
+const POST_FINAL_AUDIT_TARGET_IDS = ['sc-n5-001', 'sc-n4-006'];
 const EXPECTED = {
   'sc-n5-004': { before:'田中さんは駅で先生に会', after:'。', chunks:[['a','って'],['c','に帰り'],['b','いっしょ'],['d','ました']], correctOrder:['a','b','c','d'], starSlot:3, completeSentence:'田中さんは駅で先生に会っていっしょに帰りました。' },
   'sc-n5-005': { before:'この店は安', after:'。', chunks:[['a','いです'],['b','が'],['d','ないです'],['c','あまり広く']], correctOrder:['a','b','c','d'], starSlot:0, completeSentence:'この店は安いですがあまり広くないです。' },
@@ -36,7 +37,8 @@ for (const q of current) {
   const original = old.get(q.id);
   if (!original) fail(`Question ${q.id} is new compared with baseline`);
   const target = TARGET_IDS.includes(q.id);
-  if (!target && !same(q, original)) fail(`Non-target question changed: ${q.id}`);
+  const postFinalAuditTarget = POST_FINAL_AUDIT_TARGET_IDS.includes(q.id);
+  if (!target && !postFinalAuditTarget && !same(q, original)) fail(`Non-target question changed: ${q.id}`);
   if (target && original) {
     for (const key of new Set([...Object.keys(q), ...Object.keys(original)])) {
       if (!ALLOWED_CHANGED_FIELDS.has(key) && !same(q[key], original[key])) fail(`${q.id} changed forbidden field ${key}`);
@@ -44,6 +46,22 @@ for (const q of current) {
   }
 }
 for (const q of base) if (!cur.has(q.id)) fail(`Question ${q.id} from baseline is missing`);
+
+const finalAuditFixed = cur.get('sc-n5-001');
+if (finalAuditFixed) {
+  if (finalAuditFixed.before !== 'わたしは毎朝七時に' || finalAuditFixed.after !== '。') fail('sc-n5-001 final-audit before/after mismatch');
+  if (!same(finalAuditFixed.chunks.map((c) => [c.id, c.text]), [['a','起き'], ['b','て顔を'], ['d','ます'], ['c','洗い']])) fail('sc-n5-001 final-audit chunks mismatch');
+  if (!same(finalAuditFixed.correctOrder, ['a','b','c','d']) || finalAuditFixed.starSlot !== 0) fail('sc-n5-001 final-audit correctOrder/starSlot mismatch');
+  if (finalAuditFixed.completeSentence !== 'わたしは毎朝七時に起きて顔を洗います。') fail('sc-n5-001 final-audit completeSentence mismatch');
+}
+const finalAuditFixedN4 = cur.get('sc-n4-006');
+if (finalAuditFixedN4) {
+  if (finalAuditFixedN4.before !== '明日は朝早く' || finalAuditFixedN4.after !== '。') fail('sc-n4-006 final-audit before/after mismatch');
+  if (!same(finalAuditFixedN4.chunks.map((c) => [c.id, c.text]), [['a','起きて'], ['b','空港へ行く'], ['d','です'], ['c','予定']])) fail('sc-n4-006 final-audit chunks mismatch');
+  if (!same(finalAuditFixedN4.correctOrder, ['a','b','c','d']) || finalAuditFixedN4.starSlot !== 1) fail('sc-n4-006 final-audit correctOrder/starSlot mismatch');
+  if (finalAuditFixedN4.completeSentence !== '明日は朝早く起きて空港へ行く予定です。') fail('sc-n4-006 final-audit completeSentence mismatch');
+}
+
 for (const id of TARGET_IDS) {
   const q = cur.get(id), original = old.get(id), exp = EXPECTED[id];
   if (!q) continue;
@@ -85,11 +103,11 @@ if (!same(starDist, [15,15,15,15])) fail(`starSlot distribution ${JSON.stringify
 if (!same(optionDist, [15,15,15,15])) fail(`correct option distribution ${JSON.stringify(optionDist)} != [15,15,15,15]`);
 const html = read(HTML);
 const baseHtml = execFileSync('git', ['show', `${BASE}:${HTML}`], { encoding:'utf8' });
-const expectedHtml = baseHtml.replace('japaneseSentenceCompositionQuestions.json?v=16d2b', 'japaneseSentenceCompositionQuestions.json?v=16d3a');
+const expectedHtml = baseHtml.replace('japaneseSentenceCompositionQuestions.json?v=16d2b', 'japaneseSentenceCompositionQuestions.json?v=16d3b');
 if (baseHtml === expectedHtml) fail('PR #277 baseline HTML did not contain the expected v=16d2b question URL');
-if (html !== expectedHtml) fail('japanese/index.html differs from PR #277 by more than the exact v=16d2b to v=16d3a question URL replacement');
-if ((html.match(/japaneseSentenceCompositionQuestions\.json\?v=16d3a/g) || []).length !== 1) fail('Question cache URL must appear exactly once with v=16d3a');
-if (html.includes('japaneseSentenceCompositionQuestions.json?v=16d2b')) fail('Old question cache URL v=16d2b is still present');
+if (html !== expectedHtml) fail('japanese/index.html differs from PR #277 by more than the exact v=16d2b to v=16d3b question URL replacement');
+if ((html.match(/japaneseSentenceCompositionQuestions\.json\?v=16d3b/g) || []).length !== 1) fail('Question cache URL must appear exactly once with v=16d3b');
+if (html.includes('japaneseSentenceCompositionQuestions.json?v=16d2b') || html.includes('japaneseSentenceCompositionQuestions.json?v=16d3a')) fail('Old question cache URL is still present');
 if (!html.includes('script src="../script.js?v=3.3"')) fail('script.js cache version changed');
 if (!html.includes('href="../style.css?v=2.9"')) fail('style.css cache version changed');
 console.log('\nFinal statistics');

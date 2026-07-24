@@ -14,6 +14,7 @@ const assert = (ok, msg) => { if (!ok) failures.push(msg); };
 const required = ['id','level','before','after','slots','chunks','correctOrder','starSlot','completeSentence','kana','meaning','explanation','grammarIds','uniqueAnswerReviewed','reviewNote'];
 const grammarIds = new Set(grammar.map(g => g.id));
 const ambiguityFixIds = new Set(['sc-n5-004','sc-n5-005','sc-n4-001','sc-n5-015','sc-n5-029']);
+const finalAuditFixIds = new Set(['sc-n5-001', 'sc-n4-006']);
 const ambiguityFixExpected = new Map(Object.entries({
   'sc-n5-004': { before:'田中さんは駅で先生に会', after:'。', chunks:[['a','って'],['c','に帰り'],['b','いっしょ'],['d','ました']], correctOrder:['a','b','c','d'], starSlot:3, completeSentence:'田中さんは駅で先生に会っていっしょに帰りました。' },
   'sc-n5-005': { before:'この店は安', after:'。', chunks:[['a','いです'],['b','が'],['d','ないです'],['c','あまり広く']], correctOrder:['a','b','c','d'], starSlot:0, completeSentence:'この店は安いですがあまり広くないです。' },
@@ -34,12 +35,36 @@ function assertAmbiguityFixShape(q) {
   assert(/已檢查24種排列/.test(q.reviewNote || ''), `${q.id}: ambiguity-fix reviewNote must document 24 permutations`);
 }
 
+
+function assertFinalAuditFixShape(q) {
+  if (q.id === 'sc-n5-001') {
+    assert(q.before === 'わたしは毎朝七時に', 'sc-n5-001: final-audit before changed');
+    assert(q.after === '。', 'sc-n5-001: final-audit after changed');
+    assert(q.completeSentence === 'わたしは毎朝七時に起きて顔を洗います。', 'sc-n5-001: final-audit completeSentence changed');
+    assert(sameJson(q.correctOrder, ['a','b','c','d']), 'sc-n5-001: final-audit correctOrder changed');
+    assert(q.starSlot === 0, 'sc-n5-001: final-audit starSlot changed');
+    assert(sameJson((q.chunks || []).map(c => [c.id, c.text]), [['a','起き'], ['b','て顔を'], ['d','ます'], ['c','洗い']]), 'sc-n5-001: final-audit chunks changed');
+    assert(/已重新檢查24種排列/.test(q.reviewNote || ''), 'sc-n5-001: final-audit reviewNote must document 24 permutations');
+    return;
+  }
+  if (q.id === 'sc-n4-006') {
+    assert(q.before === '明日は朝早く', 'sc-n4-006: final-audit before changed');
+    assert(q.after === '。', 'sc-n4-006: final-audit after changed');
+    assert(q.completeSentence === '明日は朝早く起きて空港へ行く予定です。', 'sc-n4-006: final-audit completeSentence changed');
+    assert(sameJson(q.correctOrder, ['a','b','c','d']), 'sc-n4-006: final-audit correctOrder changed');
+    assert(q.starSlot === 1, 'sc-n4-006: final-audit starSlot changed');
+    assert(sameJson((q.chunks || []).map(c => [c.id, c.text]), [['a','起きて'], ['b','空港へ行く'], ['d','です'], ['c','予定']]), 'sc-n4-006: final-audit chunks changed');
+    assert(/已重新檢查24種排列/.test(q.reviewNote || ''), 'sc-n4-006: final-audit reviewNote must document 24 permutations');
+  }
+}
+
 assert(run('git merge-base --is-ancestor 8741b97b91561decbeb3218756e44f3641ea1b00 HEAD; echo $?') === '0', 'HEAD must contain PR #275 merge commit 8741b97b91561decbeb3218756e44f3641ea1b00');
 let baseQuestions = [];
 try { baseQuestions = JSON.parse(run('git show 8741b97b91561decbeb3218756e44f3641ea1b00:japaneseSentenceCompositionQuestions.json')); } catch (e) { failures.push('cannot read PR #275 baseline questions'); }
 const baseById = new Map(baseQuestions.map(q => [q.id, q]));
 for (const q of questions.slice(0, 40)) {
   if (ambiguityFixIds.has(q.id)) assertAmbiguityFixShape(q);
+  else if (finalAuditFixIds.has(q.id)) assertFinalAuditFixShape(q);
   else assert(JSON.stringify(q) === JSON.stringify(baseById.get(q.id)), `${q.id}: original 40 non-ambiguity-fix question must match PR #275 baseline exactly`);
 }
 const ids = new Set(); const sentences = new Set();
@@ -69,7 +94,7 @@ assert(questions.length === 60, `total must be 60, got ${questions.length}`); as
 assert(JSON.stringify(questions.slice(40).map(q => q.id).sort()) === JSON.stringify([...expectedNew].sort()), 'new ID range must be exact');
 assert(dupIds===0, `duplicate ID must be 0, got ${dupIds}`); assert(dupSentences===0, `duplicate completeSentence must be 0, got ${dupSentences}`); assert(missing===0, `missing required fields must be 0, got ${missing}`); assert(invalidGrammar===0, `invalid grammarIds must be 0, got ${invalidGrammar}`); assert(invalidChunkTextType===0, `invalid chunk.text type must be 0, got ${invalidChunkTextType}`); assert(emptyChunks===0, `empty chunk must be 0, got ${emptyChunks}`); assert(punctuationOnlyChunks===0, `punctuation-only chunk must be 0, got ${punctuationOnlyChunks}`); assert(chunkWithoutWordChar===0, `chunk without Japanese/English/number must be 0, got ${chunkWithoutWordChar}`); assert(mapping===0, `correctOrder/chunks mapping error must be 0, got ${mapping}`); assert(reconstruction===0, `completeSentence reconstruction error must be 0, got ${reconstruction}`);
 assert(JSON.stringify(newStars)==='[5,5,5,5]', `new starSlot distribution must be [5,5,5,5], got ${JSON.stringify(newStars)}`); assert(JSON.stringify(newPos)==='[5,5,5,5]', `new correct option positions must be [5,5,5,5], got ${JSON.stringify(newPos)}`); assert(JSON.stringify(allStars)==='[15,15,15,15]', `all starSlot distribution must be [15,15,15,15], got ${JSON.stringify(allStars)}`); assert(JSON.stringify(allPos)==='[15,15,15,15]', `all correct option positions must be [15,15,15,15], got ${JSON.stringify(allPos)}`);
-assert(/japaneseSentenceCompositionQuestions\.json\?v=16d3a/.test(html), 'question cache must be v=16d3a'); assert(/script\.js\?v=3\.3/.test(html), 'script cache must remain v=3.3'); assert(/style\.css\?v=2\.9/.test(html), 'style cache must remain v=2.9'); assert(!run('git diff --name-only -- script.js style.css'), 'script.js and style.css must be unmodified'); assert(!/localStorage\.setItem\([^)]*sentenceComposition/.test(script), 'must not add sentence-composition localStorage key');
+assert(/japaneseSentenceCompositionQuestions\.json\?v=16d3b/.test(html), 'question cache must be v=16d3b'); assert(/script\.js\?v=3\.3/.test(html), 'script cache must remain v=3.3'); assert(/style\.css\?v=2\.9/.test(html), 'style cache must remain v=2.9'); assert(!run('git diff --name-only -- script.js style.css'), 'script.js and style.css must be unmodified'); assert(!/localStorage\.setItem\([^)]*sentenceComposition/.test(script), 'must not add sentence-composition localStorage key');
 console.log(`Final counts: total=${questions.length}, N5=${levels.N5}, N4=${levels.N4}`); console.log(`Duplicate IDs=${dupIds}, duplicate completeSentence=${dupSentences}, missing=${missing}, invalidGrammar=${invalidGrammar}`); console.log(`Chunk issues: invalidTextType=${invalidChunkTextType}, empty=${emptyChunks}, punctuationOnly=${punctuationOnlyChunks}, noJapaneseEnglishNumber=${chunkWithoutWordChar}`); console.log(`Mapping errors=${mapping}, reconstruction errors=${reconstruction}`); console.log(`New starSlot distribution=${JSON.stringify(newStars)}, new correct option positions=${JSON.stringify(newPos)}`); console.log(`All starSlot distribution=${JSON.stringify(allStars)}, all correct option positions=${JSON.stringify(allPos)}`);
 if (failures.length) { console.error('Batch sentence composition data check failed:'); failures.forEach(f => console.error(`- ${f}`)); process.exit(1); }
 console.log('Batch sentence composition data check passed.');

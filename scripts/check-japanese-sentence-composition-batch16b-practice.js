@@ -22,7 +22,7 @@ assert(/句子重組練習/.test(grammarMenu) && /選出應放入 ★ 格的片�
 assert((homeGrid.match(/data-japanese-entry=/g) || []).length === 5, 'Japanese home must not gain a sixth main entry');
 assert(/id="japaneseSentenceCompositionView"/.test(html), 'sentence composition view must exist');
 assert(/返回文法選單/.test(html), 'back to grammar menu button must exist');
-assert(/JAPANESE_SENTENCE_COMPOSITION_URL/.test(html) && /japaneseSentenceCompositionQuestions\.json\?v=16d3a/.test(html) && /script\.js\?v=3\.[123]/.test(html), 'cache/query URLs must use sentence data v=16d3a and supported script version');
+assert(/JAPANESE_SENTENCE_COMPOSITION_URL/.test(html) && /japaneseSentenceCompositionQuestions\.json\?v=16d3b/.test(html) && /script\.js\?v=3\.[123]/.test(html), 'cache/query URLs must use sentence data v=16d3b and supported script version');
 
 assert(/const SENTENCE_COMPOSITION_URL/.test(script), 'sentence composition URL constant missing');
 assert(/fetch\(SENTENCE_COMPOSITION_URL\)/.test(script), 'must fetch sentence composition JSON');
