@@ -5,7 +5,7 @@
 ## 1. 現況盤點
 
 ### 入口與頁面
-- `japanese/index.html` 目前只有日文主入口、單字、閱讀、文法、聽力與複習中心，主入口卡片使用 `data-japanese-entry="vocabulary|reading|grammar|listening"`。
+- `japanese/index.html` 目前只有日文主入口、單字、閱讀、文法、聽力與複習中心，主入口卡片使用 `data-japanese-entry="vocabulary|reading|grammar|listening|reviewMenu"`。
 - 單字子選單有單字練習與單字測驗；文法子選單有文法練習、文法測驗、句子重組練習、句子重組測驗。
 - 閱讀頁明文標示「閱讀練習保留 ruby 輔助；閱讀測驗模式維持不顯示 ruby」。聽力頁有聽力練習與聽力測驗。
 - 快取版本：`style.css?v=2.9`、`script.js?v=3.3`、`japaneseSentenceCompositionQuestions.json?v=16d3b`。
@@ -71,8 +71,12 @@
 
 ## 8. 漢字、假名與 ruby 顯示政策
 - 練習模式：可同時顯示漢字、假名、中文、ruby 與解析；閱讀練習保留 ruby；聽力練習可答前顯示日文與假名；句子重組答後顯示完整假名。
-- 一般學習測驗：題目答題時顯示程度相符漢字；若題庫標記為超級漢字，應以 ruby 或括號假名提示；答後解析可顯示完整假名、中文與補充說明。
+- 一般學習測驗：題目答題時顯示程度相符漢字；若題庫標記為超出該等級的漢字，應以 ruby 或括號假名提示；答後解析可顯示完整假名、中文與補充說明。
 - JLPT 模擬測驗：題面不得由程式自動「全部加假名」或「全部移除 ruby」；每題應明確指定 `displayText`、`kana`、`rubyTerms` 或 `kanjiLevel`／`kanjiPolicy`。N5 題只允許 N5 程度內漢字無提示呈現，超出程度者需改用假名、ruby 或換題；N4 題可呈現 N4 內漢字，超出者需題庫明確標記輔助方式。
+- 後續實作必須先建立「站內版本化漢字顯示基準」作為本站內部使用的漢字政策，不得宣稱為官方 JLPT 漢字表；runtime 不得臨時猜測漢字等級。
+- 站內版本化漢字顯示基準至少需要 `schemaVersion`、`policyVersion`、N5 漢字 allow-list、N4 漢字 allow-list、資料來源或人工複核說明、最後更新日期。
+- 題庫產生或匯入階段必須依該版本化基準產生 `displayText`、`kana`、`rubyTerms`、`kanjiPolicy`；未分類漢字必須採保守 fallback：改用假名、顯示 ruby，或排除該題，不得讓未分類漢字在 N5／N4 題面中直接無提示顯示。
+- `kanjiPolicy` 候選值建議定義為：`level-native`（等級內漢字可無提示顯示）、`ruby-required`（保留漢字但必須顯示 ruby）、`kana-replacement`（題面改用假名）、`excluded`（排除於該等級題池）。
 - 選項與解析差異：答題選項應遵守模擬測驗的 `displayText`；解析頁可額外顯示 `kana`、中文、文法點與原始漢字，協助學習但不回寫題面。
 - 需要新增資料欄位：建議各 JLPT 題目至少有 `level`、`section`、`displayText`、`kana`、`rubyTerms`、`kanjiPolicy`、`sourceIds`、`explanation`、`answerDisplay`。
 
@@ -84,6 +88,7 @@
 - 缺少 N5 閱讀題庫。
 - 缺少獨立聽力題庫檔案與音訊／語音播放策略欄位。
 - 缺少每題 `displayText`、`kana`、`rubyTerms`、`kanjiPolicy`、`kanjiLevel`、`sourceIds`、`section`、`timeLimit`、`scoreWeight`、`reviewTags`。
+- 缺少「站內版本化漢字顯示基準」資料；後續批次需另外規劃或新增內部政策資料，至少包含 `schemaVersion`、`policyVersion`、N5/N4 漢字 allow-list、資料來源或人工複核說明與最後更新日期，並在題庫產生／匯入階段處理未分類漢字 fallback。
 - 缺少 JLPT 模擬結果 schema、錯題回放 snapshot schema 與快取版本策略。
 
 ## 11. 測驗狀態、結果頁與重新測驗流程

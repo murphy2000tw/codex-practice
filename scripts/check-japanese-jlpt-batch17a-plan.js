@@ -23,17 +23,22 @@ const requiredBatches = ['Batch 17A-2','Batch 17B','Batch 17C','Batch 17D','Batc
 function fail(message){ console.error(`❌ ${message}`); process.exitCode = 1; }
 function pass(message){ console.log(`✅ ${message}`); }
 function git(args){ return execFileSync('git', args, { encoding: 'utf8' }).trim(); }
+function gitRaw(args){ return execFileSync('git', args, { encoding: 'utf8' }); }
+function parseStatusPath(line) {
+  if (!line) return '';
+  if (line.startsWith('?? ') || line.startsWith('!! ')) return line.slice(3);
+  return line.slice(3);
+}
 try { execFileSync('git', ['merge-base','--is-ancestor', requiredCommit, 'HEAD']); pass('HEAD contains PR #279 merge commit.'); } catch { fail(`HEAD does not contain ${requiredCommit}.`); }
 const changed = git(['diff','--name-only', `${requiredCommit}..HEAD`]).split('\n').filter(Boolean);
-const stagedOrWorking = git(['status','--short']).split('\n').filter(Boolean).map((line)=>line.slice(3));
+const stagedOrWorking = gitRaw(['status','--short']).split('\n').filter(Boolean).map(parseStatusPath);
 for (const file of [...new Set([...changed, ...stagedOrWorking])]) {
   if (!allowedFiles.has(file)) fail(`File is not allowed in Batch 17A-1: ${file}`);
 }
 if (changed.length || stagedOrWorking.length) pass('Changed files are limited to the plan and checker.');
-for (const file of forbiddenFiles) {
-  if (changed.includes(file) || stagedOrWorking.includes(file)) fail(`Forbidden file was modified: ${file}`);
-}
-pass('Forbidden runtime and production data files are unchanged in this PR.');
+const forbiddenChanged = forbiddenFiles.filter((file) => changed.includes(file) || stagedOrWorking.includes(file));
+for (const file of forbiddenChanged) fail(`Forbidden file was modified: ${file}`);
+if (forbiddenChanged.length === 0) pass('Forbidden runtime and production data files are unchanged in this PR.');
 const sc = JSON.parse(fs.readFileSync('japaneseSentenceCompositionQuestions.json','utf8'));
 const counts = sc.reduce((acc,q)=>{ acc.total += 1; acc[q.level] = (acc[q.level] || 0) + 1; return acc; }, { total: 0 });
 if (counts.total !== 60 || counts.N5 !== 30 || counts.N4 !== 30) fail(`Sentence composition counts changed: ${JSON.stringify(counts)}`); else pass('Sentence composition counts remain total 60, N5 30, N4 30.');
@@ -49,9 +54,10 @@ for (const batch of requiredBatches) if (!plan.includes(batch)) fail(`Missing fo
 if (requiredSections.every((section)=>plan.includes(section)) && requiredBatches.every((batch)=>plan.includes(batch))) pass('Plan contains all required sections and follow-up batches.');
 for (const term of ['練習模式','一般學習測驗','JLPT 模擬測驗']) if (!plan.includes(term)) fail(`Plan does not distinguish: ${term}`);
 if (['練習模式','一般學習測驗','JLPT 模擬測驗'].every((term)=>plan.includes(term))) pass('Plan distinguishes practice, general tests, and JLPT mock tests.');
-for (const term of ['漢字','假名','ruby','displayText','kana','rubyTerms','kanjiPolicy']) if (!plan.includes(term)) fail(`Kanji/kana/ruby policy missing term: ${term}`);
-if (['漢字','假名','ruby','displayText','kana','rubyTerms','kanjiPolicy'].every((term)=>plan.includes(term))) pass('Plan includes explicit kanji/kana/ruby display policy and fields.');
-const forbiddenClaims = ['已完成 JLPT','已實作 JLPT','正式符合官方 JLPT','完全符合官方 JLPT','已新增 JLPT 測驗 UI'];
+const policyTerms = ['漢字','假名','ruby','displayText','kana','rubyTerms','kanjiPolicy','站內版本化漢字顯示基準','schemaVersion','policyVersion','allow-list','未分類漢字','fallback','level-native','ruby-required','kana-replacement','excluded','reviewMenu'];
+for (const term of policyTerms) if (!plan.includes(term)) fail(`Kanji/kana/ruby policy missing term: ${term}`);
+if (policyTerms.every((term)=>plan.includes(term))) pass('Plan includes explicit kanji/kana/ruby display policy, versioned baseline, fallback, and reviewMenu inventory.');
+const forbiddenClaims = ['已完成 JLPT','已實作 JLPT','正式符合官方 JLPT','完全符合官方 JLPT','已新增 JLPT 測驗 UI','超級漢字'];
 for (const claim of forbiddenClaims) if (plan.includes(claim)) fail(`Plan appears to claim unimplemented functionality: ${claim}`);
 if (!forbiddenClaims.some((claim)=>plan.includes(claim))) pass('Plan does not claim unimplemented JLPT functionality is complete.');
 if (process.exitCode) process.exit(process.exitCode);
