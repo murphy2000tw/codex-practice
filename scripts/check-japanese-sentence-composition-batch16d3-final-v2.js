@@ -6,7 +6,6 @@ const DATA = 'japaneseSentenceCompositionQuestions.json';
 const REPORT = 'docs/japanese-sentence-composition-batch16d3-final-audit-v2.md';
 const PERMS = 'docs/japanese-sentence-composition-batch16d3-final-permutations.json';
 const FROZEN = ['script.js', 'style.css', 'grammar.json', 'vocabulary.json'];
-const BASELINE_COMPARED = [DATA, 'japanese/index.html'];
 const failures = [];
 const fail = (message) => failures.push(message);
 const read = (file) => fs.readFileSync(file, 'utf8');
@@ -90,34 +89,88 @@ const expectedHtml = baseHtml.replace('japaneseSentenceCompositionQuestions.json
 if (html !== expectedHtml) fail('japanese/index.html differs from PR #278 by more than the exact v=16d3a to v=16d3b cache update');
 if (!html.includes('script src="../script.js?v=3.3"')) fail('script.js?v=3.3 cache reference changed');
 if (!html.includes('href="../style.css?v=2.9"')) fail('style.css?v=2.9 cache reference changed');
-if (!Array.isArray(evidence) || evidence.length !== 60) fail(`permutations JSON item count is ${Array.isArray(evidence) ? evidence.length : 'not an array'}`);
-let totalPermutations = 0;
+if (!Array.isArray(evidence)) fail('permutations JSON root is not an array');
+if (Array.isArray(evidence) && evidence.length !== 60) fail(`permutations JSON item count is ${evidence.length}`);
 const byId = new Map(questions.map((q) => [q.id, q]));
-for (const item of evidence) {
+const questionIdSet = new Set(questions.map((q) => q.id));
+const evidenceIds = new Set();
+const duplicateEvidenceIds = new Set();
+for (const item of Array.isArray(evidence) ? evidence : []) {
+  if (evidenceIds.has(item.id)) duplicateEvidenceIds.add(item.id);
+  evidenceIds.add(item.id);
+}
+for (const id of duplicateEvidenceIds) fail(`Evidence contains duplicate question ID ${id}`);
+for (const id of questionIdSet) if (!evidenceIds.has(id)) fail(`Evidence is missing question ID ${id}`);
+for (const id of evidenceIds) if (!questionIdSet.has(id)) fail(`Evidence contains unknown question ID ${id}`);
+if (evidenceIds.size !== questionIdSet.size) fail(`Evidence ID set size ${evidenceIds.size} does not match question ID set size ${questionIdSet.size}`);
+
+function parseReportSections(markdown) {
+  const matches = [...markdown.matchAll(/^### (sc-n[45]-\d{3})\s*$/gm)];
+  const sections = new Map();
+  const duplicates = new Set();
+  for (let i = 0; i < matches.length; i++) {
+    const id = matches[i][1];
+    const start = matches[i].index;
+    const end = i + 1 < matches.length ? matches[i + 1].index : markdown.length;
+    if (sections.has(id)) duplicates.add(id);
+    sections.set(id, markdown.slice(start, end));
+  }
+  return { sections, duplicates, count: matches.length };
+}
+const reportSections = parseReportSections(report);
+if (reportSections.count !== 60) fail(`Report question section count is ${reportSections.count}`);
+for (const id of reportSections.duplicates) fail(`Report contains duplicate question section ${id}`);
+for (const id of questionIdSet) if (!reportSections.sections.has(id)) fail(`Report is missing question section ${id}`);
+for (const id of reportSections.sections.keys()) if (!questionIdSet.has(id)) fail(`Report contains unknown question section ${id}`);
+
+let totalPermutations = 0;
+for (const item of Array.isArray(evidence) ? evidence : []) {
   const q = byId.get(item.id);
-  if (!q) { fail(`Evidence contains unknown question ${item.id}`); continue; }
+  if (!q) continue;
   if (!Array.isArray(item.permutations) || item.permutations.length !== 24) { fail(`${item.id} does not have exactly 24 permutations`); continue; }
   totalPermutations += item.permutations.length;
   const expectedOrders = new Set(permute(q.chunks.map((c) => c.id)).map((order) => order.join('|')));
+  const correctKey = q.correctOrder.join('|');
   const seen = new Set();
-  let expectedCount = 0, alternateCount = 0;
+  let expectedCount = 0, alternateCount = 0, invalidCount = 0;
+  let correctOrderRecord = null;
   const textById = new Map(q.chunks.map((c) => [c.id, c.text]));
   for (const p of item.permutations) {
     if (!Array.isArray(p.order) || p.order.length !== 4) fail(`${item.id} has malformed order`);
     const key = (p.order || []).join('|');
-    if (seen.has(key)) fail(`${item.id} duplicate order ${key}`); seen.add(key);
+    if (seen.has(key)) fail(`${item.id} duplicate order ${key}`);
+    seen.add(key);
     if (!expectedOrders.has(key)) fail(`${item.id} has non-4! order ${key}`);
+    if (key === correctKey) correctOrderRecord = p;
     const rebuilt = q.before + (p.order || []).map((id) => textById.get(id)).join('') + q.after;
     if (rebuilt !== p.sentence) fail(`${item.id} order ${key} sentence reconstruction mismatch`);
     if (!['VALID_EXPECTED','VALID_ALTERNATE','INVALID_GRAMMAR'].includes(p.verdict)) fail(`${item.id} order ${key} has invalid verdict ${p.verdict}`);
     if (!p.reason || String(p.reason).length < 20) fail(`${item.id} order ${key} lacks a concrete reason`);
-    if (p.verdict === 'VALID_EXPECTED') expectedCount++;
-    if (p.verdict === 'VALID_ALTERNATE') alternateCount++;
+    if (p.verdict === 'VALID_EXPECTED') {
+      expectedCount++;
+      if (key !== correctKey) fail(`${item.id} VALID_EXPECTED order ${key} does not match correctOrder ${correctKey}`);
+    } else if (p.verdict === 'VALID_ALTERNATE') {
+      alternateCount++;
+    } else if (p.verdict === 'INVALID_GRAMMAR') {
+      invalidCount++;
+      if (key === correctKey) fail(`${item.id} correctOrder ${correctKey} is marked INVALID_GRAMMAR`);
+    }
   }
   if (seen.size !== 24) fail(`${item.id} unique order count is ${seen.size}`);
+  if (expectedOrders.size !== 24) fail(`${item.id} generated expected 4! order count is ${expectedOrders.size}`);
+  for (const order of expectedOrders) if (!seen.has(order)) fail(`${item.id} missing 4! order ${order}`);
+  if (!correctOrderRecord) fail(`${item.id} correctOrder ${correctKey} is absent from permutations`);
+  else if (correctOrderRecord.verdict !== 'VALID_EXPECTED') fail(`${item.id} correctOrder ${correctKey} is marked ${correctOrderRecord.verdict}`);
   if (expectedCount !== 1) fail(`${item.id} VALID_EXPECTED count is ${expectedCount}`);
   if (alternateCount !== 0) fail(`${item.id} VALID_ALTERNATE count is ${alternateCount}`);
-  if (!report.includes(`### ${item.id}`) || !report.includes('最終結論：PASS_UNIQUE')) fail(`Report is missing PASS_UNIQUE section for ${item.id}`);
+  if (invalidCount !== 23) fail(`${item.id} INVALID_GRAMMAR count is ${invalidCount}`);
+  const section = reportSections.sections.get(item.id);
+  if (section) {
+    if (!section.includes('24/24 completed')) fail(`Report section ${item.id} lacks 24/24 completed`);
+    if (!section.includes('VALID_EXPECTED數量：1')) fail(`Report section ${item.id} lacks VALID_EXPECTED數量：1`);
+    if (!section.includes('VALID_ALTERNATE數量：0')) fail(`Report section ${item.id} lacks VALID_ALTERNATE數量：0`);
+    if (!section.includes('最終結論：PASS_UNIQUE')) fail(`Report section ${item.id} lacks 最終結論：PASS_UNIQUE`);
+  }
 }
 if (totalPermutations !== 1440) fail(`total permutations is ${totalPermutations}`);
 console.log('\nFinal statistics');
