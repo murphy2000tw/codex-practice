@@ -61,11 +61,38 @@
           <p class="entry-card-text">查看生字本與錯題本，整理需要再次複習的內容。</p>
           <span class="entry-card-action">開始複習</span>
         </button>
+        <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="jlptMock" aria-pressed="false">
+          <span class="card-number">06</span>
+          <h3 class="entry-card-title">JLPT 模擬測驗</h3>
+          <p class="entry-card-text">選擇 N5 或 N4，進入站內 JLPT 風格模擬測驗專區。</p>
+          <span class="entry-card-action">進入 JLPT 專區</span>
+        </button>
       </div>
     </section>
 
     </div>
 
+
+    <section id="japaneseJlptPanel" class="sentence-composition-view" aria-labelledby="japanese-jlpt-title" hidden>
+      <button id="backToJapaneseHomeFromJlpt" class="secondary-button sentence-composition-back-button" type="button">返回日文首頁</button>
+      <div class="sentence-composition-card">
+        <p class="eyebrow">JLPT Mock Test</p>
+        <h2 id="japanese-jlpt-title">JLPT 模擬測驗</h2>
+        <p class="feature-page-description">這是本站依現有學習資料製作的 JLPT 風格模擬測驗，不代表官方 JLPT 試題或官方成績。</p>
+        <section id="japaneseJlptLevelSetup" class="filter-group" aria-labelledby="japanese-jlpt-level-title">
+          <p id="japanese-jlpt-level-title" class="filter-label">選擇模擬測驗等級</p>
+          <div class="sentence-composition-filters" role="group" aria-label="選擇 JLPT 模擬測驗等級">
+            <button class="filter-button" type="button" data-japanese-jlpt-level="N5" aria-pressed="false">N5</button>
+            <button class="filter-button" type="button" data-japanese-jlpt-level="N4" aria-pressed="false">N4</button>
+          </div>
+        </section>
+        <div id="japaneseJlptStatus" class="sentence-composition-status" role="status" aria-live="polite"></div>
+        <div class="sentence-composition-actions">
+          <button id="startJapaneseJlptMock" class="answer-button" type="button" disabled aria-describedby="japanese-jlpt-unavailable-note">開始模擬測驗（尚未開放）</button>
+        </div>
+        <p id="japanese-jlpt-unavailable-note" class="sentence-composition-meta">正式測驗將於後續批次開放</p>
+      </div>
+    </section>
 
     <section id="japaneseReviewPanel" class="japanese-review-panel" hidden aria-labelledby="japanese-review-title">
       <div id="japaneseReviewMenuView" class="japanese-review-menu-view"></div>
@@ -262,6 +289,6 @@
     window.JAPANESE_SENTENCE_COMPOSITION_URL = "../japaneseSentenceCompositionQuestions.json?v=16d3b";
   </script>
   <script src="../japaneseReadingQuestions.js?v=1.0"></script>
-  <script src="../script.js?v=3.3"></script>
+  <script src="../script.js?v=3.4"></script>
 </body>
 </html>

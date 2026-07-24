@@ -5,13 +5,57 @@ const BASE = '8b6ee96b03159d23276fbd3196f7448bfa7d5fb9';
 const DATA = 'japaneseSentenceCompositionQuestions.json';
 const REPORT = 'docs/japanese-sentence-composition-batch16d3-final-audit-v2.md';
 const PERMS = 'docs/japanese-sentence-composition-batch16d3-final-permutations.json';
-const FROZEN = ['script.js', 'style.css', 'grammar.json', 'vocabulary.json'];
+const FROZEN = ['style.css', 'grammar.json', 'vocabulary.json'];
+const RUNTIME_BASE = 'd895d3714c545de750a1b2a490b346632d4ace53';
 const failures = [];
 const fail = (message) => failures.push(message);
 const read = (file) => fs.readFileSync(file, 'utf8');
 const json = (file) => JSON.parse(read(file));
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 const git = (args) => execFileSync('git', args, { encoding: 'utf8' }).trim();
+
+function extractById(source, id) {
+  const idIndex = source.indexOf(`id="${id}"`);
+  if (idIndex === -1) return '';
+  const tagStart = source.lastIndexOf('<', idIndex);
+  const openTag = source.slice(tagStart).match(/^<([a-z0-9-]+)/i);
+  if (!openTag) return '';
+  const tag = openTag[1];
+  let depth = 0;
+  const pattern = new RegExp(`<\\/?${tag}(?=[\\s>])[^>]*>`, 'gi');
+  pattern.lastIndex = tagStart;
+  let match;
+  while ((match = pattern.exec(source))) {
+    if (match[0][1] === '/') depth -= 1;
+    else depth += 1;
+    if (depth === 0) return source.slice(tagStart, pattern.lastIndex);
+  }
+  return '';
+}
+function extractFunction(source, name) {
+  const start = source.indexOf(`function ${name}`);
+  if (start === -1) return '';
+  const brace = source.indexOf('{', start);
+  if (brace === -1) return '';
+  let depth = 0;
+  for (let index = brace; index < source.length; index += 1) {
+    if (source[index] === '{') depth += 1;
+    if (source[index] === '}') depth -= 1;
+    if (depth === 0) return source.slice(start, index + 1);
+  }
+  return '';
+}
+function extractConstAssignment(source, name) {
+  const start = source.indexOf(`const ${name} =`);
+  if (start === -1) return '';
+  const end = source.indexOf(';', start);
+  return end === -1 ? '' : source.slice(start, end + 1);
+}
+function assertSameBlock(current, baseline, label) {
+  if (!current || !baseline) fail(`Missing sentence-composition runtime block: ${label}`);
+  else if (current !== baseline) fail(`Sentence-composition runtime block changed: ${label}`);
+}
+
 function permute(items) {
   if (!items.length) return [[]];
   return items.flatMap((item, index) => permute(items.slice(0, index).concat(items.slice(index + 1))).map((rest) => [item, ...rest]));
@@ -84,11 +128,65 @@ if (!same(optionDist, [15,15,15,15])) fail(`correct option position distribution
 const html = read('japanese/index.html');
 if (!html.includes('japaneseSentenceCompositionQuestions.json?v=16d3b')) fail('Question cache is not v=16d3b');
 if (html.includes('japaneseSentenceCompositionQuestions.json?v=16d3a')) fail('Old question cache v=16d3a is still present');
-const baseHtml = execFileSync('git', ['show', `${BASE}:japanese/index.html`], { encoding: 'utf8' });
-const expectedHtml = baseHtml.replace('japaneseSentenceCompositionQuestions.json?v=16d3a', 'japaneseSentenceCompositionQuestions.json?v=16d3b');
-if (html !== expectedHtml) fail('japanese/index.html differs from PR #278 by more than the exact v=16d3a to v=16d3b cache update');
-if (!html.includes('script src="../script.js?v=3.3"')) fail('script.js?v=3.3 cache reference changed');
+if (!html.includes('script src="../script.js?v=3.4"')) fail('script.js?v=3.4 cache reference changed');
 if (!html.includes('href="../style.css?v=2.9"')) fail('style.css?v=2.9 cache reference changed');
+const script = read('script.js');
+const runtimeBaseScript = git(['show', `${RUNTIME_BASE}:script.js`]);
+[
+  'SENTENCE_COMPOSITION_URL',
+  'SENTENCE_COMPOSITION_QUIZ_QUESTION_COUNT',
+].forEach((name) => assertSameBlock(extractConstAssignment(script, name), extractConstAssignment(runtimeBaseScript, name), name));
+[
+  'resetJapaneseSentenceCompositionPracticeState',
+  'resetJapaneseSentenceCompositionQuizSetupState',
+  'resetJapaneseSentenceCompositionQuizState',
+  'resetJapaneseSentenceCompositionState',
+  'getFilteredSentenceCompositionQuestions',
+  'ensureSentenceCompositionLoaded',
+  'createSentenceCompositionButton',
+  'renderSentenceCompositionLoadError',
+  'chooseNextSentenceCompositionQuestion',
+  'getSentenceCompositionChunkById',
+  'getSentenceCompositionChunkOptionNumber',
+  'getSentenceCompositionCorrectStarChunkId',
+  'formatSentenceCompositionLevel',
+  'formatSentenceCompositionOption',
+  'getSentenceCompositionCorrectOrderText',
+  'getSentenceCompositionQuizPool',
+  'drawSentenceCompositionQuizQuestions',
+  'createSentenceCompositionQuestionLine',
+  'renderJapaneseSentenceCompositionPractice',
+  'createSentenceCompositionFeedback',
+  'selectSentenceCompositionChunk',
+  'clearSentenceCompositionAnswer',
+  'submitSentenceCompositionAnswer',
+  'startNextSentenceCompositionQuestion',
+  'getSentenceCompositionQuestionCounts',
+  'renderJapaneseSentenceCompositionQuizSetup',
+  'startSentenceCompositionQuizSetup',
+  'buildSentenceCompositionMistakeSnapshot',
+  'recordSentenceCompositionQuizMistake',
+  'findSentenceCompositionById',
+  'resolveSentenceCompositionMistakeQuestion',
+  'appendSentenceCompositionMistakeFields',
+  'renderJapaneseSentenceCompositionQuizQuestion',
+  'selectSentenceCompositionQuizChunk',
+  'confirmSentenceCompositionQuizAnswer',
+  'renderJapaneseSentenceCompositionQuizComplete',
+  'openJapaneseSentenceCompositionPractice',
+  'openJapaneseSentenceCompositionQuizSetup',
+  'returnToJapaneseGrammarMenu',
+].forEach((name) => assertSameBlock(extractFunction(script, name), extractFunction(runtimeBaseScript, name), name));
+const baseHtml = git(['show', `${RUNTIME_BASE}:japanese/index.html`]);
+assertSameBlock(extractById(html, 'japaneseSentenceCompositionView'), extractById(baseHtml, 'japaneseSentenceCompositionView'), 'japaneseSentenceCompositionView HTML');
+const currentGrammarMenu = extractById(html, 'japaneseGrammarMenuView');
+const baseGrammarMenu = extractById(baseHtml, 'japaneseGrammarMenuView');
+if (!currentGrammarMenu || !baseGrammarMenu) fail('Missing grammar menu HTML for sentence-composition protection');
+else {
+  ['data-japanese-grammar-entry="sentence-composition-practice"', 'data-japanese-grammar-entry="sentence-composition-quiz"', '句子重組練習', '句子重組測驗'].forEach((snippet) => {
+    if (!currentGrammarMenu.includes(snippet) || !baseGrammarMenu.includes(snippet)) fail(`Missing protected grammar menu snippet: ${snippet}`);
+  });
+}
 if (!Array.isArray(evidence)) fail('permutations JSON root is not an array');
 if (Array.isArray(evidence) && evidence.length !== 60) fail(`permutations JSON item count is ${evidence.length}`);
 const byId = new Map(questions.map((q) => [q.id, q]));
