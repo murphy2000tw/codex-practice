@@ -1,0 +1,1402 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "17b1-internal-v1",
+  "disclaimer": "Site-internal non-official JLPT-style simulated practice data. Not an official JLPT question bank, kanji list, scoring method, or difficulty certification.",
+  "generatedFrom": [
+    "vocabulary.json",
+    "grammar.json",
+    "japaneseJlptKanjiPolicy.json"
+  ],
+  "questions": [
+    {
+      "id": "jlpt-vocab-n5-001",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1"
+      ],
+      "originalText": "私",
+      "displayText": "わたし",
+      "kana": "わたし",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "我",
+        "我（男性自稱）",
+        "你",
+        "他；男朋友"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": {
+        "word": "私",
+        "kana": "わたし",
+        "meaning": "我"
+      },
+      "explanation": "「わたし」的中文意思是「我」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n5-002",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "2"
+      ],
+      "originalText": "僕",
+      "displayText": "ぼく",
+      "kana": "ぼく",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "我",
+        "我（男性自稱）",
+        "你",
+        "他；男朋友"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": {
+        "word": "僕",
+        "kana": "ぼく",
+        "meaning": "我（男性自稱）"
+      },
+      "explanation": "「ぼく」的中文意思是「我（男性自稱）」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n5-003",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "3"
+      ],
+      "originalText": "あなた",
+      "displayText": "あなた",
+      "kana": "あなた",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "我",
+        "我（男性自稱）",
+        "你",
+        "他；男朋友"
+      ],
+      "answerIndex": 2,
+      "answerDisplay": {
+        "word": "あなた",
+        "kana": "あなた",
+        "meaning": "你"
+      },
+      "explanation": "「あなた」的中文意思是「你」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n5-004",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "4"
+      ],
+      "originalText": "彼",
+      "displayText": "かれ",
+      "kana": "かれ",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "我",
+        "我（男性自稱）",
+        "你",
+        "他；男朋友"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": {
+        "word": "彼",
+        "kana": "かれ",
+        "meaning": "他；男朋友"
+      },
+      "explanation": "「かれ」的中文意思是「他；男朋友」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n5-005",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "5"
+      ],
+      "originalText": "彼女",
+      "displayText": "かのじょ",
+      "kana": "かのじょ",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "她；女朋友",
+        "我",
+        "我（男性自稱）",
+        "你"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": {
+        "word": "彼女",
+        "kana": "かのじょ",
+        "meaning": "她；女朋友"
+      },
+      "explanation": "「かのじょ」的中文意思是「她；女朋友」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n5-006",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "6"
+      ],
+      "originalText": "これ",
+      "displayText": "これ",
+      "kana": "これ",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "我",
+        "這個",
+        "我（男性自稱）",
+        "你"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": {
+        "word": "これ",
+        "kana": "これ",
+        "meaning": "這個"
+      },
+      "explanation": "「これ」的中文意思是「這個」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n5-007",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "7"
+      ],
+      "originalText": "それ",
+      "displayText": "それ",
+      "kana": "それ",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "我",
+        "我（男性自稱）",
+        "那個",
+        "你"
+      ],
+      "answerIndex": 2,
+      "answerDisplay": {
+        "word": "それ",
+        "kana": "それ",
+        "meaning": "那個"
+      },
+      "explanation": "「それ」的中文意思是「那個」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n5-008",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "8"
+      ],
+      "originalText": "あれ",
+      "displayText": "あれ",
+      "kana": "あれ",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "我",
+        "我（男性自稱）",
+        "你",
+        "那個（遠方）"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": {
+        "word": "あれ",
+        "kana": "あれ",
+        "meaning": "那個（遠方）"
+      },
+      "explanation": "「あれ」的中文意思是「那個（遠方）」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n5-009",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "9"
+      ],
+      "originalText": "どれ",
+      "displayText": "どれ",
+      "kana": "どれ",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "哪一個",
+        "我",
+        "我（男性自稱）",
+        "你"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": {
+        "word": "どれ",
+        "kana": "どれ",
+        "meaning": "哪一個"
+      },
+      "explanation": "「どれ」的中文意思是「哪一個」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n5-010",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "10"
+      ],
+      "originalText": "ここ",
+      "displayText": "ここ",
+      "kana": "ここ",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "我",
+        "這裡",
+        "我（男性自稱）",
+        "你"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": {
+        "word": "ここ",
+        "kana": "ここ",
+        "meaning": "這裡"
+      },
+      "explanation": "「ここ」的中文意思是「這裡」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n4-001",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1001"
+      ],
+      "originalText": "謝る",
+      "displayText": "あやまる",
+      "kana": "あやまる",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "道歉",
+        "祈禱",
+        "慶祝；祝賀",
+        "懷疑"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": {
+        "word": "謝る",
+        "kana": "あやまる",
+        "meaning": "道歉"
+      },
+      "explanation": "「あやまる」的中文意思是「道歉」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n4-002",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1002"
+      ],
+      "originalText": "祈る",
+      "displayText": "いのる",
+      "kana": "いのる",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "道歉",
+        "祈禱",
+        "慶祝；祝賀",
+        "懷疑"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": {
+        "word": "祈る",
+        "kana": "いのる",
+        "meaning": "祈禱"
+      },
+      "explanation": "「いのる」的中文意思是「祈禱」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n4-003",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1003"
+      ],
+      "originalText": "祝う",
+      "displayText": "いわう",
+      "kana": "いわう",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "道歉",
+        "祈禱",
+        "慶祝；祝賀",
+        "懷疑"
+      ],
+      "answerIndex": 2,
+      "answerDisplay": {
+        "word": "祝う",
+        "kana": "いわう",
+        "meaning": "慶祝；祝賀"
+      },
+      "explanation": "「いわう」的中文意思是「慶祝；祝賀」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n4-004",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1004"
+      ],
+      "originalText": "疑う",
+      "displayText": "うたがう",
+      "kana": "うたがう",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "道歉",
+        "祈禱",
+        "慶祝；祝賀",
+        "懷疑"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": {
+        "word": "疑う",
+        "kana": "うたがう",
+        "meaning": "懷疑"
+      },
+      "explanation": "「うたがう」的中文意思是「懷疑」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n4-005",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1005"
+      ],
+      "originalText": "移る",
+      "displayText": "うつる",
+      "kana": "うつる",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "搬移；轉移",
+        "道歉",
+        "祈禱",
+        "慶祝；祝賀"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": {
+        "word": "移る",
+        "kana": "うつる",
+        "meaning": "搬移；轉移"
+      },
+      "explanation": "「うつる」的中文意思是「搬移；轉移」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n4-006",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1006"
+      ],
+      "originalText": "選ぶ",
+      "displayText": "えらぶ",
+      "kana": "えらぶ",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "道歉",
+        "選擇",
+        "祈禱",
+        "慶祝；祝賀"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": {
+        "word": "選ぶ",
+        "kana": "えらぶ",
+        "meaning": "選擇"
+      },
+      "explanation": "「えらぶ」的中文意思是「選擇」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n4-007",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1007"
+      ],
+      "originalText": "起こる",
+      "displayText": "おこる",
+      "kana": "おこる",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "道歉",
+        "祈禱",
+        "發生",
+        "慶祝；祝賀"
+      ],
+      "answerIndex": 2,
+      "answerDisplay": {
+        "word": "起こる",
+        "kana": "おこる",
+        "meaning": "發生"
+      },
+      "explanation": "「おこる」的中文意思是「發生」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n4-008",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1008"
+      ],
+      "originalText": "怒る",
+      "displayText": "おこる",
+      "kana": "おこる",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "道歉",
+        "祈禱",
+        "慶祝；祝賀",
+        "生氣"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": {
+        "word": "怒る",
+        "kana": "おこる",
+        "meaning": "生氣"
+      },
+      "explanation": "「おこる」的中文意思是「生氣」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n4-009",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1009"
+      ],
+      "originalText": "落とす",
+      "displayText": "おとす",
+      "kana": "おとす",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "道歉",
+        "祈禱",
+        "弄掉；遺失",
+        "慶祝；祝賀"
+      ],
+      "answerIndex": 2,
+      "answerDisplay": {
+        "word": "落とす",
+        "kana": "おとす",
+        "meaning": "弄掉；遺失"
+      },
+      "explanation": "「おとす」的中文意思是「弄掉；遺失」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n4-010",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1010"
+      ],
+      "originalText": "踊る",
+      "displayText": "おどる",
+      "kana": "おどる",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "道歉",
+        "祈禱",
+        "慶祝；祝賀",
+        "跳舞"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": {
+        "word": "踊る",
+        "kana": "おどる",
+        "meaning": "跳舞"
+      },
+      "explanation": "「おどる」的中文意思是「跳舞」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-meaning-n5-001",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "meaning",
+      "sourceIds": [
+        "n5-grammar-001"
+      ],
+      "originalText": "は",
+      "displayText": "は",
+      "kana": "は",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "提示主題，表示接下來要說明的是什麼。",
+        "標示主語，或用來強調新資訊。",
+        "標示動作的受詞。",
+        "表示動作發生的具體時間。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": {
+        "grammar": "は",
+        "kana": "は",
+        "meaning": "提示主題，表示接下來要說明的是什麼。",
+        "structure": "名詞 + は + 說明"
+      },
+      "explanation": "「は」表示「提示主題，表示接下來要說明的是什麼。」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-meaning-n5-002",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "meaning",
+      "sourceIds": [
+        "n5-grammar-002"
+      ],
+      "originalText": "が",
+      "displayText": "が",
+      "kana": "が",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "提示主題，表示接下來要說明的是什麼。",
+        "標示主語，或用來強調新資訊。",
+        "標示動作的受詞。",
+        "表示動作發生的具體時間。"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": {
+        "grammar": "が",
+        "kana": "が",
+        "meaning": "標示主語，或用來強調新資訊。",
+        "structure": "名詞 + が + 動詞／形容詞"
+      },
+      "explanation": "「が」表示「標示主語，或用來強調新資訊。」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-meaning-n5-003",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "meaning",
+      "sourceIds": [
+        "n5-grammar-003"
+      ],
+      "originalText": "を",
+      "displayText": "を",
+      "kana": "を",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "提示主題，表示接下來要說明的是什麼。",
+        "標示主語，或用來強調新資訊。",
+        "標示動作的受詞。",
+        "表示動作發生的具體時間。"
+      ],
+      "answerIndex": 2,
+      "answerDisplay": {
+        "grammar": "を",
+        "kana": "を",
+        "meaning": "標示動作的受詞。",
+        "structure": "名詞 + を + 他動詞"
+      },
+      "explanation": "「を」表示「標示動作的受詞。」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-meaning-n5-004",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "meaning",
+      "sourceIds": [
+        "n5-grammar-004"
+      ],
+      "originalText": "に（時間）",
+      "displayText": "に",
+      "kana": "に",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "提示主題，表示接下來要說明的是什麼。",
+        "標示主語，或用來強調新資訊。",
+        "標示動作的受詞。",
+        "表示動作發生的具體時間。"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": {
+        "grammar": "に（時間）",
+        "kana": "に",
+        "meaning": "表示動作發生的具體時間。",
+        "structure": "時間名詞 + に + 動詞"
+      },
+      "explanation": "「に」表示「表示動作發生的具體時間。」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-meaning-n5-005",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "meaning",
+      "sourceIds": [
+        "n5-grammar-005"
+      ],
+      "originalText": "に（目的地）",
+      "displayText": "に",
+      "kana": "に",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "表示移動的目的地或到達點。",
+        "提示主題，表示接下來要說明的是什麼。",
+        "標示主語，或用來強調新資訊。",
+        "標示動作的受詞。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": {
+        "grammar": "に（目的地）",
+        "kana": "に",
+        "meaning": "表示移動的目的地或到達點。",
+        "structure": "地點 + に + 行きます／来ます／帰ります"
+      },
+      "explanation": "「に」表示「表示移動的目的地或到達點。」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-cloze-n5-001",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "cloze",
+      "sourceIds": [
+        "n5-grammar-001"
+      ],
+      "originalText": "私＿＿学生です。",
+      "displayText": "わたし＿＿がくせいです。",
+      "kana": "わたし＿＿がくせいです。",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "は",
+        "が",
+        "を",
+        "に"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": {
+        "grammar": "は",
+        "kana": "は",
+        "answer": "は",
+        "meaning": "我是學生。",
+        "structure": "名詞 + は + 說明"
+      },
+      "explanation": "「は」用來提示主題，這裡是在說明「我」是學生。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-cloze-n5-002",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "cloze",
+      "sourceIds": [
+        "n5-grammar-002"
+      ],
+      "originalText": "雨＿＿降っています。",
+      "displayText": "あめ＿＿ふっています。",
+      "kana": "あめ＿＿ふっています。",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "は",
+        "が",
+        "を",
+        "で"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": {
+        "grammar": "が",
+        "kana": "が",
+        "answer": "が",
+        "meaning": "正在下雨。",
+        "structure": "名詞 + が + 動詞／形容詞"
+      },
+      "explanation": "「が」標示主語，這裡表示下雨的主體是「雨」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-cloze-n5-003",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "cloze",
+      "sourceIds": [
+        "n5-grammar-003"
+      ],
+      "originalText": "水＿＿飲みます。",
+      "displayText": "みず＿＿のみます。",
+      "kana": "みず＿＿のみます。",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "が",
+        "に",
+        "を",
+        "へ"
+      ],
+      "answerIndex": 2,
+      "answerDisplay": {
+        "grammar": "を",
+        "kana": "を",
+        "answer": "を",
+        "meaning": "我喝水。",
+        "structure": "名詞 + を + 他動詞"
+      },
+      "explanation": "「を」標示動作的受詞，喝的對象是「水」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-cloze-n5-004",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "cloze",
+      "sourceIds": [
+        "n5-grammar-004"
+      ],
+      "originalText": "七時＿＿起きます。",
+      "displayText": "しちじ＿＿おきます。",
+      "kana": "しちじ＿＿おきます。",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "で",
+        "へ",
+        "から",
+        "に"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": {
+        "grammar": "に（時間）",
+        "kana": "に",
+        "answer": "に",
+        "meaning": "我七點起床。",
+        "structure": "時間名詞 + に + 動詞"
+      },
+      "explanation": "具體時間後面常接「に」，表示動作發生的時間。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-cloze-n5-005",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "cloze",
+      "sourceIds": [
+        "n5-grammar-006"
+      ],
+      "originalText": "日本＿＿行きます。",
+      "displayText": "にほん＿＿いきます。",
+      "kana": "にほん＿＿いきます。",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "を",
+        "へ",
+        "で",
+        "が"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": {
+        "grammar": "へ",
+        "kana": "へ",
+        "answer": "へ",
+        "meaning": "我去日本。",
+        "structure": "地點 + へ + 行きます／来ます／帰ります"
+      },
+      "explanation": "「へ」表示移動方向，這裡表示往日本去。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-meaning-n4-001",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "meaning",
+      "sourceIds": [
+        "n4-grammar-051"
+      ],
+      "originalText": "〜始める",
+      "displayText": "はじめる",
+      "kana": "はじめる",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "開始……。",
+        "已經……好；表示某事被事先處理好。",
+        "事先……；先做好……。",
+        "做完……；不小心……。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": {
+        "grammar": "〜始める",
+        "kana": "はじめる",
+        "meaning": "開始……。",
+        "structure": "動詞ます形去掉ます + 始める"
+      },
+      "explanation": "「はじめる」表示「開始……。」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-meaning-n4-002",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "meaning",
+      "sourceIds": [
+        "n4-grammar-052"
+      ],
+      "originalText": "〜てある",
+      "displayText": "てある",
+      "kana": "てある",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "開始……。",
+        "已經……好；表示某事被事先處理好。",
+        "事先……；先做好……。",
+        "做完……；不小心……。"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": {
+        "grammar": "〜てある",
+        "kana": "てある",
+        "meaning": "已經……好；表示某事被事先處理好。",
+        "structure": "他動詞て形 + ある"
+      },
+      "explanation": "「てある」表示「已經……好；表示某事被事先處理好。」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-meaning-n4-003",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "meaning",
+      "sourceIds": [
+        "n4-grammar-053"
+      ],
+      "originalText": "〜ておく",
+      "displayText": "ておく",
+      "kana": "ておく",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "開始……。",
+        "已經……好；表示某事被事先處理好。",
+        "事先……；先做好……。",
+        "做完……；不小心……。"
+      ],
+      "answerIndex": 2,
+      "answerDisplay": {
+        "grammar": "〜ておく",
+        "kana": "ておく",
+        "meaning": "事先……；先做好……。",
+        "structure": "動詞て形 + おく"
+      },
+      "explanation": "「ておく」表示「事先……；先做好……。」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-meaning-n4-004",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "meaning",
+      "sourceIds": [
+        "n4-grammar-054"
+      ],
+      "originalText": "〜てしまう",
+      "displayText": "てしまう",
+      "kana": "てしまう",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "開始……。",
+        "已經……好；表示某事被事先處理好。",
+        "事先……；先做好……。",
+        "做完……；不小心……。"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": {
+        "grammar": "〜てしまう",
+        "kana": "てしまう",
+        "meaning": "做完……；不小心……。",
+        "structure": "動詞て形 + しまう"
+      },
+      "explanation": "「てしまう」表示「做完……；不小心……。」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-meaning-n4-005",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "meaning",
+      "sourceIds": [
+        "n4-grammar-055"
+      ],
+      "originalText": "〜ながら",
+      "displayText": "ながら",
+      "kana": "ながら",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "開始……。",
+        "已經……好；表示某事被事先處理好。",
+        "一邊……一邊……。",
+        "事先……；先做好……。"
+      ],
+      "answerIndex": 2,
+      "answerDisplay": {
+        "grammar": "〜ながら",
+        "kana": "ながら",
+        "meaning": "一邊……一邊……。",
+        "structure": "動詞ます形去掉ます + ながら"
+      },
+      "explanation": "「ながら」表示「一邊……一邊……。」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-cloze-n4-001",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "cloze",
+      "sourceIds": [
+        "n4-grammar-241"
+      ],
+      "originalText": "この料理を少し食べ＿＿。",
+      "displayText": "このりょうりをすこしたべ＿＿。",
+      "kana": "このりょうりをすこしたべ＿＿。",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "てみます",
+        "ています",
+        "てあります",
+        "ていきます"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": {
+        "grammar": "〜てみる",
+        "kana": "てみる",
+        "answer": "てみます",
+        "meaning": "我試著吃一點這道菜。",
+        "structure": "動詞て形 + みる"
+      },
+      "explanation": "表示試著做某事，用「動詞て形 + みる」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-cloze-n4-002",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "cloze",
+      "sourceIds": [
+        "n4-grammar-242"
+      ],
+      "originalText": "町はこれからもっと便利になっ＿＿でしょう。",
+      "displayText": "まちはこれからもっとべんりになっ＿＿でしょう。",
+      "kana": "まちはこれからもっとべんりになっ＿＿でしょう。",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "てくる",
+        "ていく",
+        "てみる",
+        "てある"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": {
+        "grammar": "〜ていく",
+        "kana": "ていく",
+        "answer": "ていく",
+        "meaning": "這個城鎮今後會變得更方便吧。",
+        "structure": "動詞て形 + いく"
+      },
+      "explanation": "從現在往未來變化時，用「〜ていく」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-cloze-n4-003",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "cloze",
+      "sourceIds": [
+        "n4-grammar-243"
+      ],
+      "originalText": "少し寒くなっ＿＿ました。",
+      "displayText": "すこしさむくなっ＿＿ました。",
+      "kana": "すこしさむくなっ＿＿ました。",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "ていき",
+        "てみ",
+        "てき",
+        "てあり"
+      ],
+      "answerIndex": 2,
+      "answerDisplay": {
+        "grammar": "〜てくる",
+        "kana": "てくる",
+        "answer": "てき",
+        "meaning": "天氣變得有點冷了。",
+        "structure": "動詞て形 + くる"
+      },
+      "explanation": "「なってきました」表示變化到現在逐漸出現。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-cloze-n4-004",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "cloze",
+      "sourceIds": [
+        "n4-grammar-244"
+      ],
+      "originalText": "電気が消え＿＿。",
+      "displayText": "でんきがきえ＿＿。",
+      "kana": "でんきがきえ＿＿。",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "てみます",
+        "ていきます",
+        "てください",
+        "ています"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": {
+        "grammar": "〜ている（結果状態）",
+        "kana": "ている",
+        "answer": "ています",
+        "meaning": "電燈關著。",
+        "structure": "自動詞て形 + いる"
+      },
+      "explanation": "「消えている」表示燈已關並維持該狀態。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-grammar-cloze-n4-005",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "cloze",
+      "sourceIds": [
+        "n4-grammar-246"
+      ],
+      "originalText": "傘を持た＿＿出ました。",
+      "displayText": "かさをもた＿＿でました。",
+      "kana": "かさをもた＿＿でました。",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "ないと",
+        "ながら",
+        "ために",
+        "ずに"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": {
+        "grammar": "〜ずに",
+        "kana": "ずに",
+        "answer": "ずに",
+        "meaning": "我沒帶傘就出門了。",
+        "structure": "動詞ない形去い + ずに／する→せずに"
+      },
+      "explanation": "表示不做「持つ」就出門，用「持たずに」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    }
+  ]
+}
