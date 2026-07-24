@@ -7,7 +7,7 @@ const html = read('japanese/index.html');
 const script = read('script.js');
 const style = read('style.css');
 const vocab = JSON.parse(read('vocabulary.json'));
-assert(/\.\.\/script\.js\?v=(2\.[89]|3\.[0123])/.test(html) && /\.\.\/style\.css\?v=(2\.8|2\.9)/.test(html), 'cache query must be v=2.8 or later compatible');
+assert(/\.\.\/script\.js\?v=(2\.[89]|3\.[01234])/.test(html) && /\.\.\/style\.css\?v=(2\.8|2\.9)/.test(html), 'cache query must be v=2.8 or later compatible');
 assert(html.includes('data-japanese-layout-version="2.3"'), 'layout version stays 2.3');
 ['單字','閱讀','文法','聽力','複習中心'].forEach((label)=>assert(html.includes(`>${label}<`), `missing entry ${label}`));
 assert(/data-japanese-entry="reviewMenu"/.test(html) && html.includes('查看生字本與錯題本，整理需要再次複習的內容。') && html.includes('開始複習'), 'review home entry missing');
@@ -25,8 +25,7 @@ assert(script.includes('clearJapaneseVocabularyBook();') && !/clearJapaneseVocab
 assert(script.includes('clearJapaneseMistakeBook();') && !/clearJapaneseMistakeBook\(\)[\s\S]{0,120}clearJapaneseVocabularyBook/.test(script), 'mistake clear isolation missing');
 assert(script.includes('getJapaneseVocabularyBookStorageNotice()') && script.includes('japaneseMistakeBookStorageFallback ? "此瀏覽器無法永久保存，資料只保留到關閉頁面"'), 'fallback notices missing');
 assert(script.includes('createElement') && script.includes('textContent') && script.includes('replaceChildren'), 'safe DOM APIs missing');
-assert(!/JLPT 模擬|熟練度|弱點排行|統計圖表|間隔複習|雲端同步/.test(html + style), 'forbidden future UI found');
-assert(!/data-japanese-entry="[^"]*jlpt|jlpt-simulation/i.test(html), 'JLPT entry found');
+assert(!/熟練度|弱點排行|統計圖表|間隔複習|雲端同步/.test(html + style), 'forbidden future UI found');
 assert(style.includes('@media (max-width: 640px)') && style.includes('grid-template-columns: 1fr') && !/width:\s*1200px/.test(style), 'mobile responsive rules missing');
 const counts = vocab.reduce((acc, x)=>{acc.total++; acc[x.level]=(acc[x.level]||0)+1; return acc;}, {total:0});
 assert(counts.total === 3241 && counts.N5 === 1021 && counts.N4 === 2220, 'vocabulary baseline count changed');

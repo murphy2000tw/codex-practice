@@ -38,7 +38,7 @@ requireSnippet(html, 'id="japaneseReviewPanel"', 'review view wrapper');
 requireSnippet(html, 'data-japanese-back-home', 'feature-page back-home button');
 requireSnippet(html, 'data-japanese-layout-version="2.3"', 'page version marker');
 requireSnippet(html, 'name="japanese-layout-version" content="2.3"', 'meta version marker');
-if (!/\.\.\/script\.js\?v=(2\.[89]|3\.[0123])/.test(html)) failures.push('Missing JS cache-busting version: ../script.js?v=2.8 or v=2.9');
+if (!/\.\.\/script\.js\?v=(2\.[89]|3\.[01234])/.test(html)) failures.push('Missing JS cache-busting version: ../script.js?v=2.8 or v=2.9');
 if (!/\.\.\/style\.css\?v=(2\.8|2\.9)/.test(html)) failures.push('Missing CSS cache-busting version: ../style.css?v=2.8 or v=2.9');
 
 requireSnippet(script, 'let currentJapaneseView = "home"', 'current view state');
@@ -54,7 +54,7 @@ const vocabulary = extractById(html, 'japaneseMainContent');
 const reading = extractById(html, 'japaneseReadingPanel');
 const listening = extractById(html, 'japaneseListeningPanel');
 
-if (!root.includes('id="japaneseHomeContent"') || !root.includes('id="japaneseMainContent"') || !root.includes('id="japaneseReadingPanel"') || !root.includes('id="japaneseListeningPanel"') || !root.includes('id="japaneseReviewPanel"')) {
+if (!root.includes('id="japaneseHomeContent"') || !root.includes('id="japaneseMainContent"') || !root.includes('id="japaneseReadingPanel"') || !root.includes('id="japaneseListeningPanel"') || !root.includes('id="japaneseReviewPanel"') || !root.includes('id="japaneseJlptPanel"')) {
   failures.push('Japanese view root must initially contain home, vocabulary, reading, listening, and review top-level views so the renderer can move exactly one view into the root.');
 }
 
@@ -91,10 +91,10 @@ if (listening.includes('data-japanese-entry=') || listening.includes('日文學�
 });
 
 const navigableEntries = [...home.matchAll(/data-japanese-entry="([^"]+)"/g)].map((match) => match[1]);
-const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'grammar', 'reading', 'listening', 'reviewMenu'].includes(entry));
+const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'grammar', 'reading', 'listening', 'reviewMenu', 'jlptMock'].includes(entry));
 if (unexpectedEntries.length > 0) failures.push(`Unexpected navigable Japanese entries: ${unexpectedEntries.join(', ')}`);
 if (!home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"') || !home.includes('data-japanese-entry="grammar"') || !home.includes('data-japanese-entry="listening"') || !home.includes('data-japanese-entry="reviewMenu"')) {
-  failures.push('Japanese home must expose vocabulary, reading, grammar, listening, and review menu entries.');
+  failures.push('Japanese home must expose vocabulary, reading, grammar, listening, review menu, and JLPT mock entries.');
 }
 
 const renderBody = script.match(/function renderJapaneseView\(view\) \{[\s\S]*?\n\}/)?.[0] ?? '';

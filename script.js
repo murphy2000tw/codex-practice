@@ -567,6 +567,11 @@ const japaneseHomeContent = document.querySelector("#japaneseHomeContent");
 const japaneseMainContent = document.querySelector("#japaneseMainContent");
 const japaneseReadingPanel = document.querySelector("#japaneseReadingPanel");
 const japaneseReviewPanel = document.querySelector("#japaneseReviewPanel");
+const japaneseJlptPanel = document.querySelector("#japaneseJlptPanel");
+const japaneseJlptLevelSetup = document.querySelector("#japaneseJlptLevelSetup");
+const japaneseJlptStatus = document.querySelector("#japaneseJlptStatus");
+const japaneseJlptLevelButtons = document.querySelectorAll("[data-japanese-jlpt-level]");
+const backToJapaneseHomeFromJlptButton = document.querySelector("#backToJapaneseHomeFromJlpt");
 const japaneseReviewMenuView = document.querySelector("#japaneseReviewMenuView");
 const japaneseReviewContent = document.querySelector("#japaneseReviewContent");
 const japaneseListeningPanel = document.querySelector("#japaneseListeningPanel");
@@ -634,6 +639,7 @@ let currentSentenceCompositionQuizAnswer = null;
 let sentenceCompositionQuizAnswers = [];
 let sentenceCompositionQuizCompleted = false;
 let sentenceCompositionQuizLocked = false;
+let selectedJapaneseJlptLevel = null;
 
 function isJapaneseHomeTab() {
   return currentJapaneseView === "home";
@@ -657,7 +663,7 @@ function updateModeButtonsForJapaneseTab() {
 
 function normalizeJapaneseView(view) {
   if (view === "vocab") return "vocabulary";
-  if (["home", "vocabulary", "grammar", "reading", "listening", "listeningMenu", "listeningPractice", "listeningQuiz", "reviewMenu", "vocabularyBook", "mistakeBook"].includes(view)) return view;
+  if (["home", "vocabulary", "grammar", "reading", "listening", "listeningMenu", "listeningPractice", "listeningQuiz", "reviewMenu", "vocabularyBook", "mistakeBook", "jlptMock"].includes(view)) return view;
   return "home";
 }
 
@@ -667,6 +673,7 @@ function getJapaneseViewElement(view) {
   if (view === "reading") return japaneseReadingPanel;
   if (["listening", "listeningMenu", "listeningPractice", "listeningQuiz"].includes(view)) return japaneseListeningPanel;
   if (["reviewMenu", "vocabularyBook", "mistakeBook"].includes(view)) return japaneseReviewPanel;
+  if (view === "jlptMock") return japaneseJlptPanel;
   return japaneseHomeContent;
 }
 
@@ -695,8 +702,10 @@ function renderJapaneseView(view) {
   if (japaneseReadingPanel) japaneseReadingPanel.hidden = panelView !== "reading";
   if (japaneseListeningPanel) japaneseListeningPanel.hidden = panelView !== "listening";
   if (japaneseReviewPanel) japaneseReviewPanel.hidden = panelView !== "review";
+  if (japaneseJlptPanel) japaneseJlptPanel.hidden = panelView !== "jlptMock";
   if (panelView !== "review") resetJapaneseReviewPanel();
   if (panelView !== "grammar") resetJapaneseSentenceCompositionState();
+  if (panelView !== "jlptMock") resetJapaneseJlptState();
 
   japaneseTabButtons.forEach((button) => {
     const isActive = button.dataset.japaneseTab === panelView;
@@ -728,7 +737,68 @@ async function switchJapaneseTab(tab) {
     initializeListeningPanel();
   } else if (["reviewMenu", "vocabularyBook", "mistakeBook"].includes(normalizedTab)) {
     await renderJapaneseReviewView(normalizedTab);
+  } else if (normalizedTab === "jlptMock") {
+    renderJapaneseJlptPanel();
   }
+}
+
+const JAPANESE_JLPT_STATUS_MESSAGES = Object.freeze({
+  N5: [
+    ["單字", "現有資料已盤點，正式 JLPT 題面尚未建立"],
+    ["文法", "現有資料已盤點，正式 JLPT 題面尚未建立"],
+    ["閱讀", "目前缺少足夠的 N5 閱讀題庫"],
+    ["聽力", "現有資料已盤點，正式 JLPT 題面尚未建立"],
+  ],
+  N4: [
+    ["單字", "現有資料已盤點，正式 JLPT 題面尚未建立"],
+    ["文法", "現有資料已盤點，正式 JLPT 題面尚未建立"],
+    ["閱讀", "現有 N4 閱讀資料已盤點，正式 JLPT 題面尚未建立"],
+    ["聽力", "現有資料已盤點，正式 JLPT 題面尚未建立"],
+  ],
+});
+
+function resetJapaneseJlptState() {
+  selectedJapaneseJlptLevel = null;
+  japaneseJlptLevelButtons.forEach((button) => {
+    button.classList.remove("is-active");
+    button.setAttribute("aria-pressed", "false");
+  });
+  if (japaneseJlptStatus) japaneseJlptStatus.replaceChildren();
+}
+
+function renderJapaneseJlptPanel() {
+  japaneseJlptLevelButtons.forEach((button) => {
+    const isSelected = button.dataset.japaneseJlptLevel === selectedJapaneseJlptLevel;
+    button.classList.toggle("is-active", isSelected);
+    button.setAttribute("aria-pressed", String(isSelected));
+  });
+
+  if (!japaneseJlptStatus) return;
+  japaneseJlptStatus.replaceChildren();
+
+  if (!selectedJapaneseJlptLevel) {
+    const prompt = document.createElement("p");
+    prompt.textContent = "請選擇 N5 或 N4 查看目前可用資料狀態。";
+    japaneseJlptStatus.appendChild(prompt);
+    return;
+  }
+
+  const heading = document.createElement("p");
+  heading.className = "sentence-composition-mode";
+  heading.textContent = `已選擇 ${selectedJapaneseJlptLevel}`;
+  const list = document.createElement("ul");
+  JAPANESE_JLPT_STATUS_MESSAGES[selectedJapaneseJlptLevel].forEach(([label, message]) => {
+    const item = document.createElement("li");
+    item.textContent = `${label}：${message}`;
+    list.appendChild(item);
+  });
+  japaneseJlptStatus.append(heading, list);
+}
+
+function selectJapaneseJlptLevel(level) {
+  if (!Object.hasOwn(JAPANESE_JLPT_STATUS_MESSAGES, level)) return;
+  selectedJapaneseJlptLevel = level;
+  renderJapaneseJlptPanel();
 }
 
 window.showJapaneseContentView = switchJapaneseTab;
@@ -2780,6 +2850,17 @@ japaneseEntryButtons.forEach((button) => {
     window.showJapaneseContentView(button.dataset.japaneseEntry);
   });
 });
+if (backToJapaneseHomeFromJlptButton) {
+  backToJapaneseHomeFromJlptButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    resetJapaneseJlptState();
+    window.showJapaneseContentView("home");
+  });
+}
+japaneseJlptLevelButtons.forEach((button) => {
+  button.addEventListener("click", () => selectJapaneseJlptLevel(button.dataset.japaneseJlptLevel));
+});
+
 japaneseBackHomeButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     event.preventDefault();

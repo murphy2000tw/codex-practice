@@ -173,7 +173,7 @@ function checkStorageIsolation() {
 function checkUiAndBaselines() {
   assert(/<meta name="japanese-layout-version" content="2\.3">/.test(html), 'layout version meta must remain 2.3');
   assert(/data-japanese-layout-version="2\.3"/.test(html), 'layout version body marker must remain 2.3');
-  assert([...html.matchAll(/data-japanese-entry="([^"]+)"/g)].map((m) => m[1]).join(',') === 'vocabulary,reading,grammar,listening,reviewMenu', 'home entries must remain original four plus reviewMenu last');
+  assert([...html.matchAll(/data-japanese-entry="([^"]+)"/g)].map((m) => m[1]).join(',') === 'vocabulary,reading,grammar,listening,reviewMenu,jlptMock', 'home entries must remain original five plus JLPT mock last');
   ['home','vocabulary','grammar','reading','listening','listeningMenu','listeningPractice','listeningQuiz','reviewMenu','vocabularyBook','mistakeBook'].forEach((view) => assert(script.includes(`"${view}"`), `view isolation: missing ${view}`));
   assert(/function normalizeJapaneseView\(view\)[\s\S]*return "home"/.test(script), 'view isolation: unknown view must safely return home');
   assert(/if \(panelView !== "review"\) resetJapaneseReviewPanel\(\)/.test(script), 'view isolation: leaving review/home must reset review panel');
@@ -183,7 +183,7 @@ function checkUiAndBaselines() {
   assert(!/innerHTML\s*=\s*[^;]*(itemsById|userAnswer|correctAnswer|vocabularyId|japanese_vocabulary_book_v1|japanese_mistake_book_v1)/.test(script), 'storage or answer data must not be inserted by innerHTML');
   assert(/\.japanese-review-book[\s\S]*overflow-wrap:\s*anywhere/.test(style), 'mobile CSS: review book content must wrap long text');
   assert(/padding-bottom:\s*calc\([^)]*env\(safe-area-inset-bottom/.test(style), 'mobile CSS: safe-area bottom padding must be present');
-  assert(!/JLPT 模擬|jlpt-simulation|熟練度|弱點排行|間隔複習|統計圖表|每日提醒|雲端同步|帳號系統|匯出|匯入/i.test(html + style + script), 'forbidden future feature text/code found');
+  assert(!/熟練度|弱點排行|間隔複習|統計圖表|每日提醒|雲端同步|帳號系統|匯出|匯入/i.test(html + style + script), 'forbidden future feature text/code found');
   const n5 = vocabulary.filter((item) => item.level === 'N5').length;
   const n4 = vocabulary.filter((item) => item.level === 'N4').length;
   assert(vocabulary.length === 3241 && n5 === 1021 && n4 === 2220, `vocabulary baseline mismatch total=${vocabulary.length} N5=${n5} N4=${n4}`);
