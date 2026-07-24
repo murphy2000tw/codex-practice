@@ -53,20 +53,28 @@ for (const q of questions) {
   if (optionIndex >= 0) optionDist[optionIndex]++;
 }
 
-const allowedDataDiffId = 'sc-n5-001';
+const allowedDataDiffIds = new Set(['sc-n5-001', 'sc-n4-006']);
 for (const q of questions) {
   const base = baseById.get(q.id);
   if (!base) fail(`Question ${q.id} is new compared with PR #278`);
-  if (q.id !== allowedDataDiffId && !same(q, base)) fail(`Non-target question changed compared with PR #278: ${q.id}`);
+  if (!allowedDataDiffIds.has(q.id) && !same(q, base)) fail(`Non-target question changed compared with PR #278: ${q.id}`);
 }
 for (const base of baseQuestions) if (!questions.some((q) => q.id === base.id)) fail(`Question ${base.id} from PR #278 is missing`);
-const fixed = questions.find((q) => q.id === allowedDataDiffId);
-if (fixed) {
-  if (fixed.id !== 'sc-n5-001' || fixed.level !== 'N5') fail('sc-n5-001 id/level changed unexpectedly');
-  if (!same(fixed.correctOrder, ['a','b','c','d']) || fixed.starSlot !== 0) fail('sc-n5-001 correctOrder/starSlot changed unexpectedly');
-  if (fixed.before !== 'わたしは毎朝七時に' || fixed.after !== '。') fail('sc-n5-001 before/after not fixed as required');
-  if (!same(fixed.chunks.map((c) => [c.id, c.text]), [['a','起き'], ['b','て顔を'], ['d','ます'], ['c','洗い']])) fail('sc-n5-001 chunks do not match required split and ID order');
-  if (fixed.completeSentence !== 'わたしは毎朝七時に起きて顔を洗います。') fail('sc-n5-001 completeSentence changed unexpectedly');
+const fixedN5 = questions.find((q) => q.id === 'sc-n5-001');
+if (fixedN5) {
+  if (fixedN5.level !== 'N5') fail('sc-n5-001 level changed unexpectedly');
+  if (!same(fixedN5.correctOrder, ['a','b','c','d']) || fixedN5.starSlot !== 0) fail('sc-n5-001 correctOrder/starSlot changed unexpectedly');
+  if (fixedN5.before !== 'わたしは毎朝七時に' || fixedN5.after !== '。') fail('sc-n5-001 before/after not fixed as required');
+  if (!same(fixedN5.chunks.map((c) => [c.id, c.text]), [['a','起き'], ['b','て顔を'], ['d','ます'], ['c','洗い']])) fail('sc-n5-001 chunks do not match required split and ID order');
+  if (fixedN5.completeSentence !== 'わたしは毎朝七時に起きて顔を洗います。') fail('sc-n5-001 completeSentence changed unexpectedly');
+}
+const fixedN4 = questions.find((q) => q.id === 'sc-n4-006');
+if (fixedN4) {
+  if (fixedN4.level !== 'N4') fail('sc-n4-006 level changed unexpectedly');
+  if (!same(fixedN4.correctOrder, ['a','b','c','d']) || fixedN4.starSlot !== 1) fail('sc-n4-006 correctOrder/starSlot changed unexpectedly');
+  if (fixedN4.before !== '明日は朝早く' || fixedN4.after !== '。') fail('sc-n4-006 before/after not fixed as required');
+  if (!same(fixedN4.chunks.map((c) => [c.id, c.text]), [['a','起きて'], ['b','空港へ行く'], ['d','です'], ['c','予定']])) fail('sc-n4-006 chunks do not match required split and ID order');
+  if (fixedN4.completeSentence !== '明日は朝早く起きて空港へ行く予定です。') fail('sc-n4-006 completeSentence changed unexpectedly');
 }
 
 for (const prefix of ['sc-n5', 'sc-n4']) for (let i = 1; i <= 30; i++) if (!ids.has(`${prefix}-${String(i).padStart(3, '0')}`)) fail(`Missing sequential ID ${prefix}-${String(i).padStart(3, '0')}`);

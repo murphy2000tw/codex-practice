@@ -14,7 +14,7 @@ const assert = (ok, msg) => { if (!ok) failures.push(msg); };
 const required = ['id','level','before','after','slots','chunks','correctOrder','starSlot','completeSentence','kana','meaning','explanation','grammarIds','uniqueAnswerReviewed','reviewNote'];
 const grammarIds = new Set(grammar.map(g => g.id));
 const ambiguityFixIds = new Set(['sc-n5-004','sc-n5-005','sc-n4-001','sc-n5-015','sc-n5-029']);
-const finalAuditFixIds = new Set(['sc-n5-001']);
+const finalAuditFixIds = new Set(['sc-n5-001', 'sc-n4-006']);
 const ambiguityFixExpected = new Map(Object.entries({
   'sc-n5-004': { before:'田中さんは駅で先生に会', after:'。', chunks:[['a','って'],['c','に帰り'],['b','いっしょ'],['d','ました']], correctOrder:['a','b','c','d'], starSlot:3, completeSentence:'田中さんは駅で先生に会っていっしょに帰りました。' },
   'sc-n5-005': { before:'この店は安', after:'。', chunks:[['a','いです'],['b','が'],['d','ないです'],['c','あまり広く']], correctOrder:['a','b','c','d'], starSlot:0, completeSentence:'この店は安いですがあまり広くないです。' },
@@ -37,13 +37,25 @@ function assertAmbiguityFixShape(q) {
 
 
 function assertFinalAuditFixShape(q) {
-  assert(q.before === 'わたしは毎朝七時に', 'sc-n5-001: final-audit before changed');
-  assert(q.after === '。', 'sc-n5-001: final-audit after changed');
-  assert(q.completeSentence === 'わたしは毎朝七時に起きて顔を洗います。', 'sc-n5-001: final-audit completeSentence changed');
-  assert(sameJson(q.correctOrder, ['a','b','c','d']), 'sc-n5-001: final-audit correctOrder changed');
-  assert(q.starSlot === 0, 'sc-n5-001: final-audit starSlot changed');
-  assert(sameJson((q.chunks || []).map(c => [c.id, c.text]), [['a','起き'], ['b','て顔を'], ['d','ます'], ['c','洗い']]), 'sc-n5-001: final-audit chunks changed');
-  assert(/已重新檢查24種排列/.test(q.reviewNote || ''), 'sc-n5-001: final-audit reviewNote must document 24 permutations');
+  if (q.id === 'sc-n5-001') {
+    assert(q.before === 'わたしは毎朝七時に', 'sc-n5-001: final-audit before changed');
+    assert(q.after === '。', 'sc-n5-001: final-audit after changed');
+    assert(q.completeSentence === 'わたしは毎朝七時に起きて顔を洗います。', 'sc-n5-001: final-audit completeSentence changed');
+    assert(sameJson(q.correctOrder, ['a','b','c','d']), 'sc-n5-001: final-audit correctOrder changed');
+    assert(q.starSlot === 0, 'sc-n5-001: final-audit starSlot changed');
+    assert(sameJson((q.chunks || []).map(c => [c.id, c.text]), [['a','起き'], ['b','て顔を'], ['d','ます'], ['c','洗い']]), 'sc-n5-001: final-audit chunks changed');
+    assert(/已重新檢查24種排列/.test(q.reviewNote || ''), 'sc-n5-001: final-audit reviewNote must document 24 permutations');
+    return;
+  }
+  if (q.id === 'sc-n4-006') {
+    assert(q.before === '明日は朝早く', 'sc-n4-006: final-audit before changed');
+    assert(q.after === '。', 'sc-n4-006: final-audit after changed');
+    assert(q.completeSentence === '明日は朝早く起きて空港へ行く予定です。', 'sc-n4-006: final-audit completeSentence changed');
+    assert(sameJson(q.correctOrder, ['a','b','c','d']), 'sc-n4-006: final-audit correctOrder changed');
+    assert(q.starSlot === 1, 'sc-n4-006: final-audit starSlot changed');
+    assert(sameJson((q.chunks || []).map(c => [c.id, c.text]), [['a','起きて'], ['b','空港へ行く'], ['d','です'], ['c','予定']]), 'sc-n4-006: final-audit chunks changed');
+    assert(/已重新檢查24種排列/.test(q.reviewNote || ''), 'sc-n4-006: final-audit reviewNote must document 24 permutations');
+  }
 }
 
 assert(run('git merge-base --is-ancestor 8741b97b91561decbeb3218756e44f3641ea1b00 HEAD; echo $?') === '0', 'HEAD must contain PR #275 merge commit 8741b97b91561decbeb3218756e44f3641ea1b00');
