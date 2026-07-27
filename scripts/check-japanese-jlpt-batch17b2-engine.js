@@ -29,6 +29,14 @@ function ok(message) { console.log(`OK: ${message}`); }
 function git(args) { return cp.execFileSync('git', args, { cwd: ROOT, encoding: 'utf8' }).trim(); }
 function read(file) { return fs.readFileSync(path.join(ROOT, file), 'utf8'); }
 function requireText(source, value, message) { if (!source.includes(value)) fail(message); }
+function extractListeningQuestions(source, label) {
+  const declaration = 'const JAPANESE_LISTENING_QUESTIONS = [';
+  const start = source.indexOf(declaration);
+  if (start < 0) fail(`could not find JAPANESE_LISTENING_QUESTIONS declaration in ${label}`);
+  const end = source.indexOf('\n];', start + declaration.length);
+  if (end < 0) fail(`could not find complete JAPANESE_LISTENING_QUESTIONS array in ${label}`);
+  return source.slice(start, end + '\n];'.length);
+}
 
 try { cp.execFileSync('git', ['merge-base', '--is-ancestor', BASE, 'HEAD'], { cwd: ROOT }); }
 catch { fail(`HEAD does not contain ${BASE}`); }
@@ -50,6 +58,11 @@ ok('Batch 17B-1, source banks, and historical checkers are unchanged');
 
 const html = read('japanese/index.html');
 const script = read('script.js');
+const baseScript = cp.execFileSync('git', ['show', `${BASE}:script.js`], { cwd: ROOT, encoding: 'utf8' });
+const currentListeningQuestions = extractListeningQuestions(script, 'current script.js');
+const baseListeningQuestions = extractListeningQuestions(baseScript, `${BASE}:script.js`);
+if (currentListeningQuestions !== baseListeningQuestions) fail('JAPANESE_LISTENING_QUESTIONS changed from Batch 17B-1 base');
+ok('embedded Japanese listening question bank is unchanged from Batch 17B-1');
 requireText(html, 'japaneseJlptVocabularyGrammarQuestions.json?v=17b1', 'question bank cache URL is missing');
 requireText(html, '../script.js?v=3.5', 'script cache token must be 3.5');
 requireText(html, '../style.css?v=2.9', 'unchanged stylesheet cache token must remain 2.9');
