@@ -592,40 +592,6 @@
       "section": "vocabulary",
       "questionType": "meaning",
       "sourceIds": [
-        "1008"
-      ],
-      "originalText": "怒る",
-      "displayText": "おこる",
-      "kana": "おこる",
-      "rubyTerms": [],
-      "kanjiPolicy": "kana-replacement",
-      "options": [
-        "道歉",
-        "祈禱",
-        "慶祝；祝賀",
-        "生氣"
-      ],
-      "answerIndex": 3,
-      "answerDisplay": {
-        "word": "怒る",
-        "kana": "おこる",
-        "meaning": "生氣"
-      },
-      "explanation": "「おこる」的中文意思是「生氣」。",
-      "timeLimit": null,
-      "scoreWeight": 1,
-      "reviewTags": [
-        "batch17b1",
-        "derived",
-        "kana-replacement"
-      ]
-    },
-    {
-      "id": "jlpt-vocab-n4-009",
-      "level": "N4",
-      "section": "vocabulary",
-      "questionType": "meaning",
-      "sourceIds": [
         "1009"
       ],
       "originalText": "落とす",
@@ -636,10 +602,10 @@
       "options": [
         "道歉",
         "祈禱",
-        "弄掉；遺失",
-        "慶祝；祝賀"
+        "慶祝；祝賀",
+        "弄掉；遺失"
       ],
-      "answerIndex": 2,
+      "answerIndex": 3,
       "answerDisplay": {
         "word": "落とす",
         "kana": "おとす",
@@ -655,7 +621,7 @@
       ]
     },
     {
-      "id": "jlpt-vocab-n4-010",
+      "id": "jlpt-vocab-n4-009",
       "level": "N4",
       "section": "vocabulary",
       "questionType": "meaning",
@@ -670,16 +636,50 @@
       "options": [
         "道歉",
         "祈禱",
-        "慶祝；祝賀",
-        "跳舞"
+        "跳舞",
+        "慶祝；祝賀"
       ],
-      "answerIndex": 3,
+      "answerIndex": 2,
       "answerDisplay": {
         "word": "踊る",
         "kana": "おどる",
         "meaning": "跳舞"
       },
       "explanation": "「おどる」的中文意思是「跳舞」。",
+      "timeLimit": null,
+      "scoreWeight": 1,
+      "reviewTags": [
+        "batch17b1",
+        "derived",
+        "kana-replacement"
+      ]
+    },
+    {
+      "id": "jlpt-vocab-n4-010",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "meaning",
+      "sourceIds": [
+        "1011"
+      ],
+      "originalText": "驚く",
+      "displayText": "おどろく",
+      "kana": "おどろく",
+      "rubyTerms": [],
+      "kanjiPolicy": "kana-replacement",
+      "options": [
+        "道歉",
+        "祈禱",
+        "慶祝；祝賀",
+        "驚訝"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": {
+        "word": "驚く",
+        "kana": "おどろく",
+        "meaning": "驚訝"
+      },
+      "explanation": "「おどろく」的中文意思是「驚訝」。",
       "timeLimit": null,
       "scoreWeight": 1,
       "reviewTags": [
@@ -834,27 +834,27 @@
       "section": "grammar",
       "questionType": "meaning",
       "sourceIds": [
-        "n5-grammar-005"
+        "n5-grammar-006"
       ],
-      "originalText": "に（目的地）",
-      "displayText": "に",
-      "kana": "に",
+      "originalText": "へ",
+      "displayText": "へ",
+      "kana": "へ",
       "rubyTerms": [],
       "kanjiPolicy": "kana-replacement",
       "options": [
-        "表示移動的目的地或到達點。",
+        "表示移動方向。",
         "提示主題，表示接下來要說明的是什麼。",
         "標示主語，或用來強調新資訊。",
         "標示動作的受詞。"
       ],
       "answerIndex": 0,
       "answerDisplay": {
-        "grammar": "に（目的地）",
-        "kana": "に",
-        "meaning": "表示移動的目的地或到達點。",
-        "structure": "地點 + に + 行きます／来ます／帰ります"
+        "grammar": "へ",
+        "kana": "へ",
+        "meaning": "表示移動方向。",
+        "structure": "地點 + へ + 行きます／来ます／帰ります"
       },
-      "explanation": "「に」表示「表示移動的目的地或到達點。」。",
+      "explanation": "「へ」表示「表示移動方向。」。",
       "timeLimit": null,
       "scoreWeight": 1,
       "reviewTags": [
