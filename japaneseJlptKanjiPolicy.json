@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "17b1-internal-v1",
+  "lastUpdated": "2026-07-24",
+  "disclaimer": "This is an internal, non-official display policy for JLPT-style practice content on this site. It is not an official JLPT kanji list, question bank, scoring policy, or certification of JLPT difficulty.",
+  "allowedPolicies": [
+    "level-native",
+    "ruby-required",
+    "kana-replacement",
+    "excluded"
+  ],
+  "fallbackOrder": [
+    "kana-replacement",
+    "ruby-required",
+    "excluded"
+  ],
+  "levels": {
+    "N5": {
+      "kanjiAllowList": [],
+      "reviewStatus": "pending",
+      "reviewNote": "Batch 17B-1 has not completed trusted per-kanji human level review. Initial derived questions must use kana-replacement and must not use level-native display."
+    },
+    "N4": {
+      "kanjiAllowList": [],
+      "reviewStatus": "pending",
+      "reviewNote": "Batch 17B-1 has not completed trusted per-kanji human level review. Initial derived questions must use kana-replacement and must not use level-native display."
+    }
+  }
+}
