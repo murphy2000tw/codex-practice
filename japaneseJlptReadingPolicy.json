@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "17c2-reading-internal-v1",
+  "baseKanjiPolicyVersion": "17b1-internal-v1",
+  "lastUpdated": "2026-07-28",
+  "disclaimer": "本站資料僅供站內非官方 JLPT 風格模擬測驗使用，不是官方 JLPT 題庫、官方漢字表或官方難度認證。",
+  "levels": {
+    "N5": {
+      "available": false,
+      "reason": "題庫尚未準備完成"
+    },
+    "N4": {
+      "available": true,
+      "sourceLevel": "N4",
+      "kanjiPolicy": "ruby-required",
+      "rubySource": "source-rubyTerms",
+      "runtimeRubyInference": false,
+      "reviewStatus": "internal-source-only"
+    }
+  },
+  "unmatchedHanPolicy": "未被 rubyTerms 涵蓋的漢字保留為站內 N4 來源文字，並列入 build-time 資料稽核的 rubyCoverage.uncoveredHan；這不代表官方 N4 漢字認證，runtime 不得自行補讀音。",
+  "safeDomRequired": true
+}
