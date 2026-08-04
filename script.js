@@ -1061,6 +1061,83 @@ function selectJapaneseJlptLevel(level) {
     renderJapaneseJlptPanel();
   }
 }
+function getJapaneseJlptRandomIndex(maxExclusive) {
+  if (!Number.isSafeInteger(maxExclusive) || maxExclusive <= 0)
+    throw new RangeError("JLPT 隨機索引範圍無效");
+  const range = 0x100000000;
+  const limit = range - (range % maxExclusive);
+  const value = new Uint32Array(1);
+  do {
+    crypto.getRandomValues(value);
+  } while (value[0] >= limit);
+  return value[0] % maxExclusive;
+}
+function shuffleJapaneseJlptArray(items, randomIndexProvider = getJapaneseJlptRandomIndex) {
+  if (!Array.isArray(items) || typeof randomIndexProvider !== "function")
+    throw new TypeError("JLPT 洗牌參數無效");
+  const shuffled = [...items];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = randomIndexProvider(index + 1);
+    if (!Number.isInteger(swapIndex) || swapIndex < 0 || swapIndex > index)
+      throw new RangeError("JLPT 隨機索引供應器回傳無效值");
+    [shuffled[index], shuffled[swapIndex]] = [
+      shuffled[swapIndex],
+      shuffled[index],
+    ];
+  }
+  return shuffled;
+}
+function createBalancedJapaneseJlptAnswerPositions(questionCount, randomIndexProvider = getJapaneseJlptRandomIndex) {
+  if (!Number.isSafeInteger(questionCount) || questionCount <= 0)
+    throw new RangeError("JLPT 題數無效");
+  const positionPriority = shuffleJapaneseJlptArray(
+    [0, 1, 2, 3],
+    randomIndexProvider,
+  );
+  const counts = [0, 1, 2, 3].map(
+    (position) =>
+      Math.floor(questionCount / 4) +
+      (positionPriority.indexOf(position) < questionCount % 4 ? 1 : 0),
+  );
+  const positions = counts.flatMap((count, position) =>
+    Array.from({ length: count }, () => position),
+  );
+  return shuffleJapaneseJlptArray(positions, randomIndexProvider);
+}
+function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerIndex, randomIndexProvider = getJapaneseJlptRandomIndex) {
+  if (
+    !questionSnapshot ||
+    !Array.isArray(questionSnapshot.options) ||
+    questionSnapshot.options.length !== 4 ||
+    !Number.isInteger(questionSnapshot.answerIndex) ||
+    questionSnapshot.answerIndex < 0 ||
+    questionSnapshot.answerIndex > 3 ||
+    !Number.isInteger(targetAnswerIndex) ||
+    targetAnswerIndex < 0 ||
+    targetAnswerIndex > 3
+  )
+    throw new Error("JLPT 選項或答案索引無效");
+  const originalAnswerIndex = questionSnapshot.answerIndex;
+  const shuffledOptions = shuffleJapaneseJlptArray(
+    questionSnapshot.options.map((option, originalIndex) => ({
+      option,
+      originalIndex,
+    })),
+    randomIndexProvider,
+  );
+  const shuffledAnswerIndex = shuffledOptions.findIndex(
+    (item) => item.originalIndex === originalAnswerIndex,
+  );
+  if (shuffledAnswerIndex < 0) throw new Error("JLPT 正確選項無法解析");
+  [shuffledOptions[targetAnswerIndex], shuffledOptions[shuffledAnswerIndex]] = [
+    shuffledOptions[shuffledAnswerIndex],
+    shuffledOptions[targetAnswerIndex],
+  ];
+  const options = shuffledOptions.map((item) => item.option);
+  if (options.length !== 4 || options[targetAnswerIndex] !== questionSnapshot.options[originalAnswerIndex])
+    throw new Error("JLPT 隨機化後正確選項無法解析");
+  return { ...questionSnapshot, options, answerIndex: targetAnswerIndex };
+}
 function createJapaneseJlptQuestionSnapshot(question) {
   return {
     id: question.id,
@@ -1289,26 +1366,55 @@ function startJapaneseJlptMock() {
     (selectedJapaneseJlptLevel === "N4" && !japaneseJlptReadingBank)
   )
     return;
-  const questionSnapshots = japaneseJlptQuestionBank.questions
-    .filter((question) => question.level === selectedJapaneseJlptLevel)
-    .map(createJapaneseJlptQuestionSnapshot);
-  if (selectedJapaneseJlptLevel === "N4")
-    questionSnapshots.push(
-      ...createJapaneseJlptReadingSnapshots(
-        japaneseJlptReadingBank.selectedSets,
+  let randomizedQuestionSnapshots;
+  try {
+    const questionSnapshots = japaneseJlptQuestionBank.questions
+      .filter((question) => question.level === selectedJapaneseJlptLevel)
+      .map(createJapaneseJlptQuestionSnapshot);
+    if (selectedJapaneseJlptLevel === "N4")
+      questionSnapshots.push(
+        ...createJapaneseJlptReadingSnapshots(
+          japaneseJlptReadingBank.selectedSets,
+        ),
+      );
+    const expectedCount = selectedJapaneseJlptLevel === "N4" ? 34 : 20;
+    if (
+      questionSnapshots.length !== expectedCount ||
+      questionSnapshots.some(
+        (question) =>
+          question.level !== selectedJapaneseJlptLevel ||
+          !Array.isArray(question.options) ||
+          question.options.length !== 4 ||
+          !Number.isInteger(question.answerIndex) ||
+          question.answerIndex < 0 ||
+          question.answerIndex > 3,
+      )
+    )
+      throw new Error("題數或題目選項不完整");
+    const targetAnswerPositions =
+      createBalancedJapaneseJlptAnswerPositions(expectedCount);
+    if (targetAnswerPositions.length !== questionSnapshots.length)
+      throw new Error("正確答案位置表長度不符");
+    randomizedQuestionSnapshots = questionSnapshots.map((question, index) =>
+      randomizeJapaneseJlptQuestionOptions(
+        question,
+        targetAnswerPositions[index],
       ),
     );
-  const expectedCount = selectedJapaneseJlptLevel === "N4" ? 34 : 20;
-  if (
-    questionSnapshots.length !== expectedCount ||
-    questionSnapshots.some(
-      (question) => question.level !== selectedJapaneseJlptLevel,
-    )
-  )
+  } catch (error) {
+    clearJapaneseJlptSession();
+    if (japaneseJlptStatus) {
+      japaneseJlptStatus.hidden = false;
+      japaneseJlptStatus.replaceChildren();
+      const message = document.createElement("p");
+      message.textContent = `JLPT session 建立失敗：${error instanceof Error ? error.message : "未知錯誤"}。請返回設定後再試一次。`;
+      japaneseJlptStatus.appendChild(message);
+    }
     return;
+  }
   japaneseJlptSession = {
     selectedLevel: selectedJapaneseJlptLevel,
-    questionSnapshots,
+    questionSnapshots: randomizedQuestionSnapshots,
     currentIndex: 0,
     answers: [],
   };
