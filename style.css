@@ -1988,7 +1988,10 @@ h1 {
 .reading-passage .jp-ruby,
 .reading-question .jp-ruby,
 .reading-option .jp-ruby,
-.reading-card-header h2 .jp-ruby {
+.reading-card-header h2 .jp-ruby,
+#japaneseJlptQuestionContent h4 .jp-ruby,
+#japaneseJlptQuestionContent .quiz-prompt .jp-ruby,
+#japaneseJlptQuestionContent .quiz-option .jp-ruby {
   position: relative;
   display: inline-block;
   padding-top: 0.72em;
@@ -2006,7 +2009,10 @@ h1 {
 .reading-passage .jp-rt,
 .reading-question .jp-rt,
 .reading-option .jp-rt,
-.reading-card-header h2 .jp-rt {
+.reading-card-header h2 .jp-rt,
+#japaneseJlptQuestionContent h4 .jp-rt,
+#japaneseJlptQuestionContent .quiz-prompt .jp-rt,
+#japaneseJlptQuestionContent .quiz-option .jp-rt {
   position: absolute;
   left: 50%;
   top: 0;
@@ -2025,7 +2031,10 @@ h1 {
 .reading-passage .jp-rb,
 .reading-question .jp-rb,
 .reading-option .jp-rb,
-.reading-card-header h2 .jp-rb {
+.reading-card-header h2 .jp-rb,
+#japaneseJlptQuestionContent h4 .jp-rb,
+#japaneseJlptQuestionContent .quiz-prompt .jp-rb,
+#japaneseJlptQuestionContent .quiz-option .jp-rb {
   display: inline-block;
   font-size: 1em;
   line-height: 1.15;
@@ -2193,7 +2202,10 @@ h1 {
   .reading-passage .jp-ruby,
   .reading-question .jp-ruby,
   .reading-option .jp-ruby,
-  .reading-card-header h2 .jp-ruby {
+  .reading-card-header h2 .jp-ruby,
+  #japaneseJlptQuestionContent h4 .jp-ruby,
+  #japaneseJlptQuestionContent .quiz-prompt .jp-ruby,
+  #japaneseJlptQuestionContent .quiz-option .jp-ruby {
     padding-top: 0.78em;
   }
 
@@ -2201,6 +2213,9 @@ h1 {
   .reading-question .jp-rt,
   .reading-option .jp-rt,
   .reading-card-header h2 .jp-rt,
+  #japaneseJlptQuestionContent h4 .jp-rt,
+  #japaneseJlptQuestionContent .quiz-prompt .jp-rt,
+  #japaneseJlptQuestionContent .quiz-option .jp-rt,
   .reading-passage rt,
   .reading-question rt,
   .reading-option rt,
