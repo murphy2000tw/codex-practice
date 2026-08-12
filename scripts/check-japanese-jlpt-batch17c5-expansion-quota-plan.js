@@ -164,10 +164,24 @@ const requiredMarkers = [
   "Insufficient-pool policy", "crypto.getRandomValues", "無放回抽樣", "immutable", "sourceQuestionId",
   "QUESTION SELECTION → SESSION SNAPSHOT → BALANCED ANSWER POSITION GENERATION → OPTION RANDOMIZATION",
   "同 session", "重新無放回抽取", "N5 是真正 0 組／0 題", "uniqueAnswerReviewed",
+  "資料能力 `status` 與某 profile 是否選用 section 的 `included` 是兩個正交欄位",
+  "included: false", "不計入 level total", "不要求 quota", "不建立或驗證 candidate pool", "不阻止 profile 啟動",
+  "included: true", 'status: "available"', "pool sufficiency validation",
+  "transitional / compatibility profile", 'profileVersion: "17c6-compat-v1"', 'profileKind: "transitional-compatibility"',
+  "N5 可繼續啟動既有 vocabulary + grammar", "N4 可繼續啟動既有 vocabulary + grammar + reading",
+  "future listening 與 unavailable N5 reading", "Batch 17C-10 才", "Batch 17D-2 才把 listening 改為 `included: true`",
+  "answerable question 數", "(setId, questionId)", "reading questionSnapshots.length === reading section quota",
+  "sourceSetQuestionCount", "selectedSessionQuestionCount", "不得因 set 原始題數不同造成總題數漂移",
+  "N5** 納入 `kanji-reading`、`orthography`、`context`、`paraphrase`，明確不納入 `usage`",
+  "N4** 納入上述四型及 `usage`", "N4：17C-7；N5：不納入",
   'section="listening"', "Batch 17C-6", "Batch 17C-7", "Batch 17C-8", "Batch 17C-9",
   "Batch 17C-10", "Batch 17D-1", "Batch 17D-2", "Batch 17D-3", "Batch 17E-1", "Batch 17E-2", "Batch 17E-3",
 ];
 requiredMarkers.forEach((marker) => check(plan.includes(marker), `planning marker missing: ${marker}`));
+[
+  "displayTitle", "displayPassage", "passageKana", "rubyTerms", "rubyCoverage", "sourceSetId",
+  "setId", "questionId", "explanation", "options", "correct answer/index",
+].forEach((field) => check(plan.includes(`\`${field}\``) || plan.includes(field), `reading snapshot field missing: ${field}`));
 [
   "自動縮減", "借 N4", "複製題", "略過 section", "silent fallback", "不建立半個 session",
 ].forEach((idea) => check(plan.includes(idea), `insufficient-pool safeguard missing: ${idea}`));
