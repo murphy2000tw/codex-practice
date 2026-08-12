@@ -10,14 +10,14 @@ Validator 不從 `status` 或 `total` 推測 `included`，也不把 `null` 轉�
 
 實際建立順序固定為：
 
-1. 依 `(level, section, questionType)` 正規化候選並只建立 included pools。
-2. 在抽題前以 canonical identity 去重並驗證每個 pool 的有效題數；不足時拋出 `JLPT_INSUFFICIENT_POOL` 與 `{ level, section, questionType, required, available, profileVersion }`，不發布 session。
-3. 用既有 crypto rejection sampling 與 Fisher–Yates 作場內無放回 selection；legacy reading manifest 則維持既有 set 與組內題序。
+1. Prepare 階段先正規化本次收到的所有候選，拒絕缺欄位或未註冊分類，再依 `(level, section, questionType)` 建立 included pool registry。
+2. Prepare 階段以 canonical identity 去重並驗證**所有** pool 的有效題數；不足時拋出 `JLPT_INSUFFICIENT_POOL` 與 `{ level, section, questionType, required, available, profileVersion }`。此階段不呼叫 random provider、不抽題也不建立部分結果。
+3. 所有 pool 通過後才進入 Select 階段，用既有 crypto rejection sampling 與 Fisher–Yates 作場內無放回 selection；legacy reading manifest 則維持既有 set、question ID 與組內題序。
 4. 深度複製並凍結完整 pre-randomization snapshot。一般題 identity 包含來源題 ID；reading identity 是 `(setId, questionId)`，quota 以實際 question 數計。
 5. 依 profile 的實際總題數建立 balanced answer positions，再複製 options、排列並更新 `answerIndex`。
 6. 所有步驟成功後才一次發布 memory-only session。
 
-Reading snapshot 保留 passage、kana、ruby coverage、來源 set、題目 ID、原 set 題數與本場同 set 入選題數。來源 bank、來源 options 與 frozen pre-randomization snapshot 都不會被 option randomization 修改。本批沒有新增題型、題目、Listening、儲存狀態或 LocalStorage schema。
+Reading snapshot 保留 passage、kana、ruby coverage、來源 set、題目 ID與 `sourceSetQuestionCount`；`selectedSessionQuestionCount` 在 selection 完成後依本場實際入選結果計算。Snapshot 的所有巢狀資料會先 deep clone 再 deep freeze，來源 bank、candidate、randomized question 與 frozen pre-randomization snapshot 不共享可變巢狀狀態。本批沒有新增題型、題目、Listening、儲存狀態或 LocalStorage schema。
 
 ## 後續批次
 

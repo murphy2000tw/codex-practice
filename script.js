@@ -774,6 +774,14 @@ function deepFreezeJapaneseJlptValue(value) {
   Object.values(value).forEach(deepFreezeJapaneseJlptValue);
   return Object.freeze(value);
 }
+function deepCloneJapaneseJlptValue(value) {
+  if (Array.isArray(value)) return value.map(deepCloneJapaneseJlptValue);
+  if (value && typeof value === "object")
+    return Object.fromEntries(
+      Object.entries(value).map(([key, nestedValue]) => [key, deepCloneJapaneseJlptValue(nestedValue)]),
+    );
+  return value;
+}
 const JAPANESE_JLPT_PROFILE_REGISTRY = deepFreezeJapaneseJlptValue({
   schemaVersion: 1,
   profiles: {
@@ -1062,11 +1070,15 @@ function renderJapaneseJlptPanel() {
   });
   if (!japaneseJlptStatus) return;
   japaneseJlptStatus.replaceChildren();
+  let selectedLevelProfile = null;
+  if (selectedJapaneseJlptLevel)
+    selectedLevelProfile = validateJapaneseJlptProfile(
+      JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_COMPAT_PROFILE_VERSION,
+      JAPANESE_JLPT_COMPAT_PROFILE_ID, selectedJapaneseJlptLevel,
+    ).levelProfile;
   const canStart = Boolean(
-    japaneseJlptQuestionBank &&
-    selectedJapaneseJlptLevel &&
-    !japaneseJlptSession &&
-    (selectedJapaneseJlptLevel === "N5" || japaneseJlptReadingBank),
+    japaneseJlptQuestionBank && selectedLevelProfile && !japaneseJlptSession &&
+    (!selectedLevelProfile.sections.reading.included || japaneseJlptReadingBank),
   );
   if (startJapaneseJlptMockButton)
     startJapaneseJlptMockButton.disabled = !canStart;
@@ -1097,10 +1109,7 @@ function renderJapaneseJlptPanel() {
   heading.className = "sentence-composition-mode";
   heading.textContent = `已選擇 ${selectedJapaneseJlptLevel}`;
   const list = document.createElement("ul");
-  const { levelProfile } = validateJapaneseJlptProfile(
-    JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_COMPAT_PROFILE_VERSION,
-    JAPANESE_JLPT_COMPAT_PROFILE_ID, selectedJapaneseJlptLevel,
-  );
+  const levelProfile = selectedLevelProfile;
   [`單字 ${levelProfile.sections.vocabulary.total} 題`, `文法 ${levelProfile.sections.grammar.total} 題`].forEach((text) => {
     const item = document.createElement("li");
     item.textContent = text;
@@ -1182,9 +1191,10 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
     targetAnswerIndex > 3
   )
     throw new Error("JLPT 選項或答案索引無效");
-  const originalAnswerIndex = questionSnapshot.answerIndex;
+  const randomizedSnapshot = deepCloneJapaneseJlptValue(questionSnapshot);
+  const originalAnswerIndex = randomizedSnapshot.answerIndex;
   const shuffledOptions = shuffleJapaneseJlptArray(
-    questionSnapshot.options.map((option, originalIndex) => ({
+    randomizedSnapshot.options.map((option, originalIndex) => ({
       option,
       originalIndex,
     })),
@@ -1199,12 +1209,12 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
     shuffledOptions[targetAnswerIndex],
   ];
   const options = shuffledOptions.map((item) => item.option);
-  if (options.length !== 4 || options[targetAnswerIndex] !== questionSnapshot.options[originalAnswerIndex])
+  if (options.length !== 4 || options[targetAnswerIndex] !== randomizedSnapshot.options[originalAnswerIndex])
     throw new Error("JLPT 隨機化後正確選項無法解析");
-  return { ...questionSnapshot, options, answerIndex: targetAnswerIndex };
+  return { ...randomizedSnapshot, options, answerIndex: targetAnswerIndex };
 }
 function createJapaneseJlptQuestionSnapshot(question) {
-  return deepFreezeJapaneseJlptValue({
+  return {
     id: question.id,
     sourceQuestionId: question.id,
     level: question.level,
@@ -1220,10 +1230,9 @@ function createJapaneseJlptQuestionSnapshot(question) {
     answerIndex: question.answerIndex,
     answerDisplay: { ...question.answerDisplay },
     explanation: question.explanation,
-  });
+  };
 }
 function createJapaneseJlptReadingSnapshots(selectedSets) {
-  const selectedCounts = new Map(selectedSets.map((set) => [set.id, set.questions.length]));
   return selectedSets.flatMap((set, setIndex) =>
     set.questions.map((question, questionIndex) => ({
       id: question.id,
@@ -1241,7 +1250,6 @@ function createJapaneseJlptReadingSnapshots(selectedSets) {
       readingQuestionIndex: questionIndex,
       readingQuestionCount: set.questions.length,
       sourceSetQuestionCount: set.questions.length,
-      selectedSessionQuestionCount: selectedCounts.get(set.id),
       displayTitle: set.displayTitle,
       displayPassage: set.displayPassage,
       passageKana: set.passageKana,
@@ -1281,44 +1289,77 @@ function normalizeJapaneseJlptCandidate(question) {
     throw new Error("JLPT reading candidate 缺少 setId 或 questionId");
   return question;
 }
-function selectJapaneseJlptQuestions(level, levelProfile, candidates, randomIndexProvider = getJapaneseJlptRandomIndex) {
-  const selected = [];
-  const identities = new Set();
+function prepareJapaneseJlptCandidatePools(level, profile, levelProfile, candidates, profileVersion) {
+  if (!Array.isArray(candidates)) throw new TypeError("JLPT candidates 必須是陣列");
+  const registeredKeys = new Set();
+  Object.entries(profile.levels).forEach(([registeredLevel, registeredLevelProfile]) => {
+    Object.entries(registeredLevelProfile.sections).forEach(([sectionName, section]) => {
+      Object.keys(section.questionTypes || {}).forEach((questionType) =>
+        registeredKeys.add(`${registeredLevel}\u0000${sectionName}\u0000${questionType}`));
+    });
+  });
+  const normalizedCandidates = candidates.map(normalizeJapaneseJlptCandidate);
+  normalizedCandidates.forEach((candidate) => {
+    const key = `${candidate.level}\u0000${candidate.section}\u0000${candidate.questionType}`;
+    if (!registeredKeys.has(key))
+      throw new Error(`JLPT candidate 分類未註冊：${candidate.level}/${candidate.section}/${candidate.questionType}`);
+  });
+  const pools = new Map();
   for (const [sectionName, section] of Object.entries(levelProfile.sections)) {
     if (!section.included) continue;
     for (const [questionType, quota] of Object.entries(section.questionTypes)) {
-      const pool = candidates.filter((candidate) =>
-        candidate.level === level && candidate.section === sectionName && candidate.questionType === questionType,
-      );
+      const key = `${level}\u0000${sectionName}\u0000${questionType}`;
       const uniquePool = [];
-      const poolIdentities = new Set();
-      pool.forEach((candidate) => {
-        const normalized = normalizeJapaneseJlptCandidate(candidate);
-        const identity = getJapaneseJlptCanonicalIdentity(normalized);
-        if (!poolIdentities.has(identity)) { poolIdentities.add(identity); uniquePool.push(normalized); }
+      const identities = new Set();
+      normalizedCandidates.forEach((candidate) => {
+        if (`${candidate.level}\u0000${candidate.section}\u0000${candidate.questionType}` !== key) return;
+        const identity = getJapaneseJlptCanonicalIdentity(candidate);
+        if (!identities.has(identity)) { identities.add(identity); uniquePool.push(candidate); }
       });
-      if (uniquePool.length < quota) {
-        const details = { level, section: sectionName, questionType, required: quota, available: uniquePool.length, profileVersion: JAPANESE_JLPT_COMPAT_PROFILE_VERSION };
-        const error = new Error(`${level} ${sectionName}/${questionType} 題庫不足（需要 ${quota} 題，目前 ${uniquePool.length} 題）`);
-        error.code = "JLPT_INSUFFICIENT_POOL";
-        error.details = details;
-        throw error;
-      }
-      const picked = section.selectionMode === "legacy-fixed-manifest"
-        ? uniquePool.slice(0, quota)
-        : shuffleJapaneseJlptArray(uniquePool, randomIndexProvider).slice(0, quota);
+      pools.set(key, { level, sectionName, questionType, quota, selectionMode: section.selectionMode, candidates: uniquePool });
+    }
+  }
+  for (const pool of pools.values()) {
+    if (pool.candidates.length < pool.quota) {
+      const details = { level, section: pool.sectionName, questionType: pool.questionType,
+        required: pool.quota, available: pool.candidates.length, profileVersion };
+      const error = new Error(`${level} ${pool.sectionName}/${pool.questionType} 題庫不足（需要 ${pool.quota} 題，目前 ${pool.candidates.length} 題）`);
+      error.code = "JLPT_INSUFFICIENT_POOL";
+      error.details = details;
+      throw error;
+    }
+  }
+  return pools;
+}
+function selectJapaneseJlptQuestions(pools, randomIndexProvider = getJapaneseJlptRandomIndex) {
+  const selected = [];
+  const identities = new Set();
+  for (const pool of pools.values()) {
+      let picked = pool.selectionMode === "legacy-fixed-manifest"
+        ? pool.candidates.slice(0, pool.quota)
+        : shuffleJapaneseJlptArray(pool.candidates, randomIndexProvider).slice(0, pool.quota);
+      if (pool.sectionName === "reading")
+        picked = picked.sort((first, second) =>
+          first.readingSetIndex - second.readingSetIndex || first.readingQuestionIndex - second.readingQuestionIndex);
       picked.forEach((question) => {
         const identity = getJapaneseJlptCanonicalIdentity(question);
         if (identities.has(identity)) throw new Error(`JLPT session canonical identity 重複：${identity}`);
         identities.add(identity);
         selected.push(question);
       });
-    }
   }
   return selected;
 }
 function createJapaneseJlptPreRandomizationSnapshot(selected, levelProfile) {
-  const questionSnapshots = selected.map((question) => deepFreezeJapaneseJlptValue({ ...question }));
+  const selectedReadingCounts = new Map();
+  selected.filter((question) => question.section === "reading").forEach((question) =>
+    selectedReadingCounts.set(question.setId, (selectedReadingCounts.get(question.setId) || 0) + 1));
+  const questionSnapshots = selected.map((question) => {
+    const snapshot = deepCloneJapaneseJlptValue(question);
+    if (snapshot.section === "reading")
+      snapshot.selectedSessionQuestionCount = selectedReadingCounts.get(snapshot.setId);
+    return deepFreezeJapaneseJlptValue(snapshot);
+  });
   for (const [sectionName, section] of Object.entries(levelProfile.sections)) {
     if (!section.included) continue;
     const count = questionSnapshots.filter((question) => question.section === sectionName).length;
@@ -1334,14 +1375,15 @@ function buildJapaneseJlptSession(level, questionBank, readingBank, randomIndexP
     JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_COMPAT_PROFILE_VERSION,
     JAPANESE_JLPT_COMPAT_PROFILE_ID, level,
   );
-  const candidates = questionBank.questions
-    .filter((question) => question.level === level)
-    .map(createJapaneseJlptQuestionSnapshot);
+  const candidates = questionBank.questions.map(createJapaneseJlptQuestionSnapshot);
   if (levelProfile.sections.reading.included) {
     if (!readingBank) throw new Error(`${level} reading 題庫尚未載入`);
     candidates.push(...createJapaneseJlptReadingSnapshots(readingBank.selectedSets));
   }
-  const selected = selectJapaneseJlptQuestions(level, levelProfile, candidates, randomIndexProvider);
+  const pools = prepareJapaneseJlptCandidatePools(
+    level, profile, levelProfile, candidates, profile.profileVersion,
+  );
+  const selected = selectJapaneseJlptQuestions(pools, randomIndexProvider);
   const preRandomizationSnapshot = createJapaneseJlptPreRandomizationSnapshot(selected, levelProfile);
   const targetAnswerPositions = createBalancedJapaneseJlptAnswerPositions(levelProfile.total, randomIndexProvider);
   const questionSnapshots = preRandomizationSnapshot.map((question, index) =>
@@ -1524,10 +1566,13 @@ function advanceJapaneseJlptQuestion() {
   renderJapaneseJlptQuestion();
 }
 function startJapaneseJlptMock() {
+  if (!selectedJapaneseJlptLevel || !japaneseJlptQuestionBank) return;
+  const { levelProfile } = validateJapaneseJlptProfile(
+    JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_COMPAT_PROFILE_VERSION,
+    JAPANESE_JLPT_COMPAT_PROFILE_ID, selectedJapaneseJlptLevel,
+  );
   if (
-    !japaneseJlptQuestionBank ||
-    !selectedJapaneseJlptLevel ||
-    (selectedJapaneseJlptLevel === "N4" && !japaneseJlptReadingBank)
+    levelProfile.sections.reading.included && !japaneseJlptReadingBank
   )
     return;
   let nextSession;
