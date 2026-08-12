@@ -648,6 +648,7 @@ let japaneseJlptQuestionBank = null;
 let japaneseJlptLoadError = "";
 let japaneseJlptIsLoading = false;
 let japaneseJlptSession = null;
+let japaneseJlptSessionBuildError = null;
 
 function isJapaneseHomeTab() {
   return currentJapaneseView === "home";
@@ -768,6 +769,66 @@ const JAPANESE_JLPT_READING_SET_IDS = Object.freeze([
   "jlpt-reading-set-n4-032",
   "jlpt-reading-set-n4-015",
 ]);
+function deepFreezeJapaneseJlptValue(value) {
+  if (!value || typeof value !== "object" || Object.isFrozen(value)) return value;
+  Object.values(value).forEach(deepFreezeJapaneseJlptValue);
+  return Object.freeze(value);
+}
+const JAPANESE_JLPT_PROFILE_REGISTRY = deepFreezeJapaneseJlptValue({
+  schemaVersion: 1,
+  profiles: {
+    "17c6-compat-v1": {
+      profileVersion: "17c6-compat-v1",
+      profileKind: "transitional-compatibility",
+      profileId: "site-jlpt-style-compatibility",
+      levels: {
+        N5: { total: 20, sections: {
+          vocabulary: { included: true, status: "available", total: 10, questionTypes: { meaning: 10 } },
+          grammar: { included: true, status: "available", total: 10, questionTypes: { meaning: 5, cloze: 5 } },
+          reading: { included: false, status: "unavailable", total: null, questionTypes: {} },
+          listening: { included: false, status: "future", total: null, questionTypes: {} },
+        } },
+        N4: { total: 34, sections: {
+          vocabulary: { included: true, status: "available", total: 10, questionTypes: { meaning: 10 } },
+          grammar: { included: true, status: "available", total: 10, questionTypes: { meaning: 5, cloze: 5 } },
+          reading: { included: true, status: "available", total: 14, selectionMode: "legacy-fixed-manifest", questionTypes: { "legacy-reading-question": 14 } },
+          listening: { included: false, status: "future", total: null, questionTypes: {} },
+        } },
+      },
+    },
+  },
+});
+const JAPANESE_JLPT_COMPAT_PROFILE_VERSION = "17c6-compat-v1";
+const JAPANESE_JLPT_COMPAT_PROFILE_ID = "site-jlpt-style-compatibility";
+
+function validateJapaneseJlptProfile(registry, profileVersion, profileId, level) {
+  if (!registry || registry.schemaVersion !== 1 || !["N5", "N4"].includes(level))
+    throw new Error("JLPT profile registry、schemaVersion 或 level 無效");
+  const profile = registry.profiles && registry.profiles[profileVersion];
+  if (!profile || profile.profileVersion !== profileVersion || profile.profileId !== profileId)
+    throw new Error("JLPT profileVersion 或 profileId 不存在");
+  const levelProfile = profile.levels && profile.levels[level];
+  if (!levelProfile || !Number.isSafeInteger(levelProfile.total) || levelProfile.total < 0)
+    throw new Error(`${level} profile total 無效`);
+  let levelTotal = 0;
+  Object.entries(levelProfile.sections || {}).forEach(([sectionName, section]) => {
+    if (!section || typeof section.included !== "boolean")
+      throw new Error(`${level}/${sectionName} included 必須是 boolean`);
+    if (!section.included) return;
+    if (section.status !== "available" || !Number.isSafeInteger(section.total) || section.total < 0)
+      throw new Error(`${level}/${sectionName} included section 狀態或 total 無效`);
+    if (!section.questionTypes || typeof section.questionTypes !== "object" || Array.isArray(section.questionTypes))
+      throw new Error(`${level}/${sectionName} questionTypes quota 不完整`);
+    const quotas = Object.values(section.questionTypes);
+    if (!quotas.length || quotas.some((quota) => !Number.isSafeInteger(quota) || quota < 0))
+      throw new Error(`${level}/${sectionName} questionType quota 無效`);
+    if (quotas.reduce((sum, quota) => sum + quota, 0) !== section.total)
+      throw new Error(`${level}/${sectionName} questionType quota 加總不符`);
+    levelTotal += section.total;
+  });
+  if (levelTotal !== levelProfile.total) throw new Error(`${level} section quota 加總不符`);
+  return deepFreezeJapaneseJlptValue({ profile, levelProfile });
+}
 let japaneseJlptReadingBank = null;
 let japaneseJlptReadingLoadError = "";
 let japaneseJlptReadingIsLoading = false;
@@ -1036,7 +1097,11 @@ function renderJapaneseJlptPanel() {
   heading.className = "sentence-composition-mode";
   heading.textContent = `已選擇 ${selectedJapaneseJlptLevel}`;
   const list = document.createElement("ul");
-  ["單字 10 題", "文法 10 題"].forEach((text) => {
+  const { levelProfile } = validateJapaneseJlptProfile(
+    JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_COMPAT_PROFILE_VERSION,
+    JAPANESE_JLPT_COMPAT_PROFILE_ID, selectedJapaneseJlptLevel,
+  );
+  [`單字 ${levelProfile.sections.vocabulary.total} 題`, `文法 ${levelProfile.sections.grammar.total} 題`].forEach((text) => {
     const item = document.createElement("li");
     item.textContent = text;
     list.appendChild(item);
@@ -1048,7 +1113,7 @@ function renderJapaneseJlptPanel() {
       : japaneseJlptReadingLoadError ||
           (!japaneseJlptReadingBank && !japaneseJlptReadingIsLoading)
         ? japaneseJlptReadingLoadError || "N4 閱讀題庫尚未載入"
-        : "閱讀 10 組／14 題";
+        : `閱讀 ${japaneseJlptReadingBank.selectedSets.length} 組／${levelProfile.sections.reading.total} 題`;
   const listening = document.createElement("li");
   listening.textContent = "聽力：後續批次開放";
   list.append(reading, listening);
@@ -1139,32 +1204,44 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
   return { ...questionSnapshot, options, answerIndex: targetAnswerIndex };
 }
 function createJapaneseJlptQuestionSnapshot(question) {
-  return {
+  return deepFreezeJapaneseJlptValue({
     id: question.id,
+    sourceQuestionId: question.id,
     level: question.level,
     section: question.section,
     questionType: question.questionType,
+    sourceBank: "japaneseJlptVocabularyGrammarQuestions",
     displayText: question.displayText,
+    originalText: question.originalText,
+    kana: question.kana,
+    rubyTerms: (question.rubyTerms || []).map((term) => ({ ...term })),
     kanjiPolicy: question.kanjiPolicy,
     options: [...question.options],
     answerIndex: question.answerIndex,
     answerDisplay: { ...question.answerDisplay },
     explanation: question.explanation,
-  };
+  });
 }
 function createJapaneseJlptReadingSnapshots(selectedSets) {
+  const selectedCounts = new Map(selectedSets.map((set) => [set.id, set.questions.length]));
   return selectedSets.flatMap((set, setIndex) =>
     set.questions.map((question, questionIndex) => ({
       id: question.id,
+      sourceQuestionId: question.id,
       level: "N4",
       section: "reading",
-      questionType: set.type,
+      questionType: "legacy-reading-question",
+      sourceBank: "japaneseJlptReadingQuestions",
+      setId: set.id,
+      questionId: question.id,
       readingSetId: set.id,
       sourceSetId: set.sourceSetId,
       readingSetIndex: setIndex,
       readingSetCount: selectedSets.length,
       readingQuestionIndex: questionIndex,
       readingQuestionCount: set.questions.length,
+      sourceSetQuestionCount: set.questions.length,
+      selectedSessionQuestionCount: selectedCounts.get(set.id),
       displayTitle: set.displayTitle,
       displayPassage: set.displayPassage,
       passageKana: set.passageKana,
@@ -1184,6 +1261,93 @@ function createJapaneseJlptReadingSnapshots(selectedSets) {
       explanation: question.explanation,
     })),
   );
+}
+
+function getJapaneseJlptCanonicalIdentity(question) {
+  return question.section === "reading"
+    ? `reading:${question.setId}:${question.questionId}`
+    : `${question.level}:${question.section}:${question.questionType}:${question.sourceQuestionId}`;
+}
+function normalizeJapaneseJlptCandidate(question) {
+  if (
+    !question || !isNonEmptyString(question.sourceQuestionId) ||
+    !["N5", "N4"].includes(question.level) || !isNonEmptyString(question.section) ||
+    !isNonEmptyString(question.questionType) || !isNonEmptyString(question.sourceBank) ||
+    !Array.isArray(question.options) || question.options.length !== 4 ||
+    question.options.some((option) => !isNonEmptyString(option)) ||
+    !Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex > 3
+  ) throw new Error("JLPT candidate 缺少必要 identity、分類、四個選項或正確答案");
+  if (question.section === "reading" && (!isNonEmptyString(question.setId) || !isNonEmptyString(question.questionId)))
+    throw new Error("JLPT reading candidate 缺少 setId 或 questionId");
+  return question;
+}
+function selectJapaneseJlptQuestions(level, levelProfile, candidates, randomIndexProvider = getJapaneseJlptRandomIndex) {
+  const selected = [];
+  const identities = new Set();
+  for (const [sectionName, section] of Object.entries(levelProfile.sections)) {
+    if (!section.included) continue;
+    for (const [questionType, quota] of Object.entries(section.questionTypes)) {
+      const pool = candidates.filter((candidate) =>
+        candidate.level === level && candidate.section === sectionName && candidate.questionType === questionType,
+      );
+      const uniquePool = [];
+      const poolIdentities = new Set();
+      pool.forEach((candidate) => {
+        const normalized = normalizeJapaneseJlptCandidate(candidate);
+        const identity = getJapaneseJlptCanonicalIdentity(normalized);
+        if (!poolIdentities.has(identity)) { poolIdentities.add(identity); uniquePool.push(normalized); }
+      });
+      if (uniquePool.length < quota) {
+        const details = { level, section: sectionName, questionType, required: quota, available: uniquePool.length, profileVersion: JAPANESE_JLPT_COMPAT_PROFILE_VERSION };
+        const error = new Error(`${level} ${sectionName}/${questionType} 題庫不足（需要 ${quota} 題，目前 ${uniquePool.length} 題）`);
+        error.code = "JLPT_INSUFFICIENT_POOL";
+        error.details = details;
+        throw error;
+      }
+      const picked = section.selectionMode === "legacy-fixed-manifest"
+        ? uniquePool.slice(0, quota)
+        : shuffleJapaneseJlptArray(uniquePool, randomIndexProvider).slice(0, quota);
+      picked.forEach((question) => {
+        const identity = getJapaneseJlptCanonicalIdentity(question);
+        if (identities.has(identity)) throw new Error(`JLPT session canonical identity 重複：${identity}`);
+        identities.add(identity);
+        selected.push(question);
+      });
+    }
+  }
+  return selected;
+}
+function createJapaneseJlptPreRandomizationSnapshot(selected, levelProfile) {
+  const questionSnapshots = selected.map((question) => deepFreezeJapaneseJlptValue({ ...question }));
+  for (const [sectionName, section] of Object.entries(levelProfile.sections)) {
+    if (!section.included) continue;
+    const count = questionSnapshots.filter((question) => question.section === sectionName).length;
+    if (sectionName === "reading" && count !== section.total)
+      throw new Error("reading questionSnapshots.length 與 reading quota 不符");
+    if (count !== section.total) throw new Error(`${sectionName} snapshot 題數與 quota 不符`);
+  }
+  if (questionSnapshots.length !== levelProfile.total) throw new Error("session snapshot 總題數與 quota 不符");
+  return deepFreezeJapaneseJlptValue(questionSnapshots);
+}
+function buildJapaneseJlptSession(level, questionBank, readingBank, randomIndexProvider = getJapaneseJlptRandomIndex) {
+  const { profile, levelProfile } = validateJapaneseJlptProfile(
+    JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_COMPAT_PROFILE_VERSION,
+    JAPANESE_JLPT_COMPAT_PROFILE_ID, level,
+  );
+  const candidates = questionBank.questions
+    .filter((question) => question.level === level)
+    .map(createJapaneseJlptQuestionSnapshot);
+  if (levelProfile.sections.reading.included) {
+    if (!readingBank) throw new Error(`${level} reading 題庫尚未載入`);
+    candidates.push(...createJapaneseJlptReadingSnapshots(readingBank.selectedSets));
+  }
+  const selected = selectJapaneseJlptQuestions(level, levelProfile, candidates, randomIndexProvider);
+  const preRandomizationSnapshot = createJapaneseJlptPreRandomizationSnapshot(selected, levelProfile);
+  const targetAnswerPositions = createBalancedJapaneseJlptAnswerPositions(levelProfile.total, randomIndexProvider);
+  const questionSnapshots = preRandomizationSnapshot.map((question, index) =>
+    randomizeJapaneseJlptQuestionOptions(question, targetAnswerPositions[index], randomIndexProvider));
+  return { selectedLevel: level, profileVersion: profile.profileVersion, profileId: profile.profileId,
+    preRandomizationSnapshot, questionSnapshots, currentIndex: 0, answers: [] };
 }
 function appendJapaneseJlptDetail(parent, label, value) {
   const line = document.createElement("p");
@@ -1366,43 +1530,16 @@ function startJapaneseJlptMock() {
     (selectedJapaneseJlptLevel === "N4" && !japaneseJlptReadingBank)
   )
     return;
-  let randomizedQuestionSnapshots;
+  let nextSession;
   try {
-    const questionSnapshots = japaneseJlptQuestionBank.questions
-      .filter((question) => question.level === selectedJapaneseJlptLevel)
-      .map(createJapaneseJlptQuestionSnapshot);
-    if (selectedJapaneseJlptLevel === "N4")
-      questionSnapshots.push(
-        ...createJapaneseJlptReadingSnapshots(
-          japaneseJlptReadingBank.selectedSets,
-        ),
-      );
-    const expectedCount = selectedJapaneseJlptLevel === "N4" ? 34 : 20;
-    if (
-      questionSnapshots.length !== expectedCount ||
-      questionSnapshots.some(
-        (question) =>
-          question.level !== selectedJapaneseJlptLevel ||
-          !Array.isArray(question.options) ||
-          question.options.length !== 4 ||
-          !Number.isInteger(question.answerIndex) ||
-          question.answerIndex < 0 ||
-          question.answerIndex > 3,
-      )
-    )
-      throw new Error("題數或題目選項不完整");
-    const targetAnswerPositions =
-      createBalancedJapaneseJlptAnswerPositions(expectedCount);
-    if (targetAnswerPositions.length !== questionSnapshots.length)
-      throw new Error("正確答案位置表長度不符");
-    randomizedQuestionSnapshots = questionSnapshots.map((question, index) =>
-      randomizeJapaneseJlptQuestionOptions(
-        question,
-        targetAnswerPositions[index],
-      ),
+    nextSession = buildJapaneseJlptSession(
+      selectedJapaneseJlptLevel,
+      japaneseJlptQuestionBank,
+      japaneseJlptReadingBank,
     );
   } catch (error) {
     clearJapaneseJlptSession();
+    japaneseJlptSessionBuildError = error && error.details ? { ...error.details } : null;
     if (japaneseJlptStatus) {
       japaneseJlptStatus.hidden = false;
       japaneseJlptStatus.replaceChildren();
@@ -1412,12 +1549,8 @@ function startJapaneseJlptMock() {
     }
     return;
   }
-  japaneseJlptSession = {
-    selectedLevel: selectedJapaneseJlptLevel,
-    questionSnapshots: randomizedQuestionSnapshots,
-    currentIndex: 0,
-    answers: [],
-  };
+  japaneseJlptSessionBuildError = null;
+  japaneseJlptSession = nextSession;
   if (japaneseJlptLevelSetup) japaneseJlptLevelSetup.hidden = true;
   if (japaneseJlptStatus) {
     japaneseJlptStatus.replaceChildren();
