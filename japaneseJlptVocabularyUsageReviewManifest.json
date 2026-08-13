@@ -1,0 +1,1213 @@
+{
+  "schemaVersion": "1.0.0",
+  "manifestVersion": "17c7c-v1",
+  "questionType": "usage",
+  "reviewLabel": "site-internal editorial-reviewed",
+  "seedCapacity": {
+    "N4": 12,
+    "N5": 0,
+    "note": "N5 usage is not planned; data inventory / seed capacity, not a product quota"
+  },
+  "records": [
+    {
+      "authoringId": "17c7c-n4-usage-01-src-1212",
+      "sourceId": 1212,
+      "sourceIds": [
+        1212
+      ],
+      "sourceSnapshot": {
+        "word": "必要",
+        "kana": "ひつよう",
+        "meaning": "必要",
+        "partOfSpeech": "な形容詞",
+        "example": "旅行にはパスポートが必要です。",
+        "exampleKana": "りょこうにはぱすぽーとがひつようです。",
+        "exampleMeaning": "旅行需要護照。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "必要",
+      "targetKana": "ひつよう",
+      "prompt": "「必要」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "旅行に必要なパスポートを持って行きます。",
+          "sentenceKana": "りょこうにひつようなぱすぽーとをもっていきます。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5,
+            "kanaStart": 5,
+            "kanaEnd": 9
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "会議が必要な三時に始まります。",
+          "sentenceKana": "かいぎがひつようなさんじにはじまります。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5,
+            "kanaStart": 4,
+            "kanaEnd": 8
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "「薬を飲むと熱が出る」という意味で、熱が必要になりますと説明しました。",
+          "sentenceKana": "「くすりをのむとねつがでる」といういみで、ねつがひつようになりますとせつめいしました。",
+          "targetOccurrence": {
+            "start": 20,
+            "end": 22,
+            "kanaStart": 24,
+            "kanaEnd": 28
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "駅員に必要を聞いて、ホームへ行きました。",
+          "sentenceKana": "えきいんにひつようをきいて、ほーむへいきました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5,
+            "kanaStart": 5,
+            "kanaEnd": 9
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "「必要な」は必要性のある物事を修飾するが、ここでは開始時刻そのものを修飾しており、「予定された三時」の意味にはならない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "「必要になる」は何かが要る状態への変化を表し、明示された副作用として熱が出る変化を表さない。この意味なら「熱が出ます」が適切である。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "駅員から聞く対象は「行き方」や「必要なこと」であり、ナ形容詞「必要」をこのまま具体的な案内内容として扱えない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-01",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「必要」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-02-src-1243",
+      "sourceId": 1243,
+      "sourceIds": [
+        1243
+      ],
+      "sourceSnapshot": {
+        "word": "連絡",
+        "kana": "れんらく",
+        "meaning": "聯絡",
+        "partOfSpeech": "名詞",
+        "example": "後で先生に連絡します。",
+        "exampleKana": "あとでせんせいにれんらくします。",
+        "exampleMeaning": "之後聯絡老師。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "連絡",
+      "targetKana": "れんらく",
+      "prompt": "「連絡」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "変更があれば、電話で連絡してください。",
+          "sentenceKana": "へんこうがあれば、でんわでれんらくしてください。",
+          "targetOccurrence": {
+            "start": 10,
+            "end": 12,
+            "kanaStart": 13,
+            "kanaEnd": 17
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "駅で次の電車を連絡しました。",
+          "sentenceKana": "えきでつぎのでんしゃをれんらくしました。",
+          "targetOccurrence": {
+            "start": 7,
+            "end": 9,
+            "kanaStart": 11,
+            "kanaEnd": 15
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "壊れた時計を店で連絡してもらいました。",
+          "sentenceKana": "こわれたとけいをみせでれんらくしてもらいました。",
+          "targetOccurrence": {
+            "start": 8,
+            "end": 10,
+            "kanaStart": 11,
+            "kanaEnd": 15
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "先生から借りた本を連絡しました。",
+          "sentenceKana": "せんせいからかりたほんをれんらくしました。",
+          "targetOccurrence": {
+            "start": 9,
+            "end": 11,
+            "kanaStart": 12,
+            "kanaEnd": 16
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "次の電車について尋ねる場面では「確認しました」などを使い、「連絡する」は情報を相手に伝える行為なので目的語の役割が合わない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "壊れた時計に必要なのは「修理」であり、「連絡」は物を直すサービスを表さない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "借りた本を返す行為は「返却」であり、「連絡」は本という物体を相手へ戻す意味を持たない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-02",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「連絡」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-03-src-1240",
+      "sourceId": 1240,
+      "sourceIds": [
+        1240
+      ],
+      "sourceSnapshot": {
+        "word": "理由",
+        "kana": "りゆう",
+        "meaning": "理由",
+        "partOfSpeech": "名詞",
+        "example": "遅れた理由を話します。",
+        "exampleKana": "おくれたりゆうをはなします。",
+        "exampleMeaning": "說明遲到的理由。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "理由",
+      "targetKana": "りゆう",
+      "prompt": "「理由」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "遅れた理由を先生に説明しました。",
+          "sentenceKana": "おくれたりゆうをせんせいにせつめいしました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5,
+            "kanaStart": 4,
+            "kanaEnd": 7
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "「事故が電車を止めた原因」という意味で、事故の理由で電車が止まりましたと説明しました。",
+          "sentenceKana": "「じこがでんしゃをとめたげんいん」といういみで、じこのりゆうででんしゃがとまりましたとせつめいしました。",
+          "targetOccurrence": {
+            "start": 23,
+            "end": 25,
+            "kanaStart": 27,
+            "kanaEnd": 30
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "この機械が故障した理由を修理しました。",
+          "sentenceKana": "このきかいがこしょうしたりゆうをしゅうりしました。",
+          "targetOccurrence": {
+            "start": 9,
+            "end": 11,
+            "kanaStart": 12,
+            "kanaEnd": 15
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "道に迷ったので、地図で理由を調べました。",
+          "sentenceKana": "みちにまよったので、ちずでりゆうをしらべました。",
+          "targetOccurrence": {
+            "start": 11,
+            "end": 13,
+            "kanaStart": 13,
+            "kanaEnd": 16
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "「事故の理由」は事故が起きたわけを指す。明示された電車停止を引き起こした事柄は「事故が原因で」と表し、「事故の理由で」では関係が異なる。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "修理できるのは機械や故障箇所であり、出来事の説明である「理由」は修理の対象にならない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "地図で調べるのは道順や現在地であり、「理由」は出来事の根拠を問う語なので探索対象が合わない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-03",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「理由」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-04-src-1114",
+      "sourceId": 1114,
+      "sourceIds": [
+        1114
+      ],
+      "sourceSnapshot": {
+        "word": "経験",
+        "kana": "けいけん",
+        "meaning": "經驗",
+        "partOfSpeech": "名詞",
+        "example": "彼は仕事の経験があります。",
+        "exampleKana": "かれはしごとのけいけんがあります。",
+        "exampleMeaning": "他有工作經驗。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "経験",
+      "targetKana": "けいけん",
+      "prompt": "「経験」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "海外で働いた経験があります。",
+          "sentenceKana": "かいがいではたらいたけいけんがあります。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8,
+            "kanaStart": 10,
+            "kanaEnd": 14
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この説明を読めば、駅までの経験が分かります。",
+          "sentenceKana": "このせつめいをよめば、えきまでのけいけんがわかります。",
+          "targetOccurrence": {
+            "start": 13,
+            "end": 15,
+            "kanaStart": 16,
+            "kanaEnd": 20
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "料理の経験を毎日三時間続けています。",
+          "sentenceKana": "りょうりのけいけんをまいにちさんじかんつづけています。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5,
+            "kanaStart": 5,
+            "kanaEnd": 9
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "初めて会った人に経験をして、名前を覚えました。",
+          "sentenceKana": "はじめてあったひとにけいけんをして、なまえをおぼえました。",
+          "targetOccurrence": {
+            "start": 8,
+            "end": 10,
+            "kanaStart": 10,
+            "kanaEnd": 14
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "駅まで知りたい内容は「行き方」であり、「経験」は実際に行ったり体験したりした経歴を指す。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "毎日継続する活動は「練習」であり、「経験」は活動を一定時間行う名称としては使えない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "人に会って知り合うことは「挨拶」などであり、「人に経験をする」という相手を取る用法はない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-04",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「経験」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-05-src-1238",
+      "sourceId": 1238,
+      "sourceIds": [
+        1238
+      ],
+      "sourceSnapshot": {
+        "word": "予定",
+        "kana": "よてい",
+        "meaning": "預定",
+        "partOfSpeech": "名詞",
+        "example": "週末の予定を決めます。",
+        "exampleKana": "しゅうまつのよていをきめます。",
+        "exampleMeaning": "決定週末的預定。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "予定",
+      "targetKana": "よてい",
+      "prompt": "「予定」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "来週、京都へ行く予定です。",
+          "sentenceKana": "らいしゅう、きょうとへいくよていです。",
+          "targetOccurrence": {
+            "start": 8,
+            "end": 10,
+            "kanaStart": 13,
+            "kanaEnd": 16
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "「切符の値段」という意味で、窓口の係員に予定を尋ねました。",
+          "sentenceKana": "「きっぷのねだん」といういみで、まどぐちのかかりいんによていをたずねました。",
+          "targetOccurrence": {
+            "start": 20,
+            "end": 22,
+            "kanaStart": 27,
+            "kanaEnd": 30
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "電車が遅れた予定で、会議に間に合いませんでした。",
+          "sentenceKana": "でんしゃがおくれたよていで、かいぎにまにあいませんでした。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8,
+            "kanaStart": 9,
+            "kanaEnd": 12
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "旅行の予定を三時間練習しました。",
+          "sentenceKana": "りょこうのよていをさんじかんれんしゅうしました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5,
+            "kanaStart": 5,
+            "kanaEnd": 8
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "「予定」はこれから行う事柄や日程を表し、明示された「切符の値段」という意味にはならない。値段を知りたい場合は「値段を尋ねました」と言う。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "実際に電車が遅れたことは「理由」や「ため」で示し、「予定」は発生済みの原因を表さない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "旅行の計画は「立てる／相談する」対象であり、技能の反復を表す「練習する」の対象にはならない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-05",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「予定」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-06-src-1158",
+      "sourceId": 1158,
+      "sourceIds": [
+        1158
+      ],
+      "sourceSnapshot": {
+        "word": "心配",
+        "kana": "しんぱい",
+        "meaning": "擔心",
+        "partOfSpeech": "な形容詞",
+        "example": "母は私の体を心配しています。",
+        "exampleKana": "はははわたしのからだをしんぱいしています。",
+        "exampleMeaning": "媽媽擔心我的身體。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "心配",
+      "targetKana": "しんぱい",
+      "prompt": "「心配」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "母は私の帰りを心配しています。",
+          "sentenceKana": "はははわたしのかえりをしんぱいしています。",
+          "targetOccurrence": {
+            "start": 7,
+            "end": 9,
+            "kanaStart": 11,
+            "kanaEnd": 15
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "「合格してうれしい」という意味で、両親は心配しました。",
+          "sentenceKana": "「ごうかくしてうれしい」といういみで、りょうしんはしんぱいしました。",
+          "targetOccurrence": {
+            "start": 20,
+            "end": 22,
+            "kanaStart": 25,
+            "kanaEnd": 29
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "「旅行が楽しかった」という意味で、旅行を心配しましたと話しました。",
+          "sentenceKana": "「りょこうがたのしかった」といういみで、りょこうをしんぱいしましたとはなしました。",
+          "targetOccurrence": {
+            "start": 20,
+            "end": 22,
+            "kanaStart": 25,
+            "kanaEnd": 29
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "駅への道順を知るため、地図で心配しました。",
+          "sentenceKana": "えきへのみちじゅんをしるため、ちずでしんぱいしました。",
+          "targetOccurrence": {
+            "start": 14,
+            "end": 16,
+            "kanaStart": 18,
+            "kanaEnd": 22
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "「心配する」は悪い結果や不確実な事態を気に掛けることであり、明示された合格への喜びを表さない。この意味なら「喜びました」が適切である。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "「心配する」は悪い結果を気に掛ける語であり、明示された旅行を楽しんだ肯定的感想を表さない。この意味なら「旅行を楽しみました」が適切である。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "目的が道順を知ることと明示されている場合、地図で行うのは「確認」や「調査」であり、不安を感じる「心配する」を情報検索の動作として使えない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-06",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「心配」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-07-src-1071",
+      "sourceId": 1071,
+      "sourceIds": [
+        1071
+      ],
+      "sourceSnapshot": {
+        "word": "案内",
+        "kana": "あんない",
+        "meaning": "引導；介紹",
+        "partOfSpeech": "名詞",
+        "example": "駅まで案内します。",
+        "exampleKana": "えきまであんないします。",
+        "exampleMeaning": "帶你到車站。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "案内",
+      "targetKana": "あんない",
+      "prompt": "「案内」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "係員が会場を案内してくれました。",
+          "sentenceKana": "かかりいんがかいじょうをあんないしてくれました。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8,
+            "kanaStart": 12,
+            "kanaEnd": 16
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "辞書で漢字の意味を案内しました。",
+          "sentenceKana": "じしょでかんじのいみをあんないしました。",
+          "targetOccurrence": {
+            "start": 9,
+            "end": 11,
+            "kanaStart": 11,
+            "kanaEnd": 15
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "先生の質問に正しい答えを案内しました。",
+          "sentenceKana": "せんせいのしつもんにただしいこたえをあんないしました。",
+          "targetOccurrence": {
+            "start": 12,
+            "end": 14,
+            "kanaStart": 18,
+            "kanaEnd": 22
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "商品の値段を知りたくて、店員に案内しました。",
+          "sentenceKana": "しょうひんのねだんをしりたくて、てんいんにあんないしました。",
+          "targetOccurrence": {
+            "start": 15,
+            "end": 17,
+            "kanaStart": 21,
+            "kanaEnd": 25
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "辞書を使って意味を知る行為は「調べる」であり、人を場所や情報へ導く「案内する」ではない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "質問への答えは「回答する／答える」ものであり、「案内する」は回答を提出する意味を持たない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "客が値段を知るため店員に行うのは「質問する／尋ねる」であり、客が店員を導く形になる「店員に案内する」では目的を表せない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-07",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「案内」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-08-src-1150",
+      "sourceId": 1150,
+      "sourceIds": [
+        1150
+      ],
+      "sourceSnapshot": {
+        "word": "準備",
+        "kana": "じゅんび",
+        "meaning": "準備",
+        "partOfSpeech": "名詞",
+        "example": "旅行の準備をします。",
+        "exampleKana": "りょこうのじゅんびをします。",
+        "exampleMeaning": "做旅行的準備。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "準備",
+      "targetKana": "じゅんび",
+      "prompt": "「準備」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "旅行の準備はもう終わりました。",
+          "sentenceKana": "りょこうのじゅんびはもうおわりました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5,
+            "kanaStart": 5,
+            "kanaEnd": 9
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "走る力をつけるため、毎朝一時間、準備を続けています。",
+          "sentenceKana": "はしるちからをつけるため、まいあさいちじかん、じゅんびをつづけています。",
+          "targetOccurrence": {
+            "start": 16,
+            "end": 18,
+            "kanaStart": 23,
+            "kanaEnd": 27
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "昨日の試合に勝った準備を祝いました。",
+          "sentenceKana": "きのうのしあいにかったじゅんびをいわいました。",
+          "targetOccurrence": {
+            "start": 9,
+            "end": 11,
+            "kanaStart": 11,
+            "kanaEnd": 15
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "電車が遅れた準備で、会社に電話しました。",
+          "sentenceKana": "でんしゃがおくれたじゅんびで、かいしゃにでんわしました。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8,
+            "kanaStart": 9,
+            "kanaEnd": 13
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "走力をつける目的で毎日反復する活動は「練習」であり、本番前に必要物や状態を整える「準備」を運動訓練そのものに使えない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "祝う対象は勝利という結果であり、勝つ前に行う「準備」を勝利と同じ成果として扱えない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "電車の遅延は連絡の「理由」であり、事前に整える行為を表す「準備」ではない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-08",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「準備」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-09-src-1256",
+      "sourceId": 1256,
+      "sourceIds": [
+        1256
+      ],
+      "sourceSnapshot": {
+        "word": "残念",
+        "kana": "ざんねん",
+        "meaning": "遺憾",
+        "partOfSpeech": "な形容詞",
+        "example": "試合に負けて残念です。",
+        "exampleKana": "しあいにまけてざんねんです。",
+        "exampleMeaning": "輸了比賽很遺憾。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "残念",
+      "targetKana": "ざんねん",
+      "prompt": "「残念」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "試合が中止になって残念です。",
+          "sentenceKana": "しあいがちゅうしになってざんねんです。",
+          "targetOccurrence": {
+            "start": 9,
+            "end": 11,
+            "kanaStart": 12,
+            "kanaEnd": 16
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "「料理に満足した」という意味で、店員に残念ですと伝えました。",
+          "sentenceKana": "「りょうりにまんぞくした」といういみで、てんいんにざんねんですとつたえました。",
+          "targetOccurrence": {
+            "start": 19,
+            "end": 21,
+            "kanaStart": 25,
+            "kanaEnd": 29
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "「時計が正確で満足した」という意味で、この時計は残念ですと評価しました。",
+          "sentenceKana": "「とけいがせいかくでまんぞくした」といういみで、このとけいはざんねんですとひょうかしました。",
+          "targetOccurrence": {
+            "start": 24,
+            "end": 26,
+            "kanaStart": 30,
+            "kanaEnd": 34
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "道が分からないので、駅員に残念を聞きました。",
+          "sentenceKana": "みちがわからないので、えきいんにざんねんをききました。",
+          "targetOccurrence": {
+            "start": 13,
+            "end": 15,
+            "kanaStart": 16,
+            "kanaEnd": 20
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "「残念」は期待どおりでなく心残りに思う評価であり、明示された料理への満足を表さない。この意味なら「満足しました」が適切である。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "「残念」は期待外れへの否定的評価であり、明示された正確さへの満足を表さない。この意味なら「満足です」が適切である。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "駅員に尋ねるのは道順であり、感情評価の「残念」を案内情報の名称として扱えない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-09",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「残念」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-10-src-1145",
+      "sourceId": 1145,
+      "sourceIds": [
+        1145
+      ],
+      "sourceSnapshot": {
+        "word": "自由",
+        "kana": "じゆう",
+        "meaning": "自由",
+        "partOfSpeech": "な形容詞",
+        "example": "休みの日は自由に過ごします。",
+        "exampleKana": "やすみのひはじゆうにすごします。",
+        "exampleMeaning": "休息日自由地度過。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "自由",
+      "targetKana": "じゆう",
+      "prompt": "「自由」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "休日は自由に過ごせます。",
+          "sentenceKana": "きゅうじつはじゆうにすごせます。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5,
+            "kanaStart": 6,
+            "kanaEnd": 9
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "会議は三時に自由になりました。",
+          "sentenceKana": "かいぎはさんじにじゆうになりました。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8,
+            "kanaStart": 8,
+            "kanaEnd": 11
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "「到着時間がまだ決まっていない」という意味で、到着時間は自由ですと知らせました。",
+          "sentenceKana": "「とうちゃくじかんがまだきまっていない」といういみで、とうちゃくじかんはじゆうですとしらせました。",
+          "targetOccurrence": {
+            "start": 28,
+            "end": 30,
+            "kanaStart": 36,
+            "kanaEnd": 39
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "この薬は毎朝八時という自由な時刻に飲みます。",
+          "sentenceKana": "このくすりはまいあさはちじというじゆうなじこくにのみます。",
+          "targetOccurrence": {
+            "start": 11,
+            "end": 13,
+            "kanaStart": 16,
+            "kanaEnd": 19
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "三時に会議が終わったことを述べるなら「終了しました」を使い、「自由になる」は会議という出来事の終了を表さない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "「自由」は本人が制約なく選べることを表し、明示された時刻が未決定である状態そのものを表さない。この意味なら「到着時間は未定です」が適切である。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "毎朝八時と一つに固定された時刻は選択可能ではないため、制約がなく選べることを表す「自由な時刻」とは呼べない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-10",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「自由」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-11-src-1257",
+      "sourceId": 1257,
+      "sourceIds": [
+        1257
+      ],
+      "sourceSnapshot": {
+        "word": "大切",
+        "kana": "たいせつ",
+        "meaning": "重要",
+        "partOfSpeech": "な形容詞",
+        "example": "家族はとても大切です。",
+        "exampleKana": "かぞくはとてもたいせつです。",
+        "exampleMeaning": "家人非常重要。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "大切",
+      "targetKana": "たいせつ",
+      "prompt": "「大切」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "家族との時間を大切にしています。",
+          "sentenceKana": "かぞくとのじかんをたいせつにしています。",
+          "targetOccurrence": {
+            "start": 7,
+            "end": 9,
+            "kanaStart": 9,
+            "kanaEnd": 13
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "「この荷物は二十キロで重い」という意味で、この荷物は大切ですと説明しました。",
+          "sentenceKana": "「このにもつはにじゅっきろでおもい」といういみで、このにもつはたいせつですとせつめいしました。",
+          "targetOccurrence": {
+            "start": 26,
+            "end": 28,
+            "kanaStart": 31,
+            "kanaEnd": 35
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "「時計を正確な時刻に合わせた」という意味で、時計を大切に合わせましたと報告しました。",
+          "sentenceKana": "「とけいをせいかくなじこくにあわせた」といういみで、とけいをたいせつにあわせましたとほうこくしました。",
+          "targetOccurrence": {
+            "start": 25,
+            "end": 27,
+            "kanaStart": 30,
+            "kanaEnd": 34
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "「近くにいた」という意味で、大切な駅員に道を聞きました。",
+          "sentenceKana": "「ちかくにいた」といういみで、たいせつなえきいんにみちをききました。",
+          "targetOccurrence": {
+            "start": 14,
+            "end": 16,
+            "kanaStart": 15,
+            "kanaEnd": 19
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "「大切」は重要で粗末にできない評価を表し、明示された二十キロという重量を表さない。この意味なら「重いです」が適切である。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "「大切に」は物を重んじて扱う態度を表し、明示された時刻の精度を表さない。この意味なら「正確に合わせました」が適切である。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "「近くにいた」は位置を示すが、「大切な」は重要で粗末にできない評価を示すため、明示された意味の言い換えにはならない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-11",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「大切」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-12-src-3167",
+      "sourceId": 3167,
+      "sourceIds": [
+        3167
+      ],
+      "sourceSnapshot": {
+        "word": "利用",
+        "kana": "りよう",
+        "meaning": "使用、利用",
+        "partOfSpeech": "名詞",
+        "example": "施設の利用は午後九時までです。",
+        "exampleKana": "しせつのりようはごごくじまでです。",
+        "exampleMeaning": "設施的使用到晚上九點為止。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "利用",
+      "targetKana": "りよう",
+      "prompt": "「利用」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "図書館のパソコンを利用できます。",
+          "sentenceKana": "としょかんのぱそこんをりようできます。",
+          "targetOccurrence": {
+            "start": 9,
+            "end": 11,
+            "kanaStart": 11,
+            "kanaEnd": 14
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "「自転車を修理する」という意味で、店員に利用してくださいと頼みました。",
+          "sentenceKana": "「じてんしゃをしゅうりする」といういみで、てんいんにりようしてくださいとたのみました。",
+          "targetOccurrence": {
+            "start": 20,
+            "end": 22,
+            "kanaStart": 26,
+            "kanaEnd": 29
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "分からない単語を辞書で利用しました。",
+          "sentenceKana": "わからないたんごをじしょでりようしました。",
+          "targetOccurrence": {
+            "start": 11,
+            "end": 13,
+            "kanaStart": 13,
+            "kanaEnd": 16
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "駅員に電車の時間を利用しました。",
+          "sentenceKana": "えきいんにでんしゃのじかんをりようしました。",
+          "targetOccurrence": {
+            "start": 9,
+            "end": 11,
+            "kanaStart": 14,
+            "kanaEnd": 17
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "「利用する」は物や制度を役立てて使うことであり、明示された壊れた箇所を直す「修理する」の意味にはならない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "辞書を使うことは「辞書を利用する」と言うが、調べる対象の単語を「利用する」とは言わず、目的語の役割が逆である。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "駅員から時刻を知る行為は「尋ねる」であり、情報を資源として使う「利用する」を質問行為の代わりにはできない。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-12",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「利用」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    }
+  ]
+}
