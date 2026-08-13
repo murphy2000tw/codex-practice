@@ -8,7 +8,7 @@
 
 ## 編輯方法與 provenance
 
-兩份 manifest 逐題保存 `vocabulary.json` 的 canonical `sourceId`、完整 `sourceSnapshot`、版本化審閱 ID、四項判定與個別錯因。paraphrase 的正解若不是母庫詞，`equivalentSource.kind` 明列為 `authored-expression`，且 `sourceId` 為 `null`，避免捏造來源。usage 的每句都保存完整 `sentence`／`sentenceKana`，並以明確的 `[start, end)` `targetOccurrence` 對齊唯一一次表面形式。
+兩份 manifest 逐題保存 `vocabulary.json` 的 canonical `sourceId`、完整 `sourceSnapshot`、版本化審閱 ID、四項判定與個別錯因。paraphrase 的正解若不是母庫詞，`equivalentSource.kind` 明列為 `authored-expression`，且 `sourceId` 為 `null`，避免捏造來源。全部 Kana 欄位均為不含 Han 字的完整假名。usage 的每句都保存完整 `sentence`／`sentenceKana`，並分別以明確的 `[start, end)` 與 `[kanaStart, kanaEnd)` 對齊唯一一次 target 表面形式及讀音。
 
 paraphrase 不能由中文 `meaning` 自動推導：相同翻譯可能忽略及物性、語域、搭配、程度或多義分支。每題因此提供完整句境與 `interchangeabilityScope`，只核准該範圍內的等義改述。usage 錯句也不是機械改助詞、活用或錯字；三個錯句保留可解析的句法外框，錯誤集中在可信的詞義角色、搭配或使用範圍，並逐句記錄原因。
 
@@ -28,7 +28,7 @@ node scripts/build-japanese-jlpt-batch17c7c-vocabulary-semantic-data.js --check
 node scripts/check-japanese-jlpt-batch17c7c-vocabulary-semantic-data.js
 ```
 
-`--check` 將記憶體重建 bytes 與真正 committed output 比較。checker 動態重讀 source、兩份 manifest 與 derived bank，確認連續 build bytes 相同，並用 `finally` 還原 output drift fixture。負向 fixtures 涵蓋 missing source、snapshot drift、level/type mismatch、N5 usage、review metadata／review ID 缺漏或重複、選項／句子重複、多重正解、index 越界、錯因或 kana 缺漏、occurrence 錯位、兩種 fallback、array-position ID 與 committed drift。scope guard 比較 `merge-base/main...HEAD`（即 `git diff main...HEAD`），只允許本批六個檔案。
+`--check` 將記憶體重建 bytes 與真正 committed output 比較。checker 動態重讀 source、兩份 manifest 與 derived bank，確認連續 build bytes 相同，並用 `finally` 還原 output drift fixture。負向 fixtures 涵蓋 missing source、snapshot drift、level/type mismatch、record 放錯 manifest、N5 usage、review metadata／review ID 缺漏或重複、選項／句子重複、多重正解、review status、完整假名、錯因索引集合、雙側 occurrence 錯位、兩種 fallback、array-position ID 與 committed drift。scope base 依序解析環境指定 ref、`origin/main`、`main` 與固定 base commit，再以實際 merge-base 到 HEAD 執行 scope guard；checker 另建立只有 `origin/main`、無本地 branch 的 detached checkout 執行自身，並只允許本批六個檔案。
 
 ## 完整代表例題
 
@@ -46,8 +46,8 @@ node scripts/check-japanese-jlpt-batch17c7c-vocabulary-semantic-data.js
 
 ### N4 usage（2 題）
 
-1. target `経験`：正解「海外で働いた経験があります。」三個錯句把經歷誤當成重量性質、下車手段或可計數的天空顏色；各句均保存獨立錯因與 occurrence index。
-2. target `利用`：正解「図書館のパソコンを利用できます。」三個錯句把使用行為誤配為花的顏色、吃晚餐的方向或計數天空顏色；答案不依賴錯字或破碎活用。
+1. target `経験`：正解「海外で働いた経験があります。」三個可解析的錯句分別把「経験」誤作行き方、每日練習活動及對初次見面者所做的動作；各句有針對語意角色的獨立理由與雙側 occurrence index。
+2. target `利用`：正解「図書館のパソコンを利用できます。」三個可解析的錯句分別混淆修理、把使用資源與查詢對象的角色倒置，以及用「利用」代替詢問；答案不依賴錯字、助詞亂改或破碎活用。
 
 ## 隔離結論
 

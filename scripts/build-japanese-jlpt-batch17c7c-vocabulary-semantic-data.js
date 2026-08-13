@@ -18,6 +18,10 @@ const fail = message => { throw new Error(`Batch 17C-7C build: ${message}`); };
 const requireString = (value, label) => { if (typeof value !== "string" || !value.trim()) fail(`${label} must be a non-empty string`); };
 const occurrences = (text, term) => term ? text.split(term).length - 1 : 0;
 const hasHan = value => /[\u3400-\u9fff々]/u.test(value);
+const requireKana = (value, label) => {
+  requireString(value, label);
+  if (hasHan(value)) fail(`${label} must be a complete kana rendering without Han characters`);
+};
 const stableId = record => {
   const identity = `${VERSIONS.namespace}|${record.level}|${record.questionType}|${record.sourceId}|${record.authoringId}`;
   return `${VERSIONS.namespace}-${record.level.toLowerCase()}-${record.questionType}-${crypto.createHash("sha256").update(identity).digest("hex").slice(0, 16)}`;
@@ -43,12 +47,15 @@ function validateCommon(record, sourceById) {
     if (!joined) fail(`${label} references missing source ID ${id}`);
     if (joined.level !== record.level) fail(`${label} attempts cross-level fallback`);
   });
+  requireKana(record.sourceSnapshot.kana, `${label}.sourceSnapshot.kana`);
+  requireKana(record.sourceSnapshot.exampleKana, `${label}.sourceSnapshot.exampleKana`);
   return source;
 }
 
 function validateParaphrase(record, source) {
   const label = record.authoringId;
   ["targetExpression","targetExpressionKana","prompt","promptKana","equivalentExpression","equivalentExpressionKana","interchangeabilityScope","semanticReviewId"].forEach(key => requireString(record[key], `${label}.${key}`));
+  ["targetExpressionKana","promptKana","equivalentExpressionKana"].forEach(key => requireKana(record[key], `${label}.${key}`));
   if (record.targetExpression !== source.word || record.targetExpressionKana !== source.kana) fail(`${label} target snapshot mismatch`);
   if (record.equivalentSource?.kind !== "authored-expression" && record.equivalentSource?.kind !== "vocabulary-source") fail(`${label} must declare equivalent expression provenance`);
   if (record.equivalentSource.kind === "authored-expression") {
@@ -63,16 +70,20 @@ function validateParaphrase(record, source) {
   if (!Number.isInteger(record.answerIndex) || record.answerIndex < 0 || record.answerIndex > 3) fail(`${label} answerIndex out of bounds`);
   if (record.options.filter(x => x.acceptedAsCorrect === true).length !== 1 || record.options[record.answerIndex].acceptedAsCorrect !== true || record.options[record.answerIndex].expression !== record.equivalentExpression) fail(`${label} must have exactly one accepted answer`);
   record.options.forEach((option, index) => {
-    requireString(option.expressionKana, `${label}.options[${index}].expressionKana`);
-    requireString(option.languageReviewStatus, `${label}.options[${index}].languageReviewStatus`);
-    if (index !== record.answerIndex) requireString(option.incorrectReason, `${label}.options[${index}].incorrectReason`);
-    if (index !== record.answerIndex && option.acceptedAsCorrect !== false) fail(`${label} has invalid rejected option review`);
+    requireKana(option.expressionKana, `${label}.options[${index}].expressionKana`);
+    if (index === record.answerIndex) {
+      if (option.expressionKana !== record.equivalentExpressionKana || option.languageReviewStatus !== "reviewed-correct" || option.acceptedAsCorrect !== true || option.incorrectReason !== null) fail(`${label} has invalid correct option review`);
+    } else {
+      requireString(option.incorrectReason, `${label}.options[${index}].incorrectReason`);
+      if (option.languageReviewStatus !== "reviewed-incorrect" || option.acceptedAsCorrect !== false) fail(`${label} has invalid rejected option review`);
+    }
   });
 }
 
 function validateUsage(record, source) {
   const label = record.authoringId;
   ["targetWord","targetKana","prompt","usageReviewId"].forEach(key => requireString(record[key], `${label}.${key}`));
+  requireKana(record.targetKana, `${label}.targetKana`);
   if (record.level !== "N4" || record.targetWord !== source.word || record.targetKana !== source.kana) fail(`${label} usage target mismatch`);
   if (!Array.isArray(record.usageSentences) || record.usageSentences.length !== 4) fail(`${label} must have four usage sentences`);
   const sentences = record.usageSentences.map(x => x?.sentence);
@@ -81,14 +92,16 @@ function validateUsage(record, source) {
   if (!Array.isArray(record.incorrectUsageReasons) || record.incorrectUsageReasons.length !== 3) fail(`${label} must have three incorrect usage reasons`);
   const reviewedIndexes = new Set();
   record.incorrectUsageReasons.forEach((review, index) => {
-    if (!Number.isInteger(review?.usageIndex) || review.usageIndex === record.correctUsageIndex || reviewedIndexes.has(review.usageIndex)) fail(`${label}.incorrectUsageReasons[${index}] has invalid usageIndex`);
+    if (!Number.isInteger(review?.usageIndex) || review.usageIndex < 0 || review.usageIndex > 3 || review.usageIndex === record.correctUsageIndex || reviewedIndexes.has(review.usageIndex)) fail(`${label}.incorrectUsageReasons[${index}] has invalid usageIndex`);
     reviewedIndexes.add(review.usageIndex); requireString(review.reason, `${label}.incorrectUsageReasons[${index}].reason`); requireString(review.languageReviewStatus, `${label}.incorrectUsageReasons[${index}].languageReviewStatus`);
+    if (review.languageReviewStatus !== "reviewed-incorrect") fail(`${label}.incorrectUsageReasons[${index}] must be reviewed-incorrect`);
   });
+  const expectedRejected = [0,1,2,3].filter(index => index !== record.correctUsageIndex);
+  if (expectedRejected.some(index => !reviewedIndexes.has(index))) fail(`${label} incorrectUsageReasons must cover exactly every rejected sentence`);
   record.usageSentences.forEach((item, index) => {
-    requireString(item.sentenceKana, `${label}.usageSentences[${index}].sentenceKana`);
-    if (hasHan(item.sentenceKana)) fail(`${label}.usageSentences[${index}] sentenceKana is not a complete kana rendering`);
+    requireKana(item.sentenceKana, `${label}.usageSentences[${index}].sentenceKana`);
     const hit = item.targetOccurrence;
-    if (!Number.isInteger(hit?.start) || !Number.isInteger(hit?.end) || item.sentence.slice(hit.start, hit.end) !== record.targetWord) fail(`${label}.usageSentences[${index}] target occurrence index mismatch`);
+    if (!Number.isInteger(hit?.start) || !Number.isInteger(hit?.end) || !Number.isInteger(hit?.kanaStart) || !Number.isInteger(hit?.kanaEnd) || item.sentence.slice(hit.start, hit.end) !== record.targetWord || item.sentenceKana.slice(hit.kanaStart, hit.kanaEnd) !== record.targetKana) fail(`${label}.usageSentences[${index}] target occurrence index mismatch`);
     if (occurrences(item.sentence, record.targetWord) !== 1 || occurrences(item.sentenceKana, record.targetKana) !== 1) fail(`${label}.usageSentences[${index}] target surface/kana must occur exactly once`);
     if (typeof item.acceptedAsCorrect !== "boolean" || item.acceptedAsCorrect !== (index === record.correctUsageIndex)) fail(`${label}.usageSentences[${index}] acceptance mismatch`);
   });
@@ -98,6 +111,7 @@ function buildData(vocabulary, paraphraseManifest, usageManifest) {
   if (!Array.isArray(vocabulary)) fail("source must be an array");
   for (const [name, manifest, type] of [["paraphrase",paraphraseManifest,"paraphrase"],["usage",usageManifest,"usage"]]) {
     if (!manifest || manifest.schemaVersion !== VERSIONS.schema || manifest.manifestVersion !== VERSIONS.manifest || manifest.questionType !== type || !Array.isArray(manifest.records)) fail(`${name} manifest schema/version mismatch`);
+    manifest.records.forEach((record, index) => { if (record?.questionType !== type) fail(`${name} manifest record ${index} must have questionType ${type}`); });
   }
   const sourceById = new Map(vocabulary.map(item => [item.id, item]));
   const all = [...paraphraseManifest.records, ...usageManifest.records];
