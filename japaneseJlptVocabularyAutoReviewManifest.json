@@ -4067,26 +4067,26 @@
       ]
     },
     {
-      "authoringId": "17c7b-n5-context-src-57",
-      "sourceId": 57,
+      "authoringId": "17c7b-n5-context-src-93",
+      "sourceId": 93,
       "sourceIds": [
-        57,
+        93,
         123,
-        64,
-        65
+        117,
+        110
       ],
       "level": "N5",
       "section": "vocabulary",
       "questionType": "context",
       "sourceBank": "vocabulary.json",
       "sourceSnapshot": {
-        "word": "教室",
-        "kana": "きょうしつ",
-        "meaning": "教室",
+        "word": "鉛筆",
+        "kana": "えんぴつ",
+        "meaning": "鉛筆",
         "partOfSpeech": "名詞",
-        "example": "教室に学生がいます。",
-        "exampleKana": "きょうしつにがくせいがいます。",
-        "exampleMeaning": "教室裡有學生。"
+        "example": "鉛筆で書きます。",
+        "exampleKana": "えんぴつでかきます。",
+        "exampleMeaning": "用鉛筆寫。"
       },
       "reviewStatus": "approved-for-derived-bank",
       "reviewVersion": "17c7b-review-v1",
@@ -4103,381 +4103,381 @@
         "naturalJapaneseReviewed": true,
         "traditionalChineseReviewed": true
       },
-      "explanation": "「教室（きょうしつ）」意為「教室」；依原始例句與逐項替換審閱，本題只有此選項符合。",
+      "explanation": "「鉛筆（えんぴつ）」意為「鉛筆」；逐項代入完整題幹後，只有此選項自然且符合句意。",
       "derivationVersion": "17c7b-v1",
-      "sourceExample": "教室に学生がいます。",
-      "sourceExampleKana": "きょうしつにがくせいがいます。",
-      "sourceExampleMeaning": "教室裡有學生。",
-      "blankedPrompt": "＿＿に学生がいます。",
-      "blankedPromptKana": "＿＿にがくせいがいます。",
+      "sourceExample": "鉛筆で書きます。",
+      "sourceExampleKana": "えんぴつでかきます。",
+      "sourceExampleMeaning": "用鉛筆寫。",
+      "blankedPrompt": "＿＿で書きます。",
+      "blankedPromptKana": "＿＿でかきます。",
       "targetOccurrence": {
         "sourceStart": 0,
         "sourceEnd": 2,
-        "kanaStart": 0,
-        "kanaEnd": 5,
-        "sourceOccurrenceCount": 1,
-        "kanaOccurrenceCount": 1
-      },
-      "inflectionMetadata": {
-        "dictionaryForm": "教室",
-        "surfaceForm": "教室",
-        "kanaSurface": "きょうしつ",
-        "rule": "uninflected-exact-surface"
-      },
-      "targetPartOfSpeech": "名詞",
-      "correctOption": "きょうしつ",
-      "options": [
-        "ぎゅうにゅう",
-        "きょうしつ",
-        "えき",
-        "くうこう"
-      ],
-      "answerIndex": 1,
-      "optionSourceIds": [
-        123,
-        57,
-        64,
-        65
-      ],
-      "substitutionReviews": [
-        {
-          "value": "ぎゅうにゅう",
-          "sourceId": 123,
-          "substitutedSentence": "ぎゅうにゅうにがくせいがいます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「牛乳（ぎゅうにゅう）」を入れた文は、この例文が表す「教室裡有學生。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "きょうしつ",
-          "sourceId": 57,
-          "substitutedSentence": "きょうしつにがくせいがいます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-correct",
-          "acceptedAsCorrect": true,
-          "incorrectReason": null
-        },
-        {
-          "value": "えき",
-          "sourceId": 64,
-          "substitutedSentence": "えきにがくせいがいます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「駅（えき）」を入れた文は、この例文が表す「教室裡有學生。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "くうこう",
-          "sourceId": 65,
-          "substitutedSentence": "くうこうにがくせいがいます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「空港（くうこう）」を入れた文は、この例文が表す「教室裡有學生。」という意味にならず、語意上不自然。"
-        }
-      ],
-      "distractors": [
-        {
-          "value": "ぎゅうにゅう",
-          "sourceId": 123,
-          "incorrectReason": "「牛乳」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        },
-        {
-          "value": "えき",
-          "sourceId": 64,
-          "incorrectReason": "「駅」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        },
-        {
-          "value": "くうこう",
-          "sourceId": 65,
-          "incorrectReason": "「空港」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        }
-      ]
-    },
-    {
-      "authoringId": "17c7b-n5-context-src-58",
-      "sourceId": 58,
-      "sourceIds": [
-        58,
-        66,
-        67,
-        69
-      ],
-      "level": "N5",
-      "section": "vocabulary",
-      "questionType": "context",
-      "sourceBank": "vocabulary.json",
-      "sourceSnapshot": {
-        "word": "図書館",
-        "kana": "としょかん",
-        "meaning": "圖書館",
-        "partOfSpeech": "名詞",
-        "example": "図書館で本を読みます。",
-        "exampleKana": "としょかんでほんをよみます。",
-        "exampleMeaning": "在圖書館看書。"
-      },
-      "reviewStatus": "approved-for-derived-bank",
-      "reviewVersion": "17c7b-review-v1",
-      "reviewMethod": "site-internal-editorial",
-      "reviewTags": [
-        "natural-japanese-reviewed",
-        "traditional-chinese-reviewed",
-        "unique-answer-reviewed"
-      ],
-      "uniqueAnswerReviewed": true,
-      "targetReview": {
-        "sourceFieldsMatched": true,
-        "levelReviewed": true,
-        "naturalJapaneseReviewed": true,
-        "traditionalChineseReviewed": true
-      },
-      "explanation": "「図書館（としょかん）」意為「圖書館」；依原始例句與逐項替換審閱，本題只有此選項符合。",
-      "derivationVersion": "17c7b-v1",
-      "sourceExample": "図書館で本を読みます。",
-      "sourceExampleKana": "としょかんでほんをよみます。",
-      "sourceExampleMeaning": "在圖書館看書。",
-      "blankedPrompt": "＿＿で本を読みます。",
-      "blankedPromptKana": "＿＿でほんをよみます。",
-      "targetOccurrence": {
-        "sourceStart": 0,
-        "sourceEnd": 3,
-        "kanaStart": 0,
-        "kanaEnd": 5,
-        "sourceOccurrenceCount": 1,
-        "kanaOccurrenceCount": 1
-      },
-      "inflectionMetadata": {
-        "dictionaryForm": "図書館",
-        "surfaceForm": "図書館",
-        "kanaSurface": "としょかん",
-        "rule": "uninflected-exact-surface"
-      },
-      "targetPartOfSpeech": "名詞",
-      "correctOption": "としょかん",
-      "options": [
-        "みせ",
-        "きっさてん",
-        "としょかん",
-        "しょくどう"
-      ],
-      "answerIndex": 2,
-      "optionSourceIds": [
-        66,
-        67,
-        58,
-        69
-      ],
-      "substitutionReviews": [
-        {
-          "value": "みせ",
-          "sourceId": 66,
-          "substitutedSentence": "みせでほんをよみます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「店（みせ）」を入れた文は、この例文が表す「在圖書館看書。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "きっさてん",
-          "sourceId": 67,
-          "substitutedSentence": "きっさてんでほんをよみます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「喫茶店（きっさてん）」を入れた文は、この例文が表す「在圖書館看書。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "としょかん",
-          "sourceId": 58,
-          "substitutedSentence": "としょかんでほんをよみます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-correct",
-          "acceptedAsCorrect": true,
-          "incorrectReason": null
-        },
-        {
-          "value": "しょくどう",
-          "sourceId": 69,
-          "substitutedSentence": "しょくどうでほんをよみます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「食堂（しょくどう）」を入れた文は、この例文が表す「在圖書館看書。」という意味にならず、語意上不自然。"
-        }
-      ],
-      "distractors": [
-        {
-          "value": "みせ",
-          "sourceId": 66,
-          "incorrectReason": "「店」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        },
-        {
-          "value": "きっさてん",
-          "sourceId": 67,
-          "incorrectReason": "「喫茶店」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        },
-        {
-          "value": "しょくどう",
-          "sourceId": 69,
-          "incorrectReason": "「食堂」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        }
-      ]
-    },
-    {
-      "authoringId": "17c7b-n5-context-src-59",
-      "sourceId": 59,
-      "sourceIds": [
-        59,
-        70,
-        71,
-        72
-      ],
-      "level": "N5",
-      "section": "vocabulary",
-      "questionType": "context",
-      "sourceBank": "vocabulary.json",
-      "sourceSnapshot": {
-        "word": "事務所",
-        "kana": "じむしょ",
-        "meaning": "辦公室",
-        "partOfSpeech": "名詞",
-        "example": "事務所に先生がいます。",
-        "exampleKana": "じむしょにせんせいがいます。",
-        "exampleMeaning": "老師在辦公室。"
-      },
-      "reviewStatus": "approved-for-derived-bank",
-      "reviewVersion": "17c7b-review-v1",
-      "reviewMethod": "site-internal-editorial",
-      "reviewTags": [
-        "natural-japanese-reviewed",
-        "traditional-chinese-reviewed",
-        "unique-answer-reviewed"
-      ],
-      "uniqueAnswerReviewed": true,
-      "targetReview": {
-        "sourceFieldsMatched": true,
-        "levelReviewed": true,
-        "naturalJapaneseReviewed": true,
-        "traditionalChineseReviewed": true
-      },
-      "explanation": "「事務所（じむしょ）」意為「辦公室」；依原始例句與逐項替換審閱，本題只有此選項符合。",
-      "derivationVersion": "17c7b-v1",
-      "sourceExample": "事務所に先生がいます。",
-      "sourceExampleKana": "じむしょにせんせいがいます。",
-      "sourceExampleMeaning": "老師在辦公室。",
-      "blankedPrompt": "＿＿に先生がいます。",
-      "blankedPromptKana": "＿＿にせんせいがいます。",
-      "targetOccurrence": {
-        "sourceStart": 0,
-        "sourceEnd": 3,
         "kanaStart": 0,
         "kanaEnd": 4,
         "sourceOccurrenceCount": 1,
         "kanaOccurrenceCount": 1
       },
       "inflectionMetadata": {
-        "dictionaryForm": "事務所",
-        "surfaceForm": "事務所",
-        "kanaSurface": "じむしょ",
+        "dictionaryForm": "鉛筆",
+        "surfaceForm": "鉛筆",
+        "kanaSurface": "えんぴつ",
         "rule": "uninflected-exact-surface"
       },
       "targetPartOfSpeech": "名詞",
-      "correctOption": "じむしょ",
+      "correctOption": "えんぴつ",
       "options": [
-        "こうえん",
-        "えいがかん",
-        "いえ",
-        "じむしょ"
+        "ぎゅうにゅう",
+        "えんぴつ",
+        "れいぞうこ",
+        "でんき"
       ],
-      "answerIndex": 3,
+      "answerIndex": 1,
       "optionSourceIds": [
-        70,
-        71,
-        72,
-        59
+        123,
+        93,
+        117,
+        110
       ],
       "substitutionReviews": [
         {
-          "value": "こうえん",
-          "sourceId": 70,
-          "substitutedSentence": "こうえんにせんせいがいます。",
+          "value": "ぎゅうにゅう",
+          "sourceId": 123,
+          "substitutedSentence": "ぎゅうにゅうでかきます。",
           "grammarFormReviewed": true,
           "semanticFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「公園（こうえん）」を入れた文は、この例文が表す「老師在辦公室。」という意味にならず、語意上不自然。"
+          "incorrectReason": "「牛乳（ぎゅうにゅう）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
         },
         {
-          "value": "えいがかん",
-          "sourceId": 71,
-          "substitutedSentence": "えいがかんにせんせいがいます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「映画館（えいがかん）」を入れた文は、この例文が表す「老師在辦公室。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "いえ",
-          "sourceId": 72,
-          "substitutedSentence": "いえにせんせいがいます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「家（いえ）」を入れた文は、この例文が表す「老師在辦公室。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "じむしょ",
-          "sourceId": 59,
-          "substitutedSentence": "じむしょにせんせいがいます。",
+          "value": "えんぴつ",
+          "sourceId": 93,
+          "substitutedSentence": "えんぴつでかきます。",
           "grammarFormReviewed": true,
           "semanticFitReviewed": true,
           "languageReviewStatus": "reviewed-correct",
           "acceptedAsCorrect": true,
           "incorrectReason": null
+        },
+        {
+          "value": "れいぞうこ",
+          "sourceId": 117,
+          "substitutedSentence": "れいぞうこでかきます。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「冷蔵庫（れいぞうこ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "でんき",
+          "sourceId": 110,
+          "substitutedSentence": "でんきでかきます。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「電気（でんき）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
         }
       ],
       "distractors": [
         {
-          "value": "こうえん",
-          "sourceId": 70,
-          "incorrectReason": "「公園」を代入すると文脈の意味が成立しない。",
+          "value": "ぎゅうにゅう",
+          "sourceId": 123,
+          "incorrectReason": "「牛乳（ぎゅうにゅう）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         },
         {
-          "value": "えいがかん",
-          "sourceId": 71,
-          "incorrectReason": "「映画館」を代入すると文脈の意味が成立しない。",
+          "value": "れいぞうこ",
+          "sourceId": 117,
+          "incorrectReason": "「冷蔵庫（れいぞうこ）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         },
         {
-          "value": "いえ",
-          "sourceId": 72,
-          "incorrectReason": "「家」を代入すると文脈の意味が成立しない。",
+          "value": "でんき",
+          "sourceId": 110,
+          "incorrectReason": "「電気（でんき）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        }
+      ]
+    },
+    {
+      "authoringId": "17c7b-n5-context-src-101",
+      "sourceId": 101,
+      "sourceIds": [
+        101,
+        110,
+        117,
+        123
+      ],
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "context",
+      "sourceBank": "vocabulary.json",
+      "sourceSnapshot": {
+        "word": "鍵",
+        "kana": "かぎ",
+        "meaning": "鑰匙",
+        "partOfSpeech": "名詞",
+        "example": "鍵をなくしました。",
+        "exampleKana": "かぎをなくしました。",
+        "exampleMeaning": "鑰匙不見了。"
+      },
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "traditional-chinese-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "targetReview": {
+        "sourceFieldsMatched": true,
+        "levelReviewed": true,
+        "naturalJapaneseReviewed": true,
+        "traditionalChineseReviewed": true
+      },
+      "explanation": "「鍵（かぎ）」意為「鑰匙」；逐項代入完整題幹後，只有此選項自然且符合句意。",
+      "derivationVersion": "17c7b-v1",
+      "sourceExample": "鍵をなくしました。",
+      "sourceExampleKana": "かぎをなくしました。",
+      "sourceExampleMeaning": "鑰匙不見了。",
+      "blankedPrompt": "＿＿をなくしました。",
+      "blankedPromptKana": "＿＿をなくしました。",
+      "targetOccurrence": {
+        "sourceStart": 0,
+        "sourceEnd": 1,
+        "kanaStart": 0,
+        "kanaEnd": 2,
+        "sourceOccurrenceCount": 1,
+        "kanaOccurrenceCount": 1
+      },
+      "inflectionMetadata": {
+        "dictionaryForm": "鍵",
+        "surfaceForm": "鍵",
+        "kanaSurface": "かぎ",
+        "rule": "uninflected-exact-surface"
+      },
+      "targetPartOfSpeech": "名詞",
+      "correctOption": "かぎ",
+      "options": [
+        "でんき",
+        "かぎ",
+        "れいぞうこ",
+        "ぎゅうにゅう"
+      ],
+      "answerIndex": 1,
+      "optionSourceIds": [
+        110,
+        101,
+        117,
+        123
+      ],
+      "substitutionReviews": [
+        {
+          "value": "でんき",
+          "sourceId": 110,
+          "substitutedSentence": "でんきをなくしました。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「電気（でんき）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "かぎ",
+          "sourceId": 101,
+          "substitutedSentence": "かぎをなくしました。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null
+        },
+        {
+          "value": "れいぞうこ",
+          "sourceId": 117,
+          "substitutedSentence": "れいぞうこをなくしました。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「冷蔵庫（れいぞうこ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "ぎゅうにゅう",
+          "sourceId": 123,
+          "substitutedSentence": "ぎゅうにゅうをなくしました。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「牛乳（ぎゅうにゅう）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        }
+      ],
+      "distractors": [
+        {
+          "value": "でんき",
+          "sourceId": 110,
+          "incorrectReason": "「電気（でんき）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        },
+        {
+          "value": "れいぞうこ",
+          "sourceId": 117,
+          "incorrectReason": "「冷蔵庫（れいぞうこ）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        },
+        {
+          "value": "ぎゅうにゅう",
+          "sourceId": 123,
+          "incorrectReason": "「牛乳（ぎゅうにゅう）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        }
+      ]
+    },
+    {
+      "authoringId": "17c7b-n5-context-src-110",
+      "sourceId": 110,
+      "sourceIds": [
+        110,
+        101,
+        117,
+        123
+      ],
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "context",
+      "sourceBank": "vocabulary.json",
+      "sourceSnapshot": {
+        "word": "電気",
+        "kana": "でんき",
+        "meaning": "電燈；電",
+        "partOfSpeech": "名詞",
+        "example": "電気をつけます。",
+        "exampleKana": "でんきをつけます。",
+        "exampleMeaning": "開燈。"
+      },
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "traditional-chinese-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "targetReview": {
+        "sourceFieldsMatched": true,
+        "levelReviewed": true,
+        "naturalJapaneseReviewed": true,
+        "traditionalChineseReviewed": true
+      },
+      "explanation": "「電気（でんき）」意為「電燈；電」；逐項代入完整題幹後，只有此選項自然且符合句意。",
+      "derivationVersion": "17c7b-v1",
+      "sourceExample": "電気をつけます。",
+      "sourceExampleKana": "でんきをつけます。",
+      "sourceExampleMeaning": "開燈。",
+      "blankedPrompt": "＿＿をつけます。",
+      "blankedPromptKana": "＿＿をつけます。",
+      "targetOccurrence": {
+        "sourceStart": 0,
+        "sourceEnd": 2,
+        "kanaStart": 0,
+        "kanaEnd": 3,
+        "sourceOccurrenceCount": 1,
+        "kanaOccurrenceCount": 1
+      },
+      "inflectionMetadata": {
+        "dictionaryForm": "電気",
+        "surfaceForm": "電気",
+        "kanaSurface": "でんき",
+        "rule": "uninflected-exact-surface"
+      },
+      "targetPartOfSpeech": "名詞",
+      "correctOption": "でんき",
+      "options": [
+        "かぎ",
+        "れいぞうこ",
+        "でんき",
+        "ぎゅうにゅう"
+      ],
+      "answerIndex": 2,
+      "optionSourceIds": [
+        101,
+        117,
+        110,
+        123
+      ],
+      "substitutionReviews": [
+        {
+          "value": "かぎ",
+          "sourceId": 101,
+          "substitutedSentence": "かぎをつけます。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「鍵（かぎ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "れいぞうこ",
+          "sourceId": 117,
+          "substitutedSentence": "れいぞうこをつけます。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「冷蔵庫（れいぞうこ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "でんき",
+          "sourceId": 110,
+          "substitutedSentence": "でんきをつけます。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null
+        },
+        {
+          "value": "ぎゅうにゅう",
+          "sourceId": 123,
+          "substitutedSentence": "ぎゅうにゅうをつけます。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「牛乳（ぎゅうにゅう）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        }
+      ],
+      "distractors": [
+        {
+          "value": "かぎ",
+          "sourceId": 101,
+          "incorrectReason": "「鍵（かぎ）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        },
+        {
+          "value": "れいぞうこ",
+          "sourceId": 117,
+          "incorrectReason": "「冷蔵庫（れいぞうこ）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        },
+        {
+          "value": "ぎゅうにゅう",
+          "sourceId": 123,
+          "incorrectReason": "「牛乳（ぎゅうにゅう）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         }
@@ -5022,10 +5022,10 @@
       ]
     },
     {
-      "authoringId": "17c7b-n4-kanji-reading-src-1074",
-      "sourceId": 1074,
+      "authoringId": "17c7b-n4-kanji-reading-src-1120",
+      "sourceId": 1120,
       "sourceIds": [
-        1074,
+        1120,
         1136,
         1137,
         1138
@@ -5035,13 +5035,13 @@
       "questionType": "kanji-reading",
       "sourceBank": "vocabulary.json",
       "sourceSnapshot": {
-        "word": "市",
-        "kana": "いち",
-        "meaning": "市集；市場",
+        "word": "工場",
+        "kana": "こうじょう",
+        "meaning": "工廠",
         "partOfSpeech": "名詞",
-        "example": "日曜日に市へ行きます。",
-        "exampleKana": "にちようびにいちへいきます。",
-        "exampleMeaning": "星期日去市集。"
+        "example": "父は工場で働いています。",
+        "exampleKana": "ちちはこうじょうではたらいています。",
+        "exampleMeaning": "爸爸在工廠工作。"
       },
       "reviewStatus": "approved-for-derived-bank",
       "reviewVersion": "17c7b-review-v1",
@@ -5058,28 +5058,29 @@
         "naturalJapaneseReviewed": true,
         "traditionalChineseReviewed": true
       },
-      "explanation": "「市（いち）」意為「市集；市場」；依原始例句與逐項替換審閱，本題只有此選項符合。",
+      "explanation": "「工場（こうじょう）」意為「工廠」；逐項代入完整題幹後，只有此選項自然且符合句意。",
       "derivationVersion": "17c7b-v1",
-      "testedWord": "市",
-      "testedReading": "いち",
+      "testedWord": "工場",
+      "testedReading": "こうじょう",
       "testedKanji": [
-        "市"
+        "工",
+        "場"
       ],
-      "prompt": "「市」的讀音是哪一個？",
-      "correctOption": "いち",
+      "prompt": "「工場」的讀音是哪一個？",
+      "correctOption": "こうじょう",
       "options": [
+        "こうじょう",
         "じこ",
         "じしん",
-        "いち",
         "しっぱい"
       ],
-      "answerIndex": 2,
+      "answerIndex": 0,
       "readingReview": {
         "acceptedReading": "いち",
         "commonAlternateReadingsReviewed": true,
         "phonologicalVariantsReviewed": true,
         "ambiguous": false,
-        "notes": "依本站來源假名及此詞常見讀法逐題確認，沒有另一個可接受選項。"
+        "notes": "「工場」在本題詞義下讀作「こうじょう」；逐題檢查常見異讀與音便後，沒有另一個可接受選項。"
       },
       "kanjiReview": {
         "status": "approved-for-record-display",
@@ -5091,21 +5092,21 @@
         {
           "value": "じこ",
           "sourceId": 1136,
-          "incorrectReason": "「じこ」是「事故」的讀音，不是「市」在本題詞義下的讀音。",
+          "incorrectReason": "「じこ」是「事故」的讀音，不是「工場」的讀音。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         },
         {
           "value": "じしん",
           "sourceId": 1137,
-          "incorrectReason": "「じしん」是「地震」的讀音，不是「市」在本題詞義下的讀音。",
+          "incorrectReason": "「じしん」是「地震」的讀音，不是「工場」的讀音。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         },
         {
           "value": "しっぱい",
           "sourceId": 1138,
-          "incorrectReason": "「しっぱい」是「失敗」的讀音，不是「市」在本題詞義下的讀音。",
+          "incorrectReason": "「しっぱい」是「失敗」的讀音，不是「工場」的讀音。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         }
@@ -8526,26 +8527,26 @@
       ]
     },
     {
-      "authoringId": "17c7b-n4-context-src-1106",
-      "sourceId": 1106,
+      "authoringId": "17c7b-n4-context-src-1125",
+      "sourceId": 1125,
       "sourceIds": [
-        1106,
-        1174,
-        1114,
-        1116
+        1125,
+        1136,
+        1137,
+        1138
       ],
       "level": "N4",
       "section": "vocabulary",
       "questionType": "context",
       "sourceBank": "vocabulary.json",
       "sourceSnapshot": {
-        "word": "教会",
-        "kana": "きょうかい",
-        "meaning": "教堂",
+        "word": "故障",
+        "kana": "こしょう",
+        "meaning": "故障",
         "partOfSpeech": "名詞",
-        "example": "日曜日に教会へ行きました。",
-        "exampleKana": "にちようびにきょうかいへいきました。",
-        "exampleMeaning": "星期日去了教堂。"
+        "example": "車が故障しました。",
+        "exampleKana": "くるまがこしょうしました。",
+        "exampleMeaning": "車子故障了。"
       },
       "reviewStatus": "approved-for-derived-bank",
       "reviewVersion": "17c7b-review-v1",
@@ -8562,67 +8563,57 @@
         "naturalJapaneseReviewed": true,
         "traditionalChineseReviewed": true
       },
-      "explanation": "「教会（きょうかい）」意為「教堂」；依原始例句與逐項替換審閱，本題只有此選項符合。",
+      "explanation": "「故障（こしょう）」意為「故障」；逐項代入完整題幹後，只有此選項自然且符合句意。",
       "derivationVersion": "17c7b-v1",
-      "sourceExample": "日曜日に教会へ行きました。",
-      "sourceExampleKana": "にちようびにきょうかいへいきました。",
-      "sourceExampleMeaning": "星期日去了教堂。",
-      "blankedPrompt": "日曜日に＿＿へ行きました。",
-      "blankedPromptKana": "にちようびに＿＿へいきました。",
+      "sourceExample": "車が故障しました。",
+      "sourceExampleKana": "くるまがこしょうしました。",
+      "sourceExampleMeaning": "車子故障了。",
+      "blankedPrompt": "車が＿＿しました。",
+      "blankedPromptKana": "くるまが＿＿しました。",
       "targetOccurrence": {
-        "sourceStart": 4,
-        "sourceEnd": 6,
-        "kanaStart": 6,
-        "kanaEnd": 11,
+        "sourceStart": 2,
+        "sourceEnd": 4,
+        "kanaStart": 4,
+        "kanaEnd": 8,
         "sourceOccurrenceCount": 1,
         "kanaOccurrenceCount": 1
       },
       "inflectionMetadata": {
-        "dictionaryForm": "教会",
-        "surfaceForm": "教会",
-        "kanaSurface": "きょうかい",
+        "dictionaryForm": "故障",
+        "surfaceForm": "故障",
+        "kanaSurface": "こしょう",
         "rule": "uninflected-exact-surface"
       },
       "targetPartOfSpeech": "名詞",
-      "correctOption": "きょうかい",
+      "correctOption": "こしょう",
       "options": [
-        "たいいくかん",
-        "けいけん",
-        "きょうかい",
-        "けしき"
+        "じこ",
+        "こしょう",
+        "じしん",
+        "しっぱい"
       ],
-      "answerIndex": 2,
+      "answerIndex": 1,
       "optionSourceIds": [
-        1174,
-        1114,
-        1106,
-        1116
+        1136,
+        1125,
+        1137,
+        1138
       ],
       "substitutionReviews": [
         {
-          "value": "たいいくかん",
-          "sourceId": 1174,
-          "substitutedSentence": "にちようびにたいいくかんへいきました。",
+          "value": "じこ",
+          "sourceId": 1136,
+          "substitutedSentence": "くるまがじこしました。",
           "grammarFormReviewed": true,
           "semanticFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「体育館（たいいくかん）」を入れた文は、この例文が表す「星期日去了教堂。」という意味にならず、語意上不自然。"
+          "incorrectReason": "「事故（じこ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
         },
         {
-          "value": "けいけん",
-          "sourceId": 1114,
-          "substitutedSentence": "にちようびにけいけんへいきました。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「経験（けいけん）」を入れた文は、この例文が表す「星期日去了教堂。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "きょうかい",
-          "sourceId": 1106,
-          "substitutedSentence": "にちようびにきょうかいへいきました。",
+          "value": "こしょう",
+          "sourceId": 1125,
+          "substitutedSentence": "くるまがこしょうしました。",
           "grammarFormReviewed": true,
           "semanticFitReviewed": true,
           "languageReviewStatus": "reviewed-correct",
@@ -8630,35 +8621,45 @@
           "incorrectReason": null
         },
         {
-          "value": "けしき",
-          "sourceId": 1116,
-          "substitutedSentence": "にちようびにけしきへいきました。",
+          "value": "じしん",
+          "sourceId": 1137,
+          "substitutedSentence": "くるまがじしんしました。",
           "grammarFormReviewed": true,
           "semanticFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「景色（けしき）」を入れた文は、この例文が表す「星期日去了教堂。」という意味にならず、語意上不自然。"
+          "incorrectReason": "「地震（じしん）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "しっぱい",
+          "sourceId": 1138,
+          "substitutedSentence": "くるまがしっぱいしました。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「失敗（しっぱい）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
         }
       ],
       "distractors": [
         {
-          "value": "たいいくかん",
-          "sourceId": 1174,
-          "incorrectReason": "「体育館」を代入すると文脈の意味が成立しない。",
+          "value": "じこ",
+          "sourceId": 1136,
+          "incorrectReason": "「事故（じこ）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         },
         {
-          "value": "けいけん",
-          "sourceId": 1114,
-          "incorrectReason": "「経験」を代入すると文脈の意味が成立しない。",
+          "value": "じしん",
+          "sourceId": 1137,
+          "incorrectReason": "「地震（じしん）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         },
         {
-          "value": "けしき",
-          "sourceId": 1116,
-          "incorrectReason": "「景色」を代入すると文脈の意味が成立しない。",
+          "value": "しっぱい",
+          "sourceId": 1138,
+          "incorrectReason": "「失敗（しっぱい）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         }

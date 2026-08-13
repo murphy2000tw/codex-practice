@@ -60,7 +60,21 @@ function validateReview(record, sourceById) {
     const expectedKana = source.exampleKana.slice(0, o.kanaStart) + "＿＿" + source.exampleKana.slice(o.kanaEnd);
     if (record.blankedPrompt !== expectedWord || record.blankedPromptKana !== expectedKana || record.correctOption !== source.kana) fail(`${label} context blank is not index-derived`);
     if (!record.inflectionMetadata || record.inflectionMetadata.rule !== "uninflected-exact-surface" || !Array.isArray(record.substitutionReviews) || record.substitutionReviews.length !== 4) fail(`${label} lacks substitution review`);
-    record.substitutionReviews.forEach(x => { if (!x.substitutedSentence || x.grammarFormReviewed !== true || x.semanticFitReviewed !== true || !x.languageReviewStatus || (x.acceptedAsCorrect === false && !x.incorrectReason)) fail(`${label} incomplete substitution review`); });
+    if (!Array.isArray(record.optionSourceIds) || record.optionSourceIds.length !== 4) fail(`${label} lacks option/source mapping`);
+    record.options.forEach((value, index) => {
+      const optionSource = sourceById.get(record.optionSourceIds[index]);
+      const review = record.substitutionReviews[index];
+      const isAnswer = index === record.answerIndex;
+      const expectedSentence = source.exampleKana.slice(0, o.kanaStart) + value + source.exampleKana.slice(o.kanaEnd);
+      if (!optionSource || optionSource.level !== record.level || optionSource.kana !== value || !review || review.value !== value || review.sourceId !== optionSource.id || review.substitutedSentence !== expectedSentence) fail(`${label} option/substitution source mismatch`);
+      if (review.grammarFormReviewed !== true || review.semanticFitReviewed !== true || review.acceptedAsCorrect !== isAnswer || review.languageReviewStatus !== (isAnswer ? "reviewed-correct" : "reviewed-incorrect") || (isAnswer ? review.incorrectReason !== null : !review.incorrectReason)) fail(`${label} invalid substitution acceptance`);
+    });
+    const expectedDistractors = record.options.filter((_, index) => index !== record.answerIndex);
+    record.distractors.forEach((item, index) => {
+      const optionIndex = record.options.indexOf(item.value);
+      const optionSource = sourceById.get(item.sourceId);
+      if (item.value !== expectedDistractors[index] || optionIndex === record.answerIndex || !optionSource || optionSource.id !== record.optionSourceIds[optionIndex] || optionSource.kana !== item.value) fail(`${label} distractor/source mismatch`);
+    });
   }
   return source;
 }

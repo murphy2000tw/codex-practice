@@ -68,6 +68,8 @@ Canonical ID 是 `jlpt-vocab-17c7b-{level}-{questionType}-src-{sourceId}`，`sou
 
 候選若不含漢字、word 或 kana 在例句出現零次/多次、存在合理異讀或同音表記、需要無法安全證明的活用、無法配置三個同 level 且逐項可排除的錯項，均不納入。本 seed 特別排除複雜動詞及形容詞 context target，改採唯一對齊的未活用名詞；也不把 orthography 的同音風險誤標成 reading ambiguity。
 
+逐題複查時，N5 context 的「教室／圖書館／事務所」與 N4 context 的「教會」都因題幹單獨呈現時，原錯項仍可能形成自然句子而撤換，改用「鉛筆で書く」、「鍵をなくす」、「電気をつける」及「車が故障する」等能由述語搭配排除所有錯項的題目。N4 reading 的單字「市」本身可讀作「いち」或「し」，即使來源詞義指定市集，孤立題幹仍會產生合理第二讀法，因此改為「工場（こうじょう）」。
+
 ## Compatibility 隔離與後續邊界
 
 `17c6-compat-v1` 仍維持 N5 20 題（單字 meaning 10＋文法 10）及 N4 34 題（單字 meaning 10＋文法 10＋閱讀 14）。本批不修改 profile、runtime、UI、storage schema 或既有題庫；12 題容量也不會被當作 session quota。
