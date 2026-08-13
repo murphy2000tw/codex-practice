@@ -28,7 +28,9 @@ node scripts/build-japanese-jlpt-batch17c7c-vocabulary-semantic-data.js --check
 node scripts/check-japanese-jlpt-batch17c7c-vocabulary-semantic-data.js
 ```
 
-`--check` 將記憶體重建 bytes 與真正 committed output 比較。checker 動態重讀 source、兩份 manifest 與 derived bank，確認連續 build bytes 相同，並用 `finally` 還原 output drift fixture。負向 fixtures 涵蓋 missing source、snapshot drift、level/type mismatch、record 放錯 manifest、N5 usage、review metadata／review ID 缺漏或重複、選項／句子重複、多重正解、review status、完整假名、錯因索引集合、雙側 occurrence 錯位、兩種 fallback、array-position ID 與 committed drift。scope base 依序解析環境指定 ref、`origin/main`、`main` 與固定 base commit，再以實際 merge-base 到 HEAD 執行 scope guard；checker 另建立只有 `origin/main`、無本地 branch 的 detached checkout 執行自身，並只允許本批六個檔案。
+`--check` 將記憶體重建 bytes 與真正 committed output 比較。checker 動態重讀 source、兩份 manifest 與 derived bank，確認連續 build bytes 相同，並用 `finally` 還原 output drift fixture。擴充後的負向 fixtures 涵蓋 missing source、snapshot drift、level/type mismatch、record 放錯 manifest、N5 usage、review metadata／review ID 缺漏或重複、選項／句子重複、多重正解、review status、完整假名、錯因索引集合、雙側 occurrence 錯位、籠統 paraphrase 理由、兩種 fallback、array-position ID 與 committed drift。scope base 依序解析環境指定 ref、`origin/main`、`main` 與固定 base commit，再以實際 merge-base 到 HEAD 執行 scope guard；checker 另建立只有 `origin/main`、無本地 branch 的 detached checkout 執行自身，並只允許本批六個檔案。
+
+detached fixture 的暫存根目錄依序採用 `JLPT_CHECK_TMP_ROOT`、存在且可寫的作業系統暫存目錄、repository root 的父目錄；repository 本身及其子目錄一律拒用，clone 無論成功或失敗都在 `finally` 清除。因此 checker 不依賴 `TMPDIR` 一定存在，也不會讓 clone 汙染 scope/status。
 
 ## 完整代表例題
 

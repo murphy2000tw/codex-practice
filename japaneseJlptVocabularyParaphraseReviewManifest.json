@@ -30,42 +30,42 @@
       "sourceBank": "vocabulary.json",
       "targetExpression": "大きい",
       "targetExpressionKana": "おおきい",
-      "prompt": "「この箱は大きいので、一人では運べません。」の「大きい」と、この文で最も近い意味の表現を選んでください。",
-      "promptKana": "「このはこはおおきいので、ひとりでははこべません。」の「おおきい」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
-      "equivalentExpression": "一人で運べないほどかさばる",
-      "equivalentExpressionKana": "ひとりではこべないほどかさばる",
+      "prompt": "「この箱はかなり大きくて、棚に入りません。」の「大きい」と、この文で最も近い意味の表現を選んでください。",
+      "promptKana": "「このはこはかなりおおきくて、たなにはいりません。」の「おおきい」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "equivalentExpression": "かなりの大きさがある",
+      "equivalentExpressionKana": "かなりのおおきさがある",
       "equivalentSource": {
         "kind": "authored-expression",
         "sourceId": null
       },
-      "interchangeabilityScope": "題幹「この箱は大きいので、一人では運べません。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "interchangeabilityScope": "箱の寸法が棚に収まらない程度であることを述べる、この題幹の物理的な大きさの用法に限る。",
       "options": [
         {
           "expression": "値段が高い",
           "expressionKana": "ねだんがたかい",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「値段が高い」は、題幹の限定された場面で「一人で運べないほどかさばる」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「値段が高い」は箱の価格を述べ、棚に収まるかを左右する寸法の大きさを説明しない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
-          "expression": "一人で運べないほどかさばる",
-          "expressionKana": "ひとりではこべないほどかさばる",
+          "expression": "かなりの大きさがある",
+          "expressionKana": "かなりのおおきさがある",
           "acceptedAsCorrect": true,
           "incorrectReason": null,
           "languageReviewStatus": "reviewed-correct"
         },
         {
-          "expression": "重さが軽い",
-          "expressionKana": "おもさがかるい",
+          "expression": "重さがある",
+          "expressionKana": "おもさがある",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「重さが軽い」は、題幹の限定された場面で「一人で運べないほどかさばる」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「重さがある」は重量を述べるため、軽くても寸法が大きく棚に入らない箱とは区別される。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "ふたが開いている",
           "expressionKana": "ふたがあいている",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「ふたが開いている」は、題幹の限定された場面で「一人で運べないほどかさばる」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「ふたが開いている」は箱の開閉状態であり、箱全体の寸法が大きいこととは無関係である。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -104,26 +104,26 @@
       "sourceBank": "vocabulary.json",
       "targetExpression": "小さい",
       "targetExpressionKana": "ちいさい",
-      "prompt": "「この靴は私には小さいです。」の「小さい」と、この文で最も近い意味の表現を選んでください。",
-      "promptKana": "「このくつはわたしにはちいさいです。」の「ちいさい」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
-      "equivalentExpression": "足が入らないほどせまい",
-      "equivalentExpressionKana": "あしがはいらないほどせまい",
+      "prompt": "「この靴は私には小さくて、履くと足が痛いです。」の「小さい」と、この文で最も近い意味の表現を選んでください。",
+      "promptKana": "「このくつはわたしにはちいさくて、はくとあしがいたいです。」の「ちいさい」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "equivalentExpression": "私の足にはきつい",
+      "equivalentExpressionKana": "わたしのあしにはきつい",
       "equivalentSource": {
         "kind": "authored-expression",
         "sourceId": null
       },
-      "interchangeabilityScope": "題幹「この靴は私には小さいです。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "interchangeabilityScope": "履くと足が痛むという題幹における、靴の内寸が本人の足に対して小さい用法に限る。",
       "options": [
         {
           "expression": "値段が安い",
           "expressionKana": "ねだんがやすい",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「値段が安い」は、題幹の限定された場面で「足が入らないほどせまい」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「値段が安い」は価格の低さであり、履いたときの靴の内寸や圧迫感を表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
-          "expression": "足が入らないほどせまい",
-          "expressionKana": "あしがはいらないほどせまい",
+          "expression": "私の足にはきつい",
+          "expressionKana": "わたしのあしにはきつい",
           "acceptedAsCorrect": true,
           "incorrectReason": null,
           "languageReviewStatus": "reviewed-correct"
@@ -132,14 +132,14 @@
           "expression": "底がすべりやすい",
           "expressionKana": "そこがすべりやすい",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「底がすべりやすい」は、題幹の限定された場面で「足が入らないほどせまい」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「底がすべりやすい」は靴底の摩擦の問題であり、足が圧迫されて痛むサイズの問題ではない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "色が薄い",
           "expressionKana": "いろがうすい",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「色が薄い」は、題幹の限定された場面で「足が入らないほどせまい」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「色が薄い」は色調を述べ、靴が足に合わず痛いという大きさを説明しない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -192,7 +192,7 @@
           "expression": "少しだけいました",
           "expressionKana": "すこしだけいました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「少しだけいました」は、題幹の限定された場面で「大勢いました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「少しだけ」は人数が少ないことを表し、大勢がいた「たくさん」と数量が反対である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -206,14 +206,14 @@
           "expression": "誰もいませんでした",
           "expressionKana": "だれもいませんでした",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「誰もいませんでした」は、題幹の限定された場面で「大勢いました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「誰もいない」は人数がゼロであり、多数の人がいた題幹を否定する。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "一人で来ました",
           "expressionKana": "ひとりできました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「一人で来ました」は、題幹の限定された場面で「大勢いました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「一人で来た」は来場者一人の行動を述べ、会場全体の人数が多いことを表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -266,7 +266,7 @@
           "expression": "全部入れてください",
           "expressionKana": "ぜんぶいれてください",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「全部入れてください」は、題幹の限定された場面で「少量入れてください」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「全部」は砂糖の全量を求め、「少し」が指定する少量を超える。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -280,14 +280,14 @@
           "expression": "入れないでください",
           "expressionKana": "いれないでください",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「入れないでください」は、題幹の限定された場面で「少量入れてください」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「入れない」は量をゼロにするため、少量を加える依頼と異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "別に置いてください",
           "expressionKana": "べつにおいてください",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「別に置いてください」は、題幹の限定された場面で「少量入れてください」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「別に置く」は砂糖を加えず場所を移す行為で、入れる量の言い換えではない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -340,7 +340,7 @@
           "expression": "あとで電話してください",
           "expressionKana": "あとででんわしてください",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「あとで電話してください」は、題幹の限定された場面で「ただちに電話してください」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「あとで」は行為を後の時点へ延ばし、到着直後を表す「すぐ」と時点が異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -354,14 +354,14 @@
           "expression": "ゆっくり電話してください",
           "expressionKana": "ゆっくりでんわしてください",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「ゆっくり電話してください」は、題幹の限定された場面で「ただちに電話してください」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「ゆっくり」は電話の速度や態度を述べ、電話を始める時点の即時性を表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "手紙を書いてください",
           "expressionKana": "てがみをかいてください",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「手紙を書いてください」は、題幹の限定された場面で「ただちに電話してください」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「手紙を書く」は連絡手段そのものを電話から手紙へ変えている。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -414,7 +414,7 @@
           "expression": "静かです",
           "expressionKana": "しずかです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「静かです」は、題幹の限定された場面で「健康です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「静か」は音や態度の状態で、病気が治った健康状態を表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -428,14 +428,14 @@
           "expression": "有名です",
           "expressionKana": "ゆうめいです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「有名です」は、題幹の限定された場面で「健康です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「有名」は知名度を表し、回復後の身体状態とは関係しない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "暇です",
           "expressionKana": "ひまです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「暇です」は、題幹の限定された場面で「健康です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「暇」は予定がない状態であり、病気から回復して健康であることを意味しない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -488,7 +488,7 @@
           "expression": "にぎやかです",
           "expressionKana": "にぎやかです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「にぎやかです」は、題幹の限定された場面で「清潔です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「にぎやか」は音や人出の多さを表し、掃除後の清潔さを表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -502,14 +502,14 @@
           "expression": "狭いです",
           "expressionKana": "せまいです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「狭いです」は、題幹の限定された場面で「清潔です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「狭い」は部屋の面積を述べ、汚れが除かれた状態とは異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "古いです",
           "expressionKana": "ふるいです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「古いです」は、題幹の限定された場面で「清潔です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「古い」は築年数や経過時間を述べ、掃除による清潔さとは別の属性である。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -562,7 +562,7 @@
           "expression": "会議を中止します",
           "expressionKana": "かいぎをちゅうしします",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「会議を中止します」は、題幹の限定された場面で「会議を開始します」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「中止する」は会議を行わない決定であり、九時に開始することと反対である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -576,14 +576,14 @@
           "expression": "会議を延長します",
           "expressionKana": "かいぎをえんちょうします",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「会議を延長します」は、題幹の限定された場面で「会議を開始します」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「延長する」は既に行っている会議の終了を遅らせる行為で、開始を表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "会議を欠席します",
           "expressionKana": "かいぎをけっせきします",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「会議を欠席します」は、題幹の限定された場面で「会議を開始します」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「欠席する」は話者が会議に出ないことを述べ、会議自体を開始する意味ではない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -636,7 +636,7 @@
           "expression": "仕事は五時に始まります",
           "expressionKana": "しごとはごじにはじまります",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「仕事は五時に始まります」は、題幹の限定された場面で「仕事は五時に終了します」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「始まる」は仕事の開始を述べ、「終わる」が示す終了とは事象の端が反対である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -647,17 +647,17 @@
           "languageReviewStatus": "reviewed-correct"
         },
         {
-          "expression": "仕事は五時まで続きます",
-          "expressionKana": "しごとはごじまでつづきます",
+          "expression": "仕事は五時より前に終わります",
+          "expressionKana": "しごとはごじよりまえにおわります",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「仕事は五時まで続きます」は、題幹の限定された場面で「仕事は五時に終了します」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「五時より前に終わる」は終了時刻を五時以前へ変えるため、五時ちょうどに終了する題幹と一致しない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "仕事は五時に増えます",
           "expressionKana": "しごとはごじにふえます",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「仕事は五時に増えます」は、題幹の限定された場面で「仕事は五時に終了します」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「増える」は仕事の量が多くなることで、勤務が終了することを表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -710,7 +710,7 @@
           "expression": "切符を売りました",
           "expressionKana": "きっぷをうりました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「切符を売りました」は、題幹の限定された場面で「切符を購入しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「売る」は切符を代金と引き換えに渡す側の行為で、購入する「買う」と取引方向が逆である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -724,14 +724,14 @@
           "expression": "切符を拾いました",
           "expressionKana": "きっぷをひろいました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「切符を拾いました」は、題幹の限定された場面で「切符を購入しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「拾う」は落ちている切符を取る行為で、代金を払って入手することではない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "切符を見ました",
           "expressionKana": "きっぷをみました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「切符を見ました」は、題幹の限定された場面で「切符を購入しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「見る」は視覚で確認するだけで、切符の所有権を得る購入を表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -784,7 +784,7 @@
           "expression": "先生に旅行の写真を見せました",
           "expressionKana": "せんせいにりょこうのしゃしんをみせました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「先生に旅行の写真を見せました」は、題幹の限定された場面で「先生と旅行について会話しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「写真を見せる」は視覚資料を提示する行為で、旅行を話題に互いに言葉を交わすこととは異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -798,14 +798,14 @@
           "expression": "先生から旅行の話を聞きました",
           "expressionKana": "せんせいからりょこうのはなしをききました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「先生から旅行の話を聞きました」は、題幹の限定された場面で「先生と旅行について会話しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「話を聞く」は先生から情報を受ける一方向の行為で、先生と互いに会話した題幹と一致しない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "先生と旅行の計画を書きました",
           "expressionKana": "せんせいとりょこうのけいかくをかきました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「先生と旅行の計画を書きました」は、題幹の限定された場面で「先生と旅行について会話しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「計画を書く」は文字で計画を記録する行為で、先生と口頭で話したことを表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -844,42 +844,42 @@
       "sourceBank": "vocabulary.json",
       "targetExpression": "前",
       "targetExpressionKana": "まえ",
-      "prompt": "「駅の前で友達を待ちます。」の「前」と、この文で最も近い意味の表現を選んでください。",
-      "promptKana": "「えきのまえでともだちをまちます。」の「まえ」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
-      "equivalentExpression": "駅の正面側",
-      "equivalentExpressionKana": "えきのしょうめんがわ",
+      "prompt": "「駅の建物の正面入口の前で友達を待ちます。」の「前」と、この文で最も近い意味の表現を選んでください。",
+      "promptKana": "「えきのたてもののしょうめんいりぐちのまえでともだちをまちます。」の「まえ」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "equivalentExpression": "正面入口のすぐ外",
+      "equivalentExpressionKana": "しょうめんいりぐちのすぐそと",
       "equivalentSource": {
         "kind": "authored-expression",
         "sourceId": null
       },
-      "interchangeabilityScope": "題幹「駅の前で友達を待ちます。」が示す位置の文脈に限り、文法形を整えた上で同じ場所を表す。時間的な「以前」の用法は含まない。",
+      "interchangeabilityScope": "駅建物の正面入口を基準に、その入口を出た直近の屋外を待ち合わせ場所として指す用法に限る。",
       "options": [
         {
-          "expression": "駅の後ろ側",
-          "expressionKana": "えきのうしろがわ",
+          "expression": "駅の裏口の外",
+          "expressionKana": "えきのうらぐちのそと",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「駅の後ろ側」は、題幹の限定された場面で「駅の正面側」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「裏口の外」は建物の反対側にある別の入口を指し、指定された正面入口の前ではない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
-          "expression": "駅の正面側",
-          "expressionKana": "えきのしょうめんがわ",
+          "expression": "正面入口のすぐ外",
+          "expressionKana": "しょうめんいりぐちのすぐそと",
           "acceptedAsCorrect": true,
           "incorrectReason": null,
           "languageReviewStatus": "reviewed-correct"
         },
         {
-          "expression": "駅の中",
-          "expressionKana": "えきのなか",
+          "expression": "駅の建物の中",
+          "expressionKana": "えきのたてもののなか",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「駅の中」は、題幹の限定された場面で「駅の正面側」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「建物の中」は入口を通った屋内であり、正面入口を基準とする屋外の待ち合わせ場所と異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
-          "expression": "駅から離れた所",
-          "expressionKana": "えきからはなれたところ",
+          "expression": "駅から離れた広場",
+          "expressionKana": "えきからはなれたひろば",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「駅から離れた所」は、題幹の限定された場面で「駅の正面側」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「駅から離れた広場」は駅の近接範囲外で、正面入口の直前という位置指定を満たさない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -932,7 +932,7 @@
           "expression": "時間をかけて作れます",
           "expressionKana": "じかんをかけてつくれます",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「時間をかけて作れます」は、題幹の限定された場面で「難しくなく作れます」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「時間をかける」は所要時間の長さを述べるだけで、作り方が難しくないことを意味しない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -946,14 +946,14 @@
           "expression": "材料なしで作れます",
           "expressionKana": "ざいりょうなしでつくれます",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「材料なしで作れます」は、題幹の限定された場面で「難しくなく作れます」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「材料なし」は材料の有無を述べ、調理手順の容易さとは別の条件である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "静かに作れます",
           "expressionKana": "しずかにつくれます",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「静かに作れます」は、題幹の限定された場面で「難しくなく作れます」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「静かに」は作る際の音量や態度を述べ、難易度を表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1006,7 +1006,7 @@
           "expression": "パスポートが余ります",
           "expressionKana": "ぱすぽーとがあまります",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「パスポートが余ります」は、題幹の限定された場面で「パスポートが要ります」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「余る」は必要量を超えて残ることを表し、旅行に要ることとは異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1020,14 +1020,14 @@
           "expression": "パスポートを捨てます",
           "expressionKana": "ぱすぽーとをすてます",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「パスポートを捨てます」は、題幹の限定された場面で「パスポートが要ります」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「捨てる」はパスポートを処分する行為で、携行が求められる題幹と反対である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "パスポートが壊れます",
           "expressionKana": "ぱすぽーとがこわれます",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「パスポートが壊れます」は、題幹の限定された場面で「パスポートが要ります」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「壊れる」は物の状態変化を述べ、旅行に不可欠であるという必要性を表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1080,7 +1080,7 @@
           "expression": "部屋を片付けませんでした",
           "expressionKana": "へやをかたづけませんでした",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「部屋を片付けませんでした」は、題幹の限定された場面で「部屋を準備しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「片付けなかった」は整理を行わなかったことを述べ、客室を整えて準備した題幹を否定する。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1094,14 +1094,14 @@
           "expression": "部屋を借りませんでした",
           "expressionKana": "へやをかりませんでした",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「部屋を借りませんでした」は、題幹の限定された場面で「部屋を準備しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「借りなかった」は所有・賃借の有無であり、客を迎えるために部屋を整える行為とは異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "部屋を壊しました",
           "expressionKana": "へやをこわしました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「部屋を壊しました」は、題幹の限定された場面で「部屋を準備しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「壊した」は部屋を損傷させる行為で、使用できるよう準備することと反対である。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1154,7 +1154,7 @@
           "expression": "隠してください",
           "expressionKana": "かくしてください",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「隠してください」は、題幹の限定された場面で「知らせてください」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「隠す」は変更情報を相手に伝えない行為で、知らせる連絡とは反対である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1168,14 +1168,14 @@
           "expression": "忘れてください",
           "expressionKana": "わすれてください",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「忘れてください」は、題幹の限定された場面で「知らせてください」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「忘れる」は情報を保持しないことで、相手へ変更を通知する行為ではない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "断ってください",
           "expressionKana": "ことわってください",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「断ってください」は、題幹の限定された場面で「知らせてください」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「断る」は依頼を拒否する行為で、予定変更を知らせることとは異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1228,7 +1228,7 @@
           "expression": "昔、毎朝走っていました",
           "expressionKana": "むかし、まいあさはしっていました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「昔、毎朝走っていました」は、題幹の限定された場面で「このごろ、毎朝走っています」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「昔」は遠い過去を指し、現在に近い期間を表す「最近」と時期が異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1242,14 +1242,14 @@
           "expression": "来年、毎朝走ります",
           "expressionKana": "らいねん、まいあさはしります",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「来年、毎朝走ります」は、題幹の限定された場面で「このごろ、毎朝走っています」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「来年」は未来の一年を指し、現在までの近い期間を述べる題幹と一致しない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "一度も走っていません",
           "expressionKana": "いちどもはしっていません",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「一度も走っていません」は、題幹の限定された場面で「このごろ、毎朝走っています」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「一度もない」は走った回数をゼロにし、最近毎朝走っている事実を否定する。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1302,7 +1302,7 @@
           "expression": "たまに鍵をかけます",
           "expressionKana": "たまにかぎをかけます",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「たまに鍵をかけます」は、題幹の限定された場面で「いつも忘れずに鍵をかけます」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「たまに」は実行しない場合を含み、例外なく施錠する「必ず」と頻度が異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1316,14 +1316,14 @@
           "expression": "できれば鍵を開けます",
           "expressionKana": "できればかぎをあけます",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「できれば鍵を開けます」は、題幹の限定された場面で「いつも忘れずに鍵をかけます」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「できれば」は任意の希望に弱め、しかも鍵を開けるため、必ず施錠する題幹と反対である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "鍵をかけないことがあります",
           "expressionKana": "かぎをかけないことがあります",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「鍵をかけないことがあります」は、題幹の限定された場面で「いつも忘れずに鍵をかけます」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「かけないことがある」は施錠しない例外を認め、「必ず」が排除する例外を作る。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1376,7 +1376,7 @@
           "expression": "とても珍しい日です",
           "expressionKana": "とてもめずらしいひです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「とても珍しい日です」は、題幹の限定された場面で「いつもと変わらない日です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「珍しい」は通常と異なる特別さを表し、「普通」と評価が反対である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1390,14 +1390,14 @@
           "expression": "お祝いの日です",
           "expressionKana": "おいわいのひです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「お祝いの日です」は、題幹の限定された場面で「いつもと変わらない日です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「お祝いの日」は特別な目的を持つ日で、特別ではない題幹と一致しない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "忙しすぎる日です",
           "expressionKana": "いそがしすぎるひです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「忙しすぎる日です」は、題幹の限定された場面で「いつもと変わらない日です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「忙しすぎる」は忙しさの程度を述べ、いつもと変わらない日かどうかを表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1450,7 +1450,7 @@
           "expression": "この写真は不要です",
           "expressionKana": "このしゃしんはふようです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「この写真は不要です」は、題幹の限定された場面で「この写真は重要です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「不要」は必要・重要でない評価で、本人にとって重要な写真という題幹と反対である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1464,14 +1464,14 @@
           "expression": "この写真は危険です",
           "expressionKana": "このしゃしんはきけんです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「この写真は危険です」は、題幹の限定された場面で「この写真は重要です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「危険」は害を及ぼす可能性を述べ、個人的に重要であることとは別の評価である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "この写真は複雑です",
           "expressionKana": "このしゃしんはふくざつです",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「この写真は複雑です」は、題幹の限定された場面で「この写真は重要です」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「複雑」は構造や理解の難しさを述べ、写真を重んじる気持ちを表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1524,7 +1524,7 @@
           "expression": "九時の電車を運転します",
           "expressionKana": "くじのでんしゃをうんてんします",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「九時の電車を運転します」は、題幹の限定された場面で「九時の電車に遅れません」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「運転する」は電車を操作する行為で、乗客が発車時刻までに着くことを表さない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1538,14 +1538,14 @@
           "expression": "九時の電車を見送ります",
           "expressionKana": "くじのでんしゃをみおくります",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「九時の電車を見送ります」は、題幹の限定された場面で「九時の電車に遅れません」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「見送る」は乗らずに出発を眺める行為で、電車に遅れず乗れる題幹と異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "九時の電車より遅く出ます",
           "expressionKana": "くじのでんしゃよりおそくでます",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「九時の電車より遅く出ます」は、題幹の限定された場面で「九時の電車に遅れません」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「遅く出る」は九時の電車の後に出発するため、その電車に間に合う結果と両立しない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1598,7 +1598,7 @@
           "expression": "旅行の日を忘れました",
           "expressionKana": "りょこうのひをわすれました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「旅行の日を忘れました」は、題幹の限定された場面で「旅行の日を相談して選びました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「忘れる」は決定内容を記憶から失うことで、相談して日を選定する行為ではない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1612,14 +1612,14 @@
           "expression": "旅行の日を延期しました",
           "expressionKana": "りょこうのひをえんきしました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「旅行の日を延期しました」は、題幹の限定された場面で「旅行の日を相談して選びました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「延期する」は既にある日程を後へ移すことで、話し合って日程を選ぶこと全般とは異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "旅行の日を調べただけでした",
           "expressionKana": "りょこうのひをしらべただけでした",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「旅行の日を調べただけでした」は、題幹の限定された場面で「旅行の日を相談して選びました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「調べただけ」は情報収集で止まり、旅行日を選んで決定した段階に達していない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1672,7 +1672,7 @@
           "expression": "練習を中止します",
           "expressionKana": "れんしゅうをちゅうしします",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「練習を中止します」は、題幹の限定された場面で「練習をやめずに行います」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「中止する」は練習を止める決定で、雨でも継続する題幹と反対である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1686,14 +1686,14 @@
           "expression": "練習を一度だけ見ます",
           "expressionKana": "れんしゅうをいちどだけみます",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「練習を一度だけ見ます」は、題幹の限定された場面で「練習をやめずに行います」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「一度だけ見る」は観察を一回行うだけで、練習を継続して実施することではない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "練習を始めません",
           "expressionKana": "れんしゅうをはじめません",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「練習を始めません」は、題幹の限定された場面で「練習をやめずに行います」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「始めない」は練習を開始しないため、既に行う練習をやめずに続ける題幹を否定する。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1746,7 +1746,7 @@
           "expression": "作文の誤りを残しました",
           "expressionKana": "さくぶんのあやまりをのこしました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「作文の誤りを残しました」は、題幹の限定された場面で「作文の誤りを修正しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「誤りを残す」は間違いを修正せず維持するため、「直す」と結果が反対である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1760,14 +1760,14 @@
           "expression": "作文を捨てました",
           "expressionKana": "さくぶんをすてました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「作文を捨てました」は、題幹の限定された場面で「作文の誤りを修正しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「作文を捨てる」は作品全体を処分し、誤りの箇所を修正する行為ではない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "expression": "作文の長さを測りました",
           "expressionKana": "さくぶんのながさをはかりました",
           "acceptedAsCorrect": false,
-          "incorrectReason": "「作文の長さを測りました」は、題幹の限定された場面で「作文の誤りを修正しました」が表す性質・時点・位置または行為とは別の内容を具体的に述べるため、置き換えられない。",
+          "incorrectReason": "「長さを測る」は文字量や寸法を確認する行為で、内容上の間違いを修正しない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],

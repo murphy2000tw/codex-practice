@@ -566,13 +566,13 @@
           "acceptedAsCorrect": false
         },
         {
-          "sentence": "駅への道を心配して、地図に線を引きました。",
-          "sentenceKana": "えきへのみちをしんぱいして、ちずにせんをひきました。",
+          "sentence": "駅への道順を知るため、地図で心配しました。",
+          "sentenceKana": "えきへのみちじゅんをしるため、ちずでしんぱいしました。",
           "targetOccurrence": {
-            "start": 5,
-            "end": 7,
-            "kanaStart": 7,
-            "kanaEnd": 11
+            "start": 14,
+            "end": 16,
+            "kanaStart": 18,
+            "kanaEnd": 22
           },
           "acceptedAsCorrect": false
         }
@@ -591,7 +591,7 @@
         },
         {
           "usageIndex": 3,
-          "reason": "道順を地図で確認する行為には「調べる」が適切で、危険や不確実性が示されない場面の「道を心配する」は目的がずれる。",
+          "reason": "目的が道順を知ることと明示されている場合、地図で行うのは「確認」や「調査」であり、不安を感じる「心配する」を情報検索の動作として使えない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -666,13 +666,13 @@
           "acceptedAsCorrect": false
         },
         {
-          "sentence": "店員に商品の値段を案内しました。",
-          "sentenceKana": "てんいんにしょうひんのねだんをあんないしました。",
+          "sentence": "商品の値段を知りたくて、店員に案内しました。",
+          "sentenceKana": "しょうひんのねだんをしりたくて、てんいんにあんないしました。",
           "targetOccurrence": {
-            "start": 9,
-            "end": 11,
-            "kanaStart": 15,
-            "kanaEnd": 19
+            "start": 15,
+            "end": 17,
+            "kanaStart": 21,
+            "kanaEnd": 25
           },
           "acceptedAsCorrect": false
         }
@@ -691,7 +691,7 @@
         },
         {
           "usageIndex": 3,
-          "reason": "客が店員から値段を知りたい場面では「尋ねる」を使い、客から店員へ情報を導く「案内する」は役割が逆である。",
+          "reason": "客が値段を知るため店員に行うのは「質問する／尋ねる」であり、客が店員を導く形になる「店員に案内する」では目的を表せない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -744,13 +744,13 @@
           "acceptedAsCorrect": true
         },
         {
-          "sentence": "毎朝、駅まで走る準備を一時間続けます。",
-          "sentenceKana": "まいあさ、えきまではしるじゅんびをいちじかんつづけます。",
+          "sentence": "走る力をつけるため、毎朝一時間、準備を続けています。",
+          "sentenceKana": "はしるちからをつけるため、まいあさいちじかん、じゅんびをつづけています。",
           "targetOccurrence": {
-            "start": 8,
-            "end": 10,
-            "kanaStart": 12,
-            "kanaEnd": 16
+            "start": 16,
+            "end": 18,
+            "kanaStart": 23,
+            "kanaEnd": 27
           },
           "acceptedAsCorrect": false
         },
@@ -781,7 +781,7 @@
       "incorrectUsageReasons": [
         {
           "usageIndex": 1,
-          "reason": "毎日一時間続ける活動は走る「練習」であり、実行前に整える「準備」を運動そのものの名称にはできない。",
+          "reason": "走力をつける目的で毎日反復する活動は「練習」であり、本番前に必要物や状態を整える「準備」を運動訓練そのものに使えない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -966,13 +966,13 @@
           "acceptedAsCorrect": false
         },
         {
-          "sentence": "この薬は食後に自由に飲んでください。",
-          "sentenceKana": "このくすりはしょくごにじゆうにのんでください。",
+          "sentence": "この薬は毎朝八時という自由な時刻に飲みます。",
+          "sentenceKana": "このくすりはまいあさはちじというじゆうなじこくにのみます。",
           "targetOccurrence": {
-            "start": 7,
-            "end": 9,
-            "kanaStart": 11,
-            "kanaEnd": 14
+            "start": 11,
+            "end": 13,
+            "kanaStart": 16,
+            "kanaEnd": 19
           },
           "acceptedAsCorrect": false
         }
@@ -991,7 +991,7 @@
         },
         {
           "usageIndex": 3,
-          "reason": "食後という服用条件が指定されているため、時機を任意に選べる「自由に」と同時には説明できない。",
+          "reason": "毎朝八時と一つに固定された時刻は選択可能ではないため、制約がなく選べることを表す「自由な時刻」とは呼べない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],
@@ -1066,13 +1066,13 @@
           "acceptedAsCorrect": false
         },
         {
-          "sentence": "道に迷って、大切な駅員に行き方を聞きました。",
-          "sentenceKana": "みちにまよって、たいせつなえきいんにいきかたをききました。",
+          "sentence": "「近くにいた」という意味で、大切な駅員に道を聞きました。",
+          "sentenceKana": "「ちかくにいた」といういみで、たいせつなえきいんにみちをききました。",
           "targetOccurrence": {
-            "start": 6,
-            "end": 8,
-            "kanaStart": 8,
-            "kanaEnd": 12
+            "start": 14,
+            "end": 16,
+            "kanaStart": 15,
+            "kanaEnd": 19
           },
           "acceptedAsCorrect": false
         }
@@ -1091,7 +1091,7 @@
         },
         {
           "usageIndex": 3,
-          "reason": "初対面の駅員を重要な存在と評価する情報がなく、ここで必要なのは「近くの」など位置を示す修飾である。",
+          "reason": "「近くにいた」は位置を示すが、「大切な」は重要で粗末にできない評価を示すため、明示された意味の言い換えにはならない。",
           "languageReviewStatus": "reviewed-incorrect"
         }
       ],

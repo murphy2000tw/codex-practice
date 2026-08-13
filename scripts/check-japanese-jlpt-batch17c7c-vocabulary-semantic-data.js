@@ -9,6 +9,15 @@ const clone=value=>JSON.parse(JSON.stringify(value));
 const assert=(condition,message)=>{if(!condition)throw new Error(`Batch 17C-7C check: ${message}`);};
 const run=(command,options={})=>cp.execFileSync(command[0],command.slice(1),{cwd:ROOT,encoding:"utf8",stdio:options.stdio||"pipe"});
 const FALLBACK_BASE="093b35ff1dbda2f85316d312224ab7a9a2a159f6";
+function resolveTemporaryRoot(){
+  const candidates=[process.env.JLPT_CHECK_TMP_ROOT,require("os").tmpdir(),path.dirname(ROOT)].filter(Boolean);
+  for(const candidate of candidates){
+    const resolved=path.resolve(candidate);
+    if(resolved===ROOT||resolved.startsWith(`${ROOT}${path.sep}`))continue;
+    try{if(fs.statSync(resolved).isDirectory()){fs.accessSync(resolved,fs.constants.W_OK);return resolved;}}catch(_error){/* try the next safe root */}
+  }
+  throw new Error("Batch 17C-7C check: no writable temporary root outside the repository");
+}
 function resolveBaseRef(){
   const configured=process.env.JLPT_SCOPE_BASE_REF||process.env.BASE_REF||process.env.GITHUB_BASE_REF;
   const candidates=[configured,configured&&!configured.includes("/")?`origin/${configured}`:null,"origin/main","main",FALLBACK_BASE].filter(Boolean);
@@ -56,6 +65,10 @@ function main(){
   fixture("prompt kana contains Han",(_v,p)=>p.records[0].promptKana="箱です",/without Han/i);
   fixture("equivalent kana contains Han",(_v,p)=>p.records[0].equivalentExpressionKana="大きい",/without Han/i);
   fixture("usage kana occurrence misaligned",(_v,_p,u)=>u.records[0].usageSentences[0].targetOccurrence.kanaStart++,/occurrence index mismatch/i);
+  const rejectedReasons=paraphrase.records.flatMap(record=>record.options.filter(option=>!option.acceptedAsCorrect).map(option=>option.incorrectReason));
+  const vagueReason="性質・時点・位置または行為とは別の内容";
+  assert(rejectedReasons.every(reason=>!reason.includes(vagueReason)),"paraphrase reviews reuse the prohibited vague reason template");
+  paraphrase.records.forEach(record=>assert(new Set(record.options.filter(option=>!option.acceptedAsCorrect).map(option=>option.incorrectReason)).size===3,`${record.authoringId} must have three substantively distinct rejected reasons`));
   const identity=paraphrase.records[0]; assert(stableId(identity)===stableId({...identity,irrelevantArrayPosition:999}),"ID depends on array-position data");
   const randomApi="Math"+"."+"random";
   assert(!fs.readFileSync(path.join(ROOT,"scripts/build-japanese-jlpt-batch17c7c-vocabulary-semantic-data.js"),"utf8").includes(randomApi),"builder uses a random API");
@@ -81,7 +94,7 @@ function main(){
   const scoped=[...new Set([...changed,...working])]; scoped.forEach(file=>assert(allowed.has(file),`scope guard rejects ${file}`));
   const forbiddenSource=[...storageApis,randomApi]; scoped.forEach(file=>{const source=fs.readFileSync(path.join(ROOT,file),"utf8");forbiddenSource.forEach(api=>assert(!source.includes(api),`${file} adds a forbidden storage/random API`));});
   if(!process.env.JLPT_SKIP_DETACHED_FIXTURE){
-    const temp=fs.mkdtempSync(path.join(require("os").tmpdir(),"17c7c-detached-"));
+    const temp=fs.mkdtempSync(path.join(resolveTemporaryRoot(),"17c7c-detached-"));
     try{
       run(["git","clone","--quiet",ROOT,temp]);
       cp.execFileSync("git",["update-ref","refs/remotes/origin/main",FALLBACK_BASE],{cwd:temp});
