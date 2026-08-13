@@ -32,6 +32,8 @@ node scripts/check-japanese-jlpt-batch17c7c-vocabulary-semantic-data.js
 
 detached fixture 的暫存根目錄依序採用 `JLPT_CHECK_TMP_ROOT`、存在且可寫的作業系統暫存目錄、repository root 的父目錄；repository 本身及其子目錄一律拒用，clone 無論成功或失敗都在 `finally` 清除。因此 checker 不依賴 `TMPDIR` 一定存在，也不會讓 clone 汙染 scope/status。
 
+usage 的第二輪語意複查另移除四個在特殊背景下仍可能成立的錯項：天氣的「予定」、合格後讓父母「心配」、優勝後因其他後果而「残念」、以及店家把壞自行車另作「利用」。替代句均在句內明示說話者想表達的意思，使錯誤落在 target 本身的詞義或語意角色，而不是依賴未交代的背景。checker 會同時掃描 usage manifest 與 committed derived bank，拒絕這四個已知歧義句回復。
+
 ## 完整代表例題
 
 以下例題文字與 manifest 一致；完整逐項錯因及 provenance 仍以 manifest 為準。

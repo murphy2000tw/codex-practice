@@ -69,6 +69,18 @@ function main(){
   const vagueReason="性質・時点・位置または行為とは別の内容";
   assert(rejectedReasons.every(reason=>!reason.includes(vagueReason)),"paraphrase reviews reuse the prohibited vague reason template");
   paraphrase.records.forEach(record=>assert(new Set(record.options.filter(option=>!option.acceptedAsCorrect).map(option=>option.incorrectReason)).size===3,`${record.authoringId} must have three substantively distinct rejected reasons`));
+  const rejectedAmbiguousUsageSentences=[
+    "昨日は雨が降る予定でした。",
+    "試験に合格して、両親を心配させました。",
+    "長い練習の後で優勝できて残念です。",
+    "壊れた自転車を店で利用してもらいました。"
+  ];
+  const usageManifestSentences=usage.records.flatMap(record=>record.usageSentences.map(item=>item.sentence));
+  const derivedUsageSentences=JSON.parse(committed).questions.filter(question=>question.questionType==="usage").flatMap(question=>question.usageSentences.map(item=>item.sentence));
+  rejectedAmbiguousUsageSentences.forEach(sentence=>{
+    assert(!usageManifestSentences.includes(sentence),`usage manifest restored known ambiguous sentence: ${sentence}`);
+    assert(!derivedUsageSentences.includes(sentence),`derived bank restored known ambiguous sentence: ${sentence}`);
+  });
   const identity=paraphrase.records[0]; assert(stableId(identity)===stableId({...identity,irrelevantArrayPosition:999}),"ID depends on array-position data");
   const randomApi="Math"+"."+"random";
   assert(!fs.readFileSync(path.join(ROOT,"scripts/build-japanese-jlpt-batch17c7c-vocabulary-semantic-data.js"),"utf8").includes(randomApi),"builder uses a random API");

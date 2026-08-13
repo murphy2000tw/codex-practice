@@ -930,7 +930,7 @@
       "options": [
         "旅行に必要なパスポートを持って行きます。",
         "会議が必要な三時に始まります。",
-        "この薬を飲むと、熱が必要になります。",
+        "「薬を飲むと熱が出る」という意味で、熱が必要になりますと説明しました。",
         "駅員に必要を聞いて、ホームへ行きました。"
       ],
       "answerIndex": 0,
@@ -975,13 +975,13 @@
           "acceptedAsCorrect": false
         },
         {
-          "sentence": "この薬を飲むと、熱が必要になります。",
-          "sentenceKana": "このくすりをのむと、ねつがひつようになります。",
+          "sentence": "「薬を飲むと熱が出る」という意味で、熱が必要になりますと説明しました。",
+          "sentenceKana": "「くすりをのむとねつがでる」といういみで、ねつがひつようになりますとせつめいしました。",
           "targetOccurrence": {
-            "start": 10,
-            "end": 12,
-            "kanaStart": 13,
-            "kanaEnd": 17
+            "start": 20,
+            "end": 22,
+            "kanaStart": 24,
+            "kanaEnd": 28
           },
           "acceptedAsCorrect": false
         },
@@ -1006,7 +1006,7 @@
         },
         {
           "usageIndex": 2,
-          "reason": "「必要になる」は何かが要る状態への変化を表すため、薬を飲んだ結果として熱が出るという変化には使えない。",
+          "reason": "「必要になる」は何かが要る状態への変化を表し、明示された副作用として熱が出る変化を表さない。この意味なら「熱が出ます」が適切である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1141,7 +1141,7 @@
       "promptKana": null,
       "options": [
         "遅れた理由を先生に説明しました。",
-        "事故の理由で電車が止まりました。",
+        "「事故が電車を止めた原因」という意味で、事故の理由で電車が止まりましたと説明しました。",
         "この機械が故障した理由を修理しました。",
         "道に迷ったので、地図で理由を調べました。"
       ],
@@ -1176,13 +1176,13 @@
           "acceptedAsCorrect": true
         },
         {
-          "sentence": "事故の理由で電車が止まりました。",
-          "sentenceKana": "じこのりゆうででんしゃがとまりました。",
+          "sentence": "「事故が電車を止めた原因」という意味で、事故の理由で電車が止まりましたと説明しました。",
+          "sentenceKana": "「じこがでんしゃをとめたげんいん」といういみで、じこのりゆうででんしゃがとまりましたとせつめいしました。",
           "targetOccurrence": {
-            "start": 3,
-            "end": 5,
-            "kanaStart": 3,
-            "kanaEnd": 6
+            "start": 23,
+            "end": 25,
+            "kanaStart": 27,
+            "kanaEnd": 30
           },
           "acceptedAsCorrect": false
         },
@@ -1213,7 +1213,7 @@
       "incorrectUsageReasons": [
         {
           "usageIndex": 1,
-          "reason": "事故自体は停止を引き起こす「原因」であり、説明・根拠を表す「理由」として「事故の理由」と置くと事故が持つ理由という別の関係になる。",
+          "reason": "「事故の理由」は事故が起きたわけを指す。明示された電車停止を引き起こした事柄は「事故が原因で」と表し、「事故の理由で」では関係が異なる。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1353,7 +1353,7 @@
       "promptKana": null,
       "options": [
         "来週、京都へ行く予定です。",
-        "昨日は雨が降る予定でした。",
+        "「切符の値段」という意味で、窓口の係員に予定を尋ねました。",
         "電車が遅れた予定で、会議に間に合いませんでした。",
         "旅行の予定を三時間練習しました。"
       ],
@@ -1388,13 +1388,13 @@
           "acceptedAsCorrect": true
         },
         {
-          "sentence": "昨日は雨が降る予定でした。",
-          "sentenceKana": "きのうはあめがふるよていでした。",
+          "sentence": "「切符の値段」という意味で、窓口の係員に予定を尋ねました。",
+          "sentenceKana": "「きっぷのねだん」といういみで、まどぐちのかかりいんによていをたずねました。",
           "targetOccurrence": {
-            "start": 7,
-            "end": 9,
-            "kanaStart": 9,
-            "kanaEnd": 12
+            "start": 20,
+            "end": 22,
+            "kanaStart": 27,
+            "kanaEnd": 30
           },
           "acceptedAsCorrect": false
         },
@@ -1425,7 +1425,7 @@
       "incorrectUsageReasons": [
         {
           "usageIndex": 1,
-          "reason": "人が立てた計画ではない過去の天候には通常「予報」を使い、「予定」は自然現象の実際の推移を述べる語ではない。",
+          "reason": "「予定」はこれから行う事柄や日程を表し、明示された「切符の値段」という意味にはならない。値段を知りたい場合は「値段を尋ねました」と言う。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1459,8 +1459,8 @@
       "promptKana": null,
       "options": [
         "母は私の帰りを心配しています。",
-        "試験に合格して、両親を心配させました。",
-        "景色が美しかったので、旅行を心配しました。",
+        "「合格してうれしい」という意味で、両親は心配しました。",
+        "「旅行が楽しかった」という意味で、旅行を心配しましたと話しました。",
         "駅への道順を知るため、地図で心配しました。"
       ],
       "answerIndex": 0,
@@ -1494,24 +1494,24 @@
           "acceptedAsCorrect": true
         },
         {
-          "sentence": "試験に合格して、両親を心配させました。",
-          "sentenceKana": "しけんにごうかくして、りょうしんをしんぱいさせました。",
+          "sentence": "「合格してうれしい」という意味で、両親は心配しました。",
+          "sentenceKana": "「ごうかくしてうれしい」といういみで、りょうしんはしんぱいしました。",
           "targetOccurrence": {
-            "start": 11,
-            "end": 13,
-            "kanaStart": 17,
-            "kanaEnd": 21
+            "start": 20,
+            "end": 22,
+            "kanaStart": 25,
+            "kanaEnd": 29
           },
           "acceptedAsCorrect": false
         },
         {
-          "sentence": "景色が美しかったので、旅行を心配しました。",
-          "sentenceKana": "けしきがうつくしかったので、りょこうをしんぱいしました。",
+          "sentence": "「旅行が楽しかった」という意味で、旅行を心配しましたと話しました。",
+          "sentenceKana": "「りょこうがたのしかった」といういみで、りょこうをしんぱいしましたとはなしました。",
           "targetOccurrence": {
-            "start": 14,
-            "end": 16,
-            "kanaStart": 19,
-            "kanaEnd": 23
+            "start": 20,
+            "end": 22,
+            "kanaStart": 25,
+            "kanaEnd": 29
           },
           "acceptedAsCorrect": false
         },
@@ -1531,12 +1531,12 @@
       "incorrectUsageReasons": [
         {
           "usageIndex": 1,
-          "reason": "通常、合格という好結果が両親に与える感情は安心や喜びであり、懸念材料のないこの文脈で「心配させる」は意味が合わない。",
+          "reason": "「心配する」は悪い結果や不確実な事態を気に掛けることであり、明示された合格への喜びを表さない。この意味なら「喜びました」が適切である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "usageIndex": 2,
-          "reason": "美しい景色を肯定的に評価する場面で、悪い結果を懸念する「心配する」を旅行への感想として使えない。",
+          "reason": "「心配する」は悪い結果を気に掛ける語であり、明示された旅行を楽しんだ肯定的感想を表さない。この意味なら「旅行を楽しみました」が適切である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1777,8 +1777,8 @@
       "promptKana": null,
       "options": [
         "試合が中止になって残念です。",
-        "長い練習の後で優勝できて残念です。",
-        "この時計は残念なので、時間が正確です。",
+        "「料理に満足した」という意味で、店員に残念ですと伝えました。",
+        "「時計が正確で満足した」という意味で、この時計は残念ですと評価しました。",
         "道が分からないので、駅員に残念を聞きました。"
       ],
       "answerIndex": 0,
@@ -1812,24 +1812,24 @@
           "acceptedAsCorrect": true
         },
         {
-          "sentence": "長い練習の後で優勝できて残念です。",
-          "sentenceKana": "ながいれんしゅうのあとでゆうしょうできてざんねんです。",
+          "sentence": "「料理に満足した」という意味で、店員に残念ですと伝えました。",
+          "sentenceKana": "「りょうりにまんぞくした」といういみで、てんいんにざんねんですとつたえました。",
           "targetOccurrence": {
-            "start": 12,
-            "end": 14,
-            "kanaStart": 20,
-            "kanaEnd": 24
+            "start": 19,
+            "end": 21,
+            "kanaStart": 25,
+            "kanaEnd": 29
           },
           "acceptedAsCorrect": false
         },
         {
-          "sentence": "この時計は残念なので、時間が正確です。",
-          "sentenceKana": "このとけいはざんねんなので、じかんがせいかくです。",
+          "sentence": "「時計が正確で満足した」という意味で、この時計は残念ですと評価しました。",
+          "sentenceKana": "「とけいがせいかくでまんぞくした」といういみで、このとけいはざんねんですとひょうかしました。",
           "targetOccurrence": {
-            "start": 5,
-            "end": 7,
-            "kanaStart": 6,
-            "kanaEnd": 10
+            "start": 24,
+            "end": 26,
+            "kanaStart": 30,
+            "kanaEnd": 34
           },
           "acceptedAsCorrect": false
         },
@@ -1849,12 +1849,12 @@
       "incorrectUsageReasons": [
         {
           "usageIndex": 1,
-          "reason": "望んだ優勝が実現した通常の文脈では喜びを表し、期待外れを表す「残念」は評価の方向が逆になる。",
+          "reason": "「残念」は期待どおりでなく心残りに思う評価であり、明示された料理への満足を表さない。この意味なら「満足しました」が適切である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "usageIndex": 2,
-          "reason": "時計の正確さは性能への肯定評価であり、失望を表す「残念」をその理由として結び付けられない。",
+          "reason": "「残念」は期待外れへの否定的評価であり、明示された正確さへの満足を表さない。この意味なら「満足です」が適切である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1884,7 +1884,7 @@
       "options": [
         "休日は自由に過ごせます。",
         "会議は三時に自由になりました。",
-        "電車が遅れたので、到着時間が自由でした。",
+        "「到着時間がまだ決まっていない」という意味で、到着時間は自由ですと知らせました。",
         "この薬は毎朝八時という自由な時刻に飲みます。"
       ],
       "answerIndex": 0,
@@ -1929,13 +1929,13 @@
           "acceptedAsCorrect": false
         },
         {
-          "sentence": "電車が遅れたので、到着時間が自由でした。",
-          "sentenceKana": "でんしゃがおくれたので、とうちゃくじかんがじゆうでした。",
+          "sentence": "「到着時間がまだ決まっていない」という意味で、到着時間は自由ですと知らせました。",
+          "sentenceKana": "「とうちゃくじかんがまだきまっていない」といういみで、とうちゃくじかんはじゆうですとしらせました。",
           "targetOccurrence": {
-            "start": 14,
-            "end": 16,
-            "kanaStart": 21,
-            "kanaEnd": 24
+            "start": 28,
+            "end": 30,
+            "kanaStart": 36,
+            "kanaEnd": 39
           },
           "acceptedAsCorrect": false
         },
@@ -1960,7 +1960,7 @@
         },
         {
           "usageIndex": 2,
-          "reason": "遅延で時刻が不確定になった状態は「未定」であり、選択の制約がないことを表す「自由」とは異なる。",
+          "reason": "「自由」は本人が制約なく選べることを表し、明示された時刻が未決定である状態そのものを表さない。この意味なら「到着時間は未定です」が適切である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -1989,8 +1989,8 @@
       "promptKana": null,
       "options": [
         "家族との時間を大切にしています。",
-        "この荷物は大切なので、二十キロあります。",
-        "会議に遅れたので、時計を大切に合わせました。",
+        "「この荷物は二十キロで重い」という意味で、この荷物は大切ですと説明しました。",
+        "「時計を正確な時刻に合わせた」という意味で、時計を大切に合わせましたと報告しました。",
         "「近くにいた」という意味で、大切な駅員に道を聞きました。"
       ],
       "answerIndex": 0,
@@ -2024,24 +2024,24 @@
           "acceptedAsCorrect": true
         },
         {
-          "sentence": "この荷物は大切なので、二十キロあります。",
-          "sentenceKana": "このにもつはたいせつなので、にじゅっきろあります。",
+          "sentence": "「この荷物は二十キロで重い」という意味で、この荷物は大切ですと説明しました。",
+          "sentenceKana": "「このにもつはにじゅっきろでおもい」といういみで、このにもつはたいせつですとせつめいしました。",
           "targetOccurrence": {
-            "start": 5,
-            "end": 7,
-            "kanaStart": 6,
-            "kanaEnd": 10
+            "start": 26,
+            "end": 28,
+            "kanaStart": 31,
+            "kanaEnd": 35
           },
           "acceptedAsCorrect": false
         },
         {
-          "sentence": "会議に遅れたので、時計を大切に合わせました。",
-          "sentenceKana": "かいぎにおくれたので、とけいをたいせつにあわせました。",
+          "sentence": "「時計を正確な時刻に合わせた」という意味で、時計を大切に合わせましたと報告しました。",
+          "sentenceKana": "「とけいをせいかくなじこくにあわせた」といういみで、とけいをたいせつにあわせましたとほうこくしました。",
           "targetOccurrence": {
-            "start": 12,
-            "end": 14,
-            "kanaStart": 15,
-            "kanaEnd": 19
+            "start": 25,
+            "end": 27,
+            "kanaStart": 30,
+            "kanaEnd": 34
           },
           "acceptedAsCorrect": false
         },
@@ -2061,12 +2061,12 @@
       "incorrectUsageReasons": [
         {
           "usageIndex": 1,
-          "reason": "「大切」は重要性を表し、荷物の重量が二十キロである物理的な理由にはならない。",
+          "reason": "「大切」は重要で粗末にできない評価を表し、明示された二十キロという重量を表さない。この意味なら「重いです」が適切である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
           "usageIndex": 2,
-          "reason": "時計を正しい時刻にする場合は「正確に」合わせるのであり、重要に扱う「大切に」は調整精度を表さない。",
+          "reason": "「大切に」は物を重んじて扱う態度を表し、明示された時刻の精度を表さない。この意味なら「正確に合わせました」が適切である。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
@@ -2095,7 +2095,7 @@
       "promptKana": null,
       "options": [
         "図書館のパソコンを利用できます。",
-        "壊れた自転車を店で利用してもらいました。",
+        "「自転車を修理する」という意味で、店員に利用してくださいと頼みました。",
         "分からない単語を辞書で利用しました。",
         "駅員に電車の時間を利用しました。"
       ],
@@ -2130,13 +2130,13 @@
           "acceptedAsCorrect": true
         },
         {
-          "sentence": "壊れた自転車を店で利用してもらいました。",
-          "sentenceKana": "こわれたじてんしゃをみせでりようしてもらいました。",
+          "sentence": "「自転車を修理する」という意味で、店員に利用してくださいと頼みました。",
+          "sentenceKana": "「じてんしゃをしゅうりする」といういみで、てんいんにりようしてくださいとたのみました。",
           "targetOccurrence": {
-            "start": 9,
-            "end": 11,
-            "kanaStart": 13,
-            "kanaEnd": 16
+            "start": 20,
+            "end": 22,
+            "kanaStart": 26,
+            "kanaEnd": 29
           },
           "acceptedAsCorrect": false
         },
@@ -2167,7 +2167,7 @@
       "incorrectUsageReasons": [
         {
           "usageIndex": 1,
-          "reason": "店に依頼するのは自転車の「修理」であり、「利用」は既存の物や制度を役立てて使うことを表す。",
+          "reason": "「利用する」は物や制度を役立てて使うことであり、明示された壊れた箇所を直す「修理する」の意味にはならない。",
           "languageReviewStatus": "reviewed-incorrect"
         },
         {
