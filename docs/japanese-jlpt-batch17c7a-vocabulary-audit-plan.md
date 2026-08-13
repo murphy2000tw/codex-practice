@@ -24,11 +24,11 @@
 | N5 | 925／924／1 | 896／895／1 | 895 |
 | N4 | 2,084／2,082／2 | 2,083／2,082／1 | 2,080 |
 
-「同 blank 結構候選」只表示兩個 source 字串各恰好出現一次；它不證明兩句的語言學 token 邊界、活用、選項可替換性或答案唯一。source 的 keys 僅是上述九欄，沒有正式 synonym/paraphrase relationship，也沒有正確／錯誤 usage contrast 標註。
+「同 blank 結構候選」只表示兩個 source 字串各恰好出現一次；它不證明兩句的語言學 token 邊界、活用、選項可替換性或答案唯一。source key inventory 動態掃描後，N5/N4 都只有上述九欄。語義關係偵測接受 paraphrase/synonym 欄位 `synonyms`、`synonym`、`paraphrases`、`paraphrase`、`equivalentExpression`，usage contrast 欄位 `usageSentences`、`correctUsageIndex`、`incorrectUsageReasons`、`usageReviewId`；目前兩類 populated entry 與 populated field count 都是 0。這些 0 是逐 entry 動態計算，不是常數。
 
 ### Machine-readable inventory
 
-checker 會重讀 repository 資料、重算完整物件，並與下列 JSON 做深度精確比對；母庫筆數不等於 eligible，`structuralCandidates` 也不等於已審閱 available 或產品題數。blocker 統計可重疊，不應相加成 total。
+checker 會重讀 repository 資料、重算完整物件，並與下列 JSON 做深度精確比對；母庫筆數不等於 eligible，`structuralCandidates` 也不等於已審閱 available 或產品題數。blocker 統計可重疊，不應相加成 total。 checker 另以 synthetic fixtures 驗證「会う／合う」同音只形成 context-free orthography 多表記風險、不形成 confirmed kanji-reading ambiguity；也驗證加入 synonym 或 usage data 後動態 semantic count 會上升。
 
 <!-- INVENTORY_JSON_START
 {
@@ -73,9 +73,35 @@ checker 會重讀 repository 資料、重算完整物件，並與下列 JSON 做
       "multipleOccurrences": 1
     },
     "sameBlankStructuralCandidates": 895,
+    "sourceKeys": [
+      "example",
+      "exampleKana",
+      "exampleMeaning",
+      "id",
+      "kana",
+      "level",
+      "meaning",
+      "partOfSpeech",
+      "word"
+    ],
     "sourceSemanticRelations": {
-      "paraphraseOrSynonym": 0,
-      "usageContrast": 0
+      "recognizedParaphraseOrSynonymFields": [
+        "synonyms",
+        "synonym",
+        "paraphrases",
+        "paraphrase",
+        "equivalentExpression"
+      ],
+      "recognizedUsageContrastFields": [
+        "usageSentences",
+        "correctUsageIndex",
+        "incorrectUsageReasons",
+        "usageReviewId"
+      ],
+      "entriesWithParaphraseOrSynonymData": 0,
+      "entriesWithUsageContrastData": 0,
+      "paraphraseOrSynonymPopulatedFields": 0,
+      "usageContrastPopulatedFields": 0
     },
     "eligibility": {
       "kanji-reading": {
@@ -86,9 +112,17 @@ checker 會重讀 repository 資料、重算完整物件，並與下列 JSON 做
         "blockers": {
           "no-testable-kanji": 93,
           "unreviewed-kanji": 928,
-          "duplicate-kana": 54,
-          "ambiguous-reading": 54,
           "unsafe-generated-distractor": 928
+        },
+        "readingAmbiguityAssessment": {
+          "sourceDetectable": false,
+          "recognizedAlternateReadingFields": [
+            "alternateReadings",
+            "acceptedReadings",
+            "readings"
+          ],
+          "confirmedCount": null,
+          "requiresHumanReview": 928
         }
       },
       "orthography": {
@@ -178,9 +212,35 @@ checker 會重讀 repository 資料、重算完整物件，並與下列 JSON 做
       "multipleOccurrences": 1
     },
     "sameBlankStructuralCandidates": 2080,
+    "sourceKeys": [
+      "example",
+      "exampleKana",
+      "exampleMeaning",
+      "id",
+      "kana",
+      "level",
+      "meaning",
+      "partOfSpeech",
+      "word"
+    ],
     "sourceSemanticRelations": {
-      "paraphraseOrSynonym": 0,
-      "usageContrast": 0
+      "recognizedParaphraseOrSynonymFields": [
+        "synonyms",
+        "synonym",
+        "paraphrases",
+        "paraphrase",
+        "equivalentExpression"
+      ],
+      "recognizedUsageContrastFields": [
+        "usageSentences",
+        "correctUsageIndex",
+        "incorrectUsageReasons",
+        "usageReviewId"
+      ],
+      "entriesWithParaphraseOrSynonymData": 0,
+      "entriesWithUsageContrastData": 0,
+      "paraphraseOrSynonymPopulatedFields": 0,
+      "usageContrastPopulatedFields": 0
     },
     "eligibility": {
       "kanji-reading": {
@@ -191,9 +251,17 @@ checker 會重讀 repository 資料、重算完整物件，並與下列 JSON 做
         "blockers": {
           "no-testable-kanji": 289,
           "unreviewed-kanji": 1931,
-          "duplicate-kana": 48,
-          "ambiguous-reading": 48,
           "unsafe-generated-distractor": 1931
+        },
+        "readingAmbiguityAssessment": {
+          "sourceDetectable": false,
+          "recognizedAlternateReadingFields": [
+            "alternateReadings",
+            "acceptedReadings",
+            "readings"
+          ],
+          "confirmedCount": null,
+          "requiresHumanReview": 1931
         }
       },
       "orthography": {
@@ -262,8 +330,8 @@ INVENTORY_JSON_END -->
 | `missing-required-field` | 九個必要 source 欄位之一缺失或空白 |
 | `no-testable-kanji` | reading/orthography 沒有可測 Han 字 |
 | `unreviewed-kanji` | level allow-list 尚未可信審閱 |
-| `duplicate-kana` | 同 level 讀音群組不唯一 |
-| `ambiguous-reading` | 題幹／選項可能容許多個合理讀音 |
+| `duplicate-kana` | orthography／distractor pool 的同 kana collision 風險；不證明 kanji-reading 題幹多解 |
+| `ambiguous-reading` | 人工或 accepted/alternate-reading 證據確認同一 tested word 題幹可能有多個合理讀音；跨 entry 同音不能確認此 blocker |
 | `multiple-valid-orthographies` | 同音、多表記或送假名使答案可能不唯一 |
 | `unsafe-generated-distractor` | 無人工證據支持機械產生的干擾項 |
 | `example-target-not-found` | `word` 未在 `example` 恰好出現一次 |
@@ -283,15 +351,15 @@ INVENTORY_JSON_END -->
 
 **自動結構條件：** 九欄完整；`word` 有可測漢字；正解為非空 `kana`；題幹只顯示待測漢字表記，不能含 ruby、`kana`、`testedReading` 或其他答案洩漏；四個 kana options 必須非空且互異；source/manifest level 一致。`testedWord`、`testedReading`、`testedKanji` 要明示。
 
-**人工審閱：** 逐漢字 level policy；同音群組、異讀、音便；三個 reading distractors 是否對本站學習者自然且只有一解。字串不同並不等於合理干擾。當前全部漢字結構候選都有 `unreviewed-kanji` 與 `unsafe-generated-distractor`，故 available=0；純假名是 `no-testable-kanji`／`excluded`。即使解除 kanji blocker，仍須 unique-answer/distractor review。
+**人工審閱：** 逐漢字 level policy；同一 tested word 的異讀、音便與 accepted reading；三個 reading distractors 是否自然且只有一解。跨 entry 的相同 kana 只可能影響未來 distractor pool 去重，不會使「看不同漢字詞選讀音」自動成為多解。source 沒有 `alternateReadings`、`acceptedReadings` 或 `readings` metadata，因此 ambiguity 為 `sourceDetectable: false`、`confirmedCount: null`，N5 928／N4 1,931 漢字候選全數 `requiresHumanReview`；unknown/unassessed 絕不轉為 confirmed 0 或捏造 54／48。當前全部漢字候選仍有 `unreviewed-kanji` 與 `unsafe-generated-distractor`，故 available=0；純假名是 `no-testable-kanji`／`excluded`。
 
-**不得推測：** 不可由其他詞的 kana 自動認定是假讀音，不可由 source level 推論個別漢字已過 level review，不可讓同音異義詞造成多解。
+**不得推測：** 不可因另一個不同 `word` 恰有相同 kana 就記 `ambiguous-reading`；不可由其他詞的 kana 自動認定是假讀音，也不可由 source level 推論個別漢字已過 level review。只有針對同一題幹的人工／正式 reading metadata 證據才能產生 confirmed blocker count。
 
 ### B. `orthography`
 
 **自動結構條件：** prompt 是 kana；正確 `correctOrthography` 含可測漢字；四個 options 是不同且非空的日文表記；level 一致；保存 `orthographyRiskTags`。DOM 必須用 `textContent`/等價安全 text node，不插入未信任 HTML 或 ruby。
 
-**人工審閱：** 正確表記唯一；逐項確認同音、多表記、送假名及漢字 policy。不能簡單替換漢字製造不存在、不自然或其實也正確的選項。當前所有漢字結構候選仍是 `unreviewed-kanji`、`unsafe-generated-distractor`，同音候選另標 `duplicate-kana`、`multiple-valid-orthographies`，所以 available=0。
+**人工審閱：** 正確表記唯一；逐項確認同音、多表記、送假名及漢字 policy。不能簡單替換漢字製造不存在、不自然或其實也正確的選項。當前所有漢字結構候選仍是 `unreviewed-kanji`、`unsafe-generated-distractor`，context-free kana prompt 的同音候選另標 `duplicate-kana` pool risk、`multiple-valid-orthographies` risk，所以 available=0；這兩個 risk 不回寫成 kanji-reading 的 confirmed ambiguity。
 
 **不得推測：** 不可把字典以外的組字當錯項，也不可把相同讀音的不同詞直接當作錯誤表記。
 
@@ -335,7 +403,7 @@ build script 決定性產生 committed bank，`--check` 必須 byte-for-byte 驗
 
 `id`, `sourceQuestionId`, `level`, `section`, `questionType`, `sourceBank`, `sourceIds`, `originalText`, `displayText`/`prompt`, `kana`/`promptKana`, `options`, `answerIndex`, `answerDisplay`, `explanation`, `kanjiPolicy`, `rubyTerms`, `reviewStatus`, `reviewVersion`, `reviewTags`, `uniqueAnswerReviewed`, `derivationVersion`。
 
-型別欄位：reading 題存 `testedWord`、`testedReading`、`testedKanji`；orthography 存 `promptKana`、`correctOrthography`、`orthographyRiskTags`；context 存 `sourceExample`、`sourceExampleKana`、`sourceExampleMeaning`、`blankedPrompt`、`blankedPromptKana`、`targetOccurrence`、`inflectionMetadata`；paraphrase 存 `targetExpression`、`equivalentExpression`、`interchangeabilityScope`、`semanticReviewId`；usage 存 `targetWord`、`usageSentences`、`correctUsageIndex`、`incorrectUsageReasons`、`usageReviewId`。
+型別欄位：kanji-reading 題存 `testedWord`、`testedReading`、`testedKanji`；orthography 存 `promptKana`、`correctOrthography`、`orthographyRiskTags`；context 存 `sourceExample`、`sourceExampleKana`、`sourceExampleMeaning`、`blankedPrompt`、`blankedPromptKana`、`targetOccurrence`、`inflectionMetadata`；paraphrase 存 `targetExpression`、`equivalentExpression`、`interchangeabilityScope`、`semanticReviewId`；usage 存 `targetWord`、`usageSentences`、`correctUsageIndex`、`incorrectUsageReasons`、`usageReviewId`。
 
 stable ID 用版本化 namespace＋level＋type＋canonical source ID（人工語義題再加 manifest authoring ID）的確定性編碼／hash；stable ID 不得依陣列位置產生，插入 source 不應使其他 ID 重編。`sourceQuestionId` 是 derived canonical ID，`sourceIds` 保留所有 source IDs；另保留 manifest ID、review version/status/tags、semantic/usage review ID 與 `derivationVersion`，使 provenance 可追溯。
 

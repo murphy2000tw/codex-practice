@@ -14,6 +14,9 @@ const ALLOWED_CHANGES = new Set([DOC, CHECKER]);
 const LEVELS = ["N5", "N4"];
 const REQUIRED_FIELDS = ["id", "level", "word", "kana", "meaning", "partOfSpeech", "example", "exampleKana", "exampleMeaning"];
 const QUESTION_TYPES = ["kanji-reading", "orthography", "context", "paraphrase", "usage"];
+const PARAPHRASE_RELATIONSHIP_FIELDS = ["synonyms", "synonym", "paraphrases", "paraphrase", "equivalentExpression"];
+const USAGE_CONTRAST_FIELDS = ["usageSentences", "correctUsageIndex", "incorrectUsageReasons", "usageReviewId"];
+const ALTERNATE_READING_FIELDS = ["alternateReadings", "acceptedReadings", "readings"];
 const BLOCKERS = [
   "missing-required-field", "no-testable-kanji", "unreviewed-kanji", "duplicate-kana",
   "ambiguous-reading", "multiple-valid-orthographies", "unsafe-generated-distractor",
@@ -60,6 +63,24 @@ function groupSummary(groups) {
 function normalizedMeaning(value) {
   return String(value).trim().replace(/[，,、；;。.!！？?\s]/gu, "");
 }
+function populatedRelationshipCount(items, fields) {
+  return items.reduce((count, item) => count + fields.filter((field) => {
+    const value = item[field];
+    return Array.isArray(value) ? value.length > 0 : nonEmpty(value);
+  }).length, 0);
+}
+function sourceSemantics(items) {
+  return {
+    recognizedParaphraseOrSynonymFields: PARAPHRASE_RELATIONSHIP_FIELDS,
+    recognizedUsageContrastFields: USAGE_CONTRAST_FIELDS,
+    entriesWithParaphraseOrSynonymData: items.filter((item) =>
+      populatedRelationshipCount([item], PARAPHRASE_RELATIONSHIP_FIELDS) > 0).length,
+    entriesWithUsageContrastData: items.filter((item) =>
+      populatedRelationshipCount([item], USAGE_CONTRAST_FIELDS) > 0).length,
+    paraphraseOrSynonymPopulatedFields: populatedRelationshipCount(items, PARAPHRASE_RELATIONSHIP_FIELDS),
+    usageContrastPopulatedFields: populatedRelationshipCount(items, USAGE_CONTRAST_FIELDS),
+  };
+}
 function inventoryFor(items) {
   const homophones = groupedDuplicates(items, (item) => item.kana);
   const meaningRisks = groupedDuplicates(items, (item) => normalizedMeaning(item.meaning));
@@ -94,7 +115,8 @@ function inventoryFor(items) {
       multipleOccurrences: items.filter((item) => occurrences(item.exampleKana, item.kana) > 1).length,
     },
     sameBlankStructuralCandidates: aligned.length,
-    sourceSemanticRelations: { paraphraseOrSynonym: 0, usageContrast: 0 },
+    sourceKeys: [...new Set(items.flatMap((item) => Object.keys(item)))].sort(),
+    sourceSemanticRelations: sourceSemantics(items),
     eligibility: {
       "kanji-reading": {
         available: 0, structuralCandidates: withKanji.length, requiresHumanReview: withKanji.length,
@@ -102,9 +124,13 @@ function inventoryFor(items) {
         blockers: {
           "no-testable-kanji": items.length - withKanji.length,
           "unreviewed-kanji": withKanji.length,
-          "duplicate-kana": [...homophoneIds].filter((id) => withKanji.some((item) => item.id === id)).length,
-          "ambiguous-reading": [...homophoneIds].filter((id) => withKanji.some((item) => item.id === id)).length,
           "unsafe-generated-distractor": withKanji.length,
+        },
+        readingAmbiguityAssessment: {
+          sourceDetectable: items.some((item) => ALTERNATE_READING_FIELDS.some((field) => field in item)),
+          recognizedAlternateReadingFields: ALTERNATE_READING_FIELDS,
+          confirmedCount: null,
+          requiresHumanReview: withKanji.length,
         },
       },
       orthography: {
@@ -170,6 +196,38 @@ check(vocabulary.every((item) => !["synonyms", "synonym", "paraphrases", "paraph
   "vocabulary source unexpectedly contains formal paraphrase relationships");
 check(vocabulary.every((item) => !["usageSentences", "correctUsageIndex", "incorrectUsageReasons", "usageReviewId"].some((key) => key in item)),
   "vocabulary source unexpectedly contains usage contrast data");
+check(LEVELS.every((level) => inventory[level].sourceSemanticRelations.paraphraseOrSynonymPopulatedFields === 0
+  && inventory[level].sourceSemanticRelations.usageContrastPopulatedFields === 0
+  && inventory[level].sourceSemanticRelations.entriesWithParaphraseOrSynonymData === 0
+  && inventory[level].sourceSemanticRelations.entriesWithUsageContrastData === 0),
+"current source semantic relationship counts must be dynamically zero");
+
+// Synthetic contracts: cross-entry homophones are an orthography risk, not confirmed reading ambiguity.
+const homophoneFixture = [
+  { id: "a", level: "N5", word: "会う", kana: "あう", meaning: "meet", partOfSpeech: "verb", example: "会う。", exampleKana: "あう。", exampleMeaning: "meet" },
+  { id: "b", level: "N5", word: "合う", kana: "あう", meaning: "fit", partOfSpeech: "verb", example: "合う。", exampleKana: "あう。", exampleMeaning: "fit" },
+];
+const homophoneAudit = inventoryFor(homophoneFixture);
+check(homophoneAudit.homophoneKana.items === 2, "synthetic homophone inventory must detect both entries");
+check(!("ambiguous-reading" in homophoneAudit.eligibility["kanji-reading"].blockers)
+  && homophoneAudit.eligibility["kanji-reading"].readingAmbiguityAssessment.confirmedCount === null,
+"cross-entry homophones must not become confirmed kanji-reading ambiguity");
+check(homophoneAudit.eligibility["kanji-reading"].readingAmbiguityAssessment.sourceDetectable === false
+  && homophoneAudit.eligibility["kanji-reading"].readingAmbiguityAssessment.requiresHumanReview === 2,
+"missing alternate-reading metadata must remain unassessed and require human review");
+check(homophoneAudit.eligibility.orthography.blockers["multiple-valid-orthographies"] === 2,
+"context-free orthography fixture must flag multiple-valid-orthographies risk");
+const semanticFixture = homophoneFixture.map((item) => ({ ...item }));
+semanticFixture[0].synonyms = ["出会う"];
+semanticFixture[1].usageSentences = [{ sentence: "サイズが合う。", correct: true }];
+const semanticAudit = inventoryFor(semanticFixture).sourceSemanticRelations;
+check(semanticAudit.paraphraseOrSynonymPopulatedFields > 0,
+"synthetic synonym relationship must increase the dynamic semantic count");
+check(semanticAudit.usageContrastPopulatedFields > 0,
+  "synthetic usage contrast must increase the dynamic semantic count");
+check(semanticAudit.entriesWithParaphraseOrSynonymData === 1
+  && semanticAudit.entriesWithUsageContrastData === 1,
+"synthetic semantic fixtures must count affected entries dynamically");
 
 const doc = read(DOC);
 const match = doc.match(/<!-- INVENTORY_JSON_START\s*\n([\s\S]*?)\nINVENTORY_JSON_END -->/);
@@ -194,6 +252,15 @@ check(doc.includes("stable ID") && doc.includes("不得依陣列位置"), "stabl
 check(doc.includes("(level, vocabulary, questionType)"), "runtime vocabulary pool-key rule missing");
 check(doc.includes("獨立 derived bank") && doc.includes("不餵入 compatibility session"), "safe disabled integration decision missing");
 check(doc.includes("N5 usage: not planned") && doc.includes("N4 usage: planned"), "N5/N4 usage target contract missing");
+check(doc.includes("confirmedCount: null") && doc.includes("sourceDetectable: false")
+  && doc.includes("unknown/unassessed") && doc.includes("不會使「看不同漢字詞選讀音」自動成為多解"),
+"document must keep kanji-reading ambiguity unassessed rather than infer it from homophones");
+check(doc.includes("context-free kana prompt") && doc.includes("multiple-valid-orthographies"),
+"document must retain the homophone risk for context-free orthography");
+for (const field of [...PARAPHRASE_RELATIONSHIP_FIELDS, ...USAGE_CONTRAST_FIELDS])
+  check(doc.includes(`\`${field}\``), `recognized semantic source field missing from document: ${field}`);
+check(doc.includes("這些 0 是逐 entry 動態計算，不是常數"),
+"document must explain dynamic semantic relationship zero counts");
 check(doc.includes("available` 必須維持 **0**") || doc.includes("available 必須維持 0"), "semantic types must remain unavailable without authored data");
 check(doc.includes("不是最終產品 quota") && doc.includes("Batch 17C-10"), "candidate/product quota boundary missing");
 check(!doc.includes("17C-10 最終產品 quota 為"), "document must not decide final product quota");
