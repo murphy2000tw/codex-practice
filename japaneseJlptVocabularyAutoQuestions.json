@@ -1144,7 +1144,7 @@
         "場"
       ],
       "readingReview": {
-        "acceptedReading": "いち",
+        "acceptedReading": "こうじょう",
         "commonAlternateReadingsReviewed": true,
         "phonologicalVariantsReviewed": true,
         "ambiguous": false,
@@ -3488,136 +3488,6 @@
       ]
     },
     {
-      "id": "jlpt-vocab-17c7b-n4-context-src-1104",
-      "sourceQuestionId": "vocabulary.json#1104",
-      "level": "N4",
-      "section": "vocabulary",
-      "questionType": "context",
-      "sourceBank": "vocabulary.json",
-      "sourceIds": [
-        1104,
-        1168,
-        1169,
-        1170
-      ],
-      "originalText": "今日は気分がいいです。",
-      "displayText": "きょうは＿＿がいいです。",
-      "kana": "きぶん",
-      "promptKana": "きょうは＿＿がいいです。",
-      "options": [
-        "きぶん",
-        "せわ",
-        "せん",
-        "せんそう"
-      ],
-      "answerIndex": 0,
-      "answerDisplay": "きぶん",
-      "explanation": "「気分（きぶん）」意為「心情；身體狀況」；依原始例句與逐項替換審閱，本題只有此選項符合。",
-      "kanjiPolicy": "record-display-reviewed",
-      "rubyTerms": [],
-      "reviewStatus": "approved-for-derived-bank",
-      "reviewVersion": "17c7b-review-v1",
-      "reviewMethod": "site-internal-editorial",
-      "reviewTags": [
-        "natural-japanese-reviewed",
-        "traditional-chinese-reviewed",
-        "unique-answer-reviewed"
-      ],
-      "uniqueAnswerReviewed": true,
-      "derivationVersion": "17c7b-v1",
-      "sourceExample": "今日は気分がいいです。",
-      "sourceExampleKana": "きょうはきぶんがいいです。",
-      "sourceExampleMeaning": "今天心情很好。",
-      "blankedPrompt": "今日は＿＿がいいです。",
-      "blankedPromptKana": "きょうは＿＿がいいです。",
-      "targetOccurrence": {
-        "sourceStart": 3,
-        "sourceEnd": 5,
-        "kanaStart": 4,
-        "kanaEnd": 7,
-        "sourceOccurrenceCount": 1,
-        "kanaOccurrenceCount": 1
-      },
-      "inflectionMetadata": {
-        "dictionaryForm": "気分",
-        "surfaceForm": "気分",
-        "kanaSurface": "きぶん",
-        "rule": "uninflected-exact-surface"
-      },
-      "targetPartOfSpeech": "名詞",
-      "optionSourceIds": [
-        1104,
-        1168,
-        1169,
-        1170
-      ],
-      "substitutionReviews": [
-        {
-          "value": "きぶん",
-          "sourceId": 1104,
-          "substitutedSentence": "きょうはきぶんがいいです。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-correct",
-          "acceptedAsCorrect": true,
-          "incorrectReason": null
-        },
-        {
-          "value": "せわ",
-          "sourceId": 1168,
-          "substitutedSentence": "きょうはせわがいいです。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「世話（せわ）」を入れた文は、この例文が表す「今天心情很好。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "せん",
-          "sourceId": 1169,
-          "substitutedSentence": "きょうはせんがいいです。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「線（せん）」を入れた文は、この例文が表す「今天心情很好。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "せんそう",
-          "sourceId": 1170,
-          "substitutedSentence": "きょうはせんそうがいいです。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「戦争（せんそう）」を入れた文は、この例文が表す「今天心情很好。」という意味にならず、語意上不自然。"
-        }
-      ],
-      "distractors": [
-        {
-          "value": "せわ",
-          "sourceId": 1168,
-          "incorrectReason": "「世話」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        },
-        {
-          "value": "せん",
-          "sourceId": 1169,
-          "incorrectReason": "「線」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        },
-        {
-          "value": "せんそう",
-          "sourceId": 1170,
-          "incorrectReason": "「戦争」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        }
-      ]
-    },
-    {
       "id": "jlpt-vocab-17c7b-n4-context-src-1105",
       "sourceQuestionId": "vocabulary.json#1105",
       "level": "N4",
@@ -4132,6 +4002,136 @@
           "value": "しっぱい",
           "sourceId": 1138,
           "incorrectReason": "「失敗（しっぱい）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7b-n4-context-src-1167",
+      "sourceQuestionId": "vocabulary.json#1167",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "context",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1167,
+        1164,
+        1165,
+        1166
+      ],
+      "originalText": "重い荷物で背中が痛いです。",
+      "displayText": "おもいにもつで＿＿がいたいです。",
+      "kana": "せなか",
+      "promptKana": "おもいにもつで＿＿がいたいです。",
+      "options": [
+        "せいかつ",
+        "せいせき",
+        "せつめい",
+        "せなか"
+      ],
+      "answerIndex": 3,
+      "answerDisplay": "せなか",
+      "explanation": "「背中（せなか）」意為「背部」；逐項代入完整題幹後，只有此選項自然且符合句意。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "traditional-chinese-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7b-v1",
+      "sourceExample": "重い荷物で背中が痛いです。",
+      "sourceExampleKana": "おもいにもつでせなかがいたいです。",
+      "sourceExampleMeaning": "因為重行李，背很痛。",
+      "blankedPrompt": "重い荷物で＿＿が痛いです。",
+      "blankedPromptKana": "おもいにもつで＿＿がいたいです。",
+      "targetOccurrence": {
+        "sourceStart": 5,
+        "sourceEnd": 7,
+        "kanaStart": 7,
+        "kanaEnd": 10,
+        "sourceOccurrenceCount": 1,
+        "kanaOccurrenceCount": 1
+      },
+      "inflectionMetadata": {
+        "dictionaryForm": "背中",
+        "surfaceForm": "背中",
+        "kanaSurface": "せなか",
+        "rule": "uninflected-exact-surface"
+      },
+      "targetPartOfSpeech": "名詞",
+      "optionSourceIds": [
+        1164,
+        1165,
+        1166,
+        1167
+      ],
+      "substitutionReviews": [
+        {
+          "value": "せいかつ",
+          "sourceId": 1164,
+          "substitutedSentence": "おもいにもつでせいかつがいたいです。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「生活（せいかつ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "せいせき",
+          "sourceId": 1165,
+          "substitutedSentence": "おもいにもつでせいせきがいたいです。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「成績（せいせき）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "せつめい",
+          "sourceId": 1166,
+          "substitutedSentence": "おもいにもつでせつめいがいたいです。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「説明（せつめい）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "せなか",
+          "sourceId": 1167,
+          "substitutedSentence": "おもいにもつでせなかがいたいです。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null
+        }
+      ],
+      "distractors": [
+        {
+          "value": "せいかつ",
+          "sourceId": 1164,
+          "incorrectReason": "「生活（せいかつ）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        },
+        {
+          "value": "せいせき",
+          "sourceId": 1165,
+          "incorrectReason": "「成績（せいせき）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        },
+        {
+          "value": "せつめい",
+          "sourceId": 1166,
+          "incorrectReason": "「説明（せつめい）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         }
@@ -7474,266 +7474,6 @@
       ]
     },
     {
-      "id": "jlpt-vocab-17c7b-n5-context-src-54",
-      "sourceQuestionId": "vocabulary.json#54",
-      "level": "N5",
-      "section": "vocabulary",
-      "questionType": "context",
-      "sourceBank": "vocabulary.json",
-      "sourceIds": [
-        54,
-        108,
-        109,
-        110
-      ],
-      "originalText": "高校は駅の近くです。",
-      "displayText": "＿＿はえきのちかくです。",
-      "kana": "こうこう",
-      "promptKana": "＿＿はえきのちかくです。",
-      "options": [
-        "ぼうし",
-        "めがね",
-        "こうこう",
-        "でんき"
-      ],
-      "answerIndex": 2,
-      "answerDisplay": "こうこう",
-      "explanation": "「高校（こうこう）」意為「高中」；依原始例句與逐項替換審閱，本題只有此選項符合。",
-      "kanjiPolicy": "record-display-reviewed",
-      "rubyTerms": [],
-      "reviewStatus": "approved-for-derived-bank",
-      "reviewVersion": "17c7b-review-v1",
-      "reviewMethod": "site-internal-editorial",
-      "reviewTags": [
-        "natural-japanese-reviewed",
-        "traditional-chinese-reviewed",
-        "unique-answer-reviewed"
-      ],
-      "uniqueAnswerReviewed": true,
-      "derivationVersion": "17c7b-v1",
-      "sourceExample": "高校は駅の近くです。",
-      "sourceExampleKana": "こうこうはえきのちかくです。",
-      "sourceExampleMeaning": "高中在車站附近。",
-      "blankedPrompt": "＿＿は駅の近くです。",
-      "blankedPromptKana": "＿＿はえきのちかくです。",
-      "targetOccurrence": {
-        "sourceStart": 0,
-        "sourceEnd": 2,
-        "kanaStart": 0,
-        "kanaEnd": 4,
-        "sourceOccurrenceCount": 1,
-        "kanaOccurrenceCount": 1
-      },
-      "inflectionMetadata": {
-        "dictionaryForm": "高校",
-        "surfaceForm": "高校",
-        "kanaSurface": "こうこう",
-        "rule": "uninflected-exact-surface"
-      },
-      "targetPartOfSpeech": "名詞",
-      "optionSourceIds": [
-        108,
-        109,
-        54,
-        110
-      ],
-      "substitutionReviews": [
-        {
-          "value": "ぼうし",
-          "sourceId": 108,
-          "substitutedSentence": "ぼうしはえきのちかくです。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「帽子（ぼうし）」を入れた文は、この例文が表す「高中在車站附近。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "めがね",
-          "sourceId": 109,
-          "substitutedSentence": "めがねはえきのちかくです。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「眼鏡（めがね）」を入れた文は、この例文が表す「高中在車站附近。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "こうこう",
-          "sourceId": 54,
-          "substitutedSentence": "こうこうはえきのちかくです。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-correct",
-          "acceptedAsCorrect": true,
-          "incorrectReason": null
-        },
-        {
-          "value": "でんき",
-          "sourceId": 110,
-          "substitutedSentence": "でんきはえきのちかくです。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「電気（でんき）」を入れた文は、この例文が表す「高中在車站附近。」という意味にならず、語意上不自然。"
-        }
-      ],
-      "distractors": [
-        {
-          "value": "ぼうし",
-          "sourceId": 108,
-          "incorrectReason": "「帽子」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        },
-        {
-          "value": "めがね",
-          "sourceId": 109,
-          "incorrectReason": "「眼鏡」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        },
-        {
-          "value": "でんき",
-          "sourceId": 110,
-          "incorrectReason": "「電気」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        }
-      ]
-    },
-    {
-      "id": "jlpt-vocab-17c7b-n5-context-src-55",
-      "sourceQuestionId": "vocabulary.json#55",
-      "level": "N5",
-      "section": "vocabulary",
-      "questionType": "context",
-      "sourceBank": "vocabulary.json",
-      "sourceIds": [
-        55,
-        111,
-        112,
-        117
-      ],
-      "originalText": "小学校へ歩いて行きます。",
-      "displayText": "＿＿へあるいていきます。",
-      "kana": "しょうがっこう",
-      "promptKana": "＿＿へあるいていきます。",
-      "options": [
-        "でんわ",
-        "けいたいでんわ",
-        "れいぞうこ",
-        "しょうがっこう"
-      ],
-      "answerIndex": 3,
-      "answerDisplay": "しょうがっこう",
-      "explanation": "「小学校（しょうがっこう）」意為「小學」；依原始例句與逐項替換審閱，本題只有此選項符合。",
-      "kanjiPolicy": "record-display-reviewed",
-      "rubyTerms": [],
-      "reviewStatus": "approved-for-derived-bank",
-      "reviewVersion": "17c7b-review-v1",
-      "reviewMethod": "site-internal-editorial",
-      "reviewTags": [
-        "natural-japanese-reviewed",
-        "traditional-chinese-reviewed",
-        "unique-answer-reviewed"
-      ],
-      "uniqueAnswerReviewed": true,
-      "derivationVersion": "17c7b-v1",
-      "sourceExample": "小学校へ歩いて行きます。",
-      "sourceExampleKana": "しょうがっこうへあるいていきます。",
-      "sourceExampleMeaning": "走路去小學。",
-      "blankedPrompt": "＿＿へ歩いて行きます。",
-      "blankedPromptKana": "＿＿へあるいていきます。",
-      "targetOccurrence": {
-        "sourceStart": 0,
-        "sourceEnd": 3,
-        "kanaStart": 0,
-        "kanaEnd": 7,
-        "sourceOccurrenceCount": 1,
-        "kanaOccurrenceCount": 1
-      },
-      "inflectionMetadata": {
-        "dictionaryForm": "小学校",
-        "surfaceForm": "小学校",
-        "kanaSurface": "しょうがっこう",
-        "rule": "uninflected-exact-surface"
-      },
-      "targetPartOfSpeech": "名詞",
-      "optionSourceIds": [
-        111,
-        112,
-        117,
-        55
-      ],
-      "substitutionReviews": [
-        {
-          "value": "でんわ",
-          "sourceId": 111,
-          "substitutedSentence": "でんわへあるいていきます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「電話（でんわ）」を入れた文は、この例文が表す「走路去小學。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "けいたいでんわ",
-          "sourceId": 112,
-          "substitutedSentence": "けいたいでんわへあるいていきます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「携帯電話（けいたいでんわ）」を入れた文は、この例文が表す「走路去小學。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "れいぞうこ",
-          "sourceId": 117,
-          "substitutedSentence": "れいぞうこへあるいていきます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「冷蔵庫（れいぞうこ）」を入れた文は、この例文が表す「走路去小學。」という意味にならず、語意上不自然。"
-        },
-        {
-          "value": "しょうがっこう",
-          "sourceId": 55,
-          "substitutedSentence": "しょうがっこうへあるいていきます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-correct",
-          "acceptedAsCorrect": true,
-          "incorrectReason": null
-        }
-      ],
-      "distractors": [
-        {
-          "value": "でんわ",
-          "sourceId": 111,
-          "incorrectReason": "「電話」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        },
-        {
-          "value": "けいたいでんわ",
-          "sourceId": 112,
-          "incorrectReason": "「携帯電話」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        },
-        {
-          "value": "れいぞうこ",
-          "sourceId": 117,
-          "incorrectReason": "「冷蔵庫」を代入すると文脈の意味が成立しない。",
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false
-        }
-      ]
-    },
-    {
       "id": "jlpt-vocab-17c7b-n5-context-src-56",
       "sourceQuestionId": "vocabulary.json#56",
       "level": "N5",
@@ -7994,31 +7734,31 @@
       ]
     },
     {
-      "id": "jlpt-vocab-17c7b-n5-context-src-101",
-      "sourceQuestionId": "vocabulary.json#101",
+      "id": "jlpt-vocab-17c7b-n5-context-src-99",
+      "sourceQuestionId": "vocabulary.json#99",
       "level": "N5",
       "section": "vocabulary",
       "questionType": "context",
       "sourceBank": "vocabulary.json",
       "sourceIds": [
-        101,
+        99,
         110,
-        117,
-        123
+        123,
+        125
       ],
-      "originalText": "鍵をなくしました。",
-      "displayText": "＿＿をなくしました。",
-      "kana": "かぎ",
-      "promptKana": "＿＿をなくしました。",
+      "originalText": "椅子に座ります。",
+      "displayText": "＿＿にすわります。",
+      "kana": "いす",
+      "promptKana": "＿＿にすわります。",
       "options": [
         "でんき",
-        "かぎ",
-        "れいぞうこ",
-        "ぎゅうにゅう"
+        "ぎゅうにゅう",
+        "さけ",
+        "いす"
       ],
-      "answerIndex": 1,
-      "answerDisplay": "かぎ",
-      "explanation": "「鍵（かぎ）」意為「鑰匙」；逐項代入完整題幹後，只有此選項自然且符合句意。",
+      "answerIndex": 3,
+      "answerDisplay": "いす",
+      "explanation": "「椅子（いす）」意為「椅子」；逐項代入完整題幹後，只有此選項自然且符合句意。",
       "kanjiPolicy": "record-display-reviewed",
       "rubyTerms": [],
       "reviewStatus": "approved-for-derived-bank",
@@ -8031,37 +7771,37 @@
       ],
       "uniqueAnswerReviewed": true,
       "derivationVersion": "17c7b-v1",
-      "sourceExample": "鍵をなくしました。",
-      "sourceExampleKana": "かぎをなくしました。",
-      "sourceExampleMeaning": "鑰匙不見了。",
-      "blankedPrompt": "＿＿をなくしました。",
-      "blankedPromptKana": "＿＿をなくしました。",
+      "sourceExample": "椅子に座ります。",
+      "sourceExampleKana": "いすにすわります。",
+      "sourceExampleMeaning": "坐在椅子上。",
+      "blankedPrompt": "＿＿に座ります。",
+      "blankedPromptKana": "＿＿にすわります。",
       "targetOccurrence": {
         "sourceStart": 0,
-        "sourceEnd": 1,
+        "sourceEnd": 2,
         "kanaStart": 0,
         "kanaEnd": 2,
         "sourceOccurrenceCount": 1,
         "kanaOccurrenceCount": 1
       },
       "inflectionMetadata": {
-        "dictionaryForm": "鍵",
-        "surfaceForm": "鍵",
-        "kanaSurface": "かぎ",
+        "dictionaryForm": "椅子",
+        "surfaceForm": "椅子",
+        "kanaSurface": "いす",
         "rule": "uninflected-exact-surface"
       },
       "targetPartOfSpeech": "名詞",
       "optionSourceIds": [
         110,
-        101,
-        117,
-        123
+        123,
+        125,
+        99
       ],
       "substitutionReviews": [
         {
           "value": "でんき",
           "sourceId": 110,
-          "substitutedSentence": "でんきをなくしました。",
+          "substitutedSentence": "でんきにすわります。",
           "grammarFormReviewed": true,
           "semanticFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
@@ -8069,34 +7809,34 @@
           "incorrectReason": "「電気（でんき）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
         },
         {
-          "value": "かぎ",
-          "sourceId": 101,
-          "substitutedSentence": "かぎをなくしました。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-correct",
-          "acceptedAsCorrect": true,
-          "incorrectReason": null
-        },
-        {
-          "value": "れいぞうこ",
-          "sourceId": 117,
-          "substitutedSentence": "れいぞうこをなくしました。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「冷蔵庫（れいぞうこ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
-        },
-        {
           "value": "ぎゅうにゅう",
           "sourceId": 123,
-          "substitutedSentence": "ぎゅうにゅうをなくしました。",
+          "substitutedSentence": "ぎゅうにゅうにすわります。",
           "grammarFormReviewed": true,
           "semanticFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false,
           "incorrectReason": "「牛乳（ぎゅうにゅう）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "さけ",
+          "sourceId": 125,
+          "substitutedSentence": "さけにすわります。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「酒（さけ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "いす",
+          "sourceId": 99,
+          "substitutedSentence": "いすにすわります。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null
         }
       ],
       "distractors": [
@@ -8108,47 +7848,47 @@
           "acceptedAsCorrect": false
         },
         {
-          "value": "れいぞうこ",
-          "sourceId": 117,
-          "incorrectReason": "「冷蔵庫（れいぞうこ）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "value": "ぎゅうにゅう",
+          "sourceId": 123,
+          "incorrectReason": "「牛乳（ぎゅうにゅう）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         },
         {
-          "value": "ぎゅうにゅう",
-          "sourceId": 123,
-          "incorrectReason": "「牛乳（ぎゅうにゅう）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "value": "さけ",
+          "sourceId": 125,
+          "incorrectReason": "「酒（さけ）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         }
       ]
     },
     {
-      "id": "jlpt-vocab-17c7b-n5-context-src-110",
-      "sourceQuestionId": "vocabulary.json#110",
+      "id": "jlpt-vocab-17c7b-n5-context-src-105",
+      "sourceQuestionId": "vocabulary.json#105",
       "level": "N5",
       "section": "vocabulary",
       "questionType": "context",
       "sourceBank": "vocabulary.json",
       "sourceIds": [
-        110,
+        105,
         101,
-        117,
+        110,
         123
       ],
-      "originalText": "電気をつけます。",
-      "displayText": "＿＿をつけます。",
-      "kana": "でんき",
-      "promptKana": "＿＿をつけます。",
+      "originalText": "靴を脱ぎます。",
+      "displayText": "＿＿をぬぎます。",
+      "kana": "くつ",
+      "promptKana": "＿＿をぬぎます。",
       "options": [
         "かぎ",
-        "れいぞうこ",
+        "くつ",
         "でんき",
         "ぎゅうにゅう"
       ],
-      "answerIndex": 2,
-      "answerDisplay": "でんき",
-      "explanation": "「電気（でんき）」意為「電燈；電」；逐項代入完整題幹後，只有此選項自然且符合句意。",
+      "answerIndex": 1,
+      "answerDisplay": "くつ",
+      "explanation": "「靴（くつ）」意為「鞋子」；逐項代入完整題幹後，只有此選項自然且符合句意。",
       "kanjiPolicy": "record-display-reviewed",
       "rubyTerms": [],
       "reviewStatus": "approved-for-derived-bank",
@@ -8161,29 +7901,29 @@
       ],
       "uniqueAnswerReviewed": true,
       "derivationVersion": "17c7b-v1",
-      "sourceExample": "電気をつけます。",
-      "sourceExampleKana": "でんきをつけます。",
-      "sourceExampleMeaning": "開燈。",
-      "blankedPrompt": "＿＿をつけます。",
-      "blankedPromptKana": "＿＿をつけます。",
+      "sourceExample": "靴を脱ぎます。",
+      "sourceExampleKana": "くつをぬぎます。",
+      "sourceExampleMeaning": "脫鞋。",
+      "blankedPrompt": "＿＿を脱ぎます。",
+      "blankedPromptKana": "＿＿をぬぎます。",
       "targetOccurrence": {
         "sourceStart": 0,
-        "sourceEnd": 2,
+        "sourceEnd": 1,
         "kanaStart": 0,
-        "kanaEnd": 3,
+        "kanaEnd": 2,
         "sourceOccurrenceCount": 1,
         "kanaOccurrenceCount": 1
       },
       "inflectionMetadata": {
-        "dictionaryForm": "電気",
-        "surfaceForm": "電気",
-        "kanaSurface": "でんき",
+        "dictionaryForm": "靴",
+        "surfaceForm": "靴",
+        "kanaSurface": "くつ",
         "rule": "uninflected-exact-surface"
       },
       "targetPartOfSpeech": "名詞",
       "optionSourceIds": [
         101,
-        117,
+        105,
         110,
         123
       ],
@@ -8191,7 +7931,7 @@
         {
           "value": "かぎ",
           "sourceId": 101,
-          "substitutedSentence": "かぎをつけます。",
+          "substitutedSentence": "かぎをぬぎます。",
           "grammarFormReviewed": true,
           "semanticFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
@@ -8199,19 +7939,9 @@
           "incorrectReason": "「鍵（かぎ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
         },
         {
-          "value": "れいぞうこ",
-          "sourceId": 117,
-          "substitutedSentence": "れいぞうこをつけます。",
-          "grammarFormReviewed": true,
-          "semanticFitReviewed": true,
-          "languageReviewStatus": "reviewed-incorrect",
-          "acceptedAsCorrect": false,
-          "incorrectReason": "「冷蔵庫（れいぞうこ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
-        },
-        {
-          "value": "でんき",
-          "sourceId": 110,
-          "substitutedSentence": "でんきをつけます。",
+          "value": "くつ",
+          "sourceId": 105,
+          "substitutedSentence": "くつをぬぎます。",
           "grammarFormReviewed": true,
           "semanticFitReviewed": true,
           "languageReviewStatus": "reviewed-correct",
@@ -8219,9 +7949,19 @@
           "incorrectReason": null
         },
         {
+          "value": "でんき",
+          "sourceId": 110,
+          "substitutedSentence": "でんきをぬぎます。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「電気（でんき）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
           "value": "ぎゅうにゅう",
           "sourceId": 123,
-          "substitutedSentence": "ぎゅうにゅうをつけます。",
+          "substitutedSentence": "ぎゅうにゅうをぬぎます。",
           "grammarFormReviewed": true,
           "semanticFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
@@ -8238,9 +7978,269 @@
           "acceptedAsCorrect": false
         },
         {
-          "value": "れいぞうこ",
-          "sourceId": 117,
-          "incorrectReason": "「冷蔵庫（れいぞうこ）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "value": "でんき",
+          "sourceId": 110,
+          "incorrectReason": "「電気（でんき）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        },
+        {
+          "value": "ぎゅうにゅう",
+          "sourceId": 123,
+          "incorrectReason": "「牛乳（ぎゅうにゅう）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7b-n5-context-src-125",
+      "sourceQuestionId": "vocabulary.json#125",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "context",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        125,
+        101,
+        110,
+        99
+      ],
+      "originalText": "父は酒を飲みます。",
+      "displayText": "ちちは＿＿をのみます。",
+      "kana": "さけ",
+      "promptKana": "ちちは＿＿をのみます。",
+      "options": [
+        "かぎ",
+        "さけ",
+        "でんき",
+        "いす"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "さけ",
+      "explanation": "「酒（さけ）」意為「酒」；逐項代入完整題幹後，只有此選項自然且符合句意。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "traditional-chinese-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7b-v1",
+      "sourceExample": "父は酒を飲みます。",
+      "sourceExampleKana": "ちちはさけをのみます。",
+      "sourceExampleMeaning": "父親喝酒。",
+      "blankedPrompt": "父は＿＿を飲みます。",
+      "blankedPromptKana": "ちちは＿＿をのみます。",
+      "targetOccurrence": {
+        "sourceStart": 2,
+        "sourceEnd": 3,
+        "kanaStart": 3,
+        "kanaEnd": 5,
+        "sourceOccurrenceCount": 1,
+        "kanaOccurrenceCount": 1
+      },
+      "inflectionMetadata": {
+        "dictionaryForm": "酒",
+        "surfaceForm": "酒",
+        "kanaSurface": "さけ",
+        "rule": "uninflected-exact-surface"
+      },
+      "targetPartOfSpeech": "名詞",
+      "optionSourceIds": [
+        101,
+        125,
+        110,
+        99
+      ],
+      "substitutionReviews": [
+        {
+          "value": "かぎ",
+          "sourceId": 101,
+          "substitutedSentence": "ちちはかぎをのみます。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「鍵（かぎ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "さけ",
+          "sourceId": 125,
+          "substitutedSentence": "ちちはさけをのみます。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null
+        },
+        {
+          "value": "でんき",
+          "sourceId": 110,
+          "substitutedSentence": "ちちはでんきをのみます。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「電気（でんき）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "いす",
+          "sourceId": 99,
+          "substitutedSentence": "ちちはいすをのみます。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「椅子（いす）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        }
+      ],
+      "distractors": [
+        {
+          "value": "かぎ",
+          "sourceId": 101,
+          "incorrectReason": "「鍵（かぎ）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        },
+        {
+          "value": "でんき",
+          "sourceId": 110,
+          "incorrectReason": "「電気（でんき）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        },
+        {
+          "value": "いす",
+          "sourceId": 99,
+          "incorrectReason": "「椅子（いす）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7b-n5-context-src-157",
+      "sourceQuestionId": "vocabulary.json#157",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "context",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        157,
+        101,
+        110,
+        123
+      ],
+      "originalText": "雨が降っています。",
+      "displayText": "＿＿がふっています。",
+      "kana": "あめ",
+      "promptKana": "＿＿がふっています。",
+      "options": [
+        "かぎ",
+        "あめ",
+        "でんき",
+        "ぎゅうにゅう"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "あめ",
+      "explanation": "「雨（あめ）」意為「雨」；逐項代入完整題幹後，只有此選項自然且符合句意。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "traditional-chinese-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7b-v1",
+      "sourceExample": "雨が降っています。",
+      "sourceExampleKana": "あめがふっています。",
+      "sourceExampleMeaning": "正在下雨。",
+      "blankedPrompt": "＿＿が降っています。",
+      "blankedPromptKana": "＿＿がふっています。",
+      "targetOccurrence": {
+        "sourceStart": 0,
+        "sourceEnd": 1,
+        "kanaStart": 0,
+        "kanaEnd": 2,
+        "sourceOccurrenceCount": 1,
+        "kanaOccurrenceCount": 1
+      },
+      "inflectionMetadata": {
+        "dictionaryForm": "雨",
+        "surfaceForm": "雨",
+        "kanaSurface": "あめ",
+        "rule": "uninflected-exact-surface"
+      },
+      "targetPartOfSpeech": "名詞",
+      "optionSourceIds": [
+        101,
+        157,
+        110,
+        123
+      ],
+      "substitutionReviews": [
+        {
+          "value": "かぎ",
+          "sourceId": 101,
+          "substitutedSentence": "かぎがふっています。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「鍵（かぎ）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "あめ",
+          "sourceId": 157,
+          "substitutedSentence": "あめがふっています。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null
+        },
+        {
+          "value": "でんき",
+          "sourceId": 110,
+          "substitutedSentence": "でんきがふっています。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「電気（でんき）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        },
+        {
+          "value": "ぎゅうにゅう",
+          "sourceId": 123,
+          "substitutedSentence": "ぎゅうにゅうがふっています。",
+          "grammarFormReviewed": true,
+          "semanticFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "「牛乳（ぎゅうにゅう）」を入れた文は、語の意味と述語の組み合わせが不自然で、題幹単独でも成立しない。"
+        }
+      ],
+      "distractors": [
+        {
+          "value": "かぎ",
+          "sourceId": 101,
+          "incorrectReason": "「鍵（かぎ）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
+          "languageReviewStatus": "reviewed-incorrect",
+          "acceptedAsCorrect": false
+        },
+        {
+          "value": "でんき",
+          "sourceId": 110,
+          "incorrectReason": "「電気（でんき）」は題幹の述語との組み合わせが不自然で、文として成立しない。",
           "languageReviewStatus": "reviewed-incorrect",
           "acceptedAsCorrect": false
         },

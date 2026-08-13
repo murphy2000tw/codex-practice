@@ -45,6 +45,7 @@ function validateReview(record, sourceById) {
   });
   if (record.questionType === "kanji-reading") {
     if (record.testedWord !== source.word || record.testedReading !== source.kana || !hasKanji(record.testedWord)) fail(`${label} reading target drift`);
+    if (record.readingReview?.acceptedReading !== record.testedReading || record.testedReading !== record.correctOption || record.correctOption !== snapshot.kana) fail(`${label} accepted reading mismatch`);
     if (record.prompt.includes(source.kana) || /<ruby|<rt/i.test(record.prompt)) fail(`${label} reading prompt leaks answer`);
     if (!record.readingReview || record.readingReview.ambiguous !== false || record.readingReview.commonAlternateReadingsReviewed !== true || !record.kanjiReview || record.kanjiReview.displayedKanjiReviewed !== true || !Array.isArray(record.distractorReviews) || record.distractorReviews.length !== 3) fail(`${label} lacks reading/kanji review`);
   } else if (record.questionType === "orthography") {
