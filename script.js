@@ -782,6 +782,98 @@ function deepCloneJapaneseJlptValue(value) {
     );
   return value;
 }
+
+const JAPANESE_JLPT_DERIVED_BANK_CONTRACTS = Object.freeze({
+  auto: { derivationVersion: "17c7b-v1", total: 72, types: ["kanji-reading", "orthography", "context"] },
+  semantic: { derivationVersion: "17c7c-v1", total: 36, types: ["paraphrase", "usage"] },
+});
+function adaptJapaneseJlptVocabularyDerivedQuestion(question, bankKind) {
+  const contract = JAPANESE_JLPT_DERIVED_BANK_CONTRACTS[bankKind];
+  if (!contract || !question || typeof question !== "object")
+    throw new Error("JLPT derived question 或 bankKind 無效");
+  const requiredStrings = ["id", "sourceQuestionId", "level", "section", "questionType", "sourceBank",
+    "originalText", "displayText", "answerDisplay", "explanation", "kanjiPolicy", "reviewStatus",
+    "reviewVersion", "reviewMethod", "derivationVersion"];
+  if (requiredStrings.some((key) => !isNonEmptyString(question[key])) ||
+      !contract.types.includes(question.questionType) || !["N5", "N4"].includes(question.level) ||
+      question.section !== "vocabulary" || question.derivationVersion !== contract.derivationVersion ||
+      (question.questionType === "usage" && question.level !== "N4") || question.questionType === "meaning" ||
+      !Array.isArray(question.sourceIds) || !question.sourceIds.length ||
+      !Array.isArray(question.rubyTerms) || !Array.isArray(question.reviewTags) ||
+      !question.reviewTags.length || question.uniqueAnswerReviewed !== true ||
+      !Array.isArray(question.options) || question.options.length !== 4 ||
+      question.options.some((option) => !isNonEmptyString(option)) || new Set(question.options).size !== 4 ||
+      !Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex > 3 ||
+      question.answerDisplay !== question.options[question.answerIndex])
+    throw new Error(`JLPT derived question contract 不符：${question.id || "unknown"}`);
+  const aligned = (key, valueKey) => Array.isArray(question[key]) && question[key].length === 4 &&
+    question[key].every((item, index) => item && item[valueKey] === question.options[index]);
+  const typeValid = {
+    "kanji-reading": () => isNonEmptyString(question.testedWord) && isNonEmptyString(question.testedReading) &&
+      Array.isArray(question.testedKanji) && question.readingReview && question.kanjiReview &&
+      Array.isArray(question.distractorReviews) && Array.isArray(question.distractors),
+    orthography: () => ["sourceExample", "sourceExampleKana", "sourceExampleMeaning", "correctOrthography"]
+      .every((key) => isNonEmptyString(question[key])) && question.targetOccurrence &&
+      Array.isArray(question.orthographyRiskTags) && question.renderingPolicy && aligned("optionReviews", "value") &&
+      Array.isArray(question.distractors),
+    context: () => ["sourceExample", "sourceExampleKana", "sourceExampleMeaning", "blankedPrompt",
+      "blankedPromptKana", "targetPartOfSpeech"].every((key) => isNonEmptyString(question[key])) &&
+      question.targetOccurrence && question.inflectionMetadata && Array.isArray(question.optionSourceIds) &&
+      question.optionSourceIds.length === 4 && aligned("substitutionReviews", "value") && Array.isArray(question.distractors),
+    paraphrase: () => ["targetExpression", "targetExpressionKana", "equivalentExpression",
+      "equivalentExpressionKana", "interchangeabilityScope", "semanticReviewId"].every((key) => isNonEmptyString(question[key])) &&
+      aligned("optionReviews", "expression"),
+    usage: () => ["targetWord", "targetKana", "usageReviewId"].every((key) => isNonEmptyString(question[key])) &&
+      question.correctUsageIndex === question.answerIndex && aligned("usageSentences", "sentence") &&
+      question.usageSentences.every((item, index) => item.acceptedAsCorrect === (index === question.answerIndex)) &&
+      Array.isArray(question.incorrectUsageReasons) && question.incorrectUsageReasons.length === 3 &&
+      new Set(question.incorrectUsageReasons.map((item) => item.usageIndex)).size === 3 &&
+      question.incorrectUsageReasons.every((item) => item && item.usageIndex !== question.answerIndex &&
+        Number.isInteger(item.usageIndex) && item.usageIndex >= 0 && item.usageIndex < 4),
+  }[question.questionType];
+  if (!typeValid || !typeValid()) throw new Error(`JLPT derived ${question.questionType} metadata 不完整或未對齊`);
+  const candidate = deepCloneJapaneseJlptValue(question);
+  candidate.derivedBankIdentity = bankKind === "auto"
+    ? "jlpt-vocabulary-derived-auto-17c7b" : "jlpt-vocabulary-derived-semantic-17c7c";
+  return candidate;
+}
+function createJapaneseJlptVocabularyDerivedCandidates(autoBank, semanticBank) {
+  const banks = [[autoBank, "auto"], [semanticBank, "semantic"]];
+  const candidates = [];
+  const ids = new Set();
+  const sourceQuestionIds = new Set();
+  banks.forEach(([bank, kind]) => {
+    const contract = JAPANESE_JLPT_DERIVED_BANK_CONTRACTS[kind];
+    const expectedInventory = kind === "auto"
+      ? { N5: { "kanji-reading": 12, orthography: 12, context: 12, total: 36 },
+        N4: { "kanji-reading": 12, orthography: 12, context: 12, total: 36 }, total: 72 }
+      : { N5: { paraphrase: 12, usage: 0, total: 12 },
+        N4: { paraphrase: 12, usage: 12, total: 24 }, total: 36 };
+    const inventoryMatches = bank && Object.entries(expectedInventory).every(([key, expectedValue]) =>
+      typeof expectedValue === "number" ? bank.inventory && bank.inventory[key] === expectedValue
+        : bank.inventory && Object.entries(expectedValue).every(([nestedKey, count]) =>
+          bank.inventory[key] && bank.inventory[key][nestedKey] === count));
+    if (!bank || bank.schemaVersion !== "1.0.0" || bank.derivationVersion !== contract.derivationVersion ||
+        !inventoryMatches || !Array.isArray(bank.questions) ||
+        bank.questions.length !== contract.total)
+      throw new Error(`JLPT ${kind} derived bank schema、version 或 inventory 無效`);
+    bank.questions.forEach((question) => {
+      const candidate = adaptJapaneseJlptVocabularyDerivedQuestion(question, kind);
+      if (ids.has(candidate.id) || sourceQuestionIds.has(candidate.sourceQuestionId))
+        throw new Error("JLPT derived id 或 sourceQuestionId 重複");
+      ids.add(candidate.id); sourceQuestionIds.add(candidate.sourceQuestionId); candidates.push(candidate);
+    });
+  });
+  const expected = { "N5/kanji-reading":12, "N5/orthography":12, "N5/context":12, "N5/paraphrase":12,
+    "N4/kanji-reading":12, "N4/orthography":12, "N4/context":12, "N4/paraphrase":12, "N4/usage":12 };
+  Object.entries(expected).forEach(([key, count]) => {
+    const [level, type] = key.split("/");
+    if (candidates.filter((item) => item.level === level && item.questionType === type).length !== count)
+      throw new Error(`JLPT derived inventory 不符：${key}`);
+  });
+  if (candidates.length !== 108) throw new Error("JLPT derived inventory 總數不符");
+  return candidates;
+}
 const JAPANESE_JLPT_PROFILE_REGISTRY = deepFreezeJapaneseJlptValue({
   schemaVersion: 1,
   profiles: {
@@ -1211,6 +1303,25 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
   const options = shuffledOptions.map((item) => item.option);
   if (options.length !== 4 || options[targetAnswerIndex] !== randomizedSnapshot.options[originalAnswerIndex])
     throw new Error("JLPT 隨機化後正確選項無法解析");
+  const originalIndexes = shuffledOptions.map((item) => item.originalIndex);
+  const reorder = (key) => {
+    if (Array.isArray(randomizedSnapshot[key]))
+      randomizedSnapshot[key] = originalIndexes.map((index) => randomizedSnapshot[key][index]);
+  };
+  if (randomizedSnapshot.questionType === "orthography") reorder("optionReviews");
+  if (randomizedSnapshot.questionType === "context") {
+    reorder("optionSourceIds");
+    reorder("substitutionReviews");
+  }
+  if (randomizedSnapshot.questionType === "paraphrase") reorder("optionReviews");
+  if (randomizedSnapshot.questionType === "usage") {
+    reorder("usageSentences");
+    randomizedSnapshot.correctUsageIndex = targetAnswerIndex;
+    const newIndexByOriginal = new Map(originalIndexes.map((originalIndex, index) => [originalIndex, index]));
+    randomizedSnapshot.incorrectUsageReasons = randomizedSnapshot.incorrectUsageReasons.map((reason) => ({
+      ...reason, usageIndex: newIndexByOriginal.get(reason.usageIndex),
+    }));
+  }
   return { ...randomizedSnapshot, options, answerIndex: targetAnswerIndex };
 }
 function createJapaneseJlptQuestionSnapshot(question) {
