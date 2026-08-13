@@ -1,0 +1,1117 @@
+{
+  "schemaVersion": "1.0.0",
+  "manifestVersion": "17c7c-v1",
+  "questionType": "usage",
+  "reviewLabel": "site-internal editorial-reviewed",
+  "seedCapacity": {
+    "N4": 12,
+    "N5": 0,
+    "note": "N5 usage is not planned; data inventory / seed capacity, not a product quota"
+  },
+  "records": [
+    {
+      "authoringId": "17c7c-n4-usage-01-src-1212",
+      "sourceId": 1212,
+      "sourceIds": [
+        1212
+      ],
+      "sourceSnapshot": {
+        "word": "必要",
+        "kana": "ひつよう",
+        "meaning": "必要",
+        "partOfSpeech": "な形容詞",
+        "example": "旅行にはパスポートが必要です。",
+        "exampleKana": "りょこうにはぱすぽーとがひつようです。",
+        "exampleMeaning": "旅行需要護照。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "必要",
+      "targetKana": "ひつよう",
+      "prompt": "「必要」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "旅行には必要なパスポートを持って行きます。",
+          "sentenceKana": "りょこうにはひつようなぱすぽーとをもっていきます。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "このかばんは必要を三キロあります。",
+          "sentenceKana": "このかばんはひつようをさんきろあります。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "朝ご飯を必要に食べました。",
+          "sentenceKana": "あさごはんをひつようにたべました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を必要として数えました。",
+          "sentenceKana": "そらのいろをひつようとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「必要」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「必要」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「必要」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-01",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「必要」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-02-src-1243",
+      "sourceId": 1243,
+      "sourceIds": [
+        1243
+      ],
+      "sourceSnapshot": {
+        "word": "連絡",
+        "kana": "れんらく",
+        "meaning": "聯絡",
+        "partOfSpeech": "名詞",
+        "example": "後で先生に連絡します。",
+        "exampleKana": "あとでせんせいにれんらくします。",
+        "exampleMeaning": "之後聯絡老師。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "連絡",
+      "targetKana": "れんらく",
+      "prompt": "「連絡」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "変更があれば、電話で連絡してください。",
+          "sentenceKana": "へんこうがあれば、でんわでれんらくしてください。",
+          "targetOccurrence": {
+            "start": 10,
+            "end": 12
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この椅子は連絡が柔らかいです。",
+          "sentenceKana": "このいすはれんらくがやわらかいです。",
+          "targetOccurrence": {
+            "start": 5,
+            "end": 7
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "昼ご飯を連絡しました。",
+          "sentenceKana": "ひるごはんをれんらくしました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を連絡として数えました。",
+          "sentenceKana": "そらのいろをれんらくとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「連絡」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「連絡」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「連絡」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-02",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「連絡」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-03-src-1240",
+      "sourceId": 1240,
+      "sourceIds": [
+        1240
+      ],
+      "sourceSnapshot": {
+        "word": "理由",
+        "kana": "りゆう",
+        "meaning": "理由",
+        "partOfSpeech": "名詞",
+        "example": "遅れた理由を話します。",
+        "exampleKana": "おくれたりゆうをはなします。",
+        "exampleMeaning": "說明遲到的理由。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "理由",
+      "targetKana": "りゆう",
+      "prompt": "「理由」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "遅れた理由を先生に説明しました。",
+          "sentenceKana": "おくれたりゆうをせんせいにせつめいしました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この道は理由が三メートルです。",
+          "sentenceKana": "このみちはりゆうがさんめーとるです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "窓を理由に閉めました。",
+          "sentenceKana": "まどをりゆうにしめました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を理由として数えました。",
+          "sentenceKana": "そらのいろをりゆうとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「理由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「理由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「理由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-03",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「理由」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-04-src-1114",
+      "sourceId": 1114,
+      "sourceIds": [
+        1114
+      ],
+      "sourceSnapshot": {
+        "word": "経験",
+        "kana": "けいけん",
+        "meaning": "經驗",
+        "partOfSpeech": "名詞",
+        "example": "彼は仕事の経験があります。",
+        "exampleKana": "かれはしごとのけいけんがあります。",
+        "exampleMeaning": "他有工作經驗。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "経験",
+      "targetKana": "けいけん",
+      "prompt": "「経験」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "海外で働いた経験があります。",
+          "sentenceKana": "かいがいではたらいたけいけんがあります。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この箱は経験が重いです。",
+          "sentenceKana": "このはこはけいけんがおもいです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "電車を経験で降りました。",
+          "sentenceKana": "でんしゃをけいけんでおりました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を経験として数えました。",
+          "sentenceKana": "そらのいろをけいけんとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「経験」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「経験」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「経験」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-04",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「経験」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-05-src-1238",
+      "sourceId": 1238,
+      "sourceIds": [
+        1238
+      ],
+      "sourceSnapshot": {
+        "word": "予定",
+        "kana": "よてい",
+        "meaning": "預定",
+        "partOfSpeech": "名詞",
+        "example": "週末の予定を決めます。",
+        "exampleKana": "しゅうまつのよていをきめます。",
+        "exampleMeaning": "決定週末的預定。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "予定",
+      "targetKana": "よてい",
+      "prompt": "「予定」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "来週、京都へ行く予定です。",
+          "sentenceKana": "らいしゅう、きょうとへいくよていです。",
+          "targetOccurrence": {
+            "start": 8,
+            "end": 10
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "このスープは予定が甘いです。",
+          "sentenceKana": "このすーぷはよていがあまいです。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "靴を予定に履きました。",
+          "sentenceKana": "くつをよていにはきました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を予定として数えました。",
+          "sentenceKana": "そらのいろをよていとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「予定」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「予定」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「予定」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-05",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「予定」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-06-src-1158",
+      "sourceId": 1158,
+      "sourceIds": [
+        1158
+      ],
+      "sourceSnapshot": {
+        "word": "心配",
+        "kana": "しんぱい",
+        "meaning": "擔心",
+        "partOfSpeech": "な形容詞",
+        "example": "母は私の体を心配しています。",
+        "exampleKana": "はははわたしのからだをしんぱいしています。",
+        "exampleMeaning": "媽媽擔心我的身體。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "心配",
+      "targetKana": "しんぱい",
+      "prompt": "「心配」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "母は私の帰りを心配しています。",
+          "sentenceKana": "はははわたしのかえりをしんぱいしています。",
+          "targetOccurrence": {
+            "start": 7,
+            "end": 9
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この机は心配が四角いです。",
+          "sentenceKana": "このつくえはしんぱいがしかくいです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "駅まで心配を運転しました。",
+          "sentenceKana": "えきまでしんぱいをうんてんしました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を心配として数えました。",
+          "sentenceKana": "そらのいろをしんぱいとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「心配」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「心配」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「心配」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-06",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「心配」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-07-src-1071",
+      "sourceId": 1071,
+      "sourceIds": [
+        1071
+      ],
+      "sourceSnapshot": {
+        "word": "案内",
+        "kana": "あんない",
+        "meaning": "引導；介紹",
+        "partOfSpeech": "名詞",
+        "example": "駅まで案内します。",
+        "exampleKana": "えきまであんないします。",
+        "exampleMeaning": "帶你到車站。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "案内",
+      "targetKana": "あんない",
+      "prompt": "「案内」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "係員が会場を案内してくれました。",
+          "sentenceKana": "かかりいんがかいじょうをあんないしてくれました。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この水は案内が冷たいです。",
+          "sentenceKana": "このみずはあんないがつめたいです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "パンを案内で焼きました。",
+          "sentenceKana": "ぱんをあんないでやきました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を案内として数えました。",
+          "sentenceKana": "そらのいろをあんないとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「案内」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「案内」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「案内」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-07",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「案内」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-08-src-1150",
+      "sourceId": 1150,
+      "sourceIds": [
+        1150
+      ],
+      "sourceSnapshot": {
+        "word": "準備",
+        "kana": "じゅんび",
+        "meaning": "準備",
+        "partOfSpeech": "名詞",
+        "example": "旅行の準備をします。",
+        "exampleKana": "りょこうのじゅんびをします。",
+        "exampleMeaning": "做旅行的準備。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "準備",
+      "targetKana": "じゅんび",
+      "prompt": "「準備」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "旅行の準備はもう終わりました。",
+          "sentenceKana": "りょこうのじゅんびはもうおわりました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この映画は準備が二時間です。",
+          "sentenceKana": "このえいがはじゅんびがにじかんです。",
+          "targetOccurrence": {
+            "start": 5,
+            "end": 7
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "雨を準備に降りました。",
+          "sentenceKana": "あめをじゅんびにふりました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を準備として数えました。",
+          "sentenceKana": "そらのいろをじゅんびとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「準備」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「準備」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「準備」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-08",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「準備」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-09-src-1256",
+      "sourceId": 1256,
+      "sourceIds": [
+        1256
+      ],
+      "sourceSnapshot": {
+        "word": "残念",
+        "kana": "ざんねん",
+        "meaning": "遺憾",
+        "partOfSpeech": "な形容詞",
+        "example": "試合に負けて残念です。",
+        "exampleKana": "しあいにまけてざんねんです。",
+        "exampleMeaning": "輸了比賽很遺憾。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "残念",
+      "targetKana": "ざんねん",
+      "prompt": "「残念」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "試合が中止になって残念です。",
+          "sentenceKana": "しあいがちゅうしになってざんねんです。",
+          "targetOccurrence": {
+            "start": 9,
+            "end": 11
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "このかばんは残念が十キロです。",
+          "sentenceKana": "このかばんはざんねんがじゅっきろです。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "窓を残念で洗いました。",
+          "sentenceKana": "まどをざんねんであらいました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を残念として数えました。",
+          "sentenceKana": "そらのいろをざんねんとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「残念」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「残念」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「残念」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-09",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「残念」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-10-src-1145",
+      "sourceId": 1145,
+      "sourceIds": [
+        1145
+      ],
+      "sourceSnapshot": {
+        "word": "自由",
+        "kana": "じゆう",
+        "meaning": "自由",
+        "partOfSpeech": "な形容詞",
+        "example": "休みの日は自由に過ごします。",
+        "exampleKana": "やすみのひはじゆうにすごします。",
+        "exampleMeaning": "休息日自由地度過。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "自由",
+      "targetKana": "じゆう",
+      "prompt": "「自由」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "休日は自由に過ごせます。",
+          "sentenceKana": "きゅうじつはじゆうにすごせます。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この川は自由が百メートルです。",
+          "sentenceKana": "このかわはじゆうがひゃくめーとるです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "薬を自由で飲みました。",
+          "sentenceKana": "くすりをじゆうでのみました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を自由として数えました。",
+          "sentenceKana": "そらのいろをじゆうとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「自由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「自由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「自由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-10",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「自由」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-11-src-1257",
+      "sourceId": 1257,
+      "sourceIds": [
+        1257
+      ],
+      "sourceSnapshot": {
+        "word": "大切",
+        "kana": "たいせつ",
+        "meaning": "重要",
+        "partOfSpeech": "な形容詞",
+        "example": "家族はとても大切です。",
+        "exampleKana": "かぞくはとてもたいせつです。",
+        "exampleMeaning": "家人非常重要。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "大切",
+      "targetKana": "たいせつ",
+      "prompt": "「大切」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "家族との時間を大切にしています。",
+          "sentenceKana": "かぞくとのじかんをたいせつにしています。",
+          "targetOccurrence": {
+            "start": 7,
+            "end": 9
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この電車は大切が速いです。",
+          "sentenceKana": "このでんしゃはたいせつがはやいです。",
+          "targetOccurrence": {
+            "start": 5,
+            "end": 7
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "紙を大切で切りました。",
+          "sentenceKana": "かみをたいせつできりました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を大切として数えました。",
+          "sentenceKana": "そらのいろをたいせつとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「大切」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「大切」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「大切」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-11",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「大切」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    },
+    {
+      "authoringId": "17c7c-n4-usage-12-src-3167",
+      "sourceId": 3167,
+      "sourceIds": [
+        3167
+      ],
+      "sourceSnapshot": {
+        "word": "利用",
+        "kana": "りよう",
+        "meaning": "使用、利用",
+        "partOfSpeech": "名詞",
+        "example": "施設の利用は午後九時までです。",
+        "exampleKana": "しせつのりようはごごくじまでです。",
+        "exampleMeaning": "設施的使用到晚上九點為止。"
+      },
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "targetWord": "利用",
+      "targetKana": "りよう",
+      "prompt": "「利用」の使い方として最も自然な文を選んでください。",
+      "usageSentences": [
+        {
+          "sentence": "図書館のパソコンを利用できます。",
+          "sentenceKana": "としょかんのぱそこんをりようできます。",
+          "targetOccurrence": {
+            "start": 9,
+            "end": 11
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この花は利用が赤いです。",
+          "sentenceKana": "このはなはりようがあかいです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "夕食を利用に食べました。",
+          "sentenceKana": "ゆうしょくをりようにたべました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を利用として数えました。",
+          "sentenceKana": "そらのいろをりようとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「利用」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「利用」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「利用」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-12",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "explanation": "第 1 句中的「利用」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "derivationVersion": "17c7c-v1"
+    }
+  ]
+}

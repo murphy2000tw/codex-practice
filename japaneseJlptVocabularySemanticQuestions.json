@@ -1,0 +1,2979 @@
+{
+  "schemaVersion": "1.0.0",
+  "derivationVersion": "17c7c-v1",
+  "manifestVersion": "17c7c-v1",
+  "disclaimer": "site-internal editorial-reviewed semantic seed data; not connected to production sessions.",
+  "generatedFrom": [
+    "vocabulary.json",
+    "japaneseJlptVocabularyParaphraseReviewManifest.json",
+    "japaneseJlptVocabularyUsageReviewManifest.json"
+  ],
+  "inventory": {
+    "N5": {
+      "paraphrase": 12,
+      "usage": 0,
+      "total": 12
+    },
+    "N4": {
+      "paraphrase": 12,
+      "usage": 12,
+      "total": 24
+    },
+    "total": 36,
+    "note": "data inventory / seed capacity; not a product quota"
+  },
+  "questions": [
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-5f2d615a2f15fd5e",
+      "sourceQuestionId": "vocabulary.json#1252:paraphrase:17c7c-n4-paraphrase-01-src-1252",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-01-src-1252",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1252
+      ],
+      "originalText": "この料理は簡単です。",
+      "displayText": "「この料理は簡単に作れます。」の「簡単」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「この料理は簡単に作れます。」の「簡単」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "かんたん",
+      "promptKana": "「このりょうりはかんたんにつくれます。」の「かんたん」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "時間をかけて作れます",
+        "難しくなく作れます",
+        "材料なしで作れます",
+        "静かに作れます"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "難しくなく作れます",
+      "explanation": "此處「簡単」在完整句境中可改述為「難しくなく作れます」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "簡単",
+      "targetExpressionKana": "かんたん",
+      "equivalentExpression": "難しくなく作れます",
+      "equivalentExpressionKana": "むずかしくなくつくれます",
+      "interchangeabilityScope": "題幹「この料理は簡単に作れます。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-01",
+      "optionReviews": [
+        {
+          "expression": "時間をかけて作れます",
+          "expressionKana": "時間をかけて作れます",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「時間をかけて作れます」所表達的內容與「簡単」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "難しくなく作れます",
+          "expressionKana": "むずかしくなくつくれます",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "材料なしで作れます",
+          "expressionKana": "材料なしで作れます",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「材料なしで作れます」所表達的內容與「簡単」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "静かに作れます",
+          "expressionKana": "静かに作れます",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「静かに作れます」所表達的內容與「簡単」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-d9eaa7be23358771",
+      "sourceQuestionId": "vocabulary.json#1212:paraphrase:17c7c-n4-paraphrase-02-src-1212",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-02-src-1212",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1212
+      ],
+      "originalText": "旅行にはパスポートが必要です。",
+      "displayText": "「旅行にはパスポートが必要です。」の「必要」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「旅行にはパスポートが必要です。」の「必要」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "ひつよう",
+      "promptKana": "「りょこうにはぱすぽーとがひつようです。」の「ひつよう」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "パスポートが余ります",
+        "パスポートが要ります",
+        "パスポートを捨てます",
+        "パスポートが壊れます"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "パスポートが要ります",
+      "explanation": "此處「必要」在完整句境中可改述為「パスポートが要ります」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "必要",
+      "targetExpressionKana": "ひつよう",
+      "equivalentExpression": "パスポートが要ります",
+      "equivalentExpressionKana": "ぱすぽーとがいります",
+      "interchangeabilityScope": "題幹「旅行にはパスポートが必要です。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-02",
+      "optionReviews": [
+        {
+          "expression": "パスポートが余ります",
+          "expressionKana": "パスポートが余ります",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「パスポートが余ります」所表達的內容與「必要」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "パスポートが要ります",
+          "expressionKana": "ぱすぽーとがいります",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "パスポートを捨てます",
+          "expressionKana": "パスポートを捨てます",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「パスポートを捨てます」所表達的內容與「必要」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "パスポートが壊れます",
+          "expressionKana": "パスポートが壊れます",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「パスポートが壊れます」所表達的內容與「必要」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-e9f1b5ac6e0674e4",
+      "sourceQuestionId": "vocabulary.json#1236:paraphrase:17c7c-n4-paraphrase-03-src-1236",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-03-src-1236",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1236
+      ],
+      "originalText": "明日の服を用意します。",
+      "displayText": "「お客さんのために部屋を用意しました。」の「用意」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「お客さんのために部屋を用意しました。」の「用意」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "ようい",
+      "promptKana": "「おきゃくさんのためにへやをよういしました。」の「ようい」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "部屋を片付けませんでした",
+        "部屋を準備しました",
+        "部屋を借りませんでした",
+        "部屋を壊しました"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "部屋を準備しました",
+      "explanation": "此處「用意」在完整句境中可改述為「部屋を準備しました」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "用意",
+      "targetExpressionKana": "ようい",
+      "equivalentExpression": "部屋を準備しました",
+      "equivalentExpressionKana": "へやをじゅんびしました",
+      "interchangeabilityScope": "題幹「お客さんのために部屋を用意しました。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-03",
+      "optionReviews": [
+        {
+          "expression": "部屋を片付けませんでした",
+          "expressionKana": "部屋を片付けませんでした",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「部屋を片付けませんでした」所表達的內容與「用意」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "部屋を準備しました",
+          "expressionKana": "へやをじゅんびしました",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "部屋を借りませんでした",
+          "expressionKana": "部屋を借りませんでした",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「部屋を借りませんでした」所表達的內容與「用意」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "部屋を壊しました",
+          "expressionKana": "部屋を壊しました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「部屋を壊しました」所表達的內容與「用意」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-27a0d649b20e0f75",
+      "sourceQuestionId": "vocabulary.json#1243:paraphrase:17c7c-n4-paraphrase-04-src-1243",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-04-src-1243",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1243
+      ],
+      "originalText": "後で先生に連絡します。",
+      "displayText": "「予定が変わったら連絡してください。」の「連絡」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「予定が変わったら連絡してください。」の「連絡」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "れんらく",
+      "promptKana": "「よていがかわったられんらくしてください。」の「れんらく」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "隠してください",
+        "知らせてください",
+        "忘れてください",
+        "断ってください"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "知らせてください",
+      "explanation": "此處「連絡」在完整句境中可改述為「知らせてください」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "連絡",
+      "targetExpressionKana": "れんらく",
+      "equivalentExpression": "知らせてください",
+      "equivalentExpressionKana": "しらせてください",
+      "interchangeabilityScope": "題幹「予定が変わったら連絡してください。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-04",
+      "optionReviews": [
+        {
+          "expression": "隠してください",
+          "expressionKana": "隠してください",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「隠してください」所表達的內容與「連絡」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "知らせてください",
+          "expressionKana": "しらせてください",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "忘れてください",
+          "expressionKana": "忘れてください",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「忘れてください」所表達的內容與「連絡」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "断ってください",
+          "expressionKana": "断ってください",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「断ってください」所表達的內容與「連絡」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-cf3c8f658c40b7a6",
+      "sourceQuestionId": "vocabulary.json#1130:paraphrase:17c7c-n4-paraphrase-05-src-1130",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-05-src-1130",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1130
+      ],
+      "originalText": "最近よく雨が降ります。",
+      "displayText": "「最近、毎朝走っています。」の「最近」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「最近、毎朝走っています。」の「最近」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "さいきん",
+      "promptKana": "「さいきん、まいあさはしっています。」の「さいきん」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "昔、毎朝走っていました",
+        "このごろ、毎朝走っています",
+        "来年、毎朝走ります",
+        "一度も走っていません"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "このごろ、毎朝走っています",
+      "explanation": "此處「最近」在完整句境中可改述為「このごろ、毎朝走っています」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "最近",
+      "targetExpressionKana": "さいきん",
+      "equivalentExpression": "このごろ、毎朝走っています",
+      "equivalentExpressionKana": "このごろ、まいあさはしっています",
+      "interchangeabilityScope": "題幹「最近、毎朝走っています。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-05",
+      "optionReviews": [
+        {
+          "expression": "昔、毎朝走っていました",
+          "expressionKana": "昔、毎朝走っていました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「昔、毎朝走っていました」所表達的內容與「最近」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "このごろ、毎朝走っています",
+          "expressionKana": "このごろ、まいあさはしっています",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "来年、毎朝走ります",
+          "expressionKana": "来年、毎朝走ります",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「来年、毎朝走ります」所表達的內容與「最近」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "一度も走っていません",
+          "expressionKana": "一度も走っていません",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「一度も走っていません」所表達的內容與「最近」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-7da2c62e9dffd30a",
+      "sourceQuestionId": "vocabulary.json#2462:paraphrase:17c7c-n4-paraphrase-06-src-2462",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-06-src-2462",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        2462
+      ],
+      "originalText": "会話で「必ず」を入れると、気持ちが伝わります。",
+      "displayText": "「出かける前に必ず鍵をかけます。」の「必ず」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「出かける前に必ず鍵をかけます。」の「必ず」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "かならず",
+      "promptKana": "「でかけるまえにかならずかぎをかけます。」の「かならず」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "たまに鍵をかけます",
+        "いつも忘れずに鍵をかけます",
+        "できれば鍵を開けます",
+        "鍵をかけないことがあります"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "いつも忘れずに鍵をかけます",
+      "explanation": "此處「必ず」在完整句境中可改述為「いつも忘れずに鍵をかけます」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "必ず",
+      "targetExpressionKana": "かならず",
+      "equivalentExpression": "いつも忘れずに鍵をかけます",
+      "equivalentExpressionKana": "いつもわすれずにかぎをかけます",
+      "interchangeabilityScope": "題幹「出かける前に必ず鍵をかけます。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-06",
+      "optionReviews": [
+        {
+          "expression": "たまに鍵をかけます",
+          "expressionKana": "たまに鍵をかけます",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「たまに鍵をかけます」所表達的內容與「必ず」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "いつも忘れずに鍵をかけます",
+          "expressionKana": "いつもわすれずにかぎをかけます",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "できれば鍵を開けます",
+          "expressionKana": "できれば鍵を開けます",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「できれば鍵を開けます」所表達的內容與「必ず」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "鍵をかけないことがあります",
+          "expressionKana": "鍵をかけないことがあります",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「鍵をかけないことがあります」所表達的內容與「必ず」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-9c6ca7e4ecf83bb6",
+      "sourceQuestionId": "vocabulary.json#1219:paraphrase:17c7c-n4-paraphrase-07-src-1219",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-07-src-1219",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1219
+      ],
+      "originalText": "普通の切符を買いました。",
+      "displayText": "「今日は特別な日ではなく、普通の日です。」の「普通」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「今日は特別な日ではなく、普通の日です。」の「普通」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "ふつう",
+      "promptKana": "「きょうはとくべつなひではなく、ふつうのひです。」の「ふつう」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "とても珍しい日です",
+        "いつもと変わらない日です",
+        "お祝いの日です",
+        "忙しすぎる日です"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "いつもと変わらない日です",
+      "explanation": "此處「普通」在完整句境中可改述為「いつもと変わらない日です」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "普通",
+      "targetExpressionKana": "ふつう",
+      "equivalentExpression": "いつもと変わらない日です",
+      "equivalentExpressionKana": "いつもとかわらないひです",
+      "interchangeabilityScope": "題幹「今日は特別な日ではなく、普通の日です。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-07",
+      "optionReviews": [
+        {
+          "expression": "とても珍しい日です",
+          "expressionKana": "とても珍しい日です",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「とても珍しい日です」所表達的內容與「普通」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "いつもと変わらない日です",
+          "expressionKana": "いつもとかわらないひです",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "お祝いの日です",
+          "expressionKana": "お祝いの日です",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「お祝いの日です」所表達的內容與「普通」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "忙しすぎる日です",
+          "expressionKana": "忙しすぎる日です",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「忙しすぎる日です」所表達的內容與「普通」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-c24f057bbe974590",
+      "sourceQuestionId": "vocabulary.json#1257:paraphrase:17c7c-n4-paraphrase-08-src-1257",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-08-src-1257",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1257
+      ],
+      "originalText": "家族はとても大切です。",
+      "displayText": "「この写真は私にとって大切です。」の「大切」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「この写真は私にとって大切です。」の「大切」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "たいせつ",
+      "promptKana": "「このしゃしんはわたしにとってたいせつです。」の「たいせつ」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "この写真は不要です",
+        "この写真は重要です",
+        "この写真は危険です",
+        "この写真は複雑です"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "この写真は重要です",
+      "explanation": "此處「大切」在完整句境中可改述為「この写真は重要です」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "大切",
+      "targetExpressionKana": "たいせつ",
+      "equivalentExpression": "この写真は重要です",
+      "equivalentExpressionKana": "このしゃしんはじゅうようです",
+      "interchangeabilityScope": "題幹「この写真は私にとって大切です。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-08",
+      "optionReviews": [
+        {
+          "expression": "この写真は不要です",
+          "expressionKana": "この写真は不要です",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「この写真は不要です」所表達的內容與「大切」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "この写真は重要です",
+          "expressionKana": "このしゃしんはじゅうようです",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "この写真は危険です",
+          "expressionKana": "この写真は危険です",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「この写真は危険です」所表達的內容與「大切」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "この写真は複雑です",
+          "expressionKana": "この写真は複雑です",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「この写真は複雑です」所表達的內容與「大切」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-15bd964d3595f18c",
+      "sourceQuestionId": "vocabulary.json#1356:paraphrase:17c7c-n4-paraphrase-09-src-1356",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-09-src-1356",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1356
+      ],
+      "originalText": "間に合うことがあります。",
+      "displayText": "「急げば九時の電車に間に合います。」の「間に合う」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「急げば九時の電車に間に合います。」の「間に合う」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "まにあう",
+      "promptKana": "「いそげばくじのでんしゃにまにあいます。」の「まにあう」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "九時の電車を運転します",
+        "九時の電車に遅れません",
+        "九時の電車を見送ります",
+        "九時の電車より遅く出ます"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "九時の電車に遅れません",
+      "explanation": "此處「間に合う」在完整句境中可改述為「九時の電車に遅れません」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "間に合う",
+      "targetExpressionKana": "まにあう",
+      "equivalentExpression": "九時の電車に遅れません",
+      "equivalentExpressionKana": "くじのでんしゃにおくれません",
+      "interchangeabilityScope": "題幹「急げば九時の電車に間に合います。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-09",
+      "optionReviews": [
+        {
+          "expression": "九時の電車を運転します",
+          "expressionKana": "九時の電車を運転します",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「九時の電車を運転します」所表達的內容與「間に合う」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "九時の電車に遅れません",
+          "expressionKana": "くじのでんしゃにおくれません",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "九時の電車を見送ります",
+          "expressionKana": "九時の電車を見送ります",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「九時の電車を見送ります」所表達的內容與「間に合う」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "九時の電車より遅く出ます",
+          "expressionKana": "九時の電車より遅く出ます",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「九時の電車より遅く出ます」所表達的內容與「間に合う」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-f62bbb105ef4a95a",
+      "sourceQuestionId": "vocabulary.json#1017:paraphrase:17c7c-n4-paraphrase-10-src-1017",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-10-src-1017",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1017
+      ],
+      "originalText": "昼ご飯の店を決めましょう。",
+      "displayText": "「話し合って旅行の日を決めました。」の「決める」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「話し合って旅行の日を決めました。」の「決める」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "きめる",
+      "promptKana": "「はなしあってりょこうのひをきめました。」の「きめる」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "旅行の日を忘れました",
+        "旅行の日を選んで確定しました",
+        "旅行の日を延ばし続けました",
+        "旅行の日を調べませんでした"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "旅行の日を選んで確定しました",
+      "explanation": "此處「決める」在完整句境中可改述為「旅行の日を選んで確定しました」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "決める",
+      "targetExpressionKana": "きめる",
+      "equivalentExpression": "旅行の日を選んで確定しました",
+      "equivalentExpressionKana": "りょこうのひをえらんでかくていしました",
+      "interchangeabilityScope": "題幹「話し合って旅行の日を決めました。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-10",
+      "optionReviews": [
+        {
+          "expression": "旅行の日を忘れました",
+          "expressionKana": "旅行の日を忘れました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「旅行の日を忘れました」所表達的內容與「決める」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "旅行の日を選んで確定しました",
+          "expressionKana": "りょこうのひをえらんでかくていしました",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "旅行の日を延ばし続けました",
+          "expressionKana": "旅行の日を延ばし続けました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「旅行の日を延ばし続けました」所表達的內容與「決める」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "旅行の日を調べませんでした",
+          "expressionKana": "旅行の日を調べませんでした",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「旅行の日を調べませんでした」所表達的內容與「決める」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-c5fd679902a5768b",
+      "sourceQuestionId": "vocabulary.json#1037:paraphrase:17c7c-n4-paraphrase-11-src-1037",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-11-src-1037",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1037
+      ],
+      "originalText": "毎日勉強を続けます。",
+      "displayText": "「雨でも練習を続けます。」の「続ける」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「雨でも練習を続けます。」の「続ける」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "つづける",
+      "promptKana": "「あめでもれんしゅうをつづけます。」の「つづける」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "練習を中止します",
+        "練習をやめずに行います",
+        "練習を一度だけ見ます",
+        "練習を始めません"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "練習をやめずに行います",
+      "explanation": "此處「続ける」在完整句境中可改述為「練習をやめずに行います」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "続ける",
+      "targetExpressionKana": "つづける",
+      "equivalentExpression": "練習をやめずに行います",
+      "equivalentExpressionKana": "れんしゅうをやめずにおこないます",
+      "interchangeabilityScope": "題幹「雨でも練習を続けます。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-11",
+      "optionReviews": [
+        {
+          "expression": "練習を中止します",
+          "expressionKana": "練習を中止します",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「練習を中止します」所表達的內容與「続ける」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "練習をやめずに行います",
+          "expressionKana": "れんしゅうをやめずにおこないます",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "練習を一度だけ見ます",
+          "expressionKana": "練習を一度だけ見ます",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「練習を一度だけ見ます」所表達的內容與「続ける」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "練習を始めません",
+          "expressionKana": "練習を始めません",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「練習を始めません」所表達的內容與「続ける」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-paraphrase-a98718d189416c48",
+      "sourceQuestionId": "vocabulary.json#1042:paraphrase:17c7c-n4-paraphrase-12-src-1042",
+      "manifestAuthoringId": "17c7c-n4-paraphrase-12-src-1042",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1042
+      ],
+      "originalText": "壊れた椅子を直します。",
+      "displayText": "「作文の間違いを直しました。」の「直す」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「作文の間違いを直しました。」の「直す」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "なおす",
+      "promptKana": "「さくぶんのまちがいをなおしました。」の「なおす」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "作文の誤りを残しました",
+        "作文の誤りを修正しました",
+        "作文を捨てました",
+        "作文の長さを測りました"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "作文の誤りを修正しました",
+      "explanation": "此處「直す」在完整句境中可改述為「作文の誤りを修正しました」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "直す",
+      "targetExpressionKana": "なおす",
+      "equivalentExpression": "作文の誤りを修正しました",
+      "equivalentExpressionKana": "さくぶんのあやまりをしゅうせいしました",
+      "interchangeabilityScope": "題幹「作文の間違いを直しました。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n4-12",
+      "optionReviews": [
+        {
+          "expression": "作文の誤りを残しました",
+          "expressionKana": "作文の誤りを残しました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「作文の誤りを残しました」所表達的內容與「直す」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "作文の誤りを修正しました",
+          "expressionKana": "さくぶんのあやまりをしゅうせいしました",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "作文を捨てました",
+          "expressionKana": "作文を捨てました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「作文を捨てました」所表達的內容與「直す」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "作文の長さを測りました",
+          "expressionKana": "作文の長さを測りました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「作文の長さを測りました」所表達的內容與「直す」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-d498885830ba037d",
+      "sourceQuestionId": "vocabulary.json#1212:usage:17c7c-n4-usage-01-src-1212",
+      "manifestAuthoringId": "17c7c-n4-usage-01-src-1212",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1212
+      ],
+      "originalText": "旅行にはパスポートが必要です。",
+      "displayText": "「必要」の使い方として最も自然な文を選んでください。",
+      "prompt": "「必要」の使い方として最も自然な文を選んでください。",
+      "kana": "ひつよう",
+      "promptKana": null,
+      "options": [
+        "旅行には必要なパスポートを持って行きます。",
+        "このかばんは必要を三キロあります。",
+        "朝ご飯を必要に食べました。",
+        "空の色を必要として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "旅行には必要なパスポートを持って行きます。",
+      "explanation": "第 1 句中的「必要」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "必要",
+      "targetKana": "ひつよう",
+      "usageSentences": [
+        {
+          "sentence": "旅行には必要なパスポートを持って行きます。",
+          "sentenceKana": "りょこうにはひつようなぱすぽーとをもっていきます。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "このかばんは必要を三キロあります。",
+          "sentenceKana": "このかばんはひつようをさんきろあります。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "朝ご飯を必要に食べました。",
+          "sentenceKana": "あさごはんをひつようにたべました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を必要として数えました。",
+          "sentenceKana": "そらのいろをひつようとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「必要」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「必要」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「必要」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-01"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-f7f029c4f589bb44",
+      "sourceQuestionId": "vocabulary.json#1243:usage:17c7c-n4-usage-02-src-1243",
+      "manifestAuthoringId": "17c7c-n4-usage-02-src-1243",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1243
+      ],
+      "originalText": "後で先生に連絡します。",
+      "displayText": "「連絡」の使い方として最も自然な文を選んでください。",
+      "prompt": "「連絡」の使い方として最も自然な文を選んでください。",
+      "kana": "れんらく",
+      "promptKana": null,
+      "options": [
+        "変更があれば、電話で連絡してください。",
+        "この椅子は連絡が柔らかいです。",
+        "昼ご飯を連絡しました。",
+        "空の色を連絡として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "変更があれば、電話で連絡してください。",
+      "explanation": "第 1 句中的「連絡」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "連絡",
+      "targetKana": "れんらく",
+      "usageSentences": [
+        {
+          "sentence": "変更があれば、電話で連絡してください。",
+          "sentenceKana": "へんこうがあれば、でんわでれんらくしてください。",
+          "targetOccurrence": {
+            "start": 10,
+            "end": 12
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この椅子は連絡が柔らかいです。",
+          "sentenceKana": "このいすはれんらくがやわらかいです。",
+          "targetOccurrence": {
+            "start": 5,
+            "end": 7
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "昼ご飯を連絡しました。",
+          "sentenceKana": "ひるごはんをれんらくしました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を連絡として数えました。",
+          "sentenceKana": "そらのいろをれんらくとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「連絡」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「連絡」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「連絡」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-02"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-9373f896736570ef",
+      "sourceQuestionId": "vocabulary.json#1240:usage:17c7c-n4-usage-03-src-1240",
+      "manifestAuthoringId": "17c7c-n4-usage-03-src-1240",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1240
+      ],
+      "originalText": "遅れた理由を話します。",
+      "displayText": "「理由」の使い方として最も自然な文を選んでください。",
+      "prompt": "「理由」の使い方として最も自然な文を選んでください。",
+      "kana": "りゆう",
+      "promptKana": null,
+      "options": [
+        "遅れた理由を先生に説明しました。",
+        "この道は理由が三メートルです。",
+        "窓を理由に閉めました。",
+        "空の色を理由として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "遅れた理由を先生に説明しました。",
+      "explanation": "第 1 句中的「理由」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "理由",
+      "targetKana": "りゆう",
+      "usageSentences": [
+        {
+          "sentence": "遅れた理由を先生に説明しました。",
+          "sentenceKana": "おくれたりゆうをせんせいにせつめいしました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この道は理由が三メートルです。",
+          "sentenceKana": "このみちはりゆうがさんめーとるです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "窓を理由に閉めました。",
+          "sentenceKana": "まどをりゆうにしめました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を理由として数えました。",
+          "sentenceKana": "そらのいろをりゆうとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「理由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「理由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「理由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-03"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-70aa956d54c925a1",
+      "sourceQuestionId": "vocabulary.json#1114:usage:17c7c-n4-usage-04-src-1114",
+      "manifestAuthoringId": "17c7c-n4-usage-04-src-1114",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1114
+      ],
+      "originalText": "彼は仕事の経験があります。",
+      "displayText": "「経験」の使い方として最も自然な文を選んでください。",
+      "prompt": "「経験」の使い方として最も自然な文を選んでください。",
+      "kana": "けいけん",
+      "promptKana": null,
+      "options": [
+        "海外で働いた経験があります。",
+        "この箱は経験が重いです。",
+        "電車を経験で降りました。",
+        "空の色を経験として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "海外で働いた経験があります。",
+      "explanation": "第 1 句中的「経験」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "経験",
+      "targetKana": "けいけん",
+      "usageSentences": [
+        {
+          "sentence": "海外で働いた経験があります。",
+          "sentenceKana": "かいがいではたらいたけいけんがあります。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この箱は経験が重いです。",
+          "sentenceKana": "このはこはけいけんがおもいです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "電車を経験で降りました。",
+          "sentenceKana": "でんしゃをけいけんでおりました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を経験として数えました。",
+          "sentenceKana": "そらのいろをけいけんとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「経験」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「経験」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「経験」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-04"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-ad1480bda0a2705d",
+      "sourceQuestionId": "vocabulary.json#1238:usage:17c7c-n4-usage-05-src-1238",
+      "manifestAuthoringId": "17c7c-n4-usage-05-src-1238",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1238
+      ],
+      "originalText": "週末の予定を決めます。",
+      "displayText": "「予定」の使い方として最も自然な文を選んでください。",
+      "prompt": "「予定」の使い方として最も自然な文を選んでください。",
+      "kana": "よてい",
+      "promptKana": null,
+      "options": [
+        "来週、京都へ行く予定です。",
+        "このスープは予定が甘いです。",
+        "靴を予定に履きました。",
+        "空の色を予定として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "来週、京都へ行く予定です。",
+      "explanation": "第 1 句中的「予定」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "予定",
+      "targetKana": "よてい",
+      "usageSentences": [
+        {
+          "sentence": "来週、京都へ行く予定です。",
+          "sentenceKana": "らいしゅう、きょうとへいくよていです。",
+          "targetOccurrence": {
+            "start": 8,
+            "end": 10
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "このスープは予定が甘いです。",
+          "sentenceKana": "このすーぷはよていがあまいです。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "靴を予定に履きました。",
+          "sentenceKana": "くつをよていにはきました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を予定として数えました。",
+          "sentenceKana": "そらのいろをよていとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「予定」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「予定」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「予定」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-05"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-475e88713bbd53f0",
+      "sourceQuestionId": "vocabulary.json#1158:usage:17c7c-n4-usage-06-src-1158",
+      "manifestAuthoringId": "17c7c-n4-usage-06-src-1158",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1158
+      ],
+      "originalText": "母は私の体を心配しています。",
+      "displayText": "「心配」の使い方として最も自然な文を選んでください。",
+      "prompt": "「心配」の使い方として最も自然な文を選んでください。",
+      "kana": "しんぱい",
+      "promptKana": null,
+      "options": [
+        "母は私の帰りを心配しています。",
+        "この机は心配が四角いです。",
+        "駅まで心配を運転しました。",
+        "空の色を心配として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "母は私の帰りを心配しています。",
+      "explanation": "第 1 句中的「心配」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "心配",
+      "targetKana": "しんぱい",
+      "usageSentences": [
+        {
+          "sentence": "母は私の帰りを心配しています。",
+          "sentenceKana": "はははわたしのかえりをしんぱいしています。",
+          "targetOccurrence": {
+            "start": 7,
+            "end": 9
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この机は心配が四角いです。",
+          "sentenceKana": "このつくえはしんぱいがしかくいです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "駅まで心配を運転しました。",
+          "sentenceKana": "えきまでしんぱいをうんてんしました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を心配として数えました。",
+          "sentenceKana": "そらのいろをしんぱいとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「心配」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「心配」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「心配」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-06"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-d2b3d01f2ada2f40",
+      "sourceQuestionId": "vocabulary.json#1071:usage:17c7c-n4-usage-07-src-1071",
+      "manifestAuthoringId": "17c7c-n4-usage-07-src-1071",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1071
+      ],
+      "originalText": "駅まで案内します。",
+      "displayText": "「案内」の使い方として最も自然な文を選んでください。",
+      "prompt": "「案内」の使い方として最も自然な文を選んでください。",
+      "kana": "あんない",
+      "promptKana": null,
+      "options": [
+        "係員が会場を案内してくれました。",
+        "この水は案内が冷たいです。",
+        "パンを案内で焼きました。",
+        "空の色を案内として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "係員が会場を案内してくれました。",
+      "explanation": "第 1 句中的「案内」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "案内",
+      "targetKana": "あんない",
+      "usageSentences": [
+        {
+          "sentence": "係員が会場を案内してくれました。",
+          "sentenceKana": "かかりいんがかいじょうをあんないしてくれました。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この水は案内が冷たいです。",
+          "sentenceKana": "このみずはあんないがつめたいです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "パンを案内で焼きました。",
+          "sentenceKana": "ぱんをあんないでやきました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を案内として数えました。",
+          "sentenceKana": "そらのいろをあんないとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「案内」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「案内」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「案内」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-07"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-8e03461953476883",
+      "sourceQuestionId": "vocabulary.json#1150:usage:17c7c-n4-usage-08-src-1150",
+      "manifestAuthoringId": "17c7c-n4-usage-08-src-1150",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1150
+      ],
+      "originalText": "旅行の準備をします。",
+      "displayText": "「準備」の使い方として最も自然な文を選んでください。",
+      "prompt": "「準備」の使い方として最も自然な文を選んでください。",
+      "kana": "じゅんび",
+      "promptKana": null,
+      "options": [
+        "旅行の準備はもう終わりました。",
+        "この映画は準備が二時間です。",
+        "雨を準備に降りました。",
+        "空の色を準備として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "旅行の準備はもう終わりました。",
+      "explanation": "第 1 句中的「準備」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "準備",
+      "targetKana": "じゅんび",
+      "usageSentences": [
+        {
+          "sentence": "旅行の準備はもう終わりました。",
+          "sentenceKana": "りょこうのじゅんびはもうおわりました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この映画は準備が二時間です。",
+          "sentenceKana": "このえいがはじゅんびがにじかんです。",
+          "targetOccurrence": {
+            "start": 5,
+            "end": 7
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "雨を準備に降りました。",
+          "sentenceKana": "あめをじゅんびにふりました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を準備として数えました。",
+          "sentenceKana": "そらのいろをじゅんびとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「準備」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「準備」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「準備」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-08"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-5fb91cf6df914f81",
+      "sourceQuestionId": "vocabulary.json#1256:usage:17c7c-n4-usage-09-src-1256",
+      "manifestAuthoringId": "17c7c-n4-usage-09-src-1256",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1256
+      ],
+      "originalText": "試合に負けて残念です。",
+      "displayText": "「残念」の使い方として最も自然な文を選んでください。",
+      "prompt": "「残念」の使い方として最も自然な文を選んでください。",
+      "kana": "ざんねん",
+      "promptKana": null,
+      "options": [
+        "試合が中止になって残念です。",
+        "このかばんは残念が十キロです。",
+        "窓を残念で洗いました。",
+        "空の色を残念として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "試合が中止になって残念です。",
+      "explanation": "第 1 句中的「残念」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "残念",
+      "targetKana": "ざんねん",
+      "usageSentences": [
+        {
+          "sentence": "試合が中止になって残念です。",
+          "sentenceKana": "しあいがちゅうしになってざんねんです。",
+          "targetOccurrence": {
+            "start": 9,
+            "end": 11
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "このかばんは残念が十キロです。",
+          "sentenceKana": "このかばんはざんねんがじゅっきろです。",
+          "targetOccurrence": {
+            "start": 6,
+            "end": 8
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "窓を残念で洗いました。",
+          "sentenceKana": "まどをざんねんであらいました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を残念として数えました。",
+          "sentenceKana": "そらのいろをざんねんとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「残念」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「残念」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「残念」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-09"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-03ab4659c12b4102",
+      "sourceQuestionId": "vocabulary.json#1145:usage:17c7c-n4-usage-10-src-1145",
+      "manifestAuthoringId": "17c7c-n4-usage-10-src-1145",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1145
+      ],
+      "originalText": "休みの日は自由に過ごします。",
+      "displayText": "「自由」の使い方として最も自然な文を選んでください。",
+      "prompt": "「自由」の使い方として最も自然な文を選んでください。",
+      "kana": "じゆう",
+      "promptKana": null,
+      "options": [
+        "休日は自由に過ごせます。",
+        "この川は自由が百メートルです。",
+        "薬を自由で飲みました。",
+        "空の色を自由として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "休日は自由に過ごせます。",
+      "explanation": "第 1 句中的「自由」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "自由",
+      "targetKana": "じゆう",
+      "usageSentences": [
+        {
+          "sentence": "休日は自由に過ごせます。",
+          "sentenceKana": "きゅうじつはじゆうにすごせます。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この川は自由が百メートルです。",
+          "sentenceKana": "このかわはじゆうがひゃくめーとるです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "薬を自由で飲みました。",
+          "sentenceKana": "くすりをじゆうでのみました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を自由として数えました。",
+          "sentenceKana": "そらのいろをじゆうとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「自由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「自由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「自由」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-10"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-78367ad76c993eef",
+      "sourceQuestionId": "vocabulary.json#1257:usage:17c7c-n4-usage-11-src-1257",
+      "manifestAuthoringId": "17c7c-n4-usage-11-src-1257",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        1257
+      ],
+      "originalText": "家族はとても大切です。",
+      "displayText": "「大切」の使い方として最も自然な文を選んでください。",
+      "prompt": "「大切」の使い方として最も自然な文を選んでください。",
+      "kana": "たいせつ",
+      "promptKana": null,
+      "options": [
+        "家族との時間を大切にしています。",
+        "この電車は大切が速いです。",
+        "紙を大切で切りました。",
+        "空の色を大切として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "家族との時間を大切にしています。",
+      "explanation": "第 1 句中的「大切」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "大切",
+      "targetKana": "たいせつ",
+      "usageSentences": [
+        {
+          "sentence": "家族との時間を大切にしています。",
+          "sentenceKana": "かぞくとのじかんをたいせつにしています。",
+          "targetOccurrence": {
+            "start": 7,
+            "end": 9
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この電車は大切が速いです。",
+          "sentenceKana": "このでんしゃはたいせつがはやいです。",
+          "targetOccurrence": {
+            "start": 5,
+            "end": 7
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "紙を大切で切りました。",
+          "sentenceKana": "かみをたいせつできりました。",
+          "targetOccurrence": {
+            "start": 2,
+            "end": 4
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を大切として数えました。",
+          "sentenceKana": "そらのいろをたいせつとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「大切」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「大切」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「大切」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-11"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n4-usage-0b5d66f07549d41d",
+      "sourceQuestionId": "vocabulary.json#3167:usage:17c7c-n4-usage-12-src-3167",
+      "manifestAuthoringId": "17c7c-n4-usage-12-src-3167",
+      "level": "N4",
+      "section": "vocabulary",
+      "questionType": "usage",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        3167
+      ],
+      "originalText": "施設の利用は午後九時までです。",
+      "displayText": "「利用」の使い方として最も自然な文を選んでください。",
+      "prompt": "「利用」の使い方として最も自然な文を選んでください。",
+      "kana": "りよう",
+      "promptKana": null,
+      "options": [
+        "図書館のパソコンを利用できます。",
+        "この花は利用が赤いです。",
+        "夕食を利用に食べました。",
+        "空の色を利用として数えました。"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "図書館のパソコンを利用できます。",
+      "explanation": "第 1 句中的「利用」符合常見詞義與搭配；其餘句子文法外框雖可解析，但詞義角色或搭配範圍不成立。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed",
+        "collocation-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetWord": "利用",
+      "targetKana": "りよう",
+      "usageSentences": [
+        {
+          "sentence": "図書館のパソコンを利用できます。",
+          "sentenceKana": "としょかんのぱそこんをりようできます。",
+          "targetOccurrence": {
+            "start": 9,
+            "end": 11
+          },
+          "acceptedAsCorrect": true
+        },
+        {
+          "sentence": "この花は利用が赤いです。",
+          "sentenceKana": "このはなはりようがあかいです。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "夕食を利用に食べました。",
+          "sentenceKana": "ゆうしょくをりようにたべました。",
+          "targetOccurrence": {
+            "start": 3,
+            "end": 5
+          },
+          "acceptedAsCorrect": false
+        },
+        {
+          "sentence": "空の色を利用として数えました。",
+          "sentenceKana": "そらのいろをりようとしてかぞえました。",
+          "targetOccurrence": {
+            "start": 4,
+            "end": 6
+          },
+          "acceptedAsCorrect": false
+        }
+      ],
+      "correctUsageIndex": 0,
+      "incorrectUsageReasons": [
+        {
+          "usageIndex": 1,
+          "reason": "句子本身可解析，但「利用」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 2,
+          "reason": "句子本身可解析，但「利用」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "usageIndex": 3,
+          "reason": "句子本身可解析，但「利用」與該句所要求的物理性質、動作角色或計量範圍不相容，屬詞義／搭配錯誤。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ],
+      "usageReviewId": "17c7c-usage-n4-12"
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-080cc09d4d785e96",
+      "sourceQuestionId": "vocabulary.json#261:paraphrase:17c7c-n5-paraphrase-01-src-261",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-01-src-261",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        261
+      ],
+      "originalText": "大きい犬がいます。",
+      "displayText": "「この箱は大きいので、一人では運べません。」の「大きい」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「この箱は大きいので、一人では運べません。」の「大きい」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "おおきい",
+      "promptKana": "「このはこはおおきいので、ひとりでははこべません。」の「おおきい」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "値段が高い",
+        "サイズが大きい",
+        "重さが軽い",
+        "形が丸い"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "サイズが大きい",
+      "explanation": "此處「大きい」在完整句境中可改述為「サイズが大きい」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "大きい",
+      "targetExpressionKana": "おおきい",
+      "equivalentExpression": "サイズが大きい",
+      "equivalentExpressionKana": "さいずがおおきい",
+      "interchangeabilityScope": "題幹「この箱は大きいので、一人では運べません。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n5-01",
+      "optionReviews": [
+        {
+          "expression": "値段が高い",
+          "expressionKana": "値段が高い",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「値段が高い」所表達的內容與「大きい」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "サイズが大きい",
+          "expressionKana": "さいずがおおきい",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "重さが軽い",
+          "expressionKana": "重さが軽い",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「重さが軽い」所表達的內容與「大きい」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "形が丸い",
+          "expressionKana": "形が丸い",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「形が丸い」所表達的內容與「大きい」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-ef98fbcb803cd961",
+      "sourceQuestionId": "vocabulary.json#262:paraphrase:17c7c-n5-paraphrase-02-src-262",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-02-src-262",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        262
+      ],
+      "originalText": "小さい猫がいます。",
+      "displayText": "「この靴は私には小さいです。」の「小さい」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「この靴は私には小さいです。」の「小さい」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "ちいさい",
+      "promptKana": "「このくつはわたしにはちいさいです。」の「ちいさい」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "値段が安い",
+        "サイズが足りない",
+        "色が薄い",
+        "形が新しい"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "サイズが足りない",
+      "explanation": "此處「小さい」在完整句境中可改述為「サイズが足りない」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "小さい",
+      "targetExpressionKana": "ちいさい",
+      "equivalentExpression": "サイズが足りない",
+      "equivalentExpressionKana": "さいずがたりない",
+      "interchangeabilityScope": "題幹「この靴は私には小さいです。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n5-02",
+      "optionReviews": [
+        {
+          "expression": "値段が安い",
+          "expressionKana": "値段が安い",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「値段が安い」所表達的內容與「小さい」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "サイズが足りない",
+          "expressionKana": "さいずがたりない",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "色が薄い",
+          "expressionKana": "色が薄い",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「色が薄い」所表達的內容與「小さい」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "形が新しい",
+          "expressionKana": "形が新しい",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「形が新しい」所表達的內容與「小さい」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-ecbf7960d813c612",
+      "sourceQuestionId": "vocabulary.json#411:paraphrase:17c7c-n5-paraphrase-03-src-411",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-03-src-411",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        411
+      ],
+      "originalText": "本がたくさんあります。",
+      "displayText": "「会場には人がたくさんいました。」の「たくさん」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「会場には人がたくさんいました。」の「たくさん」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "たくさん",
+      "promptKana": "「かいじょうにはひとがたくさんいました。」の「たくさん」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "少しだけいました",
+        "大勢いました",
+        "誰もいませんでした",
+        "一人で来ました"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "大勢いました",
+      "explanation": "此處「たくさん」在完整句境中可改述為「大勢いました」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "たくさん",
+      "targetExpressionKana": "たくさん",
+      "equivalentExpression": "大勢いました",
+      "equivalentExpressionKana": "おおぜいいました",
+      "interchangeabilityScope": "題幹「会場には人がたくさんいました。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n5-03",
+      "optionReviews": [
+        {
+          "expression": "少しだけいました",
+          "expressionKana": "少しだけいました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「少しだけいました」所表達的內容與「たくさん」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "大勢いました",
+          "expressionKana": "おおぜいいました",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "誰もいませんでした",
+          "expressionKana": "誰もいませんでした",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「誰もいませんでした」所表達的內容與「たくさん」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "一人で来ました",
+          "expressionKana": "一人で来ました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「一人で来ました」所表達的內容與「たくさん」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-73c4d84bede74b9a",
+      "sourceQuestionId": "vocabulary.json#410:paraphrase:17c7c-n5-paraphrase-04-src-410",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-04-src-410",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        410
+      ],
+      "originalText": "少し待ってください。",
+      "displayText": "「砂糖を少し入れてください。」の「少し」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「砂糖を少し入れてください。」の「少し」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "すこし",
+      "promptKana": "「さとうをすこしいれてください。」の「すこし」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "全部入れてください",
+        "少量入れてください",
+        "入れないでください",
+        "別に置いてください"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "少量入れてください",
+      "explanation": "此處「少し」在完整句境中可改述為「少量入れてください」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "少し",
+      "targetExpressionKana": "すこし",
+      "equivalentExpression": "少量入れてください",
+      "equivalentExpressionKana": "しょうりょういれてください",
+      "interchangeabilityScope": "題幹「砂糖を少し入れてください。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n5-04",
+      "optionReviews": [
+        {
+          "expression": "全部入れてください",
+          "expressionKana": "全部入れてください",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「全部入れてください」所表達的內容與「少し」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "少量入れてください",
+          "expressionKana": "しょうりょういれてください",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "入れないでください",
+          "expressionKana": "入れないでください",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「入れないでください」所表達的內容與「少し」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "別に置いてください",
+          "expressionKana": "別に置いてください",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「別に置いてください」所表達的內容與「少し」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-ff23cc504802928b",
+      "sourceQuestionId": "vocabulary.json#409:paraphrase:17c7c-n5-paraphrase-05-src-409",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-05-src-409",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        409
+      ],
+      "originalText": "すぐ行きます。",
+      "displayText": "「駅に着いたら、すぐ電話してください。」の「すぐ」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「駅に着いたら、すぐ電話してください。」の「すぐ」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "すぐ",
+      "promptKana": "「えきについたら、すぐでんわしてください。」の「すぐ」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "あとで電話してください",
+        "ただちに電話してください",
+        "ゆっくり電話してください",
+        "手紙を書いてください"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "ただちに電話してください",
+      "explanation": "此處「すぐ」在完整句境中可改述為「ただちに電話してください」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "すぐ",
+      "targetExpressionKana": "すぐ",
+      "equivalentExpression": "ただちに電話してください",
+      "equivalentExpressionKana": "ただちにでんわしてください",
+      "interchangeabilityScope": "題幹「駅に着いたら、すぐ電話してください。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n5-05",
+      "optionReviews": [
+        {
+          "expression": "あとで電話してください",
+          "expressionKana": "あとで電話してください",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「あとで電話してください」所表達的內容與「すぐ」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "ただちに電話してください",
+          "expressionKana": "ただちにでんわしてください",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "ゆっくり電話してください",
+          "expressionKana": "ゆっくり電話してください",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「ゆっくり電話してください」所表達的內容與「すぐ」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "手紙を書いてください",
+          "expressionKana": "手紙を書いてください",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「手紙を書いてください」所表達的內容與「すぐ」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-752168c8c5207b4d",
+      "sourceQuestionId": "vocabulary.json#299:paraphrase:17c7c-n5-paraphrase-06-src-299",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-06-src-299",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        299
+      ],
+      "originalText": "母は元気です。",
+      "displayText": "「病気が治って、今は元気です。」の「元気」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「病気が治って、今は元気です。」の「元気」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "げんき",
+      "promptKana": "「びょうきがなおって、いまはげんきです。」の「げんき」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "静かです",
+        "健康です",
+        "有名です",
+        "暇です"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "健康です",
+      "explanation": "此處「元気」在完整句境中可改述為「健康です」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "元気",
+      "targetExpressionKana": "げんき",
+      "equivalentExpression": "健康です",
+      "equivalentExpressionKana": "けんこうです",
+      "interchangeabilityScope": "題幹「病気が治って、今は元気です。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n5-06",
+      "optionReviews": [
+        {
+          "expression": "静かです",
+          "expressionKana": "静かです",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「静かです」所表達的內容與「元気」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "健康です",
+          "expressionKana": "けんこうです",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "有名です",
+          "expressionKana": "有名です",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「有名です」所表達的內容與「元気」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "暇です",
+          "expressionKana": "暇です",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「暇です」所表達的內容與「元気」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-eb4ac3cf477da22f",
+      "sourceQuestionId": "vocabulary.json#2426:paraphrase:17c7c-n5-paraphrase-07-src-2426",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-07-src-2426",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        2426
+      ],
+      "originalText": "この部屋はきれいです。",
+      "displayText": "「掃除したので、部屋はきれいです。」の「きれい」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「掃除したので、部屋はきれいです。」の「きれい」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "きれい",
+      "promptKana": "「そうじしたので、へやはきれいです。」の「きれい」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "にぎやかです",
+        "清潔です",
+        "狭いです",
+        "古いです"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "清潔です",
+      "explanation": "此處「きれい」在完整句境中可改述為「清潔です」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "きれい",
+      "targetExpressionKana": "きれい",
+      "equivalentExpression": "清潔です",
+      "equivalentExpressionKana": "せいけつです",
+      "interchangeabilityScope": "題幹「掃除したので、部屋はきれいです。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n5-07",
+      "optionReviews": [
+        {
+          "expression": "にぎやかです",
+          "expressionKana": "にぎやかです",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「にぎやかです」所表達的內容與「きれい」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "清潔です",
+          "expressionKana": "せいけつです",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "狭いです",
+          "expressionKana": "狭いです",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「狭いです」所表達的內容與「きれい」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "古いです",
+          "expressionKana": "古いです",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「古いです」所表達的內容與「きれい」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-a618fda0fe5ab32f",
+      "sourceQuestionId": "vocabulary.json#983:paraphrase:17c7c-n5-paraphrase-08-src-983",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-08-src-983",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        983
+      ],
+      "originalText": "勉強を始めます。",
+      "displayText": "「九時から会議を始めます。」の「始める」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「九時から会議を始めます。」の「始める」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "はじめる",
+      "promptKana": "「くじからかいぎをはじめます。」の「はじめる」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "会議を中止します",
+        "会議を開始します",
+        "会議を延長します",
+        "会議を欠席します"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "会議を開始します",
+      "explanation": "此處「始める」在完整句境中可改述為「会議を開始します」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "始める",
+      "targetExpressionKana": "はじめる",
+      "equivalentExpression": "会議を開始します",
+      "equivalentExpressionKana": "かいぎをかいしします",
+      "interchangeabilityScope": "題幹「九時から会議を始めます。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n5-08",
+      "optionReviews": [
+        {
+          "expression": "会議を中止します",
+          "expressionKana": "会議を中止します",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「会議を中止します」所表達的內容與「始める」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "会議を開始します",
+          "expressionKana": "かいぎをかいしします",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "会議を延長します",
+          "expressionKana": "会議を延長します",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「会議を延長します」所表達的內容與「始める」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "会議を欠席します",
+          "expressionKana": "会議を欠席します",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「会議を欠席します」所表達的內容與「始める」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-0c3b8c73781772dd",
+      "sourceQuestionId": "vocabulary.json#984:paraphrase:17c7c-n5-paraphrase-09-src-984",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-09-src-984",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        984
+      ],
+      "originalText": "仕事が終わります。",
+      "displayText": "「仕事は五時に終わります。」の「終わる」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「仕事は五時に終わります。」の「終わる」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "おわる",
+      "promptKana": "「しごとはごじにおわります。」の「おわる」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "仕事は五時に始まります",
+        "仕事は五時に終了します",
+        "仕事は五時まで続きます",
+        "仕事は五時に増えます"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "仕事は五時に終了します",
+      "explanation": "此處「終わる」在完整句境中可改述為「仕事は五時に終了します」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "終わる",
+      "targetExpressionKana": "おわる",
+      "equivalentExpression": "仕事は五時に終了します",
+      "equivalentExpressionKana": "しごとはごじにしゅうりょうします",
+      "interchangeabilityScope": "題幹「仕事は五時に終わります。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n5-09",
+      "optionReviews": [
+        {
+          "expression": "仕事は五時に始まります",
+          "expressionKana": "仕事は五時に始まります",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「仕事は五時に始まります」所表達的內容與「終わる」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "仕事は五時に終了します",
+          "expressionKana": "しごとはごじにしゅうりょうします",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "仕事は五時まで続きます",
+          "expressionKana": "仕事は五時まで続きます",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「仕事は五時まで続きます」所表達的內容與「終わる」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "仕事は五時に増えます",
+          "expressionKana": "仕事は五時に増えます",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「仕事は五時に増えます」所表達的內容與「終わる」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-5d5eba183da78812",
+      "sourceQuestionId": "vocabulary.json#199:paraphrase:17c7c-n5-paraphrase-10-src-199",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-10-src-199",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        199
+      ],
+      "originalText": "パンを買います。",
+      "displayText": "「駅で切符を買いました。」の「買う」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「駅で切符を買いました。」の「買う」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "かう",
+      "promptKana": "「えきできっぷをかいました。」の「かう」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "切符を売りました",
+        "切符を購入しました",
+        "切符を拾いました",
+        "切符を見ました"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "切符を購入しました",
+      "explanation": "此處「買う」在完整句境中可改述為「切符を購入しました」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "買う",
+      "targetExpressionKana": "かう",
+      "equivalentExpression": "切符を購入しました",
+      "equivalentExpressionKana": "きっぷをこうにゅうしました",
+      "interchangeabilityScope": "題幹「駅で切符を買いました。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n5-10",
+      "optionReviews": [
+        {
+          "expression": "切符を売りました",
+          "expressionKana": "切符を売りました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「切符を売りました」所表達的內容與「買う」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "切符を購入しました",
+          "expressionKana": "きっぷをこうにゅうしました",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "切符を拾いました",
+          "expressionKana": "切符を拾いました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「切符を拾いました」所表達的內容與「買う」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "切符を見ました",
+          "expressionKana": "切符を見ました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「切符を見ました」所表達的內容與「買う」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-307eef49e996cf2b",
+      "sourceQuestionId": "vocabulary.json#198:paraphrase:17c7c-n5-paraphrase-11-src-198",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-11-src-198",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        198
+      ],
+      "originalText": "日本語を話します。",
+      "displayText": "「先生と旅行について話しました。」の「話す」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「先生と旅行について話しました。」の「話す」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "はなす",
+      "promptKana": "「せんせいとりょこうについてはなしました。」の「はなす」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "先生に旅行を見せました",
+        "先生と旅行について会話しました",
+        "先生から旅行を借りました",
+        "先生と旅行へ走りました"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "先生と旅行について会話しました",
+      "explanation": "此處「話す」在完整句境中可改述為「先生と旅行について会話しました」；其餘三項逐一代入後，事件、程度或方向不同。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "話す",
+      "targetExpressionKana": "はなす",
+      "equivalentExpression": "先生と旅行について会話しました",
+      "equivalentExpressionKana": "せんせいとりょこうについてかいわしました",
+      "interchangeabilityScope": "題幹「先生と旅行について話しました。」が示す具体的な文脈に限り、文法形を整えた上で同じ事態を表す。一般的な全用法の同義関係は主張しない。",
+      "semanticReviewId": "17c7c-semantic-n5-11",
+      "optionReviews": [
+        {
+          "expression": "先生に旅行を見せました",
+          "expressionKana": "先生に旅行を見せました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「先生に旅行を見せました」所表達的內容與「話す」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "先生と旅行について会話しました",
+          "expressionKana": "せんせいとりょこうについてかいわしました",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "先生から旅行を借りました",
+          "expressionKana": "先生から旅行を借りました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「先生から旅行を借りました」所表達的內容與「話す」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "先生と旅行へ走りました",
+          "expressionKana": "先生と旅行へ走りました",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「先生と旅行へ走りました」所表達的內容與「話す」在此語境中的意思不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-vocab-17c7c-v1-n5-paraphrase-6b05d6787c456508",
+      "sourceQuestionId": "vocabulary.json#336:paraphrase:17c7c-n5-paraphrase-12-src-336",
+      "manifestAuthoringId": "17c7c-n5-paraphrase-12-src-336",
+      "level": "N5",
+      "section": "vocabulary",
+      "questionType": "paraphrase",
+      "sourceBank": "vocabulary.json",
+      "sourceIds": [
+        336
+      ],
+      "originalText": "駅の前で待ちます。",
+      "displayText": "「駅の前で友達を待ちます。」の「前」と、この文で最も近い意味の表現を選んでください。",
+      "prompt": "「駅の前で友達を待ちます。」の「前」と、この文で最も近い意味の表現を選んでください。",
+      "kana": "まえ",
+      "promptKana": "「えきのまえでともだちをまちます。」の「まえ」と、このぶんでもっともちかいいみのひょうげんをえらんでください。",
+      "options": [
+        "後ろの場所",
+        "正面の場所",
+        "中の場所",
+        "遠い場所"
+      ],
+      "answerIndex": 1,
+      "answerDisplay": "正面の場所",
+      "explanation": "此處「前」表示車站正面的場所，可在限定語境中改述為「正面の場所」；不涵蓋時間上的「以前」。",
+      "kanjiPolicy": "record-display-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c7c-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "natural-japanese-reviewed",
+        "semantic-scope-reviewed",
+        "unique-answer-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "derivationVersion": "17c7c-v1",
+      "targetExpression": "前",
+      "targetExpressionKana": "まえ",
+      "equivalentExpression": "正面の場所",
+      "equivalentExpressionKana": "しょうめんのばしょ",
+      "interchangeabilityScope": "題幹「駅の前で友達を待ちます。」が示す位置の文脈に限り、文法形を整えた上で同じ場所を表す。時間的な「以前」の用法は含まない。",
+      "semanticReviewId": "17c7c-semantic-n5-12",
+      "optionReviews": [
+        {
+          "expression": "後ろの場所",
+          "expressionKana": "うしろのばしょ",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「後ろの場所」所指的位置與「前」在此語境中的位置不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "正面の場所",
+          "expressionKana": "しょうめんのばしょ",
+          "acceptedAsCorrect": true,
+          "incorrectReason": null,
+          "languageReviewStatus": "reviewed-correct"
+        },
+        {
+          "expression": "中の場所",
+          "expressionKana": "なかのばしょ",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「中の場所」所指的位置與「前」在此語境中的位置不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        },
+        {
+          "expression": "遠い場所",
+          "expressionKana": "とおいばしょ",
+          "acceptedAsCorrect": false,
+          "incorrectReason": "代入題幹後，「遠い場所」所指的位置與「前」在此語境中的位置不同。",
+          "languageReviewStatus": "reviewed-incorrect"
+        }
+      ]
+    }
+  ]
+}
