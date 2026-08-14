@@ -876,6 +876,8 @@ function createJapaneseJlptVocabularyDerivedCandidates(autoBank, semanticBank) {
 }
 
 function adaptJapaneseJlptGrammarFormSelectionQuestion(question) {
+  const requiredReviewTags = ["site-internal-editorial-reviewed", "unique-answer-reviewed",
+    "prompt-kana-meaning-aligned", "display-kanji-kana-reviewed"];
   const requiredStrings = ["id", "sourceQuestionId", "level", "section", "questionType", "sourceBank",
     "prompt", "promptKana", "promptMeaning", "answerDisplay", "explanation", "grammarId", "grammar",
     "grammarKana", "structure", "usage", "example", "exampleKana", "exampleMeaning", "category",
@@ -885,6 +887,14 @@ function adaptJapaneseJlptGrammarFormSelectionQuestion(question) {
       question.questionType !== "form-selection" || question.sourceBank !== "grammar.json" ||
       question.derivationVersion !== "17c8b-v1" || question.reviewVersion !== "17c8b-review-v1" ||
       question.reviewMethod !== "site-internal-editorial" || question.reviewStatus !== "approved-for-derived-bank" ||
+      question.kanjiPolicy !== "source-display-and-kana-reviewed" ||
+      !Array.isArray(question.sourceIds) || question.sourceIds.length !== 1 ||
+      question.sourceIds[0] !== question.grammarId ||
+      question.sourceQuestionId !== `grammar.json#${question.grammarId}` ||
+      question.id !== `jlpt-grammar-17c8b-${question.level && question.level.toLowerCase()}-form-selection-${question.grammarId}` ||
+      !/^[0-9a-f]{64}$/.test(question.sourceDigest) ||
+      !Array.isArray(question.reviewTags) || new Set(question.reviewTags).size !== question.reviewTags.length ||
+      requiredReviewTags.some((tag) => !question.reviewTags.includes(tag)) ||
       question.uniqueAnswerReviewed !== true || !Array.isArray(question.options) || question.options.length !== 4 ||
       question.options.some((option) => !isNonEmptyString(option)) || new Set(question.options).size !== 4 ||
       !Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex > 3 ||
@@ -894,10 +904,13 @@ function adaptJapaneseJlptGrammarFormSelectionQuestion(question) {
   let correctReviews = 0;
   question.optionReviews.forEach((review, index) => {
     const correct = index === question.answerIndex;
+    const incorrectReason = review && typeof review.incorrectReason === "string"
+      ? review.incorrectReason.trim() : "";
     if (!review || review.choiceIndex !== index || review.value !== question.options[index] ||
         review.acceptedAsCorrect !== correct || review.grammarFitReviewed !== true ||
-        !isNonEmptyString(review.languageReviewStatus) ||
-        (correct ? review.incorrectReason !== null : !isNonEmptyString(review.incorrectReason)))
+        review.languageReviewStatus !== (correct ? "reviewed-correct" : "reviewed-incorrect") ||
+        (correct ? review.incorrectReason !== null : incorrectReason.length < 8 ||
+          ["錯", "不正確", "不符合文法"].includes(incorrectReason)))
       throw new Error(`JLPT grammar form-selection option review 未對齊：${question.id}`);
     if (review.acceptedAsCorrect) correctReviews += 1;
   });
@@ -911,6 +924,10 @@ function createJapaneseJlptGrammarFormSelectionCandidates(bank) {
       !inventory || inventory.total !== 24 || !inventory.N5 || !inventory.N4 ||
       inventory.N5["form-selection"] !== 12 || inventory.N5.total !== 12 ||
       inventory.N4["form-selection"] !== 12 || inventory.N4.total !== 12 ||
+      inventory.seedCapacity !== true || inventory.productQuota !== false ||
+      !Array.isArray(bank.generatedFrom) || bank.generatedFrom.length !== 2 ||
+      bank.generatedFrom[0] !== "grammar.json" ||
+      bank.generatedFrom[1] !== "japaneseJlptGrammarFormSelectionReviewManifest.json" ||
       !Array.isArray(bank.questions) || bank.questions.length !== 24)
     throw new Error("JLPT grammar form-selection bank schema、version 或 inventory 無效");
   const ids = new Set();

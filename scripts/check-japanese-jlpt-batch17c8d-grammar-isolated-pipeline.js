@@ -12,6 +12,20 @@ const ALLOWED = new Set(["script.js", "japanese/index.html", __filename.replace(
 const read = (path) => fs.readFileSync(path, "utf8");
 const clone = (value) => JSON.parse(JSON.stringify(value));
 const assert = (value, message) => { if (!value) throw new Error(`Batch 17C-8D check: ${message}`); };
+const isDeepFrozen = (value, seen = new Set()) => {
+  if (!value || typeof value !== "object" || seen.has(value)) return true;
+  seen.add(value);
+  return Object.isFrozen(value) && Object.values(value).every((nested) => isDeepFrozen(nested, seen));
+};
+const nestedReferences = (value, references = new Set()) => {
+  if (!value || typeof value !== "object" || references.has(value)) return references;
+  references.add(value); Object.values(value).forEach((nested) => nestedReferences(nested, references));
+  return references;
+};
+const sharesNestedReference = (first, second) => {
+  const firstReferences = nestedReferences(first);
+  return [...nestedReferences(second)].some((reference) => firstReferences.has(reference));
+};
 const git = (...args) => execFileSync("git", args, { encoding: "utf8" }).trim();
 const script = read("script.js");
 const html = read("japanese/index.html");
@@ -50,8 +64,13 @@ function runLevel(level, mode) {
   assert([...pools.values()].every((pool) => pool.candidates.length === (pool.questionType === "form-selection" ? 12 : 30)), `${level} prepared pool capacity 錯誤`);
   const selected = api.selectJapaneseJlptQuestions(pools, provider(mode));
   const candidateBytes = JSON.stringify(selected); const snapshot = api.createJapaneseJlptPreRandomizationSnapshot(selected, levelProfile);
-  assert(Object.isFrozen(snapshot) && snapshot.every((q) => Object.isFrozen(q) && Object.isFrozen(q.options)), "snapshot 必須 deep frozen");
+  assert(isDeepFrozen(snapshot), "snapshot 與所有巢狀 object／array 必須 deep frozen");
+  snapshot.forEach((question) => {
+    for (const key of ["optionReviews", "chunks", "optionChunkIds", "correctOrder", "canonicalChunkIds", "reviewTags", "rubyTerms"])
+      if (Object.prototype.hasOwnProperty.call(question, key)) assert(isDeepFrozen(question[key]), `${question.questionType}.${key} 未 deep frozen`);
+  });
   assert(JSON.stringify(selected) === candidateBytes && selected.every((q) => !Object.isFrozen(q)), "snapshot 建立修改或 freeze candidate");
+  selected.forEach((question, index) => assert(!sharesNestedReference(question, snapshot[index]), "candidate 與 snapshot 共用 nested reference"));
   const snapshotBytes = JSON.stringify(snapshot);
   const positions = api.createBalancedJapaneseJlptAnswerPositions(8, provider(mode));
   assert([0, 1, 2, 3].every((position) => positions.filter((x) => x === position).length === 2), "答案位置必須各兩次");
@@ -59,6 +78,7 @@ function runLevel(level, mode) {
   assert(JSON.stringify(snapshot) === snapshotBytes, "randomization 修改 snapshot bytes");
   randomized.forEach((question, index) => {
     const before = snapshot[index]; const metadata = question.optionPermutation;
+    assert(!sharesNestedReference(before, question), "snapshot 與 randomized question 共用 nested reference");
     assert(question !== before && question.options !== before.options && question.answerIndex === positions[index] && question.answerDisplay === question.options[question.answerIndex], "randomized clone／answer alignment 無效");
     assert(metadata.version === "17c8d-v1" && metadata.correctRandomizedIndex === question.answerIndex && metadata.correctOriginalIndex === before.answerIndex && metadata.randomizedCanonicalOptionIds[question.answerIndex] === metadata.correctCanonicalOptionId, "permutation metadata 無效");
     assert(metadata.randomizedIndexToOriginalIndex.every((original, current) => metadata.originalIndexToRandomizedIndex[original] === current), "permutation inverse mapping 無效");
@@ -71,6 +91,17 @@ function runLevel(level, mode) {
       assert(question.optionChunkIds[question.answerIndex] === question.correctChunkId && metadata.correctCanonicalOptionId === question.correctChunkId, "chunk correct identity 無效");
     }
   });
+  const formIndex = randomized.findIndex((question) => question.questionType === "form-selection");
+  const compositionIndex = randomized.findIndex((question) => question.questionType === "sentence-composition");
+  const immutableBytes = JSON.stringify(snapshot);
+  randomized[formIndex].optionReviews[0].value = "randomized form fixture";
+  randomized[formIndex].optionPermutation.randomizedIndexToOriginalIndex[0] = 99;
+  randomized[formIndex].optionPermutation.preRandomizationCanonicalOptionIds[0] = "randomized form identity fixture";
+  randomized[compositionIndex].chunks[0].text = "randomized composition fixture";
+  randomized[compositionIndex].optionChunkIds[0] = "randomized composition identity fixture";
+  randomized[compositionIndex].optionPermutation.originalIndexToRandomizedIndex[0] = 99;
+  randomized[compositionIndex].optionPermutation.randomizedCanonicalOptionIds[0] = "randomized composition metadata fixture";
+  assert(JSON.stringify(snapshot) === immutableBytes, "randomized nested mutation 影響 snapshot");
   return { selected, snapshot, randomized };
 }
 const lowN5 = runLevel("N5", "low"); runLevel("N4", "low");
@@ -79,6 +110,7 @@ assert(JSON.stringify(lowN5.selected.map((q) => q.id)) !== JSON.stringify(highN5
 assert(lowN5.selected.every((q, i) => api.getJapaneseJlptCanonicalIdentity(q) === api.getJapaneseJlptCanonicalIdentity(lowN5.snapshot[i])), "snapshot stable identity 漂移");
 
 const sourceCopy = clone(formBank); const isolatedCandidate = api.createJapaneseJlptGrammarFormSelectionCandidates(sourceCopy)[0];
+assert(!sharesNestedReference(sourceCopy.questions[0], isolatedCandidate), "form source 與 candidate 共用 nested reference");
 const sourceBefore = JSON.stringify(sourceCopy); isolatedCandidate.optionReviews[0].value = "fixture"; isolatedCandidate.rubyTerms.push({ nested: true });
 assert(JSON.stringify(sourceCopy) === sourceBefore, "candidate mutation 影響 form source");
 const candidateCopy = api.createJapaneseJlptGrammarFormSelectionCandidates(sourceCopy); const candidateBefore = JSON.stringify(candidateCopy);
@@ -94,8 +126,14 @@ rejectForm("derivation version", (b) => { b.derivationVersion = "bad"; });
 rejectForm("manifest version", (b) => { b.manifestVersion = "bad"; });
 rejectForm("source policy", (b) => { b.sourcePolicyVersion = "bad"; });
 rejectForm("inventory", (b) => { b.inventory.N5.total = 11; });
+rejectForm("invalid inventory capacity flags", (b) => { b.inventory.seedCapacity = false; b.inventory.productQuota = true; });
+rejectForm("invalid generatedFrom", (b) => { b.generatedFrom.reverse(); });
 rejectForm("duplicate id", (b) => { b.questions[1].id = b.questions[0].id; });
 rejectForm("duplicate sourceQuestionId", (b) => { b.questions[1].sourceQuestionId = b.questions[0].sourceQuestionId; });
+rejectForm("arbitrary stable ID", (b) => { b.questions[0].id = "arbitrary-but-unique-id"; });
+rejectForm("arbitrary sourceQuestionId", (b) => { b.questions[0].sourceQuestionId = "grammar.json#arbitrary-but-unique"; });
+rejectForm("missing sourceIds", (b) => { delete b.questions[0].sourceIds; });
+rejectForm("invalid sourceDigest", (b) => { b.questions[0].sourceDigest = "x"; });
 rejectForm("level", (b) => { b.questions[0].level = "N3"; });
 rejectForm("section", (b) => { b.questions[0].section = "vocabulary"; });
 rejectForm("questionType", (b) => { b.questions[0].questionType = "cloze"; });
@@ -105,10 +143,15 @@ rejectForm("duplicate option", (b) => { b.questions[0].options[1] = b.questions[
 rejectForm("answerIndex", (b) => { b.questions[0].answerIndex = 4; });
 rejectForm("answerDisplay", (b) => { b.questions[0].answerDisplay = "wrong"; });
 rejectForm("review metadata", (b) => { delete b.questions[0].reviewMethod; });
+rejectForm("missing required reviewTags", (b) => { b.questions[0].reviewTags = b.questions[0].reviewTags.filter((tag) => tag !== "unique-answer-reviewed"); });
+rejectForm("invalid kanjiPolicy", (b) => { b.questions[0].kanjiPolicy = "arbitrary-policy"; });
 rejectForm("optionReviews count", (b) => { b.questions[0].optionReviews.pop(); });
 rejectForm("optionReviews order", (b) => { [b.questions[0].optionReviews[0], b.questions[0].optionReviews[1]] = [b.questions[0].optionReviews[1], b.questions[0].optionReviews[0]]; });
 rejectForm("multiple correct reviews", (b) => { b.questions[0].optionReviews[1].acceptedAsCorrect = true; });
 rejectForm("missing incorrect reason", (b) => { b.questions[0].optionReviews[1].incorrectReason = " "; });
+rejectForm("vague incorrectReason", (b) => { b.questions[0].optionReviews[1].incorrectReason = "錯"; });
+rejectForm("incorrect correct-review status", (b) => { b.questions[0].optionReviews[b.questions[0].answerIndex].languageReviewStatus = "reviewed-incorrect"; });
+rejectForm("incorrect distractor-review status", (b) => { b.questions[0].optionReviews.find((review) => !review.acceptedAsCorrect).languageReviewStatus = "reviewed-correct"; });
 rejectComposition("missing chunk id", (b) => { b[0].chunks[0].id = ""; });
 rejectComposition("duplicate chunk id", (b) => { b[0].chunks[1].id = b[0].chunks[0].id; });
 rejectComposition("unknown chunk", (b) => { b[0].correctOrder[0] = "unknown"; });
@@ -129,7 +172,8 @@ function shortage(type, quota, available) {
 shortage("form-selection", 13, 12); shortage("sentence-composition", 31, 30);
 reject("cross-level fallback", () => { const { profile, levelProfile } = api.validateJapaneseJlptProfile(isolatedRegistry, PROFILE_VERSION, PROFILE_ID, "N5"); api.prepareJapaneseJlptCandidatePools("N5", profile, levelProfile, candidates.filter((q) => q.level === "N4"), PROFILE_VERSION); });
 reject("cross-type fallback", () => { const fixture = clone(candidates); fixture[0].questionType = "meaning"; const { profile, levelProfile } = api.validateJapaneseJlptProfile(isolatedRegistry, PROFILE_VERSION, PROFILE_ID, "N5"); api.prepareJapaneseJlptCandidatePools("N5", profile, levelProfile, fixture, PROFILE_VERSION); });
-assert(rejected >= 20, "至少執行 20 個 negative fixtures");
+const EXPECTED_REJECTED_FIXTURES = 42;
+assert(rejected === EXPECTED_REJECTED_FIXTURES, `negative fixture 數量必須精確為 ${EXPECTED_REJECTED_FIXTURES}`);
 
 assert(git("merge-base", "--is-ancestor", BASE, "HEAD") === "", "HEAD 未包含 PR #297 merge commit");
 const changed = new Set([...git("diff", "--name-only", BASE).split("\n"), ...git("ls-files", "--others", "--exclude-standard").split("\n")].filter(Boolean));

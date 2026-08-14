@@ -8,13 +8,13 @@
 
 ## Adapter contract 與 pool capacity
 
-`adaptJapaneseJlptGrammarFormSelectionQuestion(question)` 與 `createJapaneseJlptGrammarFormSelectionCandidates(bank)` 是純函式：只接受已解析的 derived bank，不 fetch、不讀檔、不使用 storage。bank root 必須符合 `1.0.0` schema、`17c8b-v1` derivation／manifest 及 `full-canonical-source-v1` policy，inventory 必須為 N5 12、N4 12、合計 24。每題的 stable/source identity、分類、prompt 三欄、四個互異選項、answer alignment、grammar/review/digest metadata 及四筆逐位置 review 全部 fail closed 驗證；必須恰一筆正解 review，三筆錯項均有具體理由。任何一題無效就拒絕整個 bank，不略過也不 fallback。
+`adaptJapaneseJlptGrammarFormSelectionQuestion(question)` 與 `createJapaneseJlptGrammarFormSelectionCandidates(bank)` 是純函式：只接受已解析的 derived bank，不 fetch、不讀檔、不使用 storage。bank root 必須符合 `1.0.0` schema、`17c8b-v1` derivation／manifest 及 `full-canonical-source-v1` policy，inventory 必須為 N5 12、N4 12、合計 24，capacity flags 必須明確為 seed/non-product，且 `generatedFrom` 必須精確指向 canonical grammar 與 review manifest。每題的 stable ID、`grammar.json#grammarId` source identity、單一對齊的 `sourceIds`、64 位小寫 SHA-256 digest、分類、prompt 三欄、四個互異選項、answer alignment、固定 kanji policy、必要且無重複的 review tags、grammar/review metadata 及四筆逐位置 review 全部 fail closed 驗證；必須恰一筆 `reviewed-correct` 正解 review，三筆 `reviewed-incorrect` 錯項均有具體而非過短或泛用的理由。任何一題無效就拒絕整個 bank，不略過也不 fallback。
 
 Adapter deep clone 所有來源與巢狀資料，不修改或 freeze derived bank，也不共享 mutable reference；相同輸入產生 deterministic stable candidates。與既有 sentence-composition adapter 合併後，實際容量為 N5/N4 form-selection 各 12、sentence-composition 各 30，共 84 題、每級 42 題，canonical identity 全域唯一。
 
 ## Immutable snapshot boundary 與平衡位置
 
-selection 完成後才 deep clone、deep freeze pre-randomization snapshot。此動作不修改或 freeze candidates；source、candidate、snapshot 與 randomized question 之間不共享 mutable nested reference。checker 雙向 mutation 驗證 source/candidate 隔離，並逐 byte 確認 option randomization 前後 snapshot 不變。不同 deterministic random providers 可以改變 selection 或排列，但 candidate/source identity 不因位置、文字或時間而改變。
+selection 完成後才 deep clone、deep freeze pre-randomization snapshot。recursive checker 驗證 snapshot 及全部巢狀 object／array（包含 option reviews、chunks、chunk/order identities、review tags 與 ruby terms）均 frozen。此動作不修改或 freeze candidates；source、candidate、snapshot 與 randomized question 之間不共享 mutable nested reference。checker 執行 source/candidate 雙向 isolation，並分別修改 randomized form-selection 的 reviews/permutation arrays 與 sentence-composition 的 chunks/chunk IDs/permutation arrays，逐 byte 確認 snapshot 不變。不同 deterministic random providers 可以改變 selection 或排列，但 candidate/source identity 不因位置、文字或時間而改變。
 
 每級 fixture session 恰有 8 題，答案位置只由 `createBalancedJapaneseJlptAnswerPositions()` 建立，四個位置各出現兩次。random provider 回傳範圍外 index、無效 target position 或 identity 無法解析時一律拋錯，不建立 partial session。
 
