@@ -2,6 +2,8 @@
 
 本批以既有 `japaneseSentenceCompositionQuestions.json` 為唯一來源，共 60 題（N5 30 題、N4 30 題），並以 Batch 16D-3 final-v2 證據逐題驗證 24 個排列，共 1,440 個排列。來源題庫與排列證據均不修改，也不複製或重新產生另一份題庫。
 
+Checker 另執行 23 個真正送入 adapter 或 evidence validator 並被拒絕的 negative fixtures；mutation isolation 則維持獨立的正向 invariant，不計入拒絕數。
+
 ## Adapter contract
 
 `createJapaneseJlptSentenceCompositionCandidates(sourceBank)` 接受已解析陣列；它不 fetch、不讀檔，也不接觸 storage。它會 fail closed 驗證完整 inventory、欄位、四個 chunk、完整 `correctOrder` permutation、star slot、句子重建及唯一答案審核；任一題失敗即拒絕整個 bank，沒有跨 level、question type 或其他 bank fallback。

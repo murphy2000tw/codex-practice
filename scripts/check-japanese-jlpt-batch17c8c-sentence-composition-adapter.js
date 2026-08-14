@@ -29,7 +29,16 @@ vm.runInContext(`function isNonEmptyString(value){return typeof value === "strin
 const api = context.api;
 
 function validateEvidence(bank, records) {
+  assert(Array.isArray(bank) && bank.length === 60, "source bank 必須恰好 60 題");
+  const sourceIds = bank.map((question) => question && question.id);
+  assert(sourceIds.every((id) => typeof id === "string" && id.trim()), "source ID 必須非空");
+  assert(new Set(sourceIds).size === 60, "source ID 必須唯一");
   assert(Array.isArray(records) && records.length === 60, "evidence 必須恰好 60 題");
+  const evidenceIds = records.map((record) => record && record.id);
+  assert(evidenceIds.every((id) => typeof id === "string" && id.trim()), "evidence ID 必須非空");
+  assert(new Set(evidenceIds).size === 60, "evidence ID 必須唯一");
+  assert([...new Set(evidenceIds)].sort().join("\0") === [...new Set(sourceIds)].sort().join("\0"),
+    "evidence ID 集合必須與 source ID 集合完全相同");
   const byId = new Map(bank.map((question) => [question.id, question]));
   let permutationCount = 0;
   for (const record of records) {
@@ -39,6 +48,11 @@ function validateEvidence(bank, records) {
       assert(JSON.stringify(record[key]) === JSON.stringify(question[key]), `${record.id} metadata ${key} 不一致`);
     for (const key of ["chunks", "correctOrder", "grammarIds"])
       assert(JSON.stringify(record[key]) === JSON.stringify(question[key]), `${record.id} metadata ${key} 不一致`);
+    const correctChunkId = question.correctOrder[question.starSlot];
+    const expectedPosition = question.chunks.findIndex((chunk) => chunk.id === correctChunkId) + 1;
+    assert(Number.isInteger(record.correctOptionPosition) && record.correctOptionPosition >= 1 &&
+      record.correctOptionPosition <= 4 && record.correctOptionPosition === expectedPosition,
+    `${record.id} correctOptionPosition 未與 correctOrder/starSlot/chunks 對齊`);
     assert(Array.isArray(record.permutations) && record.permutations.length === 24, `${record.id} 必須有 24 permutations`);
     const chunkIds = question.chunks.map((chunk) => chunk.id).sort().join("\0");
     const keys = new Set(); let expected = 0; let alternate = 0;
@@ -46,7 +60,7 @@ function validateEvidence(bank, records) {
       assert(Array.isArray(permutation.order) && permutation.order.length === 4 &&
         [...permutation.order].sort().join("\0") === chunkIds, `${record.id} order 不是完整 permutation`);
       const key = permutation.order.join("\0"); assert(!keys.has(key), `${record.id} permutation 重複`); keys.add(key);
-      assert(["VALID_EXPECTED", "INVALID_GRAMMAR"].includes(permutation.verdict), `${record.id} verdict 不允許`);
+      assert(["VALID_EXPECTED", "VALID_ALTERNATE", "INVALID_GRAMMAR"].includes(permutation.verdict), `${record.id} verdict 不允許`);
       assert(typeof permutation.reason === "string" && permutation.reason.trim(), `${record.id} reason 空白`);
       const chunks = new Map(question.chunks.map((chunk) => [chunk.id, chunk.text]));
       assert(permutation.sentence === question.before + permutation.order.map((id) => chunks.get(id)).join("") + question.after,
@@ -113,24 +127,43 @@ rejectEvidence("missing permutation", (b) => { b[0].permutations.pop(); });
 rejectEvidence("duplicate permutation", (b) => { b[0].permutations[1] = clone(b[0].permutations[0]); });
 rejectEvidence("wrong VALID_EXPECTED", (b) => { const p=b[0].permutations.find((x)=>x.verdict==="VALID_EXPECTED"); [p.order[0],p.order[1]]=[p.order[1],p.order[0]]; });
 rejectEvidence("VALID_ALTERNATE", (b) => { b[0].permutations[0].verdict = "VALID_ALTERNATE"; });
-// A deliberately shared-reference fake adapter is rejected by the same isolation invariant.
-{ const fixture=clone(source), fake=[{ chunks:fixture[0].chunks }], before=JSON.stringify(fixture); fake[0].chunks[0].text="bad"; assert(JSON.stringify(fixture)!==before,"shared-reference fixture must expose mutation"); rejected += 1; }
+rejectEvidence("duplicate evidence ID (and missing source evidence)", (b) => { b[1] = clone(b[0]); });
+rejectEvidence("missing source evidence", (b) => { b[0].id = b[1].id; });
+rejectEvidence("unknown evidence ID", (b) => { b[0].id = "unknown-evidence-id"; });
+rejectEvidence("incorrect correctOptionPosition", (b) => { b[0].correctOptionPosition = b[0].correctOptionPosition % 4 + 1; });
 rejectSource("unknown questionType / cross-level fallback", (b) => { b[0].questionType = "cloze"; });
-assert(rejected === 20, "必須執行 20 個 negative fixtures");
+assert(rejected === 23, "必須執行 23 個真正遭 adapter 或 evidence validator 拒絕的 negative fixtures");
+validateEvidence(source, clone(evidence).reverse());
 const permutations = validateEvidence(source, evidence);
 
 assert(git("merge-base", "--is-ancestor", BASE, "HEAD") === "", "HEAD 未包含指定 merge commit");
 const changed = new Set([...git("diff", "--name-only", BASE).split("\n"), ...git("ls-files", "--others", "--exclude-standard").split("\n")].filter(Boolean));
 for (const file of changed) assert(ALLOWED.has(file), `scope guard rejects ${file}`);
+assert(changed.size === ALLOWED.size && [...ALLOWED].every((file) => changed.has(file)), "changed file 集合必須精確等於允許的四個檔案");
 for (const file of [SOURCE_PATH, EVIDENCE_PATH])
   assert(git("hash-object", file) === git("rev-parse", `${BASE}:${file}`), `${file} 相對 baseline bytes 改變`);
+const baseHtml = execFileSync("git", ["show", `${BASE}:japanese/index.html`], { encoding: "utf8" });
+const oldCacheReference = '../script.js?v=3.9';
+assert(baseHtml.split(oldCacheReference).length === 2 &&
+  html === baseHtml.replace(oldCacheReference, '../script.js?v=4.0'), "japanese/index.html 只能更新 script.js cache token 3.9 → 4.0");
 const profile = api.JAPANESE_JLPT_PROFILE_REGISTRY.profiles["17c6-compat-v1"];
 assert(profile.levels.N5.total === 20 && profile.levels.N4.total === 34 && !JSON.stringify(profile).includes("sentence-composition"), "production profile 被啟用或 quota 改變");
 const buildBlock = script.slice(script.indexOf("function buildJapaneseJlptSession"), script.indexOf("function appendJapaneseJlptDetail"));
 assert(!buildBlock.includes("createJapaneseJlptSentenceCompositionCandidates"), "buildJapaneseJlptSession 呼叫新 adapter");
 assert(!html.includes("final-permutations") && !script.match(/(?:fetch|import)\s*\([^)]*final-permutations/), "JLPT 入口載入 evidence");
 assert(script.includes("let sentenceCompositionQuestions = []") && script.includes("sentenceCompositionQuestions = await response.json()"), "一般句子重組 state 路徑改變");
-const baseScript = git("show", `${BASE}:script.js`); const storage = (text) => [...text.matchAll(/\b(?:localStorage|sessionStorage|indexedDB|caches)\b/g)].map((m)=>m[0]).join("|");
-assert(storage(script) === storage(baseScript), "storage API inventory 改變");
+const baseScript = git("show", `${BASE}:script.js`);
+const inventory = (scriptText, htmlText) => ({
+  fetch: (scriptText.match(/\bfetch\s*\(/g) || []).length,
+  dynamicImport: (scriptText.match(/\bimport\s*\(/g) || []).length,
+  scriptTag: (htmlText.match(/<script\b/gi) || []).length,
+  localStorage: (scriptText.match(/\blocalStorage\b/g) || []).length,
+  sessionStorage: (scriptText.match(/\bsessionStorage\b/g) || []).length,
+  indexedDB: (scriptText.match(/\bindexedDB\b/g) || []).length,
+  cacheApi: (scriptText.match(/\bcaches\b/g) || []).length,
+});
+const baselineInventory = inventory(baseScript, baseHtml), currentInventory = inventory(script, html);
+for (const key of Object.keys(baselineInventory))
+  assert(currentInventory[key] <= baselineInventory[key], `${key} inventory 不得相對 baseline 增加`);
 assert(read(SOURCE_PATH) === sourceBytes && read(EVIDENCE_PATH) === evidenceBytes, "checker 修改正式檔案");
 console.log(`PASS: 60 candidates (N5 30 / N4 30), ${permutations} permutations, ${rejected} negative fixtures, mutation and production isolation verified.`);
