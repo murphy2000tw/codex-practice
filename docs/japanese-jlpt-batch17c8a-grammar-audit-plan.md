@@ -10,6 +10,8 @@
 
 下列 JSON 是 checker 直接解析 repository 資料所得的精確快照；文件不是唯一真相來源，checker 會重新計算並逐值比對。
 
+Checker 會解析 `script.js` 中 `JAPANESE_JLPT_PROFILE_REGISTRY` 的實際物件，而非以字串搜尋或在 inventory 中重寫 quota；它也另有固定 expected-inventory assertions。因此 production profile、來源資料與文件即使一起漂移，仍會 fail closed。profile 驗證包含 section quota 加總、N5 reading 未啟用、N4 reading 14、兩級 listening 未啟用、grammar 僅有 legacy `meaning`／`cloze`，且明確拒絕 `form-selection` 或 `sentence-composition`。
+
 <!-- INVENTORY_JSON_START -->
 ```json
 {
@@ -83,8 +85,14 @@
 * `grammar.json` 有 290 筆（N5 80、N4 210），必填欄位皆完整；130 筆有四選一 quiz（N5 80、N4 50）且通過機械結構檢查，因此只是 `form-selection` **結構候選**。repository 沒有 versioned 人工 review manifest，故 human-reviewed 為 0；130 筆全部仍標記 `unsafe-distractor` 與 `unique-answer-unreviewed`，另外 160 筆 `missing-quiz`。有 quiz 絕不等於可正式使用。
 * legacy bank 共 40 筆，其中每級 vocabulary meaning 10、grammar meaning 5、grammar cloze 5。這是 compatibility inventory，不是新題型來源配額。
 * sentence-composition source 共 60 筆（N5／N4 各 30），ID 全域唯一。每題恰有四個非空、文字及 ID 互異的 chunk；`correctOrder` 是完整 permutation；`starSlot` 是 0～3 整數，且 `correctOrder[starSlot]` 唯一定位 ★ chunk。`before + correctOrder chunks + after` 完全等於 `completeSentence`，`kana`、`meaning`、`explanation`、`grammarIds` 完整，且 60 筆 `uniqueAnswerReviewed === true`。
-* Batch 16D-3 final evidence 有 60 × 24 = 1440 筆排列；每題恰一個 `VALID_EXPECTED`，合計 60，`VALID_ALTERNATE` 為 0。程式只能驗證結構和已提交稽核證據的一致性，**不能宣稱自動理解日文或自行證明文法唯一性**；唯一答案以既有人工稽核證據為準，且既有 final checker 必須持續通過。
+* Batch 16D-3 final evidence 有 60 × 24 = 1440 筆排列；每題恰一個 `VALID_EXPECTED`，合計 60，`VALID_ALTERNATE` 為 0。程式只能驗證結構和已提交稽核證據的一致性，**不能宣稱自動理解日文或自行證明文法唯一性**；唯一答案以既有人工稽核證據為準。本批 checker 會獨立完整驗證資料／evidence，不依賴可能因 PR #278 歷史 scope 規則而 exit 1 的 final checker。
 * repository 沒有專用跨句文法文章及選項 bank，故 `text-grammar` unavailable／available=0；reading、一般 grammar 或句子重組不得冒充它，也不得在本批大量自動造題。
+
+### Checker self-tests 與 evidence fail-closed boundary
+
+Checker 自行驗證 evidence root 恰有 60 個唯一 ID，逐題 metadata 與 source 完全一致，並生成四個 chunk ID 的全部 24 種排列作集合比較。每筆 order 必須是無未知／重複 ID 的完整 permutation，sentence 必須可由 `before + ordered chunk text + after` 精確重建，verdict 必須來自允許集合且 reason 必須非空且具體。每題必須恰有一個、且 order 等於 `correctOrder` 的 `VALID_EXPECTED`，以及零個 `VALID_ALTERNATE`；總數必須精確為 1440，所有 composition blockers 為零。
+
+為避免 validator 本身產生假陽性，checker 以 deep clone 執行七個 in-memory negative fixtures，並確認全部遭拒：`uniqueAnswerReviewed=false`、重複 permutation、缺少 permutation、錯誤的 `VALID_EXPECTED` order、無法重建的 sentence、出現 `VALID_ALTERNATE`，以及 compatibility quota／未核准題型漂移。這些 fixtures 不修改正式資料檔。
 
 ## Question Type Matrix
 
