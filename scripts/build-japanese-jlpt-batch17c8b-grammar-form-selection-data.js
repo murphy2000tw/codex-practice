@@ -19,6 +19,15 @@ const digestSource = source => crypto.createHash("sha256").update(canonical(sour
 const requireString = (value, label) => { if (typeof value !== "string" || !value.trim()) fail(`${label} must be a non-empty string`); };
 const blankCount = value => typeof value === "string" ? value.split("＿＿").length - 1 : 0;
 const stableId = record => `jlpt-grammar-17c8b-${record.level.toLowerCase()}-form-selection-${record.sourceId}`;
+const GENERIC_REASON_PATTERNS = Object.freeze([
+  /不符合本句.*所要求的.*文法形式.*句法連接、時態或題示語意不成立/u,
+  /不符合.*文法(?:形式)?.*(?:不成立|不正確)/u,
+  /(?:文法|語法)(?:上)?(?:不對|錯誤|不合適)(?:。|$)/u
+]);
+const requireSpecificIncorrectReason = (value, choice, label) => {
+  requireString(value, label);
+  if (GENERIC_REASON_PATTERNS.some(pattern => pattern.test(value))) fail(`${label} is a generic/template reason; record the actual particle, conjugation, tense, connection, or meaning conflict`);
+};
 
 function validateRecord(record, sourceById, seen) {
   const label = record?.authoringId || "record";
@@ -54,7 +63,7 @@ function validateRecord(record, sourceById, seen) {
     const correct = index === answerIndex;
     if (review.acceptedAsCorrect !== correct || review.languageReviewStatus !== (correct ? "reviewed-correct" : "reviewed-incorrect")) fail(`${label} option ${index} acceptance review mismatch`);
     if (correct && review.incorrectReason !== null) fail(`${label} correct option incorrectReason must be null`);
-    if (!correct) requireString(review.incorrectReason, `${label}.optionReviews[${index}].incorrectReason`);
+    if (!correct) requireSpecificIncorrectReason(review.incorrectReason, quiz.choices[index], `${label}.optionReviews[${index}].incorrectReason`);
   });
   if (record.optionReviews.filter(review => review.acceptedAsCorrect === true).length !== 1) fail(`${label} must approve exactly one option`);
   return { source, quiz, answerIndex };
@@ -100,4 +109,4 @@ function main() {
   console.log(`Built ${path.basename(PATHS.output)}.`);
 }
 if (require.main === module) { try { main(); } catch (error) { console.error(error.message); process.exitCode = 1; } }
-module.exports = { buildData, serialize, stableId, digestSource, canonical, VERSIONS, DISCLAIMER, PATHS };
+module.exports = { buildData, serialize, stableId, digestSource, canonical, requireSpecificIncorrectReason, GENERIC_REASON_PATTERNS, VERSIONS, DISCLAIMER, PATHS };

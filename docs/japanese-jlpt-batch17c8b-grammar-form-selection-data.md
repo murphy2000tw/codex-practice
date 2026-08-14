@@ -20,7 +20,7 @@ Derived bank 的版本為 `17c8b-v1`，保留 source prompt／kana／meaning／c
 
 Builder 只讀 `grammar.json` 與 review manifest。它以精確 `sourceId` join，將完整 snapshot 與完整 source entry 做 canonical equality，並重算 SHA-256 digest；任一內容漂移、缺漏、跨 level/type、review 不完整、答案不唯一或 option review 不對齊都使整批失敗。輸出先寫暫存檔再 atomic rename，固定以 code-unit comparisons 排序，JSON 格式亦固定；`--check` 只比較 committed bytes，不寫檔。
 
-Checker 比對動態 build、兩次純 build 與 committed bytes，實際建立 drift 後要求 `--check` 失敗並在 `finally` 還原。它也執行 22 組 negative fixtures：缺少／重複 source、level mismatch、snapshot／digest drift、review version／unique review 缺失、choice 數量／空白／重複、answer 缺少／重複、derived answer metadata 不一致、option review 數量／順序／正解數／錯因、prompt／kana 空格、alignment review、未知 type、跨 level，以及 array-position identity。
+Checker 比對動態 build、兩次純 build 與 committed bytes，實際建立 drift 後要求 `--check` 失敗並在 `finally` 還原。它也執行 23 組 negative fixtures：缺少／重複 source、level mismatch、snapshot／digest drift、review version／unique review 缺失、choice 數量／空白／重複、answer 缺少／重複、derived answer metadata 不一致、option review 數量／順序／正解數／錯因（包括字數夠長但仍是泛用模板的錯因）、prompt／kana 空格、alignment review、未知 type、跨 level，以及 array-position identity。
 
 ## Production isolation 與 compatibility
 
@@ -30,13 +30,13 @@ Checker 確認 HTML／`script.js` 不載入新 bank，production 沒有新 fetch
 
 ## 代表性 reviewed examples
 
-### N5：`n5-grammar-001`
+### N5：`n5-grammar-024`
 
-- Prompt：`私＿＿学生です。`
-- Kana：`わたし＿＿がくせいです。`
-- Options：`は`／`が`／`を`／`に`
-- Answer：`は`
-- 錯項：`が` 會把「私」標成焦點主語而不是本句「我是學生」的主題提示；`を` 需要受詞後接他動詞，不能接名詞述語；`に` 在此沒有存在位置、到達點或時間的功能，不能連接「私」與「学生です」。
+- Prompt：`この靴は＿＿です。`
+- Kana：`このくつは＿＿です。`
+- Options：`高くない`／`高い`／`高かった`／`高くなかった`
+- Answer：`高くない`
+- 錯項：`高い` 是現在肯定，與「不貴」的極性相反；`高かった` 是過去肯定，既少了否定也改變時態；`高くなかった` 是過去否定，與題目要求的現在否定不一致。
 
 ### N5：`n5-grammar-039`
 

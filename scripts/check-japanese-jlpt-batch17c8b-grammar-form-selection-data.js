@@ -18,7 +18,7 @@ const read = file => fs.readFileSync(file, "utf8");
 const json = file => JSON.parse(read(file));
 const assert = (condition, message) => { if (!condition) throw new Error(`Batch 17C-8B check: ${message}`); };
 const clone = value => JSON.parse(JSON.stringify(value));
-const runGit = args => cp.execFileSync("git", args, { cwd: ROOT, encoding: "utf8" }).trim();
+const runGit = args => cp.execFileSync("git", args, { cwd: ROOT, encoding: "utf8" }).trimEnd();
 const reject = (name, grammar, manifest, mutate) => {
   const g = clone(grammar), m = clone(manifest); mutate(g, m);
   let rejected = false; try { buildData(g, m); } catch (_) { rejected = true; }
@@ -93,6 +93,7 @@ function negativeFixtures(grammar, manifest, bank) {
   reject("option review order", grammar, manifest, (_,m)=>{[m.records[0].optionReviews[0],m.records[0].optionReviews[1]]=[m.records[0].optionReviews[1],m.records[0].optionReviews[0]];});
   reject("two accepted", grammar, manifest, (_,m)=>{m.records[0].optionReviews.find(x=>!x.acceptedAsCorrect).acceptedAsCorrect=true;});
   reject("missing incorrect reason", grammar, manifest, (_,m)=>{m.records[0].optionReviews.find(x=>!x.acceptedAsCorrect).incorrectReason="";});
+  reject("long generic incorrect reason", grammar, manifest, (_,m)=>{const review=m.records[0].optionReviews.find(x=>!x.acceptedAsCorrect);review.incorrectReason=`「${review.value}」不符合本句所要求的目標文法形式，會使句法連接、時態或題示語意不成立。`;});
   reject("prompt blank count", grammar, manifest, (g,m)=>{const s=g.find(x=>x.id===m.records[0].sourceId);s.quiz.clozePrompt=s.quiz.clozePrompt.replace("＿＿","");m.records[0].sourceSnapshot=clone(s);m.records[0].sourceDigest=digestSource(s);});
   reject("kana blank count", grammar, manifest, (g,m)=>{const s=g.find(x=>x.id===m.records[0].sourceId);s.quiz.clozePromptKana+="＿＿";m.records[0].sourceSnapshot=clone(s);m.records[0].sourceDigest=digestSource(s);});
   reject("missing alignment review", grammar, manifest, (_,m)=>{delete m.records[0].kanaAlignmentReview;});
@@ -104,7 +105,8 @@ function negativeFixtures(grammar, manifest, bank) {
 function driftFixture() {
   const sourceBytes = read(PATHS.source), manifestBytes = read(PATHS.manifest), outputBytes = read(PATHS.output);
   try {
-    const drifted = JSON.parse(sourceBytes); drifted.find(x => x.quiz).meaning += " fixture-drift"; fs.writeFileSync(PATHS.source, `${JSON.stringify(drifted, null, 2)}\n`);
+    const drifted = JSON.parse(sourceBytes), reviewedSourceId = JSON.parse(manifestBytes).records[0].sourceId;
+    drifted.find(x => x.id === reviewedSourceId).meaning += " fixture-drift"; fs.writeFileSync(PATHS.source, `${JSON.stringify(drifted, null, 2)}\n`);
     const result = cp.spawnSync(process.execPath, [path.relative(ROOT, __filename).replace("check-", "build-"), "--check"], { cwd: ROOT, encoding: "utf8" });
     assert(result.status !== 0, "drift fixture did not make --check fail");
   } finally { fs.writeFileSync(PATHS.source, sourceBytes); fs.writeFileSync(PATHS.manifest, manifestBytes); fs.writeFileSync(PATHS.output, outputBytes); }
@@ -121,6 +123,6 @@ function main() {
   checkDerived(grammar, manifest, bank); negativeFixtures(grammar, manifest, bank); driftFixture();
   assert(read(PATHS.source)===beforeSource && read(PATHS.manifest)===beforeManifest,"builder/checker modified source or manifest");
   const check=cp.spawnSync(process.execPath,[path.relative(ROOT,PATHS.output).replace("japaneseJlptGrammarFormSelectionQuestions.json","scripts/build-japanese-jlpt-batch17c8b-grammar-form-selection-data.js"),"--check"],{cwd:ROOT,encoding:"utf8"}); assert(check.status===0,`builder --check failed: ${check.stderr}`);
-  checkScopeAndProduction(); console.log("PASS: Batch 17C-8B inventory, 22 negative fixtures, determinism, drift rejection, scope, and production isolation verified.");
+  checkScopeAndProduction(); console.log("PASS: Batch 17C-8B inventory, 23 negative fixtures, determinism, drift rejection, scope, and production isolation verified.");
 }
 try { main(); } catch (error) { console.error(error.message); process.exitCode=1; }

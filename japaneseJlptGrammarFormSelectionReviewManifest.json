@@ -19,46 +19,46 @@
   },
   "records": [
     {
-      "authoringId": "grammar-form-selection-n5-grammar-001",
-      "sourceId": "n5-grammar-001",
+      "authoringId": "grammar-form-selection-n5-grammar-024",
+      "sourceId": "n5-grammar-024",
       "sourceIds": [
-        "n5-grammar-001"
+        "n5-grammar-024"
       ],
       "level": "N5",
       "section": "grammar",
       "questionType": "form-selection",
       "sourceBank": "grammar.json",
       "sourceSnapshot": {
-        "id": "n5-grammar-001",
+        "id": "n5-grammar-024",
         "level": "N5",
-        "category": "助詞",
-        "grammar": "は",
-        "kana": "は",
-        "meaning": "提示主題，表示接下來要說明的是什麼。",
-        "structure": "名詞 + は + 說明",
-        "usage": "用來提出句子的主題，常譯為「至於……」。讀音為「わ」。",
-        "example": "私は学生です。",
-        "exampleKana": "わたしはがくせいです。",
-        "exampleMeaning": "我是學生。",
-        "note": "初學時可先把它看成標記主題的助詞。",
+        "category": "形容詞",
+        "grammar": "い形容詞否定",
+        "kana": "いけいようしひてい",
+        "meaning": "表示い形容詞的否定。",
+        "structure": "い形容詞去い + くないです",
+        "usage": "用來禮貌地說「不……」。",
+        "example": "この靴は高くないです。",
+        "exampleKana": "このくつはたかくないです。",
+        "exampleMeaning": "這雙鞋不貴。",
+        "note": "「いい」的否定是「よくないです」。",
         "similar": [
-          "が"
+          "な形容詞否定"
         ],
         "quiz": {
-          "clozePrompt": "私＿＿学生です。",
-          "clozePromptKana": "わたし＿＿がくせいです。",
-          "clozeMeaning": "我是學生。",
+          "clozePrompt": "この靴は＿＿です。",
+          "clozePromptKana": "このくつは＿＿です。",
+          "clozeMeaning": "這雙鞋不貴。",
           "choices": [
-            "は",
-            "が",
-            "を",
-            "に"
+            "高くない",
+            "高い",
+            "高かった",
+            "高くなかった"
           ],
-          "answer": "は",
-          "explanation": "「は」用來提示主題，這裡是在說明「我」是學生。"
+          "answer": "高くない",
+          "explanation": "い形容詞現在否定要把「い」改成「くない」。"
         }
       },
-      "sourceDigest": "1c588775a72edc878dba2a21f8aa7bb7d78a0e602d5aaf19053f8552cd97a470",
+      "sourceDigest": "0f6a9dc81c81edc7d801fde8949cbc5cc102d3c903b22c20e1cb1f9efd59a4dc",
       "reviewStatus": "approved-for-derived-bank",
       "reviewVersion": "17c8b-review-v1",
       "reviewMethod": "site-internal-editorial",
@@ -69,15 +69,15 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「私＿＿学生です。」自然，且唯一空格正是 は 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「わたし＿＿がくせいです。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「我是學生。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「は」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「この靴は＿＿です。」在題示中文「這雙鞋不貴。」下語法自然，空格位置要求選出「い形容詞否定」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「このくつは＿＿です。」與「この靴は＿＿です。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「這雙鞋不貴。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「高い」：「高い」是現在肯定形，意思是「貴」，與中文題意「不貴」的否定極性相反。；「高かった」：「高かった」是過去肯定形，既缺少否定，也把題目的現在狀態改成過去。；「高くなかった」：「高くなかった」是過去否定形，表示「以前不貴」，與題目要求的現在否定不一致。；因此只有「高くない」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「この靴は＿＿です。」與完整假名「このくつは＿＿です。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
-          "value": "は",
+          "value": "高くない",
           "acceptedAsCorrect": true,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-correct",
@@ -85,30 +85,30 @@
         },
         {
           "choiceIndex": 1,
-          "value": "が",
+          "value": "高い",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「が」不符合本句「私［空格］学生です。」所要求的「は」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「高い」是現在肯定形，意思是「貴」，與中文題意「不貴」的否定極性相反。"
         },
         {
           "choiceIndex": 2,
-          "value": "を",
+          "value": "高かった",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「を」不符合本句「私［空格］学生です。」所要求的「は」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「高かった」是過去肯定形，既缺少否定，也把題目的現在狀態改成過去。"
         },
         {
           "choiceIndex": 3,
-          "value": "に",
+          "value": "高くなかった",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「に」不符合本句「私［空格］学生です。」所要求的「は」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「高くなかった」是過去否定形，表示「以前不貴」，與題目要求的現在否定不一致。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「は」目標清楚對齊；三個干擾項各自代入均不成立，答案「は」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-024：正解「高くない」可完整形成「この靴は高くないです。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n5-grammar-004",
@@ -161,11 +161,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「七時＿＿起きます。」自然，且唯一空格正是 に（時間） 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「しちじ＿＿おきます。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「我七點起床。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「に」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「七時＿＿起きます。」在題示中文「我七點起床。」下語法自然，空格位置要求選出「に（時間）」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「しちじ＿＿おきます。」與「七時＿＿起きます。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「我七點起床。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「で」：「で」可標示動作場所或手段，不能標示「七時」這個動作發生的具體時點。；「へ」：「へ」標示移動方向；「七時」是時間而非目的方向，不能接在「起きます」前表示起床時刻。；「から」：「七時から起きます」表示從七點起持續處於起床／開始起床的語意，不是題意所指七點這一時點起床。；因此只有「に」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「七時＿＿起きます。」與完整假名「しちじ＿＿おきます。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -181,7 +181,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「で」不符合本句「七時［空格］起きます。」所要求的「に（時間）」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「で」可標示動作場所或手段，不能標示「七時」這個動作發生的具體時點。"
         },
         {
           "choiceIndex": 2,
@@ -189,7 +189,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「へ」不符合本句「七時［空格］起きます。」所要求的「に（時間）」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「へ」標示移動方向；「七時」是時間而非目的方向，不能接在「起きます」前表示起床時刻。"
         },
         {
           "choiceIndex": 3,
@@ -197,10 +197,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「から」不符合本句「七時［空格］起きます。」所要求的「に（時間）」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「七時から起きます」表示從七點起持續處於起床／開始起床的語意，不是題意所指七點這一時點起床。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「に（時間）」目標清楚對齊；三個干擾項各自代入均不成立，答案「に」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-004：正解「に」可完整形成「七時に起きます。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n5-grammar-007",
@@ -253,11 +253,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「図書館＿＿勉強します。」自然，且唯一空格正是 で（場所） 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「としょかん＿＿べんきょうします。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「我在圖書館讀書。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「で」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「図書館＿＿勉強します。」在題示中文「我在圖書館讀書。」下語法自然，空格位置要求選出「で（場所）」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「としょかん＿＿べんきょうします。」與「図書館＿＿勉強します。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「我在圖書館讀書。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「に」：「に」可標示存在位置或到達點，但「勉強します」是場所內進行的動作，應用「で」標示動作場所。；「へ」：「へ」標示移動方向，句中沒有移動動詞，不能表示在圖書館進行讀書。；「を」：「を」在此會把「図書館」當受詞或通過場所；「勉強する」不以圖書館為受詞，題意也不是穿越圖書館。；因此只有「で」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「図書館＿＿勉強します。」與完整假名「としょかん＿＿べんきょうします。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -273,7 +273,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「に」不符合本句「図書館［空格］勉強します。」所要求的「で（場所）」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「に」可標示存在位置或到達點，但「勉強します」是場所內進行的動作，應用「で」標示動作場所。"
         },
         {
           "choiceIndex": 2,
@@ -281,7 +281,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「へ」不符合本句「図書館［空格］勉強します。」所要求的「で（場所）」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「へ」標示移動方向，句中沒有移動動詞，不能表示在圖書館進行讀書。"
         },
         {
           "choiceIndex": 3,
@@ -289,10 +289,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「を」不符合本句「図書館［空格］勉強します。」所要求的「で（場所）」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「を」在此會把「図書館」當受詞或通過場所；「勉強する」不以圖書館為受詞，題意也不是穿越圖書館。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「で（場所）」目標清楚對齊；三個干擾項各自代入均不成立，答案「で」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-007：正解「で」可完整形成「図書館で勉強します。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n5-grammar-012",
@@ -345,11 +345,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「これは私＿＿本です。」自然，且唯一空格正是 の（所屬） 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「これはわたし＿＿ほんです。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「這是我的書。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「の」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「これは私＿＿本です。」在題示中文「這是我的書。」下語法自然，空格位置要求選出「の（所屬）」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「これはわたし＿＿ほんです。」與「これは私＿＿本です。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「這是我的書。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「な」：「な」只在な形容詞連體修飾名詞時使用；「私」是代名詞，不能用「私な本」表所屬。；「と」：「と」表示並列、共同對象或引用，不能把「私」與「本」連成所有關係。；「が」：「が」標示主語，但放在「私」後會形成未完的主語子句，不能表達「我的書」。；因此只有「の」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「これは私＿＿本です。」與完整假名「これはわたし＿＿ほんです。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -365,7 +365,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「な」不符合本句「これは私［空格］本です。」所要求的「の（所屬）」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「な」只在な形容詞連體修飾名詞時使用；「私」是代名詞，不能用「私な本」表所屬。"
         },
         {
           "choiceIndex": 2,
@@ -373,7 +373,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「と」不符合本句「これは私［空格］本です。」所要求的「の（所屬）」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「と」表示並列、共同對象或引用，不能把「私」與「本」連成所有關係。"
         },
         {
           "choiceIndex": 3,
@@ -381,10 +381,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「が」不符合本句「これは私［空格］本です。」所要求的「の（所屬）」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「が」標示主語，但放在「私」後會形成未完的主語子句，不能表達「我的書」。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「の（所屬）」目標清楚對齊；三個干擾項各自代入均不成立，答案「の」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-012：正解「の」可完整形成「これは私の本です。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n5-grammar-019",
@@ -437,11 +437,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「部屋に椅子が＿＿。」自然，且唯一空格正是 あります 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「へやにいすが＿＿。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「房間裡有椅子。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「あります」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「部屋に椅子が＿＿。」在題示中文「房間裡有椅子。」下語法自然，空格位置要求選出「あります」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「へやにいすが＿＿。」與「部屋に椅子が＿＿。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「房間裡有椅子。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「います」：「います」用於人或動物等有生命者；「椅子」是無生命物，存在動詞應用「あります」。；「です」：「椅子がです」無法成立，判斷助動詞「です」不能直接接在主格助詞「が」後表存在。；「します」：「します」表示做某動作；椅子不是此句的動作者，且它不能取代表示無生命物存在的「あります」。；因此只有「あります」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「部屋に椅子が＿＿。」與完整假名「へやにいすが＿＿。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -457,7 +457,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「います」不符合本句「部屋に椅子が［空格］。」所要求的「あります」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「います」用於人或動物等有生命者；「椅子」是無生命物，存在動詞應用「あります」。"
         },
         {
           "choiceIndex": 2,
@@ -465,7 +465,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「です」不符合本句「部屋に椅子が［空格］。」所要求的「あります」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「椅子がです」無法成立，判斷助動詞「です」不能直接接在主格助詞「が」後表存在。"
         },
         {
           "choiceIndex": 3,
@@ -473,10 +473,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「します」不符合本句「部屋に椅子が［空格］。」所要求的「あります」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「します」表示做某動作；椅子不是此句的動作者，且它不能取代表示無生命物存在的「あります」。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「あります」目標清楚對齊；三個干擾項各自代入均不成立，答案「あります」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-019：正解「あります」可完整形成「部屋に椅子があります。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n5-grammar-023",
@@ -529,11 +529,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「この店は＿＿です。」自然，且唯一空格正是 い形容詞現在肯定 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「このみせは＿＿です。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「這家店很便宜。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「安い」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「この店は＿＿です。」在題示中文「這家店很便宜。」下語法自然，空格位置要求選出「い形容詞現在肯定」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「このみせは＿＿です。」與「この店は＿＿です。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「這家店很便宜。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「安くない」：「安くない」是現在否定，表示「不便宜」，與中文題意「很便宜」相反。；「安かった」：「安かった」是過去肯定，表示以前便宜，與題目陳述店家現在很便宜的時態不符。；「安くなかった」：「安くなかった」是過去否定，兼具過去時與否定，與現在肯定題意均不一致。；因此只有「安い」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「この店は＿＿です。」與完整假名「このみせは＿＿です。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -549,7 +549,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「安くない」不符合本句「この店は［空格］です。」所要求的「い形容詞現在肯定」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「安くない」是現在否定，表示「不便宜」，與中文題意「很便宜」相反。"
         },
         {
           "choiceIndex": 2,
@@ -557,7 +557,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「安かった」不符合本句「この店は［空格］です。」所要求的「い形容詞現在肯定」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「安かった」是過去肯定，表示以前便宜，與題目陳述店家現在很便宜的時態不符。"
         },
         {
           "choiceIndex": 3,
@@ -565,10 +565,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「安くなかった」不符合本句「この店は［空格］です。」所要求的「い形容詞現在肯定」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「安くなかった」是過去否定，兼具過去時與否定，與現在肯定題意均不一致。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「い形容詞現在肯定」目標清楚對齊；三個干擾項各自代入均不成立，答案「安い」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-023：正解「安い」可完整形成「この店は安いです。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n5-grammar-031",
@@ -621,11 +621,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「毎朝コーヒーを＿＿。」自然，且唯一空格正是 ます形 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「まいあさこーひーを＿＿。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「我每天早上喝咖啡。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「飲みます」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「毎朝コーヒーを＿＿。」在題示中文「我每天早上喝咖啡。」下語法自然，空格位置要求選出「ます形」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「まいあさこーひーを＿＿。」與「毎朝コーヒーを＿＿。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「我每天早上喝咖啡。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「飲みません」：「飲みません」是現在／習慣否定，表示每天早上不喝，與題意「喝咖啡」相反。；「飲みました」：「飲みました」是單純過去肯定，與「毎朝」所表達的現在習慣及中文題意不一致。；「飲みませんでした」：「飲みませんでした」是過去否定，表示過去沒喝，既違反肯定題意也不合現在習慣。；因此只有「飲みます」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「毎朝コーヒーを＿＿。」與完整假名「まいあさこーひーを＿＿。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -641,7 +641,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「飲みません」不符合本句「毎朝コーヒーを［空格］。」所要求的「ます形」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「飲みません」是現在／習慣否定，表示每天早上不喝，與題意「喝咖啡」相反。"
         },
         {
           "choiceIndex": 2,
@@ -649,7 +649,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「飲みました」不符合本句「毎朝コーヒーを［空格］。」所要求的「ます形」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「飲みました」是單純過去肯定，與「毎朝」所表達的現在習慣及中文題意不一致。"
         },
         {
           "choiceIndex": 3,
@@ -657,10 +657,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「飲みませんでした」不符合本句「毎朝コーヒーを［空格］。」所要求的「ます形」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「飲みませんでした」是過去否定，表示過去沒喝，既違反肯定題意也不合現在習慣。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「ます形」目標清楚對齊；三個干擾項各自代入均不成立，答案「飲みます」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-031：正解「飲みます」可完整形成「毎朝コーヒーを飲みます。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n5-grammar-039",
@@ -713,11 +713,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「朝ご飯を＿＿、学校へ行きます。」自然，且唯一空格正是 て形 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「あさごはんを＿＿、がっこうへいきます。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「我吃早餐後去學校。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「食べて」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「朝ご飯を＿＿、学校へ行きます。」在題示中文「我吃早餐後去學校。」下語法自然，空格位置要求選出「て形」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「あさごはんを＿＿、がっこうへいきます。」與「朝ご飯を＿＿、学校へ行きます。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「我吃早餐後去學校。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「食べます」：「食べます」是禮貌終止形，不能在此直接用逗號銜接後續的「学校へ行きます」。；「食べた」：裸た形在此沒有接續助詞，不能用來順接「吃早餐」與「去學校」兩個動作。；「食べない」：「食べない」是否定終止形，既未使用て形銜接下一動作，也把「吃早餐後」改成不吃早餐。；因此只有「食べて」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「朝ご飯を＿＿、学校へ行きます。」與完整假名「あさごはんを＿＿、がっこうへいきます。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -733,7 +733,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「食べます」不符合本句「朝ご飯を［空格］、学校へ行きます。」所要求的「て形」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「食べます」是禮貌終止形，不能在此直接用逗號銜接後續的「学校へ行きます」。"
         },
         {
           "choiceIndex": 2,
@@ -741,7 +741,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「食べた」不符合本句「朝ご飯を［空格］、学校へ行きます。」所要求的「て形」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "裸た形在此沒有接續助詞，不能用來順接「吃早餐」與「去學校」兩個動作。"
         },
         {
           "choiceIndex": 3,
@@ -749,10 +749,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「食べない」不符合本句「朝ご飯を［空格］、学校へ行きます。」所要求的「て形」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「食べない」是否定終止形，既未使用て形銜接下一動作，也把「吃早餐後」改成不吃早餐。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「て形」目標清楚對齊；三個干擾項各自代入均不成立，答案「食べて」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-039：正解「食べて」可完整形成「朝ご飯を食べて、学校へ行きます。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n5-grammar-040",
@@ -805,11 +805,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「ここに名前を＿＿。」自然，且唯一空格正是 てください 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「ここになまえを＿＿。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「請在這裡寫名字。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「書いてください」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「ここに名前を＿＿。」在題示中文「請在這裡寫名字。」下語法自然，空格位置要求選出「てください」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「ここになまえを＿＿。」與「ここに名前を＿＿。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「請在這裡寫名字。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「書かないでください」：「書かないでください」是禁止／請求不寫，與中文「請寫名字」的肯定請求相反。；「書きましょう」：「書きましょう」是提議大家一起寫，不是請對方在指定位置填寫名字的請求。；「書きませんか」：「書きませんか」是邀請或詢問對方要不要寫，語氣功能不同於題意的直接禮貌請求。；因此只有「書いてください」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「ここに名前を＿＿。」與完整假名「ここになまえを＿＿。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -825,7 +825,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「書かないでください」不符合本句「ここに名前を［空格］。」所要求的「てください」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「書かないでください」是禁止／請求不寫，與中文「請寫名字」的肯定請求相反。"
         },
         {
           "choiceIndex": 2,
@@ -833,7 +833,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「書きましょう」不符合本句「ここに名前を［空格］。」所要求的「てください」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「書きましょう」是提議大家一起寫，不是請對方在指定位置填寫名字的請求。"
         },
         {
           "choiceIndex": 3,
@@ -841,10 +841,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「書きませんか」不符合本句「ここに名前を［空格］。」所要求的「てください」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「書きませんか」是邀請或詢問對方要不要寫，語氣功能不同於題意的直接禮貌請求。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「てください」目標清楚對齊；三個干擾項各自代入均不成立，答案「書いてください」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-040：正解「書いてください」可完整形成「ここに名前を書いてください。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n5-grammar-043",
@@ -897,11 +897,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「＿＿昼ご飯を食べました。」自然，且唯一空格正是 もう 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「＿＿ひるごはんをたべました。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「我已經吃午餐了。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「もう」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「＿＿昼ご飯を食べました。」在題示中文「我已經吃午餐了。」下語法自然，空格位置要求選出「もう」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「＿＿ひるごはんをたべました。」與「＿＿昼ご飯を食べました。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「我已經吃午餐了。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「まだ」：「まだ」若搭配肯定過去「食べました」會是「仍然吃了」的不合題意組合；表示「還沒吃」須接否定。；「ときどき」：「ときどき」表示有時候的頻率，不能表達午餐已經完成的完成相。；「いちばん」：「いちばん」表示最高程度，不能修飾「食べました」來表達「已經」。；因此只有「もう」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「＿＿昼ご飯を食べました。」與完整假名「＿＿ひるごはんをたべました。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -917,7 +917,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「まだ」不符合本句「［空格］昼ご飯を食べました。」所要求的「もう」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「まだ」若搭配肯定過去「食べました」會是「仍然吃了」的不合題意組合；表示「還沒吃」須接否定。"
         },
         {
           "choiceIndex": 2,
@@ -925,7 +925,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ときどき」不符合本句「［空格］昼ご飯を食べました。」所要求的「もう」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「ときどき」表示有時候的頻率，不能表達午餐已經完成的完成相。"
         },
         {
           "choiceIndex": 3,
@@ -933,10 +933,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「いちばん」不符合本句「［空格］昼ご飯を食べました。」所要求的「もう」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「いちばん」表示最高程度，不能修飾「食べました」來表達「已經」。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「もう」目標清楚對齊；三個干擾項各自代入均不成立，答案「もう」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-043：正解「もう」可完整形成「もう昼ご飯を食べました。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n5-grammar-047",
@@ -989,11 +989,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「東京は大阪＿＿大きいです。」自然，且唯一空格正是 より 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「とうきょうはおおさか＿＿おおきいです。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「東京比大阪大。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「より」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「東京は大阪＿＿大きいです。」在題示中文「東京比大阪大。」下語法自然，空格位置要求選出「より」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「とうきょうはおおさか＿＿おおきいです。」與「東京は大阪＿＿大きいです。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「東京比大阪大。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「のほうが」：填入後成為「東京は大阪のほうが大きい」，會把較大的對象指向大阪，與「東京比大阪大」相反。；「から」：「から」表示起點或原因，不能放在比較基準「大阪」後建立大小比較。；「まで」：「まで」表示終點或界限，不能標示比較基準，也無法表達「比大阪大」。；因此只有「より」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「東京は大阪＿＿大きいです。」與完整假名「とうきょうはおおさか＿＿おおきいです。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -1009,7 +1009,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「のほうが」不符合本句「東京は大阪［空格］大きいです。」所要求的「より」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "填入後成為「東京は大阪のほうが大きい」，會把較大的對象指向大阪，與「東京比大阪大」相反。"
         },
         {
           "choiceIndex": 2,
@@ -1017,7 +1017,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「から」不符合本句「東京は大阪［空格］大きいです。」所要求的「より」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「から」表示起點或原因，不能放在比較基準「大阪」後建立大小比較。"
         },
         {
           "choiceIndex": 3,
@@ -1025,10 +1025,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「まで」不符合本句「東京は大阪［空格］大きいです。」所要求的「より」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「まで」表示終點或界限，不能標示比較基準，也無法表達「比大阪大」。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「より」目標清楚對齊；三個干擾項各自代入均不成立，答案「より」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-047：正解「より」可完整形成「東京は大阪より大きいです。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n5-grammar-049",
@@ -1081,11 +1081,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「クラスで山田さんが＿＿元気です。」自然，且唯一空格正是 いちばん 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「くらすでやまださんが＿＿げんきです。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「班上山田同學最有精神。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「いちばん」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「クラスで山田さんが＿＿元気です。」在題示中文「班上山田同學最有精神。」下語法自然，空格位置要求選出「いちばん」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「くらすでやまださんが＿＿げんきです。」與「クラスで山田さんが＿＿元気です。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「班上山田同學最有精神。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「より」：「より」需要前接比較基準，單獨置於「山田さんが」與「元気」之間缺少基準名詞，不能表示班上最有精神。；「ときどき」：「ときどき」是頻率副詞，不能修飾「元気」來表示班級內的最高程度。；「まだ」：「まだ」表示仍然／尚未，不具最高級功能，與中文的「最有精神」不符。；因此只有「いちばん」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「クラスで山田さんが＿＿元気です。」與完整假名「くらすでやまださんが＿＿げんきです。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -1101,7 +1101,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「より」不符合本句「クラスで山田さんが［空格］元気です。」所要求的「いちばん」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「より」需要前接比較基準，單獨置於「山田さんが」與「元気」之間缺少基準名詞，不能表示班上最有精神。"
         },
         {
           "choiceIndex": 2,
@@ -1109,7 +1109,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ときどき」不符合本句「クラスで山田さんが［空格］元気です。」所要求的「いちばん」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「ときどき」是頻率副詞，不能修飾「元気」來表示班級內的最高程度。"
         },
         {
           "choiceIndex": 3,
@@ -1117,10 +1117,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「まだ」不符合本句「クラスで山田さんが［空格］元気です。」所要求的「いちばん」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「まだ」表示仍然／尚未，不具最高級功能，與中文的「最有精神」不符。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「いちばん」目標清楚對齊；三個干擾項各自代入均不成立，答案「いちばん」無第二合理解。"
+      "reviewerRationale": "選入 n5-grammar-049：正解「いちばん」可完整形成「クラスで山田さんがいちばん元気です。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n4-grammar-241",
@@ -1173,11 +1173,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「この料理を少し食べ＿＿。」自然，且唯一空格正是 〜てみる 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「このりょうりをすこしたべ＿＿。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「我試著吃一點這道菜。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「てみます」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「この料理を少し食べ＿＿。」在題示中文「我試著吃一點這道菜。」下語法自然，空格位置要求選出「〜てみる」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「このりょうりをすこしたべ＿＿。」與「この料理を少し食べ＿＿。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「我試著吃一點這道菜。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「ています」：「食べています」表示正在吃或習慣狀態，不含「試著做看看」的嘗試語意。；「てあります」：「食べてあります」表示人為完成後留下的結果狀態，不能描述說話者試吃料理。；「ていきます」：「食べていきます」表示吃了再走或從現在持續吃下去，不是嘗試吃一點。；因此只有「てみます」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「この料理を少し食べ＿＿。」與完整假名「このりょうりをすこしたべ＿＿。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -1193,7 +1193,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ています」不符合本句「この料理を少し食べ［空格］。」所要求的「〜てみる」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「食べています」表示正在吃或習慣狀態，不含「試著做看看」的嘗試語意。"
         },
         {
           "choiceIndex": 2,
@@ -1201,7 +1201,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「てあります」不符合本句「この料理を少し食べ［空格］。」所要求的「〜てみる」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「食べてあります」表示人為完成後留下的結果狀態，不能描述說話者試吃料理。"
         },
         {
           "choiceIndex": 3,
@@ -1209,52 +1209,52 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ていきます」不符合本句「この料理を少し食べ［空格］。」所要求的「〜てみる」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「食べていきます」表示吃了再走或從現在持續吃下去，不是嘗試吃一點。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜てみる」目標清楚對齊；三個干擾項各自代入均不成立，答案「てみます」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-241：正解「てみます」可完整形成「この料理を少し食べてみます。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
-      "authoringId": "grammar-form-selection-n4-grammar-243",
-      "sourceId": "n4-grammar-243",
+      "authoringId": "grammar-form-selection-n4-grammar-260",
+      "sourceId": "n4-grammar-260",
       "sourceIds": [
-        "n4-grammar-243"
+        "n4-grammar-260"
       ],
       "level": "N4",
       "section": "grammar",
       "questionType": "form-selection",
       "sourceBank": "grammar.json",
       "sourceSnapshot": {
-        "id": "n4-grammar-243",
+        "id": "n4-grammar-260",
         "level": "N4",
-        "category": "動詞變化",
-        "grammar": "〜てくる",
-        "kana": "てくる",
-        "meaning": "……起來；漸漸過來",
-        "structure": "動詞て形 + くる",
-        "usage": "表示動作朝說話者方向來，或變化延續到現在。",
-        "example": "雨が降ってきました。",
-        "exampleKana": "あめがふってきました。",
-        "exampleMeaning": "雨開始下起來了。",
-        "note": "常表示某變化出現並接近現在。",
+        "category": "義務・許可",
+        "grammar": "〜なくても大丈夫",
+        "kana": "なくてもだいじょうぶ",
+        "meaning": "不……也沒關係",
+        "structure": "動詞ない形 + くても大丈夫",
+        "usage": "表示不做某事也沒有問題。",
+        "example": "予約しなくても大丈夫です。",
+        "exampleKana": "よやくしなくてもだいじょうぶです。",
+        "exampleMeaning": "不用預約也沒關係。",
+        "note": "口語常用，意思接近「なくてもいい」。",
         "similar": [
-          "「〜ていく」表示往未來或遠方發展。"
+          "「なくてもいい」較標準；「なくても大丈夫」較口語。"
         ],
         "quiz": {
-          "clozePrompt": "少し寒くなっ＿＿ました。",
-          "clozePromptKana": "すこしさむくなっ＿＿ました。",
-          "clozeMeaning": "天氣變得有點冷了。",
+          "clozePrompt": "明日は早く来＿＿です。",
+          "clozePromptKana": "あしたははやくこ＿＿です。",
+          "clozeMeaning": "明天不用早點來也沒關係。",
           "choices": [
-            "てき",
-            "ていき",
-            "てみ",
-            "てあり"
+            "なくても大丈夫",
+            "なければならない",
+            "ても大丈夫",
+            "ないでください"
           ],
-          "answer": "てき",
-          "explanation": "「なってきました」表示變化到現在逐漸出現。"
+          "answer": "なくても大丈夫",
+          "explanation": "表示不必早來也沒問題，用「なくても大丈夫」。"
         }
       },
-      "sourceDigest": "5d8213d55a15994b8b6556d4834a706317269885e3aa5c7e6fc4a9bc80db4121",
+      "sourceDigest": "76ca79fda7519d834841bb1c2ccd134259ce0a615b0af6676294ba3b3f40c7ea",
       "reviewStatus": "approved-for-derived-bank",
       "reviewVersion": "17c8b-review-v1",
       "reviewMethod": "site-internal-editorial",
@@ -1265,15 +1265,15 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「少し寒くなっ＿＿ました。」自然，且唯一空格正是 〜てくる 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「すこしさむくなっ＿＿ました。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「天氣變得有點冷了。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「てき」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「明日は早く来＿＿です。」在題示中文「明天不用早點來也沒關係。」下語法自然，空格位置要求選出「〜なくても大丈夫」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「あしたははやくこ＿＿です。」與「明日は早く来＿＿です。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「明天不用早點來也沒關係。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「なければならない」：「来なければならない」表示必須早點來，與題意「不用早點來」的非必要語意相反。；「ても大丈夫」：接成「来ても大丈夫」只表示來也沒關係，沒有否定「早く来る」這件事的必要性。；「ないでください」：「来ないでください」是請對方不要來，題意則允許來、只是不要求早來，禁止範圍不同。；因此只有「なくても大丈夫」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「明日は早く来＿＿です。」與完整假名「あしたははやくこ＿＿です。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
-          "value": "てき",
+          "value": "なくても大丈夫",
           "acceptedAsCorrect": true,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-correct",
@@ -1281,30 +1281,30 @@
         },
         {
           "choiceIndex": 1,
-          "value": "ていき",
+          "value": "なければならない",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ていき」不符合本句「少し寒くなっ［空格］ました。」所要求的「〜てくる」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「来なければならない」表示必須早點來，與題意「不用早點來」的非必要語意相反。"
         },
         {
           "choiceIndex": 2,
-          "value": "てみ",
+          "value": "ても大丈夫",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「てみ」不符合本句「少し寒くなっ［空格］ました。」所要求的「〜てくる」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "接成「来ても大丈夫」只表示來也沒關係，沒有否定「早く来る」這件事的必要性。"
         },
         {
           "choiceIndex": 3,
-          "value": "てあり",
+          "value": "ないでください",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「てあり」不符合本句「少し寒くなっ［空格］ました。」所要求的「〜てくる」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「来ないでください」是請對方不要來，題意則允許來、只是不要求早來，禁止範圍不同。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜てくる」目標清楚對齊；三個干擾項各自代入均不成立，答案「てき」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-260：正解「なくても大丈夫」可完整形成「明日は早く来なくても大丈夫です。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n4-grammar-246",
@@ -1357,11 +1357,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「傘を持た＿＿出ました。」自然，且唯一空格正是 〜ずに 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「かさをもた＿＿でました。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「我沒帶傘就出門了。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「ずに」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「傘を持た＿＿出ました。」在題示中文「我沒帶傘就出門了。」下語法自然，空格位置要求選出「〜ずに」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「かさをもた＿＿でました。」與「傘を持た＿＿出ました。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「我沒帶傘就出門了。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「ないと」：「持たないと出ました」缺少「いけない」等條件結果，不能表示沒帶傘就出門。；「ながら」：接續助詞「ながら」須接動詞ます形「持ちながら」，不能接未然形「持た」。；「ために」：「ために」接動詞普通形或名詞，不接「持た」；而且它表示目的／原因，不表示未做前項。；因此只有「ずに」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「傘を持た＿＿出ました。」與完整假名「かさをもた＿＿でました。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -1377,7 +1377,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ないと」不符合本句「傘を持た［空格］出ました。」所要求的「〜ずに」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「持たないと出ました」缺少「いけない」等條件結果，不能表示沒帶傘就出門。"
         },
         {
           "choiceIndex": 2,
@@ -1385,7 +1385,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ながら」不符合本句「傘を持た［空格］出ました。」所要求的「〜ずに」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "接續助詞「ながら」須接動詞ます形「持ちながら」，不能接未然形「持た」。"
         },
         {
           "choiceIndex": 3,
@@ -1393,10 +1393,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ために」不符合本句「傘を持た［空格］出ました。」所要求的「〜ずに」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「ために」接動詞普通形或名詞，不接「持た」；而且它表示目的／原因，不表示未做前項。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜ずに」目標清楚對齊；三個干擾項各自代入均不成立，答案「ずに」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-246：正解「ずに」可完整形成「傘を持たずに出ました。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n4-grammar-248",
@@ -1449,11 +1449,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「来年、日本へ留学する＿＿です。」自然，且唯一空格正是 〜つもりだ 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「らいねん、にほんへりゅうがくする＿＿です。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「明年我打算去日本留學。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「つもり」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「来年、日本へ留学する＿＿です。」在題示中文「明年我打算去日本留學。」下語法自然，空格位置要求選出「〜つもりだ」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「らいねん、にほんへりゅうがくする＿＿です。」與「来年、日本へ留学する＿＿です。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「明年我打算去日本留學。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「ため」：「留学するためです」會把留學解作某事的目的，卻沒有交代為了留學而做的主句，也不表示本人打算。；「ところ」：「留学するところです」表示正要留學的動作階段，與「来年」的未來計畫及中文「打算」不符。；「はず」：「留学するはずです」表示基於依據的預期「應該會留學」，不是說話者自己的意向。；因此只有「つもり」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「来年、日本へ留学する＿＿です。」與完整假名「らいねん、にほんへりゅうがくする＿＿です。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -1469,7 +1469,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ため」不符合本句「来年、日本へ留学する［空格］です。」所要求的「〜つもりだ」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「留学するためです」會把留學解作某事的目的，卻沒有交代為了留學而做的主句，也不表示本人打算。"
         },
         {
           "choiceIndex": 2,
@@ -1477,7 +1477,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ところ」不符合本句「来年、日本へ留学する［空格］です。」所要求的「〜つもりだ」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「留学するところです」表示正要留學的動作階段，與「来年」的未來計畫及中文「打算」不符。"
         },
         {
           "choiceIndex": 3,
@@ -1485,10 +1485,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「はず」不符合本句「来年、日本へ留学する［空格］です。」所要求的「〜つもりだ」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「留学するはずです」表示基於依據的預期「應該會留學」，不是說話者自己的意向。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜つもりだ」目標清楚對齊；三個干擾項各自代入均不成立，答案「つもり」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-248：正解「つもり」可完整形成「来年、日本へ留学するつもりです。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n4-grammar-250",
@@ -1541,11 +1541,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「健康のために、夜遅く食べない＿＿。」自然，且唯一空格正是 〜ことにしている 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「けんこうのために、よるおそくたべない＿＿。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「為了健康，我決定晚上不晚吃。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「ことにしています」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「健康のために、夜遅く食べない＿＿。」在題示中文「為了健康，我決定晚上不晚吃。」下語法自然，空格位置要求選出「〜ことにしている」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「けんこうのために、よるおそくたべない＿＿。」與「健康のために、夜遅く食べない＿＿。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「為了健康，我決定晚上不晚吃。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「ことになります」：「ことになります」表示由外在安排形成的決定，不能表達說話者為健康自行決定並持續實行。；「ことができます」：「食べないことができます」只表示有能力不吃，沒有「已決定成為習慣」的意思。；「ことがあります」：「食べないことがあります」表示偶爾不吃，與為健康制定並持續遵守的規則不同。；因此只有「ことにしています」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「健康のために、夜遅く食べない＿＿。」與完整假名「けんこうのために、よるおそくたべない＿＿。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -1561,7 +1561,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ことになります」不符合本句「健康のために、夜遅く食べない［空格］。」所要求的「〜ことにしている」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「ことになります」表示由外在安排形成的決定，不能表達說話者為健康自行決定並持續實行。"
         },
         {
           "choiceIndex": 2,
@@ -1569,7 +1569,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ことができます」不符合本句「健康のために、夜遅く食べない［空格］。」所要求的「〜ことにしている」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「食べないことができます」只表示有能力不吃，沒有「已決定成為習慣」的意思。"
         },
         {
           "choiceIndex": 3,
@@ -1577,52 +1577,52 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ことがあります」不符合本句「健康のために、夜遅く食べない［空格］。」所要求的「〜ことにしている」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「食べないことがあります」表示偶爾不吃，與為健康制定並持續遵守的規則不同。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜ことにしている」目標清楚對齊；三個干擾項各自代入均不成立，答案「ことにしています」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-250：正解「ことにしています」可完整形成「健康のために、夜遅く食べないことにしています。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
-      "authoringId": "grammar-form-selection-n4-grammar-253",
-      "sourceId": "n4-grammar-253",
+      "authoringId": "grammar-form-selection-n4-grammar-258",
+      "sourceId": "n4-grammar-258",
       "sourceIds": [
-        "n4-grammar-253"
+        "n4-grammar-258"
       ],
       "level": "N4",
       "section": "grammar",
       "questionType": "form-selection",
       "sourceBank": "grammar.json",
       "sourceSnapshot": {
-        "id": "n4-grammar-253",
+        "id": "n4-grammar-258",
         "level": "N4",
-        "category": "時間表現",
-        "grammar": "〜ところに",
-        "kana": "ところに",
-        "meaning": "正在……的時候",
-        "structure": "動詞普通形 + ところに",
-        "usage": "表示某動作階段中，另一件事發生。",
-        "example": "出かけるところに友だちが来ました。",
-        "exampleKana": "でかけるところにともだちがきました。",
-        "exampleMeaning": "正要出門時，朋友來了。",
-        "note": "常帶有事情剛好發生的語感。",
+        "category": "其他",
+        "grammar": "〜ないほうがいい",
+        "kana": "ないほうがいい",
+        "meaning": "最好不要……",
+        "structure": "動詞ない形 + ほうがいい",
+        "usage": "建議對方不要做某事。",
+        "example": "夜遅くコーヒーを飲まないほうがいいです。",
+        "exampleKana": "よるおそくこーひーをのまないほうがいいです。",
+        "exampleMeaning": "晚上晚一點最好不要喝咖啡。",
+        "note": "否定建議不用た形。",
         "similar": [
-          "「ところで」常表示在某時間點發生轉折。"
+          "肯定建議多用「たほうがいい」。"
         ],
         "quiz": {
-          "clozePrompt": "勉強している＿＿電話が鳴りました。",
-          "clozePromptKana": "べんきょうしている＿＿でんわがなりました。",
-          "clozeMeaning": "正在讀書時，電話響了。",
+          "clozePrompt": "今日は無理をし＿＿。",
+          "clozePromptKana": "きょうはむりをし＿＿。",
+          "clozeMeaning": "今天最好不要勉強自己。",
           "choices": [
-            "ところに",
-            "ところを",
-            "ところへ",
-            "ところで"
+            "ないほうがいいです",
+            "たほうがいいです",
+            "てもいいです",
+            "なければなりません"
           ],
-          "answer": "ところに",
-          "explanation": "表示正在某動作階段時發生另一件事，用「ところに」。"
+          "answer": "ないほうがいいです",
+          "explanation": "建議不要做時，用「ない形 + ほうがいい」。"
         }
       },
-      "sourceDigest": "42221d705f3f16ec61202f48d54bb6fe74e5bdb58b3ad08ddffab58742a9245a",
+      "sourceDigest": "7e30910fb067a149331388c6e22c787f727a3678ec3426b53687bc3b46f68ef4",
       "reviewStatus": "approved-for-derived-bank",
       "reviewVersion": "17c8b-review-v1",
       "reviewMethod": "site-internal-editorial",
@@ -1633,15 +1633,15 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「勉強している＿＿電話が鳴りました。」自然，且唯一空格正是 〜ところに 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「べんきょうしている＿＿でんわがなりました。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「正在讀書時，電話響了。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「ところに」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「今日は無理をし＿＿。」在題示中文「今天最好不要勉強自己。」下語法自然，空格位置要求選出「〜ないほうがいい」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「きょうはむりをし＿＿。」與「今日は無理をし＿＿。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「今天最好不要勉強自己。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「たほうがいいです」：接成「無理をしたほうがいい」是建議勉強自己，與中文「最好不要勉強」方向相反。；「てもいいです」：「無理をしてもいい」表示即使勉強／允許勉強也可以，不是勸告避免勉強。；「なければなりません」：「無理をしなければなりません」表示必須勉強自己，義務語意與否定建議完全相反。；因此只有「ないほうがいいです」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「今日は無理をし＿＿。」與完整假名「きょうはむりをし＿＿。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
-          "value": "ところに",
+          "value": "ないほうがいいです",
           "acceptedAsCorrect": true,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-correct",
@@ -1649,30 +1649,30 @@
         },
         {
           "choiceIndex": 1,
-          "value": "ところを",
+          "value": "たほうがいいです",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ところを」不符合本句「勉強している［空格］電話が鳴りました。」所要求的「〜ところに」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "接成「無理をしたほうがいい」是建議勉強自己，與中文「最好不要勉強」方向相反。"
         },
         {
           "choiceIndex": 2,
-          "value": "ところへ",
+          "value": "てもいいです",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ところへ」不符合本句「勉強している［空格］電話が鳴りました。」所要求的「〜ところに」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「無理をしてもいい」表示即使勉強／允許勉強也可以，不是勸告避免勉強。"
         },
         {
           "choiceIndex": 3,
-          "value": "ところで",
+          "value": "なければなりません",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ところで」不符合本句「勉強している［空格］電話が鳴りました。」所要求的「〜ところに」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「無理をしなければなりません」表示必須勉強自己，義務語意與否定建議完全相反。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜ところに」目標清楚對齊；三個干擾項各自代入均不成立，答案「ところに」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-258：正解「ないほうがいいです」可完整形成「今日は無理をしないほうがいいです。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n4-grammar-257",
@@ -1725,11 +1725,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「熱がありますから、病院へ行った＿＿です。」自然，且唯一空格正是 〜ほうがいい 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「ねつがありますから、びょういんへいった＿＿です。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「因為發燒，最好去醫院。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「ほうがいい」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「熱がありますから、病院へ行った＿＿です。」在題示中文「因為發燒，最好去醫院。」下語法自然，空格位置要求選出「〜ほうがいい」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「ねつがありますから、びょういんへいった＿＿です。」與「熱がありますから、病院へ行った＿＿です。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「因為發燒，最好去醫院。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「ことがある」：「行ったことがある」表示曾去過醫院的經驗，不能在發燒情境中給出「最好去」的建議。；「つもりです」：「行ったつもりです」表示自認已做或假裝已去，且不是針對發燒提出建議。；「予定です」：「行った予定です」以た形接「予定」不自然；預定應用辭書形，且題意是建議而非既定行程。；因此只有「ほうがいい」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「熱がありますから、病院へ行った＿＿です。」與完整假名「ねつがありますから、びょういんへいった＿＿です。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -1745,7 +1745,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ことがある」不符合本句「熱がありますから、病院へ行った［空格］です。」所要求的「〜ほうがいい」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「行ったことがある」表示曾去過醫院的經驗，不能在發燒情境中給出「最好去」的建議。"
         },
         {
           "choiceIndex": 2,
@@ -1753,7 +1753,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「つもりです」不符合本句「熱がありますから、病院へ行った［空格］です。」所要求的「〜ほうがいい」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「行ったつもりです」表示自認已做或假裝已去，且不是針對發燒提出建議。"
         },
         {
           "choiceIndex": 3,
@@ -1761,52 +1761,52 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「予定です」不符合本句「熱がありますから、病院へ行った［空格］です。」所要求的「〜ほうがいい」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「行った予定です」以た形接「予定」不自然；預定應用辭書形，且題意是建議而非既定行程。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜ほうがいい」目標清楚對齊；三個干擾項各自代入均不成立，答案「ほうがいい」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-257：正解「ほうがいい」可完整形成「熱がありますから、病院へ行ったほうがいいです。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
-      "authoringId": "grammar-form-selection-n4-grammar-261",
-      "sourceId": "n4-grammar-261",
+      "authoringId": "grammar-form-selection-n4-grammar-268",
+      "sourceId": "n4-grammar-268",
       "sourceIds": [
-        "n4-grammar-261"
+        "n4-grammar-268"
       ],
       "level": "N4",
       "section": "grammar",
       "questionType": "form-selection",
       "sourceBank": "grammar.json",
       "sourceSnapshot": {
-        "id": "n4-grammar-261",
+        "id": "n4-grammar-268",
         "level": "N4",
-        "category": "授受",
-        "grammar": "〜てくれてありがとう",
-        "kana": "てくれてありがとう",
-        "meaning": "謝謝你為我……",
-        "structure": "動詞て形 + くれてありがとう",
-        "usage": "感謝對方為自己或自己這方做某事。",
-        "example": "手伝ってくれてありがとう。",
-        "exampleKana": "てつだってくれてありがとう。",
-        "exampleMeaning": "謝謝你幫忙。",
-        "note": "受益者通常是說話者或自己這方。",
+        "category": "推量・樣態",
+        "grammar": "〜そうにない",
+        "kana": "そうにない",
+        "meaning": "看起來不會……",
+        "structure": "動詞ます形語幹 + そうにない",
+        "usage": "表示從情況判斷不太可能發生。",
+        "example": "雨はすぐには止みそうにないです。",
+        "exampleKana": "あめはすぐにはやみそうにないです。",
+        "exampleMeaning": "雨看起來不會馬上停。",
+        "note": "常用於可能性低的判斷。",
         "similar": [
-          "「てあげる」是我為別人做。"
+          "「〜そうだ」表示看起來會；「そうにない」是否定。"
         ],
         "quiz": {
-          "clozePrompt": "待っ＿＿ありがとう。",
-          "clozePromptKana": "まっ＿＿ありがとう。",
-          "clozeMeaning": "謝謝你等我。",
+          "clozePrompt": "この仕事は今日中に終わり＿＿。",
+          "clozePromptKana": "このしごとはきょうじゅうにおわり＿＿。",
+          "clozeMeaning": "這工作看起來今天內不會結束。",
           "choices": [
-            "てくれて",
-            "てあげて",
-            "てもらって",
-            "てみて"
+            "そうにない",
+            "そうです",
+            "ようです",
+            "はずです"
           ],
-          "answer": "てくれて",
-          "explanation": "感謝對方為自己做某事，用「てくれてありがとう」。"
+          "answer": "そうにない",
+          "explanation": "從情況看不會結束，用「終わりそうにない」。"
         }
       },
-      "sourceDigest": "0e971c9b450d112cf9de314c5470d7fbee63e58d24a0f779038c27ad2004a2aa",
+      "sourceDigest": "e11104aba2ccc9d8064784432760bd925be20ceed9a466804383d1cdfc4c3d85",
       "reviewStatus": "approved-for-derived-bank",
       "reviewVersion": "17c8b-review-v1",
       "reviewMethod": "site-internal-editorial",
@@ -1817,15 +1817,15 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「待っ＿＿ありがとう。」自然，且唯一空格正是 〜てくれてありがとう 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「まっ＿＿ありがとう。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「謝謝你等我。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「てくれて」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「この仕事は今日中に終わり＿＿。」在題示中文「這工作看起來今天內不會結束。」下語法自然，空格位置要求選出「〜そうにない」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「このしごとはきょうじゅうにおわり＿＿。」與「この仕事は今日中に終わり＿＿。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「這工作看起來今天內不會結束。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「そうです」：「終わりそうです」是肯定推測，看起來會結束，與「看起來不會結束」的否定題意相反。；「ようです」：「終わりようです」接續錯誤；樣態「ようだ」須接普通形「終わるようです」，不能接ます形語幹「終わり」。；「はずです」：「終わりはずです」接續錯誤；「はず」須接辭書形「終わるはずです」，且表示有根據的預期，不是眼前樣態。；因此只有「そうにない」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「この仕事は今日中に終わり＿＿。」與完整假名「このしごとはきょうじゅうにおわり＿＿。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
-          "value": "てくれて",
+          "value": "そうにない",
           "acceptedAsCorrect": true,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-correct",
@@ -1833,30 +1833,30 @@
         },
         {
           "choiceIndex": 1,
-          "value": "てあげて",
+          "value": "そうです",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「てあげて」不符合本句「待っ［空格］ありがとう。」所要求的「〜てくれてありがとう」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「終わりそうです」是肯定推測，看起來會結束，與「看起來不會結束」的否定題意相反。"
         },
         {
           "choiceIndex": 2,
-          "value": "てもらって",
+          "value": "ようです",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「てもらって」不符合本句「待っ［空格］ありがとう。」所要求的「〜てくれてありがとう」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「終わりようです」接續錯誤；樣態「ようだ」須接普通形「終わるようです」，不能接ます形語幹「終わり」。"
         },
         {
           "choiceIndex": 3,
-          "value": "てみて",
+          "value": "はずです",
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「てみて」不符合本句「待っ［空格］ありがとう。」所要求的「〜てくれてありがとう」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「終わりはずです」接續錯誤；「はず」須接辭書形「終わるはずです」，且表示有根據的預期，不是眼前樣態。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜てくれてありがとう」目標清楚對齊；三個干擾項各自代入均不成立，答案「てくれて」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-268：正解「そうにない」可完整形成「この仕事は今日中に終わりそうにない。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n4-grammar-266",
@@ -1909,11 +1909,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「昨日、傘を持って行け＿＿。」自然，且唯一空格正是 〜ばよかった 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「きのう、かさをもっていけ＿＿。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「昨天要是帶傘去就好了。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「ばよかった」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「昨日、傘を持って行け＿＿。」在題示中文「昨天要是帶傘去就好了。」下語法自然，空格位置要求選出「〜ばよかった」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「きのう、かさをもっていけ＿＿。」與「昨日、傘を持って行け＿＿。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「昨天要是帶傘去就好了。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「ばいい」：「持って行けばいい」是現在提出「帶去就好」的建議，沒有對昨天未帶傘的後悔。；「てもいい」：「持って行けてもいい」的可能形接「てもいい」在此不自然，且許可語意不能表達過去反事實後悔。；「ことになった」：「持って行けことになった」的接續錯誤；「ことになった」須接辭書形，且表示安排而非後悔。；因此只有「ばよかった」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「昨日、傘を持って行け＿＿。」與完整假名「きのう、かさをもっていけ＿＿。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -1929,7 +1929,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ばいい」不符合本句「昨日、傘を持って行け［空格］。」所要求的「〜ばよかった」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「持って行けばいい」是現在提出「帶去就好」的建議，沒有對昨天未帶傘的後悔。"
         },
         {
           "choiceIndex": 2,
@@ -1937,7 +1937,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「てもいい」不符合本句「昨日、傘を持って行け［空格］。」所要求的「〜ばよかった」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「持って行けてもいい」的可能形接「てもいい」在此不自然，且許可語意不能表達過去反事實後悔。"
         },
         {
           "choiceIndex": 3,
@@ -1945,10 +1945,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「ことになった」不符合本句「昨日、傘を持って行け［空格］。」所要求的「〜ばよかった」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「持って行けことになった」的接續錯誤；「ことになった」須接辭書形，且表示安排而非後悔。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜ばよかった」目標清楚對齊；三個干擾項各自代入均不成立，答案「ばよかった」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-266：正解「ばよかった」可完整形成「昨日、傘を持って行けばよかった。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n4-grammar-272",
@@ -2001,11 +2001,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「先生は明日テストがある＿＿。」自然，且唯一空格正是 〜と言っている 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「せんせいはあしたてすとがある＿＿。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「老師說明天有考試。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「と言っています」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「先生は明日テストがある＿＿。」在題示中文「老師說明天有考試。」下語法自然，空格位置要求選出「〜と言っている」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「せんせいはあしたてすとがある＿＿。」與「先生は明日テストがある＿＿。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「老師說明天有考試。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「と思っています」：填入後主語成為老師，意思是「老師認為明天有考試」，不是引用老師對外說出的話。；「と聞いています」：填入後是「老師聽說明天有考試」，把老師變成傳聞接收者，與中文「老師說」相反。；「によっています」：「あるによっています」接續不成立；「による」也表示依據／原因，不能作直接引語標記。；因此只有「と言っています」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「先生は明日テストがある＿＿。」與完整假名「せんせいはあしたてすとがある＿＿。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -2021,7 +2021,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「と思っています」不符合本句「先生は明日テストがある［空格］。」所要求的「〜と言っている」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "填入後主語成為老師，意思是「老師認為明天有考試」，不是引用老師對外說出的話。"
         },
         {
           "choiceIndex": 2,
@@ -2029,7 +2029,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「と聞いています」不符合本句「先生は明日テストがある［空格］。」所要求的「〜と言っている」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "填入後是「老師聽說明天有考試」，把老師變成傳聞接收者，與中文「老師說」相反。"
         },
         {
           "choiceIndex": 3,
@@ -2037,10 +2037,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「によっています」不符合本句「先生は明日テストがある［空格］。」所要求的「〜と言っている」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「あるによっています」接續不成立；「による」也表示依據／原因，不能作直接引語標記。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜と言っている」目標清楚對齊；三個干擾項各自代入均不成立，答案「と言っています」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-272：正解「と言っています」可完整形成「先生は明日テストがあると言っています。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n4-grammar-275",
@@ -2093,11 +2093,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「環境問題＿＿話しましょう。」自然，且唯一空格正是 〜について 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「かんきょうもんだい＿＿はなしましょう。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「來談談環境問題吧。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「について」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「環境問題＿＿話しましょう。」在題示中文「來談談環境問題吧。」下語法自然，空格位置要求選出「〜について」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「かんきょうもんだい＿＿はなしましょう。」與「環境問題＿＿話しましょう。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「來談談環境問題吧。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「にとって」：「にとって」表示從環境問題的立場而言，不能用來標示「話す」所談論的主題。；「として」：「として」表示身分、資格或立場，把環境問題當身分不合此句的談論語意。；「によって」：「によって」表示手段、原因、依據或被動施事者，不能表示要談論的主題。；因此只有「について」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「環境問題＿＿話しましょう。」與完整假名「かんきょうもんだい＿＿はなしましょう。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -2113,7 +2113,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「にとって」不符合本句「環境問題［空格］話しましょう。」所要求的「〜について」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「にとって」表示從環境問題的立場而言，不能用來標示「話す」所談論的主題。"
         },
         {
           "choiceIndex": 2,
@@ -2121,7 +2121,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「として」不符合本句「環境問題［空格］話しましょう。」所要求的「〜について」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「として」表示身分、資格或立場，把環境問題當身分不合此句的談論語意。"
         },
         {
           "choiceIndex": 3,
@@ -2129,10 +2129,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「によって」不符合本句「環境問題［空格］話しましょう。」所要求的「〜について」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「によって」表示手段、原因、依據或被動施事者，不能表示要談論的主題。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜について」目標清楚對齊；三個干擾項各自代入均不成立，答案「について」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-275：正解「について」可完整形成「環境問題について話しましょう。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     },
     {
       "authoringId": "grammar-form-selection-n4-grammar-281",
@@ -2185,11 +2185,11 @@
         "display-kanji-kana-reviewed"
       ],
       "uniqueAnswerReviewed": true,
-      "promptAlignmentReview": "已逐句確認「だんだん暖か＿＿なりました。」自然，且唯一空格正是 〜くなる 的選形位置。",
-      "kanaAlignmentReview": "已逐字比對「だんだんあたたか＿＿なりました。」與漢字 prompt，讀音及唯一空格位置一致。",
-      "meaningAlignmentReview": "已確認中文「漸漸變暖了。」與日文句意及目標文法一致。",
-      "answerUniquenessReview": "四項逐一代入後，只有「く」能同時符合句法、活用與中文語意。",
-      "displayKanjiKanaReview": "已檢查顯示漢字與完整假名；不另改寫來源文字，兩者對應可辨讀。",
+      "promptAlignmentReview": "已確認「だんだん暖か＿＿なりました。」在題示中文「漸漸變暖了。」下語法自然，空格位置要求選出「〜くなる」對應形式。",
+      "kanaAlignmentReview": "已逐字核對「だんだんあたたか＿＿なりました。」與「だんだん暖か＿＿なりました。」的讀音、標點及空格位置完全對應。",
+      "meaningAlignmentReview": "已將四項代入並對照「漸漸變暖了。」；正解保留題示的時態、極性、接續及語用功能。",
+      "answerUniquenessReview": "逐項排除結果：「に」：い形容詞「暖かい」變化為副詞形須去「い」加「く」；「暖かに」不是現代標準活用。；「で」：「暖かで」不是い形容詞接「なる」的連用形，不能組成表示變暖的「暖かくなる」。；「な」：「な」是な形容詞連體修飾名詞的形式；「暖かい」是い形容詞，且後接「なる」不用「な」。；因此只有「く」同時符合接續與題示語意。",
+      "displayKanjiKanaReview": "已核對漢字 prompt「だんだん暖か＿＿なりました。」與完整假名「だんだんあたたか＿＿なりました。」，沒有改寫來源顯示。",
       "optionReviews": [
         {
           "choiceIndex": 0,
@@ -2205,7 +2205,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「に」不符合本句「だんだん暖か［空格］なりました。」所要求的「〜くなる」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "い形容詞「暖かい」變化為副詞形須去「い」加「く」；「暖かに」不是現代標準活用。"
         },
         {
           "choiceIndex": 2,
@@ -2213,7 +2213,7 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「で」不符合本句「だんだん暖か［空格］なりました。」所要求的「〜くなる」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「暖かで」不是い形容詞接「なる」的連用形，不能組成表示變暖的「暖かくなる」。"
         },
         {
           "choiceIndex": 3,
@@ -2221,10 +2221,10 @@
           "acceptedAsCorrect": false,
           "grammarFitReviewed": true,
           "languageReviewStatus": "reviewed-incorrect",
-          "incorrectReason": "「な」不符合本句「だんだん暖か［空格］なりました。」所要求的「〜くなる」文法形式，會使句法連接、時態或題示語意不成立。"
+          "incorrectReason": "「な」是な形容詞連體修飾名詞的形式；「暖かい」是い形容詞，且後接「なる」不用「な」。"
         }
       ],
-      "reviewerRationale": "選入此題是因 prompt、假名、中文與「〜くなる」目標清楚對齊；三個干擾項各自代入均不成立，答案「く」無第二合理解。"
+      "reviewerRationale": "選入 n4-grammar-281：正解「く」可完整形成「だんだん暖かくなりました。」；三個錯項已分別依實際助詞功能、活用、時態、接續或語意排除，無第二合理答案。"
     }
   ]
 }
