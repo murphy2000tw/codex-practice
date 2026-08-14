@@ -875,6 +875,59 @@ function createJapaneseJlptVocabularyDerivedCandidates(autoBank, semanticBank) {
   return candidates;
 }
 
+function adaptJapaneseJlptGrammarFormSelectionQuestion(question) {
+  const requiredStrings = ["id", "sourceQuestionId", "level", "section", "questionType", "sourceBank",
+    "prompt", "promptKana", "promptMeaning", "answerDisplay", "explanation", "grammarId", "grammar",
+    "grammarKana", "structure", "usage", "example", "exampleKana", "exampleMeaning", "category",
+    "kanjiPolicy", "reviewStatus", "reviewVersion", "reviewMethod", "sourceDigest", "derivationVersion"];
+  if (!question || typeof question !== "object" || requiredStrings.some((key) => !isNonEmptyString(question[key])) ||
+      !["N5", "N4"].includes(question.level) || question.section !== "grammar" ||
+      question.questionType !== "form-selection" || question.sourceBank !== "grammar.json" ||
+      question.derivationVersion !== "17c8b-v1" || question.reviewVersion !== "17c8b-review-v1" ||
+      question.reviewMethod !== "site-internal-editorial" || question.reviewStatus !== "approved-for-derived-bank" ||
+      question.uniqueAnswerReviewed !== true || !Array.isArray(question.options) || question.options.length !== 4 ||
+      question.options.some((option) => !isNonEmptyString(option)) || new Set(question.options).size !== 4 ||
+      !Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex > 3 ||
+      question.answerDisplay !== question.options[question.answerIndex] || !Array.isArray(question.optionReviews) ||
+      question.optionReviews.length !== 4 || !Array.isArray(question.rubyTerms))
+    throw new Error(`JLPT grammar form-selection question contract 不符：${question && question.id || "unknown"}`);
+  let correctReviews = 0;
+  question.optionReviews.forEach((review, index) => {
+    const correct = index === question.answerIndex;
+    if (!review || review.choiceIndex !== index || review.value !== question.options[index] ||
+        review.acceptedAsCorrect !== correct || review.grammarFitReviewed !== true ||
+        !isNonEmptyString(review.languageReviewStatus) ||
+        (correct ? review.incorrectReason !== null : !isNonEmptyString(review.incorrectReason)))
+      throw new Error(`JLPT grammar form-selection option review 未對齊：${question.id}`);
+    if (review.acceptedAsCorrect) correctReviews += 1;
+  });
+  if (correctReviews !== 1) throw new Error(`JLPT grammar form-selection 正解 review 數量無效：${question.id}`);
+  return deepCloneJapaneseJlptValue(question);
+}
+function createJapaneseJlptGrammarFormSelectionCandidates(bank) {
+  const inventory = bank && bank.inventory;
+  if (!bank || bank.schemaVersion !== "1.0.0" || bank.derivationVersion !== "17c8b-v1" ||
+      bank.manifestVersion !== "17c8b-v1" || bank.sourcePolicyVersion !== "full-canonical-source-v1" ||
+      !inventory || inventory.total !== 24 || !inventory.N5 || !inventory.N4 ||
+      inventory.N5["form-selection"] !== 12 || inventory.N5.total !== 12 ||
+      inventory.N4["form-selection"] !== 12 || inventory.N4.total !== 12 ||
+      !Array.isArray(bank.questions) || bank.questions.length !== 24)
+    throw new Error("JLPT grammar form-selection bank schema、version 或 inventory 無效");
+  const ids = new Set();
+  const sourceIds = new Set();
+  const candidates = bank.questions.map((question) => {
+    const candidate = adaptJapaneseJlptGrammarFormSelectionQuestion(question);
+    if (ids.has(candidate.id) || sourceIds.has(candidate.sourceQuestionId))
+      throw new Error("JLPT grammar form-selection id 或 sourceQuestionId 重複");
+    ids.add(candidate.id); sourceIds.add(candidate.sourceQuestionId);
+    return candidate;
+  });
+  for (const level of ["N5", "N4"])
+    if (candidates.filter((candidate) => candidate.level === level).length !== 12)
+      throw new Error(`JLPT grammar form-selection ${level} 必須恰好 12 題`);
+  return candidates;
+}
+
 function adaptJapaneseJlptSentenceCompositionQuestion(question) {
   const requiredStrings = ["id", "level", "before", "after", "completeSentence", "kana",
     "meaning", "explanation", "reviewNote"];
@@ -1343,6 +1396,7 @@ function createBalancedJapaneseJlptAnswerPositions(questionCount, randomIndexPro
 function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerIndex, randomIndexProvider = getJapaneseJlptRandomIndex) {
   if (
     !questionSnapshot ||
+    Object.prototype.hasOwnProperty.call(questionSnapshot, "optionPermutation") ||
     !Array.isArray(questionSnapshot.options) ||
     questionSnapshot.options.length !== 4 ||
     !Number.isInteger(questionSnapshot.answerIndex) ||
@@ -1374,6 +1428,10 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
   if (options.length !== 4 || options[targetAnswerIndex] !== randomizedSnapshot.options[originalAnswerIndex])
     throw new Error("JLPT 隨機化後正確選項無法解析");
   const originalIndexes = shuffledOptions.map((item) => item.originalIndex);
+  const originalIndexToRandomizedIndex = Array(4);
+  originalIndexes.forEach((originalIndex, randomizedIndex) => {
+    originalIndexToRandomizedIndex[originalIndex] = randomizedIndex;
+  });
   const reorder = (key) => {
     if (Array.isArray(randomizedSnapshot[key]))
       randomizedSnapshot[key] = originalIndexes.map((index) => randomizedSnapshot[key][index]);
@@ -1392,7 +1450,51 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
       ...reason, usageIndex: newIndexByOriginal.get(reason.usageIndex),
     }));
   }
-  return { ...randomizedSnapshot, options, answerIndex: targetAnswerIndex };
+  if (["form-selection", "sentence-composition"].includes(randomizedSnapshot.questionType)) {
+    let canonicalOptionIds;
+    if (randomizedSnapshot.questionType === "form-selection") {
+      if (!isNonEmptyString(randomizedSnapshot.sourceQuestionId) || !Array.isArray(randomizedSnapshot.optionReviews) ||
+          randomizedSnapshot.optionReviews.length !== 4 || randomizedSnapshot.optionReviews.some((review, index) =>
+            !review || review.choiceIndex !== index || review.value !== randomizedSnapshot.options[index]))
+        throw new Error("JLPT form-selection canonical option identity 無效");
+      canonicalOptionIds = randomizedSnapshot.options.map((_, index) =>
+        `${randomizedSnapshot.sourceQuestionId}#choice-${index}`);
+      reorder("optionReviews");
+      randomizedSnapshot.optionReviews = randomizedSnapshot.optionReviews.map((review, index) => ({
+        ...review, originalChoiceIndex: originalIndexes[index], choiceIndex: index,
+        canonicalOptionId: canonicalOptionIds[originalIndexes[index]],
+      }));
+    } else {
+      if (!Array.isArray(randomizedSnapshot.optionChunkIds) || !Array.isArray(randomizedSnapshot.chunks) ||
+          randomizedSnapshot.optionChunkIds.length !== 4 || randomizedSnapshot.chunks.length !== 4 ||
+          new Set(randomizedSnapshot.optionChunkIds).size !== 4 ||
+          randomizedSnapshot.optionChunkIds.some((id, index) => !isNonEmptyString(id) ||
+            !randomizedSnapshot.chunks[index] || randomizedSnapshot.chunks[index].id !== id ||
+            randomizedSnapshot.chunks[index].text !== randomizedSnapshot.options[index]) ||
+          !isNonEmptyString(randomizedSnapshot.correctChunkId) ||
+          randomizedSnapshot.optionChunkIds.filter((id) => id === randomizedSnapshot.correctChunkId).length !== 1 ||
+          !Array.isArray(randomizedSnapshot.canonicalChunkIds) || randomizedSnapshot.canonicalChunkIds.length !== 4 ||
+          new Set(randomizedSnapshot.canonicalChunkIds).size !== 4 ||
+          randomizedSnapshot.canonicalChunkIds.some((id) => !randomizedSnapshot.optionChunkIds.includes(id)))
+        throw new Error("JLPT sentence-composition chunk identity 無效");
+      canonicalOptionIds = randomizedSnapshot.optionChunkIds.slice();
+      reorder("optionChunkIds"); reorder("chunks");
+    }
+    const randomizedCanonicalOptionIds = originalIndexes.map((index) => canonicalOptionIds[index]);
+    const correctCanonicalOptionId = canonicalOptionIds[originalAnswerIndex];
+    randomizedSnapshot.optionPermutation = {
+      version: "17c8d-v1", randomizedIndexToOriginalIndex: originalIndexes,
+      originalIndexToRandomizedIndex, preRandomizationCanonicalOptionIds: canonicalOptionIds,
+      randomizedCanonicalOptionIds, correctCanonicalOptionId,
+      correctOriginalIndex: originalAnswerIndex, correctRandomizedIndex: targetAnswerIndex,
+    };
+    if (randomizedCanonicalOptionIds[targetAnswerIndex] !== correctCanonicalOptionId)
+      throw new Error("JLPT permutation metadata 與正解 identity 不一致");
+  }
+  const randomizedQuestion = { ...randomizedSnapshot, options, answerIndex: targetAnswerIndex };
+  if (["form-selection", "sentence-composition"].includes(randomizedSnapshot.questionType))
+    randomizedQuestion.answerDisplay = options[targetAnswerIndex];
+  return randomizedQuestion;
 }
 function createJapaneseJlptQuestionSnapshot(question) {
   return {
