@@ -874,6 +874,76 @@ function createJapaneseJlptVocabularyDerivedCandidates(autoBank, semanticBank) {
   if (candidates.length !== 108) throw new Error("JLPT derived inventory 總數不符");
   return candidates;
 }
+
+function adaptJapaneseJlptSentenceCompositionQuestion(question) {
+  const requiredStrings = ["id", "level", "before", "after", "completeSentence", "kana",
+    "meaning", "explanation", "reviewNote"];
+  if (!question || typeof question !== "object" ||
+      requiredStrings.some((key) => !isNonEmptyString(question[key])) ||
+      !["N5", "N4"].includes(question.level) ||
+      (Object.prototype.hasOwnProperty.call(question, "questionType") &&
+        question.questionType !== "sentence-composition") ||
+      !Array.isArray(question.chunks) || question.chunks.length !== 4 ||
+      question.chunks.some((chunk) => !chunk || !isNonEmptyString(chunk.id) || !isNonEmptyString(chunk.text)) ||
+      new Set(question.chunks.map((chunk) => chunk.id)).size !== 4 ||
+      new Set(question.chunks.map((chunk) => chunk.text)).size !== 4 ||
+      !Array.isArray(question.correctOrder) || question.correctOrder.length !== 4 ||
+      new Set(question.correctOrder).size !== 4 ||
+      !Number.isInteger(question.starSlot) || question.starSlot < 0 || question.starSlot > 3 ||
+      !Array.isArray(question.slots) || question.slots.length !== 4 ||
+      question.slots.filter((slot) => slot === "★").length !== 1 || question.slots[question.starSlot] !== "★" ||
+      question.slots.some((slot, index) => index !== question.starSlot && slot !== "") ||
+      !Array.isArray(question.grammarIds) || question.grammarIds.length === 0 ||
+      question.grammarIds.some((id) => !isNonEmptyString(id)) || question.uniqueAnswerReviewed !== true)
+    throw new Error("JLPT sentence-composition source question 無效");
+  const chunksById = new Map(question.chunks.map((chunk) => [chunk.id, chunk]));
+  if (question.correctOrder.some((id) => !chunksById.has(id)) || chunksById.size !== question.correctOrder.length)
+    throw new Error("JLPT sentence-composition correctOrder 不是完整 permutation");
+  const correctChunkId = question.correctOrder[question.starSlot];
+  if (!isNonEmptyString(correctChunkId) || question.chunks.filter((chunk) => chunk.id === correctChunkId).length !== 1)
+    throw new Error("JLPT sentence-composition correctChunkId 無法唯一解析");
+  const reconstructed = question.before + question.correctOrder.map((id) => chunksById.get(id).text).join("") + question.after;
+  if (reconstructed !== question.completeSentence)
+    throw new Error("JLPT sentence-composition completeSentence 無法重建");
+  const source = deepCloneJapaneseJlptValue(question);
+  const optionChunkIds = source.chunks.map((chunk) => chunk.id);
+  const options = source.chunks.map((chunk) => chunk.text);
+  const answerIndex = optionChunkIds.indexOf(correctChunkId);
+  if (answerIndex < 0 || optionChunkIds.filter((id) => id === correctChunkId).length !== 1)
+    throw new Error("JLPT sentence-composition answer 無法唯一解析");
+  return {
+    id: `jlpt-grammar-17c8c-${source.level.toLowerCase()}-sentence-composition-${source.id}`,
+    sourceQuestionId: source.id, level: source.level, section: "grammar",
+    questionType: "sentence-composition", sourceBank: "japaneseSentenceCompositionQuestions",
+    adapterVersion: "17c8c-v1", before: source.before, after: source.after, slots: source.slots,
+    chunks: source.chunks, correctOrder: source.correctOrder, starSlot: source.starSlot,
+    completeSentence: source.completeSentence, kana: source.kana, meaning: source.meaning,
+    explanation: source.explanation, grammarIds: source.grammarIds,
+    uniqueAnswerReviewed: source.uniqueAnswerReviewed, reviewNote: source.reviewNote,
+    originalText: source.completeSentence,
+    displayText: `${source.before}${source.slots.map((slot) => slot === "★" ? "★" : "＿").join(" ")}${source.after}`,
+    options, optionChunkIds, canonicalChunkIds: source.correctOrder.slice(), correctChunkId,
+    answerIndex, answerDisplay: options[answerIndex], kanjiPolicy: "source-display-and-kana-preserved",
+    rubyTerms: [], reviewStatus: "approved-from-batch16d3-evidence", reviewVersion: "16d3-final-v2",
+    chunkIdentityVersion: "17c8c-chunk-identity-v1",
+  };
+}
+function createJapaneseJlptSentenceCompositionCandidates(sourceBank) {
+  if (!Array.isArray(sourceBank) || sourceBank.length !== 60)
+    throw new Error("JLPT sentence-composition bank 必須恰好 60 題");
+  const ids = new Set();
+  const candidates = sourceBank.map((question) => {
+    if (question && ids.has(question.id)) throw new Error("JLPT sentence-composition source id 重複");
+    if (question) ids.add(question.id);
+    return adaptJapaneseJlptSentenceCompositionQuestion(question);
+  });
+  for (const level of ["N5", "N4"])
+    if (candidates.filter((candidate) => candidate.level === level).length !== 30)
+      throw new Error(`JLPT sentence-composition ${level} 必須恰好 30 題`);
+  if (new Set(candidates.map((candidate) => candidate.id)).size !== 60)
+    throw new Error("JLPT sentence-composition candidate id 重複");
+  return candidates;
+}
 const JAPANESE_JLPT_PROFILE_REGISTRY = deepFreezeJapaneseJlptValue({
   schemaVersion: 1,
   profiles: {
