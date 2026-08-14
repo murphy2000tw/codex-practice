@@ -1,0 +1,1995 @@
+{
+  "schemaVersion": "1.0.0",
+  "derivationVersion": "17c8b-v1",
+  "manifestVersion": "17c8b-v1",
+  "sourcePolicyVersion": "full-canonical-source-v1",
+  "disclaimer": "Site-internal JLPT-style material; not official JLPT questions, not officially certified, and not reviewed by a professional Japanese testing organization; site-internal-editorial-reviewed.",
+  "generatedFrom": [
+    "grammar.json",
+    "japaneseJlptGrammarFormSelectionReviewManifest.json"
+  ],
+  "inventory": {
+    "N5": {
+      "form-selection": 12,
+      "total": 12
+    },
+    "N4": {
+      "form-selection": 12,
+      "total": 12
+    },
+    "total": 24,
+    "seedCapacity": true,
+    "productQuota": false,
+    "note": "seed capacity; not a product quota"
+  },
+  "questions": [
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-004",
+      "sourceQuestionId": "grammar.json#n5-grammar-004",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-004"
+      ],
+      "originalText": "七時＿＿起きます。",
+      "displayText": "七時＿＿起きます。",
+      "prompt": "七時＿＿起きます。",
+      "promptKana": "しちじ＿＿おきます。",
+      "promptMeaning": "我七點起床。",
+      "options": [
+        "に",
+        "で",
+        "へ",
+        "から"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "に",
+      "explanation": "具體時間後面常接「に」，表示動作發生的時間。",
+      "grammarId": "n5-grammar-004",
+      "grammar": "に（時間）",
+      "grammarKana": "に",
+      "structure": "時間名詞 + に + 動詞",
+      "usage": "用在幾點、星期幾、日期等明確時間後面。",
+      "example": "七時に起きます。",
+      "exampleKana": "しちじにおきます。",
+      "exampleMeaning": "我七點起床。",
+      "category": "助詞",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "5d64543bdafd445c24a07f70c103d4b1c9ed29276d2db01850b4952162c7434e",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "に",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "で",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「で」可標示動作場所或手段，不能標示「七時」這個動作發生的具體時點。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "へ",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「へ」標示移動方向；「七時」是時間而非目的方向，不能接在「起きます」前表示起床時刻。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "から",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「七時から起きます」表示從七點起持續處於起床／開始起床的語意，不是題意所指七點這一時點起床。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-007",
+      "sourceQuestionId": "grammar.json#n5-grammar-007",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-007"
+      ],
+      "originalText": "図書館＿＿勉強します。",
+      "displayText": "図書館＿＿勉強します。",
+      "prompt": "図書館＿＿勉強します。",
+      "promptKana": "としょかん＿＿べんきょうします。",
+      "promptMeaning": "我在圖書館讀書。",
+      "options": [
+        "で",
+        "に",
+        "へ",
+        "を"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "で",
+      "explanation": "動作進行的場所用「で」，讀書發生在圖書館。",
+      "grammarId": "n5-grammar-007",
+      "grammar": "で（場所）",
+      "grammarKana": "で",
+      "structure": "地點 + で + 動作動詞",
+      "usage": "說明動作在哪裡發生。",
+      "example": "図書館で勉強します。",
+      "exampleKana": "としょかんでべんきょうします。",
+      "exampleMeaning": "我在圖書館讀書。",
+      "category": "助詞",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "c5dfc23497b336fcb2bb2f6d12dae754bfe13a421cf0274e3231777a0a5955a7",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "で",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "に",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「に」可標示存在位置或到達點，但「勉強します」是場所內進行的動作，應用「で」標示動作場所。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "へ",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「へ」標示移動方向，句中沒有移動動詞，不能表示在圖書館進行讀書。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "を",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「を」在此會把「図書館」當受詞或通過場所；「勉強する」不以圖書館為受詞，題意也不是穿越圖書館。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-012",
+      "sourceQuestionId": "grammar.json#n5-grammar-012",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-012"
+      ],
+      "originalText": "これは私＿＿本です。",
+      "displayText": "これは私＿＿本です。",
+      "prompt": "これは私＿＿本です。",
+      "promptKana": "これはわたし＿＿ほんです。",
+      "promptMeaning": "這是我的書。",
+      "options": [
+        "の",
+        "な",
+        "と",
+        "が"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "の",
+      "explanation": "「の」表示所屬，私の本就是我的書。",
+      "grammarId": "n5-grammar-012",
+      "grammar": "の（所屬）",
+      "grammarKana": "の",
+      "structure": "名詞 + の + 名詞",
+      "usage": "用來說明後面名詞屬於誰，或和前面名詞有關。",
+      "example": "これは私の本です。",
+      "exampleKana": "これはわたしのほんです。",
+      "exampleMeaning": "這是我的書。",
+      "category": "助詞",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "33b5c76e824c636eaa8dfdcec9f43575a1d8c84eeff7121b69f1dec023b92695",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "の",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "な",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「な」只在な形容詞連體修飾名詞時使用；「私」是代名詞，不能用「私な本」表所屬。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "と",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「と」表示並列、共同對象或引用，不能把「私」與「本」連成所有關係。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "が",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「が」標示主語，但放在「私」後會形成未完的主語子句，不能表達「我的書」。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-019",
+      "sourceQuestionId": "grammar.json#n5-grammar-019",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-019"
+      ],
+      "originalText": "部屋に椅子が＿＿。",
+      "displayText": "部屋に椅子が＿＿。",
+      "prompt": "部屋に椅子が＿＿。",
+      "promptKana": "へやにいすが＿＿。",
+      "promptMeaning": "房間裡有椅子。",
+      "options": [
+        "あります",
+        "います",
+        "です",
+        "します"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "あります",
+      "explanation": "無生命物品的存在用「あります」。",
+      "grammarId": "n5-grammar-019",
+      "grammar": "あります",
+      "grammarKana": "あります",
+      "structure": "地點 + に + 名詞 + が + あります",
+      "usage": "用於說「有某物」或「某物在某處」。",
+      "example": "部屋に椅子があります。",
+      "exampleKana": "へやにいすがあります。",
+      "exampleMeaning": "房間裡有椅子。",
+      "category": "存在句",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "8e20159e223090e5017fdc3d64e520d7ec24ac3825f9b1b30aef13e5f55948f5",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "あります",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "います",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「います」用於人或動物等有生命者；「椅子」是無生命物，存在動詞應用「あります」。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "です",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「椅子がです」無法成立，判斷助動詞「です」不能直接接在主格助詞「が」後表存在。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "します",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「します」表示做某動作；椅子不是此句的動作者，且它不能取代表示無生命物存在的「あります」。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-023",
+      "sourceQuestionId": "grammar.json#n5-grammar-023",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-023"
+      ],
+      "originalText": "この店は＿＿です。",
+      "displayText": "この店は＿＿です。",
+      "prompt": "この店は＿＿です。",
+      "promptKana": "このみせは＿＿です。",
+      "promptMeaning": "這家店很便宜。",
+      "options": [
+        "安い",
+        "安くない",
+        "安かった",
+        "安くなかった"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "安い",
+      "explanation": "い形容詞現在肯定直接用原形接「です」。",
+      "grammarId": "n5-grammar-023",
+      "grammar": "い形容詞現在肯定",
+      "grammarKana": "いけいようしげんざいこうてい",
+      "structure": "い形容詞 + です",
+      "usage": "用來禮貌地描述人事物的性質。",
+      "example": "この店は安いです。",
+      "exampleKana": "このみせはやすいです。",
+      "exampleMeaning": "這家店很便宜。",
+      "category": "形容詞",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "ea34004d7a563cadd6dd65c074485264060fe9277c176e6ee2edb09a064b73b6",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "安い",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "安くない",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「安くない」是現在否定，表示「不便宜」，與中文題意「很便宜」相反。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "安かった",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「安かった」是過去肯定，表示以前便宜，與題目陳述店家現在很便宜的時態不符。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "安くなかった",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「安くなかった」是過去否定，兼具過去時與否定，與現在肯定題意均不一致。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-024",
+      "sourceQuestionId": "grammar.json#n5-grammar-024",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-024"
+      ],
+      "originalText": "この靴は＿＿です。",
+      "displayText": "この靴は＿＿です。",
+      "prompt": "この靴は＿＿です。",
+      "promptKana": "このくつは＿＿です。",
+      "promptMeaning": "這雙鞋不貴。",
+      "options": [
+        "高くない",
+        "高い",
+        "高かった",
+        "高くなかった"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "高くない",
+      "explanation": "い形容詞現在否定要把「い」改成「くない」。",
+      "grammarId": "n5-grammar-024",
+      "grammar": "い形容詞否定",
+      "grammarKana": "いけいようしひてい",
+      "structure": "い形容詞去い + くないです",
+      "usage": "用來禮貌地說「不……」。",
+      "example": "この靴は高くないです。",
+      "exampleKana": "このくつはたかくないです。",
+      "exampleMeaning": "這雙鞋不貴。",
+      "category": "形容詞",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "0f6a9dc81c81edc7d801fde8949cbc5cc102d3c903b22c20e1cb1f9efd59a4dc",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "高くない",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "高い",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「高い」是現在肯定形，意思是「貴」，與中文題意「不貴」的否定極性相反。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "高かった",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「高かった」是過去肯定形，既缺少否定，也把題目的現在狀態改成過去。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "高くなかった",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「高くなかった」是過去否定形，表示「以前不貴」，與題目要求的現在否定不一致。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-031",
+      "sourceQuestionId": "grammar.json#n5-grammar-031",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-031"
+      ],
+      "originalText": "毎朝コーヒーを＿＿。",
+      "displayText": "毎朝コーヒーを＿＿。",
+      "prompt": "毎朝コーヒーを＿＿。",
+      "promptKana": "まいあさこーひーを＿＿。",
+      "promptMeaning": "我每天早上喝咖啡。",
+      "options": [
+        "飲みます",
+        "飲みません",
+        "飲みました",
+        "飲みませんでした"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "飲みます",
+      "explanation": "習慣或現在肯定的禮貌動詞用「ます形」。",
+      "grammarId": "n5-grammar-031",
+      "grammar": "ます形",
+      "grammarKana": "ますけい",
+      "structure": "動詞ます形",
+      "usage": "用來禮貌地描述習慣、現在或未來的動作。",
+      "example": "毎朝コーヒーを飲みます。",
+      "exampleKana": "まいあさこーひーをのみます。",
+      "exampleMeaning": "我每天早上喝咖啡。",
+      "category": "動詞",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "641b41fea7c9475561a9796c2d9f11fa5d3d80bb88dbf6cc88876fcf03a0e117",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "飲みます",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "飲みません",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「飲みません」是現在／習慣否定，表示每天早上不喝，與題意「喝咖啡」相反。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "飲みました",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「飲みました」是單純過去肯定，與「毎朝」所表達的現在習慣及中文題意不一致。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "飲みませんでした",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「飲みませんでした」是過去否定，表示過去沒喝，既違反肯定題意也不合現在習慣。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-039",
+      "sourceQuestionId": "grammar.json#n5-grammar-039",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-039"
+      ],
+      "originalText": "朝ご飯を＿＿、学校へ行きます。",
+      "displayText": "朝ご飯を＿＿、学校へ行きます。",
+      "prompt": "朝ご飯を＿＿、学校へ行きます。",
+      "promptKana": "あさごはんを＿＿、がっこうへいきます。",
+      "promptMeaning": "我吃早餐後去學校。",
+      "options": [
+        "食べて",
+        "食べます",
+        "食べた",
+        "食べない"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "食べて",
+      "explanation": "連接動作順序時可用動詞て形。",
+      "grammarId": "n5-grammar-039",
+      "grammar": "て形",
+      "grammarKana": "てけい",
+      "structure": "動詞て形",
+      "usage": "常用來連接動作，也會出現在「ください、います」等句型前。",
+      "example": "朝ご飯を食べて、学校へ行きます。",
+      "exampleKana": "あさごはんをたべて、がっこうへいきます。",
+      "exampleMeaning": "我吃早餐後去學校。",
+      "category": "動詞",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "7751860b76752e30b8d9f519d57755bf6314902733132250f80a824ac52790ee",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "食べて",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "食べます",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「食べます」是禮貌終止形，不能在此直接用逗號銜接後續的「学校へ行きます」。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "食べた",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "裸た形在此沒有接續助詞，不能用來順接「吃早餐」與「去學校」兩個動作。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "食べない",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「食べない」是否定終止形，既未使用て形銜接下一動作，也把「吃早餐後」改成不吃早餐。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-040",
+      "sourceQuestionId": "grammar.json#n5-grammar-040",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-040"
+      ],
+      "originalText": "ここに名前を＿＿。",
+      "displayText": "ここに名前を＿＿。",
+      "prompt": "ここに名前を＿＿。",
+      "promptKana": "ここになまえを＿＿。",
+      "promptMeaning": "請在這裡寫名字。",
+      "options": [
+        "書いてください",
+        "書かないでください",
+        "書きましょう",
+        "書きませんか"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "書いてください",
+      "explanation": "請求對方做某事用「てください」。",
+      "grammarId": "n5-grammar-040",
+      "grammar": "てください",
+      "grammarKana": "てください",
+      "structure": "動詞て形 + ください",
+      "usage": "用來提出禮貌請求或指示。",
+      "example": "ここに名前を書いてください。",
+      "exampleKana": "ここになまえをかいてください。",
+      "exampleMeaning": "請在這裡寫名字。",
+      "category": "請求",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "ad10b5f9d3c85edf93b4b695909def635d7af2dfb5fbb7141c9f4f7f2eb8499a",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "書いてください",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "書かないでください",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「書かないでください」是禁止／請求不寫，與中文「請寫名字」的肯定請求相反。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "書きましょう",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「書きましょう」是提議大家一起寫，不是請對方在指定位置填寫名字的請求。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "書きませんか",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「書きませんか」是邀請或詢問對方要不要寫，語氣功能不同於題意的直接禮貌請求。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-043",
+      "sourceQuestionId": "grammar.json#n5-grammar-043",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-043"
+      ],
+      "originalText": "＿＿昼ご飯を食べました。",
+      "displayText": "＿＿昼ご飯を食べました。",
+      "prompt": "＿＿昼ご飯を食べました。",
+      "promptKana": "＿＿ひるごはんをたべました。",
+      "promptMeaning": "我已經吃午餐了。",
+      "options": [
+        "もう",
+        "まだ",
+        "ときどき",
+        "いちばん"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "もう",
+      "explanation": "「もう」表示動作已經完成。",
+      "grammarId": "n5-grammar-043",
+      "grammar": "もう",
+      "grammarKana": "もう",
+      "structure": "もう + 動詞ました",
+      "usage": "常和過去形一起用，表示動作已完成。",
+      "example": "もう昼ご飯を食べました。",
+      "exampleKana": "もうひるごはんをたべました。",
+      "exampleMeaning": "我已經吃午餐了。",
+      "category": "經驗／完成",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "556668f008e7fec9eda7109f2f2e225e37da780964f433180c2a74154333d184",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "もう",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "まだ",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「まだ」若搭配肯定過去「食べました」會是「仍然吃了」的不合題意組合；表示「還沒吃」須接否定。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "ときどき",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「ときどき」表示有時候的頻率，不能表達午餐已經完成的完成相。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "いちばん",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「いちばん」表示最高程度，不能修飾「食べました」來表達「已經」。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-047",
+      "sourceQuestionId": "grammar.json#n5-grammar-047",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-047"
+      ],
+      "originalText": "東京は大阪＿＿大きいです。",
+      "displayText": "東京は大阪＿＿大きいです。",
+      "prompt": "東京は大阪＿＿大きいです。",
+      "promptKana": "とうきょうはおおさか＿＿おおきいです。",
+      "promptMeaning": "東京比大阪大。",
+      "options": [
+        "より",
+        "のほうが",
+        "から",
+        "まで"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "より",
+      "explanation": "比較基準後接「より」，表示「比……」。",
+      "grammarId": "n5-grammar-047",
+      "grammar": "より",
+      "grammarKana": "より",
+      "structure": "名詞A + は + 名詞B + より + 形容詞です",
+      "usage": "說明 A 比 B 更如何。",
+      "example": "東京は大阪より大きいです。",
+      "exampleKana": "とうきょうはおおさかよりおおきいです。",
+      "exampleMeaning": "東京比大阪大。",
+      "category": "比較",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "0b1eafb9975b857a640aed4a960ebd4c3d81f5ff376af363af12820924da963e",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "より",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "のほうが",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "填入後成為「東京は大阪のほうが大きい」，會把較大的對象指向大阪，與「東京比大阪大」相反。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "から",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「から」表示起點或原因，不能放在比較基準「大阪」後建立大小比較。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "まで",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「まで」表示終點或界限，不能標示比較基準，也無法表達「比大阪大」。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n5-form-selection-n5-grammar-049",
+      "sourceQuestionId": "grammar.json#n5-grammar-049",
+      "level": "N5",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n5-grammar-049"
+      ],
+      "originalText": "クラスで山田さんが＿＿元気です。",
+      "displayText": "クラスで山田さんが＿＿元気です。",
+      "prompt": "クラスで山田さんが＿＿元気です。",
+      "promptKana": "くらすでやまださんが＿＿げんきです。",
+      "promptMeaning": "班上山田同學最有精神。",
+      "options": [
+        "いちばん",
+        "より",
+        "ときどき",
+        "まだ"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "いちばん",
+      "explanation": "「いちばん」表示最高程度，也就是「最」。",
+      "grammarId": "n5-grammar-049",
+      "grammar": "いちばん",
+      "grammarKana": "いちばん",
+      "structure": "範圍 + で + 名詞 + が + いちばん + 形容詞です",
+      "usage": "在某個範圍內選出程度最高的人事物。",
+      "example": "クラスで山田さんがいちばん元気です。",
+      "exampleKana": "くらすでやまださんがいちばんげんきです。",
+      "exampleMeaning": "班上山田同學最有精神。",
+      "category": "最高級",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "9ff9ae1f476b867a2bdc70bcbe39ac1e297b2f40903a927bd139121c1dfb378e",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "いちばん",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "より",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「より」需要前接比較基準，單獨置於「山田さんが」與「元気」之間缺少基準名詞，不能表示班上最有精神。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "ときどき",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「ときどき」是頻率副詞，不能修飾「元気」來表示班級內的最高程度。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "まだ",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「まだ」表示仍然／尚未，不具最高級功能，與中文的「最有精神」不符。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-241",
+      "sourceQuestionId": "grammar.json#n4-grammar-241",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-241"
+      ],
+      "originalText": "この料理を少し食べ＿＿。",
+      "displayText": "この料理を少し食べ＿＿。",
+      "prompt": "この料理を少し食べ＿＿。",
+      "promptKana": "このりょうりをすこしたべ＿＿。",
+      "promptMeaning": "我試著吃一點這道菜。",
+      "options": [
+        "てみます",
+        "ています",
+        "てあります",
+        "ていきます"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "てみます",
+      "explanation": "表示試著做某事，用「動詞て形 + みる」。",
+      "grammarId": "n4-grammar-241",
+      "grammar": "〜てみる",
+      "grammarKana": "てみる",
+      "structure": "動詞て形 + みる",
+      "usage": "表示先試做看看。",
+      "example": "新しい靴を履いてみます。",
+      "exampleKana": "あたらしいくつをはいてみます。",
+      "exampleMeaning": "我試穿新鞋。",
+      "category": "動詞變化",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "79c40cfeead1057366f9ad2f4b0a3c2e1881fdb6416452baabcdecbece3ecf1e",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "てみます",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "ています",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「食べています」表示正在吃或習慣狀態，不含「試著做看看」的嘗試語意。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "てあります",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「食べてあります」表示人為完成後留下的結果狀態，不能描述說話者試吃料理。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "ていきます",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「食べていきます」表示吃了再走或從現在持續吃下去，不是嘗試吃一點。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-246",
+      "sourceQuestionId": "grammar.json#n4-grammar-246",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-246"
+      ],
+      "originalText": "傘を持た＿＿出ました。",
+      "displayText": "傘を持た＿＿出ました。",
+      "prompt": "傘を持た＿＿出ました。",
+      "promptKana": "かさをもた＿＿でました。",
+      "promptMeaning": "我沒帶傘就出門了。",
+      "options": [
+        "ずに",
+        "ないと",
+        "ながら",
+        "ために"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "ずに",
+      "explanation": "表示不做「持つ」就出門，用「持たずに」。",
+      "grammarId": "n4-grammar-246",
+      "grammar": "〜ずに",
+      "grammarKana": "ずに",
+      "structure": "動詞ない形去い + ずに／する→せずに",
+      "usage": "表示不做前項而做後項。",
+      "example": "朝ご飯を食べずに出かけました。",
+      "exampleKana": "あさごはんをたべずにでかけました。",
+      "exampleMeaning": "我沒吃早餐就出門了。",
+      "category": "動詞變化",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "9e40c92afe37268aaabe9946da1b8aeb6f048d3d48f8d0def9a5be42c6ac721b",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "ずに",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "ないと",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「持たないと出ました」缺少「いけない」等條件結果，不能表示沒帶傘就出門。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "ながら",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "接續助詞「ながら」須接動詞ます形「持ちながら」，不能接未然形「持た」。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "ために",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「ために」接動詞普通形或名詞，不接「持た」；而且它表示目的／原因，不表示未做前項。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-248",
+      "sourceQuestionId": "grammar.json#n4-grammar-248",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-248"
+      ],
+      "originalText": "来年、日本へ留学する＿＿です。",
+      "displayText": "来年、日本へ留学する＿＿です。",
+      "prompt": "来年、日本へ留学する＿＿です。",
+      "promptKana": "らいねん、にほんへりゅうがくする＿＿です。",
+      "promptMeaning": "明年我打算去日本留學。",
+      "options": [
+        "つもり",
+        "ため",
+        "ところ",
+        "はず"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "つもり",
+      "explanation": "表示自己的打算時，用「〜つもりです」。",
+      "grammarId": "n4-grammar-248",
+      "grammar": "〜つもりだ",
+      "grammarKana": "つもりだ",
+      "structure": "動詞辞書形／ない形 + つもりだ",
+      "usage": "表示說話者已經有的計畫或打算。",
+      "example": "週末は家で休むつもりです。",
+      "exampleKana": "しゅうまつはいえでやすむつもりです。",
+      "exampleMeaning": "週末我打算在家休息。",
+      "category": "希望",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "6133e80dab7d05f6b21a9495fdf0f2c0ad267e84429a5b745d44e65a4c668de5",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "つもり",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "ため",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「留学するためです」會把留學解作某事的目的，卻沒有交代為了留學而做的主句，也不表示本人打算。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "ところ",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「留学するところです」表示正要留學的動作階段，與「来年」的未來計畫及中文「打算」不符。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "はず",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「留学するはずです」表示基於依據的預期「應該會留學」，不是說話者自己的意向。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-250",
+      "sourceQuestionId": "grammar.json#n4-grammar-250",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-250"
+      ],
+      "originalText": "健康のために、夜遅く食べない＿＿。",
+      "displayText": "健康のために、夜遅く食べない＿＿。",
+      "prompt": "健康のために、夜遅く食べない＿＿。",
+      "promptKana": "けんこうのために、よるおそくたべない＿＿。",
+      "promptMeaning": "為了健康，我決定晚上不晚吃。",
+      "options": [
+        "ことにしています",
+        "ことになります",
+        "ことができます",
+        "ことがあります"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "ことにしています",
+      "explanation": "自己決定並持續實行時，用「〜ことにしている」。",
+      "grammarId": "n4-grammar-250",
+      "grammar": "〜ことにしている",
+      "grammarKana": "ことにしている",
+      "structure": "動詞辞書形／ない形 + ことにしている",
+      "usage": "表示自己長期決定並持續做某事。",
+      "example": "毎朝、散歩することにしています。",
+      "exampleKana": "まいあさ、さんぽすることにしています。",
+      "exampleMeaning": "我決定每天早上散步，並一直這樣做。",
+      "category": "決定・結果",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "d3d8632db41e126095ba48bb4d0ab8c367396d34a2b3a28747d3c44e67110fdb",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "ことにしています",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "ことになります",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「ことになります」表示由外在安排形成的決定，不能表達說話者為健康自行決定並持續實行。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "ことができます",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「食べないことができます」只表示有能力不吃，沒有「已決定成為習慣」的意思。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "ことがあります",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「食べないことがあります」表示偶爾不吃，與為健康制定並持續遵守的規則不同。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-257",
+      "sourceQuestionId": "grammar.json#n4-grammar-257",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-257"
+      ],
+      "originalText": "熱がありますから、病院へ行った＿＿です。",
+      "displayText": "熱がありますから、病院へ行った＿＿です。",
+      "prompt": "熱がありますから、病院へ行った＿＿です。",
+      "promptKana": "ねつがありますから、びょういんへいった＿＿です。",
+      "promptMeaning": "因為發燒，最好去醫院。",
+      "options": [
+        "ほうがいい",
+        "ことがある",
+        "つもりです",
+        "予定です"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "ほうがいい",
+      "explanation": "給建議時用「動詞た形 + ほうがいい」。",
+      "grammarId": "n4-grammar-257",
+      "grammar": "〜ほうがいい",
+      "grammarKana": "ほうがいい",
+      "structure": "動詞た形 + ほうがいい",
+      "usage": "給對方建議做某事。",
+      "example": "早く寝たほうがいいです。",
+      "exampleKana": "はやくねたほうがいいです。",
+      "exampleMeaning": "最好早點睡。",
+      "category": "其他",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "719833839dac3152932e928057c91cedfd8455035c552f959dd30e09035ca1ee",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "ほうがいい",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "ことがある",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「行ったことがある」表示曾去過醫院的經驗，不能在發燒情境中給出「最好去」的建議。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "つもりです",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「行ったつもりです」表示自認已做或假裝已去，且不是針對發燒提出建議。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "予定です",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「行った予定です」以た形接「予定」不自然；預定應用辭書形，且題意是建議而非既定行程。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-258",
+      "sourceQuestionId": "grammar.json#n4-grammar-258",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-258"
+      ],
+      "originalText": "今日は無理をし＿＿。",
+      "displayText": "今日は無理をし＿＿。",
+      "prompt": "今日は無理をし＿＿。",
+      "promptKana": "きょうはむりをし＿＿。",
+      "promptMeaning": "今天最好不要勉強自己。",
+      "options": [
+        "ないほうがいいです",
+        "たほうがいいです",
+        "てもいいです",
+        "なければなりません"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "ないほうがいいです",
+      "explanation": "建議不要做時，用「ない形 + ほうがいい」。",
+      "grammarId": "n4-grammar-258",
+      "grammar": "〜ないほうがいい",
+      "grammarKana": "ないほうがいい",
+      "structure": "動詞ない形 + ほうがいい",
+      "usage": "建議對方不要做某事。",
+      "example": "夜遅くコーヒーを飲まないほうがいいです。",
+      "exampleKana": "よるおそくこーひーをのまないほうがいいです。",
+      "exampleMeaning": "晚上晚一點最好不要喝咖啡。",
+      "category": "其他",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "7e30910fb067a149331388c6e22c787f727a3678ec3426b53687bc3b46f68ef4",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "ないほうがいいです",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "たほうがいいです",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "接成「無理をしたほうがいい」是建議勉強自己，與中文「最好不要勉強」方向相反。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "てもいいです",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「無理をしてもいい」表示即使勉強／允許勉強也可以，不是勸告避免勉強。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "なければなりません",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「無理をしなければなりません」表示必須勉強自己，義務語意與否定建議完全相反。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-260",
+      "sourceQuestionId": "grammar.json#n4-grammar-260",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-260"
+      ],
+      "originalText": "明日は早く来＿＿です。",
+      "displayText": "明日は早く来＿＿です。",
+      "prompt": "明日は早く来＿＿です。",
+      "promptKana": "あしたははやくこ＿＿です。",
+      "promptMeaning": "明天不用早點來也沒關係。",
+      "options": [
+        "なくても大丈夫",
+        "なければならない",
+        "ても大丈夫",
+        "ないでください"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "なくても大丈夫",
+      "explanation": "表示不必早來也沒問題，用「なくても大丈夫」。",
+      "grammarId": "n4-grammar-260",
+      "grammar": "〜なくても大丈夫",
+      "grammarKana": "なくてもだいじょうぶ",
+      "structure": "動詞ない形 + くても大丈夫",
+      "usage": "表示不做某事也沒有問題。",
+      "example": "予約しなくても大丈夫です。",
+      "exampleKana": "よやくしなくてもだいじょうぶです。",
+      "exampleMeaning": "不用預約也沒關係。",
+      "category": "義務・許可",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "76ca79fda7519d834841bb1c2ccd134259ce0a615b0af6676294ba3b3f40c7ea",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "なくても大丈夫",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "なければならない",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「来なければならない」表示必須早點來，與題意「不用早點來」的非必要語意相反。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "ても大丈夫",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "接成「来ても大丈夫」只表示來也沒關係，沒有否定「早く来る」這件事的必要性。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "ないでください",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「来ないでください」是請對方不要來，題意則允許來、只是不要求早來，禁止範圍不同。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-266",
+      "sourceQuestionId": "grammar.json#n4-grammar-266",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-266"
+      ],
+      "originalText": "昨日、傘を持って行け＿＿。",
+      "displayText": "昨日、傘を持って行け＿＿。",
+      "prompt": "昨日、傘を持って行け＿＿。",
+      "promptKana": "きのう、かさをもっていけ＿＿。",
+      "promptMeaning": "昨天要是帶傘去就好了。",
+      "options": [
+        "ばよかった",
+        "ばいい",
+        "てもいい",
+        "ことになった"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "ばよかった",
+      "explanation": "對過去的選擇後悔時，用「ばよかった」。",
+      "grammarId": "n4-grammar-266",
+      "grammar": "〜ばよかった",
+      "grammarKana": "ばよかった",
+      "structure": "動詞ば形 + よかった",
+      "usage": "表示對過去沒做某事感到後悔。",
+      "example": "もっと早く起きればよかったです。",
+      "exampleKana": "もっとはやくおきればよかったです。",
+      "exampleMeaning": "要是更早起床就好了。",
+      "category": "條件",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "86d478043d0f032b17191480f87b821ec69942f99cd71f0c1a0a482ed5feeb94",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "ばよかった",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "ばいい",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「持って行けばいい」是現在提出「帶去就好」的建議，沒有對昨天未帶傘的後悔。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "てもいい",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「持って行けてもいい」的可能形接「てもいい」在此不自然，且許可語意不能表達過去反事實後悔。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "ことになった",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「持って行けことになった」的接續錯誤；「ことになった」須接辭書形，且表示安排而非後悔。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-268",
+      "sourceQuestionId": "grammar.json#n4-grammar-268",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-268"
+      ],
+      "originalText": "この仕事は今日中に終わり＿＿。",
+      "displayText": "この仕事は今日中に終わり＿＿。",
+      "prompt": "この仕事は今日中に終わり＿＿。",
+      "promptKana": "このしごとはきょうじゅうにおわり＿＿。",
+      "promptMeaning": "這工作看起來今天內不會結束。",
+      "options": [
+        "そうにない",
+        "そうです",
+        "ようです",
+        "はずです"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "そうにない",
+      "explanation": "從情況看不會結束，用「終わりそうにない」。",
+      "grammarId": "n4-grammar-268",
+      "grammar": "〜そうにない",
+      "grammarKana": "そうにない",
+      "structure": "動詞ます形語幹 + そうにない",
+      "usage": "表示從情況判斷不太可能發生。",
+      "example": "雨はすぐには止みそうにないです。",
+      "exampleKana": "あめはすぐにはやみそうにないです。",
+      "exampleMeaning": "雨看起來不會馬上停。",
+      "category": "推量・樣態",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "e11104aba2ccc9d8064784432760bd925be20ceed9a466804383d1cdfc4c3d85",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "そうにない",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "そうです",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「終わりそうです」是肯定推測，看起來會結束，與「看起來不會結束」的否定題意相反。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "ようです",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「終わりようです」接續錯誤；樣態「ようだ」須接普通形「終わるようです」，不能接ます形語幹「終わり」。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "はずです",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「終わりはずです」接續錯誤；「はず」須接辭書形「終わるはずです」，且表示有根據的預期，不是眼前樣態。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-272",
+      "sourceQuestionId": "grammar.json#n4-grammar-272",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-272"
+      ],
+      "originalText": "先生は明日テストがある＿＿。",
+      "displayText": "先生は明日テストがある＿＿。",
+      "prompt": "先生は明日テストがある＿＿。",
+      "promptKana": "せんせいはあしたてすとがある＿＿。",
+      "promptMeaning": "老師說明天有考試。",
+      "options": [
+        "と言っています",
+        "と思っています",
+        "と聞いています",
+        "によっています"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "と言っています",
+      "explanation": "引用老師說的內容時，用「と言っています」。",
+      "grammarId": "n4-grammar-272",
+      "grammar": "〜と言っている",
+      "grammarKana": "といっている",
+      "structure": "普通形 + と言っている",
+      "usage": "引用他人正在說或曾說的內容。",
+      "example": "母は少し遅れると言っています。",
+      "exampleKana": "はははすこしおくれるといっています。",
+      "exampleMeaning": "媽媽說會晚一點。",
+      "category": "傳聞・引用",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "820c340d4926e42d960033e0080798c2b32c3bd3e8ac33b8fc18c6e7f1aa312b",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "と言っています",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "と思っています",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "填入後主語成為老師，意思是「老師認為明天有考試」，不是引用老師對外說出的話。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "と聞いています",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "填入後是「老師聽說明天有考試」，把老師變成傳聞接收者，與中文「老師說」相反。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "によっています",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「あるによっています」接續不成立；「による」也表示依據／原因，不能作直接引語標記。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-275",
+      "sourceQuestionId": "grammar.json#n4-grammar-275",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-275"
+      ],
+      "originalText": "環境問題＿＿話しましょう。",
+      "displayText": "環境問題＿＿話しましょう。",
+      "prompt": "環境問題＿＿話しましょう。",
+      "promptKana": "かんきょうもんだい＿＿はなしましょう。",
+      "promptMeaning": "來談談環境問題吧。",
+      "options": [
+        "について",
+        "にとって",
+        "として",
+        "によって"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "について",
+      "explanation": "表示談論主題時，用「について」。",
+      "grammarId": "n4-grammar-275",
+      "grammar": "〜について",
+      "grammarKana": "について",
+      "structure": "名詞 + について",
+      "usage": "表示談論、學習或調查的主題。",
+      "example": "日本の文化について調べます。",
+      "exampleKana": "にほんのぶんかについてしらべます。",
+      "exampleMeaning": "我調查關於日本文化的事。",
+      "category": "其他",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "5fb9ca9145c6d4215e2cd92b7b9913a96892d72ecaf76fe46569a16c5dcaba0e",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "について",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "にとって",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「にとって」表示從環境問題的立場而言，不能用來標示「話す」所談論的主題。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "として",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「として」表示身分、資格或立場，把環境問題當身分不合此句的談論語意。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "によって",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「によって」表示手段、原因、依據或被動施事者，不能表示要談論的主題。"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-grammar-17c8b-n4-form-selection-n4-grammar-281",
+      "sourceQuestionId": "grammar.json#n4-grammar-281",
+      "level": "N4",
+      "section": "grammar",
+      "questionType": "form-selection",
+      "sourceBank": "grammar.json",
+      "sourceIds": [
+        "n4-grammar-281"
+      ],
+      "originalText": "だんだん暖か＿＿なりました。",
+      "displayText": "だんだん暖か＿＿なりました。",
+      "prompt": "だんだん暖か＿＿なりました。",
+      "promptKana": "だんだんあたたか＿＿なりました。",
+      "promptMeaning": "漸漸變暖了。",
+      "options": [
+        "く",
+        "に",
+        "で",
+        "な"
+      ],
+      "answerIndex": 0,
+      "answerDisplay": "く",
+      "explanation": "い形容詞「暖かい」變成「暖かくなる」。",
+      "grammarId": "n4-grammar-281",
+      "grammar": "〜くなる",
+      "grammarKana": "くなる",
+      "structure": "い形容詞去い + くなる",
+      "usage": "表示い形容詞的狀態變化。",
+      "example": "部屋が明るくなりました。",
+      "exampleKana": "へやがあかるくなりました。",
+      "exampleMeaning": "房間變亮了。",
+      "category": "狀態變化",
+      "kanjiPolicy": "source-display-and-kana-reviewed",
+      "rubyTerms": [],
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c8b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "reviewTags": [
+        "site-internal-editorial-reviewed",
+        "unique-answer-reviewed",
+        "prompt-kana-meaning-aligned",
+        "display-kanji-kana-reviewed"
+      ],
+      "uniqueAnswerReviewed": true,
+      "sourceDigest": "64def0cb91827bac6c7e3897ee97464f5bb651a19edc81c8a25e2d87f5281af7",
+      "derivationVersion": "17c8b-v1",
+      "optionReviews": [
+        {
+          "choiceIndex": 0,
+          "value": "く",
+          "acceptedAsCorrect": true,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-correct",
+          "incorrectReason": null
+        },
+        {
+          "choiceIndex": 1,
+          "value": "に",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "い形容詞「暖かい」變化為副詞形須去「い」加「く」；「暖かに」不是現代標準活用。"
+        },
+        {
+          "choiceIndex": 2,
+          "value": "で",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「暖かで」不是い形容詞接「なる」的連用形，不能組成表示變暖的「暖かくなる」。"
+        },
+        {
+          "choiceIndex": 3,
+          "value": "な",
+          "acceptedAsCorrect": false,
+          "grammarFitReviewed": true,
+          "languageReviewStatus": "reviewed-incorrect",
+          "incorrectReason": "「な」是な形容詞連體修飾名詞的形式；「暖かい」是い形容詞，且後接「なる」不用「な」。"
+        }
+      ]
+    }
+  ]
+}
