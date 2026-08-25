@@ -18,7 +18,7 @@
 | `notice-and-message` | 2 | 2 | 學校遠足通知；家中咖哩留言 |
 | **合計** | **8** | **12** | 八個不同日常情境 |
 
-每組不是只替換人名、日期、數字或地點的近似重複。內容限制在日常生活、家庭、學校、購物、交通、時間與簡單活動，答案都由本文或材料明示資訊推出。
+每組不是只替換人名、日期、數字或地點的近似重複。內容限制在日常生活、家庭、學校、購物、交通、時間與簡單活動，答案都由本文或材料明示資訊推出。十二題均重新人工檢查日文自然度、助詞、時態與題意；各組 vocabulary、grammar、唯一答案及 provenance 審閱紀錄均針對實際內容撰寫，不共用模板。
 
 ## Passage 長度
 
@@ -84,4 +84,4 @@ Production 完全不載入本批 source/manifest。`17c6-compat-v1` 維持 N5 to
 * **17C-9D** 才建立 immutable adapter 與 isolated reading pipeline。
 * **Batch 17C-10** 才能決定 production quota 與是否啟用 N5 reading。
 
-專用 checker 以固定 baseline 執行 scope/byte-identity guard，直接讀取 source、manifest、17C-9A plan 與兩份既有 N4 reading data；另外將 44 個 in-memory negative fixtures 真正逐一送入同一 validator 並要求全部被拒絕。fixtures 涵蓋 inventory、identity、長度、答案審閱、digest/snapshot、evidence、structured material、ruby、安全性、N4 重用及 quota 邊界。
+專用 checker 以固定 baseline 執行 scope/byte-identity guard，直接讀取 source、manifest、17C-9A plan 與兩份既有 N4 reading data；另外將 56 個 in-memory negative fixtures 真正逐一送入同一 validator 並要求全部被拒絕。fixtures 涵蓋 inventory、identity、長度、答案審閱、digest/snapshot、evidence scope 與 row/cell 隸屬、structured material、遞迴安全字串掃描、ruby、N4 source identity 重用及 quota 邊界。比較題使用 `all-material-rows` 並必須完整引用所有比較列；一般查表題使用 `referenced-row`。
