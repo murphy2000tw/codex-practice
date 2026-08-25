@@ -1,0 +1,973 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceVersion": "17c9b-v1",
+  "reviewVersion": "17c9b-review-v1",
+  "productQuota": false,
+  "disclaimer": "本站資料僅為 site-internal JLPT-style（站內 JLPT 風格）練習素材；不是官方 JLPT 題庫、官方題型比例、官方漢字表或官方認證內容。",
+  "sets": [
+    {
+      "id": "jlpt-reading-17c9b-n5-short-passage-bakery-breakfast",
+      "level": "N5",
+      "section": "short-passage",
+      "sourceType": "みじかいぶん",
+      "title": "パンやのあさ",
+      "passage": "あさ、みきさんはパンをかいました。でも、ぎゅうにゅうはうちにあるので、かいませんでした。",
+      "passageKana": "あさ、みきさんはパンをかいました。でも、ぎゅうにゅうはうちにあるので、かいませんでした。",
+      "rubyTerms": [],
+      "vocabularyReview": "確認「パン、ぎゅうにゅう、うち」等早餐與家庭詞彙適合 N5，且「かう／かいませんでした」時態一致。",
+      "grammarReview": "確認主題助詞「は」、理由「ので」及否定過去形「かいませんでした」自然；題目改用「なにを」直接詢問未購買物品。",
+      "kanjiKanaPolicy": "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c9b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "sourceDigest": "2d7d87b888de778cbb5ea086ed80868764e590c63e012b1a72785cff87bff06c",
+      "uniqueAnswerReviewSummary": "證據明說牛奶家裡已有所以沒買；麵包則已購買，雞蛋與蘋果未出現，因此只有牛奶可答。",
+      "disclaimer": "本站資料僅為 site-internal JLPT-style（站內 JLPT 風格）練習素材；不是官方 JLPT 題庫、官方題型比例、官方漢字表或官方認證內容。",
+      "provenance": "本組為 Batch 17C-9B 新作的早餐採買情境，由站內編審逐句確認，未取用或改寫 N4 題目。",
+      "questions": [
+        {
+          "id": "jlpt-reading-17c9b-n5-short-bakery-milk-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-short-bakery-milk-source-question",
+          "question": "みきさんはなにをかいませんでしたか。",
+          "questionKana": "みきさんはなにをかいませんでしたか。",
+          "options": [
+            "パン",
+            "ぎゅうにゅう",
+            "たまご",
+            "りんご"
+          ],
+          "answerIndex": 1,
+          "answerDisplay": "ぎゅうにゅう",
+          "explanation": "指定的本文或材料證據「ぎゅうにゅうはうちにあるので、かいませんでした」直接支持「ぎゅうにゅう」，並排除其餘三個選項。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "パン",
+              "verdict": "rejected",
+              "reason": "本文ではパンを買ったので逆です。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "ぎゅうにゅう",
+              "verdict": "supported",
+              "reason": "本文に家にあるので買わなかったと明記されています。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "たまご",
+              "verdict": "rejected",
+              "reason": "本文にはたまごの話がありません。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "りんご",
+              "verdict": "rejected",
+              "reason": "本文にはりんごの話がありません。"
+            }
+          ],
+          "correctAnswerReview": "「ぎゅうにゅうはうちにあるので、かいませんでした」が質問の条件をすべて満たし、ほかの選択肢を除外できるため、正解は一つです。",
+          "passageEvidence": [
+            {
+              "spanId": "bakery-not-bought",
+              "text": "ぎゅうにゅうはうちにあるので、かいませんでした",
+              "startCodePoint": 20,
+              "endCodePoint": 43
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jlpt-reading-17c9b-n5-short-passage-rainy-park-plan",
+      "level": "N5",
+      "section": "short-passage",
+      "sourceType": "みじかいぶん",
+      "title": "にちようびのよてい",
+      "passage": "けんさんはにちようびにこうえんへいきます。あめのときは、うちでいもうととえをかきます。",
+      "passageKana": "けんさんはにちようびにこうえんへいきます。あめのときは、うちでいもうととえをかきます。",
+      "rubyTerms": [],
+      "vocabularyReview": "確認「にちようび、こうえん、あめ、うち、いもうと、え」為基礎生活詞彙。",
+      "grammarReview": "確認條件表現「あめのときは」與場所助詞「うちで」、共同動作者「いもうとと」使用自然。",
+      "kanjiKanaPolicy": "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c9b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "sourceDigest": "cc427fc009cf6911ab8ad29c2e4c5a6489305e2ae7c34fc36f2382df76393c31",
+      "uniqueAnswerReviewSummary": "題目限定下雨時；證據只支持在家與妹妹畫畫，公園是原計畫，購物與上學未見於本文。",
+      "disclaimer": "本站資料僅為 site-internal JLPT-style（站內 JLPT 風格）練習素材；不是官方 JLPT 題庫、官方題型比例、官方漢字表或官方認證內容。",
+      "provenance": "本組為站內新作的雨天備案情境，人工核對條件句與行動關係，未沿用既有 N4 內容。",
+      "questions": [
+        {
+          "id": "jlpt-reading-17c9b-n5-short-rain-home-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-short-rain-home-source-question",
+          "question": "あめのとき、けんさんはなにをしますか。",
+          "questionKana": "あめのとき、けんさんはなにをしますか。",
+          "options": [
+            "こうえんではしります",
+            "うちでえをかきます",
+            "みせでかいものをします",
+            "がっこうでべんきょうします"
+          ],
+          "answerIndex": 1,
+          "answerDisplay": "うちでえをかきます",
+          "explanation": "指定的本文或材料證據「あめのときは、うちでいもうととえをかきます」直接支持「うちでえをかきます」，並排除其餘三個選項。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "こうえんではしります",
+              "verdict": "rejected",
+              "reason": "公園へ行くのは雨でない日曜の予定です。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "うちでえをかきます",
+              "verdict": "supported",
+              "reason": "雨の時は家で妹と絵を描くと本文にあります。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "みせでかいものをします",
+              "verdict": "rejected",
+              "reason": "店や買い物は本文に出ません。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "がっこうでべんきょうします",
+              "verdict": "rejected",
+              "reason": "学校や勉強は本文に出ません。"
+            }
+          ],
+          "correctAnswerReview": "「あめのときは、うちでいもうととえをかきます」が質問の条件をすべて満たし、ほかの選択肢を除外できるため、正解は一つです。",
+          "passageEvidence": [
+            {
+              "spanId": "rain-home-drawing",
+              "text": "あめのときは、うちでいもうととえをかきます",
+              "startCodePoint": 21,
+              "endCodePoint": 42
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jlpt-reading-17c9b-n5-medium-passage-morning-train",
+      "level": "N5",
+      "section": "medium-passage",
+      "sourceType": "ちゅうくらいのぶん",
+      "title": "でんしゃにのるあさ",
+      "passage": "ゆうたさんはまいあさしちじにおきます。きょうはでんしゃがはちじにでます。えきまであるいてじゅっぷんです。あさごはんをたべて、しちじよんじゅっぷんにうちをでます。",
+      "passageKana": "ゆうたさんはまいあさしちじにおきます。きょうはでんしゃがはちじにでます。えきまであるいてじゅっぷんです。あさごはんをたべて、しちじよんじゅっぷんにうちをでます。",
+      "rubyTerms": [],
+      "vocabularyReview": "確認起床、電車、車站、早餐及七時、八時、十分等時間詞彙符合基礎程度。",
+      "grammarReview": "確認「に／まで／から」時間與範圍表現，以及「あるいてじゅっぷんです」所需時間說法。",
+      "kanjiKanaPolicy": "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c9b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "sourceDigest": "abf270c4f3d3ddc736f9942f747f132bd665cc6f353a1f16f31904deb50f6e85",
+      "uniqueAnswerReviewSummary": "兩題分別引用七時四十分離家與步行十分鐘；七時是起床、八時是發車，其他時間均無法同時符合題目。",
+      "disclaimer": "本站資料僅為 site-internal JLPT-style（站內 JLPT 風格）練習素材；不是官方 JLPT 題庫、官方題型比例、官方漢字表或官方認證內容。",
+      "provenance": "本組為站內新作的通勤早晨時序，人工核對四個時間點及兩題各自 evidence，未複製 N4 時刻題。",
+      "questions": [
+        {
+          "id": "jlpt-reading-17c9b-n5-medium-train-depart-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-medium-train-depart-source-question",
+          "question": "ゆうたさんはなんじにうちをでますか。",
+          "questionKana": "ゆうたさんはなんじにうちをでますか。",
+          "options": [
+            "しちじ",
+            "しちじよんじゅっぷん",
+            "はちじ",
+            "はちじじゅっぷん"
+          ],
+          "answerIndex": 1,
+          "answerDisplay": "しちじよんじゅっぷん",
+          "explanation": "指定的本文或材料證據「しちじよんじゅっぷんにうちをでます」直接支持「しちじよんじゅっぷん」，並排除其餘三個選項。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "しちじ",
+              "verdict": "rejected",
+              "reason": "七時は起床時刻です。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "しちじよんじゅっぷん",
+              "verdict": "supported",
+              "reason": "本文が家を出る時刻として直接示します。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "はちじ",
+              "verdict": "rejected",
+              "reason": "八時は電車の発車時刻です。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "はちじじゅっぷん",
+              "verdict": "rejected",
+              "reason": "八時十分という時刻は本文にありません。"
+            }
+          ],
+          "correctAnswerReview": "「しちじよんじゅっぷんにうちをでます」が質問の条件をすべて満たし、ほかの選択肢を除外できるため、正解は一つです。",
+          "passageEvidence": [
+            {
+              "spanId": "train-leave-home",
+              "text": "しちじよんじゅっぷんにうちをでます",
+              "startCodePoint": 62,
+              "endCodePoint": 79
+            }
+          ]
+        },
+        {
+          "id": "jlpt-reading-17c9b-n5-medium-train-walk-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-medium-train-walk-source-question",
+          "question": "うちからえきまで、どのくらいかかりますか。",
+          "questionKana": "うちからえきまで、どのくらいかかりますか。",
+          "options": [
+            "ごふん",
+            "じゅっぷん",
+            "にじゅっぷん",
+            "いちじかん"
+          ],
+          "answerIndex": 1,
+          "answerDisplay": "じゅっぷん",
+          "explanation": "指定的本文或材料證據「えきまであるいてじゅっぷんです」直接支持「じゅっぷん」，並排除其餘三個選項。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "ごふん",
+              "verdict": "rejected",
+              "reason": "五分とは書かれていません。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "じゅっぷん",
+              "verdict": "supported",
+              "reason": "駅まで歩いて十分と明記されています。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "にじゅっぷん",
+              "verdict": "rejected",
+              "reason": "二十分とは書かれていません。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "いちじかん",
+              "verdict": "rejected",
+              "reason": "一時間とは書かれていません。"
+            }
+          ],
+          "correctAnswerReview": "「えきまであるいてじゅっぷんです」が質問の条件をすべて満たし、ほかの選択肢を除外できるため、正解は一つです。",
+          "passageEvidence": [
+            {
+              "spanId": "train-walk-time",
+              "text": "えきまであるいてじゅっぷんです",
+              "startCodePoint": 36,
+              "endCodePoint": 51
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jlpt-reading-17c9b-n5-medium-passage-family-seaside",
+      "level": "N5",
+      "section": "medium-passage",
+      "sourceType": "ちゅうくらいのぶん",
+      "title": "かぞくでうみへ",
+      "passage": "さきさんのかぞくはどようびにうみへいきます。おとうさんはおにぎりをつくり、さきさんはみずとタオルをかばんにいれます。あさくじにくるまでうちをでて、ひるまでうみであそびます。",
+      "passageKana": "さきさんのかぞくはどようびにうみへいきます。おとうさんはおにぎりをつくり、さきさんはみずとタオルをかばんにいれます。あさくじにくるまでうちをでて、ひるまでうみであそびます。",
+      "rubyTerms": [],
+      "vocabularyReview": "確認家族、海、飯糰、水、毛巾、車與中午等出遊詞彙的難度及語意。",
+      "grammarReview": "確認列舉助詞「と」、目的地「へ」、工具「くるまで」及動作連接「て」使用自然。",
+      "kanjiKanaPolicy": "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c9b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "sourceDigest": "e083a98f2dfe143c619146d2f2ccc95f978ed3e5e73941d1d62afd3f5655c823",
+      "uniqueAnswerReviewSummary": "第一題由「さきさん」主語與水、毛巾的受詞唯一決定；第二題由星期六與早上九時兩條件共同排除其餘選項。",
+      "disclaimer": "本站資料僅為 site-internal JLPT-style（站內 JLPT 風格）練習素材；不是官方 JLPT 題庫、官方題型比例、官方漢字表或官方認證內容。",
+      "provenance": "本組為站內新作的家庭海邊活動，人工區分父親準備飯糰與さき收拾物品，未改寫 N4 題庫。",
+      "questions": [
+        {
+          "id": "jlpt-reading-17c9b-n5-medium-sea-pack-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-medium-sea-pack-source-question",
+          "question": "さきさんはなにをかばんにいれますか。",
+          "questionKana": "さきさんはなにをかばんにいれますか。",
+          "options": [
+            "おにぎりだけ",
+            "みずとタオル",
+            "ほんとえんぴつ",
+            "くつとぼうし"
+          ],
+          "answerIndex": 1,
+          "answerDisplay": "みずとタオル",
+          "explanation": "指定的本文或材料證據「さきさんはみずとタオルをかばんにいれます」直接支持「みずとタオル」，並排除其餘三個選項。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "おにぎりだけ",
+              "verdict": "rejected",
+              "reason": "おにぎりを作るのは父で、さきが入れる物ではありません。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "みずとタオル",
+              "verdict": "supported",
+              "reason": "さきが水とタオルを入れると明記されています。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "ほんとえんぴつ",
+              "verdict": "rejected",
+              "reason": "本と鉛筆は本文にありません。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "くつとぼうし",
+              "verdict": "rejected",
+              "reason": "靴と帽子は本文にありません。"
+            }
+          ],
+          "correctAnswerReview": "「さきさんはみずとタオルをかばんにいれます」が質問の条件をすべて満たし、ほかの選択肢を除外できるため、正解は一つです。",
+          "passageEvidence": [
+            {
+              "spanId": "sea-saki-pack",
+              "text": "さきさんはみずとタオルをかばんにいれます",
+              "startCodePoint": 37,
+              "endCodePoint": 57
+            }
+          ]
+        },
+        {
+          "id": "jlpt-reading-17c9b-n5-medium-sea-time-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-medium-sea-time-source-question",
+          "question": "かぞくはいつうちをでますか。",
+          "questionKana": "かぞくはいつうちをでますか。",
+          "options": [
+            "どようびのあさくじ",
+            "どようびのひる",
+            "にちようびのあさくじ",
+            "にちようびのひる"
+          ],
+          "answerIndex": 0,
+          "answerDisplay": "どようびのあさくじ",
+          "explanation": "指定的本文或材料證據「あさくじにくるまでうちをでて」直接支持「どようびのあさくじ」，並排除其餘三個選項。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "どようびのあさくじ",
+              "verdict": "supported",
+              "reason": "土曜日の朝九時と本文の曜日・時刻が一致します。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "どようびのひる",
+              "verdict": "rejected",
+              "reason": "昼までは海で遊ぶ時間で、出発時刻ではありません。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "にちようびのあさくじ",
+              "verdict": "rejected",
+              "reason": "曜日は日曜日ではなく土曜日です。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "にちようびのひる",
+              "verdict": "rejected",
+              "reason": "曜日も時間帯も本文の出発情報と違います。"
+            }
+          ],
+          "correctAnswerReview": "「あさくじにくるまでうちをでて」が質問の条件をすべて満たし、ほかの選択肢を除外できるため、正解は一つです。",
+          "passageEvidence": [
+            {
+              "spanId": "sea-depart-time",
+              "text": "あさくじにくるまでうちをでて",
+              "startCodePoint": 58,
+              "endCodePoint": 72
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jlpt-reading-17c9b-n5-information-search-library-hours",
+      "level": "N5",
+      "section": "information-search",
+      "sourceType": "じかんひょう",
+      "title": "としょかんのじかん",
+      "passage": "としょかんのじかん\nようび｜あいているじかん\nげつようび｜やすみ\nかようび｜くじからごじ\nどようび｜じゅうじからよじ",
+      "passageKana": "としょかんのじかん\nようび｜あいているじかん\nげつようび｜やすみ\nかようび｜くじからごじ\nどようび｜じゅうじからよじ",
+      "rubyTerms": [],
+      "vocabularyReview": "確認星期、休息、九時到五時、十時到四時等圖書館時刻表詞彙，欄名採自然的「あいているじかん」。",
+      "grammarReview": "確認「やすみなのはなんようび」的名詞述語疑問，以及「なんじにあきますか」的時間助詞自然。",
+      "kanjiKanaPolicy": "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c9b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "sourceDigest": "aa5832cb2f03a6cc341ea3709040fe05984d92dae261e46104e52efd88f81299",
+      "uniqueAnswerReviewSummary": "休館題引用星期一整列；星期六開館題引用星期六整列，並以各列星期與營業時間排除火曜日及錯誤起訖時刻。",
+      "disclaimer": "本站資料僅為 site-internal JLPT-style（站內 JLPT 風格）練習素材；不是官方 JLPT 題庫、官方題型比例、官方漢字表或官方認證內容。",
+      "provenance": "本組為站內新作的圖書館開館表，人工核對 projection、row/cell identity 與兩題查表證據，未使用 N4 表格。",
+      "material": {
+        "id": "library-hours",
+        "type": "labeled-table",
+        "headings": [
+          {
+            "id": "library-hours-heading",
+            "label": "としょかんのじかん",
+            "kana": "としょかんのじかん"
+          }
+        ],
+        "columns": [
+          {
+            "id": "library-hours-column-1",
+            "label": "ようび",
+            "kana": "ようび"
+          },
+          {
+            "id": "library-hours-column-2",
+            "label": "あいているじかん",
+            "kana": "あいているじかん"
+          }
+        ],
+        "rows": [
+          {
+            "id": "library-hours-row-1",
+            "cells": [
+              {
+                "id": "library-hours-row-1-cell-1",
+                "label": "ようび",
+                "text": "げつようび",
+                "kana": "げつようび"
+              },
+              {
+                "id": "library-hours-row-1-cell-2",
+                "label": "あくじかん",
+                "text": "やすみ",
+                "kana": "やすみ"
+              }
+            ]
+          },
+          {
+            "id": "library-hours-row-2",
+            "cells": [
+              {
+                "id": "library-hours-row-2-cell-1",
+                "label": "ようび",
+                "text": "かようび",
+                "kana": "かようび"
+              },
+              {
+                "id": "library-hours-row-2-cell-2",
+                "label": "あくじかん",
+                "text": "くじからごじ",
+                "kana": "くじからごじ"
+              }
+            ]
+          },
+          {
+            "id": "library-hours-row-3",
+            "cells": [
+              {
+                "id": "library-hours-row-3-cell-1",
+                "label": "ようび",
+                "text": "どようび",
+                "kana": "どようび"
+              },
+              {
+                "id": "library-hours-row-3-cell-2",
+                "label": "あくじかん",
+                "text": "じゅうじからよじ",
+                "kana": "じゅうじからよじ"
+              }
+            ]
+          }
+        ],
+        "plainTextProjection": "としょかんのじかん\nようび｜あいているじかん\nげつようび｜やすみ\nかようび｜くじからごじ\nどようび｜じゅうじからよじ"
+      },
+      "questions": [
+        {
+          "id": "jlpt-reading-17c9b-n5-info-library-closed-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-info-library-closed-source-question",
+          "question": "としょかんがやすみなのはなんようびですか。",
+          "questionKana": "としょかんがやすみなのはなんようびですか。",
+          "options": [
+            "げつようび",
+            "かようび",
+            "きんようび",
+            "どようび"
+          ],
+          "answerIndex": 0,
+          "answerDisplay": "げつようび",
+          "explanation": "指定的本文或材料證據「げつようび｜やすみ」直接支持「げつようび」，並排除其餘三個選項。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "げつようび",
+              "verdict": "supported",
+              "reason": "月曜の行の営業時間が「やすみ」です。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "かようび",
+              "verdict": "rejected",
+              "reason": "火曜は九時から五時まで開きます。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "きんようび",
+              "verdict": "rejected",
+              "reason": "金曜の行は材料に存在しません。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "どようび",
+              "verdict": "rejected",
+              "reason": "土曜は十時から四時まで開きます。"
+            }
+          ],
+          "correctAnswerReview": "「げつようび｜やすみ」が質問の条件をすべて満たし、ほかの選択肢を除外できるため、正解は一つです。",
+          "informationEvidence": [
+            {
+              "rowId": "library-hours-row-1",
+              "cellIds": [
+                "library-hours-row-1-cell-1",
+                "library-hours-row-1-cell-2"
+              ]
+            }
+          ],
+          "informationEvidenceScope": "referenced-row"
+        },
+        {
+          "id": "jlpt-reading-17c9b-n5-info-library-saturday-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-info-library-saturday-source-question",
+          "question": "どようびはなんじにあきますか。",
+          "questionKana": "どようびはなんじにあきますか。",
+          "options": [
+            "くじ",
+            "じゅうじ",
+            "よじ",
+            "ごじ"
+          ],
+          "answerIndex": 1,
+          "answerDisplay": "じゅうじ",
+          "explanation": "指定的本文或材料證據「どようび｜じゅうじからよじ」直接支持「じゅうじ」，並排除其餘三個選項。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "くじ",
+              "verdict": "rejected",
+              "reason": "九時は火曜の開始時刻です。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "じゅうじ",
+              "verdict": "supported",
+              "reason": "土曜の行は十時からと示します。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "よじ",
+              "verdict": "rejected",
+              "reason": "四時は土曜の閉館時刻です。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "ごじ",
+              "verdict": "rejected",
+              "reason": "五時は火曜の閉館時刻です。"
+            }
+          ],
+          "correctAnswerReview": "「どようび｜じゅうじからよじ」が質問の条件をすべて満たし、ほかの選択肢を除外できるため、正解は一つです。",
+          "informationEvidence": [
+            {
+              "rowId": "library-hours-row-3",
+              "cellIds": [
+                "library-hours-row-3-cell-1",
+                "library-hours-row-3-cell-2"
+              ]
+            }
+          ],
+          "informationEvidenceScope": "referenced-row"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-reading-17c9b-n5-information-search-fruit-shop-prices",
+      "level": "N5",
+      "section": "information-search",
+      "sourceType": "ねだんひょう",
+      "title": "くだものや",
+      "passage": "くだものや\nもの｜ねだん\nりんご｜ひゃくえん\nバナナ｜はちじゅうえん\nみかん｜ろくじゅうえん",
+      "passageKana": "くだものや\nもの｜ねだん\nりんご｜ひゃくえん\nバナナ｜はちじゅうえん\nみかん｜ろくじゅうえん",
+      "rubyTerms": [],
+      "vocabularyReview": "確認蘋果、香蕉、橘子與百、八十、六十日圓等購物與數量詞彙。",
+      "grammarReview": "確認最高級「いちばんやすい」及價格疑問「いくらですか」適合基礎比較。",
+      "kanjiKanaPolicy": "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c9b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "sourceDigest": "d9495fa5b2f3c161559c002e334c18bc7aaa090001028de6837b2e6e9fdec6fd",
+      "uniqueAnswerReviewSummary": "最便宜題完整比較三列的 100、80、60 日圓，60 最低所以只有橘子；香蕉價格題則由香蕉列直接唯一回答。",
+      "disclaimer": "本站資料僅為 site-internal JLPT-style（站內 JLPT 風格）練習素材；不是官方 JLPT 題庫、官方題型比例、官方漢字表或官方認證內容。",
+      "provenance": "本組為站內新作的水果價格表，人工比較全部商品列並核對 stable cells，未取用 N4 價格題。",
+      "material": {
+        "id": "shop-prices",
+        "type": "labeled-table",
+        "headings": [
+          {
+            "id": "shop-prices-heading",
+            "label": "くだものや",
+            "kana": "くだものや"
+          }
+        ],
+        "columns": [
+          {
+            "id": "shop-prices-column-1",
+            "label": "もの",
+            "kana": "もの"
+          },
+          {
+            "id": "shop-prices-column-2",
+            "label": "ねだん",
+            "kana": "ねだん"
+          }
+        ],
+        "rows": [
+          {
+            "id": "shop-prices-row-1",
+            "cells": [
+              {
+                "id": "shop-prices-row-1-cell-1",
+                "label": "もの",
+                "text": "りんご",
+                "kana": "りんご"
+              },
+              {
+                "id": "shop-prices-row-1-cell-2",
+                "label": "ねだん",
+                "text": "ひゃくえん",
+                "kana": "ひゃくえん"
+              }
+            ]
+          },
+          {
+            "id": "shop-prices-row-2",
+            "cells": [
+              {
+                "id": "shop-prices-row-2-cell-1",
+                "label": "もの",
+                "text": "バナナ",
+                "kana": "バナナ"
+              },
+              {
+                "id": "shop-prices-row-2-cell-2",
+                "label": "ねだん",
+                "text": "はちじゅうえん",
+                "kana": "はちじゅうえん"
+              }
+            ]
+          },
+          {
+            "id": "shop-prices-row-3",
+            "cells": [
+              {
+                "id": "shop-prices-row-3-cell-1",
+                "label": "もの",
+                "text": "みかん",
+                "kana": "みかん"
+              },
+              {
+                "id": "shop-prices-row-3-cell-2",
+                "label": "ねだん",
+                "text": "ろくじゅうえん",
+                "kana": "ろくじゅうえん"
+              }
+            ]
+          }
+        ],
+        "plainTextProjection": "くだものや\nもの｜ねだん\nりんご｜ひゃくえん\nバナナ｜はちじゅうえん\nみかん｜ろくじゅうえん"
+      },
+      "questions": [
+        {
+          "id": "jlpt-reading-17c9b-n5-info-fruit-cheapest-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-info-fruit-cheapest-source-question",
+          "question": "いちばんやすいものはどれですか。",
+          "questionKana": "いちばんやすいものはどれですか。",
+          "options": [
+            "りんご",
+            "バナナ",
+            "みかん",
+            "パン"
+          ],
+          "answerIndex": 2,
+          "answerDisplay": "みかん",
+          "explanation": "三個商品的價格分別是：りんご 100 日圓、バナナ 80 日圓、みかん 60 日圓。比較 100、80、60 日圓後，60 日圓最低，因此只有「みかん」正確。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "りんご",
+              "verdict": "rejected",
+              "reason": "りんごは百円で三品中もっとも高いです。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "バナナ",
+              "verdict": "rejected",
+              "reason": "バナナは八十円で、六十円のみかんより高いです。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "みかん",
+              "verdict": "supported",
+              "reason": "三列價格完整比較後，みかん是 60 日圓，低於バナナ的 80 日圓與りんご的 100 日圓。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "パン",
+              "verdict": "rejected",
+              "reason": "パンは価格表にありません。"
+            }
+          ],
+          "correctAnswerReview": "完整比較材料中三列商品：りんご 100 日圓、バナナ 80 日圓、みかん 60 日圓；60 低於 80 與 100，因此只有みかん符合「いちばんやすい」。",
+          "informationEvidence": [
+            {
+              "rowId": "shop-prices-row-1",
+              "cellIds": [
+                "shop-prices-row-1-cell-1",
+                "shop-prices-row-1-cell-2"
+              ]
+            },
+            {
+              "rowId": "shop-prices-row-2",
+              "cellIds": [
+                "shop-prices-row-2-cell-1",
+                "shop-prices-row-2-cell-2"
+              ]
+            },
+            {
+              "rowId": "shop-prices-row-3",
+              "cellIds": [
+                "shop-prices-row-3-cell-1",
+                "shop-prices-row-3-cell-2"
+              ]
+            }
+          ],
+          "informationEvidenceScope": "all-material-rows"
+        },
+        {
+          "id": "jlpt-reading-17c9b-n5-info-fruit-banana-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-info-fruit-banana-source-question",
+          "question": "バナナはいくらですか。",
+          "questionKana": "バナナはいくらですか。",
+          "options": [
+            "ろくじゅうえん",
+            "はちじゅうえん",
+            "ひゃくえん",
+            "ひゃくにじゅうえん"
+          ],
+          "answerIndex": 1,
+          "answerDisplay": "はちじゅうえん",
+          "explanation": "指定的本文或材料證據「バナナ｜はちじゅうえん」直接支持「はちじゅうえん」，並排除其餘三個選項。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "ろくじゅうえん",
+              "verdict": "rejected",
+              "reason": "六十円はみかんの値段です。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "はちじゅうえん",
+              "verdict": "supported",
+              "reason": "バナナの行に八十円とあります。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "ひゃくえん",
+              "verdict": "rejected",
+              "reason": "百円はりんごの値段です。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "ひゃくにじゅうえん",
+              "verdict": "rejected",
+              "reason": "百二十円は表にありません。"
+            }
+          ],
+          "correctAnswerReview": "「バナナ｜はちじゅうえん」が質問の条件をすべて満たし、ほかの選択肢を除外できるため、正解は一つです。",
+          "informationEvidence": [
+            {
+              "rowId": "shop-prices-row-2",
+              "cellIds": [
+                "shop-prices-row-2-cell-1",
+                "shop-prices-row-2-cell-2"
+              ]
+            }
+          ],
+          "informationEvidenceScope": "referenced-row"
+        }
+      ]
+    },
+    {
+      "id": "jlpt-reading-17c9b-n5-notice-and-message-school-trip-notice",
+      "level": "N5",
+      "section": "notice-and-message",
+      "sourceType": "がっこうのおしらせ",
+      "title": "えんそくのおしらせ",
+      "passage": "せんせいからのおしらせです。あしたはえんそくです。はちじはんまでにがっこうのもんへきてください。おべんとうをもってきてください。",
+      "passageKana": "せんせいからのおしらせです。あしたはえんそくです。はちじはんまでにがっこうのもんへきてください。おべんとうをもってきてください。",
+      "rubyTerms": [],
+      "vocabularyReview": "確認老師、通知、明天、遠足、學校門口、便當與八點半等學校詞彙。",
+      "grammarReview": "確認期限「までに」、移動「へ」與請求「てください」的用法及時間語意。",
+      "kanjiKanaPolicy": "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c9b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "sourceDigest": "86ec54c74e447367ada90fcf47262e480ed1ece5aafbf891a808f072eaebafa9",
+      "uniqueAnswerReviewSummary": "題目問到校期限；證據明示八點半以前到校，七點半、八點與九點均不是通知所列期限。",
+      "disclaimer": "本站資料僅為 site-internal JLPT-style（站內 JLPT 風格）練習素材；不是官方 JLPT 題庫、官方題型比例、官方漢字表或官方認證內容。",
+      "provenance": "本組為站內新作的遠足通知，人工核對期限與攜帶物資訊，未改寫既有 N4 學校公告。",
+      "questions": [
+        {
+          "id": "jlpt-reading-17c9b-n5-notice-trip-arrival-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-notice-trip-arrival-source-question",
+          "question": "なんじまでにがっこうへいきますか。",
+          "questionKana": "なんじまでにがっこうへいきますか。",
+          "options": [
+            "しちじはん",
+            "はちじ",
+            "はちじはん",
+            "くじ"
+          ],
+          "answerIndex": 2,
+          "answerDisplay": "はちじはん",
+          "explanation": "指定的本文或材料證據「はちじはんまでにがっこうのもんへきてください」直接支持「はちじはん」，並排除其餘三個選項。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "しちじはん",
+              "verdict": "rejected",
+              "reason": "七時半は通知にありません。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "はちじ",
+              "verdict": "rejected",
+              "reason": "八時ではなく八時半までです。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "はちじはん",
+              "verdict": "supported",
+              "reason": "通知が到着期限を八時半と明記します。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "くじ",
+              "verdict": "rejected",
+              "reason": "九時は通知にありません。"
+            }
+          ],
+          "correctAnswerReview": "「はちじはんまでにがっこうのもんへきてください」が質問の条件をすべて満たし、ほかの選択肢を除外できるため、正解は一つです。",
+          "passageEvidence": [
+            {
+              "spanId": "trip-arrival-time",
+              "text": "はちじはんまでにがっこうのもんへきてください",
+              "startCodePoint": 25,
+              "endCodePoint": 47
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jlpt-reading-17c9b-n5-notice-and-message-home-curry-message",
+      "level": "N5",
+      "section": "notice-and-message",
+      "sourceType": "いえのメッセージ",
+      "title": "ははのメモ",
+      "passage": "たなかさんへ。れいぞうこのカレーをたべてください。サラダはまだできていません。わたしはろくじごろかえります。ははより。",
+      "passageKana": "たなかさんへ。れいぞうこのカレーをたべてください。サラダはまだできていません。わたしはろくじごろかえります。ははより。",
+      "rubyTerms": [],
+      "vocabularyReview": "確認冰箱、咖哩、沙拉、回家、六點左右與母親留言等家庭詞彙。",
+      "grammarReview": "確認請求「たべてください」、未完成「まだできていません」及概略時間「ごろ」。",
+      "kanjiKanaPolicy": "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。",
+      "reviewStatus": "approved-for-derived-bank",
+      "reviewVersion": "17c9b-review-v1",
+      "reviewMethod": "site-internal-editorial",
+      "sourceDigest": "b6fa4c451d4bd901236d2100782932394cf1e6d83d1412a6a2aaeac0f66543b2",
+      "uniqueAnswerReviewSummary": "題目問應吃的食物；咖哩受到直接指示，沙拉尚未完成，麵包與烏龍麵沒有出現，故無第二答案。",
+      "disclaimer": "本站資料僅為 site-internal JLPT-style（站內 JLPT 風格）練習素材；不是官方 JLPT 題庫、官方題型比例、官方漢字表或官方認證內容。",
+      "provenance": "本組為站內新作的家中留言，人工區分可吃食物與未完成食物，未複製 N4 傳言題。",
+      "questions": [
+        {
+          "id": "jlpt-reading-17c9b-n5-message-eat-curry-question",
+          "sourceQuestionId": "jlpt-reading-17c9b-n5-message-eat-curry-source-question",
+          "question": "たなかさんはなにをたべますか。",
+          "questionKana": "たなかさんはなにをたべますか。",
+          "options": [
+            "カレー",
+            "サラダ",
+            "パン",
+            "うどん"
+          ],
+          "answerIndex": 0,
+          "answerDisplay": "カレー",
+          "explanation": "指定的本文或材料證據「れいぞうこのカレーをたべてください」直接支持「カレー」，並排除其餘三個選項。",
+          "uniqueAnswerReviewed": true,
+          "optionReviews": [
+            {
+              "optionIndex": 0,
+              "option": "カレー",
+              "verdict": "supported",
+              "reason": "冷蔵庫のカレーを食べるよう明記されています。"
+            },
+            {
+              "optionIndex": 1,
+              "option": "サラダ",
+              "verdict": "rejected",
+              "reason": "サラダはまだできていないとあります。"
+            },
+            {
+              "optionIndex": 2,
+              "option": "パン",
+              "verdict": "rejected",
+              "reason": "パンはメモにありません。"
+            },
+            {
+              "optionIndex": 3,
+              "option": "うどん",
+              "verdict": "rejected",
+              "reason": "うどんはメモにありません。"
+            }
+          ],
+          "correctAnswerReview": "「れいぞうこのカレーをたべてください」が質問の条件をすべて満たし、ほかの選択肢を除外できるため、正解は一つです。",
+          "passageEvidence": [
+            {
+              "spanId": "message-eat-curry",
+              "text": "れいぞうこのカレーをたべてください",
+              "startCodePoint": 7,
+              "endCodePoint": 24
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
