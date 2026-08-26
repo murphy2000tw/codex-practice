@@ -79,7 +79,7 @@ renderJapaneseJlptPanel=()=>{};
 clearJapaneseJlptSession=()=>{japaneseJlptSession=null;};
 this.api={createJapaneseJlptVocabularyDerivedCandidates,createJapaneseJlptGrammarFormSelectionCandidates,createJapaneseJlptSentenceCompositionCandidates,createJapaneseJlptN5ReadingCandidates,createJapaneseJlptN4ReadingCandidates,validateJapaneseJlptProfile,prepareJapaneseJlptCandidatePools,selectJapaneseJlptQuestions,createJapaneseJlptPreRandomizationSnapshot,createBalancedJapaneseJlptAnswerPositions,randomizeJapaneseJlptQuestionOptions,JAPANESE_JLPT_PROFILE_REGISTRY,loadJapaneseJlptProductBanks,
 resetLoaderState(){japaneseJlptQuestionBank=null;japaneseJlptReadingBank=null;japaneseJlptProductCandidates=null;japaneseJlptActiveProfileVersion=JAPANESE_JLPT_COMPAT_PROFILE_VERSION;japaneseJlptActiveProfileId=JAPANESE_JLPT_COMPAT_PROFILE_ID;japaneseJlptProductLoadError="";japaneseJlptLoadError="";japaneseJlptReadingLoadError="";japaneseJlptIsLoading=false;japaneseJlptReadingIsLoading=false;japaneseJlptSession={partial:true};},
-getLoaderState(){return {candidateCount:japaneseJlptProductCandidates&&japaneseJlptProductCandidates.length,profileVersion:japaneseJlptActiveProfileVersion,profileId:japaneseJlptActiveProfileId,loadError:japaneseJlptProductLoadError,session:japaneseJlptSession,compatQuestionBank:Boolean(japaneseJlptQuestionBank)};}};`, context);
+getLoaderState(){return {candidateCount:japaneseJlptProductCandidates&&japaneseJlptProductCandidates.length,profileVersion:japaneseJlptActiveProfileVersion,profileId:japaneseJlptActiveProfileId,loadError:japaneseJlptProductLoadError,session:japaneseJlptSession,compatQuestionBank:Boolean(japaneseJlptQuestionBank),compatReadingBank:Boolean(japaneseJlptReadingBank)};}};`, context);
 const api = context.api;
 
 const banks = {
@@ -286,15 +286,23 @@ const uiEnd = script.indexOf("function answerJapaneseJlptQuestion", uiStart);
 check(uiStart >= 0 && uiEnd > uiStart, "UI render helper extraction boundaries missing");
 const uiContext = { document: uiDocument };
 vm.createContext(uiContext);
-vm.runInContext(`function isNonEmptyString(value){return typeof value === "string"&&value.trim().length>0;} function createRubyPartsFromTerms(value){return [String(value)];} function renderRubyParts(parent,parts){parent.textContent=parts.join("");} ${script.slice(uiStart, uiEnd)} this.ui={appendJapaneseJlptAnswerFeedbackDetails,appendJapaneseJlptLabeledTable};`, uiContext);
+vm.runInContext(`function isNonEmptyString(value){return typeof value === "string"&&value.trim().length>0;} function createRubyPartsFromTerms(value){return [String(value)];} function renderRubyParts(parent,parts){parent.textContent=parts.join("");} ${script.slice(uiStart, uiEnd)} this.ui={appendJapaneseJlptAnswerFeedbackDetails,appendJapaneseJlptQuestionFeedback,appendJapaneseJlptLabeledTable};`, uiContext);
+const detailValues = (root) => root.children
+  .filter((child) => child.tagName === "p" && child.children.length >= 2)
+  .map((child) => child.children.slice(1).map((part) => part.textContent).join(""));
 let uiFixtures = 0;
 for (const type of ["kanji-reading", "orthography", "context", "paraphrase", "usage", "form-selection", "sentence-composition"]) {
   const question = candidates.find((item) => item.questionType === type);
   const root = new DomNode("div");
   check(question, `${type} UI fixture missing`);
-  uiContext.ui.appendJapaneseJlptAnswerFeedbackDetails(root, question);
+  uiContext.ui.appendJapaneseJlptQuestionFeedback(root, question);
   check(!/(?:^|[^0-9])0：|1：|2：/.test(root.textContent), `${type} string answerDisplay was split into numeric keys`);
   check(!root.textContent.includes("[object Object]"), `${type} rendered an object coercion`);
+  check(detailValues(root).filter((value) => value === question.options[question.answerIndex]).length === 1, `${type} full feedback duplicated or omitted the correct answer`);
+  if (type === "orthography") {
+    check(detailValues(root).includes(question.kana), "orthography feedback omitted the word kana");
+    check(!detailValues(root).includes(question.sourceExampleKana), "orthography feedback mislabeled the full example kana as the word kana");
+  }
   if (type === "form-selection") check([question.grammar, question.structure, question.exampleMeaning].every((value) => root.textContent.includes(value)), "form-selection detail UI incomplete");
   if (type === "sentence-composition") check([question.completeSentence, question.kana, question.meaning, question.answerDisplay].every((value) => root.textContent.includes(value)), "sentence-composition detail UI incomplete");
   uiFixtures += 1;
@@ -362,7 +370,8 @@ async function verifyProductionLoader() {
     check(state.candidateCount === null, `${failedBank} failure published product candidates`);
     check(state.profileVersion === "17c6-compat-v1" && state.profileId === "site-jlpt-style-compatibility", `${failedBank} failure did not retain compatibility profile`);
     check(state.session === null, `${failedBank} failure retained a partial session`);
-    check(state.compatQuestionBank, `${failedBank} failure did not load compatibility data`);
+    check(state.compatQuestionBank, `${failedBank} failure did not load compatibility question data`);
+    check(state.compatReadingBank, `${failedBank} failure did not load compatibility reading data`);
     check(state.loadError.includes("新題型載入失敗，已使用相容模式"), `${failedBank} failure message missing`);
     loadFailures += 1;
   }
