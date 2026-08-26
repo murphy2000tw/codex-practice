@@ -1985,6 +1985,25 @@ h1 {
   overflow-wrap: anywhere;
 }
 
+.jlpt-reading-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.jlpt-reading-table-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.jlpt-reading-table-wrap th,
+.jlpt-reading-table-wrap td {
+  border: 1px solid var(--border);
+  padding: 0.65rem;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
 .reading-passage .jp-ruby,
 .reading-question .jp-ruby,
 .reading-option .jp-ruby,

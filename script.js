@@ -649,6 +649,10 @@ let japaneseJlptLoadError = "";
 let japaneseJlptIsLoading = false;
 let japaneseJlptSession = null;
 let japaneseJlptSessionBuildError = null;
+let japaneseJlptProductCandidates = null;
+let japaneseJlptActiveProfileVersion = "17c6-compat-v1";
+let japaneseJlptActiveProfileId = "site-jlpt-style-compatibility";
+let japaneseJlptProductLoadError = "";
 
 function isJapaneseHomeTab() {
   return currentJapaneseView === "home";
@@ -748,7 +752,7 @@ async function switchJapaneseTab(tab) {
     await renderJapaneseReviewView(normalizedTab);
   } else if (normalizedTab === "jlptMock") {
     renderJapaneseJlptPanel();
-    await Promise.all([loadJapaneseJlptQuestionBank(), loadJapaneseJlptReadingBank()]);
+    await loadJapaneseJlptProductBanks();
   }
 }
 
@@ -1017,6 +1021,25 @@ function createJapaneseJlptSentenceCompositionCandidates(sourceBank) {
 const JAPANESE_JLPT_PROFILE_REGISTRY = deepFreezeJapaneseJlptValue({
   schemaVersion: 1,
   profiles: {
+    "17c10-product-v1": {
+      profileVersion: "17c10-product-v1",
+      profileId: "site-jlpt-style-product",
+      profileKind: "production",
+      levels: {
+        N5: { total: 20, sections: {
+          vocabulary: { included: true, status: "available", total: 8, questionTypes: { "kanji-reading": 2, orthography: 2, context: 2, paraphrase: 2 } },
+          grammar: { included: true, status: "available", total: 4, questionTypes: { "form-selection": 2, "sentence-composition": 2 } },
+          reading: { included: true, status: "available", total: 8, questionTypes: { "short-passage": 2, "medium-passage": 2, "information-search": 2, "notice-and-message": 2 } },
+          listening: { included: false, status: "future", total: null, questionTypes: {} },
+        } },
+        N4: { total: 34, sections: {
+          vocabulary: { included: true, status: "available", total: 10, questionTypes: { "kanji-reading": 2, orthography: 2, context: 2, paraphrase: 2, usage: 2 } },
+          grammar: { included: true, status: "available", total: 8, questionTypes: { "form-selection": 4, "sentence-composition": 4 } },
+          reading: { included: true, status: "available", total: 16, questionTypes: { "short-passage": 4, "medium-passage": 4, "information-search": 4, "notice-and-message": 4 } },
+          listening: { included: false, status: "future", total: null, questionTypes: {} },
+        } },
+      },
+    },
     "17c6-compat-v1": {
       profileVersion: "17c6-compat-v1",
       profileKind: "transitional-compatibility",
@@ -1040,6 +1063,8 @@ const JAPANESE_JLPT_PROFILE_REGISTRY = deepFreezeJapaneseJlptValue({
 });
 const JAPANESE_JLPT_COMPAT_PROFILE_VERSION = "17c6-compat-v1";
 const JAPANESE_JLPT_COMPAT_PROFILE_ID = "site-jlpt-style-compatibility";
+const JAPANESE_JLPT_PRODUCT_PROFILE_VERSION = "17c10-product-v1";
+const JAPANESE_JLPT_PRODUCT_PROFILE_ID = "site-jlpt-style-product";
 
 function validateJapaneseJlptProfile(registry, profileVersion, profileId, level) {
   if (!registry || registry.schemaVersion !== 1 || !["N5", "N4"].includes(level))
@@ -1491,13 +1516,76 @@ function createJapaneseJlptReadingCandidates(data, level) {
 function createJapaneseJlptN5ReadingCandidates(data) { return createJapaneseJlptReadingCandidates(data, "N5"); }
 function createJapaneseJlptN4ReadingCandidates(data) { return createJapaneseJlptReadingCandidates(data, "N4"); }
 
-async function loadJapaneseJlptQuestionBank() {
+const JAPANESE_JLPT_PRODUCT_BANKS = Object.freeze([
+  ["vocabulary auto", "JAPANESE_JLPT_VOCABULARY_AUTO_URL", "japaneseJlptVocabularyAutoQuestions.json"],
+  ["vocabulary semantic", "JAPANESE_JLPT_VOCABULARY_SEMANTIC_URL", "japaneseJlptVocabularySemanticQuestions.json"],
+  ["grammar form-selection", "JAPANESE_JLPT_GRAMMAR_FORM_SELECTION_URL", "japaneseJlptGrammarFormSelectionQuestions.json"],
+  ["sentence-composition", "JAPANESE_JLPT_SENTENCE_COMPOSITION_URL", "japaneseSentenceCompositionQuestions.json"],
+  ["N5 reading", "JAPANESE_JLPT_READING_N5_URL", "japaneseJlptReadingN5Questions.json"],
+  ["N4 reading", "JAPANESE_JLPT_READING_N4_URL", "japaneseJlptReadingQuestions.json"],
+]);
+
+async function buildJapaneseJlptProductCandidates(fetchProvider = fetch) {
+  if (typeof fetchProvider !== "function") throw new TypeError("JLPT fetch provider 無效");
+  const responses = await Promise.all(JAPANESE_JLPT_PRODUCT_BANKS.map(async ([label, globalName, path]) => {
+    const response = await fetchProvider(window[globalName] || path);
+    if (!response || !response.ok) throw new Error(`${label}: HTTP ${response && response.status || "未知"}`);
+    return [label, response];
+  }));
+  const parsed = await Promise.all(responses.map(async ([label, response]) => {
+    try { return await response.json(); }
+    catch (error) { throw new Error(`${label}: JSON 解析失敗（${error instanceof Error ? error.message : "未知錯誤"}）`); }
+  }));
+  const [auto, semantic, formSelection, sentenceComposition, n5Reading, n4Reading] = parsed;
+  const candidates = [
+    ...createJapaneseJlptVocabularyDerivedCandidates(auto, semantic),
+    ...createJapaneseJlptGrammarFormSelectionCandidates(formSelection),
+    ...createJapaneseJlptSentenceCompositionCandidates(sentenceComposition),
+    ...createJapaneseJlptN5ReadingCandidates(n5Reading),
+    ...createJapaneseJlptN4ReadingCandidates(n4Reading),
+  ];
+  for (const level of JAPANESE_JLPT_LEVELS) {
+    const { profile, levelProfile } = validateJapaneseJlptProfile(
+      JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_PRODUCT_PROFILE_VERSION,
+      JAPANESE_JLPT_PRODUCT_PROFILE_ID, level,
+    );
+    prepareJapaneseJlptCandidatePools(level, profile, levelProfile, candidates, profile.profileVersion);
+  }
+  return candidates;
+}
+
+async function loadJapaneseJlptProductBanks(fetchProvider = fetch) {
+  if (japaneseJlptProductCandidates || japaneseJlptIsLoading) return;
+  japaneseJlptIsLoading = true;
+  japaneseJlptProductLoadError = "";
+  renderJapaneseJlptPanel();
+  try {
+    const nextCandidates = await buildJapaneseJlptProductCandidates(fetchProvider);
+    // Transaction-like commit point: candidates and active profile become visible together.
+    japaneseJlptProductCandidates = nextCandidates;
+    japaneseJlptActiveProfileVersion = JAPANESE_JLPT_PRODUCT_PROFILE_VERSION;
+    japaneseJlptActiveProfileId = JAPANESE_JLPT_PRODUCT_PROFILE_ID;
+  } catch (error) {
+    japaneseJlptProductCandidates = null;
+    japaneseJlptActiveProfileVersion = JAPANESE_JLPT_COMPAT_PROFILE_VERSION;
+    japaneseJlptActiveProfileId = JAPANESE_JLPT_COMPAT_PROFILE_ID;
+    japaneseJlptProductLoadError = `新題型載入失敗，已使用相容模式：${error instanceof Error ? error.message : "未知錯誤"}`;
+    clearJapaneseJlptSession();
+    japaneseJlptIsLoading = false;
+    await Promise.all([loadJapaneseJlptQuestionBank(fetchProvider), loadJapaneseJlptReadingBank(fetchProvider)]);
+  } finally {
+    japaneseJlptIsLoading = false;
+    renderJapaneseJlptPanel();
+  }
+}
+
+async function loadJapaneseJlptQuestionBank(fetchProvider = fetch) {
   if (japaneseJlptQuestionBank || japaneseJlptIsLoading) return;
   japaneseJlptIsLoading = true;
   japaneseJlptLoadError = "";
   renderJapaneseJlptPanel();
   try {
-    const response = await fetch(
+    const response = await fetchProvider(
       window.JAPANESE_JLPT_VOCABULARY_GRAMMAR_URL ||
         "japaneseJlptVocabularyGrammarQuestions.json?v=17b1",
     );
@@ -1514,13 +1602,13 @@ async function loadJapaneseJlptQuestionBank() {
   }
 }
 
-async function loadJapaneseJlptReadingBank() {
+async function loadJapaneseJlptReadingBank(fetchProvider = fetch) {
   if (japaneseJlptReadingBank || japaneseJlptReadingIsLoading) return;
   japaneseJlptReadingIsLoading = true;
   japaneseJlptReadingLoadError = "";
   renderJapaneseJlptPanel();
   try {
-    const response = await fetch(
+    const response = await fetchProvider(
       window.JAPANESE_JLPT_READING_URL ||
         "japaneseJlptReadingQuestions.json?v=17c2",
     );
@@ -1572,12 +1660,14 @@ function renderJapaneseJlptPanel() {
   let selectedLevelProfile = null;
   if (selectedJapaneseJlptLevel)
     selectedLevelProfile = validateJapaneseJlptProfile(
-      JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_COMPAT_PROFILE_VERSION,
-      JAPANESE_JLPT_COMPAT_PROFILE_ID, selectedJapaneseJlptLevel,
+      JAPANESE_JLPT_PROFILE_REGISTRY, japaneseJlptActiveProfileVersion,
+      japaneseJlptActiveProfileId, selectedJapaneseJlptLevel,
     ).levelProfile;
+  const productActive = japaneseJlptActiveProfileVersion === JAPANESE_JLPT_PRODUCT_PROFILE_VERSION;
   const canStart = Boolean(
-    japaneseJlptQuestionBank && selectedLevelProfile && !japaneseJlptSession &&
-    (!selectedLevelProfile.sections.reading.included || japaneseJlptReadingBank),
+    selectedLevelProfile && !japaneseJlptSession &&
+    (productActive ? japaneseJlptProductCandidates : japaneseJlptQuestionBank) &&
+    (productActive || !selectedLevelProfile.sections.reading.included || japaneseJlptReadingBank),
   );
   if (startJapaneseJlptMockButton)
     startJapaneseJlptMockButton.disabled = !canStart;
@@ -1592,7 +1682,12 @@ function renderJapaneseJlptPanel() {
     japaneseJlptStatus.appendChild(p);
     return;
   }
-  if (!japaneseJlptQuestionBank) {
+  if (japaneseJlptProductLoadError) {
+    const p = document.createElement("p");
+    p.textContent = japaneseJlptProductLoadError;
+    japaneseJlptStatus.appendChild(p);
+  }
+  if (!productActive && !japaneseJlptQuestionBank) {
     const p = document.createElement("p");
     p.textContent = "JLPT 單字・文法題庫尚未載入。";
     japaneseJlptStatus.appendChild(p);
@@ -1604,20 +1699,21 @@ function renderJapaneseJlptPanel() {
     japaneseJlptStatus.appendChild(p);
     return;
   }
+  const levelProfile = selectedLevelProfile;
   const heading = document.createElement("p");
   heading.className = "sentence-composition-mode";
-  heading.textContent = `已選擇 ${selectedJapaneseJlptLevel}`;
+  heading.textContent = `${productActive ? "正式模式" : "相容模式"}・已選擇 ${selectedJapaneseJlptLevel}・固定共 ${levelProfile.total} 題`;
   const list = document.createElement("ul");
-  const levelProfile = selectedLevelProfile;
   [`單字 ${levelProfile.sections.vocabulary.total} 題`, `文法 ${levelProfile.sections.grammar.total} 題`].forEach((text) => {
     const item = document.createElement("li");
     item.textContent = text;
     list.appendChild(item);
   });
   const reading = document.createElement("li");
-  reading.textContent =
-    selectedJapaneseJlptLevel === "N5"
-      ? "閱讀尚未準備完成"
+  reading.textContent = productActive
+    ? `閱讀 ${levelProfile.sections.reading.total} 題`
+    : selectedJapaneseJlptLevel === "N5"
+      ? "閱讀：相容模式未啟用"
       : japaneseJlptReadingLoadError ||
           (!japaneseJlptReadingBank && !japaneseJlptReadingIsLoading)
         ? japaneseJlptReadingLoadError || "N4 閱讀題庫尚未載入"
@@ -1896,7 +1992,9 @@ function prepareJapaneseJlptCandidatePools(level, profile, levelProfile, candida
       normalizedCandidates.forEach((candidate) => {
         if (`${candidate.level}\u0000${candidate.section}\u0000${candidate.questionType}` !== key) return;
         const identity = getJapaneseJlptCanonicalIdentity(candidate);
-        if (!identities.has(identity)) { identities.add(identity); uniquePool.push(candidate); }
+        if (identities.has(identity))
+          throw new Error(`JLPT candidate canonical identity 重複：${identity}`);
+        identities.add(identity); uniquePool.push(candidate);
       });
       pools.set(key, { level, sectionName, questionType, quota, selectionMode: section.selectionMode, candidates: uniquePool });
     }
@@ -1954,11 +2052,14 @@ function createJapaneseJlptPreRandomizationSnapshot(selected, levelProfile) {
 }
 function buildJapaneseJlptSession(level, questionBank, readingBank, randomIndexProvider = getJapaneseJlptRandomIndex) {
   const { profile, levelProfile } = validateJapaneseJlptProfile(
-    JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_COMPAT_PROFILE_VERSION,
-    JAPANESE_JLPT_COMPAT_PROFILE_ID, level,
+    JAPANESE_JLPT_PROFILE_REGISTRY, japaneseJlptActiveProfileVersion,
+    japaneseJlptActiveProfileId, level,
   );
-  const candidates = questionBank.questions.map(createJapaneseJlptQuestionSnapshot);
-  if (levelProfile.sections.reading.included) {
+  const productActive = profile.profileVersion === JAPANESE_JLPT_PRODUCT_PROFILE_VERSION;
+  const candidates = productActive
+    ? japaneseJlptProductCandidates.slice()
+    : questionBank.questions.map(createJapaneseJlptQuestionSnapshot);
+  if (!productActive && levelProfile.sections.reading.included) {
     if (!readingBank) throw new Error(`${level} reading 題庫尚未載入`);
     candidates.push(...createJapaneseJlptReadingSnapshots(readingBank.selectedSets));
   }
@@ -1982,6 +2083,102 @@ function appendJapaneseJlptDetail(parent, label, value) {
 }
 function appendJapaneseJlptRubyText(parent, value, rubyTerms) {
   renderRubyParts(parent, createRubyPartsFromTerms(value, rubyTerms));
+}
+function appendJapaneseJlptLabeledTable(parent, material, rubyTerms) {
+  if (!material || material.type !== "labeled-table" || !Array.isArray(material.columns) ||
+      !Array.isArray(material.rows)) return false;
+  const wrapper = document.createElement("div");
+  wrapper.className = "jlpt-reading-table-wrap";
+  (Array.isArray(material.headings) ? material.headings : []).forEach((item) => {
+    if (!item || !isNonEmptyString(item.label)) return;
+    const heading = document.createElement("h5");
+    appendJapaneseJlptRubyText(heading, item.label, rubyTerms);
+    wrapper.appendChild(heading);
+  });
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  material.columns.forEach((column) => {
+    const th = document.createElement("th");
+    appendJapaneseJlptRubyText(th, column && isNonEmptyString(column.label) ? column.label : "—", rubyTerms);
+    headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  const tbody = document.createElement("tbody");
+  material.rows.forEach((row) => {
+    const tr = document.createElement("tr");
+    const cells = row && Array.isArray(row.cells) ? row.cells : [];
+    material.columns.forEach((_, index) => {
+      const td = document.createElement("td");
+      const cell = cells[index];
+      appendJapaneseJlptRubyText(td, cell && isNonEmptyString(cell.text) ? cell.text : "—", rubyTerms);
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.append(thead, tbody);
+  wrapper.appendChild(table);
+  parent.appendChild(wrapper);
+  return true;
+}
+function appendJapaneseJlptNewTypeAnswerDetails(parent, question) {
+  const detail = (label, value) => {
+    if (isNonEmptyString(value)) appendJapaneseJlptDetail(parent, label, value);
+  };
+  const handlers = {
+    "kanji-reading": () => {
+      detail("正確讀音", question.answerDisplay);
+      if (question.testedReading !== question.answerDisplay) detail("假名", question.testedReading);
+    },
+    orthography: () => { detail("正確漢字", question.answerDisplay); detail("假名", question.kana); },
+    context: () => { detail("正確選項", question.answerDisplay); detail("例句意思", question.sourceExampleMeaning); },
+    paraphrase: () => { detail("原表現", question.targetExpression); detail("原假名", question.targetExpressionKana); detail("近義表現", question.answerDisplay); detail("近義假名", question.equivalentExpressionKana); },
+    usage: () => { detail("目標單字", question.targetWord); detail("假名", question.targetKana); detail("正確用法句", question.answerDisplay); },
+    "form-selection": () => {
+      detail("正確答案", question.answerDisplay);
+      detail("文法", question.grammar);
+      if (question.grammarKana !== question.answerDisplay) detail("文法假名", question.grammarKana);
+      detail("結構", question.structure);
+      detail("用法", question.usage);
+      detail("例句", question.example);
+      detail("例句假名", question.exampleKana);
+      detail("中文意思", question.exampleMeaning);
+    },
+    "sentence-composition": () => { detail("完整句子", question.completeSentence); detail("完整假名", question.kana); detail("中文意思", question.meaning); detail("★位置正解", question.answerDisplay); },
+  };
+  const handler = handlers[question.questionType];
+  if (!handler) return false;
+  handler();
+  if (!isNonEmptyString(question.answerDisplay))
+    detail("正確答案", question.options && question.options[question.answerIndex]);
+  detail("解析", question.explanation);
+  return true;
+}
+function appendJapaneseJlptAnswerFeedbackDetails(parent, question) {
+  if (appendJapaneseJlptNewTypeAnswerDetails(parent, question)) return;
+  const labels = question.section === "vocabulary"
+    ? { word: "單字", kana: "假名", meaning: "意思" }
+    : { grammar: "文法", kana: "假名", answer: "答案", meaning: "意思", structure: "結構" };
+  if (question.answerDisplay && typeof question.answerDisplay === "object" && !Array.isArray(question.answerDisplay)) {
+    Object.entries(question.answerDisplay).forEach(([key, value]) => {
+      if (typeof value === "string") appendJapaneseJlptDetail(parent, labels[key] || key, value);
+    });
+  } else {
+    const fallback = isNonEmptyString(question.answerDisplay)
+      ? question.answerDisplay : question.options && question.options[question.answerIndex];
+    if (isNonEmptyString(fallback)) appendJapaneseJlptDetail(parent, "正確答案", fallback);
+  }
+  if (isNonEmptyString(question.explanation)) appendJapaneseJlptDetail(parent, "解析", question.explanation);
+}
+function appendJapaneseJlptQuestionFeedback(parent, question) {
+  if (question.section === "reading") {
+    appendJapaneseJlptDetail(parent, "正確答案", question.options[question.answerIndex]);
+    appendJapaneseJlptDetail(parent, "答案說明", question.answerDisplay);
+    appendJapaneseJlptDetail(parent, "解析", question.explanation);
+    appendJapaneseJlptDetail(parent, "本文假名", question.passageKana);
+    return;
+  }
+  appendJapaneseJlptAnswerFeedbackDetails(parent, question);
 }
 function answerJapaneseJlptQuestion(selectedIndex) {
   if (!japaneseJlptSession) return;
@@ -2020,22 +2217,25 @@ function renderJapaneseJlptQuestion() {
       question.displayTitle,
       question.rubyTerms,
     );
-    const passage = document.createElement("p");
-    passage.className = "reading-passage";
-    appendJapaneseJlptRubyText(
-      passage,
-      question.displayPassage,
-      question.rubyTerms,
-    );
-    card.append(readingProgress, title, passage);
+    card.append(readingProgress, title);
+    if (!appendJapaneseJlptLabeledTable(card, question.material, question.rubyTerms)) {
+      const passage = document.createElement("p");
+      passage.className = "reading-passage";
+      appendJapaneseJlptRubyText(passage, question.displayPassage, question.rubyTerms);
+      card.appendChild(passage);
+    }
   }
   const type = document.createElement("p");
   type.className = "quiz-prompt-label";
-  type.textContent = isReading
-    ? "閱讀問題"
-    : question.questionType === "cloze"
-      ? "文法填空"
-      : "意思選擇";
+  const questionTypeLabels = {
+    "kanji-reading": "漢字讀音", orthography: "漢字寫法", context: "語境選擇",
+    paraphrase: "近義改寫", usage: "用法判斷", "form-selection": "文法選形",
+    "sentence-composition": "句子重組", "short-passage": "短篇閱讀",
+    "medium-passage": "中篇閱讀", "information-search": "資訊檢索",
+    "notice-and-message": "通知與訊息", cloze: "文法填空", meaning: "意思選擇",
+    "legacy-reading-question": "閱讀問題",
+  };
+  type.textContent = questionTypeLabels[question.questionType] || "題型未識別";
   const prompt = document.createElement("p");
   prompt.className = "quiz-prompt";
   if (isReading)
@@ -2070,31 +2270,7 @@ function renderJapaneseJlptQuestion() {
     const result = document.createElement("p");
     result.textContent = answer.isCorrect ? "答對" : "答錯";
     feedback.appendChild(result);
-    appendJapaneseJlptDetail(
-      feedback,
-      "正確答案",
-      question.options[question.answerIndex],
-    );
-    if (isReading) {
-      appendJapaneseJlptDetail(feedback, "答案說明", question.answerDisplay);
-      appendJapaneseJlptDetail(feedback, "解析", question.explanation);
-      appendJapaneseJlptDetail(feedback, "本文假名", question.passageKana);
-    } else {
-      const labels =
-        question.section === "vocabulary"
-          ? { word: "單字", kana: "假名", meaning: "意思" }
-          : {
-              grammar: "文法",
-              kana: "假名",
-              answer: "答案",
-              meaning: "意思",
-              structure: "結構",
-            };
-      Object.entries(question.answerDisplay).forEach(([key, value]) =>
-        appendJapaneseJlptDetail(feedback, labels[key] || key, value),
-      );
-      appendJapaneseJlptDetail(feedback, "解析", question.explanation);
-    }
+    appendJapaneseJlptQuestionFeedback(feedback, question);
   }
   const next = document.createElement("button");
   next.type = "button";
@@ -2115,14 +2291,9 @@ function renderJapaneseJlptCompletion() {
   const heading = document.createElement("h3");
   heading.tabIndex = -1;
   heading.textContent =
-    level === "N4"
-      ? "已完成 N4 單字、文法與閱讀模擬測驗"
-      : "已完成 N5 單字與文法模擬測驗";
+    `已完成 ${level} 單字、文法與閱讀模擬測驗`;
   const note = document.createElement("p");
-  note.textContent =
-    level === "N5"
-      ? "N5 閱讀尚未準備完成；聽力將於後續批次開放。"
-      : "聽力將於後續批次開放。";
+  note.textContent = "聽力將於後續批次開放。";
   const back = document.createElement("button");
   back.type = "button";
   back.className = "answer-button";
@@ -2148,13 +2319,14 @@ function advanceJapaneseJlptQuestion() {
   renderJapaneseJlptQuestion();
 }
 function startJapaneseJlptMock() {
-  if (!selectedJapaneseJlptLevel || !japaneseJlptQuestionBank) return;
+  const productActive = japaneseJlptActiveProfileVersion === JAPANESE_JLPT_PRODUCT_PROFILE_VERSION;
+  if (!selectedJapaneseJlptLevel || (productActive ? !japaneseJlptProductCandidates : !japaneseJlptQuestionBank)) return;
   const { levelProfile } = validateJapaneseJlptProfile(
-    JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_COMPAT_PROFILE_VERSION,
-    JAPANESE_JLPT_COMPAT_PROFILE_ID, selectedJapaneseJlptLevel,
+    JAPANESE_JLPT_PROFILE_REGISTRY, japaneseJlptActiveProfileVersion,
+    japaneseJlptActiveProfileId, selectedJapaneseJlptLevel,
   );
   if (
-    levelProfile.sections.reading.included && !japaneseJlptReadingBank
+    !productActive && levelProfile.sections.reading.included && !japaneseJlptReadingBank
   )
     return;
   let nextSession;
