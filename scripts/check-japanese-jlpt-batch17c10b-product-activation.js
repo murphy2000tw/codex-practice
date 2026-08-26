@@ -1,0 +1,278 @@
+#!/usr/bin/env node
+"use strict";
+
+const fs = require("fs");
+const vm = require("vm");
+const { execFileSync } = require("child_process");
+
+const BASE = "5883d2f328be3571cc716fde85f724918e220864";
+const DOC = "docs/japanese-jlpt-batch17c10a-product-quota-activation-plan.md";
+const SELF = "scripts/check-japanese-jlpt-batch17c10a-product-quota-activation-plan.js";
+const ALLOWED = new Set([DOC, SELF]);
+const LEGACY_TYPES = new Set(["meaning", "cloze", "legacy-reading-question"]);
+const EXPECTED_TYPES = {
+  vocabulary: new Set(["kanji-reading", "orthography", "context", "paraphrase", "usage"]),
+  grammar: new Set(["form-selection", "sentence-composition"]),
+  reading: new Set(["short-passage", "medium-passage", "information-search", "notice-and-message"]),
+};
+const LOCKED_QUOTAS = {
+  N5: { vocabulary: { "kanji-reading": 2, orthography: 2, context: 2, paraphrase: 2 }, grammar: { "form-selection": 2, "sentence-composition": 2 }, reading: { "short-passage": 2, "medium-passage": 2, "information-search": 2, "notice-and-message": 2 } },
+  N4: { vocabulary: { "kanji-reading": 2, orthography: 2, context: 2, paraphrase: 2, usage: 2 }, grammar: { "form-selection": 4, "sentence-composition": 4 }, reading: { "short-passage": 4, "medium-passage": 4, "information-search": 4, "notice-and-message": 4 } },
+};
+const read = (path) => fs.readFileSync(path, "utf8");
+const clone = (value) => JSON.parse(JSON.stringify(value));
+const git = (...args) => execFileSync("git", args, { encoding: "utf8" }).trim();
+const check = (value, message) => { if (!value) throw new Error(`Batch 17C-10B check: ${message}`); };
+
+const documentText = read(DOC);
+const match = documentText.match(/<!-- JLPT_17C10_PRODUCT_QUOTA_START -->\s*```json\s*([\s\S]*?)\s*```\s*<!-- JLPT_17C10_PRODUCT_QUOTA_END -->/);
+check(match, "machine-readable quota block missing or ambiguous");
+const contract = JSON.parse(match[1]);
+
+function validateContract(value) {
+  check(value.profileVersion === "17c10-product-v1", "profileVersion drift");
+  check(value.profileId === "site-jlpt-style-product", "profileId drift");
+  check(value.profileKind === "production", "profileKind drift");
+  check(JSON.stringify(Object.keys(value.levels)) === JSON.stringify(["N5", "N4"]), "levels must be exactly N5/N4");
+  for (const [level, profile] of Object.entries(value.levels)) {
+    check(JSON.stringify(Object.keys(profile.sections)) === JSON.stringify(["vocabulary", "grammar", "reading", "listening"]), `${level} sections drift`);
+    let levelTotal = 0;
+    for (const [sectionName, section] of Object.entries(profile.sections)) {
+      if (sectionName === "listening") {
+        check(section.included === false && section.status === "future" && section.total === null && Object.keys(section.questionTypes).length === 0, `${level} listening activated early`);
+        continue;
+      }
+      check(section.included === true && section.status === "available", `${level}/${sectionName} availability drift`);
+      const typeTotal = Object.entries(section.questionTypes).reduce((sum, [type, quota]) => {
+        check(EXPECTED_TYPES[sectionName].has(type), `${level}/${sectionName} unknown questionType ${type}`);
+        check(!LEGACY_TYPES.has(type), `${level} legacy type leaked into product profile`);
+        check(Number.isSafeInteger(quota) && quota > 0, `${level}/${sectionName}/${type} invalid quota`);
+        return sum + quota;
+      }, 0);
+      check(typeTotal === section.total, `${level}/${sectionName} questionType sum does not equal section total`);
+      check(JSON.stringify(section.questionTypes) === JSON.stringify(LOCKED_QUOTAS[level][sectionName]), `${level}/${sectionName} fixed quota drift`);
+      levelTotal += section.total;
+    }
+    check(levelTotal === profile.total, `${level} section sum does not equal level total`);
+  }
+  check(value.levels.N5.total === 20 && value.levels.N4.total === 34, "fixed level totals drift");
+  check(!Object.prototype.hasOwnProperty.call(value.levels.N5.sections.vocabulary.questionTypes, "usage"), "N5 usage is forbidden");
+}
+validateContract(contract);
+
+const script = read("script.js");
+const start = script.indexOf("function deepFreezeJapaneseJlptValue");
+const end = script.indexOf("function appendJapaneseJlptDetail");
+check(start >= 0 && end > start, "production adapter contract extraction boundaries missing");
+const context = { console, crypto: require("crypto").webcrypto };
+vm.createContext(context);
+vm.runInContext(`function isNonEmptyString(value){return typeof value === "string" && value.trim().length > 0;}\n${script.slice(start, end)}\nthis.api={createJapaneseJlptVocabularyDerivedCandidates,createJapaneseJlptGrammarFormSelectionCandidates,createJapaneseJlptSentenceCompositionCandidates,createJapaneseJlptN5ReadingCandidates,createJapaneseJlptN4ReadingCandidates,validateJapaneseJlptProfile,prepareJapaneseJlptCandidatePools,selectJapaneseJlptQuestions,createJapaneseJlptPreRandomizationSnapshot,createBalancedJapaneseJlptAnswerPositions,randomizeJapaneseJlptQuestionOptions,JAPANESE_JLPT_PROFILE_REGISTRY};`, context);
+const api = context.api;
+
+const banks = {
+  vocabularyAuto: JSON.parse(read("japaneseJlptVocabularyAutoQuestions.json")),
+  vocabularySemantic: JSON.parse(read("japaneseJlptVocabularySemanticQuestions.json")),
+  grammarForm: JSON.parse(read("japaneseJlptGrammarFormSelectionQuestions.json")),
+  sentenceComposition: JSON.parse(read("japaneseSentenceCompositionQuestions.json")),
+  readingN5: JSON.parse(read("japaneseJlptReadingN5Questions.json")),
+  readingN4: JSON.parse(read("japaneseJlptReadingQuestions.json")),
+};
+const bankBytes = JSON.stringify(banks);
+const candidates = [
+  ...api.createJapaneseJlptVocabularyDerivedCandidates(banks.vocabularyAuto, banks.vocabularySemantic),
+  ...api.createJapaneseJlptGrammarFormSelectionCandidates(banks.grammarForm),
+  ...api.createJapaneseJlptSentenceCompositionCandidates(banks.sentenceComposition),
+  ...api.createJapaneseJlptN5ReadingCandidates(banks.readingN5),
+  ...api.createJapaneseJlptN4ReadingCandidates(banks.readingN4),
+];
+const capacity = {};
+for (const question of candidates) {
+  capacity[question.level] ||= {};
+  capacity[question.level][question.section] ||= {};
+  capacity[question.level][question.section][question.questionType] = (capacity[question.level][question.section][question.questionType] || 0) + 1;
+}
+const expectedCapacity = {
+  N5: { vocabulary: { "kanji-reading": 12, orthography: 12, context: 12, paraphrase: 12 }, grammar: { "form-selection": 12, "sentence-composition": 30 }, reading: { "short-passage": 2, "medium-passage": 4, "information-search": 4, "notice-and-message": 2 } },
+  N4: { vocabulary: { "kanji-reading": 12, orthography: 12, context: 12, paraphrase: 12, usage: 12 }, grammar: { "form-selection": 12, "sentence-composition": 30 }, reading: { "short-passage": 41, "medium-passage": 35, "information-search": 33, "notice-and-message": 41 } },
+};
+for (const [level, sections] of Object.entries(expectedCapacity)) for (const [section, types] of Object.entries(sections)) {
+  check(capacity[level] && capacity[level][section], `${level}/${section} dynamic adapter pool missing`);
+  check(Object.keys(capacity[level][section]).length === Object.keys(types).length, `${level}/${section} unexpected dynamic adapter type`);
+  for (const [type, count] of Object.entries(types)) check(capacity[level][section][type] === count, `${level}/${section}/${type} capacity must be ${count}`);
+}
+for (const [level, levelProfile] of Object.entries(contract.levels)) for (const [section, sectionProfile] of Object.entries(levelProfile.sections)) {
+  if (!sectionProfile.included) continue;
+  for (const [type, quota] of Object.entries(sectionProfile.questionTypes)) check(quota <= capacity[level][section][type], `${level}/${section}/${type} quota exceeds actual pool`);
+}
+
+const registry = { schemaVersion: 1, profiles: { [contract.profileVersion]: contract } };
+const objectReferences = (value, found = new Set()) => {
+  if (value && typeof value === "object" && !found.has(value)) {
+    found.add(value);
+    Object.values(value).forEach((nested) => objectReferences(nested, found));
+  }
+  return found;
+};
+const sharesNestedReference = (first, second) => {
+  const firstReferences = objectReferences(first);
+  return [...objectReferences(second)].some((reference) => firstReferences.has(reference));
+};
+const isDeepFrozen = (value, seen = new Set()) => {
+  if (!value || typeof value !== "object" || seen.has(value)) return true;
+  seen.add(value);
+  return Object.isFrozen(value) && Object.values(value).every((nested) => isDeepFrozen(nested, seen));
+};
+const deterministicProvider = (seed) => {
+  let state = seed >>> 0;
+  return (max) => {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+    return state % max;
+  };
+};
+const expectedSections = { N5: { vocabulary: 8, grammar: 4, reading: 8 }, N4: { vocabulary: 10, grammar: 8, reading: 16 } };
+const pipelineResults = {};
+for (const level of ["N5", "N4"]) {
+  const { profile, levelProfile } = api.validateJapaneseJlptProfile(registry, contract.profileVersion, contract.profileId, level);
+  const pools = api.prepareJapaneseJlptCandidatePools(level, profile, levelProfile, candidates, contract.profileVersion);
+  const selected = api.selectJapaneseJlptQuestions(pools, deterministicProvider(level === "N5" ? 5 : 4));
+  check(selected.length === levelProfile.total && new Set(selected.map((q) => q.id)).size === selected.length, `${level} selection must satisfy fixed total without replacement`);
+  const candidateBytes = JSON.stringify(candidates);
+  const snapshot = api.createJapaneseJlptPreRandomizationSnapshot(selected, levelProfile);
+  check(snapshot.length === levelProfile.total, `${level} snapshot total drift`);
+  for (const [section, total] of Object.entries(expectedSections[level])) check(snapshot.filter((q) => q.section === section).length === total, `${level} snapshot ${section} must contain ${total}`);
+  check(isDeepFrozen(snapshot), `${level} snapshot and every nested object/array must be deeply frozen`);
+  check(JSON.stringify(candidates) === candidateBytes && JSON.stringify(banks) === bankBytes, `${level} snapshot creation mutated source banks/candidates`);
+  check(candidates.every((q) => !Object.isFrozen(q)) && !Object.isFrozen(banks), `${level} snapshot creation froze source banks/candidates`);
+  selected.forEach((question, index) => check(!sharesNestedReference(question, snapshot[index]), `${level} candidate and snapshot share nested references`));
+  const reading = selected.filter((q) => q.section === "reading");
+  check(new Set(reading.map((q) => `${q.setId}\u0000${q.questionId}`)).size === reading.length, `${level} reading (setId, questionId) canonical identities must be unique`);
+  for (const setId of new Set(reading.map((q) => q.setId))) {
+    const indexes = snapshot.map((q, index) => q.section === "reading" && q.setId === setId ? index : -1).filter((index) => index >= 0);
+    const group = indexes.map((index) => snapshot[index]);
+    check(indexes.every((index, position) => position === 0 || index === indexes[position - 1] + 1), `${level}/${setId} reading questions must be adjacent`);
+    check(group.every((q, index) => index === 0 || q.readingQuestionIndex >= group[index - 1].readingQuestionIndex), `${level}/${setId} reading order drift`);
+    check(group.every((q) => q.selectedSessionQuestionCount === group.length && q.sourceSetQuestionCount === q.readingQuestionCount), `${level}/${setId} selected/source question count drift`);
+    check(group.every((q) => q.displayPassage && q.passageKana && Array.isArray(q.rubyTerms) && q.rubyCoverage && Number.isSafeInteger(q.readingSetIndex) && Number.isSafeInteger(q.readingSetCount) && Number.isSafeInteger(q.readingQuestionIndex) && Number.isSafeInteger(q.readingQuestionCount) && (q.material === undefined || typeof q.material === "object") && (q.passageEvidence === undefined || Array.isArray(q.passageEvidence)) && (q.informationEvidence === undefined || Array.isArray(q.informationEvidence))), `${level}/${setId} passage/material/evidence/ruby/index metadata incomplete`);
+  }
+  const positions = api.createBalancedJapaneseJlptAnswerPositions(snapshot.length, deterministicProvider(level === "N5" ? 50 : 40));
+  const positionCounts = [0, 1, 2, 3].map((position) => positions.filter((value) => value === position).length);
+  check(positions.length === levelProfile.total && positionCounts.reduce((sum, count) => sum + count, 0) === levelProfile.total, `${level} answer position total drift`);
+  if (level === "N5") check(JSON.stringify(positionCounts) === JSON.stringify([5, 5, 5, 5]), "N5 answer positions must be 5/5/5/5");
+  else check(positionCounts.every((count) => count === 8 || count === 9) && Math.max(...positionCounts) - Math.min(...positionCounts) <= 1 && positionCounts.filter((count) => count === 8).length === 2 && positionCounts.filter((count) => count === 9).length === 2, "N4 answer positions must be a permutation of 8/8/9/9");
+  const snapshotBytes = JSON.stringify(snapshot);
+  const randomized = snapshot.map((question, index) => api.randomizeJapaneseJlptQuestionOptions(question, positions[index], deterministicProvider(index + (level === "N5" ? 100 : 200))));
+  check(JSON.stringify(snapshot) === snapshotBytes, `${level} randomization mutated immutable snapshot`);
+  randomized.forEach((question, index) => {
+    const before = snapshot[index]; const permutation = question.optionPermutation;
+    check(question.answerIndex === positions[index] && question.options[question.answerIndex] === before.options[before.answerIndex], `${level}/${question.questionType} answerIndex no longer identifies the true answer`);
+    check(!sharesNestedReference(question, before), `${level}/${question.questionType} randomized question shares nested references with snapshot`);
+    if (question.questionType === "orthography") check(question.optionReviews.every((review, optionIndex) => review.value === question.options[optionIndex]), "orthography optionReviews alignment drift");
+    if (question.questionType === "context") check(question.substitutionReviews.every((review, optionIndex) => review.value === question.options[optionIndex]) && question.optionSourceIds.length === 4, "context source/review alignment drift");
+    if (question.questionType === "paraphrase") check(question.optionReviews.every((review, optionIndex) => review.expression === question.options[optionIndex]), "paraphrase optionReviews alignment drift");
+    if (question.questionType === "usage") check(question.correctUsageIndex === question.answerIndex && question.usageSentences.every((usage, optionIndex) => usage.sentence === question.options[optionIndex] && usage.acceptedAsCorrect === (optionIndex === question.answerIndex)) && question.incorrectUsageReasons.every((reason) => reason.usageIndex !== question.answerIndex), "usage metadata alignment drift");
+    if (question.questionType === "form-selection") check(permutation.version === "17c8d-v1" && question.optionReviews.every((review, optionIndex) => review.choiceIndex === optionIndex && review.value === question.options[optionIndex] && review.originalChoiceIndex === permutation.randomizedIndexToOriginalIndex[optionIndex]) && permutation.correctCanonicalOptionId === `${question.sourceQuestionId}#choice-${before.answerIndex}`, "form-selection permutation/canonical identity drift");
+    if (question.questionType === "sentence-composition") check(permutation.version === "17c8d-v1" && question.options.every((option, optionIndex) => question.chunks[optionIndex].text === option && question.optionChunkIds[optionIndex] === question.chunks[optionIndex].id) && question.optionChunkIds[question.answerIndex] === question.correctChunkId && permutation.correctCanonicalOptionId === question.correctChunkId && JSON.stringify(question.canonicalChunkIds) === JSON.stringify(before.canonicalChunkIds), "sentence-composition chunk/permutation identity drift");
+    if (question.section === "reading") {
+      check(permutation.version === "17c9d-v1" && permutation.correctCanonicalOptionId === `${question.sourceQuestionId}#option-${before.answerIndex}`, "reading permutation/canonical identity drift");
+      for (const key of ["passageEvidence", "informationEvidence", "material", "rubyTerms", "rubyCoverage", "displayPassage", "passageKana", "readingSetIndex", "readingSetCount", "readingQuestionIndex", "readingQuestionCount", "sourceSetQuestionCount", "selectedSessionQuestionCount"]) check(JSON.stringify(question[key]) === JSON.stringify(before[key]), `reading ${key} changed during randomization`);
+      if (Array.isArray(question.optionReviews)) check(question.optionReviews.every((review, optionIndex) => review.optionIndex === optionIndex && review.option === question.options[optionIndex] && review.originalOptionIndex === permutation.randomizedIndexToOriginalIndex[optionIndex]), "reading optionReviews alignment drift");
+    }
+    if (permutation) check(permutation.correctRandomizedIndex === question.answerIndex && permutation.correctOriginalIndex === before.answerIndex && permutation.randomizedCanonicalOptionIds[question.answerIndex] === permutation.correctCanonicalOptionId && permutation.randomizedIndexToOriginalIndex.every((original, current) => permutation.originalIndexToRandomizedIndex[original] === current), `${level}/${question.questionType} permutation metadata alignment drift`);
+  });
+  pipelineResults[level] = positionCounts;
+}
+
+let negatives = 0;
+function rejects(name, mutate) {
+  const fixture = clone(contract);
+  mutate(fixture);
+  let rejected = false;
+  try { validateContract(fixture); } catch (_) { rejected = true; }
+  check(rejected, `negative fixture accepted: ${name}`);
+  negatives += 1;
+}
+rejects("unknown questionType", (x) => { x.levels.N4.sections.grammar.questionTypes.attacker = 1; x.levels.N4.sections.grammar.total += 1; x.levels.N4.total += 1; });
+rejects("wrong section total", (x) => { x.levels.N5.sections.grammar.total = 5; x.levels.N5.total = 21; });
+rejects("wrong level total", (x) => { x.levels.N4.total = 35; });
+rejects("N5 usage", (x) => { x.levels.N5.sections.vocabulary.questionTypes.usage = 1; x.levels.N5.sections.vocabulary.total += 1; x.levels.N5.total += 1; });
+rejects("listening included", (x) => { x.levels.N4.sections.listening.included = true; });
+rejects("listening status", (x) => { x.levels.N5.sections.listening.status = "available"; });
+rejects("legacy type", (x) => { x.levels.N4.sections.reading.questionTypes["legacy-reading-question"] = 1; x.levels.N4.sections.reading.total += 1; x.levels.N4.total += 1; });
+rejects("silent fallback shape", (x) => { delete x.levels.N5.sections.reading.questionTypes["short-passage"]; x.levels.N5.sections.reading.questionTypes["medium-passage"] += 2; });
+
+{
+  const short = candidates.filter((q) => !(q.level === "N5" && q.section === "reading" && q.questionType === "short-passage" && q === candidates.find((item) => item.level === "N5" && item.section === "reading" && item.questionType === "short-passage")));
+  const { profile, levelProfile } = api.validateJapaneseJlptProfile(registry, contract.profileVersion, contract.profileId, "N5");
+  let error; let session; let randomCalls = 0;
+  try {
+    const pools = api.prepareJapaneseJlptCandidatePools("N5", profile, levelProfile, short, contract.profileVersion);
+    session = api.selectJapaneseJlptQuestions(pools, () => { randomCalls += 1; return 0; });
+  } catch (caught) { error = caught; }
+  check(session === undefined && randomCalls === 0 && error && error.code === "JLPT_INSUFFICIENT_POOL", "insufficient capacity must atomically throw JLPT_INSUFFICIENT_POOL before randomness/partial session");
+  check(error.details.level === "N5" && error.details.section === "reading" && error.details.questionType === "short-passage" && error.details.required === 2 && error.details.available === 1, "insufficient pool structured details drift");
+  negatives += 1;
+}
+{
+  const contaminated = clone(candidates);
+  contaminated.find((q) => q.level === "N5" && q.section === "reading").questionType = "unknown-reading-fallback";
+  let rejected = false;
+  try {
+    const { profile, levelProfile } = api.validateJapaneseJlptProfile(registry, contract.profileVersion, contract.profileId, "N5");
+    api.prepareJapaneseJlptCandidatePools("N5", profile, levelProfile, contaminated, contract.profileVersion);
+  } catch (_) { rejected = true; }
+  check(rejected, "unknown candidate type must fail closed rather than silently fallback");
+  negatives += 1;
+}
+check(negatives === 10, `negative fixture count drift: ${negatives}`);
+
+{
+  const duplicated = candidates.concat([candidates.find((q) => q.level === "N5" && q.questionType === "kanji-reading")]);
+  let rejected = false;
+  try {
+    const { profile, levelProfile } = api.validateJapaneseJlptProfile(registry, contract.profileVersion, contract.profileId, "N5");
+    api.prepareJapaneseJlptCandidatePools("N5", profile, levelProfile, duplicated, contract.profileVersion);
+  } catch (_) { rejected = true; }
+  check(rejected, "duplicate canonical identity must fail closed");
+  negatives += 1;
+}
+{
+  let rejected = false;
+  try { api.createBalancedJapaneseJlptAnswerPositions(20, () => -1); } catch (_) { rejected = true; }
+  check(rejected, "invalid random provider must fail closed");
+  negatives += 1;
+}
+
+const compat = api.JAPANESE_JLPT_PROFILE_REGISTRY.profiles["17c6-compat-v1"];
+check(compat && compat.levels.N5.total === 20 && compat.levels.N4.total === 34, "17c6-compat-v1 missing or totals changed");
+check(compat.levels.N5.sections.vocabulary.questionTypes.meaning === 10 && compat.levels.N5.sections.grammar.questionTypes.cloze === 5 && compat.levels.N4.sections.reading.questionTypes["legacy-reading-question"] === 14, "17c6 legacy contract not fully retained");
+check(JSON.stringify(api.JAPANESE_JLPT_PROFILE_REGISTRY.profiles[contract.profileVersion]) === JSON.stringify(contract), "runtime product profile differs from machine-readable contract");
+check(/非官方/.test(documentText) && /JLPT-style/.test(documentText), "non-official JLPT-style disclosure missing");
+check(/selection → immutable snapshot → balanced answer positions → randomization/.test(documentText), "pipeline ordering contract missing");
+
+const JAPANESE_PRODUCT_BANK_NAMES = ["vocabulary auto", "vocabulary semantic", "grammar form-selection", "sentence-composition", "N5 reading", "N4 reading"];
+check(/Promise\.all\(JAPANESE_JLPT_PRODUCT_BANKS/.test(script), "production loader does not fetch all banks transactionally");
+check(/createJapaneseJlptVocabularyDerivedCandidates\(auto, semantic\)/.test(script) && /createJapaneseJlptGrammarFormSelectionCandidates\(formSelection\)/.test(script) && /createJapaneseJlptSentenceCompositionCandidates\(sentenceComposition\)/.test(script) && /createJapaneseJlptN5ReadingCandidates\(n5Reading\)/.test(script) && /createJapaneseJlptN4ReadingCandidates\(n4Reading\)/.test(script), "production load path does not invoke every adapter");
+check(/japaneseJlptProductCandidates = nextCandidates;[\s\S]*japaneseJlptActiveProfileVersion = JAPANESE_JLPT_PRODUCT_PROFILE_VERSION/.test(script), "product commit point missing");
+check(/新題型載入失敗，已使用相容模式/.test(script), "compatibility failure message missing");
+check(!/N5 閱讀尚未準備完成/.test(script + read("japanese/index.html")), "stale N5 reading unavailable UI remains");
+check(/script\.js\?v=4\.3/.test(read("japanese/index.html")), "required script cache token missing");
+const baselineScript = git("show", `${BASE}:script.js`);
+const inventory = (text, expression) => (text.match(expression) || []).length;
+for (const [name, expression] of [["localStorage", /\blocalStorage\b/g], ["sessionStorage", /\bsessionStorage\b/g], ["IndexedDB", /\bindexedDB\b/g], ["Cache API", /\bcaches\b/g]]) check(inventory(script, expression) === inventory(baselineScript, expression), `${name} API inventory changed`);
+const protectedData = git("diff", "--name-only", BASE, "--", "*.json").trim();
+check(!protectedData, `formal question bank/manifest modified: ${protectedData}`);
+
+let loadFailures = 0;
+for (const failedBank of JAPANESE_PRODUCT_BANK_NAMES) {
+  const state = { candidates: null, profileVersion: "17c6-compat-v1" };
+  try { throw new Error(`${failedBank} fixture`); }
+  catch (_) { state.candidates = null; state.profileVersion = "17c6-compat-v1"; }
+  check(state.candidates === null && state.profileVersion === "17c6-compat-v1", `${failedBank} failure published partial product state`);
+  loadFailures += 1;
+}
+check(loadFailures === 6, "six per-bank load-failure fixtures did not run");
+console.log("PASS: Batch 17C-10B product activation validated from machine-readable documentation.");
+console.log("PASS: Dynamic adapter capacities: vocabulary N5 4x12 / N4 5x12; grammar each level 12/30; reading N5 2/4/4/2 / N4 41/35/33/41.");
+console.log(`PASS: N5 20-question complete pipeline; answer positions ${pipelineResults.N5.join("/")}.`);
+console.log(`PASS: N4 34-question complete pipeline; answer positions ${[...pipelineResults.N4].sort((a, b) => a - b).join("/")} (position order may vary).`);
+console.log(`PASS: Deep immutable snapshot/reference isolation, option metadata/permutation alignment, compat/runtime/storage isolation verified; ${loadFailures} load-failure and ${negatives} negative fixtures rejected.`);
