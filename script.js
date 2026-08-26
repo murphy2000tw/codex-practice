@@ -1202,7 +1202,7 @@ function validateJapaneseJlptReadingBank(data) {
       )
         throw new Error(`${set.id} rubyTerms 不完整`);
     });
-    set.questions.forEach((question) => {
+    set.questions.forEach((question, questionIndex) => {
       if (
         !isNonEmptyString(question.id) ||
         !isNonEmptyString(question.displayText) ||
@@ -1223,6 +1223,110 @@ function validateJapaneseJlptReadingBank(data) {
     throw new Error("固定閱讀題數不符");
   return { data, selectedSets };
 }
+
+const JAPANESE_JLPT_READING_SECTIONS = [
+  "short-passage", "medium-passage", "information-search", "notice-and-message",
+];
+
+function validateJapaneseJlptReadingSet(set, expectedLevel, sourceBank) {
+  if (!set || set.level !== expectedLevel || !JAPANESE_JLPT_READING_SECTIONS.includes(set.section) ||
+      !isNonEmptyString(set.id) || !isNonEmptyString(set.sourceSetId) ||
+      !isNonEmptyString(set.originalTitle) || !isNonEmptyString(set.displayTitle) ||
+      !isNonEmptyString(set.originalPassage) || !isNonEmptyString(set.displayPassage) ||
+      !isNonEmptyString(set.passageKana) || !Array.isArray(set.rubyTerms) ||
+      !set.rubyCoverage || typeof set.rubyCoverage !== "object" ||
+      !Array.isArray(set.rubyCoverage.coveredTerms) || !Array.isArray(set.rubyCoverage.uncoveredHan) ||
+      !isNonEmptyString(set.rubyCoverage.status) || !isNonEmptyString(set.kanjiPolicy) ||
+      !Array.isArray(set.questions) || !set.questions.length)
+    throw new Error(`${sourceBank} reading set contract 無效`);
+  if (expectedLevel === "N5" && (set.sourceSetQuestionCount !== set.questions.length ||
+      !isNonEmptyString(set.reviewStatus) || !isNonEmptyString(set.reviewVersion) ||
+      !isNonEmptyString(set.reviewMethod) || !/^[a-f0-9]{64}$/.test(set.sourceDigest || "") ||
+      !isNonEmptyString(set.provenance))) throw new Error("N5 reading review contract 無效");
+  set.rubyTerms.forEach((term) => {
+    if (!term || !isNonEmptyString(term.text) || !isNonEmptyString(term.reading))
+      throw new Error("reading ruby contract 無效");
+  });
+  set.questions.forEach((question) => {
+    if (!question || !isNonEmptyString(question.id) || !isNonEmptyString(question.sourceQuestionId) ||
+        !isNonEmptyString(question.originalText) || !isNonEmptyString(question.displayText) ||
+        !Array.isArray(question.options) || question.options.length !== 4 ||
+        question.options.some((option) => !isNonEmptyString(option)) || new Set(question.options).size !== 4 ||
+        !Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex > 3 ||
+        question.answerDisplay !== question.options[question.answerIndex] || !isNonEmptyString(question.explanation))
+      throw new Error(`${sourceBank} reading question contract 無效`);
+    if (expectedLevel === "N5" && (!isNonEmptyString(question.questionKana) ||
+        question.derivationVersion !== "17c9c-v1" || question.uniqueAnswerReviewed !== true ||
+        !isNonEmptyString(question.correctAnswerReview) ||
+        ((!Array.isArray(question.passageEvidence) || !question.passageEvidence.length) &&
+         (!Array.isArray(question.informationEvidence) || !question.informationEvidence.length)) ||
+        !Array.isArray(question.optionReviews) ||
+        question.optionReviews.length !== 4 || question.optionReviews.some((review, index) =>
+          !review || review.optionIndex !== index || review.option !== question.options[index] ||
+          !isNonEmptyString(review.verdict) || !isNonEmptyString(review.reason))))
+      throw new Error("N5 reading question review contract 無效");
+    if (expectedLevel === "N5" && set.section === "information-search" &&
+        (!set.material || typeof set.material !== "object" || !Array.isArray(question.informationEvidence) ||
+         !question.informationEvidence.length)) throw new Error("N5 information material contract 無效");
+  });
+}
+
+function adaptJapaneseJlptReadingQuestion(set, question, level, sourceBank) {
+  validateJapaneseJlptReadingSet(set, level, sourceBank);
+  if (!set.questions.includes(question)) throw new Error("reading question 不屬於 canonical set");
+  return deepCloneJapaneseJlptValue({
+    ...set, ...question, level, section: "reading", questionType: set.section, sourceBank,
+    setId: set.id, sourceSetId: set.sourceSetId, questionId: question.id,
+    id: question.id, sourceQuestionId: question.sourceQuestionId,
+    originalTitle: set.originalTitle, displayTitle: set.displayTitle,
+    originalPassage: set.originalPassage, displayPassage: set.displayPassage,
+    question: question.displayText, sourceSetQuestionCount: set.questions.length,
+  });
+}
+function adaptJapaneseJlptN5ReadingQuestion(set, question) {
+  return adaptJapaneseJlptReadingQuestion(set, question, "N5", "japaneseJlptReadingN5Questions");
+}
+function adaptJapaneseJlptN4ReadingQuestion(set, question) {
+  return adaptJapaneseJlptReadingQuestion(set, question, "N4", "japaneseJlptReadingQuestions");
+}
+function createJapaneseJlptReadingCandidates(data, level) {
+  const n5 = level === "N5";
+  const expected = n5 ? { "short-passage": 2, "medium-passage": 4, "information-search": 4, "notice-and-message": 2 } :
+    { "short-passage": 41, "medium-passage": 35, "information-search": 33, "notice-and-message": 41 };
+  if (!data || data.schemaVersion !== (n5 ? "1.0.0" : 1) ||
+      data.dataVersion !== (n5 ? "17c9c-n5-reading-v1" : "17c2-n4-reading-v1") ||
+      (n5 ? data.derivationVersion !== "17c9c-v1" || data.sourceVersion !== "17c9b-v1" ||
+        data.manifestVersion !== "17c9b-v1" || data.reviewVersion !== "17c9b-review-v1" ||
+        JSON.stringify(data.generatedFrom) !== JSON.stringify(["japaneseJlptReadingN5ReviewedSource.json", "japaneseJlptReadingN5ReviewManifest.json"]) ||
+        !data.inventory || data.inventory.level !== "N5" || data.inventory.setCount !== 8 ||
+        data.inventory.questionCount !== 12 || data.inventory.seedCapacity !== true || data.inventory.productQuota !== false
+        : data.policyVersion !== "17c2-reading-internal-v1" || !data.availability ||
+          data.availability.N4.available !== true || data.availability.N4.setCount !== 105 ||
+          data.availability.N4.questionCount !== 150) || !Array.isArray(data.readingSets) ||
+      data.readingSets.length !== (n5 ? 8 : 105)) throw new Error(`${level} reading bank contract 無效`);
+  const identities = { set: new Set(), sourceSet: new Set(), question: new Set(), sourceQuestion: new Set() };
+  const candidates = [];
+  data.readingSets.forEach((set) => {
+    validateJapaneseJlptReadingSet(set, level, n5 ? "japaneseJlptReadingN5Questions" : "japaneseJlptReadingQuestions");
+    if (identities.set.has(set.id) || identities.sourceSet.has(set.sourceSetId)) throw new Error("reading set identity collision");
+    identities.set.add(set.id); identities.sourceSet.add(set.sourceSetId);
+    set.questions.forEach((question, questionIndex) => {
+      if (identities.question.has(question.id) || identities.sourceQuestion.has(question.sourceQuestionId))
+        throw new Error("reading question identity collision");
+      identities.question.add(question.id); identities.sourceQuestion.add(question.sourceQuestionId);
+      const candidate = (n5 ? adaptJapaneseJlptN5ReadingQuestion : adaptJapaneseJlptN4ReadingQuestion)(set, question);
+      candidate.readingQuestionIndex = questionIndex;
+      candidates.push(candidate);
+    });
+  });
+  JAPANESE_JLPT_READING_SECTIONS.forEach((section) => {
+    if (candidates.filter((candidate) => candidate.questionType === section).length !== expected[section])
+      throw new Error(`${level}/${section} reading inventory 無效`);
+  });
+  return candidates;
+}
+function createJapaneseJlptN5ReadingCandidates(data) { return createJapaneseJlptReadingCandidates(data, "N5"); }
+function createJapaneseJlptN4ReadingCandidates(data) { return createJapaneseJlptReadingCandidates(data, "N4"); }
 
 async function loadJapaneseJlptQuestionBank() {
   if (japaneseJlptQuestionBank || japaneseJlptIsLoading) return;
@@ -1467,7 +1571,7 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
       ...reason, usageIndex: newIndexByOriginal.get(reason.usageIndex),
     }));
   }
-  if (["form-selection", "sentence-composition"].includes(randomizedSnapshot.questionType)) {
+  if (["form-selection", "sentence-composition", ...JAPANESE_JLPT_READING_SECTIONS].includes(randomizedSnapshot.questionType)) {
     let canonicalOptionIds;
     if (randomizedSnapshot.questionType === "form-selection") {
       if (!isNonEmptyString(randomizedSnapshot.sourceQuestionId) || !Array.isArray(randomizedSnapshot.optionReviews) ||
@@ -1481,7 +1585,7 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
         ...review, originalChoiceIndex: originalIndexes[index], choiceIndex: index,
         canonicalOptionId: canonicalOptionIds[originalIndexes[index]],
       }));
-    } else {
+    } else if (randomizedSnapshot.questionType === "sentence-composition") {
       if (!Array.isArray(randomizedSnapshot.optionChunkIds) || !Array.isArray(randomizedSnapshot.chunks) ||
           randomizedSnapshot.optionChunkIds.length !== 4 || randomizedSnapshot.chunks.length !== 4 ||
           new Set(randomizedSnapshot.optionChunkIds).size !== 4 ||
@@ -1496,11 +1600,26 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
         throw new Error("JLPT sentence-composition chunk identity 無效");
       canonicalOptionIds = randomizedSnapshot.optionChunkIds.slice();
       reorder("optionChunkIds"); reorder("chunks");
+    } else {
+      if (randomizedSnapshot.section !== "reading" || !isNonEmptyString(randomizedSnapshot.sourceQuestionId))
+        throw new Error("JLPT reading canonical option identity 無效");
+      canonicalOptionIds = randomizedSnapshot.options.map((_, index) =>
+        `${randomizedSnapshot.sourceQuestionId}#option-${index}`);
+      if (Array.isArray(randomizedSnapshot.optionReviews)) {
+        if (randomizedSnapshot.optionReviews.length !== 4 || randomizedSnapshot.optionReviews.some((review, index) =>
+          !review || review.optionIndex !== index || review.option !== randomizedSnapshot.options[index]))
+          throw new Error("JLPT reading option review identity 無效");
+        reorder("optionReviews");
+        randomizedSnapshot.optionReviews = randomizedSnapshot.optionReviews.map((review, index) => ({
+          ...review, optionIndex: index, originalOptionIndex: originalIndexes[index],
+          canonicalOptionId: canonicalOptionIds[originalIndexes[index]], option: options[index],
+        }));
+      }
     }
     const randomizedCanonicalOptionIds = originalIndexes.map((index) => canonicalOptionIds[index]);
     const correctCanonicalOptionId = canonicalOptionIds[originalAnswerIndex];
     randomizedSnapshot.optionPermutation = {
-      version: "17c8d-v1", randomizedIndexToOriginalIndex: originalIndexes,
+      version: randomizedSnapshot.section === "reading" ? "17c9d-v1" : "17c8d-v1", randomizedIndexToOriginalIndex: originalIndexes,
       originalIndexToRandomizedIndex, preRandomizationCanonicalOptionIds: canonicalOptionIds,
       randomizedCanonicalOptionIds, correctCanonicalOptionId,
       correctOriginalIndex: originalAnswerIndex, correctRandomizedIndex: targetAnswerIndex,
@@ -1509,7 +1628,7 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
       throw new Error("JLPT permutation metadata 與正解 identity 不一致");
   }
   const randomizedQuestion = { ...randomizedSnapshot, options, answerIndex: targetAnswerIndex };
-  if (["form-selection", "sentence-composition"].includes(randomizedSnapshot.questionType))
+  if (["form-selection", "sentence-composition", ...JAPANESE_JLPT_READING_SECTIONS].includes(randomizedSnapshot.questionType))
     randomizedQuestion.answerDisplay = options[targetAnswerIndex];
   return randomizedQuestion;
 }
