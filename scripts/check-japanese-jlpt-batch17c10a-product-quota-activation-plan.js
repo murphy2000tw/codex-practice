@@ -66,15 +66,24 @@ const end = script.indexOf("function appendJapaneseJlptDetail");
 check(start >= 0 && end > start, "production adapter contract extraction boundaries missing");
 const context = { console, crypto: require("crypto").webcrypto };
 vm.createContext(context);
-vm.runInContext(`function isNonEmptyString(value){return typeof value === "string" && value.trim().length > 0;}\n${script.slice(start, end)}\nthis.api={createJapaneseJlptVocabularyDerivedCandidates,createJapaneseJlptGrammarFormSelectionCandidates,createJapaneseJlptSentenceCompositionCandidates,createJapaneseJlptN5ReadingCandidates,createJapaneseJlptN4ReadingCandidates,validateJapaneseJlptProfile,prepareJapaneseJlptCandidatePools,selectJapaneseJlptQuestions,JAPANESE_JLPT_PROFILE_REGISTRY};`, context);
+vm.runInContext(`function isNonEmptyString(value){return typeof value === "string" && value.trim().length > 0;}\n${script.slice(start, end)}\nthis.api={createJapaneseJlptVocabularyDerivedCandidates,createJapaneseJlptGrammarFormSelectionCandidates,createJapaneseJlptSentenceCompositionCandidates,createJapaneseJlptN5ReadingCandidates,createJapaneseJlptN4ReadingCandidates,validateJapaneseJlptProfile,prepareJapaneseJlptCandidatePools,selectJapaneseJlptQuestions,createJapaneseJlptPreRandomizationSnapshot,createBalancedJapaneseJlptAnswerPositions,randomizeJapaneseJlptQuestionOptions,JAPANESE_JLPT_PROFILE_REGISTRY};`, context);
 const api = context.api;
 
+const banks = {
+  vocabularyAuto: JSON.parse(read("japaneseJlptVocabularyAutoQuestions.json")),
+  vocabularySemantic: JSON.parse(read("japaneseJlptVocabularySemanticQuestions.json")),
+  grammarForm: JSON.parse(read("japaneseJlptGrammarFormSelectionQuestions.json")),
+  sentenceComposition: JSON.parse(read("japaneseSentenceCompositionQuestions.json")),
+  readingN5: JSON.parse(read("japaneseJlptReadingN5Questions.json")),
+  readingN4: JSON.parse(read("japaneseJlptReadingQuestions.json")),
+};
+const bankBytes = JSON.stringify(banks);
 const candidates = [
-  ...api.createJapaneseJlptVocabularyDerivedCandidates(JSON.parse(read("japaneseJlptVocabularyAutoQuestions.json")), JSON.parse(read("japaneseJlptVocabularySemanticQuestions.json"))),
-  ...api.createJapaneseJlptGrammarFormSelectionCandidates(JSON.parse(read("japaneseJlptGrammarFormSelectionQuestions.json"))),
-  ...api.createJapaneseJlptSentenceCompositionCandidates(JSON.parse(read("japaneseSentenceCompositionQuestions.json"))),
-  ...api.createJapaneseJlptN5ReadingCandidates(JSON.parse(read("japaneseJlptReadingN5Questions.json"))),
-  ...api.createJapaneseJlptN4ReadingCandidates(JSON.parse(read("japaneseJlptReadingQuestions.json"))),
+  ...api.createJapaneseJlptVocabularyDerivedCandidates(banks.vocabularyAuto, banks.vocabularySemantic),
+  ...api.createJapaneseJlptGrammarFormSelectionCandidates(banks.grammarForm),
+  ...api.createJapaneseJlptSentenceCompositionCandidates(banks.sentenceComposition),
+  ...api.createJapaneseJlptN5ReadingCandidates(banks.readingN5),
+  ...api.createJapaneseJlptN4ReadingCandidates(banks.readingN4),
 ];
 const capacity = {};
 for (const question of candidates) {
@@ -97,17 +106,80 @@ for (const [level, levelProfile] of Object.entries(contract.levels)) for (const 
 }
 
 const registry = { schemaVersion: 1, profiles: { [contract.profileVersion]: contract } };
+const objectReferences = (value, found = new Set()) => {
+  if (value && typeof value === "object" && !found.has(value)) {
+    found.add(value);
+    Object.values(value).forEach((nested) => objectReferences(nested, found));
+  }
+  return found;
+};
+const sharesNestedReference = (first, second) => {
+  const firstReferences = objectReferences(first);
+  return [...objectReferences(second)].some((reference) => firstReferences.has(reference));
+};
+const isDeepFrozen = (value, seen = new Set()) => {
+  if (!value || typeof value !== "object" || seen.has(value)) return true;
+  seen.add(value);
+  return Object.isFrozen(value) && Object.values(value).every((nested) => isDeepFrozen(nested, seen));
+};
+const deterministicProvider = (seed) => {
+  let state = seed >>> 0;
+  return (max) => {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+    return state % max;
+  };
+};
+const expectedSections = { N5: { vocabulary: 8, grammar: 4, reading: 8 }, N4: { vocabulary: 10, grammar: 8, reading: 16 } };
+const pipelineResults = {};
 for (const level of ["N5", "N4"]) {
   const { profile, levelProfile } = api.validateJapaneseJlptProfile(registry, contract.profileVersion, contract.profileId, level);
   const pools = api.prepareJapaneseJlptCandidatePools(level, profile, levelProfile, candidates, contract.profileVersion);
-  const selected = api.selectJapaneseJlptQuestions(pools, () => 0);
+  const selected = api.selectJapaneseJlptQuestions(pools, deterministicProvider(level === "N5" ? 5 : 4));
   check(selected.length === levelProfile.total && new Set(selected.map((q) => q.id)).size === selected.length, `${level} selection must satisfy fixed total without replacement`);
+  const candidateBytes = JSON.stringify(candidates);
+  const snapshot = api.createJapaneseJlptPreRandomizationSnapshot(selected, levelProfile);
+  check(snapshot.length === levelProfile.total, `${level} snapshot total drift`);
+  for (const [section, total] of Object.entries(expectedSections[level])) check(snapshot.filter((q) => q.section === section).length === total, `${level} snapshot ${section} must contain ${total}`);
+  check(isDeepFrozen(snapshot), `${level} snapshot and every nested object/array must be deeply frozen`);
+  check(JSON.stringify(candidates) === candidateBytes && JSON.stringify(banks) === bankBytes, `${level} snapshot creation mutated source banks/candidates`);
+  check(candidates.every((q) => !Object.isFrozen(q)) && !Object.isFrozen(banks), `${level} snapshot creation froze source banks/candidates`);
+  selected.forEach((question, index) => check(!sharesNestedReference(question, snapshot[index]), `${level} candidate and snapshot share nested references`));
   const reading = selected.filter((q) => q.section === "reading");
+  check(new Set(reading.map((q) => `${q.setId}\u0000${q.questionId}`)).size === reading.length, `${level} reading (setId, questionId) canonical identities must be unique`);
   for (const setId of new Set(reading.map((q) => q.setId))) {
-    const group = reading.filter((q) => q.setId === setId);
+    const indexes = snapshot.map((q, index) => q.section === "reading" && q.setId === setId ? index : -1).filter((index) => index >= 0);
+    const group = indexes.map((index) => snapshot[index]);
+    check(indexes.every((index, position) => position === 0 || index === indexes[position - 1] + 1), `${level}/${setId} reading questions must be adjacent`);
     check(group.every((q, index) => index === 0 || q.readingQuestionIndex >= group[index - 1].readingQuestionIndex), `${level}/${setId} reading order drift`);
-    check(group.every((q) => q.sourceSetQuestionCount === q.readingQuestionCount && q.displayPassage && Number.isSafeInteger(q.readingSetIndex)), `${level}/${setId} passage metadata incomplete`);
+    check(group.every((q) => q.selectedSessionQuestionCount === group.length && q.sourceSetQuestionCount === q.readingQuestionCount), `${level}/${setId} selected/source question count drift`);
+    check(group.every((q) => q.displayPassage && q.passageKana && Array.isArray(q.rubyTerms) && q.rubyCoverage && Number.isSafeInteger(q.readingSetIndex) && Number.isSafeInteger(q.readingSetCount) && Number.isSafeInteger(q.readingQuestionIndex) && Number.isSafeInteger(q.readingQuestionCount) && (q.material === undefined || typeof q.material === "object") && (q.passageEvidence === undefined || Array.isArray(q.passageEvidence)) && (q.informationEvidence === undefined || Array.isArray(q.informationEvidence))), `${level}/${setId} passage/material/evidence/ruby/index metadata incomplete`);
   }
+  const positions = api.createBalancedJapaneseJlptAnswerPositions(snapshot.length, deterministicProvider(level === "N5" ? 50 : 40));
+  const positionCounts = [0, 1, 2, 3].map((position) => positions.filter((value) => value === position).length);
+  check(positions.length === levelProfile.total && positionCounts.reduce((sum, count) => sum + count, 0) === levelProfile.total, `${level} answer position total drift`);
+  if (level === "N5") check(JSON.stringify(positionCounts) === JSON.stringify([5, 5, 5, 5]), "N5 answer positions must be 5/5/5/5");
+  else check(positionCounts.every((count) => count === 8 || count === 9) && Math.max(...positionCounts) - Math.min(...positionCounts) <= 1 && positionCounts.filter((count) => count === 8).length === 2 && positionCounts.filter((count) => count === 9).length === 2, "N4 answer positions must be a permutation of 8/8/9/9");
+  const snapshotBytes = JSON.stringify(snapshot);
+  const randomized = snapshot.map((question, index) => api.randomizeJapaneseJlptQuestionOptions(question, positions[index], deterministicProvider(index + (level === "N5" ? 100 : 200))));
+  check(JSON.stringify(snapshot) === snapshotBytes, `${level} randomization mutated immutable snapshot`);
+  randomized.forEach((question, index) => {
+    const before = snapshot[index]; const permutation = question.optionPermutation;
+    check(question.answerIndex === positions[index] && question.options[question.answerIndex] === before.options[before.answerIndex], `${level}/${question.questionType} answerIndex no longer identifies the true answer`);
+    check(!sharesNestedReference(question, before), `${level}/${question.questionType} randomized question shares nested references with snapshot`);
+    if (question.questionType === "orthography") check(question.optionReviews.every((review, optionIndex) => review.value === question.options[optionIndex]), "orthography optionReviews alignment drift");
+    if (question.questionType === "context") check(question.substitutionReviews.every((review, optionIndex) => review.value === question.options[optionIndex]) && question.optionSourceIds.length === 4, "context source/review alignment drift");
+    if (question.questionType === "paraphrase") check(question.optionReviews.every((review, optionIndex) => review.expression === question.options[optionIndex]), "paraphrase optionReviews alignment drift");
+    if (question.questionType === "usage") check(question.correctUsageIndex === question.answerIndex && question.usageSentences.every((usage, optionIndex) => usage.sentence === question.options[optionIndex] && usage.acceptedAsCorrect === (optionIndex === question.answerIndex)) && question.incorrectUsageReasons.every((reason) => reason.usageIndex !== question.answerIndex), "usage metadata alignment drift");
+    if (question.questionType === "form-selection") check(permutation.version === "17c8d-v1" && question.optionReviews.every((review, optionIndex) => review.choiceIndex === optionIndex && review.value === question.options[optionIndex] && review.originalChoiceIndex === permutation.randomizedIndexToOriginalIndex[optionIndex]) && permutation.correctCanonicalOptionId === `${question.sourceQuestionId}#choice-${before.answerIndex}`, "form-selection permutation/canonical identity drift");
+    if (question.questionType === "sentence-composition") check(permutation.version === "17c8d-v1" && question.options.every((option, optionIndex) => question.chunks[optionIndex].text === option && question.optionChunkIds[optionIndex] === question.chunks[optionIndex].id) && question.optionChunkIds[question.answerIndex] === question.correctChunkId && permutation.correctCanonicalOptionId === question.correctChunkId && JSON.stringify(question.canonicalChunkIds) === JSON.stringify(before.canonicalChunkIds), "sentence-composition chunk/permutation identity drift");
+    if (question.section === "reading") {
+      check(permutation.version === "17c9d-v1" && permutation.correctCanonicalOptionId === `${question.sourceQuestionId}#option-${before.answerIndex}`, "reading permutation/canonical identity drift");
+      for (const key of ["passageEvidence", "informationEvidence", "material", "rubyTerms", "rubyCoverage", "displayPassage", "passageKana", "readingSetIndex", "readingSetCount", "readingQuestionIndex", "readingQuestionCount", "sourceSetQuestionCount", "selectedSessionQuestionCount"]) check(JSON.stringify(question[key]) === JSON.stringify(before[key]), `reading ${key} changed during randomization`);
+      if (Array.isArray(question.optionReviews)) check(question.optionReviews.every((review, optionIndex) => review.optionIndex === optionIndex && review.option === question.options[optionIndex] && review.originalOptionIndex === permutation.randomizedIndexToOriginalIndex[optionIndex]), "reading optionReviews alignment drift");
+    }
+    if (permutation) check(permutation.correctRandomizedIndex === question.answerIndex && permutation.correctOriginalIndex === before.answerIndex && permutation.randomizedCanonicalOptionIds[question.answerIndex] === permutation.correctCanonicalOptionId && permutation.randomizedIndexToOriginalIndex.every((original, current) => permutation.originalIndexToRandomizedIndex[original] === current), `${level}/${question.questionType} permutation metadata alignment drift`);
+  });
+  pipelineResults[level] = positionCounts;
 }
 
 let negatives = 0;
@@ -175,4 +247,6 @@ check(registryBlock(script) === registryBlock(baselineScript), "production regis
 
 console.log("PASS: Batch 17C-10A product quota contract validated from machine-readable documentation.");
 console.log("PASS: Dynamic adapter capacities: vocabulary N5 4x12 / N4 5x12; grammar each level 12/30; reading N5 2/4/4/2 / N4 41/35/33/41.");
-console.log(`PASS: N5 20 and N4 34 quotas fit all pools; compat/runtime/storage isolation verified; ${negatives} negative fixtures rejected.`);
+console.log(`PASS: N5 20-question complete pipeline; answer positions ${pipelineResults.N5.join("/")}.`);
+console.log(`PASS: N4 34-question complete pipeline; answer positions ${[...pipelineResults.N4].sort((a, b) => a - b).join("/")} (position order may vary).`);
+console.log(`PASS: Deep immutable snapshot/reference isolation, option metadata/permutation alignment, compat/runtime/storage isolation verified; ${negatives} negative fixtures rejected.`);

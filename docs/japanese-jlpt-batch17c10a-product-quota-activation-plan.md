@@ -72,4 +72,4 @@ Batch 17C-10C 再以桌機與手機完成整頁實測：設定切換、新測驗
 
 ## 6. 10A checker gate
 
-專用 checker 會驗證 machine block、實際 adapter capacities、quota/totals、compat profile、原子不足錯誤、reading set 語意、production isolation，以及不足容量、未知題型、錯誤總數、N5 usage、listening 提前啟用與 silent fallback 等 negative fixtures。它也以 Git baseline 確認本批差異只有本文件與專用 checker，並逐項禁止 runtime、HTML/CSS、banks、既有 checker、cache token、production registry 和 storage API 的變更。
+專用 checker 會驗證 machine block、實際 adapter capacities、quota/totals、compat profile、原子不足錯誤、reading set 語意、production isolation，以及不足容量、未知題型、錯誤總數、N5 usage、listening 提前啟用與 silent fallback 等 negative fixtures。它會以 `17c10-product-v1` 對 N5 20 題與 N4 34 題實際依序執行 selection、deep immutable snapshot、balanced answer positions 與所有題目的 option randomization；答案位置必須分別為 `5/5/5/5` 與 `8/8/9/9`（後者位置順序可不同），且逐題稽核 candidate/snapshot/randomized reference isolation、canonical identity、題型 metadata 與 permutation alignment。它也以 Git baseline 確認本批差異只有本文件與專用 checker，並逐項禁止 runtime、HTML/CSS、banks、既有 checker、cache token、production registry 和 storage API 的變更。
