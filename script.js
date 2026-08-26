@@ -2126,12 +2126,24 @@ function appendJapaneseJlptNewTypeAnswerDetails(parent, question) {
     if (isNonEmptyString(value)) appendJapaneseJlptDetail(parent, label, value);
   };
   const handlers = {
-    "kanji-reading": () => { detail("正確讀音", question.answerDisplay); detail("假名", question.testedReading); },
-    orthography: () => { detail("正確漢字", question.answerDisplay); detail("假名", question.sourceExampleKana); },
+    "kanji-reading": () => {
+      detail("正確讀音", question.answerDisplay);
+      if (question.testedReading !== question.answerDisplay) detail("假名", question.testedReading);
+    },
+    orthography: () => { detail("正確漢字", question.answerDisplay); detail("假名", question.kana); },
     context: () => { detail("正確選項", question.answerDisplay); detail("例句意思", question.sourceExampleMeaning); },
     paraphrase: () => { detail("原表現", question.targetExpression); detail("原假名", question.targetExpressionKana); detail("近義表現", question.answerDisplay); detail("近義假名", question.equivalentExpressionKana); },
     usage: () => { detail("目標單字", question.targetWord); detail("假名", question.targetKana); detail("正確用法句", question.answerDisplay); },
-    "form-selection": () => { detail("文法", question.grammar); detail("文法假名", question.grammarKana); detail("結構", question.structure); detail("用法", question.usage); detail("例句", question.example); detail("例句假名", question.exampleKana); detail("中文意思", question.exampleMeaning); },
+    "form-selection": () => {
+      detail("正確答案", question.answerDisplay);
+      detail("文法", question.grammar);
+      if (question.grammarKana !== question.answerDisplay) detail("文法假名", question.grammarKana);
+      detail("結構", question.structure);
+      detail("用法", question.usage);
+      detail("例句", question.example);
+      detail("例句假名", question.exampleKana);
+      detail("中文意思", question.exampleMeaning);
+    },
     "sentence-composition": () => { detail("完整句子", question.completeSentence); detail("完整假名", question.kana); detail("中文意思", question.meaning); detail("★位置正解", question.answerDisplay); },
   };
   const handler = handlers[question.questionType];
@@ -2157,6 +2169,16 @@ function appendJapaneseJlptAnswerFeedbackDetails(parent, question) {
     if (isNonEmptyString(fallback)) appendJapaneseJlptDetail(parent, "正確答案", fallback);
   }
   if (isNonEmptyString(question.explanation)) appendJapaneseJlptDetail(parent, "解析", question.explanation);
+}
+function appendJapaneseJlptQuestionFeedback(parent, question) {
+  if (question.section === "reading") {
+    appendJapaneseJlptDetail(parent, "正確答案", question.options[question.answerIndex]);
+    appendJapaneseJlptDetail(parent, "答案說明", question.answerDisplay);
+    appendJapaneseJlptDetail(parent, "解析", question.explanation);
+    appendJapaneseJlptDetail(parent, "本文假名", question.passageKana);
+    return;
+  }
+  appendJapaneseJlptAnswerFeedbackDetails(parent, question);
 }
 function answerJapaneseJlptQuestion(selectedIndex) {
   if (!japaneseJlptSession) return;
@@ -2248,18 +2270,7 @@ function renderJapaneseJlptQuestion() {
     const result = document.createElement("p");
     result.textContent = answer.isCorrect ? "答對" : "答錯";
     feedback.appendChild(result);
-    appendJapaneseJlptDetail(
-      feedback,
-      "正確答案",
-      question.options[question.answerIndex],
-    );
-    if (isReading) {
-      appendJapaneseJlptDetail(feedback, "答案說明", question.answerDisplay);
-      appendJapaneseJlptDetail(feedback, "解析", question.explanation);
-      appendJapaneseJlptDetail(feedback, "本文假名", question.passageKana);
-    } else {
-      appendJapaneseJlptAnswerFeedbackDetails(feedback, question);
-    }
+    appendJapaneseJlptQuestionFeedback(feedback, question);
   }
   const next = document.createElement("button");
   next.type = "button";
