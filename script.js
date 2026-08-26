@@ -1202,7 +1202,7 @@ function validateJapaneseJlptReadingBank(data) {
       )
         throw new Error(`${set.id} rubyTerms 不完整`);
     });
-    set.questions.forEach((question) => {
+    set.questions.forEach((question, questionIndex) => {
       if (
         !isNonEmptyString(question.id) ||
         !isNonEmptyString(question.displayText) ||
@@ -1223,6 +1223,273 @@ function validateJapaneseJlptReadingBank(data) {
     throw new Error("固定閱讀題數不符");
   return { data, selectedSets };
 }
+
+const JAPANESE_JLPT_READING_SECTIONS = [
+  "short-passage", "medium-passage", "information-search", "notice-and-message",
+];
+const JAPANESE_JLPT_N5_READING_AUDITED_CONTRACT_VERSION = "17c9d-audited-n5-v1";
+const JAPANESE_JLPT_N5_READING_AUDITED_CONTRACT = deepFreezeJapaneseJlptValue({
+  "jlpt-reading-17c9b-n5-short-passage-bakery-breakfast": ["short-passage", "2d7d87b888de778cbb5ea086ed80868764e590c63e012b1a72785cff87bff06c", ["jlpt-reading-17c9b-n5-short-bakery-milk-question"], ["jlpt-reading-17c9b-n5-short-bakery-milk-source-question"]],
+  "jlpt-reading-17c9b-n5-short-passage-rainy-park-plan": ["short-passage", "cc427fc009cf6911ab8ad29c2e4c5a6489305e2ae7c34fc36f2382df76393c31", ["jlpt-reading-17c9b-n5-short-rain-home-question"], ["jlpt-reading-17c9b-n5-short-rain-home-source-question"]],
+  "jlpt-reading-17c9b-n5-medium-passage-family-seaside": ["medium-passage", "e083a98f2dfe143c619146d2f2ccc95f978ed3e5e73941d1d62afd3f5655c823", ["jlpt-reading-17c9b-n5-medium-sea-pack-question", "jlpt-reading-17c9b-n5-medium-sea-time-question"], ["jlpt-reading-17c9b-n5-medium-sea-pack-source-question", "jlpt-reading-17c9b-n5-medium-sea-time-source-question"]],
+  "jlpt-reading-17c9b-n5-medium-passage-morning-train": ["medium-passage", "abf270c4f3d3ddc736f9942f747f132bd665cc6f353a1f16f31904deb50f6e85", ["jlpt-reading-17c9b-n5-medium-train-depart-question", "jlpt-reading-17c9b-n5-medium-train-walk-question"], ["jlpt-reading-17c9b-n5-medium-train-depart-source-question", "jlpt-reading-17c9b-n5-medium-train-walk-source-question"]],
+  "jlpt-reading-17c9b-n5-information-search-fruit-shop-prices": ["information-search", "d9495fa5b2f3c161559c002e334c18bc7aaa090001028de6837b2e6e9fdec6fd", ["jlpt-reading-17c9b-n5-info-fruit-cheapest-question", "jlpt-reading-17c9b-n5-info-fruit-banana-question"], ["jlpt-reading-17c9b-n5-info-fruit-cheapest-source-question", "jlpt-reading-17c9b-n5-info-fruit-banana-source-question"]],
+  "jlpt-reading-17c9b-n5-information-search-library-hours": ["information-search", "aa5832cb2f03a6cc341ea3709040fe05984d92dae261e46104e52efd88f81299", ["jlpt-reading-17c9b-n5-info-library-closed-question", "jlpt-reading-17c9b-n5-info-library-saturday-question"], ["jlpt-reading-17c9b-n5-info-library-closed-source-question", "jlpt-reading-17c9b-n5-info-library-saturday-source-question"]],
+  "jlpt-reading-17c9b-n5-notice-and-message-home-curry-message": ["notice-and-message", "b6fa4c451d4bd901236d2100782932394cf1e6d83d1412a6a2aaeac0f66543b2", ["jlpt-reading-17c9b-n5-message-eat-curry-question"], ["jlpt-reading-17c9b-n5-message-eat-curry-source-question"]],
+  "jlpt-reading-17c9b-n5-notice-and-message-school-trip-notice": ["notice-and-message", "86ec54c74e447367ada90fcf47262e480ed1ece5aafbf891a808f072eaebafa9", ["jlpt-reading-17c9b-n5-notice-trip-arrival-question"], ["jlpt-reading-17c9b-n5-notice-trip-arrival-source-question"]],
+});
+const JAPANESE_JLPT_N5_READING_SET_METADATA_CONTRACT = deepFreezeJapaneseJlptValue({
+  "jlpt-reading-17c9b-n5-short-passage-bakery-breakfast": ["みじかいぶん", "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。"],
+  "jlpt-reading-17c9b-n5-short-passage-rainy-park-plan": ["みじかいぶん", "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。"],
+  "jlpt-reading-17c9b-n5-medium-passage-family-seaside": ["ちゅうくらいのぶん", "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。"],
+  "jlpt-reading-17c9b-n5-medium-passage-morning-train": ["ちゅうくらいのぶん", "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。"],
+  "jlpt-reading-17c9b-n5-information-search-fruit-shop-prices": ["ねだんひょう", "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。"],
+  "jlpt-reading-17c9b-n5-information-search-library-hours": ["じかんひょう", "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。"],
+  "jlpt-reading-17c9b-n5-notice-and-message-home-curry-message": ["いえのメッセージ", "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。"],
+  "jlpt-reading-17c9b-n5-notice-and-message-school-trip-notice": ["がっこうのおしらせ", "表示文はひらがな・カタカナ中心とし、漢字を使わないため ruby の推測は不要。"],
+});
+const JAPANESE_JLPT_N4_TYPE_TO_SECTION_CONTRACT_VERSION = "17c2-type-to-section-v1";
+const JAPANESE_JLPT_N4_TYPE_TO_SECTION_CONTRACT = deepFreezeJapaneseJlptValue({
+  "short-passage": ["短文理解", "文意推論", "日記", "活動紹介", "旅行メモ", "朋友訊息"],
+  "medium-passage": ["中短文理解"],
+  "information-search": ["情報検索", "時刻表", "分別表", "簡單行程表"],
+  "notice-and-message": ["社區公告", "ホテル案内", "交通通知", "伝言メモ", "学校通知", "店家公告", "失物招領公告", "使用規則", "預約確認", "店員說明", "店家資訊", "宅配通知", "交通案内", "ホテル受付案内", "病院案内", "店長メモ", "図書館公告", "映画館公告", "活動通知"],
+});
+const JAPANESE_JLPT_N5_GENERIC_DISTRACTOR_REASON = /^(?:(?:這個)?(?:選項|答案)?(?:是)?(?:不正確|不符合題意|錯誤|不對|不是正確答案)|這個選項不符合題目要求，因此不是正確答案|本文と一致しないため不正解|這個答案與本文不同，所以不能選)[。.]?$/u;
+
+const JAPANESE_JLPT_N5_READING_TEXT_CONTRACT = deepFreezeJapaneseJlptValue({"jlpt-reading-17c9b-n5-short-passage-bakery-breakfast":["パンやのあさ","パンやのあさ","あさ、みきさんはパンをかいました。でも、ぎゅうにゅうはうちにあるので、かいませんでした。","あさ、みきさんはパンをかいました。でも、ぎゅうにゅうはうちにあるので、かいませんでした。",[["みきさんはなにをかいませんでしたか。","みきさんはなにをかいませんでしたか。"]]],"jlpt-reading-17c9b-n5-short-passage-rainy-park-plan":["にちようびのよてい","にちようびのよてい","けんさんはにちようびにこうえんへいきます。あめのときは、うちでいもうととえをかきます。","けんさんはにちようびにこうえんへいきます。あめのときは、うちでいもうととえをかきます。",[["あめのとき、けんさんはなにをしますか。","あめのとき、けんさんはなにをしますか。"]]],"jlpt-reading-17c9b-n5-medium-passage-family-seaside":["かぞくでうみへ","かぞくでうみへ","さきさんのかぞくはどようびにうみへいきます。おとうさんはおにぎりをつくり、さきさんはみずとタオルをかばんにいれます。あさくじにくるまでうちをでて、ひるまでうみであそびます。","さきさんのかぞくはどようびにうみへいきます。おとうさんはおにぎりをつくり、さきさんはみずとタオルをかばんにいれます。あさくじにくるまでうちをでて、ひるまでうみであそびます。",[["さきさんはなにをかばんにいれますか。","さきさんはなにをかばんにいれますか。"],["かぞくはいつうちをでますか。","かぞくはいつうちをでますか。"]]],"jlpt-reading-17c9b-n5-medium-passage-morning-train":["でんしゃにのるあさ","でんしゃにのるあさ","ゆうたさんはまいあさしちじにおきます。きょうはでんしゃがはちじにでます。えきまであるいてじゅっぷんです。あさごはんをたべて、しちじよんじゅっぷんにうちをでます。","ゆうたさんはまいあさしちじにおきます。きょうはでんしゃがはちじにでます。えきまであるいてじゅっぷんです。あさごはんをたべて、しちじよんじゅっぷんにうちをでます。",[["ゆうたさんはなんじにうちをでますか。","ゆうたさんはなんじにうちをでますか。"],["うちからえきまで、どのくらいかかりますか。","うちからえきまで、どのくらいかかりますか。"]]],"jlpt-reading-17c9b-n5-information-search-fruit-shop-prices":["くだものや","くだものや","くだものや\nもの｜ねだん\nりんご｜ひゃくえん\nバナナ｜はちじゅうえん\nみかん｜ろくじゅうえん","くだものや\nもの｜ねだん\nりんご｜ひゃくえん\nバナナ｜はちじゅうえん\nみかん｜ろくじゅうえん",[["いちばんやすいものはどれですか。","いちばんやすいものはどれですか。"],["バナナはいくらですか。","バナナはいくらですか。"]]],"jlpt-reading-17c9b-n5-information-search-library-hours":["としょかんのじかん","としょかんのじかん","としょかんのじかん\nようび｜あいているじかん\nげつようび｜やすみ\nかようび｜くじからごじ\nどようび｜じゅうじからよじ","としょかんのじかん\nようび｜あいているじかん\nげつようび｜やすみ\nかようび｜くじからごじ\nどようび｜じゅうじからよじ",[["としょかんがやすみなのはなんようびですか。","としょかんがやすみなのはなんようびですか。"],["どようびはなんじにあきますか。","どようびはなんじにあきますか。"]]],"jlpt-reading-17c9b-n5-notice-and-message-home-curry-message":["ははのメモ","ははのメモ","たなかさんへ。れいぞうこのカレーをたべてください。サラダはまだできていません。わたしはろくじごろかえります。ははより。","たなかさんへ。れいぞうこのカレーをたべてください。サラダはまだできていません。わたしはろくじごろかえります。ははより。",[["たなかさんはなにをたべますか。","たなかさんはなにをたべますか。"]]],"jlpt-reading-17c9b-n5-notice-and-message-school-trip-notice":["えんそくのおしらせ","えんそくのおしらせ","せんせいからのおしらせです。あしたはえんそくです。はちじはんまでにがっこうのもんへきてください。おべんとうをもってきてください。","せんせいからのおしらせです。あしたはえんそくです。はちじはんまでにがっこうのもんへきてください。おべんとうをもってきてください。",[["なんじまでにがっこうへいきますか。","なんじまでにがっこうへいきますか。"]]]});
+
+function validateJapaneseJlptN5InformationMaterial(set, question) {
+  const material = set.material;
+  if (!material || !isNonEmptyString(material.id) || !isNonEmptyString(material.type) ||
+      !Array.isArray(material.headings) || !material.headings.length ||
+      !Array.isArray(material.columns) || !material.columns.length || !Array.isArray(material.rows) || !material.rows.length)
+    throw new Error("N5 information material contract 無效");
+  const uniqueIds = (items) => items.every((item) => item && isNonEmptyString(item.id)) &&
+    new Set(items.map((item) => item.id)).size === items.length;
+  if (!uniqueIds(material.headings) || !uniqueIds(material.columns) || !uniqueIds(material.rows) ||
+      material.headings.some((heading) => !isNonEmptyString(heading.label)) ||
+      material.columns.some((column) => !isNonEmptyString(column.label)))
+    throw new Error("N5 information material identity 無效");
+  if (material.rows.some((row) => !Array.isArray(row.cells) || row.cells.length !== material.columns.length))
+    throw new Error("N5 information row width 無效");
+  const cells = material.rows.flatMap((row) => row.cells);
+  const allMaterialIds = [...material.headings, ...material.columns, ...material.rows, ...cells].map((item) => item.id);
+  if (!uniqueIds(cells) || cells.some((cell) => !isNonEmptyString(cell.text)) ||
+      new Set(allMaterialIds).size !== allMaterialIds.length)
+    throw new Error("N5 information cell identity 無效");
+  const projection = [
+    material.headings.map((heading) => heading.label).join("｜"),
+    material.columns.map((column) => column.label).join("｜"),
+    ...material.rows.map((row) => row.cells.map((cell) => cell.text).join("｜")),
+  ].join("\n");
+  if (material.plainTextProjection !== projection) throw new Error("N5 information projection 漂移");
+  const rowById = new Map(material.rows.map((row) => [row.id, row]));
+  if (!Array.isArray(question.informationEvidence) || !question.informationEvidence.length ||
+      !["all-material-rows", "referenced-row"].includes(question.informationEvidenceScope))
+    throw new Error("N5 information evidence scope 無效");
+  const evidenceRows = new Set(); const evidenceCells = new Set();
+  question.informationEvidence.forEach((evidence) => {
+    const row = evidence && rowById.get(evidence.rowId);
+    if (!row || evidenceRows.has(evidence.rowId) || !Array.isArray(evidence.cellIds) || evidence.cellIds.length < 2)
+      throw new Error("N5 information evidence row 無效");
+    evidenceRows.add(evidence.rowId);
+    const ownedCells = new Set(row.cells.map((cell) => cell.id));
+    evidence.cellIds.forEach((cellId) => {
+      if (!ownedCells.has(cellId) || evidenceCells.has(cellId)) throw new Error("N5 information evidence cell 無效");
+      evidenceCells.add(cellId);
+    });
+  });
+  if (question.informationEvidenceScope === "all-material-rows" &&
+      (evidenceRows.size !== material.rows.length || material.rows.some((row) => !evidenceRows.has(row.id))))
+    throw new Error("N5 all-material-rows evidence 不完整");
+}
+
+function validateJapaneseJlptReadingSet(set, expectedLevel, sourceBank) {
+  const audited = expectedLevel === "N5" && JAPANESE_JLPT_N5_READING_AUDITED_CONTRACT[set && set.id];
+  const auditedText = expectedLevel === "N5" && JAPANESE_JLPT_N5_READING_TEXT_CONTRACT[set && set.id];
+  const auditedMetadata = expectedLevel === "N5" && JAPANESE_JLPT_N5_READING_SET_METADATA_CONTRACT[set && set.id];
+  if (!set || set.level !== expectedLevel || !JAPANESE_JLPT_READING_SECTIONS.includes(set.section) ||
+      !isNonEmptyString(set.id) || !isNonEmptyString(set.sourceSetId) ||
+      !isNonEmptyString(set.originalTitle) || !isNonEmptyString(set.displayTitle) ||
+      !isNonEmptyString(set.originalPassage) || !isNonEmptyString(set.displayPassage) ||
+      !isNonEmptyString(set.passageKana) || !Array.isArray(set.rubyTerms) ||
+      !set.rubyCoverage || typeof set.rubyCoverage !== "object" ||
+      !Array.isArray(set.rubyCoverage.coveredTerms) || !Array.isArray(set.rubyCoverage.uncoveredHan) ||
+      !isNonEmptyString(set.rubyCoverage.status) || !isNonEmptyString(set.kanjiPolicy) ||
+      !Array.isArray(set.questions) || !set.questions.length)
+    throw new Error(`${sourceBank} reading set contract 無效`);
+  if (expectedLevel === "N5" && (!audited || !auditedMetadata || set.sourceSetId !== set.id || set.section !== audited[0] ||
+      set.type !== auditedMetadata[0] || set.sourceType !== auditedMetadata[0] || set.type !== set.sourceType ||
+      set.kanjiPolicy !== auditedMetadata[1] || set.rubyCoverage.status !== "complete" ||
+      set.rubyCoverage.coveredTerms.length !== 0 || set.rubyCoverage.uncoveredHan.length !== 0 ||
+      set.rubyTerms.length !== 0 ||
+      set.sourceDigest !== audited[1] || !auditedText || set.originalTitle !== auditedText[0] ||
+      set.displayTitle !== auditedText[1] || set.originalPassage !== auditedText[2] ||
+      set.displayPassage !== auditedText[3] || set.questions.length !== audited[2].length ||
+      set.sourceSetQuestionCount !== set.questions.length || set.reviewStatus !== "approved-for-derived-bank" ||
+      set.reviewVersion !== "17c9b-review-v1" || set.reviewMethod !== "site-internal-editorial" ||
+      !isNonEmptyString(set.provenance) || set.originalTitle !== set.displayTitle ||
+      set.originalPassage !== set.displayPassage)) throw new Error("N5 audited reading contract 無效");
+  set.rubyTerms.forEach((term) => {
+    if (!term || !isNonEmptyString(term.text) || !isNonEmptyString(term.reading))
+      throw new Error("reading ruby contract 無效");
+    if (expectedLevel === "N5" && /[一-龯々〆ヵヶ]/u.test(term.reading))
+      throw new Error("N5 ruby reading 不得包含漢字");
+  });
+  set.questions.forEach((question, questionIndex) => {
+    if (!question || !isNonEmptyString(question.id) || !isNonEmptyString(question.sourceQuestionId) ||
+        !isNonEmptyString(question.originalText) || !isNonEmptyString(question.displayText) ||
+        !Array.isArray(question.options) || question.options.length !== 4 ||
+        question.options.some((option) => !isNonEmptyString(option)) || new Set(question.options).size !== 4 ||
+        !Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex > 3 ||
+        question.answerDisplay !== question.options[question.answerIndex] || !isNonEmptyString(question.explanation))
+      throw new Error(`${sourceBank} reading question contract 無效`);
+    if (expectedLevel === "N5" && (question.id !== audited[2][questionIndex] ||
+        question.sourceQuestionId !== audited[3][questionIndex] ||
+        question.originalText !== auditedText[4][questionIndex][0] ||
+        question.displayText !== auditedText[4][questionIndex][1] ||
+        !isNonEmptyString(question.questionKana) ||
+        question.derivationVersion !== "17c9c-v1" || question.uniqueAnswerReviewed !== true ||
+        !isNonEmptyString(question.correctAnswerReview) ||
+        ((!Array.isArray(question.passageEvidence) || !question.passageEvidence.length) &&
+         (!Array.isArray(question.informationEvidence) || !question.informationEvidence.length)) ||
+        !Array.isArray(question.optionReviews) ||
+        question.optionReviews.length !== 4 || question.optionReviews.some((review, index) =>
+          !review || review.optionIndex !== index || review.option !== question.options[index] ||
+          !isNonEmptyString(review.verdict) || !isNonEmptyString(review.reason))))
+      throw new Error("N5 reading question review contract 無效");
+    if (expectedLevel === "N5") {
+      const supported = question.optionReviews.filter((review) => review.verdict === "supported");
+      const rejected = question.optionReviews.filter((review) => review.verdict === "rejected");
+      const normalizedReasons = rejected.map((review) => review.reason.trim().replace(/[。.!！?？]+$/u, ""));
+      if (supported.length !== 1 || supported[0].optionIndex !== question.answerIndex || rejected.length !== 3 ||
+          new Set(normalizedReasons).size !== 3 || rejected.some((review) =>
+            review.reason.trim().length < 4 || JAPANESE_JLPT_N5_GENERIC_DISTRACTOR_REASON.test(review.reason.trim())))
+        throw new Error("N5 option review verdict contract 無效");
+      const spanIds = new Set();
+      (question.passageEvidence || []).forEach((evidence) => {
+        const points = Array.from(set.displayPassage);
+        if (!evidence || !isNonEmptyString(evidence.spanId) || spanIds.has(evidence.spanId) ||
+            !Number.isSafeInteger(evidence.startCodePoint) || !Number.isSafeInteger(evidence.endCodePoint) ||
+            evidence.startCodePoint < 0 || evidence.endCodePoint <= evidence.startCodePoint ||
+            evidence.endCodePoint > points.length ||
+            evidence.text !== points.slice(evidence.startCodePoint, evidence.endCodePoint).join(""))
+          throw new Error("N5 passage evidence span contract 無效");
+        spanIds.add(evidence.spanId);
+      });
+    }
+    if (expectedLevel === "N5" && set.section === "information-search" &&
+        (!set.material || typeof set.material !== "object" || !Array.isArray(question.informationEvidence) ||
+         !question.informationEvidence.length)) throw new Error("N5 information material contract 無效");
+    if (expectedLevel === "N5" && set.section === "information-search")
+      validateJapaneseJlptN5InformationMaterial(set, question);
+  });
+}
+
+function adaptJapaneseJlptReadingQuestion(set, question, level, sourceBank, indexes = {}) {
+  validateJapaneseJlptReadingSet(set, level, sourceBank);
+  if (!set.questions.includes(question)) throw new Error("reading question 不屬於 canonical set");
+  const candidate = {
+    level, section: "reading", questionType: set.section, sourceBank,
+    setId: set.id, sourceSetId: set.sourceSetId, questionId: question.id,
+    id: question.id, sourceQuestionId: question.sourceQuestionId,
+    originalTitle: set.originalTitle, displayTitle: set.displayTitle,
+    originalPassage: set.originalPassage, displayPassage: set.displayPassage,
+    passageKana: set.passageKana, rubyTerms: set.rubyTerms, rubyCoverage: set.rubyCoverage,
+    kanjiPolicy: set.kanjiPolicy, type: set.type, sourceType: set.sourceType,
+    originalText: question.originalText, displayText: question.displayText,
+    question: question.displayText, questionKana: question.questionKana,
+    options: question.options, answerIndex: question.answerIndex,
+    answerDisplay: question.answerDisplay, explanation: question.explanation,
+    readingSetIndex: indexes.readingSetIndex, readingSetCount: indexes.readingSetCount,
+    readingQuestionIndex: indexes.readingQuestionIndex,
+    readingQuestionCount: set.questions.length, sourceSetQuestionCount: set.questions.length,
+  };
+  ["reviewStatus", "reviewVersion", "reviewMethod", "sourceDigest", "uniqueAnswerReviewSummary",
+    "disclaimer", "provenance", "material"].forEach((key) => {
+    if (Object.prototype.hasOwnProperty.call(set, key)) candidate[key] = set[key];
+  });
+  ["uniqueAnswerReviewed", "optionReviews", "correctAnswerReview", "passageEvidence",
+    "informationEvidence", "informationEvidenceScope", "derivationVersion"].forEach((key) => {
+    if (Object.prototype.hasOwnProperty.call(question, key)) candidate[key] = question[key];
+  });
+  return deepCloneJapaneseJlptValue(candidate);
+}
+function adaptJapaneseJlptN5ReadingQuestion(set, question, indexes) {
+  return adaptJapaneseJlptReadingQuestion(set, question, "N5", "japaneseJlptReadingN5Questions", indexes);
+}
+function adaptJapaneseJlptN4ReadingQuestion(set, question, indexes) {
+  return adaptJapaneseJlptReadingQuestion(set, question, "N4", "japaneseJlptReadingQuestions", indexes);
+}
+function createJapaneseJlptReadingCandidates(data, level) {
+  const n5 = level === "N5";
+  const expected = n5 ? { "short-passage": 2, "medium-passage": 4, "information-search": 4, "notice-and-message": 2 } :
+    { "short-passage": 41, "medium-passage": 35, "information-search": 33, "notice-and-message": 41 };
+  const expectedN5Sets = { "short-passage": 2, "medium-passage": 2, "information-search": 2, "notice-and-message": 2 };
+  if (!data || data.schemaVersion !== (n5 ? "1.0.0" : 1) ||
+      data.dataVersion !== (n5 ? "17c9c-n5-reading-v1" : "17c2-n4-reading-v1") ||
+      (n5 ? data.derivationVersion !== "17c9c-v1" || data.sourceVersion !== "17c9b-v1" ||
+        data.manifestVersion !== "17c9b-v1" || data.reviewVersion !== "17c9b-review-v1" ||
+        JSON.stringify(data.generatedFrom) !== JSON.stringify(["japaneseJlptReadingN5ReviewedSource.json", "japaneseJlptReadingN5ReviewManifest.json"]) ||
+        !data.inventory || data.inventory.level !== "N5" || data.inventory.setCount !== 8 ||
+        data.inventory.questionCount !== 12 || data.inventory.seedCapacity !== true || data.inventory.productQuota !== false ||
+        !data.inventory.sections || JAPANESE_JLPT_READING_SECTIONS.some((section) => {
+          const inventory = data.inventory.sections[section];
+          return !inventory || inventory.setCount !== expectedN5Sets[section] ||
+            inventory.questionCount !== expected[section];
+        }) || Object.keys(data.inventory.sections).length !== JAPANESE_JLPT_READING_SECTIONS.length
+        : data.policyVersion !== "17c2-reading-internal-v1" || !data.availability || !data.availability.N5 ||
+          data.availability.N5.available !== false || data.availability.N5.setCount !== 0 ||
+          data.availability.N5.questionCount !== 0 ||
+          data.availability.N4.available !== true || data.availability.N4.setCount !== 105 ||
+          data.availability.N4.questionCount !== 150 ||
+          JSON.stringify(data.typeToSection) !== JSON.stringify(JAPANESE_JLPT_N4_TYPE_TO_SECTION_CONTRACT)) ||
+      !Array.isArray(data.readingSets) ||
+      data.readingSets.length !== (n5 ? 8 : 105)) throw new Error(`${level} reading bank contract 無效`);
+  const identities = { set: new Set(), sourceSet: new Set(), question: new Set(), sourceQuestion: new Set() };
+  const candidates = [];
+  data.readingSets.forEach((set, setIndex) => {
+    validateJapaneseJlptReadingSet(set, level, n5 ? "japaneseJlptReadingN5Questions" : "japaneseJlptReadingQuestions");
+    if (!n5) {
+      const match = /^jlpt-reading-set-n4-(\d{3})$/.exec(set.id);
+      const suffix = match && match[1];
+      const allowedTypes = JAPANESE_JLPT_N4_TYPE_TO_SECTION_CONTRACT[set.section];
+      if (!suffix || set.sourceSetId !== `jp-reading-set-n4-${suffix}` ||
+          !Array.isArray(allowedTypes) || !allowedTypes.includes(set.type))
+        throw new Error("N4 canonical set identity/type contract 無效");
+    }
+    if (identities.set.has(set.id) || identities.sourceSet.has(set.sourceSetId)) throw new Error("reading set identity collision");
+    identities.set.add(set.id); identities.sourceSet.add(set.sourceSetId);
+    set.questions.forEach((question, questionIndex) => {
+      if (!n5) {
+        const setSuffix = /^jlpt-reading-set-n4-(\d{3})$/.exec(set.id)[1];
+        const questionSuffix = String(questionIndex + 1).padStart(2, "0");
+        if (question.id !== `jlpt-reading-q-n4-${setSuffix}-${questionSuffix}` ||
+            question.sourceQuestionId !== `jp-reading-q-n4-${setSuffix}-${questionSuffix}`)
+          throw new Error("N4 canonical question identity contract 無效");
+      }
+      if (identities.question.has(question.id) || identities.sourceQuestion.has(question.sourceQuestionId))
+        throw new Error("reading question identity collision");
+      identities.question.add(question.id); identities.sourceQuestion.add(question.sourceQuestionId);
+      const candidate = (n5 ? adaptJapaneseJlptN5ReadingQuestion : adaptJapaneseJlptN4ReadingQuestion)(set, question, {
+        readingSetIndex: setIndex, readingSetCount: data.readingSets.length, readingQuestionIndex: questionIndex,
+      });
+      candidates.push(candidate);
+    });
+  });
+  JAPANESE_JLPT_READING_SECTIONS.forEach((section) => {
+    if (candidates.filter((candidate) => candidate.questionType === section).length !== expected[section])
+      throw new Error(`${level}/${section} reading inventory 無效`);
+    if (n5 && (data.readingSets.filter((set) => set.section === section).length !== expectedN5Sets[section] ||
+        data.readingSets.filter((set) => set.section === section)
+          .reduce((count, set) => count + set.questions.length, 0) !== expected[section]))
+      throw new Error(`N5/${section} actual inventory 無效`);
+  });
+  return candidates;
+}
+function createJapaneseJlptN5ReadingCandidates(data) { return createJapaneseJlptReadingCandidates(data, "N5"); }
+function createJapaneseJlptN4ReadingCandidates(data) { return createJapaneseJlptReadingCandidates(data, "N4"); }
 
 async function loadJapaneseJlptQuestionBank() {
   if (japaneseJlptQuestionBank || japaneseJlptIsLoading) return;
@@ -1467,7 +1734,7 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
       ...reason, usageIndex: newIndexByOriginal.get(reason.usageIndex),
     }));
   }
-  if (["form-selection", "sentence-composition"].includes(randomizedSnapshot.questionType)) {
+  if (["form-selection", "sentence-composition", ...JAPANESE_JLPT_READING_SECTIONS].includes(randomizedSnapshot.questionType)) {
     let canonicalOptionIds;
     if (randomizedSnapshot.questionType === "form-selection") {
       if (!isNonEmptyString(randomizedSnapshot.sourceQuestionId) || !Array.isArray(randomizedSnapshot.optionReviews) ||
@@ -1481,7 +1748,7 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
         ...review, originalChoiceIndex: originalIndexes[index], choiceIndex: index,
         canonicalOptionId: canonicalOptionIds[originalIndexes[index]],
       }));
-    } else {
+    } else if (randomizedSnapshot.questionType === "sentence-composition") {
       if (!Array.isArray(randomizedSnapshot.optionChunkIds) || !Array.isArray(randomizedSnapshot.chunks) ||
           randomizedSnapshot.optionChunkIds.length !== 4 || randomizedSnapshot.chunks.length !== 4 ||
           new Set(randomizedSnapshot.optionChunkIds).size !== 4 ||
@@ -1496,11 +1763,26 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
         throw new Error("JLPT sentence-composition chunk identity 無效");
       canonicalOptionIds = randomizedSnapshot.optionChunkIds.slice();
       reorder("optionChunkIds"); reorder("chunks");
+    } else {
+      if (randomizedSnapshot.section !== "reading" || !isNonEmptyString(randomizedSnapshot.sourceQuestionId))
+        throw new Error("JLPT reading canonical option identity 無效");
+      canonicalOptionIds = randomizedSnapshot.options.map((_, index) =>
+        `${randomizedSnapshot.sourceQuestionId}#option-${index}`);
+      if (Array.isArray(randomizedSnapshot.optionReviews)) {
+        if (randomizedSnapshot.optionReviews.length !== 4 || randomizedSnapshot.optionReviews.some((review, index) =>
+          !review || review.optionIndex !== index || review.option !== randomizedSnapshot.options[index]))
+          throw new Error("JLPT reading option review identity 無效");
+        reorder("optionReviews");
+        randomizedSnapshot.optionReviews = randomizedSnapshot.optionReviews.map((review, index) => ({
+          ...review, optionIndex: index, originalOptionIndex: originalIndexes[index],
+          canonicalOptionId: canonicalOptionIds[originalIndexes[index]], option: options[index],
+        }));
+      }
     }
     const randomizedCanonicalOptionIds = originalIndexes.map((index) => canonicalOptionIds[index]);
     const correctCanonicalOptionId = canonicalOptionIds[originalAnswerIndex];
     randomizedSnapshot.optionPermutation = {
-      version: "17c8d-v1", randomizedIndexToOriginalIndex: originalIndexes,
+      version: randomizedSnapshot.section === "reading" ? "17c9d-v1" : "17c8d-v1", randomizedIndexToOriginalIndex: originalIndexes,
       originalIndexToRandomizedIndex, preRandomizationCanonicalOptionIds: canonicalOptionIds,
       randomizedCanonicalOptionIds, correctCanonicalOptionId,
       correctOriginalIndex: originalAnswerIndex, correctRandomizedIndex: targetAnswerIndex,
@@ -1509,7 +1791,7 @@ function randomizeJapaneseJlptQuestionOptions(questionSnapshot, targetAnswerInde
       throw new Error("JLPT permutation metadata 與正解 identity 不一致");
   }
   const randomizedQuestion = { ...randomizedSnapshot, options, answerIndex: targetAnswerIndex };
-  if (["form-selection", "sentence-composition"].includes(randomizedSnapshot.questionType))
+  if (["form-selection", "sentence-composition", ...JAPANESE_JLPT_READING_SECTIONS].includes(randomizedSnapshot.questionType))
     randomizedQuestion.answerDisplay = options[targetAnswerIndex];
   return randomizedQuestion;
 }

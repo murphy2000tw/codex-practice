@@ -1,0 +1,25 @@
+# Batch 17C-9D reading isolated pipeline
+
+本批建立 N5／N4 reading immutable adapters 與測試專用 isolated pipeline。素材是本站內部、非官方的 **JLPT-style** 練習內容，不是官方 JLPT 題庫、配額或認證內容；正式啟用與固定題數只能由 Batch 17C-10 決定。
+
+## Adapter 與 inventory
+
+Adapters fail closed 驗證 N5 `17c9c-n5-reading-v1` derived bank（含 reviewed source、manifest、review、digest、ruby、evidence、structured material metadata）及 N4 `17c2-n4-reading-v1` bank（只允許 N4 105 sets／150 questions），並 deep clone 每個 candidate。版本化的 `17c9d-audited-n5-v1` contract 以 stable set ID 為 key，精確鎖定 canonical source set/question identity、section、question count、文字、type/sourceType、kanji/ruby policy 與 audited digest；合法格式但未經 audited contract 登錄的 digest、identity、ruby term 或 metadata 也會拒絕。Root inventory 的四個 section set/question counts 會與固定 contract 及實際 `readingSets` 重算結果交叉核對。N4 使用固定、版本化的 `17c2-type-to-section-v1` whitelist，而不信任 input `typeToSection` 自我證明，並核對 canonical numeric suffix 與 N5/N4 availability。
+
+實際 inventory 是 162 candidates：N5 為 short 2、medium 4、information-search 4、notice 2；N4 分別為 41、35、33、41。canonical pool key 是 `(level, "reading", canonicalSection)`，canonical question identity 是 `(setId, questionId)`。Candidate 採明確欄位投影，不攜帶完整 `set.questions`，並包含 `readingSetIndex`、`readingSetCount`、`readingQuestionIndex`、`readingQuestionCount` 與完整來源題數 `sourceSetQuestionCount`；index 僅用於排序與顯示，不參與 canonical identity。
+
+## Isolated fixture 與 selection
+
+Checker 內的 `17c9d-isolated-reading-fixture-v1` / `site-jlpt-style-reading-fixture` / `test-only-isolated` profile 每級僅選 8 題，每個 canonical section 2 題。**這是 isolated fixture quota，不是 product quota**，不在 production registry。抽到同一 set 的多題依 canonical question order 排列，不因抽樣打亂。`sourceSetQuestionCount` 永遠是原 set 完整題數；`selectedSessionQuestionCount` 是 selection 後該 set 在本 session 的實際題數，partial selection 不截斷來源或 candidate。
+
+## Immutable 與 option identity boundary
+
+流程為 adapter → normalize → pools → selection → immutable pre-randomization snapshot → balanced answer positions → option randomization。Snapshot 及所有 nested object/array deep freeze；source、candidate、snapshot、randomized question 均 deep clone、不共享 mutable nested references。每級 8 題的答案位置平衡為 `2/2/2/2`。
+
+Reading permutation metadata 使用 `17c9d-v1`，保存雙向 index mapping、pre/randomized canonical IDs、correct canonical ID 與正解原始/目前 index。option ID 固定為 `${sourceQuestionId}#option-${originalIndex}`；N5 option reviews 使用相同 permutation，且正解 review 保持 `supported`、其餘三個保持具體、互異且非泛用的 `rejected` 理由。Passage evidence 會檢查合法 code-point bounds 與精確文字；information material 會檢查全域 ID 唯一性、固定 row width、projection 以及至少兩個 cells 的 evidence ownership。passage、ruby、passage/information evidence 與 material metadata 在 permutation 前後 byte-equivalent。已 randomize、無效 provider/index/identity 一律拒絕。
+
+## Fail-closed 與 production isolation
+
+題庫不足在呼叫 random provider 與產生 partial session 前以 `JLPT_INSUFFICIENT_POOL` 拒絕，details 保存 level、section、questionType、required、available、profileVersion，且不跨 level、section 或 legacy bank fallback。Checker 的 8 個 shortage fixtures 會在同一 try block 執行 pool preparation 與 selection，並以 counting provider 證明 preparation 已先失敗、selection 未產生且 provider calls 為零。共 108/108 個 negative fixtures（包含前輪 13 個 semantic drifts，以及本輪 inventory、evidence bounds、set/ruby metadata、generic reasons、structured material 與固定 N4 type mapping fixtures）均由 production adapter／validator／randomizer拒絕。
+
+Production `17c6-compat-v1`、N5 total 20（reading unavailable）、N4 total 34（legacy reading 14）與 listening 狀態不變；production build/load path、storage/cache inventory、UI 及 script tags 不納入 isolated bank。所有 reading source、manifest、policy 與 derived bank bytes 維持 baseline identity。本批通過不代表 N5 reading 已啟用。
