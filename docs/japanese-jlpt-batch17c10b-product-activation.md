@@ -10,7 +10,7 @@ Runtime 正式註冊 `17c10-product-v1`／`site-jlpt-style-product`，其 quota 
 
 ## Transaction-like 載入
 
-六份 product banks 先以 `Promise.all` 完整 fetch，再全部 parse。Vocabulary、grammar form-selection、sentence-composition、N5 reading 與 N4 reading 分別通過既有 audited adapters；兩級 profile 及所有 pool capacity 在 commit point 前完成驗證。只有全部成功後，candidate 集合與 active profile 才一起發布。
+正式共用 helper `buildJapaneseJlptProductCandidates()` 先以 `Promise.all` 完整 fetch 六份 product banks，再全部 parse。Vocabulary、grammar form-selection、sentence-composition、N5 reading 與 N4 reading 分別通過既有 audited adapters；兩級 profile 及所有 pool capacity 在 commit point 前完成驗證。`loadJapaneseJlptProductBanks()` 只有在 helper 完整成功後，才將 354 candidates 與 active profile 一起發布。helper／loader 接受可注入的 fetch provider，讓專用 checker 能逐次執行真實 production 路徑，而不是複製載入邏輯。
 
 正式 session 順序固定為：
 
@@ -24,10 +24,10 @@ Runtime 正式註冊 `17c10-product-v1`／`site-jlpt-style-product`，其 quota 
 
 ## UI 與安全
 
-設定畫面標示正式／相容模式、固定 section 題數與總題數。題型以繁體中文顯示；sentence-composition 的 `★`、chunks 與 canonical chunk identity 留在專用 pipeline；information-search 素材與 evidence 僅以 `createElement`、`textContent` 及既有 ruby renderer 顯示，不把題庫內容寫入 `innerHTML`。N5、N4 正式完成畫面均列出單字、文法與閱讀，並保留聽力後續開放提示。
+設定畫面標示正式／相容模式、固定 section 題數與總題數。題型以繁體中文顯示；各新題型使用明確的 metadata renderer，字串 `answerDisplay` 只顯示一次，legacy object 格式仍保留既有欄位呈現。sentence-composition 的 `★`、chunks 與 canonical chunk identity 留在專用 pipeline。information-search 的 `labeled-table` 以 `table`／`thead`／`tbody`／row／cell 安全 DOM 呈現，不向使用者顯示 evidence、內部 ID、projection 或原始 JSON；最小 CSS 僅為表格邊框、cell spacing 與手機橫向捲動容器。所有題庫文字只經 `createElement`、`textContent` 及既有 ruby renderer 顯示，不寫入 `innerHTML`。N5、N4 正式完成畫面均列出單字、文法與閱讀，並保留聽力後續開放提示。
 
 本批沒有修改 JSON 題庫、source、manifest、builder 輸出、歷史 checker、一般日文功能或任何 storage key/schema。
 
 ## 專用 checker
 
-`scripts/check-japanese-jlpt-batch17c10b-product-activation.js` 解析 17C-10A contract，直接執行 production adapters 與完整 N5/N4 pipeline，並驗證 quota、balanced positions、immutability/reference isolation、reading grouping/metadata、option/chunk permutation、compat profile、storage inventory、production wiring、六份逐 bank load-failure fixtures、pool shortage、未知題型及其他 negative fixtures。
+`scripts/check-japanese-jlpt-batch17c10b-product-activation.js` 解析 17C-10A contract，直接執行 production adapters 與完整 N5/N4 pipeline，並驗證 quota、balanced positions、immutability/reference isolation、reading grouping/metadata、option/chunk permutation、compat profile、storage inventory 與 production wiring。Loader fixtures 實際呼叫 production loader：一個成功 fixture 發布 354 candidates；六個逐 bank HTTP failure fixtures 各讓其餘 product／compat responses 正常，並驗證正式 runtime state 沒有 candidates/session、compat profile 保持 active 且顯示回退原因。另有可信 DOM stub 執行十六個 UI fixtures，驗證七種新題型及其缺漏 metadata fallback、legacy answer object 與 structured table，以及 pool shortage、未知題型、duplicate identity、invalid provider 等十二個 negative fixtures。

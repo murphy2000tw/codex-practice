@@ -1525,37 +1525,42 @@ const JAPANESE_JLPT_PRODUCT_BANKS = Object.freeze([
   ["N4 reading", "JAPANESE_JLPT_READING_N4_URL", "japaneseJlptReadingQuestions.json"],
 ]);
 
-async function loadJapaneseJlptProductBanks() {
+async function buildJapaneseJlptProductCandidates(fetchProvider = fetch) {
+  if (typeof fetchProvider !== "function") throw new TypeError("JLPT fetch provider 無效");
+  const responses = await Promise.all(JAPANESE_JLPT_PRODUCT_BANKS.map(async ([label, globalName, path]) => {
+    const response = await fetchProvider(window[globalName] || path);
+    if (!response || !response.ok) throw new Error(`${label}: HTTP ${response && response.status || "未知"}`);
+    return [label, response];
+  }));
+  const parsed = await Promise.all(responses.map(async ([label, response]) => {
+    try { return await response.json(); }
+    catch (error) { throw new Error(`${label}: JSON 解析失敗（${error instanceof Error ? error.message : "未知錯誤"}）`); }
+  }));
+  const [auto, semantic, formSelection, sentenceComposition, n5Reading, n4Reading] = parsed;
+  const candidates = [
+    ...createJapaneseJlptVocabularyDerivedCandidates(auto, semantic),
+    ...createJapaneseJlptGrammarFormSelectionCandidates(formSelection),
+    ...createJapaneseJlptSentenceCompositionCandidates(sentenceComposition),
+    ...createJapaneseJlptN5ReadingCandidates(n5Reading),
+    ...createJapaneseJlptN4ReadingCandidates(n4Reading),
+  ];
+  for (const level of JAPANESE_JLPT_LEVELS) {
+    const { profile, levelProfile } = validateJapaneseJlptProfile(
+      JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_PRODUCT_PROFILE_VERSION,
+      JAPANESE_JLPT_PRODUCT_PROFILE_ID, level,
+    );
+    prepareJapaneseJlptCandidatePools(level, profile, levelProfile, candidates, profile.profileVersion);
+  }
+  return candidates;
+}
+
+async function loadJapaneseJlptProductBanks(fetchProvider = fetch) {
   if (japaneseJlptProductCandidates || japaneseJlptIsLoading) return;
   japaneseJlptIsLoading = true;
   japaneseJlptProductLoadError = "";
   renderJapaneseJlptPanel();
   try {
-    // Fetch and parse every bank before adapters run. Nothing below is published until all gates pass.
-    const responses = await Promise.all(JAPANESE_JLPT_PRODUCT_BANKS.map(async ([label, globalName, path]) => {
-      const response = await fetch(window[globalName] || path);
-      if (!response.ok) throw new Error(`${label}: HTTP ${response.status}`);
-      return [label, response];
-    }));
-    const parsed = await Promise.all(responses.map(async ([label, response]) => {
-      try { return await response.json(); }
-      catch (error) { throw new Error(`${label}: JSON 解析失敗（${error instanceof Error ? error.message : "未知錯誤"}）`); }
-    }));
-    const [auto, semantic, formSelection, sentenceComposition, n5Reading, n4Reading] = parsed;
-    const nextCandidates = [
-      ...createJapaneseJlptVocabularyDerivedCandidates(auto, semantic),
-      ...createJapaneseJlptGrammarFormSelectionCandidates(formSelection),
-      ...createJapaneseJlptSentenceCompositionCandidates(sentenceComposition),
-      ...createJapaneseJlptN5ReadingCandidates(n5Reading),
-      ...createJapaneseJlptN4ReadingCandidates(n4Reading),
-    ];
-    for (const level of JAPANESE_JLPT_LEVELS) {
-      const { profile, levelProfile } = validateJapaneseJlptProfile(
-        JAPANESE_JLPT_PROFILE_REGISTRY, JAPANESE_JLPT_PRODUCT_PROFILE_VERSION,
-        JAPANESE_JLPT_PRODUCT_PROFILE_ID, level,
-      );
-      prepareJapaneseJlptCandidatePools(level, profile, levelProfile, nextCandidates, profile.profileVersion);
-    }
+    const nextCandidates = await buildJapaneseJlptProductCandidates(fetchProvider);
     // Transaction-like commit point: candidates and active profile become visible together.
     japaneseJlptProductCandidates = nextCandidates;
     japaneseJlptActiveProfileVersion = JAPANESE_JLPT_PRODUCT_PROFILE_VERSION;
@@ -1565,21 +1570,22 @@ async function loadJapaneseJlptProductBanks() {
     japaneseJlptActiveProfileVersion = JAPANESE_JLPT_COMPAT_PROFILE_VERSION;
     japaneseJlptActiveProfileId = JAPANESE_JLPT_COMPAT_PROFILE_ID;
     japaneseJlptProductLoadError = `新題型載入失敗，已使用相容模式：${error instanceof Error ? error.message : "未知錯誤"}`;
+    clearJapaneseJlptSession();
     japaneseJlptIsLoading = false;
-    await Promise.all([loadJapaneseJlptQuestionBank(), loadJapaneseJlptReadingBank()]);
+    await Promise.all([loadJapaneseJlptQuestionBank(fetchProvider), loadJapaneseJlptReadingBank(fetchProvider)]);
   } finally {
     japaneseJlptIsLoading = false;
     renderJapaneseJlptPanel();
   }
 }
 
-async function loadJapaneseJlptQuestionBank() {
+async function loadJapaneseJlptQuestionBank(fetchProvider = fetch) {
   if (japaneseJlptQuestionBank || japaneseJlptIsLoading) return;
   japaneseJlptIsLoading = true;
   japaneseJlptLoadError = "";
   renderJapaneseJlptPanel();
   try {
-    const response = await fetch(
+    const response = await fetchProvider(
       window.JAPANESE_JLPT_VOCABULARY_GRAMMAR_URL ||
         "japaneseJlptVocabularyGrammarQuestions.json?v=17b1",
     );
@@ -1596,13 +1602,13 @@ async function loadJapaneseJlptQuestionBank() {
   }
 }
 
-async function loadJapaneseJlptReadingBank() {
+async function loadJapaneseJlptReadingBank(fetchProvider = fetch) {
   if (japaneseJlptReadingBank || japaneseJlptReadingIsLoading) return;
   japaneseJlptReadingIsLoading = true;
   japaneseJlptReadingLoadError = "";
   renderJapaneseJlptPanel();
   try {
-    const response = await fetch(
+    const response = await fetchProvider(
       window.JAPANESE_JLPT_READING_URL ||
         "japaneseJlptReadingQuestions.json?v=17c2",
     );
@@ -1693,11 +1699,11 @@ function renderJapaneseJlptPanel() {
     japaneseJlptStatus.appendChild(p);
     return;
   }
+  const levelProfile = selectedLevelProfile;
   const heading = document.createElement("p");
   heading.className = "sentence-composition-mode";
   heading.textContent = `${productActive ? "正式模式" : "相容模式"}・已選擇 ${selectedJapaneseJlptLevel}・固定共 ${levelProfile.total} 題`;
   const list = document.createElement("ul");
-  const levelProfile = selectedLevelProfile;
   [`單字 ${levelProfile.sections.vocabulary.total} 題`, `文法 ${levelProfile.sections.grammar.total} 題`].forEach((text) => {
     const item = document.createElement("li");
     item.textContent = text;
@@ -2078,6 +2084,80 @@ function appendJapaneseJlptDetail(parent, label, value) {
 function appendJapaneseJlptRubyText(parent, value, rubyTerms) {
   renderRubyParts(parent, createRubyPartsFromTerms(value, rubyTerms));
 }
+function appendJapaneseJlptLabeledTable(parent, material, rubyTerms) {
+  if (!material || material.type !== "labeled-table" || !Array.isArray(material.columns) ||
+      !Array.isArray(material.rows)) return false;
+  const wrapper = document.createElement("div");
+  wrapper.className = "jlpt-reading-table-wrap";
+  (Array.isArray(material.headings) ? material.headings : []).forEach((item) => {
+    if (!item || !isNonEmptyString(item.label)) return;
+    const heading = document.createElement("h5");
+    appendJapaneseJlptRubyText(heading, item.label, rubyTerms);
+    wrapper.appendChild(heading);
+  });
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  material.columns.forEach((column) => {
+    const th = document.createElement("th");
+    appendJapaneseJlptRubyText(th, column && isNonEmptyString(column.label) ? column.label : "—", rubyTerms);
+    headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  const tbody = document.createElement("tbody");
+  material.rows.forEach((row) => {
+    const tr = document.createElement("tr");
+    const cells = row && Array.isArray(row.cells) ? row.cells : [];
+    material.columns.forEach((_, index) => {
+      const td = document.createElement("td");
+      const cell = cells[index];
+      appendJapaneseJlptRubyText(td, cell && isNonEmptyString(cell.text) ? cell.text : "—", rubyTerms);
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.append(thead, tbody);
+  wrapper.appendChild(table);
+  parent.appendChild(wrapper);
+  return true;
+}
+function appendJapaneseJlptNewTypeAnswerDetails(parent, question) {
+  const detail = (label, value) => {
+    if (isNonEmptyString(value)) appendJapaneseJlptDetail(parent, label, value);
+  };
+  const handlers = {
+    "kanji-reading": () => { detail("正確讀音", question.answerDisplay); detail("假名", question.testedReading); },
+    orthography: () => { detail("正確漢字", question.answerDisplay); detail("假名", question.sourceExampleKana); },
+    context: () => { detail("正確選項", question.answerDisplay); detail("例句意思", question.sourceExampleMeaning); },
+    paraphrase: () => { detail("原表現", question.targetExpression); detail("原假名", question.targetExpressionKana); detail("近義表現", question.answerDisplay); detail("近義假名", question.equivalentExpressionKana); },
+    usage: () => { detail("目標單字", question.targetWord); detail("假名", question.targetKana); detail("正確用法句", question.answerDisplay); },
+    "form-selection": () => { detail("文法", question.grammar); detail("文法假名", question.grammarKana); detail("結構", question.structure); detail("用法", question.usage); detail("例句", question.example); detail("例句假名", question.exampleKana); detail("中文意思", question.exampleMeaning); },
+    "sentence-composition": () => { detail("完整句子", question.completeSentence); detail("完整假名", question.kana); detail("中文意思", question.meaning); detail("★位置正解", question.answerDisplay); },
+  };
+  const handler = handlers[question.questionType];
+  if (!handler) return false;
+  handler();
+  if (!isNonEmptyString(question.answerDisplay))
+    detail("正確答案", question.options && question.options[question.answerIndex]);
+  detail("解析", question.explanation);
+  return true;
+}
+function appendJapaneseJlptAnswerFeedbackDetails(parent, question) {
+  if (appendJapaneseJlptNewTypeAnswerDetails(parent, question)) return;
+  const labels = question.section === "vocabulary"
+    ? { word: "單字", kana: "假名", meaning: "意思" }
+    : { grammar: "文法", kana: "假名", answer: "答案", meaning: "意思", structure: "結構" };
+  if (question.answerDisplay && typeof question.answerDisplay === "object" && !Array.isArray(question.answerDisplay)) {
+    Object.entries(question.answerDisplay).forEach(([key, value]) => {
+      if (typeof value === "string") appendJapaneseJlptDetail(parent, labels[key] || key, value);
+    });
+  } else {
+    const fallback = isNonEmptyString(question.answerDisplay)
+      ? question.answerDisplay : question.options && question.options[question.answerIndex];
+    if (isNonEmptyString(fallback)) appendJapaneseJlptDetail(parent, "正確答案", fallback);
+  }
+  if (isNonEmptyString(question.explanation)) appendJapaneseJlptDetail(parent, "解析", question.explanation);
+}
 function answerJapaneseJlptQuestion(selectedIndex) {
   if (!japaneseJlptSession) return;
   const question =
@@ -2115,20 +2195,12 @@ function renderJapaneseJlptQuestion() {
       question.displayTitle,
       question.rubyTerms,
     );
-    const passage = document.createElement("p");
-    passage.className = "reading-passage";
-    appendJapaneseJlptRubyText(
-      passage,
-      question.displayPassage,
-      question.rubyTerms,
-    );
-    card.append(readingProgress, title, passage);
-    if (question.material) {
-      const material = document.createElement("pre");
-      material.className = "reading-passage";
-      material.textContent = typeof question.material === "string"
-        ? question.material : JSON.stringify(question.material, null, 2);
-      card.appendChild(material);
+    card.append(readingProgress, title);
+    if (!appendJapaneseJlptLabeledTable(card, question.material, question.rubyTerms)) {
+      const passage = document.createElement("p");
+      passage.className = "reading-passage";
+      appendJapaneseJlptRubyText(passage, question.displayPassage, question.rubyTerms);
+      card.appendChild(passage);
     }
   }
   const type = document.createElement("p");
@@ -2185,23 +2257,8 @@ function renderJapaneseJlptQuestion() {
       appendJapaneseJlptDetail(feedback, "答案說明", question.answerDisplay);
       appendJapaneseJlptDetail(feedback, "解析", question.explanation);
       appendJapaneseJlptDetail(feedback, "本文假名", question.passageKana);
-      if (question.passageEvidence || question.informationEvidence)
-        appendJapaneseJlptDetail(feedback, "依據", JSON.stringify(question.passageEvidence || question.informationEvidence));
     } else {
-      const labels =
-        question.section === "vocabulary"
-          ? { word: "單字", kana: "假名", meaning: "意思" }
-          : {
-              grammar: "文法",
-              kana: "假名",
-              answer: "答案",
-              meaning: "意思",
-              structure: "結構",
-            };
-      Object.entries(question.answerDisplay).forEach(([key, value]) =>
-        appendJapaneseJlptDetail(feedback, labels[key] || key, value),
-      );
-      appendJapaneseJlptDetail(feedback, "解析", question.explanation);
+      appendJapaneseJlptAnswerFeedbackDetails(feedback, question);
     }
   }
   const next = document.createElement("button");

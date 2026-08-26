@@ -64,9 +64,22 @@ const script = read("script.js");
 const start = script.indexOf("function deepFreezeJapaneseJlptValue");
 const end = script.indexOf("function appendJapaneseJlptDetail");
 check(start >= 0 && end > start, "production adapter contract extraction boundaries missing");
-const context = { console, crypto: require("crypto").webcrypto };
+const context = { console, crypto: require("crypto").webcrypto, window: {} };
 vm.createContext(context);
-vm.runInContext(`function isNonEmptyString(value){return typeof value === "string" && value.trim().length > 0;}\n${script.slice(start, end)}\nthis.api={createJapaneseJlptVocabularyDerivedCandidates,createJapaneseJlptGrammarFormSelectionCandidates,createJapaneseJlptSentenceCompositionCandidates,createJapaneseJlptN5ReadingCandidates,createJapaneseJlptN4ReadingCandidates,validateJapaneseJlptProfile,prepareJapaneseJlptCandidatePools,selectJapaneseJlptQuestions,createJapaneseJlptPreRandomizationSnapshot,createBalancedJapaneseJlptAnswerPositions,randomizeJapaneseJlptQuestionOptions,JAPANESE_JLPT_PROFILE_REGISTRY};`, context);
+vm.runInContext(`
+const JAPANESE_JLPT_LEVELS=Object.freeze(["N5","N4"]);
+const JAPANESE_JLPT_POLICY_VERSION="17b1-internal-v1",JAPANESE_JLPT_READING_DATA_VERSION="17c2-n4-reading-v1",JAPANESE_JLPT_READING_POLICY_VERSION="17c2-reading-internal-v1",JAPANESE_JLPT_READING_PROFILE_ID="17c2-initial-fixed-v1";
+const JAPANESE_JLPT_READING_SET_IDS=Object.freeze(["jlpt-reading-set-n4-001","jlpt-reading-set-n4-002","jlpt-reading-set-n4-003","jlpt-reading-set-n4-016","jlpt-reading-set-n4-017","jlpt-reading-set-n4-026","jlpt-reading-set-n4-027","jlpt-reading-set-n4-031","jlpt-reading-set-n4-032","jlpt-reading-set-n4-015"]);
+let japaneseJlptQuestionBank=null,japaneseJlptLoadError="",japaneseJlptIsLoading=false,japaneseJlptSession=null,japaneseJlptSessionBuildError=null;
+let japaneseJlptProductCandidates=null,japaneseJlptActiveProfileVersion="17c6-compat-v1",japaneseJlptActiveProfileId="site-jlpt-style-compatibility",japaneseJlptProductLoadError="";
+let japaneseJlptQuestionContent=null;
+function isNonEmptyString(value){return typeof value === "string" && value.trim().length > 0;}
+${script.slice(start, end)}
+renderJapaneseJlptPanel=()=>{};
+clearJapaneseJlptSession=()=>{japaneseJlptSession=null;};
+this.api={createJapaneseJlptVocabularyDerivedCandidates,createJapaneseJlptGrammarFormSelectionCandidates,createJapaneseJlptSentenceCompositionCandidates,createJapaneseJlptN5ReadingCandidates,createJapaneseJlptN4ReadingCandidates,validateJapaneseJlptProfile,prepareJapaneseJlptCandidatePools,selectJapaneseJlptQuestions,createJapaneseJlptPreRandomizationSnapshot,createBalancedJapaneseJlptAnswerPositions,randomizeJapaneseJlptQuestionOptions,JAPANESE_JLPT_PROFILE_REGISTRY,loadJapaneseJlptProductBanks,
+resetLoaderState(){japaneseJlptQuestionBank=null;japaneseJlptReadingBank=null;japaneseJlptProductCandidates=null;japaneseJlptActiveProfileVersion=JAPANESE_JLPT_COMPAT_PROFILE_VERSION;japaneseJlptActiveProfileId=JAPANESE_JLPT_COMPAT_PROFILE_ID;japaneseJlptProductLoadError="";japaneseJlptLoadError="";japaneseJlptReadingLoadError="";japaneseJlptIsLoading=false;japaneseJlptReadingIsLoading=false;japaneseJlptSession={partial:true};},
+getLoaderState(){return {candidateCount:japaneseJlptProductCandidates&&japaneseJlptProductCandidates.length,profileVersion:japaneseJlptActiveProfileVersion,profileId:japaneseJlptActiveProfileId,loadError:japaneseJlptProductLoadError,session:japaneseJlptSession,compatQuestionBank:Boolean(japaneseJlptQuestionBank)};}};`, context);
 const api = context.api;
 
 const banks = {
@@ -249,30 +262,120 @@ check(JSON.stringify(api.JAPANESE_JLPT_PROFILE_REGISTRY.profiles[contract.profil
 check(/非官方/.test(documentText) && /JLPT-style/.test(documentText), "non-official JLPT-style disclosure missing");
 check(/selection → immutable snapshot → balanced answer positions → randomization/.test(documentText), "pipeline ordering contract missing");
 
-const JAPANESE_PRODUCT_BANK_NAMES = ["vocabulary auto", "vocabulary semantic", "grammar form-selection", "sentence-composition", "N5 reading", "N4 reading"];
-check(/Promise\.all\(JAPANESE_JLPT_PRODUCT_BANKS/.test(script), "production loader does not fetch all banks transactionally");
-check(/createJapaneseJlptVocabularyDerivedCandidates\(auto, semantic\)/.test(script) && /createJapaneseJlptGrammarFormSelectionCandidates\(formSelection\)/.test(script) && /createJapaneseJlptSentenceCompositionCandidates\(sentenceComposition\)/.test(script) && /createJapaneseJlptN5ReadingCandidates\(n5Reading\)/.test(script) && /createJapaneseJlptN4ReadingCandidates\(n4Reading\)/.test(script), "production load path does not invoke every adapter");
-check(/japaneseJlptProductCandidates = nextCandidates;[\s\S]*japaneseJlptActiveProfileVersion = JAPANESE_JLPT_PRODUCT_PROFILE_VERSION/.test(script), "product commit point missing");
-check(/新題型載入失敗，已使用相容模式/.test(script), "compatibility failure message missing");
-check(!/N5 閱讀尚未準備完成/.test(script + read("japanese/index.html")), "stale N5 reading unavailable UI remains");
-check(/script\.js\?v=4\.3/.test(read("japanese/index.html")), "required script cache token missing");
 const baselineScript = git("show", `${BASE}:script.js`);
 const inventory = (text, expression) => (text.match(expression) || []).length;
-for (const [name, expression] of [["localStorage", /\blocalStorage\b/g], ["sessionStorage", /\bsessionStorage\b/g], ["IndexedDB", /\bindexedDB\b/g], ["Cache API", /\bcaches\b/g]]) check(inventory(script, expression) === inventory(baselineScript, expression), `${name} API inventory changed`);
+for (const [name, expression] of [["localStorage", /\blocalStorage\b/g], ["sessionStorage", /\bsessionStorage\b/g], ["IndexedDB", /\bindexedDB\b/g], ["Cache API", /\bcaches\b/g]])
+  check(inventory(script, expression) === inventory(baselineScript, expression), `${name} API inventory changed`);
 const protectedData = git("diff", "--name-only", BASE, "--", "*.json").trim();
 check(!protectedData, `formal question bank/manifest modified: ${protectedData}`);
+check(/script\.js\?v=4\.3/.test(read("japanese/index.html")), "script cache token must remain v4.3");
 
-let loadFailures = 0;
-for (const failedBank of JAPANESE_PRODUCT_BANK_NAMES) {
-  const state = { candidates: null, profileVersion: "17c6-compat-v1" };
-  try { throw new Error(`${failedBank} fixture`); }
-  catch (_) { state.candidates = null; state.profileVersion = "17c6-compat-v1"; }
-  check(state.candidates === null && state.profileVersion === "17c6-compat-v1", `${failedBank} failure published partial product state`);
-  loadFailures += 1;
+class DomNode {
+  constructor(tagName = "#text", text = "") { this.tagName = tagName; this.children = []; this._text = text; }
+  set textContent(value) { this._text = String(value); this.children = []; }
+  get textContent() { return this._text + this.children.map((child) => child.textContent).join(""); }
+  append(...children) { children.flat().forEach((child) => this.children.push(typeof child === "string" ? new DomNode("#text", child) : child)); }
+  appendChild(child) { this.append(child); return child; }
+  queryTags(found = []) { if (this.tagName !== "#text") found.push(this.tagName); this.children.forEach((child) => child.queryTags(found)); return found; }
 }
-check(loadFailures === 6, "six per-bank load-failure fixtures did not run");
-console.log("PASS: Batch 17C-10B product activation validated from machine-readable documentation.");
-console.log("PASS: Dynamic adapter capacities: vocabulary N5 4x12 / N4 5x12; grammar each level 12/30; reading N5 2/4/4/2 / N4 41/35/33/41.");
-console.log(`PASS: N5 20-question complete pipeline; answer positions ${pipelineResults.N5.join("/")}.`);
-console.log(`PASS: N4 34-question complete pipeline; answer positions ${[...pipelineResults.N4].sort((a, b) => a - b).join("/")} (position order may vary).`);
-console.log(`PASS: Deep immutable snapshot/reference isolation, option metadata/permutation alignment, compat/runtime/storage isolation verified; ${loadFailures} load-failure and ${negatives} negative fixtures rejected.`);
+let innerHtmlWrites = 0;
+Object.defineProperty(DomNode.prototype, "innerHTML", { set() { innerHtmlWrites += 1; throw new Error("innerHTML is forbidden"); } });
+const uiDocument = { createElement: (tag) => new DomNode(tag), createTextNode: (value) => new DomNode("#text", String(value)) };
+const uiStart = script.indexOf("function appendJapaneseJlptDetail");
+const uiEnd = script.indexOf("function answerJapaneseJlptQuestion", uiStart);
+check(uiStart >= 0 && uiEnd > uiStart, "UI render helper extraction boundaries missing");
+const uiContext = { document: uiDocument };
+vm.createContext(uiContext);
+vm.runInContext(`function isNonEmptyString(value){return typeof value === "string"&&value.trim().length>0;} function createRubyPartsFromTerms(value){return [String(value)];} function renderRubyParts(parent,parts){parent.textContent=parts.join("");} ${script.slice(uiStart, uiEnd)} this.ui={appendJapaneseJlptAnswerFeedbackDetails,appendJapaneseJlptLabeledTable};`, uiContext);
+let uiFixtures = 0;
+for (const type of ["kanji-reading", "orthography", "context", "paraphrase", "usage", "form-selection", "sentence-composition"]) {
+  const question = candidates.find((item) => item.questionType === type);
+  const root = new DomNode("div");
+  check(question, `${type} UI fixture missing`);
+  uiContext.ui.appendJapaneseJlptAnswerFeedbackDetails(root, question);
+  check(!/(?:^|[^0-9])0：|1：|2：/.test(root.textContent), `${type} string answerDisplay was split into numeric keys`);
+  check(!root.textContent.includes("[object Object]"), `${type} rendered an object coercion`);
+  if (type === "form-selection") check([question.grammar, question.structure, question.exampleMeaning].every((value) => root.textContent.includes(value)), "form-selection detail UI incomplete");
+  if (type === "sentence-composition") check([question.completeSentence, question.kana, question.meaning, question.answerDisplay].every((value) => root.textContent.includes(value)), "sentence-composition detail UI incomplete");
+  uiFixtures += 1;
+  const incompleteRoot = new DomNode("div");
+  uiContext.ui.appendJapaneseJlptAnswerFeedbackDetails(incompleteRoot, {
+    questionType: type, section: question.section, answerDisplay: null,
+    options: ["安全答案", "B", "C", "D"], answerIndex: 0, explanation: "安全解析",
+  });
+  check(incompleteRoot.textContent.includes("安全答案") && incompleteRoot.textContent.includes("安全解析") &&
+    !incompleteRoot.textContent.includes("[object Object]"), `${type} incomplete metadata fallback was unsafe`);
+  uiFixtures += 1;
+}
+{
+  const legacyRoot = new DomNode("div");
+  const legacy = { questionType: "meaning", answerDisplay: { word: "挨拶", kana: "あいさつ", meaning: "問候" } };
+  uiContext.ui.appendJapaneseJlptAnswerFeedbackDetails(legacyRoot, legacy);
+  check(Object.values(legacy.answerDisplay).every((value) => legacyRoot.textContent.includes(value)), "legacy answerDisplay object no longer renders normally");
+  uiFixtures += 1;
+}
+{
+  const reading = candidates.find((item) => item.questionType === "information-search" && item.material && item.material.type === "labeled-table");
+  const root = new DomNode("div");
+  check(reading && uiContext.ui.appendJapaneseJlptLabeledTable(root, reading.material, reading.rubyTerms), "labeled-table helper did not render");
+  const tags = root.queryTags();
+  for (const tag of ["table", "thead", "tbody", "tr", "th", "td"]) check(tags.includes(tag), `labeled-table missing <${tag}>`);
+  for (const hidden of [reading.material.id, reading.material.rows[0].id, reading.material.rows[0].cells[0].id, "plainTextProjection", "cellIds", "rowId"])
+    check(!root.textContent.includes(hidden), `labeled-table exposed internal metadata: ${hidden}`);
+  check(!root.textContent.includes(JSON.stringify(reading.material)), "labeled-table exposed raw JSON");
+  uiFixtures += 1;
+}
+check(innerHtmlWrites === 0 && !/\.innerHTML\s*=/.test(script.slice(uiStart, uiEnd)), "question-bank UI wrote innerHTML");
+check(uiFixtures === 16, `UI render fixture count drift: ${uiFixtures}`);
+
+const PRODUCT_FIXTURES = [
+  ["japaneseJlptVocabularyAutoQuestions.json", banks.vocabularyAuto],
+  ["japaneseJlptVocabularySemanticQuestions.json", banks.vocabularySemantic],
+  ["japaneseJlptGrammarFormSelectionQuestions.json", banks.grammarForm],
+  ["japaneseSentenceCompositionQuestions.json", banks.sentenceComposition],
+  ["japaneseJlptReadingN5Questions.json", banks.readingN5],
+  ["japaneseJlptReadingQuestions.json", banks.readingN4],
+];
+const compatBanks = { "japaneseJlptVocabularyGrammarQuestions.json": JSON.parse(read("japaneseJlptVocabularyGrammarQuestions.json")), "japaneseJlptReadingQuestions.json": banks.readingN4 };
+const fakeFetch = (failedPath = "") => {
+  let failuresRemaining = failedPath ? 1 : 0;
+  return async (url) => {
+  const path = String(url).split("/").pop().split("?")[0];
+  if (path === failedPath && failuresRemaining-- > 0) return { ok: false, status: 503, json: async () => { throw new Error("unreachable"); } };
+  const fixture = PRODUCT_FIXTURES.find(([name]) => name === path);
+  const data = fixture ? fixture[1] : compatBanks[path];
+  return data ? { ok: true, status: 200, json: async () => clone(data) } : { ok: false, status: 404, json: async () => ({}) };
+  };
+};
+
+async function verifyProductionLoader() {
+  api.resetLoaderState();
+  await api.loadJapaneseJlptProductBanks(fakeFetch());
+  const success = api.getLoaderState();
+  check(success.candidateCount === 354, `production success published ${success.candidateCount}, expected 354 candidates; ${success.loadError}`);
+  check(success.profileVersion === contract.profileVersion && success.profileId === contract.profileId, "production success did not activate product profile");
+  let loadFailures = 0;
+  for (const [failedBank] of PRODUCT_FIXTURES) {
+    api.resetLoaderState();
+    await api.loadJapaneseJlptProductBanks(fakeFetch(failedBank));
+    const state = api.getLoaderState();
+    check(state.candidateCount === null, `${failedBank} failure published product candidates`);
+    check(state.profileVersion === "17c6-compat-v1" && state.profileId === "site-jlpt-style-compatibility", `${failedBank} failure did not retain compatibility profile`);
+    check(state.session === null, `${failedBank} failure retained a partial session`);
+    check(state.compatQuestionBank, `${failedBank} failure did not load compatibility data`);
+    check(state.loadError.includes("新題型載入失敗，已使用相容模式"), `${failedBank} failure message missing`);
+    loadFailures += 1;
+  }
+  return loadFailures;
+}
+
+verifyProductionLoader().then((loadFailures) => {
+  check(loadFailures === 6, "six production loader failure fixtures did not run");
+  console.log("PASS: Batch 17C-10B product activation validated from machine-readable documentation.");
+  console.log("PASS: Production loader success fixture published 354 candidates and activated product.");
+  console.log("PASS: Production loader executed 6 per-bank HTTP failure fixtures; candidates/session remained atomic and compat stayed active.");
+  console.log(`PASS: ${uiFixtures} UI render fixtures preserved string/legacy answers and produced a safe labeled table without internal JSON.`);
+  console.log(`PASS: N5 20-question complete pipeline; answer positions ${pipelineResults.N5.join("/")}.`);
+  console.log(`PASS: N4 34-question complete pipeline; answer positions ${[...pipelineResults.N4].sort((a,b)=>a-b).join("/")}.`);
+  console.log(`PASS: Immutable/reference/metadata checks passed; ${negatives} negative fixtures rejected.`);
+}).catch((error) => { console.error(error); process.exitCode = 1; });
