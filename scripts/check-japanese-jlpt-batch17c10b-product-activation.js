@@ -90,6 +90,7 @@ const banks = {
   readingN5: JSON.parse(read("japaneseJlptReadingN5Questions.json")),
   readingN4: JSON.parse(read("japaneseJlptReadingQuestions.json")),
 };
+const usageReviewManifest = JSON.parse(read("japaneseJlptVocabularyUsageReviewManifest.json"));
 const bankBytes = JSON.stringify(banks);
 const candidates = [
   ...api.createJapaneseJlptVocabularyDerivedCandidates(banks.vocabularyAuto, banks.vocabularySemantic),
@@ -333,14 +334,23 @@ for (const type of ["kanji-reading", "orthography", "context", "paraphrase", "us
   }
 }
 {
-  for (const targetWord of ["理由", "心配"]) {
-    const usage = candidates.find((item) => item.level === "N4" && item.questionType === "usage" && item.targetWord === targetWord);
-    check(usage, `${targetWord} usage fixture missing`);
-    const randomized = api.randomizeJapaneseJlptQuestionOptions(usage, 2, () => 0);
-    check(randomized.answerIndex === 2, `${targetWord} correct usage was not forced away from the first position`);
-    check(!/第\s*1\s*句/.test(randomized.explanation), `${targetWord} explanation retained a fixed first-sentence reference`);
+  const fixedSentencePosition = /第\s*[一二三四\d]+\s*句/;
+  const usageCandidates = candidates.filter((item) => item.level === "N4" && item.questionType === "usage");
+  check(usageCandidates.length === 12, `N4 usage candidate count drift: ${usageCandidates.length}`);
+  check((JSON.stringify(banks.vocabularySemantic).match(new RegExp(fixedSentencePosition.source, "g")) || []).length === 0, "semantic question bank retained fixed sentence-position text");
+  check((JSON.stringify(usageReviewManifest).match(new RegExp(fixedSentencePosition.source, "g")) || []).length === 0, "usage review manifest retained fixed sentence-position text");
+  usageCandidates.forEach((usage, index) => {
+    const forcedPosition = 1 + (index % 3);
+    const correctOption = usage.options[usage.answerIndex];
+    const randomized = api.randomizeJapaneseJlptQuestionOptions(usage, forcedPosition, () => 0);
+    check(randomized.answerIndex === forcedPosition, `${usage.targetWord} correct usage was not forced away from the first position`);
+    check(randomized.options[randomized.answerIndex] === correctOption, `${usage.targetWord} randomized answerIndex no longer identifies the correct usage`);
+    check(!fixedSentencePosition.test(randomized.explanation), `${usage.targetWord} explanation retained a fixed sentence-position reference`);
+    const root = new DomNode("div");
+    uiContext.ui.appendJapaneseJlptQuestionFeedback(root, randomized);
+    check(detailValues(root).filter((value) => value === correctOption).length === 1, `${usage.targetWord} displayed correct usage sentence differs from the randomized correct option`);
     uiFixtures += 1;
-  }
+  });
 }
 {
   const legacyRoot = new DomNode("div");
@@ -361,7 +371,7 @@ for (const type of ["kanji-reading", "orthography", "context", "paraphrase", "us
   uiFixtures += 1;
 }
 check(innerHtmlWrites === 0 && !/\.innerHTML\s*=/.test(script.slice(uiStart, uiEnd)), "question-bank UI wrote innerHTML");
-check(uiFixtures === 22, `UI render fixture count drift: ${uiFixtures}`);
+check(uiFixtures === 32, `UI render fixture count drift: ${uiFixtures}`);
 
 const PRODUCT_FIXTURES = [
   ["japaneseJlptVocabularyAutoQuestions.json", banks.vocabularyAuto],
