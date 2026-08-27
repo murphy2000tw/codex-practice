@@ -5197,6 +5197,66 @@ window.bindReadingModeButtons = bindReadingModeButtons;
 window.renderJapaneseReadingView = renderJapaneseReadingView;
 window.initializeReadingPanel = initializeReadingPanel;
 
+const JAPANESE_JLPT_LISTENING_SOURCE_BANK = "JAPANESE_LISTENING_QUESTIONS";
+const JAPANESE_JLPT_LISTENING_SOURCE_VERSION = "18a2-listening-source-v1";
+const JAPANESE_JLPT_LISTENING_ADAPTER_VERSION = "18a2-listening-adapter-v1";
+
+function adaptJapaneseJlptListeningQuestion(question) {
+  const requiredStrings = ["id", "level", "category", "japanese", "kana", "zh", "question"];
+  if (!question || typeof question !== "object" || Array.isArray(question) ||
+      requiredStrings.some((field) => typeof question[field] !== "string" || !question[field].trim()) ||
+      !/^jl-(?:00[1-9]|0[1-9]\d|100)$/.test(question.id) ||
+      !["N5", "N4"].includes(question.level) ||
+      !Array.isArray(question.options) || question.options.length !== 4 ||
+      question.options.some((option) => typeof option !== "string" || !option.trim()) ||
+      !Number.isInteger(question.answerIndex) || question.answerIndex < 0 || question.answerIndex > 3 ||
+      question.options[question.answerIndex] !== question.zh)
+    throw new Error("JLPT listening source question contract invalid");
+
+  const options = question.options.map((option) => option);
+  return deepFreezeJapaneseJlptValue({
+    id: `japanese-jlpt-listening:${question.id}`,
+    sourceId: question.id,
+    sourceBank: JAPANESE_JLPT_LISTENING_SOURCE_BANK,
+    sourceVersion: JAPANESE_JLPT_LISTENING_SOURCE_VERSION,
+    adapterVersion: JAPANESE_JLPT_LISTENING_ADAPTER_VERSION,
+    level: question.level,
+    section: "listening",
+    questionType: "listeningMeaning",
+    category: question.category,
+    japanese: question.japanese,
+    kana: question.kana,
+    zh: question.zh,
+    question: question.question,
+    options,
+    answerIndex: question.answerIndex,
+    canonicalCorrectOption: question.zh,
+  });
+}
+
+function createJapaneseJlptListeningCandidates(sourceQuestions) {
+  if (!Array.isArray(sourceQuestions) || sourceQuestions.length !== 100)
+    throw new Error("JLPT listening source inventory must contain exactly 100 questions");
+  const expectedIds = new Set(Array.from({ length: 100 }, (_, index) =>
+    `jl-${String(index + 1).padStart(3, "0")}`));
+  const seenIds = new Set();
+  const candidates = sourceQuestions.map((question) => {
+    const candidate = adaptJapaneseJlptListeningQuestion(question);
+    if (seenIds.has(candidate.sourceId)) throw new Error("JLPT listening source ID duplicated");
+    seenIds.add(candidate.sourceId);
+    return candidate;
+  });
+  if (seenIds.size !== expectedIds.size || [...expectedIds].some((id) => !seenIds.has(id)))
+    throw new Error("JLPT listening source IDs must be exactly jl-001 through jl-100");
+  const n5Count = candidates.filter((candidate) => candidate.level === "N5").length;
+  const n4Count = candidates.filter((candidate) => candidate.level === "N4").length;
+  if (n5Count !== 69 || n4Count !== 31)
+    throw new Error("JLPT listening source inventory must contain N5=69 and N4=31");
+  if (new Set(candidates.map((candidate) => candidate.id)).size !== candidates.length)
+    throw new Error("JLPT listening candidate identity duplicated");
+  return deepFreezeJapaneseJlptValue(candidates);
+}
+
 const JAPANESE_LISTENING_QUESTIONS = [
   {id:"jl-001",level:"N5",category:"日常",japanese:"今日は雨です。",kana:"きょうは あめです。",zh:"今天下雨。",question:"這句日文的意思是什麼？",options:["今天下雨。","明天放晴。","今天很熱。","昨天很冷。"],answerIndex:0},
   {id:"jl-002",level:"N5",category:"交通",japanese:"駅まで歩いて行きます。",kana:"えきまで あるいて いきます。",zh:"我走路去車站。",question:"這句日文的意思是什麼？",options:["我坐車去學校。","我走路去車站。","我在車站等朋友。","我騎腳踏車回家。"],answerIndex:1},
