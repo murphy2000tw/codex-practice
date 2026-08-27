@@ -99,10 +99,15 @@ const quotaMatch = documentText.match(/<!-- JLPT_18A1_LISTENING_QUOTA_RECOMMENDA
 check(quotaMatch, "machine-readable fixed-quota recommendation missing");
 const quota = JSON.parse(quotaMatch[1]);
 check(quota.status === "recommendation-only-not-production", "quota must remain recommendation-only");
+check(quota.maxPlaysPerQuestion === 1, "maxPlaysPerQuestion must be exactly 1");
 check(quota.N5.listeningQuota === 10 && quota.N5.currentTotal === 20 && quota.N5.futureTotal === 30, "N5 recommendation must be 10 and future total 30");
 check(quota.N4.listeningQuota === 10 && quota.N4.currentTotal === 34 && quota.N4.futureTotal === 44, "N4 recommendation must be 10 and future total 44");
 for (const batch of ["Batch 18A-2", "Batch 18A-3", "Batch 18A-4", "Batch 18A-5"]) check(documentText.includes(batch), `${batch} plan missing`);
-for (const phrase of ["immutable adapter", "provenance", "隔離 pipeline", "正式配額及 UI 啟用", "桌機、手機與語音實測驗收", "fail closed", "每題最多播放 2 次", "sourceId"]) check(documentText.includes(phrase), `required future contract missing: ${phrase}`);
+for (const phrase of [
+  "immutable adapter", "provenance", "隔離 pipeline", "正式配額及 UI 啟用", "桌機、手機與語音實測驗收",
+  "fail closed", "每題最多播放 1 次", "聽力練習仍可不限次重複播放", "立即消耗該次數並停用播放按鈕",
+  "都不能重新取得該題的播放次數", "只有建立全新測驗 session 後", "播放計數必須完全隔離", "sourceId"
+]) check(documentText.includes(phrase), `required future contract missing: ${phrase}`);
 
 const changed = new Set([
   ...git("diff", "--name-only", `${BASE}...HEAD`).split("\n"),

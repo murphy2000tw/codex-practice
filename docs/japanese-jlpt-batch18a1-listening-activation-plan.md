@@ -38,8 +38,8 @@
 ### ID、欄位與答案契約
 
 * ID 恰為 `jl-001`～`jl-100`，每號各出現一次，沒有重複、缺號或範圍外 ID。
-* 每題必須自有且完整提供 `id`、`level`、`category`、`japanese`、`kana`、`zh`、`question`、`options`、`answerIndex`；前八個文字欄位均須為非空字串，`level` 只能是 `N5` 或 `N4`。
-* `options` 必須恰有四個非空字串；`answerIndex` 必須是整數 `0`～`3`；而且 `options[answerIndex] === zh`，確保正確中文選項與中文釋義完全一致。
+* 每題必須自有且完整提供 `id`、`level`、`category`、`japanese`、`kana`、`zh`、`question`、`options`、`answerIndex`。其中 `id`、`level`、`category`、`japanese`、`kana`、`zh`、`question` 共 7 個欄位必須是非空字串，且 `level` 只能是 `N5` 或 `N4`。
+* `options` 必須是由恰好四個非空字串組成的陣列；`answerIndex` 必須是 `0`～`3` 的整數；而且 `options[answerIndex] === zh`，確保正確中文選項與中文釋義完全一致。
 
 ### 正解位置分布
 
@@ -70,6 +70,7 @@
 ```json
 {
   "status": "recommendation-only-not-production",
+  "maxPlaysPerQuestion": 1,
   "N5": { "listeningQuota": 10, "currentTotal": 20, "futureTotal": 30 },
   "N4": { "listeningQuota": 10, "currentTotal": 34, "futureTotal": 44 }
 }
@@ -84,7 +85,7 @@
 
 1. 題目必須按所選 `N5`／`N4` 嚴格分流，session 內不得混入另一級。
 2. 作答前不得在 DOM、提示、替代內容或錯誤訊息顯示 `japanese`、`kana`、`zh`、正確答案或可推知正解的 metadata；只能播放 `japanese` 的日文語音，選項維持中文四選一。
-3. 正式 JLPT 模式規定**每題最多播放 2 次**，切題後不得回補次數；練習模式仍可不限次重播並顯示日文、假名與中文。兩種模式的播放計數與揭露規則不得共用。
+3. 聽力練習仍可不限次重複播放並顯示日文、假名與中文；獨立聽力測驗與未來 JLPT 正式聽力則規定**每題最多播放 1 次**。使用者第一次按下播放按鈕時，系統必須立即消耗該次數並停用播放按鈕，不得等到語音開始或完成後才扣除。
 4. 每個新測驗必須重新按級別抽題且 session 內不重複，並重新隨機排列每題四個選項及正解位置。不得原地修改或 freeze 原始 `JAPANESE_LISTENING_QUESTIONS`。
 5. 衍生題必須保留不可混淆的 `sourceId`（對應 `jl-NNN`）與來源版本／adapter provenance；隨機排列後仍能追溯原題與原始正確選項。
 6. 若瀏覽器不支援 `speechSynthesis`，或無法取得／使用日文語音，JLPT 聽力必須 **fail closed**：停止開始或作答該區段並提供不含題目內容的錯誤訊息；絕不可用顯示 `japanese`、`kana`、`zh` 或答案來替代語音。
@@ -92,14 +93,15 @@
 ### 未來狀態、生命週期與可用性
 
 1. JLPT 與獨立聽力測驗必須使用不同的 session、進度、分數、作答狀態、播放中 utterance 與每題播放計數，不得互相污染，也不得新增不相容的 localStorage schema。
-2. 每次「新測驗」都要清掉舊 session、停止舊語音、重新抽題並重新排列答案；不得復用上一輪的題目順序或 option permutation。
-3. 返回 JLPT 設定畫面、離開 JLPT、重設或切換級別時，必須立即 `speechSynthesis.cancel()`，清除 utterance 參照與播放計數，且任何晚到的語音 callback 不得改寫新畫面。
-4. 播放及四個答案按鈕都必須是可聚焦的原生按鈕，維持鍵盤 Tab／Enter／Space 操作、清楚焦點與 disabled 狀態；手機版須保持可點擊尺寸、無橫向溢出，且不能依賴 hover。
+2. 切換題目、返回、重新進入或語音播放完成後，都不能重新取得該題的播放次數；只有建立全新測驗 session 後，新抽出的題目才重新取得各自一次的播放次數。JLPT 與獨立聽力的播放計數必須完全隔離。
+3. 每次「新測驗」都要清掉舊 session、停止舊語音、重新抽題並重新排列答案；不得復用上一輪的題目順序或 option permutation。
+4. 返回 JLPT 設定畫面、離開 JLPT、重設或切換級別時，必須立即 `speechSynthesis.cancel()`，清除 utterance 參照與播放計數，且任何晚到的語音 callback 不得改寫新畫面。
+5. 播放及四個答案按鈕都必須是可聚焦的原生按鈕，維持鍵盤 Tab／Enter／Space 操作、清楚焦點與 disabled 狀態；手機版須保持可點擊尺寸、無橫向溢出，且不能依賴 hover。
 
 ## 四、後續批次拆分
 
 * **Batch 18A-2：題庫來源／immutable adapter 與 provenance** — 從既有常數建立不共享參照的唯讀衍生候選，保留 `sourceId`、來源版本與 canonical correct option；驗證不修改／不 freeze 原題庫。
-* **Batch 18A-3：JLPT 聽力隔離 pipeline** — 實作按級別抽題、每輪重抽、答案重排、兩次播放限制、fail-closed capability gate，以及與獨立聽力完全隔離的記憶體狀態與語音生命週期；仍不啟用產品 UI。
+* **Batch 18A-3：JLPT 聽力隔離 pipeline** — 實作按級別抽題、每輪重抽、答案重排、一次播放限制、fail-closed capability gate，以及與獨立聽力完全隔離的記憶體狀態與語音生命週期；仍不啟用產品 UI。
 * **Batch 18A-4：正式配額及 UI 啟用** — 經審核後才把 N5 10 題、N4 10 題及新總數寫入正式 profile，接上 JLPT UI、計分與設定頁返回流程；此批次才可移除「後續批次開放」。
 * **Batch 18A-5：桌機、手機與語音實測驗收** — 在具日文語音與缺少日文語音的瀏覽器驗證桌機／手機、鍵盤、播放上限、切頁取消、重開測驗、揭露時機、狀態隔離及 fail-closed 行為。
 
