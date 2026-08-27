@@ -2172,8 +2172,10 @@ function appendJapaneseJlptAnswerFeedbackDetails(parent, question) {
 }
 function appendJapaneseJlptQuestionFeedback(parent, question) {
   if (question.section === "reading") {
-    appendJapaneseJlptDetail(parent, "正確答案", question.options[question.answerIndex]);
-    appendJapaneseJlptDetail(parent, "答案說明", question.answerDisplay);
+    const correctOption = question.options && question.options[question.answerIndex];
+    appendJapaneseJlptDetail(parent, "正確答案", correctOption);
+    if (isNonEmptyString(question.answerDisplay) && question.answerDisplay.trim() !== correctOption?.trim())
+      appendJapaneseJlptDetail(parent, "答案說明", question.answerDisplay);
     appendJapaneseJlptDetail(parent, "解析", question.explanation);
     appendJapaneseJlptDetail(parent, "本文假名", question.passageKana);
     return;
