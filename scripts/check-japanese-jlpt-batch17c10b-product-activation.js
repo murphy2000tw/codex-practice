@@ -266,8 +266,9 @@ const baselineScript = git("show", `${BASE}:script.js`);
 const inventory = (text, expression) => (text.match(expression) || []).length;
 for (const [name, expression] of [["localStorage", /\blocalStorage\b/g], ["sessionStorage", /\bsessionStorage\b/g], ["IndexedDB", /\bindexedDB\b/g], ["Cache API", /\bcaches\b/g]])
   check(inventory(script, expression) === inventory(baselineScript, expression), `${name} API inventory changed`);
-const protectedData = git("diff", "--name-only", BASE, "--", "*.json").trim();
-check(!protectedData, `formal question bank/manifest modified: ${protectedData}`);
+const protectedData = git("diff", "--name-only", BASE, "--", "*.json").trim().split("\n").filter(Boolean);
+const allowedExplanationData = new Set(["japaneseJlptVocabularySemanticQuestions.json", "japaneseJlptVocabularyUsageReviewManifest.json"]);
+check(protectedData.every((path) => allowedExplanationData.has(path)), `unexpected formal question bank/manifest modified: ${protectedData.join(", ")}`);
 check(/script\.js\?v=4\.3/.test(read("japanese/index.html")), "script cache token must remain v4.3");
 
 class DomNode {
@@ -316,6 +317,32 @@ for (const type of ["kanji-reading", "orthography", "context", "paraphrase", "us
   uiFixtures += 1;
 }
 {
+  for (const level of ["N5", "N4"]) {
+    const reading = candidates.find((item) => item.level === level && item.section === "reading");
+    const root = new DomNode("div");
+    check(reading, `${level} reading feedback fixture missing`);
+    uiContext.ui.appendJapaneseJlptQuestionFeedback(root, reading);
+    check(detailValues(root).filter((value) => value === reading.options[reading.answerIndex]).length === 1, `${level} reading feedback repeated the correct answer`);
+    check(!root.textContent.includes("答案說明："), `${level} identical answerDisplay rendered as an answer explanation`);
+    const supplemented = clone(reading);
+    supplemented.answerDisplay = "本文另有補充依據";
+    const supplementedRoot = new DomNode("div");
+    uiContext.ui.appendJapaneseJlptQuestionFeedback(supplementedRoot, supplemented);
+    check(supplementedRoot.textContent.includes("答案說明：本文另有補充依據"), `${level} meaningful answer explanation was omitted`);
+    uiFixtures += 2;
+  }
+}
+{
+  for (const targetWord of ["理由", "心配"]) {
+    const usage = candidates.find((item) => item.level === "N4" && item.questionType === "usage" && item.targetWord === targetWord);
+    check(usage, `${targetWord} usage fixture missing`);
+    const randomized = api.randomizeJapaneseJlptQuestionOptions(usage, 2, () => 0);
+    check(randomized.answerIndex === 2, `${targetWord} correct usage was not forced away from the first position`);
+    check(!/第\s*1\s*句/.test(randomized.explanation), `${targetWord} explanation retained a fixed first-sentence reference`);
+    uiFixtures += 1;
+  }
+}
+{
   const legacyRoot = new DomNode("div");
   const legacy = { questionType: "meaning", answerDisplay: { word: "挨拶", kana: "あいさつ", meaning: "問候" } };
   uiContext.ui.appendJapaneseJlptAnswerFeedbackDetails(legacyRoot, legacy);
@@ -334,7 +361,7 @@ for (const type of ["kanji-reading", "orthography", "context", "paraphrase", "us
   uiFixtures += 1;
 }
 check(innerHtmlWrites === 0 && !/\.innerHTML\s*=/.test(script.slice(uiStart, uiEnd)), "question-bank UI wrote innerHTML");
-check(uiFixtures === 16, `UI render fixture count drift: ${uiFixtures}`);
+check(uiFixtures === 22, `UI render fixture count drift: ${uiFixtures}`);
 
 const PRODUCT_FIXTURES = [
   ["japaneseJlptVocabularyAutoQuestions.json", banks.vocabularyAuto],
