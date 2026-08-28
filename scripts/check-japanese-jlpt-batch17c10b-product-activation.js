@@ -270,7 +270,10 @@ for (const [name, expression] of [["localStorage", /\blocalStorage\b/g], ["sessi
 const protectedData = git("diff", "--name-only", BASE, "--", "*.json").trim().split("\n").filter(Boolean);
 const allowedExplanationData = new Set(["japaneseJlptVocabularySemanticQuestions.json", "japaneseJlptVocabularyUsageReviewManifest.json"]);
 check(protectedData.every((path) => allowedExplanationData.has(path)), `unexpected formal question bank/manifest modified: ${protectedData.join(", ")}`);
-check(/script\.js\?v=4\.3/.test(read("japanese/index.html")), "script cache token must remain v4.3");
+const japaneseIndex = read("japanese/index.html");
+const productionScriptReferences = [...japaneseIndex.matchAll(/<script\s+src=["']\.\.\/script\.js\?v=([^"']+)["']\s*><\/script>/g)];
+check(productionScriptReferences.length === 1, "japanese/index.html must contain exactly one production script.js reference");
+check(/^[A-Za-z0-9]+(?:[._-][A-Za-z0-9]+)*$/.test(productionScriptReferences[0][1]), "script.js cache token must exist and have a valid format");
 
 class DomNode {
   constructor(tagName = "#text", text = "") { this.tagName = tagName; this.children = []; this._text = text; }

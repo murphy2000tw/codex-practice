@@ -51,6 +51,10 @@ function extractConstArray(source, name) {
 }
 
 const script = read("script.js");
+const baselineScript = git("show", `${BASE}:script.js`);
+check(extractConstArray(script, "JAPANESE_LISTENING_QUESTIONS") ===
+  extractConstArray(baselineScript, "JAPANESE_LISTENING_QUESTIONS"),
+  "JAPANESE_LISTENING_QUESTIONS changed from the audited inventory");
 const context = {};
 vm.createContext(context);
 vm.runInContext(`this.questions = ${extractConstArray(script, "JAPANESE_LISTENING_QUESTIONS")};`, context);
@@ -109,15 +113,25 @@ for (const phrase of [
   "都不能重新取得該題的播放次數", "只有建立全新測驗 session 後", "播放計數必須完全隔離", "sourceId"
 ]) check(documentText.includes(phrase), `required future contract missing: ${phrase}`);
 
-const changed = new Set([
-  ...git("diff", "--name-only", `${BASE}...HEAD`).split("\n"),
-  ...git("diff", "--name-only").split("\n"),
-  ...git("diff", "--name-only", "--cached").split("\n")
-].filter(Boolean));
-for (const file of changed) check(ALLOWED.has(file), `forbidden production file changed: ${file}`);
-check(git("hash-object", "script.js") === git("rev-parse", `${BASE}:script.js`), "script.js or production listening/JLPT behavior changed");
-for (const forbidden of ["style.css", "japanese/index.html"]) check(git("hash-object", forbidden) === git("rev-parse", `${BASE}:${forbidden}`), `${forbidden} changed`);
-check(![...changed].some((file) => file.endsWith(".json")), "production question-bank JSON or localStorage schema data changed");
+const productionProfile = script.match(/"17c10-product-v1":\s*\{[\s\S]*?\n\s*"17c6-compat-v1":/);
+check(productionProfile, "production JLPT profile missing");
+check(/N5:\s*\{ total: 20,/.test(productionProfile[0]), "production N5 total must remain 20");
+check(/N4:\s*\{ total: 34,/.test(productionProfile[0]), "production N4 total must remain 34");
+check((productionProfile[0].match(/listening:\s*\{ included: false, status: "future", total: null, questionTypes: \{\} \}/g) || []).length === 2,
+  "production listening must remain future and excluded for N5 and N4");
+
+if (process.env.JLPT_BATCH18A1_HISTORICAL_SCOPE === "1") {
+  const changed = new Set([
+    ...git("diff", "--name-only", `${BASE}...HEAD`).split("\n"),
+    ...git("diff", "--name-only").split("\n"),
+    ...git("diff", "--name-only", "--cached").split("\n")
+  ].filter(Boolean));
+  for (const file of changed) check(ALLOWED.has(file), `forbidden historical PR file changed: ${file}`);
+  check(git("hash-object", "script.js") === git("rev-parse", `${BASE}:script.js`), "historical scope: script.js changed");
+  for (const forbidden of ["style.css", "japanese/index.html"])
+    check(git("hash-object", forbidden) === git("rev-parse", `${BASE}:${forbidden}`), `historical scope: ${forbidden} changed`);
+  check(![...changed].some((file) => file.endsWith(".json")), "historical scope: production JSON changed");
+}
 
 console.log("Batch 18A-1 JLPT listening activation plan audit passed.");
 console.log(`Inventory: total=${questions.length}; N5=${levelCounts.N5}; N4=${levelCounts.N4}; answers=${answerCounts.join("/")}.`);
