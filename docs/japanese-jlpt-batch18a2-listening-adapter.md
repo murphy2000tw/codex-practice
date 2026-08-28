@@ -35,3 +35,5 @@ Adapter 僅讀取來源，另建 `options` 陣列及 candidate 物件，最後 d
 ## 未啟用聲明
 
 本批沒有讓 `buildJapaneseJlptSession()` 呼叫 adapter，沒有修改 production profile、JLPT 設定、計分、播放、既有聽力練習／獨立測驗或 localStorage/cache schema。Listening 仍是 `future` 且未納入 quota；N5 正式總數仍為 20，N4 仍為 34。播放一次限制與正式 JLPT 聽力啟用留待後續批次。
+
+本批也同步把 Batch 18A-1 與 Batch 17C-10B 的歷史 checker 調整為後續批次可重複執行的 regression checker：前者預設只鎖定已盤點的聽力來源常數與產品契約（歷史 PR scope 僅在明確設定環境變數時檢查），後者驗證唯一且具有有效 cache token 的正式 `script.js` 引用，而不寫死舊 token。這些調整沒有放寬題庫 inventory、正式 quota 或 listening 未啟用的產品契約。

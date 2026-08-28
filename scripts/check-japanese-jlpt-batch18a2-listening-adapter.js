@@ -12,6 +12,8 @@ const ALLOWED = new Set([
   "script.js", "japanese/index.html",
   "docs/japanese-jlpt-batch18a2-listening-adapter.md",
   "scripts/check-japanese-jlpt-batch18a2-listening-adapter.js",
+  "scripts/check-japanese-jlpt-batch18a1-listening-activation-plan.js",
+  "scripts/check-japanese-jlpt-batch17c10b-product-activation.js",
 ]);
 const REQUIRED_STRINGS = ["id", "level", "category", "japanese", "kana", "zh", "question"];
 const read = (file) => fs.readFileSync(path.join(ROOT, file), "utf8");
