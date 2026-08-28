@@ -4,6 +4,8 @@
 
 本批建立尚未接入正式 UI 的記憶體內 JLPT listening pipeline。輸入只能是 Batch 18A-2 的完整 immutable candidates 與 `N5`／`N4` 之一；pipeline 會在呼叫 random provider 前完整驗證兩級 inventory、欄位、答案 identity 與唯一 `sourceId`。N5 pool 固定 69 題、N4 pool 固定 31 題，每個 session 嚴格從所選 level 抽出不重複的 **10 題**。資料不足、混級、重複或不完整皆 fail closed，不建立部分 session。
 
+完整 candidates collection、每個 candidate 及其 `options` 都必須已 frozen；完整 `sourceId` 集合必須恰為 `jl-001`～`jl-100`。每題的 `id` 必須為 `japanese-jlpt-listening:<sourceId>`，provenance 必須嚴格等於 `JAPANESE_LISTENING_QUESTIONS`／`18a2-listening-source-v1`／`18a2-listening-adapter-v1`，分類必須為 `listening`／`listeningMeaning`。`answerIndex` 必須是 0～3，四個非空 options 中 `options[answerIndex]` 必須等於且只能有一個 `canonicalCorrectOption`。任何 immutable、identity、provenance、分類、inventory 或答案契約污染都在第一次 random provider 呼叫前拒絕。
+
 建立順序固定為 **level pool validation → 抽取不重複的 10 題 → selected 10 questions 的 immutable pre-randomization snapshot → balanced answer-position allocation → option randomization**。Snapshot 恰好十題，與最終 questions 的 `sourceId` 集合相同，並保留排列前 options 與 canonical answer。每次建立新 session 先隨機選出四個位置中哪兩個取得第三題，再洗牌十個位置；所以排序固定為 `2、2、3、3`，但不會永久由 A、B 取得三題。Session 題目、options 與 snapshot 都是新建且 deep-frozen 的值，不與來源或 adapter candidate 分享可變參照，也不修改或 freeze `JAPANESE_LISTENING_QUESTIONS`。
 
 ## Provenance 與 canonical answer identity

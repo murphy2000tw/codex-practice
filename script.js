@@ -5299,12 +5299,19 @@ function validateJapaneseJlptListeningCandidatePool(candidates, level) {
   const expectedCount = level === "N5" ? 69 : 31;
   const identities = new Set();
   candidates.forEach((candidate) => {
-    if (!candidate || candidate.level !== level || typeof candidate.sourceId !== "string" ||
-        typeof candidate.sourceBank !== "string" || typeof candidate.sourceVersion !== "string" ||
-        typeof candidate.adapterVersion !== "string" || typeof candidate.japanese !== "string" ||
-        !candidate.japanese.trim() || typeof candidate.canonicalCorrectOption !== "string" ||
+    if (!candidate || !Object.isFrozen(candidate) || !Object.isFrozen(candidate.options) ||
+        candidate.level !== level || !/^jl-(?:00[1-9]|0[1-9]\d|100)$/.test(candidate.sourceId) ||
+        candidate.id !== `japanese-jlpt-listening:${candidate.sourceId}` ||
+        candidate.sourceBank !== JAPANESE_JLPT_LISTENING_SOURCE_BANK ||
+        candidate.sourceVersion !== JAPANESE_JLPT_LISTENING_SOURCE_VERSION ||
+        candidate.adapterVersion !== JAPANESE_JLPT_LISTENING_ADAPTER_VERSION ||
+        candidate.section !== "listening" || candidate.questionType !== "listeningMeaning" ||
+        typeof candidate.japanese !== "string" || !candidate.japanese.trim() ||
+        typeof candidate.canonicalCorrectOption !== "string" ||
+        !Number.isInteger(candidate.answerIndex) || candidate.answerIndex < 0 || candidate.answerIndex > 3 ||
         !Array.isArray(candidate.options) || candidate.options.length !== 4 ||
         candidate.options.some((option) => typeof option !== "string" || !option.trim()) ||
+        candidate.options[candidate.answerIndex] !== candidate.canonicalCorrectOption ||
         candidate.options.filter((option) => option === candidate.canonicalCorrectOption).length !== 1)
       throw new Error("JLPT listening candidate contract invalid");
     if (identities.has(candidate.sourceId)) throw new Error("JLPT listening candidate identity duplicated");
@@ -5316,11 +5323,15 @@ function validateJapaneseJlptListeningCandidatePool(candidates, level) {
 
 function buildJapaneseJlptListeningIsolatedSession(level, allCandidates, randomProvider = Math.random) {
   if (!["N5", "N4"].includes(level)) throw new Error("JLPT listening level must be N5 or N4");
-  if (!Array.isArray(allCandidates) || allCandidates.length !== 100)
+  if (!Array.isArray(allCandidates) || !Object.isFrozen(allCandidates) || allCandidates.length !== 100)
     throw new Error("JLPT listening candidates missing or incomplete");
   const allIdentities = allCandidates.map((candidate) => candidate && candidate.sourceId);
-  if (new Set(allIdentities).size !== allCandidates.length)
-    throw new Error("JLPT listening candidate identity duplicated");
+  const expectedIdentities = new Set(Array.from({ length: 100 }, (_value, index) =>
+    `jl-${String(index + 1).padStart(3, "0")}`));
+  if (new Set(allIdentities).size !== allCandidates.length ||
+      allIdentities.some((sourceId) => !expectedIdentities.has(sourceId)) ||
+      [...expectedIdentities].some((sourceId) => !allIdentities.includes(sourceId)))
+    throw new Error("JLPT listening candidate identities must be exactly jl-001 through jl-100");
   validateJapaneseJlptListeningCandidatePool(allCandidates.filter((candidate) => candidate && candidate.level === "N5"), "N5");
   validateJapaneseJlptListeningCandidatePool(allCandidates.filter((candidate) => candidate && candidate.level === "N4"), "N4");
   const levelCandidates = allCandidates.filter((candidate) => candidate && candidate.level === level);

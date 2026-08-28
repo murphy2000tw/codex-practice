@@ -56,14 +56,20 @@ function extractFunction(source, name) {
   throw new Error(`Batch 18A-3 check: ${name} incomplete`);
 }
 function clone(value) { return JSON.parse(JSON.stringify(value)); }
+function deepFreeze(value) {
+  if (!value || typeof value !== "object" || Object.isFrozen(value)) return value;
+  Object.getOwnPropertyNames(value).forEach((key) => deepFreeze(value[key]));
+  return Object.freeze(value);
+}
 function deterministic(seed) {
   let state = seed >>> 0;
   const random = () => { random.calls += 1; state = (state * 1664525 + 1013904223) >>> 0; return state / 4294967296; };
   random.calls = 0;
   return random;
 }
-function expectFailBeforeRandom(label, build, candidates, mutate, level = "N5") {
-  const invalid = clone(candidates); mutate(invalid); const random = deterministic(1); let failed = false;
+function expectFailBeforeRandom(label, build, candidates, mutate, { level = "N5", freeze = true } = {}) {
+  const invalid = clone(candidates); mutate(invalid); if (freeze) deepFreeze(invalid);
+  const random = deterministic(1); let failed = false;
   try { build(level, invalid, random); } catch (_error) { failed = true; }
   check(failed && random.calls === 0, `${label} must fail before randomization`);
 }
@@ -140,8 +146,30 @@ for (const level of ["N5", "N4"]) {
 }
 check(JSON.stringify(context.bank) === originalBank && JSON.stringify(candidates) === originalCandidates, "source bank or adapter candidates mutated");
 
-expectFailBeforeRandom("duplicate sourceId", context.build, candidates, (bank) => { bank[1].sourceId = bank[0].sourceId; });
+expectFailBeforeRandom("non-frozen collection", context.build, candidates, () => {}, { freeze: false });
+expectFailBeforeRandom("non-frozen candidate", context.build, candidates, (bank) => {
+  bank.forEach((candidate, index) => { if (index === 0) deepFreeze(candidate.options); else deepFreeze(candidate); }); Object.freeze(bank);
+}, { freeze: false });
+expectFailBeforeRandom("non-frozen options", context.build, candidates, (bank) => {
+  bank.forEach((candidate, index) => { if (index !== 0) deepFreeze(candidate); else Object.freeze(candidate); });
+  Object.freeze(bank);
+}, { freeze: false });
+expectFailBeforeRandom("sourceId outside range", context.build, candidates, (bank) => { bank[0].sourceId = "jl-101"; bank[0].id = "japanese-jlpt-listening:jl-101"; });
+expectFailBeforeRandom("missing sourceId replaced by fake ID", context.build, candidates, (bank) => { bank[50].sourceId = "jl-999"; bank[50].id = "japanese-jlpt-listening:jl-999"; });
+expectFailBeforeRandom("duplicate sourceId", context.build, candidates, (bank) => { bank[1].sourceId = bank[0].sourceId; bank[1].id = bank[0].id; });
+expectFailBeforeRandom("id/sourceId mismatch", context.build, candidates, (bank) => { bank[0].id = "japanese-jlpt-listening:jl-002"; });
+expectFailBeforeRandom("sourceBank", context.build, candidates, (bank) => { bank[0].sourceBank = "OTHER_BANK"; });
+expectFailBeforeRandom("sourceVersion", context.build, candidates, (bank) => { bank[0].sourceVersion = "wrong-version"; });
+expectFailBeforeRandom("adapterVersion", context.build, candidates, (bank) => { bank[0].adapterVersion = "wrong-adapter"; });
+expectFailBeforeRandom("section", context.build, candidates, (bank) => { bank[0].section = "reading"; });
+expectFailBeforeRandom("questionType", context.build, candidates, (bank) => { bank[0].questionType = "meaning"; });
 expectFailBeforeRandom("N3 level", context.build, candidates, (bank) => { bank[0].level = "N3"; });
+expectFailBeforeRandom("answerIndex range", context.build, candidates, (bank) => { bank[0].answerIndex = 4; });
+expectFailBeforeRandom("answerIndex/canonical mismatch", context.build, candidates, (bank) => { bank[0].answerIndex = (bank[0].answerIndex + 1) % 4; });
+expectFailBeforeRandom("duplicate canonical option", context.build, candidates, (bank) => {
+  const replacement = bank[0].options.findIndex((_option, index) => index !== bank[0].answerIndex);
+  bank[0].options[replacement] = bank[0].canonicalCorrectOption;
+});
 expectFailBeforeRandom("N5/N4 inventory", context.build, candidates, (bank) => { bank.find((q) => q.level === "N5").level = "N4"; });
 expectFailBeforeRandom("insufficient bank", context.build, candidates, (bank) => { bank.pop(); });
 expectFailBeforeRandom("canonical answer", context.build, candidates, (bank) => { bank[0].canonicalCorrectOption = "not an option"; });
