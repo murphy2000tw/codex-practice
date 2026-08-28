@@ -5257,6 +5257,166 @@ function createJapaneseJlptListeningCandidates(sourceQuestions) {
   return deepFreezeJapaneseJlptValue(candidates);
 }
 
+const JAPANESE_JLPT_LISTENING_SESSION_SIZE = 10;
+
+function validateJapaneseJlptListeningCapability(provider) {
+  const synthesis = provider && provider.speechSynthesis;
+  const Utterance = provider && provider.SpeechSynthesisUtterance;
+  if (!synthesis || typeof synthesis.getVoices !== "function" ||
+      typeof synthesis.speak !== "function" || typeof synthesis.cancel !== "function" ||
+      typeof Utterance !== "function")
+    return deepFreezeJapaneseJlptValue({ ok: false, code: "speech-unavailable", message: "無法開始聽力測驗，請確認裝置語音功能後再試。" });
+  let voices;
+  try { voices = synthesis.getVoices(); } catch (_error) { voices = []; }
+  const japaneseVoice = Array.isArray(voices)
+    ? voices.find((voice) => voice && typeof voice.lang === "string" && /^ja(?:-|$)/i.test(voice.lang))
+    : null;
+  if (!japaneseVoice)
+    return deepFreezeJapaneseJlptValue({ ok: false, code: "japanese-voice-unavailable", message: "無法開始聽力測驗，請確認裝置語音功能後再試。" });
+  return deepFreezeJapaneseJlptValue({ ok: true, japaneseVoice });
+}
+
+function randomIndexJapaneseJlptListening(length, randomProvider) {
+  const value = randomProvider();
+  if (typeof value !== "number" || !Number.isFinite(value) || value < 0 || value >= 1)
+    throw new Error("JLPT listening random provider must return a number from 0 through less than 1");
+  return Math.floor(value * length);
+}
+
+function shuffleJapaneseJlptListening(items, randomProvider) {
+  const shuffled = items.slice();
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const target = randomIndexJapaneseJlptListening(index + 1, randomProvider);
+    [shuffled[index], shuffled[target]] = [shuffled[target], shuffled[index]];
+  }
+  return shuffled;
+}
+
+function validateJapaneseJlptListeningCandidatePool(candidates, level) {
+  if (!["N5", "N4"].includes(level)) throw new Error("JLPT listening level must be N5 or N4");
+  if (!Array.isArray(candidates)) throw new Error("JLPT listening candidates missing");
+  const expectedCount = level === "N5" ? 69 : 31;
+  const identities = new Set();
+  candidates.forEach((candidate) => {
+    if (!candidate || candidate.level !== level || typeof candidate.sourceId !== "string" ||
+        typeof candidate.sourceBank !== "string" || typeof candidate.sourceVersion !== "string" ||
+        typeof candidate.adapterVersion !== "string" || typeof candidate.japanese !== "string" ||
+        !candidate.japanese.trim() || typeof candidate.canonicalCorrectOption !== "string" ||
+        !Array.isArray(candidate.options) || candidate.options.length !== 4 ||
+        candidate.options.some((option) => typeof option !== "string" || !option.trim()) ||
+        candidate.options.filter((option) => option === candidate.canonicalCorrectOption).length !== 1)
+      throw new Error("JLPT listening candidate contract invalid");
+    if (identities.has(candidate.sourceId)) throw new Error("JLPT listening candidate identity duplicated");
+    identities.add(candidate.sourceId);
+  });
+  if (candidates.length !== expectedCount || candidates.length < JAPANESE_JLPT_LISTENING_SESSION_SIZE)
+    throw new Error(`JLPT listening ${level} candidate inventory invalid`);
+}
+
+function buildJapaneseJlptListeningIsolatedSession(level, allCandidates, randomProvider = Math.random) {
+  if (!["N5", "N4"].includes(level)) throw new Error("JLPT listening level must be N5 or N4");
+  if (!Array.isArray(allCandidates) || allCandidates.length !== 100)
+    throw new Error("JLPT listening candidates missing or incomplete");
+  const allIdentities = allCandidates.map((candidate) => candidate && candidate.sourceId);
+  if (new Set(allIdentities).size !== allCandidates.length)
+    throw new Error("JLPT listening candidate identity duplicated");
+  validateJapaneseJlptListeningCandidatePool(allCandidates.filter((candidate) => candidate && candidate.level === "N5"), "N5");
+  validateJapaneseJlptListeningCandidatePool(allCandidates.filter((candidate) => candidate && candidate.level === "N4"), "N4");
+  const levelCandidates = allCandidates.filter((candidate) => candidate && candidate.level === level);
+  const snapshot = deepFreezeJapaneseJlptValue(levelCandidates.map((candidate) => ({
+    ...candidate, options: candidate.options.slice(),
+  })));
+  const selected = shuffleJapaneseJlptListening(snapshot, randomProvider).slice(0, JAPANESE_JLPT_LISTENING_SESSION_SIZE);
+  const answerPositions = shuffleJapaneseJlptListening([0, 0, 0, 1, 1, 1, 2, 2, 3, 3], randomProvider);
+  const questions = selected.map((candidate, questionIndex) => {
+    const correctCanonicalIndex = candidate.options.indexOf(candidate.canonicalCorrectOption);
+    const distractorCanonicalIndexes = shuffleJapaneseJlptListening([0, 1, 2, 3].filter((index) => index !== correctCanonicalIndex), randomProvider);
+    const answerIndex = answerPositions[questionIndex];
+    const optionPermutation = [];
+    let distractorIndex = 0;
+    for (let position = 0; position < 4; position += 1)
+      optionPermutation.push(position === answerIndex ? correctCanonicalIndex : distractorCanonicalIndexes[distractorIndex++]);
+    return deepFreezeJapaneseJlptValue({
+      id: candidate.id, sourceId: candidate.sourceId, sourceBank: candidate.sourceBank,
+      sourceVersion: candidate.sourceVersion, adapterVersion: candidate.adapterVersion,
+      level: candidate.level, section: candidate.section, questionType: candidate.questionType,
+      category: candidate.category, japanese: candidate.japanese, question: candidate.question,
+      options: optionPermutation.map((canonicalIndex) => candidate.options[canonicalIndex]),
+      answerIndex, canonicalCorrectOption: candidate.canonicalCorrectOption,
+      optionPermutation,
+      canonicalOptionIdentities: candidate.options.map((_option, canonicalIndex) =>
+        `${candidate.sourceId}:option:${canonicalIndex}`),
+    });
+  });
+  return deepFreezeJapaneseJlptValue({ level, size: questions.length, snapshot, questions });
+}
+
+function createJapaneseJlptListeningPreAnswerViewModel(session, questionIndex, playbackRemaining) {
+  const question = session && session.questions && session.questions[questionIndex];
+  if (!question) return deepFreezeJapaneseJlptValue({ status: "unavailable" });
+  return deepFreezeJapaneseJlptValue({
+    status: "ready", level: session.level, questionNumber: questionIndex + 1,
+    questionCount: session.questions.length, sourceId: question.sourceId,
+    question: question.question, options: question.options.slice(),
+    playbackRemaining: playbackRemaining ? 1 : 0,
+  });
+}
+
+function createJapaneseJlptListeningIsolatedController(provider) {
+  let generation = 0; let session = null; let questionIndex = 0;
+  let playedSourceIds = new Set(); let activeUtterance = null; let disposed = false;
+  const cancelActive = () => {
+    generation += 1;
+    activeUtterance = null;
+    try { if (provider && provider.speechSynthesis) provider.speechSynthesis.cancel(); } catch (_error) {}
+  };
+  return {
+    start(level, candidates, randomProvider = Math.random) {
+      cancelActive(); disposed = false; session = null; playedSourceIds = new Set(); questionIndex = 0;
+      const capability = validateJapaneseJlptListeningCapability(provider);
+      if (!capability.ok) return capability;
+      session = buildJapaneseJlptListeningIsolatedSession(level, candidates, randomProvider);
+      return deepFreezeJapaneseJlptValue({ ok: true, level, questionCount: session.questions.length });
+    },
+    getViewModel() {
+      if (disposed || !session) return deepFreezeJapaneseJlptValue({ status: "unavailable" });
+      const sourceId = session.questions[questionIndex].sourceId;
+      return createJapaneseJlptListeningPreAnswerViewModel(session, questionIndex, !playedSourceIds.has(sourceId));
+    },
+    requestPlayback() {
+      if (disposed || !session) return false;
+      const question = session.questions[questionIndex];
+      if (playedSourceIds.has(question.sourceId)) return false;
+      playedSourceIds.add(question.sourceId);
+      const token = ++generation;
+      let utterance;
+      try {
+        utterance = new provider.SpeechSynthesisUtterance(question.japanese);
+        utterance.lang = "ja-JP";
+        utterance.voice = validateJapaneseJlptListeningCapability(provider).japaneseVoice;
+        activeUtterance = utterance;
+        const isCurrent = () => !disposed && session && token === generation && activeUtterance === utterance &&
+          session.questions[questionIndex].sourceId === question.sourceId;
+        utterance.onstart = () => { if (isCurrent() && provider.onStatus) provider.onStatus("playing"); };
+        utterance.onend = () => { if (isCurrent()) { activeUtterance = null; if (provider.onStatus) provider.onStatus("ended"); } };
+        utterance.onerror = () => { if (isCurrent()) { activeUtterance = null; if (provider.onStatus) provider.onStatus("error"); } };
+        provider.speechSynthesis.speak(utterance);
+      } catch (_error) {
+        if (activeUtterance === utterance) activeUtterance = null;
+        return false;
+      }
+      return true;
+    },
+    moveTo(index) {
+      if (!session || !Number.isInteger(index) || index < 0 || index >= session.questions.length) return false;
+      cancelActive(); questionIndex = index; return true;
+    },
+    reset() { cancelActive(); session = null; playedSourceIds = new Set(); questionIndex = 0; },
+    dispose() { cancelActive(); session = null; playedSourceIds = new Set(); disposed = true; },
+    getInternalSessionForTesting() { return session; },
+  };
+}
+
 const JAPANESE_LISTENING_QUESTIONS = [
   {id:"jl-001",level:"N5",category:"日常",japanese:"今日は雨です。",kana:"きょうは あめです。",zh:"今天下雨。",question:"這句日文的意思是什麼？",options:["今天下雨。","明天放晴。","今天很熱。","昨天很冷。"],answerIndex:0},
   {id:"jl-002",level:"N5",category:"交通",japanese:"駅まで歩いて行きます。",kana:"えきまで あるいて いきます。",zh:"我走路去車站。",question:"這句日文的意思是什麼？",options:["我坐車去學校。","我走路去車站。","我在車站等朋友。","我騎腳踏車回家。"],answerIndex:1},
@@ -5371,12 +5531,17 @@ let listeningQuizCorrectCount = 0;
 let listeningQuizAnswered = false;
 let listeningQuizSelectedIndex = null;
 let listeningQuizItems = [];
+let listeningQuizPlayedItemIds = new Set();
+let listeningQuizSpeechGeneration = 0;
+let listeningQuizActiveUtterance = null;
 
 function normalizeJapaneseListeningView(view) {
   return ["menu", "practice", "quiz"].includes(view) ? view : "menu";
 }
 
 function cancelJapaneseListeningSpeech() {
+  listeningQuizSpeechGeneration += 1;
+  listeningQuizActiveUtterance = null;
   if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
 }
 
@@ -5397,6 +5562,7 @@ function resetJapaneseListeningState({ resetPracticeIndex = false } = {}) {
   listeningQuizAnswered = false;
   listeningQuizSelectedIndex = null;
   listeningQuizItems = [];
+  listeningQuizPlayedItemIds = new Set();
   cancelJapaneseListeningSpeech();
   if (japaneseListeningContent) {
     japaneseListeningContent.replaceChildren();
@@ -5423,7 +5589,7 @@ function setListeningContentNodes(...nodes) {
   japaneseListeningContent.hidden = false;
 }
 
-function speakJapaneseListening(text, statusElement) {
+function speakJapaneseListening(text, statusElement, lifecycle = {}) {
   if (!statusElement) return;
   if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
     statusElement.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
@@ -5432,26 +5598,41 @@ function speakJapaneseListening(text, statusElement) {
   try {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
+    const generation = lifecycle.generation;
+    if (lifecycle.quiz) listeningQuizActiveUtterance = utterance;
+    const isCurrent = () => !lifecycle.quiz ||
+      (generation === listeningQuizSpeechGeneration && listeningQuizActiveUtterance === utterance);
     utterance.lang = "ja-JP";
     utterance.rate = 0.86;
     utterance.pitch = 1;
     utterance.onerror = () => {
-      statusElement.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
+      if (isCurrent()) statusElement.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
     };
-    utterance.onstart = () => { statusElement.textContent = "正在播放日文音訊…"; };
-    utterance.onend = () => { statusElement.textContent = "播放完成，可再次播放。"; };
+    utterance.onstart = () => { if (isCurrent()) statusElement.textContent = "正在播放日文音訊…"; };
+    utterance.onend = () => { if (isCurrent()) { listeningQuizActiveUtterance = null; statusElement.textContent = lifecycle.quiz ? "播放完成，本題無法再次播放。" : "播放完成，可再次播放。"; } };
     window.speechSynthesis.speak(utterance);
   } catch (error) {
     statusElement.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
   }
 }
 
-function createListeningPlayButton(item, status) {
+function createListeningPlayButton(item, status, { onePlay = false } = {}) {
   const button = document.createElement("button");
   button.className = "answer-button listening-play-button";
   button.type = "button";
   button.textContent = "播放音訊";
-  button.addEventListener("click", () => speakJapaneseListening(item.japanese, status));
+  button.disabled = onePlay && listeningQuizPlayedItemIds.has(item.id);
+  button.addEventListener("click", () => {
+    if (onePlay) {
+      if (listeningQuizPlayedItemIds.has(item.id)) return;
+      listeningQuizPlayedItemIds.add(item.id);
+      button.disabled = true;
+      listeningQuizSpeechGeneration += 1;
+    }
+    speakJapaneseListening(item.japanese, status, onePlay
+      ? { quiz: true, generation: listeningQuizSpeechGeneration }
+      : { quiz: false });
+  });
   return button;
 }
 
@@ -5482,10 +5663,12 @@ function renderJapaneseListeningPractice() {
 }
 
 function startJapaneseListeningQuiz() {
+  cancelJapaneseListeningSpeech();
   listeningQuizIndex = 0;
   listeningQuizCorrectCount = 0;
   listeningQuizAnswered = false;
   listeningQuizSelectedIndex = null;
+  listeningQuizPlayedItemIds = new Set();
   listeningQuizItems = createListeningQuizItems();
   renderJapaneseListeningQuizQuestion();
 }
@@ -5526,7 +5709,7 @@ function renderJapaneseListeningQuizQuestion() {
     options.appendChild(button);
   });
   if (listeningQuizAnswered) feedback.textContent = listeningQuizSelectedIndex === item.answerIndex ? "答對了！" : "答錯了，請查看正確答案。";
-  card.append(createListeningPlayButton(item, status), status, prompt, options, feedback, detail);
+  card.append(createListeningPlayButton(item, status, { onePlay: true }), status, prompt, options, feedback, detail);
   const nodes = [createListeningBackMenuButton(), title, progress, card];
   if (listeningQuizAnswered) {
     const next = Object.assign(document.createElement("button"), { className: "answer-button", type: "button", textContent: listeningQuizIndex + 1 >= listeningQuizItems.length ? "查看結果" : "下一題" });
