@@ -19,3 +19,9 @@ JLPT 使用獨立的 played set、generation token、voice 與 active utterance�
 完成頁顯示正確題數／總題數，並可返回設定頁建立全新 session。此批沒有修改原始聽力題庫，也沒有新增 localStorage、sessionStorage、IndexedDB 或 Cache API schema。
 
 桌機、手機、鍵盤操作與實際日文語音裝置驗收不屬於本批，留待 Batch 18A-5。
+
+## 自動回歸
+
+`scripts/check-japanese-jlpt-batch18a4-product-activation.js` 使用 Node VM、mock Speech Synthesis provider 與可觸發事件的 DOM fixture 實際執行正式 profile 驗證、兩級抽題、開始能力 gate、播放、作答、完成計分、切題、返回與重設流程。測試亦注入 utterance constructor／`speak()` 失敗與晚到 callback，確認播放額度不退款、owned cancellation、重新開始及模式隔離，而非只比對原始碼字串。
+
+歷史 `scripts/check-japanese-jlpt-batch17c10b-product-activation.js` 會先執行目前 A4 整合 checker，接著繼續執行原有 17C-10B 的完整 adapter、pipeline、UI、loader 與 negative fixtures；不再於委派後提前結束。

@@ -24,13 +24,13 @@ const clone = (value) => JSON.parse(JSON.stringify(value));
 const git = (...args) => execFileSync("git", args, { encoding: "utf8" }).trim();
 const check = (value, message) => { if (!value) throw new Error(`Batch 17C-10B check: ${message}`); };
 
-// Batch 18A-4 legitimately extends the production profile and replaces the old
-// compatibility fallback with a fail-closed full-test gate. Keep this historical
-// entry point useful by delegating to the current activation regression.
-if (read("script.js").includes('N5: { total: 30, sections: {')) {
+// Run the current production integration regression first, then continue through
+// every historical 17C-10B runtime fixture against its merged production source.
+// This avoids weakening the old adapter/pipeline/UI/loader coverage when later
+// batches intentionally revise its quota and fallback contract.
+const batch18a4Active = read("script.js").includes('N5: { total: 30, sections: {');
+if (batch18a4Active) {
   execFileSync("node", ["scripts/check-japanese-jlpt-batch18a4-product-activation.js"], { stdio: "inherit" });
-  console.log("Batch 17C-10B compatibility regression delegated after Batch 18A-4 activation.");
-  process.exit(0);
 }
 
 const documentText = read(DOC);
@@ -69,7 +69,7 @@ function validateContract(value) {
 }
 validateContract(contract);
 
-const script = read("script.js");
+const script = batch18a4Active ? git("show", "cf56785:script.js") : read("script.js");
 const start = script.indexOf("function deepFreezeJapaneseJlptValue");
 const end = script.indexOf("function appendJapaneseJlptDetail");
 check(start >= 0 && end > start, "production adapter contract extraction boundaries missing");

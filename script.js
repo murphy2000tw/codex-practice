@@ -2359,6 +2359,7 @@ function advanceJapaneseJlptQuestion() {
     japaneseJlptSession.currentIndex ===
     japaneseJlptSession.questionSnapshots.length - 1
   ) {
+    cancelJapaneseJlptListeningUtterance();
     renderJapaneseJlptCompletion();
     return;
   }
