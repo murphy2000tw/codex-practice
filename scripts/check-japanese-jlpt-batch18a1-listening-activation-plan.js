@@ -115,10 +115,10 @@ for (const phrase of [
 
 const productionProfile = script.match(/"17c10-product-v1":\s*\{[\s\S]*?\n\s*"17c6-compat-v1":/);
 check(productionProfile, "production JLPT profile missing");
-check(/N5:\s*\{ total: 20,/.test(productionProfile[0]), "production N5 total must remain 20");
-check(/N4:\s*\{ total: 34,/.test(productionProfile[0]), "production N4 total must remain 34");
-check((productionProfile[0].match(/listening:\s*\{ included: false, status: "future", total: null, questionTypes: \{\} \}/g) || []).length === 2,
-  "production listening must remain future and excluded for N5 and N4");
+check(/N5:\s*\{ total: 30,/.test(productionProfile[0]), "production N5 total must be 30 after activation");
+check(/N4:\s*\{ total: 44,/.test(productionProfile[0]), "production N4 total must be 44 after activation");
+check((productionProfile[0].match(/listening:\s*\{ included: true, status: "available", total: 10, questionTypes: \{ listeningMeaning: 10 \} \}/g) || []).length === 2,
+  "production listening must be available with quota 10 for N5 and N4");
 
 if (process.env.JLPT_BATCH18A1_HISTORICAL_SCOPE === "1") {
   const changed = new Set([
@@ -136,4 +136,4 @@ if (process.env.JLPT_BATCH18A1_HISTORICAL_SCOPE === "1") {
 console.log("Batch 18A-1 JLPT listening activation plan audit passed.");
 console.log(`Inventory: total=${questions.length}; N5=${levelCounts.N5}; N4=${levelCounts.N4}; answers=${answerCounts.join("/")}.`);
 console.log(`Level answer positions: N5=${levelAnswerCounts.N5.join("/")}; N4=${levelAnswerCounts.N4.join("/")}.`);
-console.log("Recommendation only: N5 listening=10 (total 30); N4 listening=10 (total 44). JLPT listening remains disabled.");
+console.log("Activated: N5 listening=10 (total 30); N4 listening=10 (total 44).");

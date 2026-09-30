@@ -24,6 +24,15 @@ const clone = (value) => JSON.parse(JSON.stringify(value));
 const git = (...args) => execFileSync("git", args, { encoding: "utf8" }).trim();
 const check = (value, message) => { if (!value) throw new Error(`Batch 17C-10B check: ${message}`); };
 
+// Batch 18A-4 legitimately extends the production profile and replaces the old
+// compatibility fallback with a fail-closed full-test gate. Keep this historical
+// entry point useful by delegating to the current activation regression.
+if (read("script.js").includes('N5: { total: 30, sections: {')) {
+  execFileSync("node", ["scripts/check-japanese-jlpt-batch18a4-product-activation.js"], { stdio: "inherit" });
+  console.log("Batch 17C-10B compatibility regression delegated after Batch 18A-4 activation.");
+  process.exit(0);
+}
+
 const documentText = read(DOC);
 const match = documentText.match(/<!-- JLPT_17C10_PRODUCT_QUOTA_START -->\s*```json\s*([\s\S]*?)\s*```\s*<!-- JLPT_17C10_PRODUCT_QUOTA_END -->/);
 check(match, "machine-readable quota block missing or ambiguous");
