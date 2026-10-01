@@ -131,18 +131,9 @@ for (const mutate of [
 mustFail("missing ID and inventory", () => context.create(clone(source).slice(1)));
 mustFail("wrong inventory", () => context.create([...clone(source), clone(source[0])]));
 
-check(extractFunction(script, "buildJapaneseJlptSession") === extractFunction(baseScript, "buildJapaneseJlptSession"), "production session builder changed");
-check(extractBalanced(script, "const JAPANESE_JLPT_PROFILE_REGISTRY =", "{", "}") === extractBalanced(baseScript, "const JAPANESE_JLPT_PROFILE_REGISTRY =", "{", "}"), "production profile or quota changed");
-for (const level of ["N5", "N4"]) {
-  const expectedTotal = level === "N5" ? 20 : 34;
-  const profileText = extractBalanced(script, "const JAPANESE_JLPT_PROFILE_REGISTRY =", "{", "}");
-  check(profileText.includes(`${level}: { total: ${expectedTotal}`), `${level} production total changed`);
-}
-check((script.match(/listening: \{ included: false, status: "future", total: null, questionTypes: \{\} \}/g) || []).length >= 4, "listening future status changed");
 const adapterText = [extractFunction(script, "adaptJapaneseJlptListeningQuestion"), extractFunction(script, "createJapaneseJlptListeningCandidates")].join("\n");
 for (const forbidden of ["fetch(", "import(", "document.", "localStorage", "sessionStorage", "speechSynthesis", "buildJapaneseJlptSession("])
   check(!adapterText.includes(forbidden), `adapter contains forbidden production dependency: ${forbidden}`);
-check(!extractFunction(script, "buildJapaneseJlptSession").includes("createJapaneseJlptListeningCandidates"), "production session invokes dormant adapter");
 
 if (process.env.JLPT_BATCH18A2_HISTORICAL_SCOPE === "1") {
   const htmlDiff = git("diff", BASE, "--", "japanese/index.html");
@@ -156,4 +147,4 @@ if (process.env.JLPT_BATCH18A2_HISTORICAL_SCOPE === "1") {
 console.log("Batch 18A-2 JLPT listening immutable adapter audit passed.");
 console.log("Inventory: total=100; N5=69; N4=31; IDs=jl-001..jl-100 unique and complete.");
 console.log("Provenance, canonical answers, fail-closed mutations, deep freeze, and reference isolation passed.");
-console.log("JLPT listening remains future/dormant; production totals remain N5=20 and N4=34.");
+console.log("Adapter remains pure and valid after Batch 18A-4 production activation.");

@@ -24,6 +24,15 @@ const clone = (value) => JSON.parse(JSON.stringify(value));
 const git = (...args) => execFileSync("git", args, { encoding: "utf8" }).trim();
 const check = (value, message) => { if (!value) throw new Error(`Batch 17C-10B check: ${message}`); };
 
+// Run the current production integration regression first, then continue through
+// every historical 17C-10B runtime fixture against its merged production source.
+// This avoids weakening the old adapter/pipeline/UI/loader coverage when later
+// batches intentionally revise its quota and fallback contract.
+const batch18a4Active = read("script.js").includes('N5: { total: 30, sections: {');
+if (batch18a4Active) {
+  execFileSync("node", ["scripts/check-japanese-jlpt-batch18a4-product-activation.js"], { stdio: "inherit" });
+}
+
 const documentText = read(DOC);
 const match = documentText.match(/<!-- JLPT_17C10_PRODUCT_QUOTA_START -->\s*```json\s*([\s\S]*?)\s*```\s*<!-- JLPT_17C10_PRODUCT_QUOTA_END -->/);
 check(match, "machine-readable quota block missing or ambiguous");
@@ -60,7 +69,7 @@ function validateContract(value) {
 }
 validateContract(contract);
 
-const script = read("script.js");
+const script = batch18a4Active ? git("show", "cf56785:script.js") : read("script.js");
 const start = script.indexOf("function deepFreezeJapaneseJlptValue");
 const end = script.indexOf("function appendJapaneseJlptDetail");
 check(start >= 0 && end > start, "production adapter contract extraction boundaries missing");

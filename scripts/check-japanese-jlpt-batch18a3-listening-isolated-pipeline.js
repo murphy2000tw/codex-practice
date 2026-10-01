@@ -247,10 +247,6 @@ for (const fixture of [{ throwSpeak: true }, { throwConstructor: true }]) {
 }
 check(jlpt.getViewModel().status === "unavailable" && quiz.hasPlayback("jl-001") && quiz.hasPlayback("jl-003"), "JLPT and independent quiz played sets are not isolated");
 
-const profile = balanced(script, "const JAPANESE_JLPT_PROFILE_REGISTRY =", "{", "}");
-check(profile.includes("N5: { total: 20") && profile.includes("N4: { total: 34") && (profile.match(/listening: \{ included: false, status: "future"/g) || []).length >= 4, "production totals/listening status changed");
-check(extractFunction(script, "buildJapaneseJlptSession") === extractFunction(baseScript, "buildJapaneseJlptSession"), "production JLPT builder changed");
-check(script.includes('listening.textContent = "聽力：後續批次開放"'), "future UI notice removed");
 const pipelineText = pipelineFunctions.slice(3).map((name) => extractFunction(script, name)).join("\n");
 for (const forbidden of ["localStorage", "sessionStorage", "indexedDB", "caches.", "fetch(", "import(", "document."])
   check(!pipelineText.includes(forbidden), `pipeline uses forbidden dependency ${forbidden}`);
@@ -265,4 +261,4 @@ if (process.env.JLPT_BATCH18A3_HISTORICAL_SCOPE === "1") {
 console.log("Batch 18A-3 JLPT listening isolated pipeline audit passed.");
 console.log(`N5/N4 snapshots=10; balanced positions=2/2/3/3; observed third-position pairs=${[...extraPositionPairs].join(" | ")}.`);
 console.log("Capability/voice ownership, cancel ownership, one-play clicks, rerender/restart, and constructor/speak failures passed.");
-console.log("Practice/quiz/JLPT playback sets and stale callbacks are isolated; production JLPT listening remains dormant at N5=20/N4=34.");
+console.log("Practice/quiz/JLPT playback sets and stale callbacks remain isolated after production activation.");
