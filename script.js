@@ -2091,10 +2091,28 @@ function buildJapaneseJlptSession(level, questionBank, readingBank, randomIndexP
   const selected = selectJapaneseJlptQuestions(pools, randomIndexProvider);
   const preRandomizationSnapshot = createJapaneseJlptPreRandomizationSnapshot(selected, levelProfile);
   const targetAnswerPositions = createBalancedJapaneseJlptAnswerPositions(levelProfile.total, randomIndexProvider);
-  const questionSnapshots = preRandomizationSnapshot.map((question, index) =>
-    question.section === "listening"
-      ? deepFreezeJapaneseJlptValue(deepCloneJapaneseJlptValue(question))
-      : randomizeJapaneseJlptQuestionOptions(question, targetAnswerPositions[index], randomIndexProvider));
+  const targetPositionCounts = [0, 1, 2, 3].map((position) =>
+    targetAnswerPositions.filter((answerIndex) => answerIndex === position).length);
+  const listeningPositionCounts = [0, 1, 2, 3].map((position) =>
+    preRandomizationSnapshot.filter((question) =>
+      question.section === "listening" && question.answerIndex === position).length);
+  const remainingAnswerPositions = shuffleJapaneseJlptArray(
+    targetPositionCounts.flatMap((count, position) => {
+      const remaining = count - listeningPositionCounts[position];
+      if (remaining < 0) throw new Error("JLPT listening answer position quota exceeds session target");
+      return Array.from({ length: remaining }, () => position);
+    }),
+    randomIndexProvider,
+  );
+  if (remainingAnswerPositions.length !== levelProfile.total - levelProfile.sections.listening.total)
+    throw new Error("JLPT non-listening answer position quota is incomplete");
+  let remainingPositionIndex = 0;
+  const questionSnapshots = preRandomizationSnapshot.map((question) => {
+    if (question.section === "listening")
+      return deepFreezeJapaneseJlptValue(deepCloneJapaneseJlptValue(question));
+    const targetAnswerIndex = remainingAnswerPositions[remainingPositionIndex++];
+    return randomizeJapaneseJlptQuestionOptions(question, targetAnswerIndex, randomIndexProvider);
+  });
   return { selectedLevel: level, profileVersion: profile.profileVersion, profileId: profile.profileId,
     preRandomizationSnapshot, questionSnapshots, currentIndex: 0, answers: [] };
 }

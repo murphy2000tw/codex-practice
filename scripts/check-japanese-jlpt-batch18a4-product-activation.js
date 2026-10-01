@@ -81,7 +81,8 @@ const functions = [
   "validateJapaneseJlptListeningCandidatePool", "buildJapaneseJlptListeningIsolatedSession",
   "createJapaneseJlptListeningPreAnswerViewModel", "createJapaneseJlptListeningIsolatedController",
   "cancelJapaneseJlptListeningUtterance", "resetJapaneseJlptListeningPlayback", "requestJapaneseJlptListeningPlayback",
-  "appendJapaneseJlptDetail", "appendJapaneseJlptQuestionFeedback", "answerJapaneseJlptQuestion",
+  "appendJapaneseJlptDetail", "appendJapaneseJlptNewTypeAnswerDetails", "appendJapaneseJlptAnswerFeedbackDetails",
+  "appendJapaneseJlptQuestionFeedback", "answerJapaneseJlptQuestion",
   "renderJapaneseJlptQuestion", "renderJapaneseJlptCompletion", "advanceJapaneseJlptQuestion",
   "clearJapaneseJlptSession", "resetJapaneseJlptState", "selectJapaneseJlptLevel", "returnToJapaneseJlptSetup",
   "startJapaneseJlptMock",
@@ -118,6 +119,7 @@ this.api={
   setProvider(provider){window.speechSynthesis=provider&&provider.speechSynthesis;window.SpeechSynthesisUtterance=provider&&provider.SpeechSynthesisUtterance;},
   setLevel(level){selectedJapaneseJlptLevel=level;},setSession(value){japaneseJlptSession=value;},
   setVoice(value){japaneseJlptListeningVoice=value;},setCandidates(value){japaneseJlptListeningCandidates=value;},
+  runCompleteSession(value){japaneseJlptSession=value;for(let index=0;index<value.questionSnapshots.length;index+=1){answerJapaneseJlptQuestion(value.questionSnapshots[index].answerIndex);if(index<value.questionSnapshots.length-1)advanceJapaneseJlptQuestion();}renderJapaneseJlptCompletion();return {answers:japaneseJlptSession.answers.slice(),text:japaneseJlptQuestionContent.textContent};},
   get(){return {session:japaneseJlptSession,buildCalls,played:[...japaneseJlptListeningPlayedSourceIds],utterance:japaneseJlptListeningUtterance,generation:japaneseJlptListeningGeneration,content:japaneseJlptQuestionContent,status:japaneseJlptStatus,selectedLevel:selectedJapaneseJlptLevel,voice:japaneseJlptListeningVoice};}
 };`, runtime);
 const api = runtime.api;
@@ -132,6 +134,103 @@ for (const [level, total] of [["N5", 30], ["N4", 44]]) {
   check(new Set(session.questions.map((question) => question.sourceId)).size === 10, `${level} listening session repeated a sourceId`);
   check(session.questions.every((question) => Object.isFrozen(question) && Object.isFrozen(question.options)), `${level} listening questions must remain immutable`);
 }
+
+// Execute the current production loader and full builder against every real JSON bank.
+const productionContext = { console, crypto: require("crypto").webcrypto, window: {} };
+vm.createContext(productionContext);
+const productionStart = script.indexOf("function deepFreezeJapaneseJlptValue");
+const productionEnd = script.indexOf("function appendJapaneseJlptDetail");
+check(productionStart >= 0 && productionEnd > productionStart, "production extraction boundaries missing");
+const productionListeningFunctions = [
+  "adaptJapaneseJlptListeningQuestion", "createJapaneseJlptListeningCandidates",
+  "randomIndexJapaneseJlptListening", "shuffleJapaneseJlptListening",
+  "validateJapaneseJlptListeningCandidatePool", "buildJapaneseJlptListeningIsolatedSession",
+].map(extractFunction).join("\n");
+vm.runInContext(`
+const JAPANESE_JLPT_LEVELS=Object.freeze(["N5","N4"]);
+const JAPANESE_JLPT_POLICY_VERSION="17b1-internal-v1",JAPANESE_JLPT_READING_DATA_VERSION="17c2-n4-reading-v1",JAPANESE_JLPT_READING_POLICY_VERSION="17c2-reading-internal-v1",JAPANESE_JLPT_READING_PROFILE_ID="17c2-initial-fixed-v1";
+const JAPANESE_JLPT_READING_SET_IDS=Object.freeze(["jlpt-reading-set-n4-001","jlpt-reading-set-n4-002","jlpt-reading-set-n4-003","jlpt-reading-set-n4-016","jlpt-reading-set-n4-017","jlpt-reading-set-n4-026","jlpt-reading-set-n4-027","jlpt-reading-set-n4-031","jlpt-reading-set-n4-032","jlpt-reading-set-n4-015"]);
+let japaneseJlptQuestionBank=null,japaneseJlptLoadError="",japaneseJlptIsLoading=false,japaneseJlptSession=null,japaneseJlptSessionBuildError=null;
+let japaneseJlptProductCandidates=null,japaneseJlptActiveProfileVersion="17c10-product-v1",japaneseJlptActiveProfileId="site-jlpt-style-product",japaneseJlptProductLoadError="";
+let japaneseJlptListeningCandidates=null;
+let japaneseJlptQuestionContent=null;
+${script.slice(productionStart, productionEnd)}
+const JAPANESE_JLPT_LISTENING_SOURCE_BANK="JAPANESE_LISTENING_QUESTIONS",JAPANESE_JLPT_LISTENING_SOURCE_VERSION="18a2-listening-source-v1",JAPANESE_JLPT_LISTENING_ADAPTER_VERSION="18a2-listening-adapter-v1",JAPANESE_JLPT_LISTENING_SESSION_SIZE=10;
+const JAPANESE_LISTENING_QUESTIONS=${sourceArray};
+${productionListeningFunctions}
+renderJapaneseJlptPanel=()=>{};
+clearJapaneseJlptSession=()=>{japaneseJlptSession=null;};
+this.api={buildJapaneseJlptProductCandidates,loadJapaneseJlptProductBanks,buildJapaneseJlptSession,
+  setProduct(candidates){japaneseJlptProductCandidates=candidates;japaneseJlptListeningCandidates=deepFreezeJapaneseJlptValue(candidates.filter(question=>question.section==="listening"));},
+  reset(){japaneseJlptProductCandidates=null;japaneseJlptListeningCandidates=null;japaneseJlptProductLoadError="";japaneseJlptSession={partial:true};},
+  state(){return {candidates:japaneseJlptProductCandidates,listening:japaneseJlptListeningCandidates,error:japaneseJlptProductLoadError,session:japaneseJlptSession,profileVersion:japaneseJlptActiveProfileVersion};}};`, productionContext);
+const productionApi = productionContext.api;
+const productBanks = new Map([
+  ["japaneseJlptVocabularyAutoQuestions.json", JSON.parse(read("japaneseJlptVocabularyAutoQuestions.json"))],
+  ["japaneseJlptVocabularySemanticQuestions.json", JSON.parse(read("japaneseJlptVocabularySemanticQuestions.json"))],
+  ["japaneseJlptGrammarFormSelectionQuestions.json", JSON.parse(read("japaneseJlptGrammarFormSelectionQuestions.json"))],
+  ["japaneseSentenceCompositionQuestions.json", JSON.parse(read("japaneseSentenceCompositionQuestions.json"))],
+  ["japaneseJlptReadingN5Questions.json", JSON.parse(read("japaneseJlptReadingN5Questions.json"))],
+  ["japaneseJlptReadingQuestions.json", JSON.parse(read("japaneseJlptReadingQuestions.json"))],
+]);
+const bankBytes = JSON.stringify([...productBanks]);
+const mockFetch = async (url) => {
+  const name = String(url).split("/").pop().split("?")[0]; const data = productBanks.get(name);
+  return data ? { ok: true, status: 200, json: async () => JSON.parse(JSON.stringify(data)) } : { ok: false, status: 404 };
+};
+const deterministicIndex = (seed) => { let value = seed >>> 0; return (max) => { value = (Math.imul(value, 1664525) + 1013904223) >>> 0; return value % max; }; };
+const sectionTotals = { N5: { vocabulary: 8, grammar: 4, reading: 8, listening: 10 }, N4: { vocabulary: 10, grammar: 8, reading: 16, listening: 10 } };
+const expectedPositions = { N5: [7, 7, 8, 8], N4: [11, 11, 11, 11] };
+let latestSessions = {};
+
+async function verifyCurrentProductionPipeline() {
+  const directlyBuilt = await productionApi.buildJapaneseJlptProductCandidates(mockFetch);
+  check(directlyBuilt.length === 454, `current product builder published ${directlyBuilt.length}, expected 454 candidates`);
+  productionApi.reset(); await productionApi.loadJapaneseJlptProductBanks(mockFetch);
+  const loaded = productionApi.state();
+  check(loaded.candidates && loaded.candidates.length === 454 && loaded.listening.length === 100 && !loaded.error,
+    "current production loader did not atomically publish all real candidates");
+  for (const seed of [1, 7, 19, 73, 2026]) for (const level of ["N5", "N4"]) {
+    const session = productionApi.buildJapaneseJlptSession(level, null, null, deterministicIndex(seed));
+    latestSessions[level] = session;
+    check(session.questionSnapshots.length === (level === "N5" ? 30 : 44), `${level}/seed ${seed} full session total drift`);
+    for (const [section, count] of Object.entries(sectionTotals[level]))
+      check(session.questionSnapshots.filter((question) => question.section === section).length === count, `${level}/seed ${seed} ${section} quota drift`);
+    const listening = session.questionSnapshots.filter((question) => question.section === "listening");
+    check(listening.length === 10 && listening.every((question) => question.level === level) && new Set(listening.map((question) => question.sourceId)).size === 10,
+      `${level}/seed ${seed} listening selection is mixed or duplicated`);
+    const listeningCounts = [0, 1, 2, 3].map((position) => listening.filter((question) => question.answerIndex === position).length).sort();
+    check(JSON.stringify(listeningCounts) === JSON.stringify([2, 2, 3, 3]), `${level}/seed ${seed} listening positions are not 2/2/3/3`);
+    const finalCounts = [0, 1, 2, 3].map((position) => session.questionSnapshots.filter((question) => question.answerIndex === position).length).sort();
+    check(JSON.stringify(finalCounts) === JSON.stringify(expectedPositions[level]), `${level}/seed ${seed} final answer positions ${finalCounts} invalid`);
+    session.questionSnapshots.forEach((question, index) => {
+      const before = session.preRandomizationSnapshot[index];
+      check(question.options[question.answerIndex] === before.options[before.answerIndex], `${level}/seed ${seed}/${index} correct option identity drift`);
+      if (question.section === "listening") {
+        check(question.options[question.answerIndex] === question.canonicalCorrectOption &&
+          new Set(question.optionPermutation).size === 4 && question.optionPermutation.every((value) => value >= 0 && value < 4) &&
+          question.canonicalOptionIdentities[question.optionPermutation[question.answerIndex]] === `${question.sourceId}:option:${question.optionPermutation[question.answerIndex]}`,
+        `${level}/seed ${seed}/${index} listening canonical/permutation metadata drift`);
+      } else if (question.optionPermutation) {
+        check(question.optionPermutation.correctRandomizedIndex === question.answerIndex &&
+          question.optionPermutation.randomizedCanonicalOptionIds[question.answerIndex] === question.optionPermutation.correctCanonicalOptionId,
+        `${level}/seed ${seed}/${index} formal permutation metadata drift`);
+      }
+    });
+  }
+  check(JSON.stringify([...productBanks]) === bankBytes, "current production pipeline mutated real source banks");
+  productionApi.reset();
+  await productionApi.loadJapaneseJlptProductBanks(async (url) => {
+    const name = String(url).split("/").pop().split("?")[0];
+    if (name === "japaneseJlptVocabularyAutoQuestions.json") return { ok: false, status: 503 };
+    return mockFetch(url);
+  });
+  const failedLoad = productionApi.state();
+  check(failedLoad.candidates === null && failedLoad.listening === null && failedLoad.session === null &&
+    failedLoad.profileVersion === "17c10-product-v1" && failedLoad.error.includes("無法開始"),
+  "current production loader failure published partial state or fell back to another profile");
+}
+const productionVerification = verifyCurrentProductionPipeline();
 
 function speechProvider({ voice = true, throwConstructor = false, throwSpeak = false } = {}) {
   const state = { speaks: 0, cancels: 0, utterances: [] };
@@ -204,6 +303,15 @@ api.setProvider(lifecycle); api.clearJapaneseJlptSession();
 check(independent.state.cancels === 0 && independentController.getViewModel().playbackRemaining === 0, "formal reset polluted independent listening state");
 independentController.reset(); check(independent.state.cancels === 1, "independent controller lost ownership of its utterance");
 
-console.log("Batch 18A-4 production runtime integration audit passed.");
-console.log("Runtime sessions: N5=30/N4=44 profiles with 10 unique, level-isolated listening questions each.");
-console.log("Runtime capability gates, disclosure timing, one-play failures, score, cancellation, stale callbacks, restart and mode isolation passed.");
+productionVerification.then(() => {
+  for (const level of ["N5", "N4"]) {
+    const completeProvider = speechProvider(); api.setProvider(completeProvider); api.setVoice({ lang: "ja-JP" });
+    const result = api.runCompleteSession(latestSessions[level]);
+    check(result.answers.length === latestSessions[level].questionSnapshots.length && result.answers.every((answer) => answer && answer.isCorrect),
+      `${level} complete answering did not score every real formal question`);
+    check(result.text.includes(`成績：${result.answers.length}／${result.answers.length}`), `${level} complete result total is incorrect`);
+  }
+  console.log("Batch 18A-4 production runtime integration audit passed.");
+  console.log("Real-bank loader/build sessions passed 5 seeds: N5=30 (7/7/8/8), N4=44 (11/11/11/11), listening=10 (2/2/3/3).");
+  console.log("Runtime capability gates, disclosure timing, one-play failures, complete scoring, cancellation, stale callbacks, restart and mode isolation passed.");
+}).catch((error) => { console.error(error); process.exitCode = 1; });

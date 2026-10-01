@@ -25,3 +25,5 @@ JLPT 使用獨立的 played set、generation token、voice 與 active utterance�
 `scripts/check-japanese-jlpt-batch18a4-product-activation.js` 使用 Node VM、mock Speech Synthesis provider 與可觸發事件的 DOM fixture 實際執行正式 profile 驗證、兩級抽題、開始能力 gate、播放、作答、完成計分、切題、返回與重設流程。測試亦注入 utterance constructor／`speak()` 失敗與晚到 callback，確認播放額度不退款、owned cancellation、重新開始及模式隔離，而非只比對原始碼字串。
 
 歷史 `scripts/check-japanese-jlpt-batch17c10b-product-activation.js` 會先執行目前 A4 整合 checker，接著繼續執行原有 17C-10B 的完整 adapter、pipeline、UI、loader 與 negative fixtures；不再於委派後提前結束。
+
+A4 checker 也會使用六份實際 JSON 題庫與原始 100 題聽力常數，直接執行最新版 `buildJapaneseJlptProductCandidates()`、`loadJapaneseJlptProductBanks()` 和 `buildJapaneseJlptSession()`。N5／N4 各以五個 deterministic seeds 驗證完整區段配額、聽力唯一性與分級、canonical/permutation identity，以及全卷正解位置分布；正式總分布固定為 N5 `7/7/8/8`、N4 `11/11/11/11`，聽力區段維持 `2/2/3/3`。
