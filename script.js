@@ -2304,9 +2304,11 @@ function renderJapaneseJlptQuestion() {
     play.textContent = japaneseJlptListeningPlayedSourceIds.has(question.sourceId) ? "已播放" : "播放日文語音（限一次）";
     play.disabled = japaneseJlptListeningPlayedSourceIds.has(question.sourceId);
     play.addEventListener("click", () => {
-      requestJapaneseJlptListeningPlayback(question);
       play.disabled = true;
-      play.textContent = "已播放";
+      requestJapaneseJlptListeningPlayback(question, (state) => {
+        play.textContent = state === "preparing" ? "正在準備日文語音…"
+          : state === "playing" ? "正在播放日文語音…" : "已播放";
+      });
     });
     card.appendChild(play);
   }
@@ -5348,7 +5350,8 @@ function resetJapaneseJlptListeningPlayback() {
   japaneseJlptListeningPlayedSourceIds = new Set();
 }
 
-function requestJapaneseJlptListeningPlayback(question) {
+function requestJapaneseJlptListeningPlayback(question, onStatus) {
+  const reportStatus = typeof onStatus === "function" ? onStatus : () => {};
   if (!question || question.section !== "listening" ||
       japaneseJlptListeningPlayedSourceIds.has(question.sourceId)) return false;
   japaneseJlptListeningPlayedSourceIds.add(question.sourceId);
@@ -5362,12 +5365,24 @@ function requestJapaneseJlptListeningPlayback(question) {
     const isCurrent = () => token === japaneseJlptListeningGeneration &&
       japaneseJlptListeningUtterance === utterance && japaneseJlptSession &&
       japaneseJlptSession.questionSnapshots[japaneseJlptSession.currentIndex] === question;
-    utterance.onend = utterance.onerror = () => {
-      if (isCurrent()) japaneseJlptListeningUtterance = null;
-    };
-    window.speechSynthesis.speak(utterance);
+    utterance.onstart = () => { if (isCurrent()) reportStatus("playing"); };
+    utterance.onend = () => { if (isCurrent()) { japaneseJlptListeningUtterance = null; reportStatus("ended"); } };
+    utterance.onerror = () => { if (isCurrent()) { japaneseJlptListeningUtterance = null; reportStatus("error"); } };
+    // Let the browser finish the click/render turn after resuming its audio route.
+    // This avoids racing a freshly activated speaker (notably iOS) without padding
+    // or changing the sentence that the learner must hear.
+    if (typeof window.speechSynthesis.resume === "function") window.speechSynthesis.resume();
+    const schedule = typeof window.requestAnimationFrame === "function"
+      ? window.requestAnimationFrame.bind(window) : (callback) => Promise.resolve().then(callback);
+    reportStatus("preparing");
+    schedule(() => {
+      if (!isCurrent()) return;
+      try { window.speechSynthesis.speak(utterance); }
+      catch (_error) { if (isCurrent()) { japaneseJlptListeningUtterance = null; reportStatus("error"); } }
+    });
   } catch (_error) {
     if (japaneseJlptListeningUtterance === utterance) japaneseJlptListeningUtterance = null;
+    reportStatus("error");
     return false;
   }
   return true;
@@ -5669,8 +5684,8 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
   return {
     requestPlayback(itemId, text, onStatus) {
       if (maxPlaysPerItem === 1 && playedItemIds.has(itemId)) return false;
+      if (activeUtterance !== null) return false;
       if (maxPlaysPerItem === 1) playedItemIds.add(itemId);
-      cancel();
       const token = ++generation;
       let utterance;
       try {
@@ -5680,10 +5695,22 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
         activeUtterance = utterance;
         const isCurrent = () => token === generation && activeUtterance === utterance;
         utterance.lang = "ja-JP"; utterance.rate = 0.86; utterance.pitch = 1;
+        const voices = typeof provider.speechSynthesis.getVoices === "function"
+          ? provider.speechSynthesis.getVoices() : [];
+        utterance.voice = Array.isArray(voices)
+          ? voices.find((voice) => voice && /^ja(?:-|$)/i.test(voice.lang || "")) || null : null;
         utterance.onstart = () => { if (isCurrent()) onStatus("playing"); };
         utterance.onend = () => { if (isCurrent()) { activeUtterance = null; onStatus("ended"); } };
         utterance.onerror = () => { if (isCurrent()) { activeUtterance = null; onStatus("error"); } };
-        provider.speechSynthesis.speak(utterance);
+        onStatus("preparing");
+        if (typeof provider.speechSynthesis.resume === "function") provider.speechSynthesis.resume();
+        const schedule = typeof provider.requestAnimationFrame === "function"
+          ? provider.requestAnimationFrame : (callback) => Promise.resolve().then(callback);
+        schedule(() => {
+          if (!isCurrent()) return;
+          try { provider.speechSynthesis.speak(utterance); }
+          catch (_error) { if (isCurrent()) { activeUtterance = null; onStatus("error"); } }
+        });
       } catch (_error) {
         if (activeUtterance === utterance) activeUtterance = null;
         onStatus("error");
@@ -5701,6 +5728,8 @@ function getJapaneseListeningSpeechProvider() {
   return {
     speechSynthesis: typeof window !== "undefined" ? window.speechSynthesis : null,
     SpeechSynthesisUtterance: typeof SpeechSynthesisUtterance === "function" ? SpeechSynthesisUtterance : null,
+    requestAnimationFrame: typeof window !== "undefined" && typeof window.requestAnimationFrame === "function"
+      ? window.requestAnimationFrame.bind(window) : null,
   };
 }
 
@@ -5779,11 +5808,17 @@ function createListeningPlayButton(item, status, { onePlay = false } = {}) {
   button.disabled = !controller.hasPlayback(item.id);
   button.addEventListener("click", () => {
     if (!controller.hasPlayback(item.id)) return;
-    if (onePlay) button.disabled = true;
+    button.disabled = true;
     controller.requestPlayback(item.id, item.japanese, (state) => {
-      if (state === "playing") status.textContent = "正在播放日文音訊…";
-      else if (state === "ended") status.textContent = onePlay ? "播放完成，本題無法再次播放。" : "播放完成，可再次播放。";
-      else status.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
+      if (state === "preparing") status.textContent = "正在準備日文音訊…";
+      else if (state === "playing") status.textContent = "正在播放日文音訊…";
+      else if (state === "ended") {
+        button.disabled = onePlay;
+        status.textContent = onePlay ? "播放完成，本題無法再次播放。" : "播放完成，可再次播放。";
+      } else {
+        button.disabled = onePlay;
+        status.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
+      }
     });
   });
   return button;

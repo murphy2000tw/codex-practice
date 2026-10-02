@@ -52,7 +52,7 @@ check((profile.match(/listening: \{ included: true, status: "available", total: 
 const compat = script.slice(script.indexOf('"17c6-compat-v1": {'), script.indexOf("const JAPANESE_JLPT_COMPAT_PROFILE_VERSION"));
 check(/N5:\s*\{ total: 20/.test(compat) && /N4:\s*\{ total: 34/.test(compat), "17c6 compatibility profile changed");
 check(!script.includes("已使用相容模式"), "production failure must not silently fall back");
-check(html.includes("N5 共 30 題、N4 共 44 題") && html.includes("聽力各 10 題") && html.includes("script.js?v=4.6"), "setup copy or cache token missing");
+check(html.includes("N5 共 30 題、N4 共 44 題") && html.includes("聽力各 10 題") && html.includes("script.js?v=4.7"), "setup copy or cache token missing");
 const base = cp.execFileSync("git", ["show", `${BASE}:script.js`], { cwd: ROOT, encoding: "utf8" });
 for (const [label, re] of [["localStorage", /\blocalStorage\b/g], ["sessionStorage", /\bsessionStorage\b/g], ["IndexedDB", /\bindexedDB\b/g], ["Cache API", /\bcaches\b/g]])
   check((script.match(re) || []).length === (base.match(re) || []).length, `${label} inventory changed`);
@@ -71,7 +71,7 @@ class NodeFixture {
   find(predicate, found = []) { if (predicate(this)) found.push(this); this.children.forEach((child) => child.find && child.find(predicate, found)); return found; }
 }
 const documentFixture = { createElement: (tag) => new NodeFixture(tag), createTextNode: (value) => ({ textContent: String(value) }) };
-const runtime = { console, document: documentFixture, window: {}, Set, Object, Array, Math, NodeFixture };
+const runtime = { console, document: documentFixture, window: { requestAnimationFrame: (callback) => callback() }, Set, Object, Array, Math, NodeFixture };
 vm.createContext(runtime);
 const functions = [
   "deepFreezeJapaneseJlptValue", "deepCloneJapaneseJlptValue", "isNonEmptyString",
