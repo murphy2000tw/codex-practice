@@ -657,6 +657,7 @@ let japaneseJlptListeningCandidates = null;
 let japaneseJlptListeningVoice = null;
 let japaneseJlptListeningGeneration = 0;
 let japaneseJlptListeningUtterance = null;
+let japaneseJlptListeningSubmitted = false;
 let japaneseJlptListeningPlayedSourceIds = new Set();
 
 function isJapaneseHomeTab() {
@@ -2304,9 +2305,11 @@ function renderJapaneseJlptQuestion() {
     play.textContent = japaneseJlptListeningPlayedSourceIds.has(question.sourceId) ? "已播放" : "播放日文語音（限一次）";
     play.disabled = japaneseJlptListeningPlayedSourceIds.has(question.sourceId);
     play.addEventListener("click", () => {
-      requestJapaneseJlptListeningPlayback(question);
       play.disabled = true;
-      play.textContent = "已播放";
+      requestJapaneseJlptListeningPlayback(question, (state) => {
+        play.textContent = state === "preparing" ? "正在準備日文語音…"
+          : state === "playing" ? "正在播放日文語音…" : "已播放";
+      });
     });
     card.appendChild(play);
   }
@@ -5335,9 +5338,10 @@ const JAPANESE_JLPT_LISTENING_SESSION_SIZE = 10;
 
 function cancelJapaneseJlptListeningUtterance() {
   japaneseJlptListeningGeneration += 1;
-  const ownsUtterance = japaneseJlptListeningUtterance !== null;
+  const ownsSubmittedUtterance = japaneseJlptListeningUtterance !== null && japaneseJlptListeningSubmitted;
   japaneseJlptListeningUtterance = null;
-  if (ownsUtterance && typeof window !== "undefined" && window.speechSynthesis) {
+  japaneseJlptListeningSubmitted = false;
+  if (ownsSubmittedUtterance && typeof window !== "undefined" && window.speechSynthesis) {
     try { window.speechSynthesis.cancel(); } catch (_error) {}
   }
 }
@@ -5348,7 +5352,8 @@ function resetJapaneseJlptListeningPlayback() {
   japaneseJlptListeningPlayedSourceIds = new Set();
 }
 
-function requestJapaneseJlptListeningPlayback(question) {
+function requestJapaneseJlptListeningPlayback(question, onStatus) {
+  const reportStatus = typeof onStatus === "function" ? onStatus : () => {};
   if (!question || question.section !== "listening" ||
       japaneseJlptListeningPlayedSourceIds.has(question.sourceId)) return false;
   japaneseJlptListeningPlayedSourceIds.add(question.sourceId);
@@ -5359,15 +5364,27 @@ function requestJapaneseJlptListeningPlayback(question) {
     utterance.lang = "ja-JP";
     utterance.voice = japaneseJlptListeningVoice;
     japaneseJlptListeningUtterance = utterance;
+    japaneseJlptListeningSubmitted = false;
     const isCurrent = () => token === japaneseJlptListeningGeneration &&
       japaneseJlptListeningUtterance === utterance && japaneseJlptSession &&
       japaneseJlptSession.questionSnapshots[japaneseJlptSession.currentIndex] === question;
-    utterance.onend = utterance.onerror = () => {
-      if (isCurrent()) japaneseJlptListeningUtterance = null;
-    };
-    window.speechSynthesis.speak(utterance);
+    utterance.onstart = () => { if (isCurrent()) reportStatus("playing"); };
+    utterance.onend = () => { if (isCurrent()) { japaneseJlptListeningUtterance = null; japaneseJlptListeningSubmitted = false; reportStatus("ended"); } };
+    utterance.onerror = () => { if (isCurrent()) { japaneseJlptListeningUtterance = null; japaneseJlptListeningSubmitted = false; reportStatus("error"); } };
+    // Separate preparation from submission without padding or changing the sentence.
+    // Whether this affects device-level startup audio quality requires real-device verification.
+    const schedule = typeof window.requestAnimationFrame === "function"
+      ? window.requestAnimationFrame.bind(window) : (callback) => Promise.resolve().then(callback);
+    reportStatus("preparing");
+    schedule(() => {
+      if (!isCurrent()) return;
+      japaneseJlptListeningSubmitted = true;
+      try { window.speechSynthesis.speak(utterance); }
+      catch (_error) { if (isCurrent()) { japaneseJlptListeningUtterance = null; japaneseJlptListeningSubmitted = false; reportStatus("error"); } }
+    });
   } catch (_error) {
-    if (japaneseJlptListeningUtterance === utterance) japaneseJlptListeningUtterance = null;
+    if (japaneseJlptListeningUtterance === utterance) { japaneseJlptListeningUtterance = null; japaneseJlptListeningSubmitted = false; }
+    reportStatus("error");
     return false;
   }
   return true;
@@ -5657,20 +5674,22 @@ const LISTENING_QUIZ_SIZE = 10;
 function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem = null } = {}) {
   let generation = 0;
   let activeUtterance = null;
+  let utteranceSubmitted = false;
   let playedItemIds = new Set();
   const cancel = () => {
     generation += 1;
-    const ownsUtterance = activeUtterance !== null;
+    const ownsSubmittedUtterance = activeUtterance !== null && utteranceSubmitted;
     activeUtterance = null;
-    if (ownsUtterance) {
+    utteranceSubmitted = false;
+    if (ownsSubmittedUtterance) {
       try { provider.speechSynthesis.cancel(); } catch (_error) {}
     }
   };
   return {
     requestPlayback(itemId, text, onStatus) {
       if (maxPlaysPerItem === 1 && playedItemIds.has(itemId)) return false;
+      if (activeUtterance !== null) return false;
       if (maxPlaysPerItem === 1) playedItemIds.add(itemId);
-      cancel();
       const token = ++generation;
       let utterance;
       try {
@@ -5678,14 +5697,27 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
             typeof provider.SpeechSynthesisUtterance !== "function") throw new Error("speech unavailable");
         utterance = new provider.SpeechSynthesisUtterance(text);
         activeUtterance = utterance;
+        utteranceSubmitted = false;
         const isCurrent = () => token === generation && activeUtterance === utterance;
         utterance.lang = "ja-JP"; utterance.rate = 0.86; utterance.pitch = 1;
+        const voices = typeof provider.speechSynthesis.getVoices === "function"
+          ? provider.speechSynthesis.getVoices() : [];
+        utterance.voice = Array.isArray(voices)
+          ? voices.find((voice) => voice && /^ja(?:-|$)/i.test(voice.lang || "")) || null : null;
         utterance.onstart = () => { if (isCurrent()) onStatus("playing"); };
-        utterance.onend = () => { if (isCurrent()) { activeUtterance = null; onStatus("ended"); } };
-        utterance.onerror = () => { if (isCurrent()) { activeUtterance = null; onStatus("error"); } };
-        provider.speechSynthesis.speak(utterance);
+        utterance.onend = () => { if (isCurrent()) { activeUtterance = null; utteranceSubmitted = false; onStatus("ended"); } };
+        utterance.onerror = () => { if (isCurrent()) { activeUtterance = null; utteranceSubmitted = false; onStatus("error"); } };
+        onStatus("preparing");
+        const schedule = typeof provider.requestAnimationFrame === "function"
+          ? provider.requestAnimationFrame : (callback) => Promise.resolve().then(callback);
+        schedule(() => {
+          if (!isCurrent()) return;
+          utteranceSubmitted = true;
+          try { provider.speechSynthesis.speak(utterance); }
+          catch (_error) { if (isCurrent()) { activeUtterance = null; utteranceSubmitted = false; onStatus("error"); } }
+        });
       } catch (_error) {
-        if (activeUtterance === utterance) activeUtterance = null;
+        if (activeUtterance === utterance) { activeUtterance = null; utteranceSubmitted = false; }
         onStatus("error");
         return false;
       }
@@ -5701,6 +5733,8 @@ function getJapaneseListeningSpeechProvider() {
   return {
     speechSynthesis: typeof window !== "undefined" ? window.speechSynthesis : null,
     SpeechSynthesisUtterance: typeof SpeechSynthesisUtterance === "function" ? SpeechSynthesisUtterance : null,
+    requestAnimationFrame: typeof window !== "undefined" && typeof window.requestAnimationFrame === "function"
+      ? window.requestAnimationFrame.bind(window) : null,
   };
 }
 
@@ -5779,11 +5813,17 @@ function createListeningPlayButton(item, status, { onePlay = false } = {}) {
   button.disabled = !controller.hasPlayback(item.id);
   button.addEventListener("click", () => {
     if (!controller.hasPlayback(item.id)) return;
-    if (onePlay) button.disabled = true;
+    button.disabled = true;
     controller.requestPlayback(item.id, item.japanese, (state) => {
-      if (state === "playing") status.textContent = "正在播放日文音訊…";
-      else if (state === "ended") status.textContent = onePlay ? "播放完成，本題無法再次播放。" : "播放完成，可再次播放。";
-      else status.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
+      if (state === "preparing") status.textContent = "正在準備日文音訊…";
+      else if (state === "playing") status.textContent = "正在播放日文音訊…";
+      else if (state === "ended") {
+        button.disabled = onePlay;
+        status.textContent = onePlay ? "播放完成，本題無法再次播放。" : "播放完成，可再次播放。";
+      } else {
+        button.disabled = onePlay;
+        status.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
+      }
     });
   });
   return button;

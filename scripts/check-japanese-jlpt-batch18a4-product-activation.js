@@ -52,7 +52,7 @@ check((profile.match(/listening: \{ included: true, status: "available", total: 
 const compat = script.slice(script.indexOf('"17c6-compat-v1": {'), script.indexOf("const JAPANESE_JLPT_COMPAT_PROFILE_VERSION"));
 check(/N5:\s*\{ total: 20/.test(compat) && /N4:\s*\{ total: 34/.test(compat), "17c6 compatibility profile changed");
 check(!script.includes("已使用相容模式"), "production failure must not silently fall back");
-check(html.includes("N5 共 30 題、N4 共 44 題") && html.includes("聽力各 10 題") && html.includes("script.js?v=4.6"), "setup copy or cache token missing");
+check(html.includes("N5 共 30 題、N4 共 44 題") && html.includes("聽力各 10 題") && html.includes("script.js?v=4.7"), "setup copy or cache token missing");
 const base = cp.execFileSync("git", ["show", `${BASE}:script.js`], { cwd: ROOT, encoding: "utf8" });
 for (const [label, re] of [["localStorage", /\blocalStorage\b/g], ["sessionStorage", /\bsessionStorage\b/g], ["IndexedDB", /\bindexedDB\b/g], ["Cache API", /\bcaches\b/g]])
   check((script.match(re) || []).length === (base.match(re) || []).length, `${label} inventory changed`);
@@ -71,7 +71,7 @@ class NodeFixture {
   find(predicate, found = []) { if (predicate(this)) found.push(this); this.children.forEach((child) => child.find && child.find(predicate, found)); return found; }
 }
 const documentFixture = { createElement: (tag) => new NodeFixture(tag), createTextNode: (value) => ({ textContent: String(value) }) };
-const runtime = { console, document: documentFixture, window: {}, Set, Object, Array, Math, NodeFixture };
+const runtime = { console, document: documentFixture, window: { requestAnimationFrame: (callback) => callback() }, Set, Object, Array, Math, NodeFixture };
 vm.createContext(runtime);
 const functions = [
   "deepFreezeJapaneseJlptValue", "deepCloneJapaneseJlptValue", "isNonEmptyString",
@@ -98,7 +98,7 @@ const JAPANESE_LISTENING_QUESTIONS=${sourceArray};
 let japaneseJlptSession=null,japaneseJlptSessionBuildError=null,japaneseJlptProductCandidates=[{}],japaneseJlptQuestionBank=null,japaneseJlptReadingBank=null;
 let japaneseJlptActiveProfileVersion="17c10-product-v1",japaneseJlptActiveProfileId="site-jlpt-style-product";
 const JAPANESE_JLPT_PRODUCT_PROFILE_VERSION="17c10-product-v1",JAPANESE_JLPT_PRODUCT_PROFILE_ID="site-jlpt-style-product";
-let japaneseJlptListeningCandidates=null,japaneseJlptListeningVoice=null,japaneseJlptListeningGeneration=0,japaneseJlptListeningUtterance=null,japaneseJlptListeningPlayedSourceIds=new Set();
+let japaneseJlptListeningCandidates=null,japaneseJlptListeningVoice=null,japaneseJlptListeningGeneration=0,japaneseJlptListeningUtterance=null,japaneseJlptListeningSubmitted=false,japaneseJlptListeningPlayedSourceIds=new Set();
 let selectedJapaneseJlptLevel=null;
 const japaneseJlptQuestionContent=new NodeFixture("section"),japaneseJlptStatus=new NodeFixture("div"),japaneseJlptLevelSetup=new NodeFixture("section"),japaneseJlptStartActions=new NodeFixture("div"),japaneseJlptUnavailableNote=new NodeFixture("p"),startJapaneseJlptMockButton=new NodeFixture("button");
 const japaneseJlptLevelButtons=["N5","N4"].map(level=>{const node=new NodeFixture("button");node.dataset={japaneseJlptLevel:level};return node;});
