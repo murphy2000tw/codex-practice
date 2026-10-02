@@ -2,17 +2,18 @@
 
 ## 排查結果
 
-- 正式 JLPT 已固定 `ja-JP` 並保存啟動測驗時驗證過的日文 voice，也有每題一次播放額度；然而點擊後直接呼叫 `speechSynthesis.speak()`，沒有讓剛喚醒的裝置音訊路徑完成一個瀏覽器更新週期。
-- 既有聽力練習／獨立測驗固定 `ja-JP`，但沒有明確選用日文 voice。其 controller 在每次播放前呼叫 `cancel()`，重播時可能形成「取消後立刻加入新 utterance」的競態；播放準備期間按鈕也沒有一律鎖定。
+- 正式 JLPT 已固定 `ja-JP` 並保存啟動測驗時驗證過的日文 voice，也有每題一次播放額度；然而點擊後直接呼叫 `speechSynthesis.speak()`。裝置音訊路徑尚未穩定可能與問題相關，但這只是**待實機驗證的假設**，不是已確認原因。
+- 既有聽力練習／獨立測驗固定 `ja-JP`，但沒有明確選用日文 voice。其 controller 在每次播放前呼叫 `cancel()`，可能形成「取消後立刻加入新 utterance」的時序風險；播放準備期間按鈕也沒有一律鎖定。此風險與實際爆音／缺音是否有因果關係同樣待實機驗證。
 - 各流程原本已有 generation／utterance ownership：切題、返回、重設或離開會遞增 generation，舊 callback 不得更新新畫面；只有 controller 擁有 utterance 時才呼叫全域 `speechSynthesis.cancel()`。
 - Web Speech API 不提供輸出波形或硬體喇叭啟動爆音的控制。因此本次不改題目文字、不加前置標點／空白，也不以固定毫秒延遲宣稱修復音質；實際首音與爆音仍須在目標實機驗證。
 
 ## 最小修正
 
 1. 點擊後立即進入「正在準備日文音訊…」，並立即停用按鈕。
-2. 若瀏覽器提供 `speechSynthesis.resume()`，先喚醒語音佇列；在下一個 `requestAnimationFrame` 才送出原文 utterance，讓使用者手勢造成的畫面與音訊路徑啟用先完成。無 rAF 的測試／舊環境以 microtask fallback，沒有固定時間等待。
+2. 在下一個 `requestAnimationFrame` 才送出原文 utterance；無 rAF 的測試／舊環境以 microtask fallback，沒有固定時間等待。流程不呼叫全域 `resume()`，以免恢復其他 controller 已暫停的語音。
 3. 練習與獨立測驗明確挑選第一個 `ja` voice。播放尚未結束時拒絕重複要求，不再形成 cancel/speak 連續競態；練習播放完成後恢復按鈕，測驗維持一次播放。
-4. 所有待執行 callback 都再次比對 generation 與 owned utterance。切題、返回、重設、離開後 callback 只會退出，不能晚到播放上一題。
+4. 明確區分「已建立但尚未送出」與「已交給 `speechSynthesis.speak()`」：取消前者只讓排程失效，不呼叫全域 `cancel()`；只有取消本 controller 已送出的 utterance 才呼叫 `cancel()`。所有待執行 callback 都再次比對 generation 與 ownership，切題、返回、重設、離開後不能晚到播放上一題。
+5. 準備提示與延後排程只代表播放生命週期與跨模式隔離已改善，**不能作為實際音質改善的證據**。
 
 ## 實機重測步驟
 
@@ -32,4 +33,4 @@
 4. 返回設定或日文首頁後等待 30 秒，確認沒有殘留語音；重新開始後每題仍有一個新的播放額度。
 5. 在另一個聽力題停留至少 30 秒再按播放，確認喇叭重新啟用時沒有爆音、首音完整。
 
-上述兩組「實際爆音與首音聽感」無法由 Node 自動測試，均為 **待使用者實機驗證**；自動回歸只驗證準備、語音選擇、佇列、取消、額度與 stale callback 行為。
+上述兩組「實際爆音與首音聽感」及音訊路徑啟動假設無法由 Node 自動測試，均為 **待使用者實機驗證**；自動回歸只驗證準備、語音選擇、佇列、跨 controller 隔離、取消、額度與 stale callback 行為，不宣稱音質已改善。

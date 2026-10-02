@@ -98,7 +98,7 @@ const JAPANESE_LISTENING_QUESTIONS=${sourceArray};
 let japaneseJlptSession=null,japaneseJlptSessionBuildError=null,japaneseJlptProductCandidates=[{}],japaneseJlptQuestionBank=null,japaneseJlptReadingBank=null;
 let japaneseJlptActiveProfileVersion="17c10-product-v1",japaneseJlptActiveProfileId="site-jlpt-style-product";
 const JAPANESE_JLPT_PRODUCT_PROFILE_VERSION="17c10-product-v1",JAPANESE_JLPT_PRODUCT_PROFILE_ID="site-jlpt-style-product";
-let japaneseJlptListeningCandidates=null,japaneseJlptListeningVoice=null,japaneseJlptListeningGeneration=0,japaneseJlptListeningUtterance=null,japaneseJlptListeningPlayedSourceIds=new Set();
+let japaneseJlptListeningCandidates=null,japaneseJlptListeningVoice=null,japaneseJlptListeningGeneration=0,japaneseJlptListeningUtterance=null,japaneseJlptListeningSubmitted=false,japaneseJlptListeningPlayedSourceIds=new Set();
 let selectedJapaneseJlptLevel=null;
 const japaneseJlptQuestionContent=new NodeFixture("section"),japaneseJlptStatus=new NodeFixture("div"),japaneseJlptLevelSetup=new NodeFixture("section"),japaneseJlptStartActions=new NodeFixture("div"),japaneseJlptUnavailableNote=new NodeFixture("p"),startJapaneseJlptMockButton=new NodeFixture("button");
 const japaneseJlptLevelButtons=["N5","N4"].map(level=>{const node=new NodeFixture("button");node.dataset={japaneseJlptLevel:level};return node;});

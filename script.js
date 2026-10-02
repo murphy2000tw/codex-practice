@@ -657,6 +657,7 @@ let japaneseJlptListeningCandidates = null;
 let japaneseJlptListeningVoice = null;
 let japaneseJlptListeningGeneration = 0;
 let japaneseJlptListeningUtterance = null;
+let japaneseJlptListeningSubmitted = false;
 let japaneseJlptListeningPlayedSourceIds = new Set();
 
 function isJapaneseHomeTab() {
@@ -5337,9 +5338,10 @@ const JAPANESE_JLPT_LISTENING_SESSION_SIZE = 10;
 
 function cancelJapaneseJlptListeningUtterance() {
   japaneseJlptListeningGeneration += 1;
-  const ownsUtterance = japaneseJlptListeningUtterance !== null;
+  const ownsSubmittedUtterance = japaneseJlptListeningUtterance !== null && japaneseJlptListeningSubmitted;
   japaneseJlptListeningUtterance = null;
-  if (ownsUtterance && typeof window !== "undefined" && window.speechSynthesis) {
+  japaneseJlptListeningSubmitted = false;
+  if (ownsSubmittedUtterance && typeof window !== "undefined" && window.speechSynthesis) {
     try { window.speechSynthesis.cancel(); } catch (_error) {}
   }
 }
@@ -5362,26 +5364,26 @@ function requestJapaneseJlptListeningPlayback(question, onStatus) {
     utterance.lang = "ja-JP";
     utterance.voice = japaneseJlptListeningVoice;
     japaneseJlptListeningUtterance = utterance;
+    japaneseJlptListeningSubmitted = false;
     const isCurrent = () => token === japaneseJlptListeningGeneration &&
       japaneseJlptListeningUtterance === utterance && japaneseJlptSession &&
       japaneseJlptSession.questionSnapshots[japaneseJlptSession.currentIndex] === question;
     utterance.onstart = () => { if (isCurrent()) reportStatus("playing"); };
-    utterance.onend = () => { if (isCurrent()) { japaneseJlptListeningUtterance = null; reportStatus("ended"); } };
-    utterance.onerror = () => { if (isCurrent()) { japaneseJlptListeningUtterance = null; reportStatus("error"); } };
-    // Let the browser finish the click/render turn after resuming its audio route.
-    // This avoids racing a freshly activated speaker (notably iOS) without padding
-    // or changing the sentence that the learner must hear.
-    if (typeof window.speechSynthesis.resume === "function") window.speechSynthesis.resume();
+    utterance.onend = () => { if (isCurrent()) { japaneseJlptListeningUtterance = null; japaneseJlptListeningSubmitted = false; reportStatus("ended"); } };
+    utterance.onerror = () => { if (isCurrent()) { japaneseJlptListeningUtterance = null; japaneseJlptListeningSubmitted = false; reportStatus("error"); } };
+    // Separate preparation from submission without padding or changing the sentence.
+    // Whether this affects device-level startup audio quality requires real-device verification.
     const schedule = typeof window.requestAnimationFrame === "function"
       ? window.requestAnimationFrame.bind(window) : (callback) => Promise.resolve().then(callback);
     reportStatus("preparing");
     schedule(() => {
       if (!isCurrent()) return;
+      japaneseJlptListeningSubmitted = true;
       try { window.speechSynthesis.speak(utterance); }
-      catch (_error) { if (isCurrent()) { japaneseJlptListeningUtterance = null; reportStatus("error"); } }
+      catch (_error) { if (isCurrent()) { japaneseJlptListeningUtterance = null; japaneseJlptListeningSubmitted = false; reportStatus("error"); } }
     });
   } catch (_error) {
-    if (japaneseJlptListeningUtterance === utterance) japaneseJlptListeningUtterance = null;
+    if (japaneseJlptListeningUtterance === utterance) { japaneseJlptListeningUtterance = null; japaneseJlptListeningSubmitted = false; }
     reportStatus("error");
     return false;
   }
@@ -5672,12 +5674,14 @@ const LISTENING_QUIZ_SIZE = 10;
 function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem = null } = {}) {
   let generation = 0;
   let activeUtterance = null;
+  let utteranceSubmitted = false;
   let playedItemIds = new Set();
   const cancel = () => {
     generation += 1;
-    const ownsUtterance = activeUtterance !== null;
+    const ownsSubmittedUtterance = activeUtterance !== null && utteranceSubmitted;
     activeUtterance = null;
-    if (ownsUtterance) {
+    utteranceSubmitted = false;
+    if (ownsSubmittedUtterance) {
       try { provider.speechSynthesis.cancel(); } catch (_error) {}
     }
   };
@@ -5693,6 +5697,7 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
             typeof provider.SpeechSynthesisUtterance !== "function") throw new Error("speech unavailable");
         utterance = new provider.SpeechSynthesisUtterance(text);
         activeUtterance = utterance;
+        utteranceSubmitted = false;
         const isCurrent = () => token === generation && activeUtterance === utterance;
         utterance.lang = "ja-JP"; utterance.rate = 0.86; utterance.pitch = 1;
         const voices = typeof provider.speechSynthesis.getVoices === "function"
@@ -5700,19 +5705,19 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
         utterance.voice = Array.isArray(voices)
           ? voices.find((voice) => voice && /^ja(?:-|$)/i.test(voice.lang || "")) || null : null;
         utterance.onstart = () => { if (isCurrent()) onStatus("playing"); };
-        utterance.onend = () => { if (isCurrent()) { activeUtterance = null; onStatus("ended"); } };
-        utterance.onerror = () => { if (isCurrent()) { activeUtterance = null; onStatus("error"); } };
+        utterance.onend = () => { if (isCurrent()) { activeUtterance = null; utteranceSubmitted = false; onStatus("ended"); } };
+        utterance.onerror = () => { if (isCurrent()) { activeUtterance = null; utteranceSubmitted = false; onStatus("error"); } };
         onStatus("preparing");
-        if (typeof provider.speechSynthesis.resume === "function") provider.speechSynthesis.resume();
         const schedule = typeof provider.requestAnimationFrame === "function"
           ? provider.requestAnimationFrame : (callback) => Promise.resolve().then(callback);
         schedule(() => {
           if (!isCurrent()) return;
+          utteranceSubmitted = true;
           try { provider.speechSynthesis.speak(utterance); }
-          catch (_error) { if (isCurrent()) { activeUtterance = null; onStatus("error"); } }
+          catch (_error) { if (isCurrent()) { activeUtterance = null; utteranceSubmitted = false; onStatus("error"); } }
         });
       } catch (_error) {
-        if (activeUtterance === utterance) activeUtterance = null;
+        if (activeUtterance === utterance) { activeUtterance = null; utteranceSubmitted = false; }
         onStatus("error");
         return false;
       }
