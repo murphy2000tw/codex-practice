@@ -85,7 +85,12 @@ function mockProvider({ japanese = true, throwSpeak = false, throwConstructor = 
     speak() { this.speaks += 1; if (throwSpeak) throw new Error("speak fixture"); },
     cancel() { this.cancels += 1; },
   };
-  const provider = { speechSynthesis: synthesis, SpeechSynthesisUtterance: Utterance, utterances, voice };
+  const timers = new Map(); let nextTimer = 0;
+  const provider = {
+    setTimeout(callback) { const id = ++nextTimer; timers.set(id, callback); return id; },
+    clearTimeout(id) { timers.delete(id); },
+    flush() { for (const [id, callback] of timers) { timers.delete(id); callback(); } },
+    speechSynthesis: synthesis, SpeechSynthesisUtterance: Utterance, utterances, voice };
   if (omit === "speechSynthesis") provider.speechSynthesis = null;
   if (omit === "Utterance") provider.SpeechSynthesisUtterance = null;
   if (omit === "getVoices") delete synthesis.getVoices;
@@ -216,13 +221,16 @@ function buttonFixture(controller, itemId) {
   return button;
 }
 const quizFirst = buttonFixture(quiz, "jl-001"); quizFirst.click();
-check(quizFirst.disabled && shared.speechSynthesis.speaks === 1, "quiz first click did not immediately disable and speak once");
+check(quizFirst.disabled && shared.speechSynthesis.speaks === 0, "quiz first click did not disable while preparing");
+shared.flush();
+check(shared.speechSynthesis.speaks === 1, "quiz did not speak after preparation");
 quizFirst.click(); check(shared.speechSynthesis.speaks === 1, "quiz second click spoke again");
 const rerendered = buttonFixture(quiz, "jl-001"); check(rerendered.disabled, "quiz rerender restored playback");
 const nextQuestion = buttonFixture(quiz, "jl-002"); check(!nextQuestion.disabled, "next quiz question lacks its own playback");
-nextQuestion.click(); check(shared.speechSynthesis.speaks === 2, "next quiz question did not speak once");
+shared.utterances.at(-1).onend();
+nextQuestion.click(); shared.flush(); check(shared.speechSynthesis.speaks === 2, "next quiz question did not speak once");
 quiz.resetPlayback(); const restarted = buttonFixture(quiz, "jl-001"); check(!restarted.disabled, "new quiz did not restore playback");
-const practiceButton = buttonFixture(practice, "jl-001"); practiceButton.click(); practiceButton.click();
+const practiceButton = buttonFixture(practice, "jl-001"); practiceButton.click(); shared.flush(); shared.utterances.at(-1).onend(); practiceButton.click(); shared.flush();
 check(shared.speechSynthesis.speaks === 4, "practice did not allow two plays");
 
 const isolationProvider = mockProvider();
@@ -233,17 +241,18 @@ isolatedPractice.requestPlayback("p", "practice", (state) => practiceStates.push
 const stalePractice = isolationProvider.utterances.at(-1); isolatedPractice.cancel();
 isolatedQuiz.requestPlayback("q", "quiz", (state) => quizStates.push(state));
 stalePractice.onstart(); stalePractice.onend(); stalePractice.onerror();
-check(practiceStates.length === 0 && quizStates.length === 0, "late practice callback polluted quiz/practice state");
+check(practiceStates.join() === "preparing" && quizStates.join() === "preparing", "late practice callback polluted quiz/practice state");
 const staleQuiz = isolationProvider.utterances.at(-1); isolatedQuiz.cancel();
 isolatedPractice.requestPlayback("p", "practice", (state) => practiceStates.push(state));
 staleQuiz.onstart(); staleQuiz.onend(); staleQuiz.onerror();
-check(quizStates.length === 0 && practiceStates.length === 0, "late quiz callback polluted practice/quiz state");
+check(quizStates.join() === "preparing" && practiceStates.join() === "preparing,preparing", "late quiz callback polluted practice/quiz state");
 const cancelsBeforeUnowned = isolationProvider.speechSynthesis.cancels;
 isolatedQuiz.cancel(); check(isolationProvider.speechSynthesis.cancels === cancelsBeforeUnowned, "unowned mode cancel affected another mode");
 
 for (const fixture of [{ throwSpeak: true }, { throwConstructor: true }]) {
   const provider = mockProvider(fixture); const controller = context.modeController(provider, { maxPlaysPerItem: 1 });
-  check(!controller.requestPlayback("q", "audio", () => {}) && !controller.hasPlayback("q") && !controller.requestPlayback("q", "audio", () => {}), `${JSON.stringify(fixture)} refunded quiz playback`);
+  const events = []; controller.requestPlayback("q", "audio", event => events.push(event)); provider.flush();
+  check(events.at(-1) === "error" && !controller.hasPlayback("q") && !controller.requestPlayback("q", "audio", () => {}), `${JSON.stringify(fixture)} refunded quiz playback`);
 }
 check(jlpt.getViewModel().status === "unavailable" && quiz.hasPlayback("jl-001") && quiz.hasPlayback("jl-003"), "JLPT and independent quiz played sets are not isolated");
 

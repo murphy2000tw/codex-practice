@@ -20,6 +20,23 @@ function extractFunction(name) {
 
 function sharedFixture({ throwSpeak = false } = {}) {
   const frames = [];
+  let now = 0;
+  const timers = new Map();
+  let nextTimer = 0;
+  const setTimeout = (callback, delay) => {
+    const id = ++nextTimer;
+    frames.push(callback); // Retain callbacks to simulate delivery after cancellation.
+    timers.set(id, { callback, due: now + delay });
+    return id;
+  };
+  const clearTimeout = (id) => timers.delete(id);
+  const tick = (milliseconds) => {
+    now += milliseconds;
+    for (const [id, timer] of timers) if (timer.due <= now) {
+      timers.delete(id);
+      timer.callback();
+    }
+  };
   const state = { speaks: 0, cancels: 0, resumes: 0, pausedOtherSpeech: true, utterances: [] };
   const japaneseVoice = { lang: "ja-JP", name: "Japanese" };
   function Utterance(text) { this.text = text; state.utterances.push(this); }
@@ -29,7 +46,7 @@ function sharedFixture({ throwSpeak = false } = {}) {
     speak: (utterance) => { state.speaks += 1; state.last = utterance; if (throwSpeak) throw new Error("speak failed"); },
     cancel: () => { state.cancels += 1; },
   };
-  return { frames, state, japaneseVoice, speechSynthesis, Utterance };
+  return { frames, state, japaneseVoice, speechSynthesis, Utterance, setTimeout, clearTimeout, tick, timers };
 }
 
 // General practice/quiz controller: it shares the global synthesis object with an
@@ -37,7 +54,7 @@ function sharedFixture({ throwSpeak = false } = {}) {
 {
   const fixture = sharedFixture(); const events = [];
   const provider = { speechSynthesis: fixture.speechSynthesis, SpeechSynthesisUtterance: fixture.Utterance,
-    requestAnimationFrame: (callback) => fixture.frames.push(callback) };
+    setTimeout: fixture.setTimeout, clearTimeout: fixture.clearTimeout };
   const context = { provider, events, Promise }; vm.createContext(context);
   vm.runInContext(`${extractFunction("createJapaneseListeningModeSpeechController")}
 this.controller=createJapaneseListeningModeSpeechController(provider,{maxPlaysPerItem:1});`, context);
@@ -47,13 +64,14 @@ this.controller=createJapaneseListeningModeSpeechController(provider,{maxPlaysPe
   check(fixture.state.speaks === 0 && fixture.state.cancels === 0 && fixture.state.resumes === 0,
     "general preparation interfered with shared synthesis");
   check(fixture.state.pausedOtherSpeech && events.join() === "preparing", "general preparation resumed other paused speech or omitted status");
-  controller.cancel(); fixture.frames.shift()();
+  controller.cancel(); check(fixture.timers.size === 0, "general timer not cleared"); fixture.tick(1000); fixture.frames.shift()();
   check(fixture.state.speaks === 0 && fixture.state.cancels === 0 && fixture.state.pausedOtherSpeech,
     "cancelling general pending playback interfered with shared synthesis");
 
   controller.resetPlayback();
   check(controller.requestPlayback("two", "次の問題です。", (event) => events.push(event)), "general new item did not schedule");
-  fixture.frames.shift()();
+  fixture.tick(999); check(fixture.state.speaks === 0, "general spoke before 1000ms");
+  fixture.tick(1); fixture.tick(1000);
   check(fixture.state.speaks === 1 && fixture.state.last.voice === fixture.japaneseVoice && fixture.state.last.lang === "ja-JP",
     "general prepared utterance did not use the Japanese voice");
   controller.cancel();
@@ -65,11 +83,11 @@ function createFormalHarness(fixture) {
   const questionB = { section: "listening", sourceId: "jl-002", japanese: "次の問題です。" };
   const context = { Promise, Set, questionA, questionB, window: {
     speechSynthesis: fixture.speechSynthesis, SpeechSynthesisUtterance: fixture.Utterance,
-    requestAnimationFrame: (callback) => fixture.frames.push(callback),
+    setTimeout: fixture.setTimeout, clearTimeout: fixture.clearTimeout,
   } };
   vm.createContext(context);
   vm.runInContext(`
-let japaneseJlptListeningGeneration=0,japaneseJlptListeningUtterance=null,japaneseJlptListeningSubmitted=false;
+let japaneseJlptListeningGeneration=0,japaneseJlptListeningUtterance=null,japaneseJlptListeningSubmitted=false,japaneseJlptListeningTimer=null;
 let japaneseJlptListeningVoice={lang:"ja-JP"},japaneseJlptListeningPlayedSourceIds=new Set();
 let japaneseJlptSession={questionSnapshots:[questionA,questionB],currentIndex:0};
 ${extractFunction("cancelJapaneseJlptListeningUtterance")}
@@ -82,20 +100,23 @@ this.api={request:requestJapaneseJlptListeningPlayback,cancel:cancelJapaneseJlpt
   return { api: context.api, questionA, questionB };
 }
 
-// Formal JLPT uses a manually advanced frame so preparation and stale callbacks
-// cannot be hidden by an immediately executing rAF mock.
+// Formal JLPT uses a manually advanced timer so preparation and stale callbacks
+// cannot be hidden by an immediately executing timer mock.
 {
   const fixture = sharedFixture(); const events = []; const { api, questionA, questionB } = createFormalHarness(fixture);
   check(api.request(questionA, (event) => events.push(event)), "formal first click was rejected");
   check(!api.request(questionA, () => {}), "formal double click scheduled playback");
   check(events.join() === "preparing" && fixture.state.speaks === 0 && fixture.state.cancels === 0 && fixture.state.resumes === 0,
     "formal preparation was not pending or interfered with shared synthesis");
-  api.move(1); fixture.frames.shift()();
+  api.move(1); check(fixture.timers.size === 0, "formal timer not cleared"); fixture.tick(1000); fixture.frames.shift()();
   check(fixture.state.speaks === 0 && fixture.state.cancels === 0 && fixture.state.pausedOtherSpeech,
     "formal question change did not invalidate pending playback locally");
 
   check(api.request(questionB, (event) => events.push(event)), "formal next question did not schedule");
-  fixture.frames.shift()();
+  fixture.tick(999); check(fixture.state.speaks === 0, "formal spoke before 1000ms");
+  fixture.tick(1); fixture.tick(1000);
+  check(events.join() === "preparing,preparing", "formal reported playing before onstart");
+  fixture.state.last.onstart(); check(events.at(-1) === "playing", "formal omitted onstart status");
   check(fixture.state.speaks === 1 && api.state().submitted, "formal frame did not submit playback");
   const stale = fixture.state.last; api.leave();
   check(fixture.state.cancels === 1 && api.state().played.length === 0, "formal return did not cancel submitted speech and reset budget");
@@ -103,7 +124,7 @@ this.api={request:requestJapaneseJlptListeningPlayback,cancel:cancelJapaneseJlpt
 
   api.restore();
   check(api.request(questionA, () => {}), "formal fresh session did not restore playback budget");
-  api.reset(); fixture.frames.shift()();
+  api.reset(); fixture.tick(1000); fixture.frames.at(-1)();
   check(fixture.state.speaks === 1 && fixture.state.cancels === 1 && api.state().played.length === 0,
     "formal reset allowed pending playback or used global cancel");
 }
@@ -113,7 +134,7 @@ this.api={request:requestJapaneseJlptListeningPlayback,cancel:cancelJapaneseJlpt
 {
   const fixture = sharedFixture({ throwSpeak: true }); const events = []; const { api, questionA } = createFormalHarness(fixture);
   check(api.request(questionA, (event) => events.push(event)), "formal error fixture did not schedule");
-  fixture.frames.shift()();
+  fixture.tick(1000);
   check(events.join() === "preparing,error" && api.state().played.includes(questionA.sourceId) && !api.state().utterance && !api.state().submitted,
     "formal playback error refunded budget or retained ownership");
   check(!api.request(questionA, () => {}), "formal playback error allowed a refund replay");
@@ -123,4 +144,26 @@ check(source.includes("function clearJapaneseJlptSession() {\n  resetJapaneseJlp
   source.includes("function resetJapaneseJlptState() {\n  clearJapaneseJlptSession();") &&
   source.includes("function returnToJapaneseJlptSetup() {\n  clearJapaneseJlptSession();"),
 "formal return/reset no longer invalidate listening playback");
+
+
+// Practice completes and permits replay; quiz failures and cancellation keep the spent budget.
+for (const maxPlaysPerItem of [null, 1]) {
+  const fixture = sharedFixture(); const events = [];
+  const provider = { speechSynthesis: fixture.speechSynthesis, SpeechSynthesisUtterance: fixture.Utterance,
+    setTimeout: fixture.setTimeout, clearTimeout: fixture.clearTimeout };
+  const context = { provider }; vm.createContext(context);
+  vm.runInContext(`${extractFunction("createJapaneseListeningModeSpeechController")}
+this.controller=createJapaneseListeningModeSpeechController(provider,{maxPlaysPerItem:${maxPlaysPerItem}});`, context);
+  const controller = context.controller;
+  controller.requestPlayback("one", "原文", event => events.push(event));
+  fixture.tick(999); check(fixture.state.speaks === 0, "practice/quiz submitted before 1000ms");
+  fixture.tick(1); fixture.tick(1000);
+  check(fixture.state.speaks === 1 && events.join() === "preparing" && fixture.state.last.text === "原文", "submission changed text/count/status");
+  fixture.state.last.onstart(); fixture.state.last.onend();
+  check(events.join() === "preparing,playing,ended", "practice/quiz lifecycle incorrect");
+  check(controller.requestPlayback("one", "原文", () => {}) === (maxPlaysPerItem === null), "replay budget incorrect");
+  controller.cancel(); fixture.tick(1000);
+  check(fixture.state.speaks === 1 && fixture.state.cancels === 0 && fixture.state.resumes === 0, "practice pending replay cancellation disturbed speech");
+}
+
 console.log("Japanese listening audio start regression passed.");
