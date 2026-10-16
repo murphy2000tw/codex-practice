@@ -71,7 +71,9 @@ class NodeFixture {
   find(predicate, found = []) { if (predicate(this)) found.push(this); this.children.forEach((child) => child.find && child.find(predicate, found)); return found; }
 }
 const documentFixture = { createElement: (tag) => new NodeFixture(tag), createTextNode: (value) => ({ textContent: String(value) }) };
-const runtime = { console, document: documentFixture, window: { requestAnimationFrame: (callback) => callback() }, Set, Object, Array, Math, NodeFixture };
+const pendingTimers = new Map(); let nextTimer = 0;
+function flushTimers() { for (const [id, callback] of pendingTimers) { pendingTimers.delete(id); callback(); } }
+const runtime = { console, document: documentFixture, window: { setTimeout: (callback) => { const id = ++nextTimer; pendingTimers.set(id, callback); return id; }, clearTimeout: (id) => pendingTimers.delete(id) }, Set, Object, Array, Math, NodeFixture };
 vm.createContext(runtime);
 const functions = [
   "deepFreezeJapaneseJlptValue", "deepCloneJapaneseJlptValue", "isNonEmptyString",
@@ -98,7 +100,7 @@ const JAPANESE_LISTENING_QUESTIONS=${sourceArray};
 let japaneseJlptSession=null,japaneseJlptSessionBuildError=null,japaneseJlptProductCandidates=[{}],japaneseJlptQuestionBank=null,japaneseJlptReadingBank=null;
 let japaneseJlptActiveProfileVersion="17c10-product-v1",japaneseJlptActiveProfileId="site-jlpt-style-product";
 const JAPANESE_JLPT_PRODUCT_PROFILE_VERSION="17c10-product-v1",JAPANESE_JLPT_PRODUCT_PROFILE_ID="site-jlpt-style-product";
-let japaneseJlptListeningCandidates=null,japaneseJlptListeningVoice=null,japaneseJlptListeningGeneration=0,japaneseJlptListeningUtterance=null,japaneseJlptListeningSubmitted=false,japaneseJlptListeningPlayedSourceIds=new Set();
+let japaneseJlptListeningCandidates=null,japaneseJlptListeningVoice=null,japaneseJlptListeningGeneration=0,japaneseJlptListeningUtterance=null,japaneseJlptListeningSubmitted=false,japaneseJlptListeningTimer=null,japaneseJlptListeningPlayedSourceIds=new Set();
 let selectedJapaneseJlptLevel=null;
 const japaneseJlptQuestionContent=new NodeFixture("section"),japaneseJlptStatus=new NodeFixture("div"),japaneseJlptLevelSetup=new NodeFixture("section"),japaneseJlptStartActions=new NodeFixture("div"),japaneseJlptUnavailableNote=new NodeFixture("p"),startJapaneseJlptMockButton=new NodeFixture("button");
 const japaneseJlptLevelButtons=["N5","N4"].map(level=>{const node=new NodeFixture("button");node.dataset={japaneseJlptLevel:level};return node;});
@@ -268,6 +270,8 @@ const buttons = state.content.find((node) => node.tagName === "button");
 const play = buttons.find((button) => button.textContent.includes("播放日文語音"));
 check(play && !play.disabled, "formal listening play button missing");
 play.click();
+check(play.disabled && play.textContent === "準備播放，請稍候…" && provider.state.speaks === 0 && api.get().played.includes(selected.sourceId), "formal click did not immediately prepare and consume budget");
+play.click(); flushTimers();
 check(play.disabled && api.get().played.includes(selected.sourceId) && provider.state.speaks === 1, "first click did not immediately consume formal playback");
 play.click(); check(provider.state.speaks === 1, "disabled formal playback button replayed");
 api.answerJapaneseJlptQuestion(selected.answerIndex);
@@ -282,7 +286,7 @@ for (const options of [{ throwConstructor: true }, { throwSpeak: true }]) {
   api.resetJapaneseJlptState(); // clears previous played set, then restore active fixture
   api.setLevel("N5"); api.setSession({ selectedLevel: "N5", questionSnapshots: [selected], currentIndex: 0, answers: [] }); api.setVoice({ lang: "ja-JP" });
   api.renderJapaneseJlptQuestion(); const failingPlay = api.get().content.find((node) => node.tagName === "button").find((button) => button.textContent.includes("播放"));
-  failingPlay.click();
+  failingPlay.click(); flushTimers();
   check(api.get().played.includes(selected.sourceId), `${JSON.stringify(options)} refunded formal playback`);
   const speaks = failing.state.speaks; failingPlay.click(); check(failing.state.speaks === speaks, `${JSON.stringify(options)} permitted replay`);
 }
@@ -292,6 +296,7 @@ const lifecycle = speechProvider(); api.setProvider(lifecycle); api.setVoice({ l
 api.clearJapaneseJlptSession(); api.setVoice({ lang: "ja-JP" }); api.setLevel("N5");
 api.setSession({ selectedLevel: "N5", questionSnapshots: [selected, { ...selected, sourceId: "jl-next" }], currentIndex: 0, answers: [{ selectedIndex: selected.answerIndex, isCorrect: true }] });
 api.renderJapaneseJlptQuestion(); api.get().content.find((node) => node.tagName === "button").find((button) => button.textContent.includes("播放")).click();
+flushTimers();
 const stale = lifecycle.state.utterances.at(-1); api.advanceJapaneseJlptQuestion();
 check(lifecycle.state.cancels === 1, "changing question did not cancel owned utterance");
 stale.onend(); check(api.get().utterance === null, "stale callback changed the new question lifecycle");

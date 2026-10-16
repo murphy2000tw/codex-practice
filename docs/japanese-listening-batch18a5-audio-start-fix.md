@@ -9,10 +9,10 @@
 
 ## 最小修正
 
-1. 點擊後立即進入「正在準備日文音訊…」，並立即停用按鈕。
-2. 在下一個 `requestAnimationFrame` 才送出原文 utterance；無 rAF 的測試／舊環境以 microtask fallback，沒有固定時間等待。流程不呼叫全域 `resume()`，以免恢復其他 controller 已暫停的語音。
+1. 點擊後立即顯示「準備播放，請稍候…」，並立即停用按鈕。
+2. 正式 JLPT、聽力練習與獨立聽力測驗統一以 `setTimeout(..., 1000)` 等待 1 秒後才送出原文 utterance；瀏覽器忙碌時可能更晚執行。這 1 秒是使用者要求的聆聽準備時間，不代表音質已改善。實際發聲的 `onstart` 到達才顯示播放中。流程不呼叫全域 `resume()`，以免恢復其他 controller 已暫停的語音。
 3. 練習與獨立測驗明確挑選第一個 `ja` voice。播放尚未結束時拒絕重複要求，不再形成 cancel/speak 連續競態；練習播放完成後恢復按鈕，測驗維持一次播放。
-4. 明確區分「已建立但尚未送出」與「已交給 `speechSynthesis.speak()`」：取消前者只讓排程失效，不呼叫全域 `cancel()`；只有取消本 controller 已送出的 utterance 才呼叫 `cancel()`。所有待執行 callback 都再次比對 generation 與 ownership，切題、返回、重設、離開後不能晚到播放上一題。
+4. 明確區分「已建立但尚未送出」與「已交給 `speechSynthesis.speak()`」：取消前者會清除計時器並讓排程失效，不呼叫全域 `cancel()`；只有取消本 controller 已送出的 utterance 才呼叫 `cancel()`。所有待執行 callback 都再次比對 generation 與 ownership，切題、返回、重設、離開後不能晚到播放上一題。
 5. 準備提示與延後排程只代表播放生命週期與跨模式隔離已改善，**不能作為實際音質改善的證據**。
 
 ## 實機重測步驟
@@ -34,3 +34,16 @@
 5. 在另一個聽力題停留至少 30 秒再按播放，確認喇叭重新啟用時沒有爆音、首音完整。
 
 上述兩組「實際爆音與首音聽感」及音訊路徑啟動假設無法由 Node 自動測試，均為 **待使用者實機驗證**；自動回歸只驗證準備、語音選擇、佇列、跨 controller 隔離、取消、額度與 stale callback 行為，不宣稱音質已改善。
+
+
+## 2026-10-16：1 秒聆聽準備時間
+
+PR #311 已合併，本次從最新 main 建立後續分支。保留原文、題數、答案配額與計分；測驗第一次點擊立即消耗播放額度，取消或錯誤不退款，練習結束後仍可重播。
+
+自動驗證：
+
+- `node scripts/check-japanese-listening-audio-start.js`：可控制計時器驗證 999ms 無播放、1000ms 一次播放、原文不變、onstart 狀態、連點、練習重播、切題／重設／返回後舊 callback 失效，準備取消不呼叫 cancel/resume、不影響其他已暫停語音。
+- `node scripts/check-japanese-jlpt-batch18a4-product-activation.js`：正式 JLPT 能力檢查、一次播放額度、錯誤不退款、題數／答案配額／計分與隔離回歸。
+- 聽力 menu、state-isolation、view-isolation、sentence-final，以及 Batch 18A-1／2／3 回歸均通過；`node --check script.js` 通過。
+
+實際首音完整度、爆音及音質仍待 Chrome 與 iPhone Safari 實機驗證。重測時須確認點擊後約 1 秒準備時間，以及準備中切題或返回後不播放舊題。
