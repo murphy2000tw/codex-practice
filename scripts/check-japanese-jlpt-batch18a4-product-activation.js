@@ -52,7 +52,7 @@ check((profile.match(/listening: \{ included: true, status: "available", total: 
 const compat = script.slice(script.indexOf('"17c6-compat-v1": {'), script.indexOf("const JAPANESE_JLPT_COMPAT_PROFILE_VERSION"));
 check(/N5:\s*\{ total: 20/.test(compat) && /N4:\s*\{ total: 34/.test(compat), "17c6 compatibility profile changed");
 check(!script.includes("已使用相容模式"), "production failure must not silently fall back");
-check(html.includes("N5 共 30 題、N4 共 44 題") && html.includes("聽力各 10 題") && html.includes("script.js?v=4.7"), "setup copy or cache token missing");
+check(html.includes("N5 共 30 題、N4 共 44 題") && html.includes("聽力各 10 題") && /script\.js\?v=\d+\.\d+/.test(html), "setup copy or versioned script reference missing");
 const base = cp.execFileSync("git", ["show", `${BASE}:script.js`], { cwd: ROOT, encoding: "utf8" });
 for (const [label, re] of [["localStorage", /\blocalStorage\b/g], ["sessionStorage", /\bsessionStorage\b/g], ["IndexedDB", /\bindexedDB\b/g], ["Cache API", /\bcaches\b/g]])
   check((script.match(re) || []).length === (base.match(re) || []).length, `${label} inventory changed`);

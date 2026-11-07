@@ -67,9 +67,10 @@ const initializer = extractFunction(script, 'initializeListeningPanel');
 });
 
 requireSnippet(backButtonFn, 'resetJapaneseListeningState();', 'back to listening menu resets listening state');
+requireSnippet(resetFn, 'resetJapaneseListeningPractice();', 'every listening reset discards the practice round');
 requireSnippet(backButtonFn, 'renderJapaneseListeningView("menu")', 'back to listening menu renders menu after reset');
 requireSnippet(menuRenderer, 'resetJapaneseListeningState();', 'menu renderer clears previous practice or quiz DOM');
-requireSnippet(initializer, 'resetJapaneseListeningState({ resetPracticeIndex: true });', 'entering listening from home starts from clean state');
+requireSnippet(initializer, 'resetJapaneseListeningState();', 'entering listening from home starts from clean state');
 requireSnippet(script, 'if (["listening", "listeningMenu", "listeningPractice", "listeningQuiz"].includes(currentJapaneseView) && typeof resetJapaneseListeningState === "function")', 'back home detects listening views');
 requireSnippet(script, 'window.showJapaneseContentView("home")', 'back home still navigates home');
 

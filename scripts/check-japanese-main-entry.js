@@ -129,7 +129,7 @@ if (!entrySection) {
   'initializeListeningPanel();',
   'renderJapaneseJlptPanel();',
   'resetJapaneseJlptState();',
-  'resetJapaneseListeningState({ resetPracticeIndex: true });',
+  'resetJapaneseListeningState();',
 ].forEach((snippet) => requireIncludes(script, snippet, 'current Japanese navigation/state-isolation script behavior'));
 
 if (!renderJapaneseView.includes('japaneseContent.replaceChildren(nextViewElement)')) {

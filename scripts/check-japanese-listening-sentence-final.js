@@ -159,7 +159,8 @@ requireIncludes(practiceRenderer, 'createListeningPlayButton(item, status)', 'pr
 requireIncludes(practiceRenderer, 'listening-japanese', 'practice Japanese sentence');
 requireIncludes(practiceRenderer, 'listening-kana', 'practice kana');
 requireIncludes(practiceRenderer, 'listening-translation', 'practice Chinese meaning');
-requireIncludes(practiceRenderer, '(currentListeningIndex + 1) % JAPANESE_LISTENING_QUESTIONS.length', 'practice cycles through all questions');
+requireIncludes(practiceRenderer, 'currentListeningIndex += 1', 'practice advances through its shuffled round');
+requireIncludes(practiceRenderer, 'listeningPracticeItems = createListeningPracticeItems(previousItemId)', 'practice reshuffles with boundary protection');
 
 requireIncludes(viewRenderer, 'startJapaneseListeningQuiz()', 'quiz entry starts fresh');
 requireIncludes(quizRenderer, 'textContent: "聽力測驗"', 'quiz title');
