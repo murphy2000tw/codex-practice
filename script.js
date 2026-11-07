@@ -5681,19 +5681,29 @@ const JAPANESE_LISTENING_QUESTIONS = [
 
 const LISTENING_QUIZ_SIZE = 10;
 
-function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem = null } = {}) {
+function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem = null, unlockOnGesture = false, startTimeoutMs = 0 } = {}) {
   let generation = 0;
   let activeUtterance = null;
   let utteranceSubmitted = false;
   let preparationTimer = null;
+  let startTimer = null;
+  let gestureUtterance = null;
+  let gestureSubmitted = false;
+  const clearStartTimer = () => {
+    if (startTimer !== null) provider.clearTimeout(startTimer);
+    startTimer = null;
+  };
   let playedItemIds = new Set();
   const cancel = () => {
     generation += 1;
     if (preparationTimer !== null) provider.clearTimeout(preparationTimer);
     preparationTimer = null;
-    const ownsSubmittedUtterance = activeUtterance !== null && utteranceSubmitted;
+    clearStartTimer();
+    const ownsSubmittedUtterance = (activeUtterance !== null && utteranceSubmitted) || gestureSubmitted;
     activeUtterance = null;
     utteranceSubmitted = false;
+    gestureUtterance = null;
+    gestureSubmitted = false;
     if (ownsSubmittedUtterance) {
       try { provider.speechSynthesis.cancel(); } catch (_error) {}
     }
@@ -5717,19 +5727,59 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
           ? provider.speechSynthesis.getVoices() : [];
         utterance.voice = Array.isArray(voices)
           ? voices.find((voice) => voice && /^ja(?:-|$)/i.test(voice.lang || "")) || null : null;
-        utterance.onstart = () => { if (isCurrent()) onStatus("playing"); };
-        utterance.onend = () => { if (isCurrent()) { activeUtterance = null; utteranceSubmitted = false; onStatus("ended"); } };
-        utterance.onerror = () => { if (isCurrent()) { activeUtterance = null; utteranceSubmitted = false; onStatus("error"); } };
+        utterance.onstart = () => { if (isCurrent()) { clearStartTimer(); onStatus("playing"); } };
+        utterance.onend = () => { if (isCurrent()) { clearStartTimer(); activeUtterance = null; utteranceSubmitted = false; onStatus("ended"); } };
+        utterance.onerror = () => { if (isCurrent()) { clearStartTimer(); activeUtterance = null; utteranceSubmitted = false; onStatus("error"); } };
         onStatus("preparing");
+        if (unlockOnGesture) {
+          // WebKit removes its iOS gesture restriction inside speak(), before queueing.
+          // Keep this call on the click stack; do not speak the answer during preparation.
+          // https://github.com/WebKit/WebKit/blob/main/Source/WebCore/Modules/speech/SpeechSynthesis.cpp
+          const unlock = new provider.SpeechSynthesisUtterance("");
+          unlock.lang = "ja-JP";
+          unlock.voice = utterance.voice;
+          unlock.volume = 0;
+          gestureUtterance = unlock;
+          gestureSubmitted = true;
+          const releaseUnlock = () => {
+            if (gestureUtterance === unlock) {
+              gestureUtterance = null;
+              gestureSubmitted = false;
+            }
+          };
+          unlock.onend = releaseUnlock;
+          unlock.onerror = releaseUnlock;
+          provider.speechSynthesis.speak(unlock);
+        }
         preparationTimer = provider.setTimeout(() => {
           if (!isCurrent()) return;
           preparationTimer = null;
-          utteranceSubmitted = true;
-          try { provider.speechSynthesis.speak(utterance); }
-          catch (_error) { if (isCurrent()) { activeUtterance = null; utteranceSubmitted = false; onStatus("error"); } }
+          try {
+            // An empty unlock utterance may not emit end/error on every device.
+            if (gestureSubmitted) {
+              gestureUtterance = null;
+              gestureSubmitted = false;
+              provider.speechSynthesis.cancel();
+            }
+            if (startTimeoutMs > 0) {
+              startTimer = provider.setTimeout(() => {
+                if (!isCurrent()) return;
+                cancel();
+                onStatus("timeout");
+              }, startTimeoutMs);
+            }
+            utteranceSubmitted = true;
+            provider.speechSynthesis.speak(utterance);
+          } catch (_error) {
+            if (isCurrent()) {
+              if (unlockOnGesture || startTimeoutMs > 0) cancel();
+              else { activeUtterance = null; utteranceSubmitted = false; }
+              onStatus("error");
+            }
+          }
         }, 1000);
       } catch (_error) {
-        if (activeUtterance === utterance) { activeUtterance = null; utteranceSubmitted = false; }
+        cancel();
         onStatus("error");
         return false;
       }
