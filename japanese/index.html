@@ -8,7 +8,7 @@
   <link rel="manifest" href="../manifest.webmanifest">
   <title>日文學習｜Marco and Vivi學習網</title>
   <meta name="japanese-layout-version" content="2.3">
-  <link rel="stylesheet" href="../style.css?v=2.12">
+  <link rel="stylesheet" href="../style.css?v=2.13">
 </head>
 <body data-japanese-layout-version="2.3">
   <main class="page-shell">
@@ -73,6 +73,12 @@
           <p class="entry-card-text">瀏覽基本 46 字五十音表，點擊平假名聆聽日文發音。</p>
           <span class="entry-card-action">進入平假名發音</span>
         </button>
+        <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="hiraganaListening" aria-pressed="false">
+          <span class="card-number">08</span>
+          <h3 class="entry-card-title">平假名聽音練習</h3>
+          <p class="entry-card-text">聆聽平假名發音，從四個選項選出對應的字。</p>
+          <span class="entry-card-action">開始聽音練習</span>
+        </button>
       </div>
     </section>
 
@@ -105,6 +111,26 @@
       </div>
       <p class="feature-page-description">「を」現代日語通常讀作「お」；「ん」為撥音。語音由瀏覽器與裝置提供，音色及單字讀音可能略有差異；部分語音需要網路連線。</p>
       <noscript>請啟用 JavaScript 才能播放日文發音。</noscript>
+    </section>
+
+    <section id="japaneseHiraganaListeningPanel" hidden aria-labelledby="hiragana-listening-title">
+      <div class="feature-page-header">
+        <div>
+          <p class="eyebrow">Japanese Hiragana Listening</p>
+          <h2 id="hiragana-listening-title" tabindex="-1">平假名聽音練習</h2>
+          <p class="feature-page-description">聽發音，再從四個平假名中選出答案；可重複播放，並持續練習。</p>
+        </div>
+        <button class="secondary-button" type="button" data-japanese-back-home>返回日文首頁</button>
+      </div>
+      <div class="sentence-composition-card hiragana-listening-card">
+        <h3 id="hiragana-listening-question" tabindex="-1"></h3>
+        <button id="hiragana-listening-play" class="secondary-button" type="button">播放日文發音（可重播）</button>
+        <p id="hiragana-listening-status" class="sentence-composition-status" role="status" aria-live="polite"></p>
+        <div id="hiragana-listening-options" class="quiz-options hiragana-listening-options" role="group" aria-label="選出聽到的平假名"></div>
+        <p id="hiragana-listening-feedback" class="quiz-feedback" role="status" aria-live="polite"></p>
+        <button id="hiragana-listening-next" class="answer-button" type="button" hidden>下一題</button>
+      </div>
+      <p class="feature-page-description">語音由瀏覽器與裝置提供，部分語音需要網路連線。「お」與「を」都可成為正解；正解為其中一字時，選項會排除另一個同音字。</p>
     </section>
 
     <section id="japaneseJlptPanel" class="sentence-composition-view" aria-labelledby="japanese-jlpt-title" hidden>
@@ -332,7 +358,8 @@
     window.JAPANESE_JLPT_READING_N4_URL = "../japaneseJlptReadingQuestions.json?v=17c2";
   </script>
   <script src="../japaneseReadingQuestions.js?v=1.0"></script>
-  <script src="../script.js?v=4.8"></script>
+  <script src="../script.js?v=4.9"></script>
   <script src="hiragana.js?v=1.0"></script>
+  <script src="hiraganaListening.js?v=1.1"></script>
 </body>
 </html>

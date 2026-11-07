@@ -96,7 +96,7 @@ if (!entrySection) {
   ['日文學習主入口', '日文學習功能', '單字', '閱讀', '文法', '聽力', '複習中心', 'JLPT 模擬測驗', '進入單字', '進入閱讀', '進入文法', '進入聽力', '開始複習', '進入 JLPT 專區'].forEach((required) => {
     if (!home.includes(required)) failures.push(`Japanese home is missing required entry text: ${required}`);
   });
-  requireEntries(entrySection, ['vocabulary', 'reading', 'grammar', 'listening', 'reviewMenu', 'jlptMock', 'hiragana'], 'Japanese main entry section');
+  requireEntries(entrySection, ['vocabulary', 'reading', 'grammar', 'listening', 'reviewMenu', 'jlptMock', 'hiragana', 'hiraganaListening'], 'Japanese main entry section');
 }
 
 ['分類篩選', '詞性分類', '程度篩選', '搜尋單字', 'id="vocabularyCards"', '測驗題目', 'id="quizContent"', '閱讀練習 第', '閱讀測驗完成', '聽力測驗完成', '播放音訊', '第 1 題 / 10 題', '正確答案：'].forEach((forbidden) => {

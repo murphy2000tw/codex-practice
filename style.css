@@ -3104,3 +3104,37 @@ h1 {
   outline: 3px solid var(--accent-dark);
   outline-offset: 2px;
 }
+
+.hiragana-listening-card {
+  max-width: 720px;
+}
+
+.hiragana-listening-options {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.hiragana-listening-options .hiragana-key {
+  min-height: 72px;
+  text-align: center;
+}
+
+.hiragana-listening-options .hiragana-key:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.hiragana-listening-options .hiragana-key.is-correct {
+  border-color: #82b99b;
+  color: #24583c;
+  background: #edf8f1;
+}
+
+.hiragana-listening-options .hiragana-key.is-wrong {
+  border-color: #e2a092;
+  color: #9f3c2b;
+  background: #fff0ec;
+}
+
+.hiragana-listening-card [hidden] {
+  display: none;
+}
