@@ -43,7 +43,12 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
   const kana = Array.from(japaneseHiraganaPanel.querySelectorAll('[data-hiragana]'), (key) => key.dataset.hiragana);
   const deck = createHiraganaListeningDeck(kana);
   const provider = getJapaneseListeningSpeechProvider();
-  const controller = createJapaneseListeningModeSpeechController(provider);
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const controller = createJapaneseListeningModeSpeechController(provider, {
+    unlockOnGesture: isIOS,
+    startTimeoutMs: 5000,
+  });
   const play = panel.querySelector('#hiragana-listening-play');
   const status = panel.querySelector('#hiragana-listening-status');
   const heading = panel.querySelector('#hiragana-listening-question');
@@ -119,8 +124,9 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
       status.textContent = state === 'preparing' ? '準備播放日文發音…'
         : state === 'playing' ? '正在播放日文發音…'
         : state === 'ended' ? '播放完畢，可再次播放。'
+        : state === 'timeout' ? '語音未能開始，請再次點擊播放；若仍無聲，請確認裝置音量、日文語音設定及網路連線。'
         : '日文語音播放失敗，請確認裝置音量、語音設定及網路連線後再試。';
-      if (state === 'ended' || state === 'error') {
+      if (state === 'ended' || state === 'error' || state === 'timeout') {
         playing = false;
         play.classList.remove('is-playing');
       }

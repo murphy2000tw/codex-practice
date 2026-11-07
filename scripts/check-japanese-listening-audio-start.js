@@ -166,4 +166,78 @@ this.controller=createJapaneseListeningModeSpeechController(provider,{maxPlaysPe
   check(fixture.state.speaks === 1 && fixture.state.cancels === 0 && fixture.state.resumes === 0, "practice pending replay cancellation disturbed speech");
 }
 
-console.log("Japanese listening audio start regression passed.");
+function gestureHarness(fixture, options = { unlockOnGesture: true, startTimeoutMs: 5000 }) {
+  const provider = { speechSynthesis: fixture.speechSynthesis, SpeechSynthesisUtterance: fixture.Utterance,
+    setTimeout: fixture.setTimeout, clearTimeout: fixture.clearTimeout };
+  const context = vm.createContext({ provider, options });
+  vm.runInContext(`${extractFunction("createJapaneseListeningModeSpeechController")}
+this.controller=createJapaneseListeningModeSpeechController(provider,options);`, context);
+  return context.controller;
+}
+
+// Model WebKit's gesture gate, not an actual iPhone audio engine.
+{
+  const fixture = sharedFixture(); const events = [];
+  const submit = fixture.speechSynthesis.speak;
+  let onClickStack = false; let unlocked = false;
+  fixture.speechSynthesis.speak = (utterance) => {
+    if (onClickStack) unlocked = true;
+    if (unlocked) submit(utterance); // Otherwise silently drop the request, like the iOS gate.
+  };
+  const controller = gestureHarness(fixture);
+  onClickStack = true;
+  controller.requestPlayback("one", "あ", event => events.push(event));
+  onClickStack = false;
+  check(fixture.state.speaks === 1 && fixture.state.last.text === "" && fixture.state.last.volume === 0,
+    "unlock must be submitted synchronously, silently, without the answer");
+  const unlock = fixture.state.last;
+  fixture.tick(999); check(fixture.state.speaks === 1, "answer spoke before 1000ms");
+  fixture.tick(1);
+  check(fixture.state.speaks === 2 && fixture.state.last.text === "あ" && fixture.state.last.lang === "ja-JP",
+    "gesture unlock did not allow the delayed Japanese answer");
+  unlock.onerror(); // A late unlock event must not alter the current answer.
+  fixture.state.last.onstart(); fixture.tick(5000);
+  check(events.join() === "preparing,playing", "start did not clear watchdog");
+  fixture.state.last.onend();
+  check(events.at(-1) === "ended" && fixture.timers.size === 0, "normal end retained timer");
+  check(controller.requestPlayback("one", "あ", () => {}), "unlimited replay was lost");
+  controller.cancel(); check(fixture.timers.size === 0, "replay cancel retained timers");
+}
+
+// Silent drops, native errors, thrown speak calls and expired callbacks all settle.
+for (const unlockOnGesture of [false, true]) {
+  const fixture = sharedFixture(); const events = [];
+  const controller = gestureHarness(fixture, { unlockOnGesture, startTimeoutMs: 5000 });
+  controller.requestPlayback("one", "い", event => events.push(event));
+  fixture.tick(1000);
+  const stale = fixture.state.last;
+  fixture.tick(4999); check(events.join() === "preparing", "watchdog fired too early");
+  fixture.tick(1); check(events.join() === "preparing,timeout" && fixture.timers.size === 0,
+    "silent speech drop did not time out and clear timers");
+  stale.onstart(); stale.onend(); stale.onerror();
+  check(events.join() === "preparing,timeout", "stale events overwrote timeout");
+  controller.requestPlayback("one", "い", event => events.push(event));
+  fixture.tick(1000); fixture.state.last.onerror(); fixture.tick(5000);
+  check(events.at(-1) === "error" && !events.slice(2).includes("timeout"), "native error retained watchdog");
+  controller.requestPlayback("one", "い", () => {});
+  const speaks = fixture.state.speaks;
+  controller.cancel(); fixture.tick(1000);
+  check(fixture.state.speaks === speaks && fixture.timers.size === 0, "leaving during preparation submitted answer");
+  controller.requestPlayback("one", "い", event => events.push(event));
+  fixture.tick(1000); const submitted = fixture.state.last;
+  controller.cancel(); fixture.tick(5000); submitted.onstart();
+  check(events.at(-1) === "preparing" && fixture.timers.size === 0, "leaving during start wait leaked status");
+}
+for (const failUnlock of [false, true]) {
+  const fixture = sharedFixture(); const events = [];
+  fixture.speechSynthesis.speak = (utterance) => {
+    if ((utterance.text === "") === failUnlock) throw new Error("native error");
+    utterance.onend?.();
+  };
+  const controller = gestureHarness(fixture);
+  const accepted = controller.requestPlayback("one", "う", event => events.push(event));
+  fixture.tick(1000); fixture.tick(5000);
+  check(accepted === !failUnlock && events.join() === "preparing,error" && fixture.timers.size === 0,
+    "thrown unlock or answer speak did not terminate cleanly");
+}
+console.log("Japanese listening audio start regression passed (legacy defaults, synchronous unlock, 1000ms delay, watchdog, retry, cancellation and stale events).");
