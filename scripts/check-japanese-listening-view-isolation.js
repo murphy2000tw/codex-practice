@@ -81,7 +81,7 @@ requireSnippet(practiceRenderer, 'currentJapaneseView = "listeningPractice"', 'p
 requireSnippet(practiceRenderer, 'setListeningContentNodes(createListeningBackMenuButton(), title, card, next);', 'practice renderer replaces content nodes');
 requireSnippet(quizRenderer, 'currentJapaneseView = "listeningQuiz"', 'quiz renderer uses quiz view state');
 requireSnippet(quizRenderer, 'setListeningContentNodes(...nodes);', 'quiz renderer replaces content nodes');
-requireSnippet(initializer, 'resetJapaneseListeningState({ resetPracticeIndex: true });', 'entering listening hub starts clean');
+requireSnippet(initializer, 'resetJapaneseListeningState();', 'entering listening hub starts clean');
 requireSnippet(initializer, 'renderJapaneseListeningView("menu");', 'entering listening hub renders menu');
 
 if (failures.length > 0) {

@@ -706,6 +706,7 @@ function renderJapaneseView(view) {
   const normalizedView = normalizeJapaneseView(view);
   const nextView = getJapaneseViewElement(normalizedView) ? normalizedView : "home";
   const panelView = ["listeningMenu", "listeningPractice", "listeningQuiz"].includes(nextView) ? "listening" : (["reviewMenu", "vocabularyBook", "mistakeBook"].includes(nextView) ? "review" : nextView);
+  if (currentJapaneseView === "listeningPractice" && panelView !== "listening") resetJapaneseListeningPractice();
   if (japaneseHiraganaPanel) japaneseHiraganaPanel.hidden = panelView !== "hiragana";
   window.japaneseHiraganaPage?.onViewChange(panelView);
   if (japaneseHiraganaListeningPanel) japaneseHiraganaListeningPanel.hidden = panelView !== "hiraganaListening";
@@ -5804,6 +5805,7 @@ let japaneseListeningMenuView = document.querySelector("#japaneseListeningMenuVi
 let japaneseListeningContent = document.querySelector("#japaneseListeningContent");
 let japaneseListeningView = "menu";
 let currentListeningIndex = 0;
+let listeningPracticeItems = [];
 let listeningQuizIndex = 0;
 let listeningQuizCorrectCount = 0;
 let listeningQuizAnswered = false;
@@ -5830,10 +5832,30 @@ function createListeningQuizItems() {
   return shuffleItems(JAPANESE_LISTENING_QUESTIONS).slice(0, Math.min(LISTENING_QUIZ_SIZE, JAPANESE_LISTENING_QUESTIONS.length));
 }
 
-function resetJapaneseListeningState({ resetPracticeIndex = false } = {}) {
+// Practice owns its shuffle; the legacy shuffleItems definitions serve other modes.
+function createListeningPracticeItems(previousItemId = null, random = Math.random) {
+  const items = [...JAPANESE_LISTENING_QUESTIONS];
+  for (let index = items.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(random() * (index + 1));
+    [items[index], items[swapIndex]] = [items[swapIndex], items[index]];
+  }
+  if (items.length > 1 && items[0].id === previousItemId) {
+    const swapIndex = 1 + Math.floor(random() * (items.length - 1));
+    [items[0], items[swapIndex]] = [items[swapIndex], items[0]];
+  }
+  return items;
+}
+
+function resetJapaneseListeningPractice() {
+  listeningPracticeItems = [];
+  currentListeningIndex = 0;
+  listeningPracticeSpeechController.cancel();
+}
+
+function resetJapaneseListeningState() {
   japaneseListeningView = "menu";
   currentJapaneseView = "listeningMenu";
-  if (resetPracticeIndex) currentListeningIndex = 0;
+  resetJapaneseListeningPractice();
   listeningQuizIndex = 0;
   listeningQuizCorrectCount = 0;
   listeningQuizAnswered = false;
@@ -5904,7 +5926,12 @@ function renderJapaneseListeningPractice() {
   listeningQuizAnswered = false;
   listeningQuizSelectedIndex = null;
   currentJapaneseView = "listeningPractice";
-  const item = JAPANESE_LISTENING_QUESTIONS[currentListeningIndex % JAPANESE_LISTENING_QUESTIONS.length];
+  if (currentListeningIndex >= listeningPracticeItems.length) {
+    const previousItemId = listeningPracticeItems.at(-1)?.id;
+    listeningPracticeItems = createListeningPracticeItems(previousItemId);
+    currentListeningIndex = 0;
+  }
+  const item = listeningPracticeItems[currentListeningIndex];
   if (japaneseListeningMenuView) japaneseListeningMenuView.hidden = true;
   const status = Object.assign(document.createElement("p"), { className: "status-message", textContent: "請按播放音訊，可重複播放。" });
   const title = Object.assign(document.createElement("h3"), { className: "reading-content-title", textContent: "聽力練習" });
@@ -5914,12 +5941,12 @@ function renderJapaneseListeningPractice() {
   card.insertBefore(createListeningPlayButton(item, status), card.children[1]);
   card.appendChild(status);
   const next = Object.assign(document.createElement("button"), { className: "secondary-button", type: "button", textContent: "下一題 / 換一題" });
-  next.addEventListener("click", () => { currentListeningIndex = (currentListeningIndex + 1) % JAPANESE_LISTENING_QUESTIONS.length; renderJapaneseListeningPractice(); });
+  next.addEventListener("click", () => { currentListeningIndex += 1; renderJapaneseListeningPractice(); });
   setListeningContentNodes(createListeningBackMenuButton(), title, card, next);
 }
 
 function startJapaneseListeningQuiz() {
-  listeningPracticeSpeechController.cancel();
+  resetJapaneseListeningPractice();
   listeningQuizIndex = 0;
   listeningQuizCorrectCount = 0;
   listeningQuizAnswered = false;
@@ -5991,6 +6018,7 @@ function renderJapaneseListeningQuizResults() {
 
 function renderJapaneseListeningView(view = japaneseListeningView) {
   japaneseListeningView = normalizeJapaneseListeningView(view);
+  if (japaneseListeningView === "practice") resetJapaneseListeningPractice();
   if (japaneseListeningView === "menu") return renderJapaneseListeningMenu();
   if (japaneseListeningView === "practice") return renderJapaneseListeningPractice();
   if (japaneseListeningView === "quiz") return startJapaneseListeningQuiz();
@@ -6010,7 +6038,7 @@ function bindListeningModeButtons(listeningViewElement = document.querySelector(
 
 function initializeListeningPanel() {
   bindListeningModeButtons();
-  resetJapaneseListeningState({ resetPracticeIndex: true });
+  resetJapaneseListeningState();
   renderJapaneseListeningView("menu");
 }
 
