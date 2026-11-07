@@ -683,11 +683,14 @@ function updateModeButtonsForJapaneseTab() {
 
 function normalizeJapaneseView(view) {
   if (view === "vocab") return "vocabulary";
-  if (["home", "vocabulary", "grammar", "reading", "listening", "listeningMenu", "listeningPractice", "listeningQuiz", "reviewMenu", "vocabularyBook", "mistakeBook", "jlptMock"].includes(view)) return view;
+  if (["home", "hiragana", "vocabulary", "grammar", "reading", "listening", "listeningMenu", "listeningPractice", "listeningQuiz", "reviewMenu", "vocabularyBook", "mistakeBook", "jlptMock"].includes(view)) return view;
   return "home";
 }
 
+const japaneseHiraganaPanel = document.querySelector("#japaneseHiraganaPanel");
+
 function getJapaneseViewElement(view) {
+  if (view === "hiragana") return japaneseHiraganaPanel;
   if (view === "home") return japaneseHomeContent;
   if (view === "vocabulary" || view === "grammar") return japaneseMainContent;
   if (view === "reading") return japaneseReadingPanel;
@@ -701,6 +704,8 @@ function renderJapaneseView(view) {
   const normalizedView = normalizeJapaneseView(view);
   const nextView = getJapaneseViewElement(normalizedView) ? normalizedView : "home";
   const panelView = ["listeningMenu", "listeningPractice", "listeningQuiz"].includes(nextView) ? "listening" : (["reviewMenu", "vocabularyBook", "mistakeBook"].includes(nextView) ? "review" : nextView);
+  if (japaneseHiraganaPanel) japaneseHiraganaPanel.hidden = panelView !== "hiragana";
+  window.japaneseHiraganaPage?.onViewChange(panelView);
   currentJapaneseView = nextView;
   activeJapaneseTab = getModePanelView(panelView);
 

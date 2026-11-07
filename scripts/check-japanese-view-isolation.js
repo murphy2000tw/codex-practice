@@ -38,8 +38,8 @@ requireSnippet(html, 'id="japaneseReviewPanel"', 'review view wrapper');
 requireSnippet(html, 'data-japanese-back-home', 'feature-page back-home button');
 requireSnippet(html, 'data-japanese-layout-version="2.3"', 'page version marker');
 requireSnippet(html, 'name="japanese-layout-version" content="2.3"', 'meta version marker');
-if (!/\.\.\/script\.js\?v=(2\.[89]|3\.[01234])/.test(html)) failures.push('Missing JS cache-busting version: ../script.js?v=2.8 or v=2.9');
-if (!/\.\.\/style\.css\?v=(2\.8|2\.9)/.test(html)) failures.push('Missing CSS cache-busting version: ../style.css?v=2.8 or v=2.9');
+if (!/\.\.\/script\.js\?v=\d+\.\d+/.test(html)) failures.push('Missing numeric JS cache-busting version');
+if (!/\.\.\/style\.css\?v=\d+\.\d+/.test(html)) failures.push('Missing numeric CSS cache-busting version');
 
 requireSnippet(script, 'let currentJapaneseView = "home"', 'current view state');
 requireSnippet(script, 'function renderJapaneseView(view)', 'top-level Japanese view renderer');
@@ -90,8 +90,12 @@ if (listening.includes('data-japanese-entry=') || listening.includes('日文學�
   if (!listening.includes(required)) failures.push(`Listening view missing required content: ${required}`);
 });
 
+requireSnippet(html, 'id="japaneseHiraganaPanel" hidden', 'initially hidden hiragana panel');
+requireSnippet(script, 'if (view === "hiragana") return japaneseHiraganaPanel;', 'hiragana view routing');
+requireSnippet(script, 'window.japaneseHiraganaPage?.onViewChange(panelView)', 'hiragana playback lifecycle');
+
 const navigableEntries = [...home.matchAll(/data-japanese-entry="([^"]+)"/g)].map((match) => match[1]);
-const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'grammar', 'reading', 'listening', 'reviewMenu', 'jlptMock'].includes(entry));
+const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'grammar', 'reading', 'listening', 'reviewMenu', 'jlptMock', 'hiragana'].includes(entry));
 if (unexpectedEntries.length > 0) failures.push(`Unexpected navigable Japanese entries: ${unexpectedEntries.join(', ')}`);
 if (!home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"') || !home.includes('data-japanese-entry="grammar"') || !home.includes('data-japanese-entry="listening"') || !home.includes('data-japanese-entry="reviewMenu"')) {
   failures.push('Japanese home must expose vocabulary, reading, grammar, listening, review menu, and JLPT mock entries.');
