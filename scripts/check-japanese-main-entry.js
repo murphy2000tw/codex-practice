@@ -58,6 +58,14 @@ function requireEntries(container, expectedEntries, label) {
   if (missing.length > 0) failures.push(`${label} is missing entries: ${missing.join(', ')}`);
 }
 
+const hiragana = extractById(html, 'japaneseHiraganaPanel');
+const kana = [...hiragana.matchAll(/data-hiragana="([^"]+)"/g)].map((match) => match[1]);
+if (kana.join('') !== 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん') {
+  failures.push('Hiragana chart must contain the 46 basic kana in gojuon order.');
+}
+requireIncludes(hiragana, 'data-japanese-back-home', 'hiragana return navigation');
+requireIncludes(html, 'src="hiragana.js?v=', 'hiragana pronunciation script');
+
 const root = extractById(html, 'japaneseContent');
 const home = extractById(html, 'japaneseHomeContent');
 const entrySection = home.match(/<section class="entry-section japanese-main-entry-section"[\s\S]*?<\/section>/)?.[0] ?? '';
@@ -70,8 +78,8 @@ const listeningMenu = extractById(html, 'japaneseListeningMenuView');
 
 requireIncludes(html, 'data-japanese-layout-version="2.3"', 'Japanese layout version marker');
 requireIncludes(html, 'name="japanese-layout-version" content="2.3"', 'Japanese layout meta version marker');
-if (!/\.\.\/script\.js\?v=(2\.[89]|3\.[01234])/.test(html)) failures.push('Missing script cache-busting version: ../script.js?v=2.8, v=2.9, or v=3.x');
-if (!/\.\.\/style\.css\?v=(2\.8|2\.9)/.test(html)) failures.push('Missing style cache-busting version: ../style.css?v=2.8 or v=2.9');
+if (!/\.\.\/script\.js\?v=\d+\.\d+/.test(html)) failures.push('Missing numeric script cache-busting version');
+if (!/\.\.\/style\.css\?v=\d+\.\d+/.test(html)) failures.push('Missing numeric style cache-busting version');
 requireIncludes(html, 'data-japanese-back-home', 'feature-page return-to-home controls');
 
 if (!root || !home || !vocabulary || !reading || !listening) {
@@ -88,7 +96,7 @@ if (!entrySection) {
   ['日文學習主入口', '日文學習功能', '單字', '閱讀', '文法', '聽力', '複習中心', 'JLPT 模擬測驗', '進入單字', '進入閱讀', '進入文法', '進入聽力', '開始複習', '進入 JLPT 專區'].forEach((required) => {
     if (!home.includes(required)) failures.push(`Japanese home is missing required entry text: ${required}`);
   });
-  requireEntries(entrySection, ['vocabulary', 'reading', 'grammar', 'listening', 'reviewMenu', 'jlptMock'], 'Japanese main entry section');
+  requireEntries(entrySection, ['vocabulary', 'reading', 'grammar', 'listening', 'reviewMenu', 'jlptMock', 'hiragana'], 'Japanese main entry section');
 }
 
 ['分類篩選', '詞性分類', '程度篩選', '搜尋單字', 'id="vocabularyCards"', '測驗題目', 'id="quizContent"', '閱讀練習 第', '閱讀測驗完成', '聽力測驗完成', '播放音訊', '第 1 題 / 10 題', '正確答案：'].forEach((forbidden) => {
