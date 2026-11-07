@@ -1,16 +1,39 @@
-function buildHiraganaListeningQuestion(kana, random = Math.random) {
-  const answer = kana[Math.floor(random() * kana.length)];
+function shuffleHiraganaListeningItems(items, random) {
+  for (let index = items.length - 1; index > 0; index -= 1) {
+    const other = Math.floor(random() * (index + 1));
+    [items[index], items[other]] = [items[other], items[index]];
+  }
+  return items;
+}
+
+function createHiraganaListeningDeck(kana, random = Math.random) {
+  let cards = [];
+  let previousAnswer = null;
+  return {
+    next() {
+      if (cards.length === 0) {
+        cards = shuffleHiraganaListeningItems([...kana], random);
+        if (cards.length > 1 && cards[0] === previousAnswer) {
+          const other = 1 + Math.floor(random() * (cards.length - 1));
+          [cards[0], cards[other]] = [cards[other], cards[0]];
+        }
+      }
+      previousAnswer = cards.shift();
+      return previousAnswer;
+    },
+    reset() {
+      cards = [];
+      previousAnswer = null;
+    },
+  };
+}
+
+function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
   // Keep both kana eligible as answers, but exclude the homophone from distractors.
   const homophone = answer === 'お' ? 'を' : answer === 'を' ? 'お' : null;
   const distractors = kana.filter((character) => character !== answer && character !== homophone);
-  const shuffle = (items) => {
-    for (let index = items.length - 1; index > 0; index -= 1) {
-      const other = Math.floor(random() * (index + 1));
-      [items[index], items[other]] = [items[other], items[index]];
-    }
-    return items;
-  };
-  return { answer, options: shuffle([answer, ...shuffle(distractors).slice(0, 3)]) };
+  const options = [answer, ...shuffleHiraganaListeningItems(distractors, random).slice(0, 3)];
+  return { answer, options: shuffleHiraganaListeningItems(options, random) };
 }
 
 (() => {
@@ -18,6 +41,7 @@ function buildHiraganaListeningQuestion(kana, random = Math.random) {
   const panel = japaneseHiraganaListeningPanel;
   if (!panel) return;
   const kana = Array.from(japaneseHiraganaPanel.querySelectorAll('[data-hiragana]'), (key) => key.dataset.hiragana);
+  const deck = createHiraganaListeningDeck(kana);
   const provider = getJapaneseListeningSpeechProvider();
   const controller = createJapaneseListeningModeSpeechController(provider);
   const play = panel.querySelector('#hiragana-listening-play');
@@ -52,7 +76,7 @@ function buildHiraganaListeningQuestion(kana, random = Math.random) {
 
   function showQuestion() {
     stopPlayback();
-    question = buildHiraganaListeningQuestion(kana);
+    question = buildHiraganaListeningQuestion(kana, deck.next());
     questionNumber += 1;
     answered = false;
     heading.textContent = `第 ${questionNumber} 題：請選出聽到的平假名`;
@@ -107,6 +131,8 @@ function buildHiraganaListeningQuestion(kana, random = Math.random) {
     onViewChange(view) {
       visible = view === 'hiraganaListening';
       stopPlayback();
+      deck.reset();
+      question = null;
       if (visible) {
         questionNumber = 0;
         showQuestion();
