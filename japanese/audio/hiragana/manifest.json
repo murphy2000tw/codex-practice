@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "source": {
+    "fileName": "639584098281062622_あいうえお発音.m4a",
+    "sha256": "75738331bdd399150536bb40282ac61ef190890144d140bdea43e73012f13b43",
+    "containerDurationSeconds": 89.322667,
+    "decodedDurationSeconds": 89.278667,
+    "streamStartSeconds": 0.044
+  },
+  "timeReference": "Seconds from first decoded sample after resetting PTS to zero; not AAC packet boundaries.",
+  "method": "Decode AAC, trim PCM in quiet gaps, retain natural onset and decay, export mono 48000 Hz PCM16 WAV; no gain, denoise, time stretch, or fades.",
+  "inspection": "46 separated sound events at -35 dB / 250 ms across the source; only the first five are used, in the user-supplied a-i-u-e-o order. First-five vowel resonance patterns support that order. No mapping is inferred for later events.",
+  "segments": [
+    {
+      "kana": "あ",
+      "file": "a.wav",
+      "startSeconds": 0.95,
+      "endSeconds": 1.75,
+      "durationSeconds": 0.8,
+      "sha256": "3cfcfb1b8f6bef6becaa301470ad2f1bed7e6b2a6b96641f1c79679ea5c4fec4"
+    },
+    {
+      "kana": "い",
+      "file": "i.wav",
+      "startSeconds": 2.95,
+      "endSeconds": 3.85,
+      "durationSeconds": 0.9,
+      "sha256": "100e7231cd0727aa3137e6835a500d687b0c61b5419dc366f57d165ac2712e70"
+    },
+    {
+      "kana": "う",
+      "file": "u.wav",
+      "startSeconds": 5.2,
+      "endSeconds": 6.1,
+      "durationSeconds": 0.9,
+      "sha256": "7c80cd77b40c0a6c29cff8f5a90edf5667eef6a36406b078feb0ce253689da65"
+    },
+    {
+      "kana": "え",
+      "file": "e.wav",
+      "startSeconds": 7.15,
+      "endSeconds": 7.95,
+      "durationSeconds": 0.8,
+      "sha256": "158e6b346861a91ccb5cee057af9a3fa6e7bffb6352ad19eb7da0478eb0c3640"
+    },
+    {
+      "kana": "お",
+      "file": "o.wav",
+      "startSeconds": 9.2,
+      "endSeconds": 9.85,
+      "durationSeconds": 0.65,
+      "sha256": "e93c9ca882b63a90686699e3c79d5b0c55451077db4df43c33fca3b9bb83835b"
+    }
+  ]
+}
