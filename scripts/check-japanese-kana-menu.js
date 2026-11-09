@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => {
         assert.equal(await page.locator(':focus').getAttribute('id'), `${view}-title`);
         assert.deepEqual(await activeView().locator('.entry-card-title').allTextContents(), labels);
         assert.equal(await activeView().locator('[data-japanese-kana-back]').getAttribute('data-japanese-kana-back'), parent);
-        assert.equal(await activeView().locator('button[disabled]').count(), view.startsWith('katakana') ? 4 : view.startsWith('hiragana') ? 3 : 0);
+        assert.equal(await activeView().locator('button[disabled]').count(), view === 'katakanaListeningMenu' ? 4 : /^(hiragana|katakana)/.test(view) ? 3 : 0);
         for (const disabled of await activeView().locator('button[disabled]').all()) {
           assert.match(await disabled.innerText(), /準備中/);
           assert.equal(await disabled.getAttribute('data-japanese-kana-entry'), null);
@@ -77,11 +77,15 @@ const server = http.createServer((req, res) => {
           await activate(entry);
           if (menus[target]) await visit(target);
           else {
-            await page.waitForFunction(() => document.activeElement?.id === 'hiragana-title' || document.activeElement?.id === 'hiragana-listening-question');
-            assert.equal(await activeView().getAttribute('id'), target === 'hiragana' ? 'japaneseHiraganaPanel' : 'japaneseHiraganaListeningPanel');
-            if (target === 'hiragana') {
-              assert.equal(await page.locator('[data-hiragana]').count(), 46);
-              await activate(page.locator('[data-hiragana="あ"]'));
+            const chart = target === 'hiragana' || target === 'katakana';
+            const headingId = chart ? `${target}-title` : 'hiragana-listening-question';
+            await page.waitForFunction((id) => document.activeElement?.id === id, headingId);
+            // Let the page lifecycle's queued heading focus settle before keyboard activation.
+            await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
+            assert.equal(await activeView().getAttribute('id'), { hiragana: 'japaneseHiraganaPanel', katakana: 'japaneseKatakanaPanel', hiraganaListening: 'japaneseHiraganaListeningPanel' }[target]);
+            if (chart) {
+              assert.equal(await page.locator(`[data-${target}]`).count(), 46);
+              await activate(page.locator(`[data-${target}="${target === 'hiragana' ? 'あ' : 'ア'}"]`));
             } else {
               assert.match(await page.locator('#hiragana-listening-question').innerText(), /第 1 題/);
               await activate(page.locator('#hiragana-listening-play'));
@@ -93,7 +97,8 @@ const server = http.createServer((req, res) => {
               assert.equal(await page.locator('#hiragana-listening-feedback').innerText(), '');
               await activate(page.locator('#hiragana-listening-play'));
             }
-            assert.equal(await page.evaluate(() => window.kanaTestAudio.at(-1).paused), false);
+            assert.equal(await page.evaluate(() => window.kanaTestAudio.at(-1).paused), false,
+              `${target} must start playback; page errors: ${errors.join('; ')}`);
             await activate(activeView().locator('[data-japanese-kana-back]'), 'Space');
             assert.equal(await page.evaluate(() => window.kanaTestAudio.every((audio) => audio.paused)), true, 'return must stop active playback');
           }
@@ -121,7 +126,7 @@ const server = http.createServer((req, res) => {
       await page.keyboard.press('Tab');
       assert.equal(await page.evaluate(() => Boolean(document.activeElement?.closest('#hiraganaPracticeMenu'))), false);
       assert.deepEqual(errors, [], 'page must have no runtime errors');
-      console.log(`PASS kana navigation: ${mobile ? 'mobile touch 390px' : 'desktop keyboard'}, all 7 menus, 14 disabled leaves, both drills, return focus, stop playback, re-entry and Tab order`);
+      console.log(`PASS kana navigation: ${mobile ? 'mobile touch 390px' : 'desktop keyboard'}, all 7 menus, 13 disabled leaves, three practice pages, return focus, stop playback, re-entry and Tab order`);
       await context.close();
     }
     // Decode and play the existing WAVs through the real browser Audio API.
@@ -152,5 +157,89 @@ const server = http.createServer((req, res) => {
     }
     console.log('PASS real Chromium HTML Audio: existing か chart recording and あ listening recording decode, end, replay and stop on parent return');
     await context.close();
+    for (const mobile of [false, true]) {
+      const context = await browser.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1280, height: 900 }, isMobile: mobile, hasTouch: mobile });
+      const page = await context.newPage();
+      page.setDefaultTimeout(10000);
+      const errors = [];
+      page.on('pageerror', (error) => errors.push(error.message));
+      await page.addInitScript(() => {
+        window.kanaTestAudio = [];
+        window.kanaTestTTSCalls = 0;
+        const NativeAudio = window.Audio;
+        window.Audio = class extends NativeAudio {
+          constructor(src) { super(src); window.kanaTestAudio.push(this); }
+        };
+        Object.defineProperty(window, 'speechSynthesis', { value: {
+          getVoices: () => [], addEventListener() {}, cancel() {},
+          speak() { window.kanaTestTTSCalls++; throw new Error('Katakana must not use TTS'); },
+        } });
+      });
+      await page.goto(`http://127.0.0.1:${server.address().port}/japanese/`);
+      const activate = async (locator) => {
+        await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
+        if (mobile) await locator.tap();
+        else { await locator.focus(); await locator.press('Enter'); }
+      };
+      await activate(page.locator('[data-japanese-entry="kanaMenu"]'));
+      for (const target of ['kanaPracticeMenu', 'katakanaPracticeMenu', 'katakana']) await activate(page.locator(`[data-japanese-kana-entry="${target}"]`));
+      await page.waitForFunction(() => document.activeElement?.id === 'katakana-title');
+      await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
+      const kana = [...'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン'];
+      const files = 'a i u e o ka ki ku ke ko sa shi su se so ta chi tsu te to na ni nu ne no ha hi fu he ho ma mi mu me mo ya yu yo ra ri ru re ro wa wo n'.split(' ');
+      for (const [index, character] of kana.entries()) {
+        await activate(page.locator(`[data-katakana="${character}"]`));
+        await page.waitForFunction((kana) => document.querySelector('#katakana-status').textContent.includes(`「${kana}」播放完畢`), character);
+        const audio = await page.evaluate(() => { const audio = window.kanaTestAudio.at(-1); return { src: audio.src, duration: audio.duration, paused: audio.paused }; });
+        assert.equal(new URL(audio.src).pathname, `/japanese/audio/hiragana/${files[index]}.wav`);
+        assert.ok(audio.duration > 0); assert.ok(audio.paused);
+      }
+      await activate(page.locator('[data-katakana="ア"]'));
+      await page.evaluate(() => {
+        window.kanaOldAudio = window.kanaTestAudio.at(-1);
+        window.kanaStaleEvents = [window.kanaOldAudio.onplaying, window.kanaOldAudio.onended, window.kanaOldAudio.onerror];
+      });
+      await activate(page.locator('[data-katakana="ア"]'));
+      assert.equal(await page.evaluate(() => window.kanaOldAudio.paused), true, 'replay stops old recording');
+      await activate(page.locator('[data-katakana="ン"]'));
+      assert.equal(await page.evaluate(() => {
+        const before = document.querySelector('#katakana-status').textContent;
+        window.kanaStaleEvents.forEach((event) => event?.());
+        return before === document.querySelector('#katakana-status').textContent;
+      }), true, 'stale events must not overwrite the new katakana state');
+      await activate(page.locator('[data-japanese-kana-back="katakanaPracticeMenu"]'));
+      assert.equal(await page.evaluate(() => window.kanaTestAudio.every((audio) => audio.paused)), true);
+      assert.equal(await page.locator(':focus').getAttribute('data-japanese-kana-entry'), 'katakana');
+      await activate(page.locator('[data-japanese-kana-entry="katakana"]'));
+      await activate(page.locator('[data-katakana="イ"]'));
+      await page.evaluate(() => {
+        const audio = window.kanaTestAudio.at(-1);
+        window.kanaStaleEvents = [audio.onplaying, audio.onended, audio.onerror];
+        window.showJapaneseContentView('hiragana');
+      });
+      await page.locator('[data-hiragana="あ"]').click();
+      assert.equal(await page.evaluate(() => {
+        const before = document.querySelector('#hiragana-status').textContent;
+        window.kanaStaleEvents.forEach((event) => event?.());
+        return before === document.querySelector('#hiragana-status').textContent && window.kanaTestAudio.slice(0, -1).every((audio) => audio.paused);
+      }), true, 'old katakana events cannot affect hiragana playback');
+      await page.evaluate(() => window.showJapaneseContentView('katakana'));
+      await page.route('**/audio/hiragana/ka.wav*', (route) => route.fulfill({ status: 404, body: 'missing' }));
+      await activate(page.locator('[data-katakana="カ"]'));
+      await page.waitForFunction(() => document.querySelector('#katakana-status').textContent.includes('未能播放'));
+      assert.equal(await page.locator('[data-katakana].is-playing').count(), 0);
+      await page.unroute('**/audio/hiragana/ka.wav*');
+      await activate(page.locator('[data-katakana="カ"]'));
+      await page.waitForFunction(() => document.querySelector('#katakana-status').textContent.includes('播放完畢'));
+      await activate(page.locator('[data-katakana="ヲ"]'));
+      await page.evaluate(() => window.dispatchEvent(new Event('pagehide')));
+      assert.equal(await page.evaluate(() => window.kanaTestAudio.every((audio) => audio.paused)), true);
+      assert.equal(await page.locator('[data-katakana].is-playing').count(), 0);
+      assert.equal(await page.evaluate(() => window.kanaTestTTSCalls), 0);
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+      assert.deepEqual(errors, []);
+      console.log(`PASS katakana real HTML Audio: ${mobile ? '390px touch' : 'desktop keyboard'}, all 46 existing WAVs ended, no TTS, replay/rapid switch/return/pagehide stop, stale-event isolation across pages, HTTP 404 and retry`);
+      await context.close();
+    }
   } finally { await browser.close(); }
 })().catch((error) => { console.error(error); process.exitCode = 1; }).finally(() => server.close());

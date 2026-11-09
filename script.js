@@ -687,14 +687,16 @@ function updateModeButtonsForJapaneseTab() {
 function normalizeJapaneseView(view) {
   if (view === "vocab") return "vocabulary";
   if (japaneseKanaViews.has(view)) return view;
-  if (["home", "hiragana", "hiraganaListening", "vocabulary", "grammar", "reading", "listening", "listeningMenu", "listeningPractice", "listeningQuiz", "reviewMenu", "vocabularyBook", "mistakeBook", "jlptMock"].includes(view)) return view;
+  if (["home", "hiragana", "katakana", "hiraganaListening", "vocabulary", "grammar", "reading", "listening", "listeningMenu", "listeningPractice", "listeningQuiz", "reviewMenu", "vocabularyBook", "mistakeBook", "jlptMock"].includes(view)) return view;
   return "home";
 }
 
 const japaneseHiraganaListeningPanel = document.querySelector("#japaneseHiraganaListeningPanel");
 const japaneseHiraganaPanel = document.querySelector("#japaneseHiraganaPanel");
+const japaneseKatakanaPanel = document.querySelector("#japaneseKatakanaPanel");
 
 function getJapaneseViewElement(view) {
+  if (view === "katakana") return japaneseKatakanaPanel;
   if (japaneseKanaViews.has(view)) return japaneseKanaViews.get(view);
   if (view === "hiraganaListening") return japaneseHiraganaListeningPanel;
   if (view === "hiragana") return japaneseHiraganaPanel;
@@ -715,6 +717,8 @@ function renderJapaneseView(view) {
   if (currentJapaneseView === "listeningQuiz" && panelView !== "listening") cancelJapaneseListeningSpeech("quiz");
   if (japaneseHiraganaPanel) japaneseHiraganaPanel.hidden = panelView !== "hiragana";
   window.japaneseHiraganaPage?.onViewChange(panelView);
+  if (japaneseKatakanaPanel) japaneseKatakanaPanel.hidden = panelView !== "katakana";
+  window.japaneseKatakanaPage?.onViewChange(panelView);
   if (japaneseHiraganaListeningPanel) japaneseHiraganaListeningPanel.hidden = panelView !== "hiraganaListening";
   window.japaneseHiraganaListeningPage?.onViewChange(panelView);
   japaneseKanaViews.forEach((panel, name) => { panel.hidden = panelView !== name; });
