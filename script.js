@@ -582,6 +582,9 @@ const japaneseListeningPanel = document.querySelector("#japaneseListeningPanel")
 const japaneseTabButtons = document.querySelectorAll(".japanese-tab-button");
 const japaneseEntryButtons = document.querySelectorAll("[data-japanese-entry]");
 const japaneseBackHomeButtons = document.querySelectorAll("[data-japanese-back-home]");
+const japaneseKanaViews = new Map(Array.from(document.querySelectorAll("[data-japanese-kana-view]"),
+  (panel) => [panel.dataset.japaneseKanaView, panel]));
+const japaneseKanaNavigationButtons = document.querySelectorAll("[data-japanese-kana-entry], [data-japanese-kana-back]");
 const modeButtons = document.querySelectorAll(".mode-button[data-mode-group]");
 const modePanels = document.querySelectorAll("[data-mode-panel]");
 const japaneseFeatureEyebrow = document.querySelector("#japanese-feature-eyebrow");
@@ -683,6 +686,7 @@ function updateModeButtonsForJapaneseTab() {
 
 function normalizeJapaneseView(view) {
   if (view === "vocab") return "vocabulary";
+  if (japaneseKanaViews.has(view)) return view;
   if (["home", "hiragana", "hiraganaListening", "vocabulary", "grammar", "reading", "listening", "listeningMenu", "listeningPractice", "listeningQuiz", "reviewMenu", "vocabularyBook", "mistakeBook", "jlptMock"].includes(view)) return view;
   return "home";
 }
@@ -691,6 +695,7 @@ const japaneseHiraganaListeningPanel = document.querySelector("#japaneseHiragana
 const japaneseHiraganaPanel = document.querySelector("#japaneseHiraganaPanel");
 
 function getJapaneseViewElement(view) {
+  if (japaneseKanaViews.has(view)) return japaneseKanaViews.get(view);
   if (view === "hiraganaListening") return japaneseHiraganaListeningPanel;
   if (view === "hiragana") return japaneseHiraganaPanel;
   if (view === "home") return japaneseHomeContent;
@@ -712,6 +717,7 @@ function renderJapaneseView(view) {
   window.japaneseHiraganaPage?.onViewChange(panelView);
   if (japaneseHiraganaListeningPanel) japaneseHiraganaListeningPanel.hidden = panelView !== "hiraganaListening";
   window.japaneseHiraganaListeningPage?.onViewChange(panelView);
+  japaneseKanaViews.forEach((panel, name) => { panel.hidden = panelView !== name; });
   currentJapaneseView = nextView;
   activeJapaneseTab = getModePanelView(panelView);
 
@@ -4506,6 +4512,22 @@ japaneseEntryButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     event.preventDefault();
     window.showJapaneseContentView(button.dataset.japaneseEntry);
+    if (button.dataset.japaneseEntry === "kanaMenu") {
+      japaneseKanaViews.get("kanaMenu")?.querySelector("h2").focus();
+    }
+  });
+});
+japaneseKanaNavigationButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const previousView = currentJapaneseView;
+    const target = button.dataset.japaneseKanaEntry || button.dataset.japaneseKanaBack;
+    window.showJapaneseContentView(target);
+    const panel = getJapaneseViewElement(target);
+    // Returning restores the entry button; entering a menu announces its heading.
+    const focusTarget = button.hasAttribute("data-japanese-kana-back")
+      ? panel?.querySelector(`[data-japanese-kana-entry="${previousView}"], [data-japanese-entry="${previousView}"]`)
+      : panel?.querySelector("h2");
+    focusTarget?.focus();
   });
 });
 if (backToJapaneseHomeFromJlptButton) {

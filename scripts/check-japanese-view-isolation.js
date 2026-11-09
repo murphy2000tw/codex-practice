@@ -95,7 +95,7 @@ requireSnippet(script, 'if (view === "hiragana") return japaneseHiraganaPanel;',
 requireSnippet(script, 'window.japaneseHiraganaPage?.onViewChange(panelView)', 'hiragana playback lifecycle');
 
 const navigableEntries = [...home.matchAll(/data-japanese-entry="([^"]+)"/g)].map((match) => match[1]);
-const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'grammar', 'reading', 'listening', 'reviewMenu', 'jlptMock', 'hiragana', 'hiraganaListening'].includes(entry));
+const unexpectedEntries = navigableEntries.filter((entry) => !['vocabulary', 'grammar', 'reading', 'listening', 'reviewMenu', 'jlptMock', 'kanaMenu'].includes(entry));
 if (unexpectedEntries.length > 0) failures.push(`Unexpected navigable Japanese entries: ${unexpectedEntries.join(', ')}`);
 if (!home.includes('data-japanese-entry="vocabulary"') || !home.includes('data-japanese-entry="reading"') || !home.includes('data-japanese-entry="grammar"') || !home.includes('data-japanese-entry="listening"') || !home.includes('data-japanese-entry="reviewMenu"')) {
   failures.push('Japanese home must expose vocabulary, reading, grammar, listening, review menu, and JLPT mock entries.');

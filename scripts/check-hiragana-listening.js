@@ -83,7 +83,7 @@ resetDeck.reset();
 assert.deepEqual(Array.from({ length: 46 }, () => resetDeck.next()), kana);
 resetDeck.reset();
 assert.equal(resetDeck.next(), kana[0]);
-assert.match(html, /data-japanese-entry="hiraganaListening"/);
+assert.match(html, /data-japanese-kana-entry="hiraganaListening"/);
 assert.match(html, /id="japaneseHiraganaListeningPanel" hidden/);
 assert.match(html, /src="hiraganaListening.js\?v=/);
 console.log('Hiragana listening checks passed: 100 complete rounds, boundary collision repair, session reset, 33,000 questions, all 46 answers in all four positions, unique eligible distractors, お/を exclusion, immutable source and page entry.');
