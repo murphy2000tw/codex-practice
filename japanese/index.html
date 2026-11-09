@@ -275,11 +275,11 @@
         <button class="secondary-button" type="button" data-japanese-kana-back="kanaListeningMenu">返回上一層：平片假名聽音練習</button>
       </div>
       <div class="entry-grid japanese-main-entry-grid">
-        <button class="word-card entry-card japanese-main-entry-card is-coming-soon" type="button" disabled>
+        <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-kana-entry="katakanaListening">
           <span class="card-number">01</span>
           <h3 class="entry-card-title">片假名聽音練習</h3>
-          <p class="entry-card-text">此項目準備中。</p>
-          <span class="entry-card-action is-muted">準備中</span>
+          <p class="entry-card-text">聽基本片假名錄音，從四個選項選出答案。</p>
+          <span class="entry-card-action">進入練習</span>
         </button>
         <button class="word-card entry-card japanese-main-entry-card is-coming-soon" type="button" disabled>
           <span class="card-number">02</span>
@@ -376,6 +376,26 @@
         <button id="hiragana-listening-next" class="answer-button" type="button" hidden>下一題</button>
       </div>
       <p class="feature-page-description">語音由瀏覽器與裝置提供，部分語音需要網路連線。「お」與「を」都可成為正解；正解為其中一字時，選項會排除另一個同音字。</p>
+    </section>
+
+    <section id="japaneseKatakanaListeningPanel" hidden aria-labelledby="katakana-listening-title">
+      <div class="feature-page-header">
+        <div>
+          <p class="eyebrow">Japanese Katakana Listening</p>
+          <h2 id="katakana-listening-title" tabindex="-1">片假名聽音練習</h2>
+          <p class="feature-page-description">聽錄音，再從四個片假名中選出答案；每輪 46 字各出題一次，答對或答錯都計入，可重播本題錄音。</p>
+        </div>
+        <button class="secondary-button" type="button" data-japanese-kana-back="katakanaListeningMenu">返回上一層：片假名聽音練習</button>
+      </div>
+      <div class="sentence-composition-card hiragana-listening-card">
+        <h3 id="katakana-listening-question" tabindex="-1"></h3>
+        <button id="katakana-listening-play" class="secondary-button" type="button">播放日文發音（可重播）</button>
+        <p id="katakana-listening-status" class="sentence-composition-status" role="status" aria-live="polite"></p>
+        <div id="katakana-listening-options" class="quiz-options hiragana-listening-options" role="group" aria-label="選出聽到的片假名"></div>
+        <p id="katakana-listening-feedback" class="quiz-feedback" role="status" aria-live="polite"></p>
+        <button id="katakana-listening-next" class="answer-button" type="button" hidden>下一題</button>
+      </div>
+      <p class="feature-page-description">「オ」與「ヲ」通常同音，兩者都可成為正解；其中一字出題時，選項會排除另一字。返回選單後重新進入會開始新一輪；載入錄音需要網路連線。</p>
     </section>
 
     <section id="japaneseJlptPanel" class="sentence-composition-view" aria-labelledby="japanese-jlpt-title" hidden>
@@ -603,11 +623,12 @@
     window.JAPANESE_JLPT_READING_N4_URL = "../japaneseJlptReadingQuestions.json?v=17c2";
   </script>
   <script src="../japaneseReadingQuestions.js?v=1.0"></script>
-  <script src="../script.js?v=4.15"></script>
+  <script src="../script.js?v=4.16"></script>
   <script src="hiraganaAudio.js?v=1.1"></script>
   <script src="hiraganaChartAudio.js?v=1.0"></script>
   <script src="hiragana.js?v=1.3"></script>
   <script src="katakana.js?v=1.0"></script>
   <script src="hiraganaListening.js?v=1.5"></script>
+  <script src="katakanaListening.js?v=1.0"></script>
 </body>
 </html>

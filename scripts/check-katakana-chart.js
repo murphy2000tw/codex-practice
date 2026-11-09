@@ -17,7 +17,7 @@ assert.match(html, /id="japaneseKatakanaPanel" hidden aria-labelledby="katakana-
 assert.match(html, /data-japanese-kana-back="katakanaPracticeMenu"/);
 assert.match(html, /data-japanese-kana-entry="katakana"/);
 assert.ok(html.indexOf('src="hiraganaChartAudio.js?v=1.0"') < html.indexOf('src="katakana.js?v=1.0"'));
-assert.match(html, /src="\.\.\/script.js\?v=4\.15"/);
+assert.match(html, /src="\.\.\/script.js\?v=4\.16"/);
 assert.doesNotMatch(source, /speechSynthesis|SpeechSynthesisUtterance|createHiraganaPlaybackController|new Audio/);
 
 function element(character = '') {
