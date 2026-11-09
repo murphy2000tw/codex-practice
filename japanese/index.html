@@ -201,11 +201,11 @@
         <button class="secondary-button" type="button" data-japanese-kana-back="kanaPracticeMenu">返回上一層：平片假名練習</button>
       </div>
       <div class="entry-grid japanese-main-entry-grid">
-        <button class="word-card entry-card japanese-main-entry-card is-coming-soon" type="button" disabled>
+        <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-kana-entry="katakana">
           <span class="card-number">01</span>
           <h3 class="entry-card-title">片假名練習</h3>
-          <p class="entry-card-text">此項目準備中。</p>
-          <span class="entry-card-action is-muted">準備中</span>
+          <p class="entry-card-text">基本片假名 46 字，點擊聆聽發音。</p>
+          <span class="entry-card-action">進入練習</span>
         </button>
         <button class="word-card entry-card japanese-main-entry-card is-coming-soon" type="button" disabled>
           <span class="card-number">02</span>
@@ -327,6 +327,34 @@
         <div class="hiragana-row" role="group" aria-label="撥音"><span class="hiragana-row-label">撥音</span><button class="hiragana-key" type="button" lang="ja" data-hiragana="ん" aria-label="播放 ん 的日文發音">ん</button><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></div>
       </div>
       <p class="feature-page-description">「を」現代日語通常讀作「お」；「ん」為撥音。語音由瀏覽器與裝置提供，音色及單字讀音可能略有差異；部分語音需要網路連線。</p>
+      <noscript>請啟用 JavaScript 才能播放日文發音。</noscript>
+    </section>
+
+    <section id="japaneseKatakanaPanel" hidden aria-labelledby="katakana-title">
+      <div class="feature-page-header">
+        <div>
+          <p class="eyebrow">Japanese Katakana</p>
+          <h2 id="katakana-title" tabindex="-1">片假名練習</h2>
+          <p class="feature-page-description">基本片假名 46 字。點擊任一字即可聆聽，再次點擊可重播。</p>
+        </div>
+        <button class="secondary-button" type="button" data-japanese-kana-back="katakanaPracticeMenu">返回上一層：片假名練習</button>
+      </div>
+      <p id="katakana-status" class="sentence-composition-status" role="status" aria-live="polite"></p>
+      <div class="hiragana-chart" role="group" aria-label="基本片假名五十音表">
+        <div class="hiragana-row hiragana-columns" aria-hidden="true"><span></span><span>ア段</span><span>イ段</span><span>ウ段</span><span>エ段</span><span>オ段</span></div>
+        <div class="hiragana-row" role="group" aria-label="ア行"><span class="hiragana-row-label">ア行</span><button class="hiragana-key" type="button" lang="ja" data-katakana="ア" aria-label="播放 ア 的日文發音">ア</button><button class="hiragana-key" type="button" lang="ja" data-katakana="イ" aria-label="播放 イ 的日文發音">イ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ウ" aria-label="播放 ウ 的日文發音">ウ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="エ" aria-label="播放 エ 的日文發音">エ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="オ" aria-label="播放 オ 的日文發音">オ</button></div>
+        <div class="hiragana-row" role="group" aria-label="カ行"><span class="hiragana-row-label">カ行</span><button class="hiragana-key" type="button" lang="ja" data-katakana="カ" aria-label="播放 カ 的日文發音">カ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="キ" aria-label="播放 キ 的日文發音">キ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ク" aria-label="播放 ク 的日文發音">ク</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ケ" aria-label="播放 ケ 的日文發音">ケ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="コ" aria-label="播放 コ 的日文發音">コ</button></div>
+        <div class="hiragana-row" role="group" aria-label="サ行"><span class="hiragana-row-label">サ行</span><button class="hiragana-key" type="button" lang="ja" data-katakana="サ" aria-label="播放 サ 的日文發音">サ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="シ" aria-label="播放 シ 的日文發音">シ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ス" aria-label="播放 ス 的日文發音">ス</button><button class="hiragana-key" type="button" lang="ja" data-katakana="セ" aria-label="播放 セ 的日文發音">セ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ソ" aria-label="播放 ソ 的日文發音">ソ</button></div>
+        <div class="hiragana-row" role="group" aria-label="タ行"><span class="hiragana-row-label">タ行</span><button class="hiragana-key" type="button" lang="ja" data-katakana="タ" aria-label="播放 タ 的日文發音">タ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="チ" aria-label="播放 チ 的日文發音">チ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ツ" aria-label="播放 ツ 的日文發音">ツ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="テ" aria-label="播放 テ 的日文發音">テ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ト" aria-label="播放 ト 的日文發音">ト</button></div>
+        <div class="hiragana-row" role="group" aria-label="ナ行"><span class="hiragana-row-label">ナ行</span><button class="hiragana-key" type="button" lang="ja" data-katakana="ナ" aria-label="播放 ナ 的日文發音">ナ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ニ" aria-label="播放 ニ 的日文發音">ニ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ヌ" aria-label="播放 ヌ 的日文發音">ヌ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ネ" aria-label="播放 ネ 的日文發音">ネ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ノ" aria-label="播放 ノ 的日文發音">ノ</button></div>
+        <div class="hiragana-row" role="group" aria-label="ハ行"><span class="hiragana-row-label">ハ行</span><button class="hiragana-key" type="button" lang="ja" data-katakana="ハ" aria-label="播放 ハ 的日文發音">ハ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ヒ" aria-label="播放 ヒ 的日文發音">ヒ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="フ" aria-label="播放 フ 的日文發音">フ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ヘ" aria-label="播放 ヘ 的日文發音">ヘ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ホ" aria-label="播放 ホ 的日文發音">ホ</button></div>
+        <div class="hiragana-row" role="group" aria-label="マ行"><span class="hiragana-row-label">マ行</span><button class="hiragana-key" type="button" lang="ja" data-katakana="マ" aria-label="播放 マ 的日文發音">マ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ミ" aria-label="播放 ミ 的日文發音">ミ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ム" aria-label="播放 ム 的日文發音">ム</button><button class="hiragana-key" type="button" lang="ja" data-katakana="メ" aria-label="播放 メ 的日文發音">メ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="モ" aria-label="播放 モ 的日文發音">モ</button></div>
+        <div class="hiragana-row" role="group" aria-label="ヤ行"><span class="hiragana-row-label">ヤ行</span><button class="hiragana-key" type="button" lang="ja" data-katakana="ヤ" aria-label="播放 ヤ 的日文發音">ヤ</button><span aria-hidden="true"></span><button class="hiragana-key" type="button" lang="ja" data-katakana="ユ" aria-label="播放 ユ 的日文發音">ユ</button><span aria-hidden="true"></span><button class="hiragana-key" type="button" lang="ja" data-katakana="ヨ" aria-label="播放 ヨ 的日文發音">ヨ</button></div>
+        <div class="hiragana-row" role="group" aria-label="ラ行"><span class="hiragana-row-label">ラ行</span><button class="hiragana-key" type="button" lang="ja" data-katakana="ラ" aria-label="播放 ラ 的日文發音">ラ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="リ" aria-label="播放 リ 的日文發音">リ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ル" aria-label="播放 ル 的日文發音">ル</button><button class="hiragana-key" type="button" lang="ja" data-katakana="レ" aria-label="播放 レ 的日文發音">レ</button><button class="hiragana-key" type="button" lang="ja" data-katakana="ロ" aria-label="播放 ロ 的日文發音">ロ</button></div>
+        <div class="hiragana-row" role="group" aria-label="ワ行"><span class="hiragana-row-label">ワ行</span><button class="hiragana-key" type="button" lang="ja" data-katakana="ワ" aria-label="播放 ワ 的日文發音">ワ</button><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><button class="hiragana-key" type="button" lang="ja" data-katakana="ヲ" aria-label="播放 ヲ 的日文發音">ヲ</button></div>
+        <div class="hiragana-row" role="group" aria-label="撥音"><span class="hiragana-row-label">撥音</span><button class="hiragana-key" type="button" lang="ja" data-katakana="ン" aria-label="播放 ン 的日文發音">ン</button><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></div>
+      </div>
+      <p class="feature-page-description">「ヲ」現代日語通常讀作「オ」；「ン」為撥音。點擊字元即可聆聽錄音；載入錄音需要網路連線。</p>
       <noscript>請啟用 JavaScript 才能播放日文發音。</noscript>
     </section>
 
@@ -575,10 +603,11 @@
     window.JAPANESE_JLPT_READING_N4_URL = "../japaneseJlptReadingQuestions.json?v=17c2";
   </script>
   <script src="../japaneseReadingQuestions.js?v=1.0"></script>
-  <script src="../script.js?v=4.14"></script>
+  <script src="../script.js?v=4.15"></script>
   <script src="hiraganaAudio.js?v=1.1"></script>
   <script src="hiraganaChartAudio.js?v=1.0"></script>
   <script src="hiragana.js?v=1.3"></script>
+  <script src="katakana.js?v=1.0"></script>
   <script src="hiraganaListening.js?v=1.5"></script>
 </body>
 </html>
