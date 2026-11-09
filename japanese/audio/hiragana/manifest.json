@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "2.0",
   "source": {
     "fileName": "639584098281062622_あいうえお発音.m4a",
     "sha256": "75738331bdd399150536bb40282ac61ef190890144d140bdea43e73012f13b43",
@@ -8,8 +8,82 @@
     "streamStartSeconds": 0.044
   },
   "timeReference": "Seconds from first decoded sample after resetting PTS to zero; not AAC packet boundaries.",
-  "method": "Decode AAC, trim PCM in quiet gaps, retain natural onset and decay, export mono 48000 Hz PCM16 WAV; no gain, denoise, time stretch, or fades.",
-  "inspection": "46 separated sound events at -35 dB / 250 ms across the source; only the first five are used, in the user-supplied a-i-u-e-o order. First-five vowel resonance patterns support that order. No mapping is inferred for later events.",
+  "format": {
+    "codec": "pcm_s16le",
+    "sampleRate": 48000,
+    "channels": 1,
+    "bitsPerSample": 16
+  },
+  "method": "Decode AAC once to float32; retain the original five WAVs byte-for-byte. Trim the remaining 41 in quiet gaps with 250ms pre-roll and 350ms post-roll around -35dB detected speech, rounded to milliseconds. Apply one fixed gain per new clip; export PCM16 WAV without denoise, compression, fades, speed or pitch changes.",
+  "normalization": {
+    "newClipsTargetActiveRmsDbfs": -24,
+    "frameMilliseconds": 10,
+    "sourceFrameRmsThreshold": 0.015,
+    "maximumPeakDbfs": -3,
+    "reference": "Approximately the median active RMS of the retained five vowels; originals remain byte-identical and retain their original level differences."
+  },
+  "inspection": "46 detected sound events. The recording author explicitly confirmed that these follow the chart order from あ to ん exactly once, with no omissions, repeats or inserted sounds. Waveforms and silence gaps were inspected. Local Whisper base/small ASR was supplementary and imperfect for isolated morae; it was not used to invent or override mappings. を is the /o/ homophone at author-confirmed position 45.",
+  "completedCount": 46,
+  "newClipCount": 41,
+  "unconfirmedSegments": [],
+  "playbackScope": {
+    "pronunciation": [
+      "あ",
+      "い",
+      "う",
+      "え",
+      "お",
+      "か",
+      "き",
+      "く",
+      "け",
+      "こ",
+      "さ",
+      "し",
+      "す",
+      "せ",
+      "そ",
+      "た",
+      "ち",
+      "つ",
+      "て",
+      "と",
+      "な",
+      "に",
+      "ぬ",
+      "ね",
+      "の",
+      "は",
+      "ひ",
+      "ふ",
+      "へ",
+      "ほ",
+      "ま",
+      "み",
+      "む",
+      "め",
+      "も",
+      "や",
+      "ゆ",
+      "よ",
+      "ら",
+      "り",
+      "る",
+      "れ",
+      "ろ",
+      "わ",
+      "を",
+      "ん"
+    ],
+    "hiraganaListening": [
+      "あ",
+      "い",
+      "う",
+      "え",
+      "お"
+    ],
+    "otherListening": "Existing TTS sources unchanged"
+  },
   "segments": [
     {
       "kana": "あ",
@@ -17,7 +91,18 @@
       "startSeconds": 0.95,
       "endSeconds": 1.75,
       "durationSeconds": 0.8,
-      "sha256": "3cfcfb1b8f6bef6becaa301470ad2f1bed7e6b2a6b96641f1c79679ea5c4fec4"
+      "sha256": "3cfcfb1b8f6bef6becaa301470ad2f1bed7e6b2a6b96641f1c79679ea5c4fec4",
+      "index": 1,
+      "assetVersion": "1.0",
+      "gainDb": 0.0,
+      "preservedFromPR318": true,
+      "speechStartSeconds": 1.163708,
+      "speechEndSeconds": 1.43525,
+      "usedBy": [
+        "pronunciation",
+        "hiraganaListening"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
     },
     {
       "kana": "い",
@@ -25,7 +110,18 @@
       "startSeconds": 2.95,
       "endSeconds": 3.85,
       "durationSeconds": 0.9,
-      "sha256": "100e7231cd0727aa3137e6835a500d687b0c61b5419dc366f57d165ac2712e70"
+      "sha256": "100e7231cd0727aa3137e6835a500d687b0c61b5419dc366f57d165ac2712e70",
+      "index": 2,
+      "assetVersion": "1.0",
+      "gainDb": 0.0,
+      "preservedFromPR318": true,
+      "speechStartSeconds": 3.146792,
+      "speechEndSeconds": 3.429958,
+      "usedBy": [
+        "pronunciation",
+        "hiraganaListening"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
     },
     {
       "kana": "う",
@@ -33,7 +129,18 @@
       "startSeconds": 5.2,
       "endSeconds": 6.1,
       "durationSeconds": 0.9,
-      "sha256": "7c80cd77b40c0a6c29cff8f5a90edf5667eef6a36406b078feb0ce253689da65"
+      "sha256": "7c80cd77b40c0a6c29cff8f5a90edf5667eef6a36406b078feb0ce253689da65",
+      "index": 3,
+      "assetVersion": "1.0",
+      "gainDb": 0.0,
+      "preservedFromPR318": true,
+      "speechStartSeconds": 5.414771,
+      "speechEndSeconds": 5.668604,
+      "usedBy": [
+        "pronunciation",
+        "hiraganaListening"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
     },
     {
       "kana": "え",
@@ -41,7 +148,18 @@
       "startSeconds": 7.15,
       "endSeconds": 7.95,
       "durationSeconds": 0.8,
-      "sha256": "158e6b346861a91ccb5cee057af9a3fa6e7bffb6352ad19eb7da0478eb0c3640"
+      "sha256": "158e6b346861a91ccb5cee057af9a3fa6e7bffb6352ad19eb7da0478eb0c3640",
+      "index": 4,
+      "assetVersion": "1.0",
+      "gainDb": 0.0,
+      "preservedFromPR318": true,
+      "speechStartSeconds": 7.347646,
+      "speechEndSeconds": 7.628958,
+      "usedBy": [
+        "pronunciation",
+        "hiraganaListening"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
     },
     {
       "kana": "お",
@@ -49,7 +167,838 @@
       "startSeconds": 9.2,
       "endSeconds": 9.85,
       "durationSeconds": 0.65,
-      "sha256": "e93c9ca882b63a90686699e3c79d5b0c55451077db4df43c33fca3b9bb83835b"
+      "sha256": "e93c9ca882b63a90686699e3c79d5b0c55451077db4df43c33fca3b9bb83835b",
+      "index": 5,
+      "assetVersion": "1.0",
+      "gainDb": 0.0,
+      "preservedFromPR318": true,
+      "speechStartSeconds": 9.417125,
+      "speechEndSeconds": 9.614583,
+      "usedBy": [
+        "pronunciation",
+        "hiraganaListening"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 6,
+      "kana": "か",
+      "file": "ka.wav",
+      "startSeconds": 11.076,
+      "endSeconds": 11.977,
+      "durationSeconds": 0.901,
+      "assetVersion": "1.0",
+      "gainDb": 1.3014,
+      "sourceActiveRmsDbfs": -25.3014,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "e1831bcb50e1f79f32b4f0b7da125845f487b7c778986150bb5c054427610e0f",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 11.325875,
+      "speechEndSeconds": 11.626625,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 7,
+      "kana": "き",
+      "file": "ki.wav",
+      "startSeconds": 12.971,
+      "endSeconds": 13.859,
+      "durationSeconds": 0.888,
+      "assetVersion": "1.0",
+      "gainDb": 2.5257,
+      "sourceActiveRmsDbfs": -26.5257,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "1dc27cad484817be20eae69263b2607c7cb6dc26b5e3fb676b4502ed652ac3cc",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 13.22125,
+      "speechEndSeconds": 13.508812,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 8,
+      "kana": "く",
+      "file": "ku.wav",
+      "startSeconds": 14.951,
+      "endSeconds": 15.856,
+      "durationSeconds": 0.905,
+      "assetVersion": "1.0",
+      "gainDb": -5.4971,
+      "sourceActiveRmsDbfs": -18.5029,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "507f5235f3bdd6575f9feb271a04666a8cd24cb77fd880c94e1cc01384d64a23",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 15.201354,
+      "speechEndSeconds": 15.506146,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 9,
+      "kana": "け",
+      "file": "ke.wav",
+      "startSeconds": 16.884,
+      "endSeconds": 17.771,
+      "durationSeconds": 0.887,
+      "assetVersion": "1.0",
+      "gainDb": 0.5968,
+      "sourceActiveRmsDbfs": -24.5968,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "74c064f733dae047ab710141d141a3ea1d2ef735ff80ade1b62c8eec6db7d409",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 17.134042,
+      "speechEndSeconds": 17.420896,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 10,
+      "kana": "こ",
+      "file": "ko.wav",
+      "startSeconds": 18.853,
+      "endSeconds": 19.684,
+      "durationSeconds": 0.831,
+      "assetVersion": "1.0",
+      "gainDb": -8.9121,
+      "sourceActiveRmsDbfs": -15.0879,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "63ad1825cc55234674cf656fd1e0a41f7b930c523a45ef5df9c4d0225fe666df",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 19.102792,
+      "speechEndSeconds": 19.333896,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 11,
+      "kana": "さ",
+      "file": "sa.wav",
+      "startSeconds": 20.705,
+      "endSeconds": 21.626,
+      "durationSeconds": 0.921,
+      "assetVersion": "1.0",
+      "gainDb": 0.1157,
+      "sourceActiveRmsDbfs": -24.1157,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "d27203b87352e75670493d19ae5c786f08e7cf60e7e534f0a94e46e0a0e8ae2b",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 20.954708,
+      "speechEndSeconds": 21.276146,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 12,
+      "kana": "し",
+      "file": "shi.wav",
+      "startSeconds": 22.587,
+      "endSeconds": 23.524,
+      "durationSeconds": 0.937,
+      "assetVersion": "1.0",
+      "gainDb": 3.5486,
+      "sourceActiveRmsDbfs": -27.5486,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "3c4a3291a4c5d18f6965f463922635a36860f325a590ad5f0af1e4609193ec7b",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 22.836729,
+      "speechEndSeconds": 23.173917,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 13,
+      "kana": "す",
+      "file": "su.wav",
+      "startSeconds": 24.421,
+      "endSeconds": 25.374,
+      "durationSeconds": 0.953,
+      "assetVersion": "1.0",
+      "gainDb": 1.1005,
+      "sourceActiveRmsDbfs": -25.1005,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "f0ea122d8c594656ddd6cfc463fa4f2fec4313c97839e9c5410bc8777f4811c3",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 24.671437,
+      "speechEndSeconds": 25.024,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 14,
+      "kana": "せ",
+      "file": "se.wav",
+      "startSeconds": 26.255,
+      "endSeconds": 27.232,
+      "durationSeconds": 0.977,
+      "assetVersion": "1.0",
+      "gainDb": 1.7901,
+      "sourceActiveRmsDbfs": -25.7901,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "4bb206b5f078aeca956b06abd964e5d13a1662b129f9b8a13ee196df1b8b4a31",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 26.505229,
+      "speechEndSeconds": 26.881833,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 15,
+      "kana": "そ",
+      "file": "so.wav",
+      "startSeconds": 28.187,
+      "endSeconds": 29.093,
+      "durationSeconds": 0.906,
+      "assetVersion": "1.0",
+      "gainDb": -4.4345,
+      "sourceActiveRmsDbfs": -19.5655,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "5c5e30e8a757f020ed65276bcc4f50eadabc249747e7182af179bf5baa5c40bb",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 28.437062,
+      "speechEndSeconds": 28.743417,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 16,
+      "kana": "た",
+      "file": "ta.wav",
+      "startSeconds": 30.048,
+      "endSeconds": 30.947,
+      "durationSeconds": 0.899,
+      "assetVersion": "1.0",
+      "gainDb": 3.1899,
+      "sourceActiveRmsDbfs": -27.1899,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "307e1671cdf67ac48f75064075fb7f9aa537d8c2979084182215076d6b543c7d",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 30.297979,
+      "speechEndSeconds": 30.597292,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 17,
+      "kana": "ち",
+      "file": "chi.wav",
+      "startSeconds": 31.799,
+      "endSeconds": 32.721,
+      "durationSeconds": 0.922,
+      "assetVersion": "1.0",
+      "gainDb": 4.3106,
+      "sourceActiveRmsDbfs": -28.3106,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "dd763d35752b084fb02b253b0f72818253dfe2be5a7a230c4dd5c41cae1a6609",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 32.048646,
+      "speechEndSeconds": 32.371396,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 18,
+      "kana": "つ",
+      "file": "tsu.wav",
+      "startSeconds": 33.715,
+      "endSeconds": 34.699,
+      "durationSeconds": 0.984,
+      "assetVersion": "1.0",
+      "gainDb": 1.8973,
+      "sourceActiveRmsDbfs": -25.8973,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "af90e848970131a2f4d2a4b9ffcabbdfbfc69cff347aa555b326e7a91e3ec784",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 33.965104,
+      "speechEndSeconds": 34.349187,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 19,
+      "kana": "て",
+      "file": "te.wav",
+      "startSeconds": 35.623,
+      "endSeconds": 36.491,
+      "durationSeconds": 0.868,
+      "assetVersion": "1.0",
+      "gainDb": -0.1376,
+      "sourceActiveRmsDbfs": -23.8624,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "4ab506e8e823c97195da7fab2329fea28e33d5e66deedf8fbf1c82ec5630880c",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 35.872563,
+      "speechEndSeconds": 36.140604,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 20,
+      "kana": "と",
+      "file": "to.wav",
+      "startSeconds": 37.563,
+      "endSeconds": 38.388,
+      "durationSeconds": 0.825,
+      "assetVersion": "1.0",
+      "gainDb": -6.9486,
+      "sourceActiveRmsDbfs": -17.0514,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "1986302e5cbf596406941f14916255ec58443927d1ff7f8a84dee9a24a10cfe0",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 37.812521,
+      "speechEndSeconds": 38.037958,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 21,
+      "kana": "な",
+      "file": "na.wav",
+      "startSeconds": 39.426,
+      "endSeconds": 40.345,
+      "durationSeconds": 0.919,
+      "assetVersion": "1.0",
+      "gainDb": 2.904,
+      "sourceActiveRmsDbfs": -26.904,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "78a395f652499a5ed692e2eddb118885c208dfa14d0faa3d693a703c4f7f673e",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 39.676063,
+      "speechEndSeconds": 39.994875,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 22,
+      "kana": "に",
+      "file": "ni.wav",
+      "startSeconds": 41.207,
+      "endSeconds": 42.083,
+      "durationSeconds": 0.876,
+      "assetVersion": "1.0",
+      "gainDb": 1.0392,
+      "sourceActiveRmsDbfs": -25.0392,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "173a11d9b904fe0b0f0f5c346036024de829967696621fada95acf1876bbd0f5",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 41.457104,
+      "speechEndSeconds": 41.732708,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 23,
+      "kana": "ぬ",
+      "file": "nu.wav",
+      "startSeconds": 43.072,
+      "endSeconds": 44.006,
+      "durationSeconds": 0.934,
+      "assetVersion": "1.0",
+      "gainDb": -2.0139,
+      "sourceActiveRmsDbfs": -21.9861,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "ecb27f7e21a1d97fe20c0c011960ac8c1735dfba397defb312e3854ce45ee0cc",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 43.3225,
+      "speechEndSeconds": 43.655812,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 24,
+      "kana": "ね",
+      "file": "ne.wav",
+      "startSeconds": 44.961,
+      "endSeconds": 45.976,
+      "durationSeconds": 1.015,
+      "assetVersion": "1.0",
+      "gainDb": 1.0747,
+      "sourceActiveRmsDbfs": -25.0747,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "4b193eefaf6fbd2bf75bfa8e3e02907eda9bd822c16deb8b438fe61397e1424a",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 45.210812,
+      "speechEndSeconds": 45.625958,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 25,
+      "kana": "の",
+      "file": "no.wav",
+      "startSeconds": 46.988,
+      "endSeconds": 47.906,
+      "durationSeconds": 0.918,
+      "assetVersion": "1.0",
+      "gainDb": -3.8158,
+      "sourceActiveRmsDbfs": -20.1842,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "b382624c36bf9430688b89e2df720699e1780eb839b27977948aba228a97d951",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 47.238,
+      "speechEndSeconds": 47.555521,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 26,
+      "kana": "は",
+      "file": "ha.wav",
+      "startSeconds": 48.838,
+      "endSeconds": 49.769,
+      "durationSeconds": 0.931,
+      "assetVersion": "1.0",
+      "gainDb": -0.5636,
+      "sourceActiveRmsDbfs": -23.4364,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "7afda0e6783e969d2da4ab8eb7daa30285044637828c109d7a428b0483ef2ca0",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 49.088,
+      "speechEndSeconds": 49.418625,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 27,
+      "kana": "ひ",
+      "file": "hi.wav",
+      "startSeconds": 50.51,
+      "endSeconds": 51.465,
+      "durationSeconds": 0.955,
+      "assetVersion": "1.0",
+      "gainDb": 2.3288,
+      "sourceActiveRmsDbfs": -26.3288,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "615882c2e438812294a9fae05bca4a9e09cff2326431b85edaa453b329158d87",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 50.760458,
+      "speechEndSeconds": 51.114604,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 28,
+      "kana": "ふ",
+      "file": "fu.wav",
+      "startSeconds": 52.455,
+      "endSeconds": 53.373,
+      "durationSeconds": 0.918,
+      "assetVersion": "1.0",
+      "gainDb": -5.8202,
+      "sourceActiveRmsDbfs": -18.1798,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "92c2ceffffdbecb3a12cab078994753438df129f777345c5fb0b9582eb4ba1ee",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 52.705479,
+      "speechEndSeconds": 53.023354,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 29,
+      "kana": "へ",
+      "file": "he.wav",
+      "startSeconds": 54.358,
+      "endSeconds": 55.249,
+      "durationSeconds": 0.891,
+      "assetVersion": "1.0",
+      "gainDb": -0.2173,
+      "sourceActiveRmsDbfs": -23.7827,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "a7363780d382845ac530496238b0edc3567585761f927cb90e80ba1243ad3dc3",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 54.607771,
+      "speechEndSeconds": 54.899354,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 30,
+      "kana": "ほ",
+      "file": "ho.wav",
+      "startSeconds": 56.257,
+      "endSeconds": 57.087,
+      "durationSeconds": 0.83,
+      "assetVersion": "1.0",
+      "gainDb": -5.8331,
+      "sourceActiveRmsDbfs": -18.1669,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "6535b248726a4aa18d2c3b1244c731546b2102aabd07f47d4e3fad39ebf05c2e",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 56.506625,
+      "speechEndSeconds": 56.737313,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 31,
+      "kana": "ま",
+      "file": "ma.wav",
+      "startSeconds": 58.064,
+      "endSeconds": 59.004,
+      "durationSeconds": 0.94,
+      "assetVersion": "1.0",
+      "gainDb": 1.3944,
+      "sourceActiveRmsDbfs": -25.3944,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "d01de25f5ab5c507c589d79fc5b65df8cb0a46e0f1d5ffc10b965ab03768f407",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 58.314062,
+      "speechEndSeconds": 58.654167,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 32,
+      "kana": "み",
+      "file": "mi.wav",
+      "startSeconds": 59.838,
+      "endSeconds": 60.725,
+      "durationSeconds": 0.887,
+      "assetVersion": "1.0",
+      "gainDb": 0.8502,
+      "sourceActiveRmsDbfs": -24.8502,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "9d47373f1162d4b6f5839ee9232eb74288b1d9feeeb61cfc659aae5a36765dc5",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 60.08825,
+      "speechEndSeconds": 60.375062,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 33,
+      "kana": "む",
+      "file": "mu.wav",
+      "startSeconds": 61.666,
+      "endSeconds": 62.669,
+      "durationSeconds": 1.003,
+      "assetVersion": "1.0",
+      "gainDb": -1.8719,
+      "sourceActiveRmsDbfs": -22.1281,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "dbdf89039dd652df438e0e98c2645e260366192c739811ef7551534d71da2473",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 61.916208,
+      "speechEndSeconds": 62.318854,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 34,
+      "kana": "め",
+      "file": "me.wav",
+      "startSeconds": 63.532,
+      "endSeconds": 64.439,
+      "durationSeconds": 0.907,
+      "assetVersion": "1.0",
+      "gainDb": 1.0627,
+      "sourceActiveRmsDbfs": -25.0627,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "52f95437ea4d04ac15baf1b448a90abfd3bc76f2346f801aabc89c6f083863a1",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 63.782021,
+      "speechEndSeconds": 64.088687,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 35,
+      "kana": "も",
+      "file": "mo.wav",
+      "startSeconds": 65.531,
+      "endSeconds": 66.375,
+      "durationSeconds": 0.844,
+      "assetVersion": "1.0",
+      "gainDb": -4.2726,
+      "sourceActiveRmsDbfs": -19.7274,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "e27133ab362ca851f127ca95f7ee93c2048c9b55ca98217bdbc36b8ccdc8f7aa",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 65.780563,
+      "speechEndSeconds": 66.024646,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 36,
+      "kana": "や",
+      "file": "ya.wav",
+      "startSeconds": 67.276,
+      "endSeconds": 68.168,
+      "durationSeconds": 0.892,
+      "assetVersion": "1.0",
+      "gainDb": 0.4749,
+      "sourceActiveRmsDbfs": -24.4749,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "35a3d788e3dd5b2afbe633cac60e03a4bc97b3b1fa5e5c5a47da5ff08c4972bb",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 67.525771,
+      "speechEndSeconds": 67.817583,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 37,
+      "kana": "ゆ",
+      "file": "yu.wav",
+      "startSeconds": 69.103,
+      "endSeconds": 69.999,
+      "durationSeconds": 0.896,
+      "assetVersion": "1.0",
+      "gainDb": -0.2694,
+      "sourceActiveRmsDbfs": -23.7306,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "eec41f29652562cc5b56a0b2e82083fa9f411f34076ae9c20f0f78e5554b8b81",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 69.352604,
+      "speechEndSeconds": 69.649396,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 38,
+      "kana": "よ",
+      "file": "yo.wav",
+      "startSeconds": 71.036,
+      "endSeconds": 71.866,
+      "durationSeconds": 0.83,
+      "assetVersion": "1.0",
+      "gainDb": -3.9742,
+      "sourceActiveRmsDbfs": -20.0258,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "3e22445e3f59f8612db12585b7eae6f4e08f50ba6b380679fb0ece27d6009cf7",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 71.285521,
+      "speechEndSeconds": 71.516396,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 39,
+      "kana": "ら",
+      "file": "ra.wav",
+      "startSeconds": 73.283,
+      "endSeconds": 74.187,
+      "durationSeconds": 0.904,
+      "assetVersion": "1.0",
+      "gainDb": -3.2419,
+      "sourceActiveRmsDbfs": -20.7581,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "2bc1f1bf59d37086dd670e6e61b99b9202d6d85a737951fde4b61be6f0420f6e",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 73.532667,
+      "speechEndSeconds": 73.836583,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 40,
+      "kana": "り",
+      "file": "ri.wav",
+      "startSeconds": 75.102,
+      "endSeconds": 75.984,
+      "durationSeconds": 0.882,
+      "assetVersion": "1.0",
+      "gainDb": 0.679,
+      "sourceActiveRmsDbfs": -24.679,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "2211d95436fbad5967f50b75b8b4d3a18d463d0219f9030ec9606a4a209a8060",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 75.352083,
+      "speechEndSeconds": 75.633771,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 41,
+      "kana": "る",
+      "file": "ru.wav",
+      "startSeconds": 76.985,
+      "endSeconds": 77.93,
+      "durationSeconds": 0.945,
+      "assetVersion": "1.0",
+      "gainDb": -4.2413,
+      "sourceActiveRmsDbfs": -19.7587,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "77c68caebfacdb6701413d4cee983ebedfa0aa4555082b168c2569482248e548",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 77.234646,
+      "speechEndSeconds": 77.580354,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 42,
+      "kana": "れ",
+      "file": "re.wav",
+      "startSeconds": 78.837,
+      "endSeconds": 79.722,
+      "durationSeconds": 0.885,
+      "assetVersion": "1.0",
+      "gainDb": 1.8159,
+      "sourceActiveRmsDbfs": -25.8159,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "c8103a69443f9d5311be4196956076a3b80c2be3b944d09d9b6095bae6fa805f",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 79.086625,
+      "speechEndSeconds": 79.371708,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 43,
+      "kana": "ろ",
+      "file": "ro.wav",
+      "startSeconds": 80.771,
+      "endSeconds": 81.65,
+      "durationSeconds": 0.879,
+      "assetVersion": "1.0",
+      "gainDb": -5.4252,
+      "sourceActiveRmsDbfs": -18.5748,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "58d2aca0ae713823a5a2363a507a4989447a6c9f5c562f168477ddcba1347399",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 81.021104,
+      "speechEndSeconds": 81.300042,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 44,
+      "kana": "わ",
+      "file": "wa.wav",
+      "startSeconds": 82.631,
+      "endSeconds": 83.516,
+      "durationSeconds": 0.885,
+      "assetVersion": "1.0",
+      "gainDb": 1.4064,
+      "sourceActiveRmsDbfs": -25.4064,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "7a65642abcd1d927640795911d45f6251e6189bb833a453dcb5a11f97ed3e087",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 82.881417,
+      "speechEndSeconds": 83.166354,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 45,
+      "kana": "を",
+      "file": "wo.wav",
+      "startSeconds": 84.542,
+      "endSeconds": 85.458,
+      "durationSeconds": 0.916,
+      "assetVersion": "1.0",
+      "gainDb": -4.7626,
+      "sourceActiveRmsDbfs": -19.2374,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "71d3b63dde0321995e324a99ab2f7cbdd9f7bedd2bf2862d736ad23a9d4ef276",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 84.791583,
+      "speechEndSeconds": 85.107604,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
+    },
+    {
+      "index": 46,
+      "kana": "ん",
+      "file": "n.wav",
+      "startSeconds": 86.476,
+      "endSeconds": 87.289,
+      "durationSeconds": 0.813,
+      "assetVersion": "1.0",
+      "gainDb": -1.7327,
+      "sourceActiveRmsDbfs": -22.2673,
+      "outputActiveRmsDbfs": -24.0,
+      "sha256": "c0334dbb3be6b21623a123dd5601f60be344f7db34a1f03be40a0e75faf2e57e",
+      "preservedFromPR318": false,
+      "speechStartSeconds": 86.725542,
+      "speechEndSeconds": 86.938979,
+      "usedBy": [
+        "pronunciation"
+      ],
+      "verification": "Recording author explicitly confirmed full chart order, exactly once each, without omissions, repeats or inserted sounds; independently detected 46 separated sound events."
     }
   ]
 }
