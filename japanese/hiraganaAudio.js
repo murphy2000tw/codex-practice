@@ -10,6 +10,12 @@ function getHiraganaRecordingUrl(kana) {
     ? HIRAGANA_RECORDINGS[kana] : null;
 }
 
+function getHiraganaSpeechOptions() {
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  return { unlockOnGesture: isIOS, startTimeoutMs: 5000, completionTimeoutMs: 10000 };
+}
+
 function createHiraganaPlaybackController(provider, speechOptions = {}) {
   const speech = createJapaneseListeningModeSpeechController(provider, speechOptions);
   let activeAudio = null;
@@ -21,7 +27,7 @@ function createHiraganaPlaybackController(provider, speechOptions = {}) {
     startTimer = null;
   }
 
-  function cancel() {
+  function stopAudio() {
     generation += 1;
     clearStartTimer();
     const audio = activeAudio;
@@ -30,6 +36,10 @@ function createHiraganaPlaybackController(provider, speechOptions = {}) {
       audio.onplaying = audio.onended = audio.onerror = null;
       audio.pause();
     }
+  }
+
+  function cancel() {
+    stopAudio();
     speech.cancel();
   }
 
@@ -44,7 +54,7 @@ function createHiraganaPlaybackController(provider, speechOptions = {}) {
       const isCurrent = () => token === generation && activeAudio === audio;
       const finish = (state) => {
         if (!isCurrent()) return;
-        cancel();
+        stopAudio();
         onStatus(state);
       };
       onStatus('preparing');

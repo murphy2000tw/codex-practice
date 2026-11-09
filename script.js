@@ -5682,17 +5682,22 @@ const JAPANESE_LISTENING_QUESTIONS = [
 
 const LISTENING_QUIZ_SIZE = 10;
 
-function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem = null, unlockOnGesture = false, startTimeoutMs = 0 } = {}) {
+function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem = null, unlockOnGesture = false, startTimeoutMs = 0, completionTimeoutMs = 0 } = {}) {
   let generation = 0;
   let activeUtterance = null;
   let utteranceSubmitted = false;
   let preparationTimer = null;
   let startTimer = null;
+  let completionTimer = null;
   let gestureUtterance = null;
   let gestureSubmitted = false;
   const clearStartTimer = () => {
     if (startTimer !== null) provider.clearTimeout(startTimer);
     startTimer = null;
+  };
+  const clearCompletionTimer = () => {
+    if (completionTimer !== null) provider.clearTimeout(completionTimer);
+    completionTimer = null;
   };
   let playedItemIds = new Set();
   const cancel = () => {
@@ -5700,6 +5705,7 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
     if (preparationTimer !== null) provider.clearTimeout(preparationTimer);
     preparationTimer = null;
     clearStartTimer();
+    clearCompletionTimer();
     const ownsSubmittedUtterance = (activeUtterance !== null && utteranceSubmitted) || gestureSubmitted;
     activeUtterance = null;
     utteranceSubmitted = false;
@@ -5723,14 +5729,26 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
         activeUtterance = utterance;
         utteranceSubmitted = false;
         const isCurrent = () => token === generation && activeUtterance === utterance;
-        utterance.lang = "ja-JP"; utterance.rate = 0.86; utterance.pitch = 1;
+        utterance.lang = "ja-JP"; utterance.rate = 0.86; utterance.pitch = 1; utterance.volume = 1;
         const voices = typeof provider.speechSynthesis.getVoices === "function"
           ? provider.speechSynthesis.getVoices() : [];
         utterance.voice = Array.isArray(voices)
           ? voices.find((voice) => voice && /^ja(?:-|$)/i.test(voice.lang || "")) || null : null;
-        utterance.onstart = () => { if (isCurrent()) { clearStartTimer(); onStatus("playing"); } };
-        utterance.onend = () => { if (isCurrent()) { clearStartTimer(); activeUtterance = null; utteranceSubmitted = false; onStatus("ended"); } };
-        utterance.onerror = () => { if (isCurrent()) { clearStartTimer(); activeUtterance = null; utteranceSubmitted = false; onStatus("error"); } };
+        utterance.onstart = () => {
+          if (!isCurrent()) return;
+          clearStartTimer();
+          clearCompletionTimer();
+          if (completionTimeoutMs > 0) {
+            completionTimer = provider.setTimeout(() => {
+              if (!isCurrent()) return;
+              cancel();
+              onStatus("timeout");
+            }, completionTimeoutMs);
+          }
+          onStatus("playing");
+        };
+        utterance.onend = () => { if (isCurrent()) { clearStartTimer(); clearCompletionTimer(); activeUtterance = null; utteranceSubmitted = false; onStatus("ended"); } };
+        utterance.onerror = () => { if (isCurrent()) { clearStartTimer(); clearCompletionTimer(); activeUtterance = null; utteranceSubmitted = false; onStatus("error"); } };
         onStatus("preparing");
         if (unlockOnGesture) {
           // WebKit removes its iOS gesture restriction inside speak(), before queueing.
@@ -5751,17 +5769,19 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
           unlock.onend = releaseUnlock;
           unlock.onerror = releaseUnlock;
           provider.speechSynthesis.speak(unlock);
+          // Retire an unfinished empty unlock on the gesture stack, BEFORE the
+          // preparation delay. Native cancel completion can arrive asynchronously;
+          // cancelling here gives it the existing 1s interval to drain. Never
+          // cancel the unlock and submit the answer together in the delayed task.
+          if (gestureSubmitted) {
+            releaseUnlock();
+            provider.speechSynthesis.cancel();
+          }
         }
         preparationTimer = provider.setTimeout(() => {
           if (!isCurrent()) return;
           preparationTimer = null;
           try {
-            // An empty unlock utterance may not emit end/error on every device.
-            if (gestureSubmitted) {
-              gestureUtterance = null;
-              gestureSubmitted = false;
-              provider.speechSynthesis.cancel();
-            }
             if (startTimeoutMs > 0) {
               startTimer = provider.setTimeout(() => {
                 if (!isCurrent()) return;
