@@ -8,8 +8,9 @@ const html = fs.readFileSync(path.join(root, 'japanese/index.html'), 'utf8');
 const source = fs.readFileSync(path.join(root, 'japanese/hiraganaAudio.js'), 'utf8');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'japanese/audio/hiragana/manifest.json')));
 const vowels = ['あ', 'い', 'う', 'え', 'お'];
-assert.deepEqual(manifest.segments.map((segment) => segment.kana), vowels);
-assert.deepEqual(fs.readdirSync(path.join(root, 'japanese/audio/hiragana')).filter((name) => name.endsWith('.wav')).sort(),
+assert.deepEqual(manifest.segments.slice(0, 5).map((segment) => segment.kana), vowels);
+// Additional chart-only WAVs must not expand the listening drill's five-vowel map.
+assert.deepEqual(manifest.segments.slice(0, 5).map((segment) => segment.file).sort(),
   ['a.wav', 'e.wav', 'i.wav', 'o.wav', 'u.wav']);
 
 // Parse RIFF chunks rather than assuming a fixed WAV header length.
@@ -88,7 +89,7 @@ function fixture({ failure = null } = {}) {
   for (const [index, kana] of vowels.entries()) {
     assert.equal(f.play(kana), true);
     const audio = f.audios.at(-1);
-    assert.equal(audio.src, `https://example.test/nested/japanese/audio/hiragana/${manifest.segments[index].file}?v=${manifest.version}`);
+    assert.equal(audio.src, `https://example.test/nested/japanese/audio/hiragana/${manifest.segments[index].file}?v=${manifest.segments[index].assetVersion}`);
     assert.ok(audio.played, 'play runs synchronously inside the gesture');
     assert.equal(f.statuses.at(-1), 'preparing');
     audio.onplaying();
@@ -136,7 +137,7 @@ function fixture({ failure = null } = {}) {
 
   const sharedIndex = html.indexOf('src="hiraganaAudio.js?v=1.1"');
   assert.ok(sharedIndex > 0);
-  assert.ok(html.indexOf('src="hiragana.js?v=1.2"') > sharedIndex);
+  assert.ok(html.indexOf('src="hiragana.js?v=1.3"') > sharedIndex);
   assert.ok(html.indexOf('src="hiraganaListening.js?v=1.5"') > sharedIndex);
-  console.log('Hiragana audio checks passed: five PCM assets, hashes/durations/quiet boundaries, exact vowel routing, 41 TTS routes, synchronous gesture play, replay/cancellation, stale events, errors and startup timeout.');
+  console.log('Hiragana listening audio checks passed: 46 PCM assets validated; unchanged five-vowel recording map and 41 TTS routes, synchronous gesture play, replay/cancellation, stale events, errors and startup timeout.');
 })().catch((error) => { console.error(error); process.exitCode = 1; });

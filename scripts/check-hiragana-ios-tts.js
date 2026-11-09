@@ -84,7 +84,8 @@ function fixture({ ios = true, touchMac = false, silentDrop = false, missingEnd 
     japaneseHiraganaPanel: chart, japaneseHiraganaListeningPanel: listening,
     getJapaneseListeningSpeechProvider: () => provider, validateJapaneseJlptListeningCapability: () => ({ ok: true }),
   });
-  vm.runInContext(controllerSource + read('japanese/hiraganaAudio.js') + read('japanese/hiragana.js') + read('japanese/hiraganaListening.js'), context);
+  const chartAudio = baseline ? '' : read('japanese/hiraganaChartAudio.js');
+  vm.runInContext(controllerSource + read('japanese/hiraganaAudio.js') + chartAudio + read('japanese/hiragana.js') + read('japanese/hiraganaListening.js'), context);
   const click = (button) => { gesture = true; try { button.click(); } finally { gesture = false; } };
   const show = (view) => { window.japaneseHiraganaPage.onViewChange(view); window.japaneseHiraganaListeningPage.onViewChange(view); };
   const advance = (answer) => { click(controls.options.children.find((button) => button.textContent === answer)); click(controls.next); };
@@ -100,11 +101,12 @@ function test(name, run) {
   catch (error) { failures++; console.error(`FAIL ${name}: ${error.message}`); }
 }
 
-test('iPhone chart: all 41 TTS kana unlock on the gesture stack, wait 1000ms, produce simulated audio and end', () => {
-  const f = fixture(); f.show('hiragana');
+test('iPhone listening: all 41 TTS kana retain gesture unlock, 1000ms preparation, simulated audio and end', () => {
+  const f = fixture(); f.show('hiraganaListening');
+  kana.slice(0, 5).forEach(character => f.advance(character));
   for (const character of kana.slice(5)) {
     const count = f.audible.length;
-    f.click(f.key(character));
+    f.click(f.controls.play);
     const unlock = f.spoken.at(-1);
     assert.ok(unlock && unlock.gesture && unlock.u.text === '', `${character}: missing synchronous unlock`);
     assert.equal(unlock.u.volume, 0);
@@ -112,9 +114,10 @@ test('iPhone chart: all 41 TTS kana unlock on the gesture stack, wait 1000ms, pr
     f.tick(1); assert.equal(f.spoken.at(-1).u.text, character);
     assert.equal(f.spoken.at(-1).u.volume, 1);
     f.tick(40); assert.equal(f.audible.at(-1), character);
-    assert.match(f.chartStatus.textContent, /播放完畢/);
-    assert.ok(!f.key(character).classList.contains('is-playing'));
+    assert.match(f.controls.status.textContent, /播放完畢/);
+    assert.ok(!f.controls.play.classList.contains('is-playing'));
     assert.equal(f.timers.size, 0);
+    f.advance(character);
   }
 });
 
@@ -129,27 +132,31 @@ test('iPhone listening: asynchronous unlock cancellation drains before the answe
   assert.equal(f.timers.size, 0);
 });
 
-test('both views preserve the five WAVs; replay, WAV/TTS transitions and stale callbacks cannot cancel new TTS', () => {
+test('chart uses 46 WAVs while the drill retains only five; stale events and rapid replay remain isolated', () => {
   const f = fixture(); f.show('hiragana');
   for (const character of kana.slice(0, 5)) { f.click(f.key(character)); f.tick(30); }
   assert.equal(f.spoken.length, 0);
   assert.deepEqual(f.audio.map((entry) => entry.src.split('/').at(-1)), ['a.wav?v=1.0', 'i.wav?v=1.0', 'u.wav?v=1.0', 'e.wav?v=1.0', 'o.wav?v=1.0']);
   f.click(f.key('あ')); const oldEnd = f.audio.at(-1).onended;
-  f.click(f.key('か')); oldEnd(); f.tick(1040);
-  assert.equal(f.audible.at(-1), 'か');
-  f.click(f.key('か')); f.tick(1000); const oldSpeech = f.spoken.at(-1).u;
-  f.click(f.key('い')); assert.ok(f.audio.at(-1)); f.tick(30);
-  f.click(f.key('き')); oldSpeech.onend(); oldSpeech.onerror(); oldSpeech.onstart(); f.tick(1040);
-  assert.equal(f.audible.at(-1), 'き');
+  f.click(f.key('か')); oldEnd(); f.tick(30);
+  assert.match(f.chartStatus.textContent, /「か」播放完畢/);
+  for (const character of kana.slice(5)) {
+    f.click(f.key(character)); f.tick(30);
+    assert.match(f.chartStatus.textContent, /播放完畢/);
+  }
+  assert.equal(f.spoken.length, 0, 'chart must not invoke TTS');
+  assert.equal(new Set(f.audio.map(entry => entry.src)).size, 46);
+  f.click(f.key('か')); const oldAudio = f.audio.at(-1);
+  f.click(f.key('き')); assert.ok(oldAudio.paused); f.tick(30);
   assert.match(f.chartStatus.textContent, /「き」播放完畢/);
-  f.click(f.key('か')); f.click(f.key('き')); f.tick(1040);
-  assert.equal(f.audible.at(-1), 'き', 'rapid preparation replay lost the newer request');
-  f.click(f.key('か')); f.tick(1000); f.click(f.key('き')); f.tick(1040);
-  assert.equal(f.audible.at(-1), 'き', 'native cancellation of playing speech lost the newer request');
   f.show('hiraganaListening');
   for (const character of kana.slice(0, 5)) { f.click(f.controls.play); f.tick(30); f.advance(character); }
   f.click(f.controls.play); f.tick(1040);
   assert.equal(f.audible.at(-1), 'か');
+  f.click(f.controls.play); f.tick(1000); const oldSpeech = f.spoken.at(-1).u;
+  f.advance('か'); f.click(f.controls.play);
+  oldSpeech.onend(); oldSpeech.onerror(); oldSpeech.onstart(); f.tick(1040);
+  assert.equal(f.audible.at(-1), 'き');
 });
 
 test('preparation/playing cancellation, question changes, home/re-entry and pagehide invalidate old callbacks', () => {
@@ -162,22 +169,26 @@ test('preparation/playing cancellation, question changes, home/re-entry and page
   f.show('hiragana'); f.click(f.key('く')); f.pagehide(); f.tick(1040);
   assert.equal(f.audible.length, 0);
   f.show('hiragana'); f.click(f.key('け')); f.tick(1040);
-  assert.equal(f.audible.at(-1), 'け');
+  assert.match(f.chartStatus.textContent, /「け」播放完畢/);
+  assert.equal(f.audible.length, 0, 'chart must not submit synthesis');
   assert.equal(f.timers.size, 0);
 });
 
 test('native error, missing start, and missing end clear UI/timers; normal completion uses no recovery timeout', () => {
   for (const failure of ['fail', 'silentDrop', 'missingEnd']) {
-    const f = fixture({ [failure]: true }); f.show('hiragana'); f.click(f.key('か')); f.tick(11001);
-    assert.ok(!f.key('か').classList.contains('is-playing'), failure);
-    assert.doesNotMatch(f.chartStatus.textContent, /正在播放/, failure);
+    const f = fixture({ [failure]: true }); f.show('hiraganaListening');
+    kana.slice(0, 5).forEach(character => f.advance(character));
+    f.click(f.controls.play); f.tick(11001);
+    assert.ok(!f.controls.play.classList.contains('is-playing'), failure);
+    assert.doesNotMatch(f.controls.status.textContent, /正在播放/, failure);
     assert.equal(f.timers.size, 0, failure);
   }
 });
 
 test('synchronous native cancellation and touch-enabled Mac/iPad detection', () => {
-  const f = fixture({ ios: false, touchMac: true, synchronousCancel: true }); f.show('hiragana');
-  f.click(f.key('か')); assert.equal(f.spoken[0].u.text, ''); f.tick(1040);
+  const f = fixture({ ios: false, touchMac: true, synchronousCancel: true }); f.show('hiraganaListening');
+  kana.slice(0, 5).forEach(character => f.advance(character));
+  f.click(f.controls.play); assert.equal(f.spoken[0].u.text, ''); f.tick(1040);
   assert.equal(f.audible.at(-1), 'か');
 });
 
