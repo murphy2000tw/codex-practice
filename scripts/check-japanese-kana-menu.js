@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => {
         assert.equal(await page.locator(':focus').getAttribute('id'), `${view}-title`);
         assert.deepEqual(await activeView().locator('.entry-card-title').allTextContents(), labels);
         assert.equal(await activeView().locator('[data-japanese-kana-back]').getAttribute('data-japanese-kana-back'), parent);
-        assert.equal(await activeView().locator('button[disabled]').count(), view === 'katakanaListeningMenu' ? 4 : /^(hiragana|katakana)/.test(view) ? 3 : 0);
+        assert.equal(await activeView().locator('button[disabled]').count(), /^(hiragana|katakana)/.test(view) ? 3 : 0);
         for (const disabled of await activeView().locator('button[disabled]').all()) {
           assert.match(await disabled.innerText(), /準備中/);
           assert.equal(await disabled.getAttribute('data-japanese-kana-entry'), null);
@@ -78,24 +78,25 @@ const server = http.createServer((req, res) => {
           if (menus[target]) await visit(target);
           else {
             const chart = target === 'hiragana' || target === 'katakana';
-            const headingId = chart ? `${target}-title` : 'hiragana-listening-question';
+            const prefix = target === 'katakanaListening' ? 'katakana' : 'hiragana';
+            const headingId = chart ? `${target}-title` : `${prefix}-listening-question`;
             await page.waitForFunction((id) => document.activeElement?.id === id, headingId);
             // Let the page lifecycle's queued heading focus settle before keyboard activation.
             await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
-            assert.equal(await activeView().getAttribute('id'), { hiragana: 'japaneseHiraganaPanel', katakana: 'japaneseKatakanaPanel', hiraganaListening: 'japaneseHiraganaListeningPanel' }[target]);
+            assert.equal(await activeView().getAttribute('id'), { hiragana: 'japaneseHiraganaPanel', katakana: 'japaneseKatakanaPanel', hiraganaListening: 'japaneseHiraganaListeningPanel', katakanaListening: 'japaneseKatakanaListeningPanel' }[target]);
             if (chart) {
               assert.equal(await page.locator(`[data-${target}]`).count(), 46);
               await activate(page.locator(`[data-${target}="${target === 'hiragana' ? 'あ' : 'ア'}"]`));
             } else {
-              assert.match(await page.locator('#hiragana-listening-question').innerText(), /第 1 題/);
-              await activate(page.locator('#hiragana-listening-play'));
-              await activate(page.locator('#hiragana-listening-options button').first());
-              assert.match(await page.locator('#hiragana-listening-feedback').innerText(), /答對了/);
-              assert.equal(await page.locator('#hiragana-listening-options button:disabled').count(), 4);
-              await activate(page.locator('#hiragana-listening-next'));
-              assert.match(await page.locator('#hiragana-listening-question').innerText(), /第 2 題/);
-              assert.equal(await page.locator('#hiragana-listening-feedback').innerText(), '');
-              await activate(page.locator('#hiragana-listening-play'));
+              assert.match(await page.locator(`#${prefix}-listening-question`).innerText(), /第 1 題/);
+              await activate(page.locator(`#${prefix}-listening-play`));
+              await activate(page.locator(`#${prefix}-listening-options button`).first());
+              assert.match(await page.locator(`#${prefix}-listening-feedback`).innerText(), /答對了/);
+              assert.equal(await page.locator(`#${prefix}-listening-options button:disabled`).count(), 4);
+              await activate(page.locator(`#${prefix}-listening-next`));
+              assert.match(await page.locator(`#${prefix}-listening-question`).innerText(), /第 2 題/);
+              assert.equal(await page.locator(`#${prefix}-listening-feedback`).innerText(), '');
+              await activate(page.locator(`#${prefix}-listening-play`));
             }
             assert.equal(await page.evaluate(() => window.kanaTestAudio.at(-1).paused), false,
               `${target} must start playback; page errors: ${errors.join('; ')}`);
@@ -126,7 +127,7 @@ const server = http.createServer((req, res) => {
       await page.keyboard.press('Tab');
       assert.equal(await page.evaluate(() => Boolean(document.activeElement?.closest('#hiraganaPracticeMenu'))), false);
       assert.deepEqual(errors, [], 'page must have no runtime errors');
-      console.log(`PASS kana navigation: ${mobile ? 'mobile touch 390px' : 'desktop keyboard'}, all 7 menus, 13 disabled leaves, three practice pages, return focus, stop playback, re-entry and Tab order`);
+      console.log(`PASS kana navigation: ${mobile ? 'mobile touch 390px' : 'desktop keyboard'}, all 7 menus, 12 disabled leaves, four practice pages, return focus, stop playback, re-entry and Tab order`);
       await context.close();
     }
     // Decode and play the existing WAVs through the real browser Audio API.
