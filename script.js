@@ -707,6 +707,7 @@ function renderJapaneseView(view) {
   const nextView = getJapaneseViewElement(normalizedView) ? normalizedView : "home";
   const panelView = ["listeningMenu", "listeningPractice", "listeningQuiz"].includes(nextView) ? "listening" : (["reviewMenu", "vocabularyBook", "mistakeBook"].includes(nextView) ? "review" : nextView);
   if (currentJapaneseView === "listeningPractice" && panelView !== "listening") resetJapaneseListeningPractice();
+  if (currentJapaneseView === "listeningQuiz" && panelView !== "listening") cancelJapaneseListeningSpeech("quiz");
   if (japaneseHiraganaPanel) japaneseHiraganaPanel.hidden = panelView !== "hiragana";
   window.japaneseHiraganaPage?.onViewChange(panelView);
   if (japaneseHiraganaListeningPanel) japaneseHiraganaListeningPanel.hidden = panelView !== "hiraganaListening";
@@ -5682,13 +5683,16 @@ const JAPANESE_LISTENING_QUESTIONS = [
 
 const LISTENING_QUIZ_SIZE = 10;
 
-function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem = null, unlockOnGesture = false, startTimeoutMs = 0, completionTimeoutMs = 0 } = {}) {
+function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem = null, unlockOnGesture = false, startTimeoutMs = 0, completionTimeoutMs = 0, voiceWaitTimeoutMs = 0 } = {}) {
   let generation = 0;
   let activeUtterance = null;
   let utteranceSubmitted = false;
   let preparationTimer = null;
   let startTimer = null;
   let completionTimer = null;
+  let voiceDeadlineTimer = null;
+  let voicePollTimer = null;
+  let voiceChangeListener = null;
   let gestureUtterance = null;
   let gestureSubmitted = false;
   const clearStartTimer = () => {
@@ -5699,6 +5703,13 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
     if (completionTimer !== null) provider.clearTimeout(completionTimer);
     completionTimer = null;
   };
+  const clearVoiceWait = () => {
+    if (voiceDeadlineTimer !== null) provider.clearTimeout(voiceDeadlineTimer);
+    if (voicePollTimer !== null) provider.clearTimeout(voicePollTimer);
+    voiceDeadlineTimer = voicePollTimer = null;
+    if (voiceChangeListener) provider.speechSynthesis.removeEventListener("voiceschanged", voiceChangeListener);
+    voiceChangeListener = null;
+  };
   let playedItemIds = new Set();
   const cancel = () => {
     generation += 1;
@@ -5706,6 +5717,7 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
     preparationTimer = null;
     clearStartTimer();
     clearCompletionTimer();
+    clearVoiceWait();
     const ownsSubmittedUtterance = (activeUtterance !== null && utteranceSubmitted) || gestureSubmitted;
     activeUtterance = null;
     utteranceSubmitted = false;
@@ -5724,16 +5736,23 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
       let utterance;
       try {
         if (!provider || !provider.speechSynthesis || typeof provider.speechSynthesis.speak !== "function" ||
-            typeof provider.SpeechSynthesisUtterance !== "function") throw new Error("speech unavailable");
+            typeof provider.SpeechSynthesisUtterance !== "function") {
+          cancel();
+          onStatus("error", "speech-unavailable");
+          return false;
+        }
         utterance = new provider.SpeechSynthesisUtterance(text);
         activeUtterance = utterance;
         utteranceSubmitted = false;
         const isCurrent = () => token === generation && activeUtterance === utterance;
         utterance.lang = "ja-JP"; utterance.rate = 0.86; utterance.pitch = 1; utterance.volume = 1;
-        const voices = typeof provider.speechSynthesis.getVoices === "function"
-          ? provider.speechSynthesis.getVoices() : [];
-        utterance.voice = Array.isArray(voices)
-          ? voices.find((voice) => voice && /^ja(?:-|$)/i.test(voice.lang || "")) || null : null;
+        const findJapaneseVoice = () => {
+          let voices;
+          try { voices = provider.speechSynthesis.getVoices?.(); } catch (_error) { voices = []; }
+          return Array.isArray(voices)
+            ? voices.find((voice) => voice && /^ja(?:-|$)/i.test(voice.lang || "")) || null : null;
+        };
+        utterance.voice = findJapaneseVoice();
         utterance.onstart = () => {
           if (!isCurrent()) return;
           clearStartTimer();
@@ -5742,13 +5761,13 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
             completionTimer = provider.setTimeout(() => {
               if (!isCurrent()) return;
               cancel();
-              onStatus("timeout");
+              onStatus("timeout", "completion-timeout");
             }, completionTimeoutMs);
           }
           onStatus("playing");
         };
         utterance.onend = () => { if (isCurrent()) { clearStartTimer(); clearCompletionTimer(); activeUtterance = null; utteranceSubmitted = false; onStatus("ended"); } };
-        utterance.onerror = () => { if (isCurrent()) { clearStartTimer(); clearCompletionTimer(); activeUtterance = null; utteranceSubmitted = false; onStatus("error"); } };
+        utterance.onerror = (event) => { if (isCurrent()) { clearStartTimer(); clearCompletionTimer(); activeUtterance = null; utteranceSubmitted = false; onStatus("error", event?.error || "speech-error"); } };
         onStatus("preparing");
         if (unlockOnGesture) {
           // WebKit removes its iOS gesture restriction inside speak(), before queueing.
@@ -5778,13 +5797,45 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
             provider.speechSynthesis.cancel();
           }
         }
-        preparationTimer = provider.setTimeout(() => {
-          if (!isCurrent()) return;
-          preparationTimer = null;
+        const submitPreparedUtterance = () => {
+          if (!isCurrent() || utteranceSubmitted) return;
           try {
+            // General listening opts in: select from the CURRENT list, after the
+            // full preparation interval, rather than keeping a null/stale voice.
+            if (voiceWaitTimeoutMs > 0) {
+              const voice = findJapaneseVoice();
+              if (!voice) {
+                if (voiceDeadlineTimer === null) {
+                  onStatus("waiting-voice");
+                  voiceDeadlineTimer = provider.setTimeout(() => {
+                    if (!isCurrent() || voiceDeadlineTimer === null) return;
+                    cancel();
+                    onStatus("error", "japanese-voice-unavailable");
+                  }, voiceWaitTimeoutMs);
+                  const synthesis = provider.speechSynthesis;
+                  if (typeof synthesis.addEventListener === "function" && typeof synthesis.removeEventListener === "function") {
+                    voiceChangeListener = submitPreparedUtterance;
+                    synthesis.addEventListener("voiceschanged", voiceChangeListener);
+                  }
+                  // Some engines never emit voiceschanged. Poll only while this
+                  // request owns the wait; cancellation removes both paths.
+                  const poll = () => {
+                    if (!isCurrent() || voiceDeadlineTimer === null) return;
+                    voicePollTimer = null;
+                    submitPreparedUtterance();
+                    if (isCurrent() && voiceDeadlineTimer !== null)
+                      voicePollTimer = provider.setTimeout(poll, 100);
+                  };
+                  voicePollTimer = provider.setTimeout(poll, 100);
+                }
+                return;
+              }
+              utterance.voice = voice;
+              clearVoiceWait();
+            }
             if (startTimeoutMs > 0) {
               startTimer = provider.setTimeout(() => {
-                if (!isCurrent()) return;
+                if (!isCurrent() || startTimer === null) return;
                 cancel();
                 onStatus("timeout");
               }, startTimeoutMs);
@@ -5795,9 +5846,14 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
             if (isCurrent()) {
               if (unlockOnGesture || startTimeoutMs > 0) cancel();
               else { activeUtterance = null; utteranceSubmitted = false; }
-              onStatus("error");
+              onStatus("error", "speech-error");
             }
           }
+        };
+        preparationTimer = provider.setTimeout(() => {
+          if (!isCurrent()) return;
+          preparationTimer = null;
+          submitPreparedUtterance();
         }, 1000);
       } catch (_error) {
         cancel();
@@ -5814,11 +5870,23 @@ function createJapaneseListeningModeSpeechController(provider, { maxPlaysPerItem
 
 function getJapaneseListeningSpeechProvider() {
   return {
+    isIOS: typeof navigator !== "undefined" && (/iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)),
     speechSynthesis: typeof window !== "undefined" ? window.speechSynthesis : null,
     SpeechSynthesisUtterance: typeof SpeechSynthesisUtterance === "function" ? SpeechSynthesisUtterance : null,
     setTimeout: (callback, delay) => window.setTimeout(callback, delay),
     clearTimeout: (timer) => window.clearTimeout(timer),
   };
+}
+
+function createJapaneseGeneralListeningSpeechController(provider, { maxPlaysPerItem = null } = {}) {
+  return createJapaneseListeningModeSpeechController(provider, {
+    maxPlaysPerItem,
+    unlockOnGesture: provider.isIOS === true,
+    startTimeoutMs: 5000,
+    completionTimeoutMs: 60000,
+    voiceWaitTimeoutMs: 5000,
+  });
 }
 
 let japaneseListeningMenuView = document.querySelector("#japaneseListeningMenuView");
@@ -5831,8 +5899,8 @@ let listeningQuizCorrectCount = 0;
 let listeningQuizAnswered = false;
 let listeningQuizSelectedIndex = null;
 let listeningQuizItems = [];
-const listeningPracticeSpeechController = createJapaneseListeningModeSpeechController(getJapaneseListeningSpeechProvider());
-const listeningQuizSpeechController = createJapaneseListeningModeSpeechController(getJapaneseListeningSpeechProvider(), { maxPlaysPerItem: 1 });
+const listeningPracticeSpeechController = createJapaneseGeneralListeningSpeechController(getJapaneseListeningSpeechProvider());
+const listeningQuizSpeechController = createJapaneseGeneralListeningSpeechController(getJapaneseListeningSpeechProvider(), { maxPlaysPerItem: 1 });
 
 function normalizeJapaneseListeningView(view) {
   return ["menu", "practice", "quiz"].includes(view) ? view : "menu";
@@ -5915,18 +5983,26 @@ function createListeningPlayButton(item, status, { onePlay = false } = {}) {
   button.type = "button";
   button.textContent = "播放音訊";
   button.disabled = !controller.hasPlayback(item.id);
+  if (button.disabled) status.textContent = "本題播放額度已使用，無法再次播放。";
   button.addEventListener("click", () => {
     if (!controller.hasPlayback(item.id)) return;
     button.disabled = true;
-    controller.requestPlayback(item.id, item.japanese, (state) => {
+    controller.requestPlayback(item.id, item.japanese, (state, errorCode) => {
       if (state === "preparing") status.textContent = "準備播放，請稍候…";
+      else if (state === "waiting-voice") status.textContent = "正在等待日文語音載入，請稍候…";
       else if (state === "playing") status.textContent = "正在播放日文音訊…";
       else if (state === "ended") {
         button.disabled = onePlay;
         status.textContent = onePlay ? "播放完成，本題無法再次播放。" : "播放完成，可再次播放。";
       } else {
         button.disabled = onePlay;
-        status.textContent = "此裝置可能不支援日文語音播放，請稍後再試或更換瀏覽器。";
+        const message = state === "timeout" ? (errorCode === "completion-timeout" ? "語音播放未能完成。" : "語音未能開始播放。")
+          : errorCode === "japanese-voice-unavailable" ? "尚未取得可用的日文語音，請稍後再試或檢查裝置日文語音設定。"
+          : errorCode === "speech-unavailable" ? "此瀏覽器未提供語音合成功能。"
+          : errorCode === "not-allowed" ? "瀏覽器未允許這次語音播放。"
+          : ["voice-unavailable", "language-unavailable"].includes(errorCode) ? "裝置目前無法使用指定的日文語音。"
+          : "日文語音播放失敗，請確認裝置音量與語音服務。";
+        status.textContent = `${message}${onePlay ? "本題播放額度已使用，無法再次播放。" : "可再次點擊播放重試。"}`;
       }
     });
   });
@@ -6066,3 +6142,10 @@ window.LISTENING_QUIZ_SIZE = LISTENING_QUIZ_SIZE;
 window.initializeListeningPanel = initializeListeningPanel;
 window.renderJapaneseListeningView = renderJapaneseListeningView;
 window.resetJapaneseListeningState = resetJapaneseListeningState;
+window.addEventListener?.("pagehide", () => cancelJapaneseListeningSpeech());
+window.addEventListener?.("pageshow", (event) => {
+  if (!event.persisted) return;
+  // Rebuild controls after a bfcache return, keeping the question and quiz budget.
+  if (currentJapaneseView === "listeningPractice") renderJapaneseListeningPractice();
+  else if (currentJapaneseView === "listeningQuiz") renderJapaneseListeningQuizQuestion();
+});

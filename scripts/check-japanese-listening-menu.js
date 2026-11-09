@@ -105,7 +105,9 @@ requireIncludes(script, 'if (japaneseListeningContent) {\n    japaneseListeningC
 });
 requireIncludes(script, 'SpeechSynthesisUtterance', 'Web Speech API playback');
 requireIncludes(script, 'utterance.lang = "ja-JP"', 'Japanese speech language');
-requireIncludes(script, '此裝置可能不支援日文語音播放', 'speech unsupported fallback');
+requireIncludes(script, '此瀏覽器未提供語音合成功能', 'speech unsupported fallback');
+requireIncludes(script, '尚未取得可用的日文語音', 'Japanese voice loading failure');
+requireIncludes(script, '語音未能開始播放', 'speech start failure');
 
 ['data-japanese-vocabulary-entry="practice"', 'data-japanese-vocabulary-entry="quiz"'].forEach((required) => requireIncludes(vocabularyMenu, required, `vocabulary menu unaffected ${required}`));
 ['data-reading-mode="practice"', 'data-reading-mode="quiz"'].forEach((required) => requireIncludes(readingMenu, required, `reading menu unaffected ${required}`));
