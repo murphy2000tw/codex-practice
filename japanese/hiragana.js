@@ -4,7 +4,7 @@
   if (!panel) return;
   const status = panel.querySelector('#hiragana-status');
   const provider = getJapaneseListeningSpeechProvider();
-  const controller = createHiraganaPlaybackController(provider);
+  const controller = createHiraganaPlaybackController(provider, getHiraganaSpeechOptions());
   let activeButton = null;
   let visible = false;
 

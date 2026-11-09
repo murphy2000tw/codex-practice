@@ -134,9 +134,9 @@ function fixture({ failure = null } = {}) {
   stale.play('あ'); stale.controller.cancel(); stale.reject(); await Promise.resolve();
   assert.deepEqual(stale.statuses, ['preparing'], 'cancelled rejection is ignored');
 
-  const sharedIndex = html.indexOf('src="hiraganaAudio.js?v=1.0"');
+  const sharedIndex = html.indexOf('src="hiraganaAudio.js?v=1.1"');
   assert.ok(sharedIndex > 0);
-  assert.ok(html.indexOf('src="hiragana.js?v=1.1"') > sharedIndex);
-  assert.ok(html.indexOf('src="hiraganaListening.js?v=1.4"') > sharedIndex);
+  assert.ok(html.indexOf('src="hiragana.js?v=1.2"') > sharedIndex);
+  assert.ok(html.indexOf('src="hiraganaListening.js?v=1.5"') > sharedIndex);
   console.log('Hiragana audio checks passed: five PCM assets, hashes/durations/quiet boundaries, exact vowel routing, 41 TTS routes, synchronous gesture play, replay/cancellation, stale events, errors and startup timeout.');
 })().catch((error) => { console.error(error); process.exitCode = 1; });
