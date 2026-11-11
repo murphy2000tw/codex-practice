@@ -973,7 +973,9 @@ function speakEnglish(text, options = {}) {
     return false;
   }
 
-  cancelEnglishSpeech();
+  // Prepared playback already retired the unlock/previous speech on the click
+  // stack. A native cancel immediately before speak can swallow speech on iOS.
+  if (!options.prepared) cancelEnglishSpeech();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = options.lang || "en-US";
   utterance.rate = options.rate || 0.9;
@@ -1074,7 +1076,7 @@ function renderPracticePreparation() {
 }
 
 function playPracticeItem(item) {
-  if (speakEnglish(getItemText(item))) {
+  if (speakEnglish(getItemText(item), { prepared: true })) {
     recordListeningPlay(item, listeningModePractice);
   }
 }
@@ -1230,7 +1232,7 @@ function renderTestPreparation() {
     }
     testPhase = "running";
     testStartedAt = new Date().toISOString();
-    renderTestQuestion();
+    renderTestQuestion(true);
   }));
   listeningContent.replaceChildren(card);
 }
@@ -1241,12 +1243,12 @@ function playTestItemOnce(item) {
     return;
   }
   testPlayedQuestionIds.add(itemId);
-  if (speakEnglish(getItemText(item))) {
+  if (speakEnglish(getItemText(item), { prepared: true })) {
     recordListeningPlay(item, listeningModeTest);
   }
 }
 
-function renderTestQuestion() {
+function renderTestQuestion(fromGesture = false) {
   cancelEnglishSpeech();
   if (testPhase !== "running") {
     renderTestPreparation();
@@ -1289,7 +1291,7 @@ function renderTestQuestion() {
 
   card.append(prompt, options);
   listeningContent.replaceChildren(card);
-  EnglishListeningPlayback.schedule(() => playTestItemOnce(currentItem), playStatus);
+  EnglishListeningPlayback.schedule(() => playTestItemOnce(currentItem), playStatus, { fromGesture });
 }
 
 function handleTestAnswer(selectedButton, currentItem) {
@@ -1303,6 +1305,9 @@ function handleTestAnswer(selectedButton, currentItem) {
   }
 
   EnglishListeningPlayback.cancel();
+  // The next question is rendered by a feedback timer. Unlock here, while the
+  // answer click is still active; never attempt to unlock from that timer.
+  if (testQuestionIndex < testQuestions.length - 1) EnglishListeningPlayback.unlock();
   const correctAnswer = getItemAnswer(currentItem);
   testAnsweredQuestionIds.add(itemId);
   const selectedAnswer = selectedButton.dataset.answer;
@@ -1328,14 +1333,14 @@ function handleTestAnswer(selectedButton, currentItem) {
 
   applyListeningAnswerFeedback(selectedButton, correctAnswer);
 
-  window.setTimeout(() => {
+  window.setTimeout(EnglishListeningPlayback.guard(() => {
     if (testQuestionIndex >= testQuestions.length - 1) {
       renderTestCompletePanel();
       return;
     }
     testQuestionIndex += 1;
     renderTestQuestion();
-  }, 450);
+  }), 450);
 }
 
 function createListeningResultReplayButton(result) {
@@ -1350,7 +1355,7 @@ function createListeningResultReplayButton(result) {
       speakEnglish(getItemText(result.item, result.type));
       return;
     }
-    EnglishListeningPlayback.schedule(() => speakEnglish(getItemText(result.item, result.type)), button);
+    EnglishListeningPlayback.schedule(() => speakEnglish(getItemText(result.item, result.type), { prepared: true }), button);
   });
   return button;
 }
