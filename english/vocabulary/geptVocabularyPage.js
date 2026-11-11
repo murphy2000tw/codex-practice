@@ -175,6 +175,7 @@ function canUseSpeechSynthesis() {
 }
 
 function stopEnglishWordAudio() {
+  EnglishListeningPlayback.cancel();
   if (!canUseSpeechSynthesis()) {
     return;
   }
@@ -224,18 +225,25 @@ function createEnglishWordAudioButton(word, options = {}) {
       return;
     }
 
-    const didSpeak = speakEnglishWord(word);
-    if (!didSpeak) {
-      return;
-    }
+    const play = () => {
+      const didSpeak = speakEnglishWord(word);
+      if (!didSpeak) {
+        return;
+      }
 
-    button.classList.add("is-playing");
-    window.setTimeout(() => {
-      button.classList.remove("is-playing");
-    }, 650);
+      button.classList.add("is-playing");
+      window.setTimeout(() => {
+        button.classList.remove("is-playing");
+      }, 650);
 
-    if (typeof options.onPlay === "function") {
-      options.onPlay(button);
+      if (typeof options.onPlay === "function") {
+        options.onPlay(button);
+      }
+    };
+    if (currentMode === listeningMode || currentMode === listeningTestMode) {
+      EnglishListeningPlayback.schedule(play, button);
+    } else {
+      play();
     }
   });
 
@@ -1607,6 +1615,7 @@ function goToNextVocabListeningTestQuestion() {
 }
 
 function renderVocabListeningTestQuestion() {
+  EnglishListeningPlayback.cancel();
   const question = getCurrentVocabListeningTestQuestion();
   if (!question) {
     renderVocabListeningTestStart();

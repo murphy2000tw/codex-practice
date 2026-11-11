@@ -953,6 +953,7 @@ function isSpeechSynthesisSupported() {
 }
 
 function cancelEnglishSpeech() {
+  EnglishListeningPlayback.cancel();
   if (isSpeechSynthesisSupported()) {
     window.speechSynthesis.cancel();
   }
@@ -1123,7 +1124,7 @@ function renderPracticeQuestion() {
   const instruction = document.createElement("p");
   instruction.className = "gept-quiz-instruction";
   instruction.textContent = `請聽音訊後選出正確${config.answerLabel}。`;
-  const playButton = createModeActionButton("播放音訊 / 再聽一次", () => playPracticeItem(currentItem), "secondary-button listening-play-button");
+  const playButton = createModeActionButton("播放音訊 / 再聽一次", () => EnglishListeningPlayback.schedule(() => playPracticeItem(currentItem), playButton), "secondary-button listening-play-button");
   prompt.append(label, instruction, playButton);
 
   const options = document.createElement("div");
@@ -1166,6 +1167,7 @@ function handlePracticeAnswer(selectedButton, currentItem, feedback) {
     return;
   }
 
+  EnglishListeningPlayback.cancel();
   const config = getActivityConfig();
   const correctAnswer = getItemAnswer(currentItem);
   practiceAnsweredCurrentQuestion = true;
@@ -1287,7 +1289,7 @@ function renderTestQuestion() {
 
   card.append(prompt, options);
   listeningContent.replaceChildren(card);
-  playTestItemOnce(currentItem);
+  EnglishListeningPlayback.schedule(() => playTestItemOnce(currentItem), playStatus);
 }
 
 function handleTestAnswer(selectedButton, currentItem) {
@@ -1300,6 +1302,7 @@ function handleTestAnswer(selectedButton, currentItem) {
     return;
   }
 
+  EnglishListeningPlayback.cancel();
   const correctAnswer = getItemAnswer(currentItem);
   testAnsweredQuestionIds.add(itemId);
   const selectedAnswer = selectedButton.dataset.answer;
@@ -1342,7 +1345,12 @@ function createListeningResultReplayButton(result) {
   button.textContent = "🔊 重聽音訊";
   button.setAttribute("aria-label", `重聽第 ${result.order} 題音訊`);
   button.addEventListener("click", () => {
-    speakEnglish(getItemText(result.item, result.type));
+    // Full mock playback, including its result replays, belongs to phase two.
+    if (listeningType === listeningTypeGeptFullMock) {
+      speakEnglish(getItemText(result.item, result.type));
+      return;
+    }
+    EnglishListeningPlayback.schedule(() => speakEnglish(getItemText(result.item, result.type)), button);
   });
   return button;
 }
@@ -1776,6 +1784,7 @@ function setListeningActivity(type, mode) {
   if (listeningType === type && listeningMode === mode) {
     return;
   }
+  EnglishListeningPlayback.cancel();
   listeningType = type;
   listeningMode = mode;
   const pageName = window.location.pathname.split("/").pop();
