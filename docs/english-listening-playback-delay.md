@@ -90,3 +90,46 @@ syntax checks and `git diff --check`.
   would be a separate behavior change.
 - Confirm full GEPT mock feels unchanged and Japanese/kana audio still behaves as
   before. Neither controller nor Japanese page assets were changed.
+
+## Follow-up: iPhone Safari gesture unlock
+
+PR #325 delayed the first `speechSynthesis.speak()` call until a timer, outside
+Safari's user gesture. The follow-up uses the same principle as the read-only
+reference `createJapaneseListeningModeSpeechController` in `script.js`:
+
+1. On the synchronous playback click stack, cancel previous speech, submit an
+   empty `SpeechSynthesisUtterance("")` with `lang = "en-US"` and `volume = 0`,
+   then retire it on that same stack if it has not ended. Neither text nor sound
+   from the question is submitted at this point. The unlock uses no play-count,
+   progress or once-only callbacks.
+2. Keep the existing 1000ms preparation timer and cancellation generation guard.
+   Submit the existing audible English utterance after the full delay. Prepared
+   playback skips the former cancel-immediately-before-speak sequence, avoiding
+   a WebKit native-cancel race and leaving time for unlock cancellation to drain.
+3. Starting the ordinary listening test opts into synchronous unlock while the
+   start click is active. For subsequent automatic questions, unlock happens in
+   the answer click, before the existing 450ms feedback timer. Rendering the next
+   question then schedules its existing 1000ms preparation without a second
+   unlock inside the timer. Leaving during the feedback timer also invalidates
+   its callback, so it cannot schedule old audio after navigation/hidden-tab
+   cancellation.
+4. Legacy vocabulary listening tests still require a per-question play click;
+   they do not gain autoplay on start or answer. Those play/replay clicks use
+   the same unlock path. Full GEPT mock and ordinary vocabulary pronunciation
+   continue to bypass prepared listening playback.
+
+Both English controllers, the English-only helper and their five HTML script
+cache versions are updated. The regression script now observes silent requests
+separately from question playback and requires each unlock to occur synchronously
+inside a click event. It models an empty unlock that never ends, a pending native
+cancel, and speech permission that must be refreshed for subsequent content.
+Checks cover unlock on start/answer, no timer-based unlock, 999/1000ms boundaries,
+unchanged play counts/once-only flags, cancellation and the excluded mock flow.
+The Japanese source, pages and kana assets are unchanged.
+
+Still confirm on an actual iPhone Safari: first play after a fresh load; repeat
+practice and result replays; test start and successive automatic questions; all
+legacy vocabulary listening entries; silence during preparation; no stale audio
+after answering early, restarting, menu/back navigation, tab switching or bfcache
+restoration. Confirm the mock remains unchanged. Chromium speech stubs cannot
+establish actual iOS speech output or its native cancellation timing.

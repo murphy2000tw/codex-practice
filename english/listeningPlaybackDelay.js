@@ -12,9 +12,30 @@ window.EnglishListeningPlayback = (() => {
     pending = null;
   }
 
-  function schedule(play, control = null) {
+  // Like the Japanese iOS controller, call speak on the gesture stack, then
+  // retire the empty utterance BEFORE the preparation timer. No question state
+  // or play-count callbacks participate in this inaudible request.
+  function unlock() {
+    const synthesis = window.speechSynthesis;
+    if (!synthesis || typeof window.SpeechSynthesisUtterance !== "function") return;
+    try {
+      synthesis.cancel();
+      const silent = new window.SpeechSynthesisUtterance("");
+      silent.lang = "en-US";
+      silent.volume = 0;
+      let unfinished = true;
+      silent.onend = silent.onerror = () => { unfinished = false; };
+      synthesis.speak(silent);
+      if (unfinished) synthesis.cancel();
+    } catch (_error) {
+      // Optional speech support must not break question navigation or controls.
+    }
+  }
+
+  function schedule(play, control = null, { fromGesture = true } = {}) {
     // One pending request per page, including result lists with many replay buttons.
     if (pending) return false;
+    if (fromGesture) unlock();
     const token = ++generation;
     const label = control?.textContent;
     const disabled = control?.disabled;
@@ -49,5 +70,9 @@ window.EnglishListeningPlayback = (() => {
   document.addEventListener("click", (event) => {
     if (event.target.closest?.("a[href]")) cancel();
   }, true);
-  return { schedule, cancel };
+  function guard(callback) {
+    const token = generation;
+    return () => { if (token === generation) callback(); };
+  }
+  return { schedule, cancel, unlock, guard };
 })();

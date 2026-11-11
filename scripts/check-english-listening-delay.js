@@ -26,8 +26,31 @@ const server = http.createServer((req, res) => {
     page.on('pageerror', error => errors.push(error.message));
     await page.addInitScript(() => {
       window.spoken = [];
+      window.unlocks = [];
+      let inClick = false;
+      let cancelPending = false;
+      let unlocked = false;
+      let silentPending = false;
+      window.addEventListener('click', () => { inClick = true; }, true);
+      window.addEventListener('click', () => { inClick = false; });
       Object.defineProperty(window, 'speechSynthesis', { value: {
-        cancel() {}, speak(utterance) { window.spoken.push({ text: utterance.text, at: Date.now() }); },
+        cancel() { silentPending = false; cancelPending = true; queueMicrotask(() => { cancelPending = false; }); },
+        speak(utterance) {
+          if (utterance.volume === 0) {
+            if (!inClick) throw new Error('unlock outside click event');
+            if (utterance.text !== '') throw new Error('unlock must have empty text');
+            unlocked = true;
+            silentPending = true;
+            window.unlocks.push({ text: utterance.text, volume: utterance.volume, at: Date.now() });
+            return; // Deliberately never ends: the controller must retire it.
+          }
+          const scoped = /listening/.test(location.pathname + location.search) && !location.search.includes('geptFullMock');
+          if (scoped && !unlocked) throw new Error('delayed speech without gesture unlock');
+          if (scoped && cancelPending) throw new Error('cancel and delayed speak on the same stack');
+          if (scoped && silentPending) throw new Error('unfinished unlock blocks speech queue');
+          if (scoped) unlocked = false;
+          window.spoken.push({ text: utterance.text, at: Date.now() });
+        },
       } });
     });
     await page.clock.install();
@@ -44,9 +67,11 @@ const server = http.createServer((req, res) => {
       const playCount = () => page.evaluate(() => loadListeningProgress().items[getListeningItemId(practiceQuestions[0])].practicePlayCount);
       const priorPlays = await playCount();
       await click('.listening-play-button');
+      assert.equal(await page.evaluate(() => window.unlocks.length), 1, 'unlock synchronous with play click');
       assert.equal(await playCount(), priorPlays, 'pending playback does not record progress');
       assert(await page.locator('.listening-play-button').isDisabled());
       await click('.listening-play-button');
+      assert.equal(await page.evaluate(() => window.unlocks.length), 1, 'duplicate click cannot unlock again');
       await tick(999); assert.equal(await count(), 0, `${type}: silent before 1000ms`);
       await tick(1); assert.equal(await count(), 1);
       assert.equal(await page.evaluate(() => window.spoken[0].text), expected);
@@ -63,13 +88,21 @@ const server = http.createServer((req, res) => {
 
       await go(`english/listening/quiz.html?type=${type}`);
       await click('#listeningContent .answer-button');
+      assert.equal(await page.evaluate(() => window.unlocks.length), 1, 'start test unlocks before timer');
+      assert.equal(await page.evaluate(() => testPlayedQuestionIds.size), 0, 'silent unlock does not consume play limit');
       await tick(999); assert.equal(await count(), 0);
       await tick(1); assert.equal(await count(), 1, `${type}: automatic test delayed`);
       await page.evaluate(() => playTestItemOnce(testQuestions[0]));
       assert.equal(await count(), 1, `${type}: test remains once-only`);
+      await click('.gept-quiz-option');
+      assert.equal(await page.evaluate(() => window.unlocks.length), 2, 'answer unlocks next question synchronously');
+      await tick(450);
+      assert.equal(await page.evaluate(() => window.unlocks.length), 2, 'advance timer must not unlock');
+      await tick(999); assert.equal(await count(), 1);
+      await tick(1); assert.equal(await count(), 2, 'automatic next plays after preparation');
       await click('.gept-quiz-option'); await tick(450);
       await click('.gept-quiz-option'); await tick(1000);
-      assert.equal(await count(), 1, `${type}: answering during automatic wait cancels old question`);
+      assert.equal(await count(), 2, `${type}: answering during automatic wait cancels old question`);
       // Complete through the UI and verify result replay and restart cancellation.
       await page.evaluate(() => EnglishListeningPlayback.cancel());
       while (await page.locator('.gept-quiz-option').count()) {
@@ -126,6 +159,13 @@ const server = http.createServer((req, res) => {
       await tick(1000); assert.equal(await count(), 0, event + ' cancels pending audio');
     }
     console.log('PASS page lifecycle, hidden tab, hash and menu navigation cancellation');
+
+    // Leaving during the 450ms answer feedback must not schedule old audio later.
+    await go('english/listening/quiz.html?type=sentence');
+    await click('#listeningContent .answer-button'); await tick(1000);
+    await click('.gept-quiz-option');
+    await page.evaluate(() => window.dispatchEvent(new Event('pagehide')));
+    await tick(2000); assert.equal(await count(), 1, 'leave cancels deferred next-question playback');
 
     // Full mock remains immediate, including shared result replay factory.
     await go('english/listening/quiz.html?type=geptFullMock');

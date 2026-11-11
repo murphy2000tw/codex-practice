@@ -187,12 +187,12 @@ function stopEnglishWordAudio() {
   }
 }
 
-function speakEnglishWord(word) {
+function speakEnglishWord(word, { prepared = false } = {}) {
   if (!canSpeakEnglishWord(word) || !canUseSpeechSynthesis()) {
     return false;
   }
 
-  stopEnglishWordAudio();
+  if (!prepared) stopEnglishWordAudio();
 
   const utterance = new SpeechSynthesisUtterance(word.trim());
   utterance.lang = "en-US";
@@ -225,8 +225,9 @@ function createEnglishWordAudioButton(word, options = {}) {
       return;
     }
 
+    const prepared = currentMode === listeningMode || currentMode === listeningTestMode;
     const play = () => {
-      const didSpeak = speakEnglishWord(word);
+      const didSpeak = speakEnglishWord(word, { prepared });
       if (!didSpeak) {
         return;
       }
@@ -240,7 +241,7 @@ function createEnglishWordAudioButton(word, options = {}) {
         options.onPlay(button);
       }
     };
-    if (currentMode === listeningMode || currentMode === listeningTestMode) {
+    if (prepared) {
       EnglishListeningPlayback.schedule(play, button);
     } else {
       play();
