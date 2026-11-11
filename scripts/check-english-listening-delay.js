@@ -26,6 +26,7 @@ const server = http.createServer((req, res) => {
     page.on('pageerror', error => errors.push(error.message));
     await page.addInitScript(() => {
       window.spoken = [];
+      window.activeSpeech = null;
       window.unlocks = [];
       let inClick = false;
       let cancelPending = false;
@@ -34,7 +35,7 @@ const server = http.createServer((req, res) => {
       window.addEventListener('click', () => { inClick = true; }, true);
       window.addEventListener('click', () => { inClick = false; });
       Object.defineProperty(window, 'speechSynthesis', { value: {
-        cancel() { silentPending = false; cancelPending = true; queueMicrotask(() => { cancelPending = false; }); },
+        cancel() { window.activeSpeech = null; silentPending = false; cancelPending = true; queueMicrotask(() => { cancelPending = false; }); },
         speak(utterance) {
           if (utterance.volume === 0) {
             if (!inClick) throw new Error('unlock outside click event');
@@ -44,11 +45,12 @@ const server = http.createServer((req, res) => {
             window.unlocks.push({ text: utterance.text, volume: utterance.volume, at: Date.now() });
             return; // Deliberately never ends: the controller must retire it.
           }
-          const scoped = /listening/.test(location.pathname + location.search) && !location.search.includes('geptFullMock');
+          const scoped = /listening/.test(location.pathname + location.search);
           if (scoped && !unlocked) throw new Error('delayed speech without gesture unlock');
           if (scoped && cancelPending) throw new Error('cancel and delayed speak on the same stack');
           if (scoped && silentPending) throw new Error('unfinished unlock blocks speech queue');
           if (scoped) unlocked = false;
+          window.activeSpeech = utterance.text;
           window.spoken.push({ text: utterance.text, at: Date.now() });
         },
       } });
@@ -167,21 +169,128 @@ const server = http.createServer((req, res) => {
     await page.evaluate(() => window.dispatchEvent(new Event('pagehide')));
     await tick(2000); assert.equal(await count(), 1, 'leave cancels deferred next-question playback');
 
-    // Full mock remains immediate, including shared result replay factory.
-    await go('english/listening/quiz.html?type=geptFullMock');
-    await page.evaluate(() => {
-      resetMockState(); mockQuestions = selectMockQuestions();
-      const entry = mockQuestions[0];
-      playMockItemOnce(entry);
-      const button = createListeningResultReplayButton({ ...entry, order: 1 });
-      document.body.append(button); button.click();
+    // Full mock: exercise the complete UI, preserving the selected question order.
+    const mockUrl = 'english/listening/quiz.html?type=geptFullMock';
+    const startMock = async () => {
+      await go(mockUrl);
+      await page.getByRole('button', { name: '開始測驗', exact: true }).evaluate(b => b.click());
+      assert.equal(await count(), 0, 'overall start only opens section instructions');
+      assert.equal(await page.evaluate(() => window.unlocks.length), 0);
+    };
+    const startSection = () => page.getByRole('button', { name: '開始本部分', exact: true }).evaluate(b => b.click());
+    const answerMock = () => page.evaluate(() => {
+      const entry = getMockQuestionEntry();
+      const correct = getItemAnswer(entry.item, entry.type);
+      [...document.querySelectorAll('.gept-quiz-option')].find(b => b.dataset.answer === correct).click();
     });
-    assert.equal(await count(), 2);
-    await tick(1000); assert.equal(await count(), 2);
+    await startMock();
+    const original = await page.evaluate(() => mockQuestions.map(e => ({
+      id: getListeningItemId(e.item, e.type), text: getItemText(e.item, e.type),
+      type: e.type, section: e.sectionIndex,
+      plays: loadListeningProgress().items[getListeningItemId(e.item, e.type)]?.testPlayCount || 0,
+    })));
+    let expectedUnlocks = 0;
+    for (let index = 0; index < original.length; index++) {
+      if (index === 0 || original[index].section !== original[index - 1].section) {
+        const before = await page.evaluate(() => window.unlocks.length);
+        await tick(2000); assert.equal(await count(), index, 'section intro never autoplays');
+        assert.equal(await page.evaluate(() => window.unlocks.length), before);
+        await startSection(); expectedUnlocks++;
+      }
+      assert.equal(await page.evaluate(() => window.unlocks.length), expectedUnlocks, 'unlock already on click stack');
+      assert.equal(await page.evaluate(() => mockPlayedQuestionIds.size), index, 'unlock does not consume once-only slot');
+      const progressPlays = () => page.evaluate(() => {
+        const e = getMockQuestionEntry();
+        return loadListeningProgress().items[getListeningItemId(e.item, e.type)].testPlayCount;
+      });
+      assert.equal(await progressPlays(), original[index].plays, 'silent unlock does not count');
+      await tick(999); assert.equal(await count(), index);
+      await tick(1); assert.equal(await count(), index + 1);
+      assert.equal(await page.evaluate(() => window.spoken.at(-1).text), original[index].text, 'existing transcript/order retained');
+      assert.equal(await progressPlays(), original[index].plays + 1);
+      await page.evaluate(() => playMockItemOnce(getMockQuestionEntry()));
+      assert.equal(await count(), index + 1, 'once-only playback retained');
+      await answerMock();
+      assert.equal(await page.evaluate(() => window.activeSpeech), null, 'answer stops current audio');
+      if (index + 1 < original.length && original[index + 1].section === original[index].section) expectedUnlocks++;
+      assert.equal(await page.evaluate(() => window.unlocks.length), expectedUnlocks, 'next unlock on answer, not feedback timer');
+      await tick(450);
+      assert.equal(await page.evaluate(() => window.unlocks.length), expectedUnlocks);
+    }
+    const completed = await page.evaluate(() => ({
+      ids: mockResults.map(r => getListeningItemId(r.item, r.type)),
+      correct: mockCorrectCount, attempts: loadMockResults().attempts.length,
+    }));
+    assert.deepEqual(completed.ids, original.map(e => e.id));
+    assert.equal(completed.correct, original.length);
+    assert(completed.attempts > 0, 'result history persisted');
+    const beforeReplay = await page.evaluate(() => ({ progress: JSON.stringify(loadListeningProgress()), played: mockPlayedQuestionIds.size }));
+    await click('.listening-replay-button'); await click('.listening-replay-button');
+    assert(await page.locator('.listening-replay-button').first().isDisabled());
+    assert.equal(await page.evaluate(() => window.unlocks.length), expectedUnlocks + 1);
+    await tick(999); assert.equal(await count(), original.length);
+    await tick(1); assert.equal(await count(), original.length + 1);
+    assert.equal(await page.evaluate(() => window.spoken.at(-1).text), original[0].text);
+    const afterReplay = await page.evaluate(() => ({ progress: JSON.stringify(loadListeningProgress()), played: mockPlayedQuestionIds.size }));
+    assert.equal(afterReplay.played, beforeReplay.played);
+    // Result replay must remain repeatable without changing learning progress.
+    assert.equal(afterReplay.progress, beforeReplay.progress);
+    await click('.listening-replay-button'); await tick(1000);
+    assert.equal(await count(), original.length + 2);
+    for (const event of ['pagehide', 'visibilitychange', 'navigation']) {
+      await click('.listening-replay-button');
+      await page.evaluate(event => {
+        if (event === 'visibilitychange') {
+          Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+          document.dispatchEvent(new Event(event));
+          Object.defineProperty(document, 'hidden', { configurable: true, value: false });
+        } else if (event === 'navigation') {
+          const link = document.querySelector('a[href]');
+          link.addEventListener('click', e => e.preventDefault()); link.click();
+        } else window.dispatchEvent(new Event(event));
+      }, event);
+      await tick(2000); assert.equal(await count(), original.length + 2, 'result replay cancelled: ' + event);
+      assert.equal(await page.evaluate(() => window.activeSpeech), null);
+    }
+    await click('.listening-replay-button');
+    await page.getByRole('button', { name: '再測一次', exact: true }).evaluate(b => b.click());
+    await tick(2000); assert.equal(await count(), original.length + 2, 'retry cancels result replay');
+    assert.equal(await page.evaluate(() => window.activeSpeech), null);
+    console.log('PASS full mock: all sections, question order/text, once-only, scoring/history, repeatable result replay');
+
+    // Answer during preparation cancels the old question without consuming a play.
+    await startMock(); await startSection(); await answerMock();
+    assert.equal(await page.evaluate(() => mockPlayedQuestionIds.size), 0);
+    await tick(450); await tick(999); assert.equal(await count(), 0);
+    await tick(1); assert.equal(await count(), 1);
+    assert.equal(await page.evaluate(() => mockPlayedQuestionIds.size), 1);
+    assert.equal(await page.evaluate(() => window.spoken[0].text), await page.evaluate(() => getItemText(getMockQuestionEntry().item, getMockQuestionEntry().type)));
+
+    for (const event of ['pagehide', 'beforeunload', 'visibilitychange', 'navigation', 'restart']) {
+      for (const stage of ['preparing', 'feedback', 'playing']) {
+        await startMock(); await startSection();
+        if (stage === 'feedback') await answerMock();
+        if (stage === 'playing') await tick(1000);
+        const prior = await count();
+        await page.evaluate(event => {
+          if (event === 'visibilitychange') {
+            Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+            document.dispatchEvent(new Event(event));
+          } else if (event === 'navigation') {
+            const link = document.querySelector('a[href]');
+            link.addEventListener('click', e => e.preventDefault()); link.click();
+          } else if (event === 'restart') renderMockPreparation();
+          else window.dispatchEvent(new Event(event));
+        }, event);
+        await tick(2000); assert.equal(await count(), prior, `${event} during ${stage}: no stale speech`);
+        assert.equal(await page.evaluate(() => window.activeSpeech), null, 'cancel retires current audio');
+      }
+    }
+    console.log('PASS full mock: early answer, restart, navigation, tab/unload cancellation during preparation/feedback/playback');
     // Ordinary vocabulary cards are outside listening scope.
     await go('english/vocabulary/index.html?mode=practice');
     await click('#vocabularyCard .word-audio-button'); assert.equal(await count(), 1);
     assert.deepEqual(errors, []);
-    console.log('PASS full mock and vocabulary cards unchanged; no browser errors');
+    console.log('PASS ordinary vocabulary cards unchanged; no browser errors');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; }).finally(() => server.close());

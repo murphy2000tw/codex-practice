@@ -1350,11 +1350,6 @@ function createListeningResultReplayButton(result) {
   button.textContent = "🔊 重聽音訊";
   button.setAttribute("aria-label", `重聽第 ${result.order} 題音訊`);
   button.addEventListener("click", () => {
-    // Full mock playback, including its result replays, belongs to phase two.
-    if (listeningType === listeningTypeGeptFullMock) {
-      speakEnglish(getItemText(result.item, result.type));
-      return;
-    }
     EnglishListeningPlayback.schedule(() => speakEnglish(getItemText(result.item, result.type), { prepared: true }), button);
   });
   return button;
@@ -1575,7 +1570,7 @@ function renderMockSectionIntro() {
     const firstQuestionIndex = mockQuestions.findIndex((entry) => entry.sectionIndex === mockSectionIndex && !mockResults.some((result) => result.order === entry.order));
     mockQuestionIndex = firstQuestionIndex >= 0 ? firstQuestionIndex : mockQuestionIndex;
     mockPhase = "running";
-    renderMockQuestion();
+    renderMockQuestion(true);
   });
   card.append(badge, title, details, startButton);
   listeningContent.replaceChildren(card);
@@ -1587,12 +1582,12 @@ function playMockItemOnce(entry) {
     return;
   }
   mockPlayedQuestionIds.add(itemId);
-  if (speakEnglish(getItemText(entry.item, entry.type))) {
+  if (speakEnglish(getItemText(entry.item, entry.type), { prepared: true })) {
     recordListeningPlay(entry.item, listeningModeTest, entry.type);
   }
 }
 
-function renderMockQuestion() {
+function renderMockQuestion(fromGesture = false) {
   cancelEnglishSpeech();
   if (mockPhase !== "running") {
     renderMockPreparation();
@@ -1640,7 +1635,7 @@ function renderMockQuestion() {
 
   card.append(prompt, optionList);
   listeningContent.replaceChildren(card);
-  playMockItemOnce(entry);
+  EnglishListeningPlayback.schedule(() => playMockItemOnce(entry), playStatus, { fromGesture });
 }
 
 function handleMockAnswer(selectedButton, entry) {
@@ -1650,6 +1645,13 @@ function handleMockAnswer(selectedButton, entry) {
   const itemId = getListeningItemId(entry.item, entry.type);
   if (mockAnsweredQuestionIds.has(itemId)) {
     return;
+  }
+  cancelEnglishSpeech();
+  const upcomingEntry = mockQuestions[mockQuestionIndex + 1];
+  // Same-section questions advance automatically after feedback. Unlock on the
+  // answer click, not in that timer. A new section has its own start click.
+  if (upcomingEntry && upcomingEntry.sectionIndex === entry.sectionIndex) {
+    EnglishListeningPlayback.unlock();
   }
   mockAnsweredQuestionIds.add(itemId);
   const correctAnswer = getItemAnswer(entry.item, entry.type);
@@ -1672,7 +1674,7 @@ function handleMockAnswer(selectedButton, entry) {
   });
   applyListeningAnswerFeedback(selectedButton, correctAnswer);
 
-  window.setTimeout(() => {
+  window.setTimeout(EnglishListeningPlayback.guard(() => {
     const nextIndex = mockQuestionIndex + 1;
     if (nextIndex >= mockQuestions.length) {
       renderMockCompletePanel();
@@ -1687,7 +1689,7 @@ function handleMockAnswer(selectedButton, entry) {
       return;
     }
     renderMockQuestion();
-  }, 450);
+  }), 450);
 }
 
 function getMockTranscriptLabel(type) {
@@ -1856,6 +1858,16 @@ listeningModeButtons.forEach((button) => {
   });
 });
 
+// The full mock also retires already submitted audio on navigation intent and
+// bfcache entry. Other listening types keep their existing lifecycle behavior.
+window.addEventListener("pagehide", () => {
+  if (listeningType === listeningTypeGeptFullMock) cancelEnglishSpeech();
+});
+document.addEventListener("click", (event) => {
+  if (listeningType === listeningTypeGeptFullMock && event.target.closest?.("a[href]")) {
+    cancelEnglishSpeech();
+  }
+}, true);
 window.addEventListener("beforeunload", cancelEnglishSpeech);
 window.addEventListener("hashchange", () => {
   const nextActivity = parseListeningHash();
