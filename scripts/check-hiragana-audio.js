@@ -9,7 +9,7 @@ const source = fs.readFileSync(path.join(root, 'japanese/hiraganaAudio.js'), 'ut
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'japanese/audio/hiragana/manifest.json')));
 const vowels = ['あ', 'い', 'う', 'え', 'お'];
 assert.deepEqual(manifest.segments.slice(0, 5).map((segment) => segment.kana), vowels);
-// Additional chart-only WAVs must not expand the listening drill's five-vowel map.
+// The legacy helper remains unchanged; the drill now uses the chart recording controller.
 assert.deepEqual(manifest.segments.slice(0, 5).map((segment) => segment.file).sort(),
   ['a.wav', 'e.wav', 'i.wav', 'o.wav', 'u.wav']);
 
@@ -138,6 +138,6 @@ function fixture({ failure = null } = {}) {
   const sharedIndex = html.indexOf('src="hiraganaAudio.js?v=1.1"');
   assert.ok(sharedIndex > 0);
   assert.ok(html.indexOf('src="hiragana.js?v=1.3"') > sharedIndex);
-  assert.ok(html.indexOf('src="hiraganaListening.js?v=1.5"') > sharedIndex);
-  console.log('Hiragana listening audio checks passed: 46 PCM assets validated; unchanged five-vowel recording map and 41 TTS routes, synchronous gesture play, replay/cancellation, stale events, errors and startup timeout.');
+  assert.ok(html.indexOf('src="hiraganaListening.js?v=1.6"') > sharedIndex);
+  console.log('Legacy hiragana helper checks passed: 46 PCM assets validated; unused legacy five-vowel map and 41 TTS routes, synchronous gesture play, replay/cancellation, stale events, errors and startup timeout.');
 })().catch((error) => { console.error(error); process.exitCode = 1; });

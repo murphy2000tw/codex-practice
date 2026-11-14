@@ -43,7 +43,8 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
   const kana = Array.from(japaneseHiraganaPanel.querySelectorAll('[data-hiragana]'), (key) => key.dataset.hiragana);
   const deck = createHiraganaListeningDeck(kana);
   const provider = getJapaneseListeningSpeechProvider();
-  const controller = createHiraganaPlaybackController(provider, getHiraganaSpeechOptions());
+  // Reuse the confirmed 46-recording map with a separate playback lifecycle.
+  const controller = createHiraganaChartPlaybackController(provider);
   const play = panel.querySelector('#hiragana-listening-play');
   const status = panel.querySelector('#hiragana-listening-status');
   const heading = panel.querySelector('#hiragana-listening-question');
@@ -51,30 +52,21 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
   const feedback = panel.querySelector('#hiragana-listening-feedback');
   const next = panel.querySelector('#hiragana-listening-next');
   let visible = false;
-  let playing = false;
   let question = null;
   let questionNumber = 0;
   let answered = false;
 
   function stopPlayback() {
     controller.cancel();
-    playing = false;
     play.classList.remove('is-playing');
   }
 
-  function checkVoice() {
-    if (getHiraganaRecordingUrl(question?.answer)) {
-      status.textContent = '已備妥日文發音，請點擊播放按鈕聆聽。';
-      return true;
-    }
-    const capability = validateJapaneseJlptListeningCapability(provider);
-    if (!capability.ok) {
-      status.textContent = capability.code === 'speech-unavailable'
-        ? '此瀏覽器不支援語音合成，請改用支援語音功能的瀏覽器或裝置。'
-        : '目前沒有可用的日文語音。請在裝置的語音設定安裝或啟用日文語音後重新載入；若語音仍在載入，請稍候再點擊。';
+  function checkRecording() {
+    if (!getHiraganaChartRecordingUrl(question?.answer)) {
+      status.textContent = '找不到此題的老師錄音，請重新進入練習後再試。';
       return false;
     }
-    status.textContent = '已備妥日文語音，請點擊播放按鈕聆聽。';
+    status.textContent = '已備妥老師錄音，請點擊播放按鈕聆聽。';
     return true;
   }
 
@@ -109,25 +101,21 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
       });
       options.appendChild(button);
     });
-    checkVoice();
+    checkRecording();
     requestAnimationFrame(() => { if (visible) heading.focus(); });
   }
 
   play.addEventListener('click', () => {
     if (!visible || !question) return;
     stopPlayback();
-    if (!checkVoice()) return;
-    playing = true;
+    if (!checkRecording()) return;
     play.classList.add('is-playing');
     controller.requestPlayback(`hiragana-listening-${questionNumber}`, question.answer, (state) => {
       status.textContent = state === 'preparing' ? '準備播放日文發音…'
         : state === 'playing' ? '正在播放日文發音…'
         : state === 'ended' ? '播放完畢，可再次播放。'
-        : getHiraganaRecordingUrl(question.answer) ? '錄音未能播放，請確認裝置音量及網路連線後再點擊重試。'
-        : state === 'timeout' ? '語音播放未能完成，請再次點擊播放；若仍無聲，請確認裝置音量、日文語音設定及網路連線。'
-        : '日文語音播放失敗，請確認裝置音量、語音設定及網路連線後再試。';
+        : '錄音未能播放，請確認裝置音量及網路連線後再點擊播放重試。';
       if (state === 'ended' || state === 'error' || state === 'timeout') {
-        playing = false;
         play.classList.remove('is-playing');
       }
     });
@@ -145,8 +133,5 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
       }
     },
   };
-  provider.speechSynthesis?.addEventListener('voiceschanged', () => {
-    if (visible && !playing) checkVoice();
-  });
   window.addEventListener('pagehide', stopPlayback);
 })();

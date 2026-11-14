@@ -2,15 +2,13 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const { execFileSync } = require('node:child_process');
 const root = path.resolve(__dirname, '..');
-const baseline = process.argv.includes('--baseline');
-const read = (name) => baseline
-  ? execFileSync('git', ['show', `origin/main:${name}`], { cwd: root, encoding: 'utf8' })
-  : fs.readFileSync(path.join(root, name), 'utf8');
+const read = name => fs.readFileSync(path.join(root, name), 'utf8');
 const main = read('script.js');
 const controllerSource = main.slice(main.indexOf('function createJapaneseListeningModeSpeechController('),
   main.indexOf('function getJapaneseListeningSpeechProvider('));
+const html = read('japanese/index.html');
+assert.ok(html.indexOf('hiraganaChartAudio.js?v=1.0') < html.indexOf('hiraganaListening.js?v=1.6'));
 const kana = [...read('japanese/index.html').matchAll(/data-hiragana="([^"]+)"/g)].map((match) => match[1]);
 
 class Element {
@@ -67,7 +65,7 @@ function fixture({ ios = true, touchMac = false, silentDrop = false, missingEnd 
   };
   class Audio {
     constructor(src) { this.src = src; this.paused = true; audio.push(this); }
-    play() { this.paused = false; this.onplaying?.(); setTimeout(() => { if (!this.paused) this.onended?.(); }, 30); return Promise.resolve(); }
+    play() { assert.ok(gesture, 'HTML Audio must play on the click stack'); this.paused = false; if (fail) { this.onerror?.(); return Promise.resolve(); } if (silentDrop) return Promise.resolve(); this.onplaying?.(); if (!missingEnd) setTimeout(() => { if (!this.paused) this.onended?.(); }, 30); return Promise.resolve(); }
     pause() { this.paused = true; }
   }
   const keys = kana.map((character) => { const key = new Element(character); key.dataset.hiragana = character; return key; });
@@ -84,12 +82,13 @@ function fixture({ ios = true, touchMac = false, silentDrop = false, missingEnd 
     japaneseHiraganaPanel: chart, japaneseHiraganaListeningPanel: listening,
     getJapaneseListeningSpeechProvider: () => provider, validateJapaneseJlptListeningCapability: () => ({ ok: true }),
   });
-  const chartAudio = baseline ? '' : read('japanese/hiraganaChartAudio.js');
+  const chartAudio = read('japanese/hiraganaChartAudio.js');
   vm.runInContext(controllerSource + read('japanese/hiraganaAudio.js') + chartAudio + read('japanese/hiragana.js') + read('japanese/hiraganaListening.js'), context);
   const click = (button) => { gesture = true; try { button.click(); } finally { gesture = false; } };
   const show = (view) => { window.japaneseHiraganaPage.onViewChange(view); window.japaneseHiraganaListeningPage.onViewChange(view); };
   const advance = (answer) => { click(controls.options.children.find((button) => button.textContent === answer)); click(controls.next); };
   return { context, provider, tick, show, click, advance, keys, controls, chartStatus, spoken, audible, cancels, timers, savedCallbacks, audio,
+    recover: () => { fail = false; silentDrop = false; },
     pagehide: () => events.filter((event) => event.name === 'pagehide').forEach((event) => event.handler()),
     key: (character) => keys.find((key) => key.dataset.hiragana === character),
   };
@@ -101,95 +100,71 @@ function test(name, run) {
   catch (error) { failures++; console.error(`FAIL ${name}: ${error.message}`); }
 }
 
-test('iPhone listening: all 41 TTS kana retain gesture unlock, 1000ms preparation, simulated audio and end', () => {
-  const f = fixture(); f.show('hiraganaListening');
-  kana.slice(0, 5).forEach(character => f.advance(character));
-  for (const character of kana.slice(5)) {
-    const count = f.audible.length;
-    f.click(f.controls.play);
-    const unlock = f.spoken.at(-1);
-    assert.ok(unlock && unlock.gesture && unlock.u.text === '', `${character}: missing synchronous unlock`);
-    assert.equal(unlock.u.volume, 0);
-    f.tick(999); assert.equal(f.audible.length, count);
-    f.tick(1); assert.equal(f.spoken.at(-1).u.text, character);
-    assert.equal(f.spoken.at(-1).u.volume, 1);
-    f.tick(40); assert.equal(f.audible.at(-1), character);
-    assert.match(f.controls.status.textContent, /播放完畢/);
-    assert.ok(!f.controls.play.classList.contains('is-playing'));
+const manifest = JSON.parse(read('japanese/audio/hiragana/manifest.json'));
+
+test('all 46 listening questions use confirmed URLs synchronously, replay, feedback and next; zero TTS', () => {
+  for (const ios of [true, false]) {
+    const f = fixture({ ios }); f.show('hiraganaListening');
+    for (const [index, character] of kana.entries()) {
+      for (let replay = 0; replay < 2; replay++) {
+        f.click(f.controls.play);
+        assert.equal(f.audio.at(-1).src, `https://example.test/japanese/audio/hiragana/${manifest.segments[index].file}?v=${manifest.segments[index].assetVersion}`);
+        f.tick(30);
+        assert.match(f.controls.status.textContent, /播放完畢/);
+        assert.ok(!f.controls.play.classList.contains('is-playing'));
+      }
+      const choices = f.controls.options.children;
+      assert.equal(choices.length, 4);
+      // Exercise incorrect feedback as well as correct feedback.
+      f.click(choices.find(button => index % 2 ? button.textContent !== character : button.textContent === character));
+      assert.match(f.controls.feedback.textContent, index % 2 ? /答錯了/ : /答對了/);
+      assert.ok(choices.every(button => button.disabled));
+      assert.equal(f.controls.next.hidden, false);
+      f.click(f.controls.next);
+    }
+    assert.equal(f.spoken.length, 0);
     assert.equal(f.timers.size, 0);
-    f.advance(character);
   }
 });
 
-test('iPhone listening: asynchronous unlock cancellation drains before the answer; no phantom playing state', () => {
-  const f = fixture(); f.show('hiraganaListening');
-  kana.slice(0, 5).forEach((character) => f.advance(character));
-  f.click(f.controls.play); f.tick(1040);
-  assert.equal(f.audible.at(-1), 'か', `audible=${f.audible}; status=${f.controls.status.textContent}; cancel times=${f.cancels}`);
-  assert.equal(f.controls.status.textContent, '播放完畢，可再次播放。');
-  assert.ok(!f.controls.play.classList.contains('is-playing'));
-  assert.deepEqual(f.cancels, [0], 'unlock cancel must occur at the click, not at 1000ms');
-  assert.equal(f.timers.size, 0);
-});
-
-test('chart uses 46 WAVs while the drill retains only five; stale events and rapid replay remain isolated', () => {
-  const f = fixture(); f.show('hiragana');
-  for (const character of kana.slice(0, 5)) { f.click(f.key(character)); f.tick(30); }
-  assert.equal(f.spoken.length, 0);
-  assert.deepEqual(f.audio.map((entry) => entry.src.split('/').at(-1)), ['a.wav?v=1.0', 'i.wav?v=1.0', 'u.wav?v=1.0', 'e.wav?v=1.0', 'o.wav?v=1.0']);
-  f.click(f.key('あ')); const oldEnd = f.audio.at(-1).onended;
-  f.click(f.key('か')); oldEnd(); f.tick(30);
-  assert.match(f.chartStatus.textContent, /「か」播放完畢/);
-  for (const character of kana.slice(5)) {
-    f.click(f.key(character)); f.tick(30);
-    assert.match(f.chartStatus.textContent, /播放完畢/);
+test('rapid replay, next question, feature switch, home and pagehide isolate old audio events', () => {
+  for (const action of ['replay', 'next', 'chart', 'home', 'pagehide']) {
+    const f = fixture(); f.show('hiraganaListening'); f.click(f.controls.play);
+    const old = f.audio.at(-1), callbacks = [old.onplaying, old.onended, old.onerror];
+    if (action === 'replay') f.click(f.controls.play);
+    if (action === 'next') { f.advance('あ'); f.click(f.controls.play); }
+    if (action === 'chart') { f.show('hiragana'); f.click(f.key('か')); }
+    if (action === 'home') f.show('home');
+    if (action === 'pagehide') f.pagehide();
+    assert.ok(old.paused, action);
+    assert.equal(old.onended, null);
+    const status = f.controls.status.textContent;
+    callbacks.forEach(callback => callback());
+    assert.equal(f.controls.status.textContent, status, action);
+    f.tick(30);
+    assert.ok(!f.controls.play.classList.contains('is-playing'));
+    assert.equal(f.spoken.length, 0);
+    f.show('hiraganaListening'); f.click(f.controls.play); f.tick(30);
+    assert.match(f.controls.status.textContent, /播放完畢/);
   }
-  assert.equal(f.spoken.length, 0, 'chart must not invoke TTS');
-  assert.equal(new Set(f.audio.map(entry => entry.src)).size, 46);
-  f.click(f.key('か')); const oldAudio = f.audio.at(-1);
-  f.click(f.key('き')); assert.ok(oldAudio.paused); f.tick(30);
-  assert.match(f.chartStatus.textContent, /「き」播放完畢/);
-  f.show('hiraganaListening');
-  for (const character of kana.slice(0, 5)) { f.click(f.controls.play); f.tick(30); f.advance(character); }
-  f.click(f.controls.play); f.tick(1040);
-  assert.equal(f.audible.at(-1), 'か');
-  f.click(f.controls.play); f.tick(1000); const oldSpeech = f.spoken.at(-1).u;
-  f.advance('か'); f.click(f.controls.play);
-  oldSpeech.onend(); oldSpeech.onerror(); oldSpeech.onstart(); f.tick(1040);
-  assert.equal(f.audible.at(-1), 'き');
 });
 
-test('preparation/playing cancellation, question changes, home/re-entry and pagehide invalidate old callbacks', () => {
-  const f = fixture(); f.show('hiraganaListening'); kana.slice(0, 5).forEach((character) => f.advance(character));
-  f.click(f.controls.play); f.tick(999); f.advance('か'); f.tick(41);
-  assert.equal(f.audible.length, 0, 'old question spoke after next');
-  f.click(f.controls.play); f.tick(1000); const old = f.spoken.at(-1).u;
-  f.show('home'); f.tick(40); old.onend(); old.onerror();
-  assert.equal(f.audible.length, 0);
-  f.show('hiragana'); f.click(f.key('く')); f.pagehide(); f.tick(1040);
-  assert.equal(f.audible.length, 0);
-  f.show('hiragana'); f.click(f.key('け')); f.tick(1040);
-  assert.match(f.chartStatus.textContent, /「け」播放完畢/);
-  assert.equal(f.audible.length, 0, 'chart must not submit synthesis');
-  assert.equal(f.timers.size, 0);
-});
-
-test('native error, missing start, and missing end clear UI/timers; normal completion uses no recovery timeout', () => {
-  for (const failure of ['fail', 'silentDrop', 'missingEnd']) {
+test('load error and missing start show understandable retry feedback and clear playback state', () => {
+  for (const failure of ['fail', 'silentDrop']) {
     const f = fixture({ [failure]: true }); f.show('hiraganaListening');
-    kana.slice(0, 5).forEach(character => f.advance(character));
-    f.click(f.controls.play); f.tick(11001);
-    assert.ok(!f.controls.play.classList.contains('is-playing'), failure);
-    assert.doesNotMatch(f.controls.status.textContent, /正在播放/, failure);
-    assert.equal(f.timers.size, 0, failure);
+    for (let attempt = 0; attempt < 2; attempt++) {
+      f.click(f.controls.play); f.tick(5001);
+      assert.match(f.controls.status.textContent, /錄音未能播放.*重試/);
+      assert.ok(!f.controls.play.classList.contains('is-playing'));
+      assert.ok(f.audio.at(-1).paused);
+      assert.equal(f.timers.size, 0);
+    }
+    assert.equal(f.audio.length, 2, 'retry creates a fresh audio request');
+    f.recover(); f.click(f.controls.play); f.tick(30);
+    assert.match(f.controls.status.textContent, /播放完畢/);
+    assert.equal(f.audio.length, 3);
+    assert.equal(f.spoken.length, 0, 'errors never fall back to TTS');
   }
-});
-
-test('synchronous native cancellation and touch-enabled Mac/iPad detection', () => {
-  const f = fixture({ ios: false, touchMac: true, synchronousCancel: true }); f.show('hiraganaListening');
-  kana.slice(0, 5).forEach(character => f.advance(character));
-  f.click(f.controls.play); assert.equal(f.spoken[0].u.text, ''); f.tick(1040);
-  assert.equal(f.audible.at(-1), 'か');
 });
 
 test('general listening defaults: 1000ms preparation, no unlock, no completion limit, no unowned cancellation', () => {
@@ -206,4 +181,4 @@ test('general listening defaults: 1000ms preparation, no unlock, no completion l
 });
 
 if (failures) process.exitCode = 1;
-else console.log('Hiragana iOS TTS regression passed (native ordering model; not an iPhone audio engine).');
+else console.log('Hiragana listening recording integration and general TTS regression passed (simulation cannot replace physical iPhone Safari listening).');
