@@ -51,12 +51,20 @@ function buildKatakanaListeningQuestion(kana, answer, random = Math.random) {
   const options = panel.querySelector('#katakana-listening-options');
   const feedback = panel.querySelector('#katakana-listening-feedback');
   const next = panel.querySelector('#katakana-listening-next');
+  const stats = panel.querySelector('#katakana-listening-stats');
   let visible = false;
   let question = null;
   let questionNumber = 0;
   let answered = false;
+  let answeredCount = 0;
+  let correctCount = 0;
   let playbackGeneration = 0;
   let completionTimer = null;
+
+  function renderStats() {
+    const accuracy = answeredCount === 0 ? '—' : `${Math.round(correctCount / answeredCount * 100)}%`;
+    stats.textContent = `已作答：${answeredCount} 題　答對：${correctCount} 題　正確率：${accuracy}`;
+  }
 
   function stopPlayback() {
     playbackGeneration += 1;
@@ -88,6 +96,9 @@ function buildKatakanaListeningQuestion(kana, answer, random = Math.random) {
         if (answered || !visible || question !== currentQuestion) return;
         answered = true;
         const correct = character === currentQuestion.answer;
+        answeredCount += 1;
+        if (correct) correctCount += 1;
+        renderStats();
         feedback.className = `quiz-feedback ${correct ? 'is-correct' : 'is-wrong'}`;
         feedback.textContent = `${correct ? '答對了！' : '答錯了。'}正確答案：${currentQuestion.answer}`;
         options.querySelectorAll('button').forEach((option) => {
@@ -137,6 +148,9 @@ function buildKatakanaListeningQuestion(kana, answer, random = Math.random) {
       stopPlayback();
       deck.reset();
       question = null;
+      answeredCount = 0;
+      correctCount = 0;
+      renderStats();
       if (visible) {
         questionNumber = 0;
         showQuestion();
