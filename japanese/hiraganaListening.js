@@ -51,10 +51,18 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
   const options = panel.querySelector('#hiragana-listening-options');
   const feedback = panel.querySelector('#hiragana-listening-feedback');
   const next = panel.querySelector('#hiragana-listening-next');
+  const stats = panel.querySelector('#hiragana-listening-stats');
   let visible = false;
   let question = null;
   let questionNumber = 0;
   let answered = false;
+  let answeredCount = 0;
+  let correctCount = 0;
+
+  function renderStats() {
+    const accuracy = answeredCount === 0 ? '—' : `${Math.round(correctCount / answeredCount * 100)}%`;
+    stats.textContent = `已作答：${answeredCount} 題　答對：${correctCount} 題　正確率：${accuracy}`;
+  }
 
   function stopPlayback() {
     controller.cancel();
@@ -72,7 +80,8 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
 
   function showQuestion() {
     stopPlayback();
-    question = buildHiraganaListeningQuestion(kana, deck.next());
+    const currentQuestion = buildHiraganaListeningQuestion(kana, deck.next());
+    question = currentQuestion;
     questionNumber += 1;
     answered = false;
     heading.textContent = `第 ${questionNumber} 題：請選出聽到的平假名`;
@@ -80,16 +89,19 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
     feedback.className = 'quiz-feedback';
     next.hidden = true;
     options.replaceChildren();
-    question.options.forEach((character) => {
+    currentQuestion.options.forEach((character) => {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'quiz-option hiragana-key';
       button.lang = 'ja';
       button.textContent = character;
       button.addEventListener('click', () => {
-        if (answered || !visible) return;
+        if (answered || !visible || question !== currentQuestion) return;
         answered = true;
-        const correct = character === question.answer;
+        const correct = character === currentQuestion.answer;
+        answeredCount += 1;
+        if (correct) correctCount += 1;
+        renderStats();
         feedback.className = `quiz-feedback ${correct ? 'is-correct' : 'is-wrong'}`;
         feedback.textContent = `${correct ? '答對了！' : '答錯了。'}正確答案：${question.answer}`;
         options.querySelectorAll('button').forEach((option) => {
@@ -127,6 +139,9 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
       stopPlayback();
       deck.reset();
       question = null;
+      answeredCount = 0;
+      correctCount = 0;
+      renderStats();
       if (visible) {
         questionNumber = 0;
         showQuestion();

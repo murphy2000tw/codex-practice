@@ -66,7 +66,7 @@ assert.match(html, /data-japanese-kana-back="katakanaListeningMenu"/);
 assert.match(html, /id="japaneseKatakanaListeningPanel" hidden/);
 assert.match(html, /src="\.\.\/script.js\?v=4\.16"/);
 for (const file of ['hiraganaChartAudio.js?v=1.0', 'katakana.js?v=1.0']) {
-  assert.ok(html.indexOf(`src="${file}"`) < html.indexOf('src="katakanaListening.js?v=1.0"'));
+  assert.ok(html.indexOf(`src="${file}"`) < html.indexOf('src="katakanaListening.js?v=1.1"'));
 }
 assert.doesNotMatch(source, /speechSynthesis|SpeechSynthesisUtterance|getJapaneseListeningSpeechProvider|createHiraganaPlaybackController/);
 
@@ -96,7 +96,7 @@ function fixture(failure = '') {
     }
     pause() { this.paused = true; }
   }
-  const controls = Object.fromEntries(['play', 'status', 'question', 'options', 'feedback', 'next'].map((name) => [name, new Element()]));
+  const controls = Object.fromEntries(['play', 'status', 'question', 'options', 'feedback', 'next', 'stats'].map((name) => [name, new Element()]));
   const panel = { querySelector: (selector) => controls[selector.replace('#katakana-listening-', '')] };
   const window = { setTimeout(callback, delay) { timers.set(++id, { callback, delay }); return id; }, clearTimeout(key) { timers.delete(key); },
     addEventListener(event, handler) { events[event] = handler; } };

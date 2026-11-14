@@ -138,6 +138,6 @@ function fixture({ failure = null } = {}) {
   const sharedIndex = html.indexOf('src="hiraganaAudio.js?v=1.1"');
   assert.ok(sharedIndex > 0);
   assert.ok(html.indexOf('src="hiragana.js?v=1.3"') > sharedIndex);
-  assert.ok(html.indexOf('src="hiraganaListening.js?v=1.6"') > sharedIndex);
+  assert.ok(html.indexOf('src="hiraganaListening.js?v=1.7"') > sharedIndex);
   console.log('Legacy hiragana helper checks passed: 46 PCM assets validated; unused legacy five-vowel map and 41 TTS routes, synchronous gesture play, replay/cancellation, stale events, errors and startup timeout.');
 })().catch((error) => { console.error(error); process.exitCode = 1; });
