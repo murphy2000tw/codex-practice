@@ -19,10 +19,10 @@ class Element {
 for (const [kind, capital] of [['hiragana', 'Hiragana'], ['katakana', 'Katakana']]) {
   const kana = [...html.matchAll(new RegExp(`data-${kind}="([^"]+)"`, 'g'))].map(match => match[1]);
   assert.equal(kana.length, 46);
-  const controls = Object.fromEntries(['play', 'status', 'question', 'options', 'feedback', 'next', 'stats'].map(name => [name, new Element()]));
+  const controls = Object.fromEntries(['play', 'status', 'question', 'options', 'feedback', 'next', 'stats', 'restart', 'result'].map(name => [name, new Element()]));
   const panel = { querySelector: selector => controls[selector.replace(`#${kind}-listening-`, '')] };
   const math = Object.create(Math); math.random = () => 0.999999;
-  const window = { addEventListener() {} };
+  const window = { addEventListener() {}, kanaListeningResults: { save() { return true; } } };
   const context = vm.createContext({
     window, Math: math, requestAnimationFrame: fn => fn(),
     document: { createElement: () => new Element() },

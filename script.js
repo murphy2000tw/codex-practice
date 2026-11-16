@@ -732,6 +732,7 @@ function renderJapaneseView(view) {
   const nextViewElement = getJapaneseViewElement(nextView);
   if (japaneseContent && nextViewElement) {
     japaneseContent.replaceChildren(nextViewElement);
+    if (panelView === "kanaListeningResults") window.kanaListeningResults?.render();
   }
 
   if (japaneseHomeContent) japaneseHomeContent.hidden = panelView !== "home";

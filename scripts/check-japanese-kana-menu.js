@@ -6,7 +6,7 @@ const http = require('node:http');
 const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '..');
 const menus = {
-  kanaMenu: ['平片假名', 'home', ['平片假名練習', '平片假名聽音練習']],
+  kanaMenu: ['平片假名', 'home', ['平片假名練習', '平片假名聽音練習', '平片假名聽音成績']],
   kanaPracticeMenu: ['平片假名練習', 'kanaMenu', ['平假名練習', '片假名練習']],
   kanaListeningMenu: ['平片假名聽音練習', 'kanaMenu', ['平假名聽音練習', '片假名聽音練習']],
   hiraganaPracticeMenu: ['平假名練習', 'kanaPracticeMenu', ['平假名練習', '平假名濁音練習', '平假名半濁音練習', '平假名拗音練習']],
@@ -53,6 +53,7 @@ const server = http.createServer((req, res) => {
       assert.deepEqual(mainEntries, ['vocabulary', 'reading', 'grammar', 'listening', 'reviewMenu', 'jlptMock', 'kanaMenu']);
       assert.deepEqual(await page.locator('#japaneseHomeContent .entry-card-title').allTextContents(), ['單字', '閱讀', '文法', '聽力', '複習中心', 'JLPT 模擬測驗', '平片假名']);
       const activate = async (locator, key = 'Enter') => {
+        await page.evaluate(() => new Promise(resolve => requestAnimationFrame(resolve)));
         if (mobile) await locator.tap();
         else { await locator.focus(); await page.keyboard.press(key); }
       };
@@ -76,7 +77,10 @@ const server = http.createServer((req, res) => {
           const target = await entry.getAttribute('data-japanese-kana-entry');
           await activate(entry);
           if (menus[target]) await visit(target);
-          else {
+          else if (target === 'kanaListeningResults') {
+            assert.match(await activeView().innerText(), /尚無完成紀錄/);
+            await activate(activeView().locator('[data-japanese-kana-back]'));
+          } else {
             const chart = target === 'hiragana' || target === 'katakana';
             const prefix = target === 'katakanaListening' ? 'katakana' : 'hiragana';
             const headingId = chart ? `${target}-title` : `${prefix}-listening-question`;
@@ -179,6 +183,7 @@ const server = http.createServer((req, res) => {
       await page.goto(`http://127.0.0.1:${server.address().port}/japanese/`);
       const activate = async (locator) => {
         await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(resolve)));
+        await page.evaluate(() => new Promise(resolve => requestAnimationFrame(resolve)));
         if (mobile) await locator.tap();
         else { await locator.focus(); await locator.press('Enter'); }
       };
