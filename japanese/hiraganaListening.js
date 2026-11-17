@@ -52,6 +52,9 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
   const feedback = panel.querySelector('#hiragana-listening-feedback');
   const next = panel.querySelector('#hiragana-listening-next');
   const stats = panel.querySelector('#hiragana-listening-stats');
+  const restart = panel.querySelector('#hiragana-listening-restart');
+  const result = panel.querySelector('#hiragana-listening-result');
+  let completed = false;
   let visible = false;
   let question = null;
   let questionNumber = 0;
@@ -78,7 +81,43 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
     return true;
   }
 
+  function completeSession() {
+    if (completed) return;
+    completed = true;
+    stopPlayback();
+    question = null;
+    play.hidden = true;
+    next.hidden = true;
+    status.textContent = '';
+    heading.textContent = '練習完成';
+    const accuracy = Math.round(correctCount / answeredCount * 100);
+    const saved = window.kanaListeningResults.save({
+      kind: 'hiragana', completedAt: new Date().toISOString(),
+      total: answeredCount, correct: correctCount, accuracy,
+    });
+    result.textContent = `平假名聽音練習完成！總題數：${answeredCount} 題　答對：${correctCount} 題　正確率：${accuracy}%${saved ? '' : '（瀏覽器無法儲存本次成績）'}`;
+    result.hidden = false;
+    restart.hidden = false;
+    requestAnimationFrame(() => { if (visible && completed) restart.focus(); });
+  }
+
+  function startSession() {
+    stopPlayback();
+    deck.reset();
+    completed = false;
+    question = null;
+    questionNumber = 0;
+    answeredCount = 0;
+    correctCount = 0;
+    renderStats();
+    result.hidden = true;
+    restart.hidden = true;
+    play.hidden = false;
+    showQuestion();
+  }
+
   function showQuestion() {
+    if (completed || answeredCount >= 92) return;
     stopPlayback();
     const currentQuestion = buildHiraganaListeningQuestion(kana, deck.next());
     question = currentQuestion;
@@ -109,7 +148,8 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
           if (option.textContent === question.answer) option.classList.add('is-correct');
           else if (option === button) option.classList.add('is-wrong');
         });
-        next.hidden = false;
+        if (answeredCount === 92) completeSession();
+        else next.hidden = false;
       });
       options.appendChild(button);
     });
@@ -132,6 +172,7 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
       }
     });
   });
+  restart.addEventListener('click', () => { if (visible && completed) startSession(); });
   next.addEventListener('click', () => { if (visible && answered) showQuestion(); });
   window.japaneseHiraganaListeningPage = {
     onViewChange(view) {
@@ -143,8 +184,7 @@ function buildHiraganaListeningQuestion(kana, answer, random = Math.random) {
       correctCount = 0;
       renderStats();
       if (visible) {
-        questionNumber = 0;
-        showQuestion();
+        startSession();
       }
     },
   };

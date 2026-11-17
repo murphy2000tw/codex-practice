@@ -64,9 +64,9 @@ assert.equal(kana.join(''), 'アイウエオカキクケコサシスセソタチ
 assert.match(html, /data-japanese-kana-entry="katakanaListening"/);
 assert.match(html, /data-japanese-kana-back="katakanaListeningMenu"/);
 assert.match(html, /id="japaneseKatakanaListeningPanel" hidden/);
-assert.match(html, /src="\.\.\/script.js\?v=4\.16"/);
+assert.match(html, /src="\.\.\/script.js\?v=4\.17"/);
 for (const file of ['hiraganaChartAudio.js?v=1.0', 'katakana.js?v=1.0']) {
-  assert.ok(html.indexOf(`src="${file}"`) < html.indexOf('src="katakanaListening.js?v=1.1"'));
+  assert.ok(html.indexOf(`src="${file}"`) < html.indexOf('src="katakanaListening.js?v=1.2"'));
 }
 assert.doesNotMatch(source, /speechSynthesis|SpeechSynthesisUtterance|getJapaneseListeningSpeechProvider|createHiraganaPlaybackController/);
 
@@ -96,9 +96,9 @@ function fixture(failure = '') {
     }
     pause() { this.paused = true; }
   }
-  const controls = Object.fromEntries(['play', 'status', 'question', 'options', 'feedback', 'next', 'stats'].map((name) => [name, new Element()]));
+  const controls = Object.fromEntries(['play', 'status', 'question', 'options', 'feedback', 'next', 'stats', 'restart', 'result'].map((name) => [name, new Element()]));
   const panel = { querySelector: (selector) => controls[selector.replace('#katakana-listening-', '')] };
-  const window = { setTimeout(callback, delay) { timers.set(++id, { callback, delay }); return id; }, clearTimeout(key) { timers.delete(key); },
+  const window = { kanaListeningResults: { save() { return true; } }, setTimeout(callback, delay) { timers.set(++id, { callback, delay }); return id; }, clearTimeout(key) { timers.delete(key); },
     addEventListener(event, handler) { events[event] = handler; } };
   const math = Object.create(Math); math.random = () => 0.999999;
   const context = vm.createContext({ window, URL, Audio, Math: math,
@@ -133,11 +133,11 @@ function fixture(failure = '') {
     f.click(picked);
     assert.match(c.feedback.textContent, index % 2 ? /答錯了/ : /答對了/);
     assert.ok(c.feedback.textContent.endsWith('正確答案：' + answer));
-    assert.ok(c.options.children.every((option) => option.disabled)); assert.equal(c.next.hidden, false);
+    assert.ok(c.options.children.every((option) => option.disabled)); assert.equal(c.next.hidden, index === 91);
     const feedback = c.feedback.textContent; oldOptions[0].listeners.click(); assert.equal(c.feedback.textContent, feedback);
     seen.push(answer);
     f.click(c.next); assert.ok(audio.paused); assert.equal(f.timers.size, 0);
-    oldOptions[0].listeners.click(); assert.equal(c.feedback.textContent, '', 'old option handlers cannot answer a new question');
+    oldOptions[0].listeners.click(); assert.equal(c.feedback.textContent, index === 91 ? feedback : '', 'old option handlers cannot answer a new question');
   }
   assert.equal(new Set(seen.slice(0, 46)).size, 46); assert.equal(new Set(seen.slice(46)).size, 46);
   f.show('katakanaListeningMenu'); f.show('katakanaListening');

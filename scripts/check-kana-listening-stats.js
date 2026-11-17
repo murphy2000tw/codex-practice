@@ -19,10 +19,12 @@ class Element {
 for (const [kind, capital] of [['hiragana', 'Hiragana'], ['katakana', 'Katakana']]) {
   const kana = [...html.matchAll(new RegExp(`data-${kind}="([^"]+)"`, 'g'))].map(match => match[1]);
   assert.equal(kana.length, 46);
-  const controls = Object.fromEntries(['play', 'status', 'question', 'options', 'feedback', 'next', 'stats'].map(name => [name, new Element()]));
+  const controls = Object.fromEntries(['play', 'status', 'question', 'options', 'feedback', 'next', 'stats', 'restart', 'result'].map(name => [name, new Element()]));
   const panel = { querySelector: selector => controls[selector.replace(`#${kind}-listening-`, '')] };
-  const math = Object.create(Math); math.random = () => 0.999999;
-  const window = { addEventListener() {} };
+  let randomValue = 0.999999;
+  const math = Object.create(Math); math.random = () => randomValue;
+  const saved = [];
+  const window = { addEventListener() {}, kanaListeningResults: { save(record) { saved.push(record); return true; } } };
   const context = vm.createContext({
     window, Math: math, requestAnimationFrame: fn => fn(),
     document: { createElement: () => new Element() },
@@ -40,7 +42,7 @@ for (const [kind, capital] of [['hiragana', 'Hiragana'], ['katakana', 'Katakana'
   controls.play.click(); controls.next.click(); stats(0, 0, '—');
   let correct = 0;
   const stale = [];
-  for (let index = 0; index < 48; index++) {
+  for (let index = 0; index < 92; index++) {
     assert.match(controls.question.textContent, new RegExp(`第 ${index + 1} 題`));
     const before = controls.stats.textContent;
     // Directly invoke old handlers, bypassing disabled buttons, even across rounds.
@@ -54,14 +56,34 @@ for (const [kind, capital] of [['hiragana', 'Hiragana'], ['katakana', 'Katakana'
     stats(index + 1, correct, `${Math.round(correct / (index + 1) * 100)}%`);
     assert.match(controls.feedback.textContent, index % 3 === 0 ? /答錯了/ : /答對了/);
     assert.ok(choices.every(option => option.disabled));
-    assert.equal(controls.next.hidden, false);
+    assert.equal(controls.next.hidden, index === 91);
     const callback = button.listeners.click;
     callback(); choices.forEach(option => option.listeners.click());
     stats(index + 1, correct, `${Math.round(correct / (index + 1) * 100)}%`);
     stale.push(callback);
     controls.next.click();
   }
-  stats(48, 32, '67%'); // Counts survive the first complete round.
+  stats(92, 61, '66%');
+  assert.equal(saved.length, 1);
+  assert.equal(saved[0].kind, kind);
+  assert.equal(saved[0].total, 92);
+  assert.equal(saved[0].correct, 61);
+  stale.forEach(callback => callback());
+  controls.next.click();
+  assert.equal(saved.length, 1);
+  assert.equal(controls.question.textContent, '練習完成');
+  randomValue = 0.25;
+  controls.restart.click();
+  stats(0, 0, '—');
+  assert.match(controls.question.textContent, /第 1 題/);
+  const freshAnswer = vm.runInContext(`create${capital}ListeningDeck(${JSON.stringify(kana)}, () => 0.25).next()`, context);
+  assert.notEqual(freshAnswer, kana[0]);
+  stale.forEach(callback => callback());
+  stats(0, 0, '—');
+  controls.options.children.find(option => option.textContent === freshAnswer).click();
+  stats(1, 1, '100%');
+  assert.equal(saved.length, 1);
+  randomValue = 0.999999;
   page.onViewChange(`${kind}ListeningMenu`); stats(0, 0, '—');
   stale.forEach(callback => callback()); stats(0, 0, '—');
   page.onViewChange(`${kind}Listening`); stats(0, 0, '—');
@@ -70,5 +92,5 @@ for (const [kind, capital] of [['hiragana', 'Hiragana'], ['katakana', 'Katakana'
   controls.options.children.find(option => option.textContent === kana[0]).click(); stats(1, 1, '100%');
   const markup = html.match(new RegExp(`<p id="${kind}-listening-stats"[^>]*>`))[0];
   for (const attribute of ['role="status"', 'aria-live="polite"', 'aria-atomic="true"']) assert.ok(markup.includes(attribute));
-  console.log(`PASS ${kind}: empty state, 48 mixed answers, integer rounding, next round, duplicate/stale callbacks, menu reset/re-entry and live status markup`);
+  console.log(`PASS ${kind}: empty state, 92 mixed answers, completion/save once/fresh restart, integer rounding, next round, duplicate/stale callbacks, menu reset/re-entry and live status markup`);
 }
