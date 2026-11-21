@@ -65,7 +65,7 @@
     "kana": "ぞう",
     "meaning": "大象",
     "category": "動物與昆蟲",
-    "speechText": "象",
+    "speechText": "ぞう。",
     "imagePath": "images/sho-sensei/elephant.webp",
     "pictureQuizEligible": false
   },
@@ -155,7 +155,7 @@
     "kana": "さかな",
     "meaning": "魚",
     "category": "動物與昆蟲",
-    "speechText": "魚",
+    "speechText": "さかな。",
     "imagePath": "images/sho-sensei/fish.webp",
     "pictureQuizEligible": false
   },
@@ -458,7 +458,7 @@
     "kana": "たまご",
     "meaning": "蛋",
     "category": "食物與飲料",
-    "speechText": "卵",
+    "speechText": "たまご。",
     "imagePath": "images/sho-sensei/egg.webp",
     "pictureQuizEligible": false
   },
@@ -808,7 +808,7 @@
     "kana": "かみ",
     "meaning": "紙",
     "category": "用品與衣物",
-    "speechText": "紙",
+    "speechText": "かみ。",
     "imagePath": "images/sho-sensei/paper.webp",
     "pictureQuizEligible": false
   },
@@ -1138,7 +1138,7 @@
     "kana": "くるま",
     "meaning": "汽車",
     "category": "人物、場所與交通",
-    "speechText": "車",
+    "speechText": "くるま。",
     "imagePath": "images/sho-sensei/car.webp",
     "pictureQuizEligible": false
   },
@@ -1168,7 +1168,7 @@
     "kana": "ふね",
     "meaning": "船",
     "category": "人物、場所與交通",
-    "speechText": "船",
+    "speechText": "ふね。",
     "imagePath": "images/sho-sensei/boat.webp",
     "pictureQuizEligible": false
   },
@@ -1278,7 +1278,7 @@
     "kana": "あめ",
     "meaning": "雨",
     "category": "自然、時間與顏色",
-    "speechText": "雨",
+    "speechText": "あめ。",
     "imagePath": "images/sho-sensei/rain.webp",
     "pictureQuizEligible": false
   },
@@ -1328,7 +1328,7 @@
     "kana": "なつ",
     "meaning": "夏天",
     "category": "自然、時間與顏色",
-    "speechText": "夏",
+    "speechText": "なつ。",
     "imagePath": "images/sho-sensei/summer.webp",
     "pictureQuizEligible": false
   },
@@ -1638,7 +1638,7 @@
     "kana": "るす",
     "meaning": "不在家",
     "category": "身體、動作與狀態",
-    "speechText": "留守",
+    "speechText": "るす。",
     "imagePath": "images/sho-sensei/away-from-home.webp",
     "pictureQuizEligible": false
   },

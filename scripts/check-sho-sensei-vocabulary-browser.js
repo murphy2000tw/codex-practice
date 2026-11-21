@@ -119,15 +119,31 @@ function installSpeechProbe() {
         assert.ok(images.every(([width, height]) => width === 384 && height === 240));
       }
 
-      const homophones = [['rain', '雨'], ['candy', '飴'], ['persimmon', '柿'], ['oyster', '牡蠣']];
-      for (const [id, kanji] of homophones) {
+      // These short words need an explicit kana reading and a sentence boundary for TTS.
+      const correctedReadings = {
+        "elephant": "ぞう",
+        "fish": "さかな",
+        "egg": "たまご",
+        "paper": "かみ",
+        "car": "くるま",
+        "boat": "ふね",
+        "rain": "あめ",
+        "summer": "なつ",
+        "away-from-home": "るす"
+      };
+      for (const [id, reading] of Object.entries(correctedReadings)) {
+        assert.equal(words.find(word => word.id === id)?.speechText, reading + '。', id);
+      }
+
+      const homophones = [['rain', 'あめ。'], ['candy', '飴'], ['persimmon', '柿'], ['oyster', '牡蠣']];
+      for (const [id, speechText] of homophones) {
         await activate(controls(id));
-        await page.waitForFunction(text => window.shoSpeechProbe.active?.text === text, kanji);
+        await page.waitForFunction(text => window.shoSpeechProbe.active?.text === text, speechText);
         assert.equal(await card(id).getByRole('status').textContent(), '播放中…');
       }
       const calls = await page.evaluate(() => window.shoSpeechProbe.calls);
       assert.deepEqual(calls.filter(call => call.text).map(call =>
-        [call.text, call.lang, call.voiceLang]), homophones.map(([, kanji]) => [kanji, 'ja-JP', 'ja-JP']));
+        [call.text, call.lang, call.voiceLang]), homophones.map(([, speechText]) => [speechText, 'ja-JP', 'ja-JP']));
       const unlocks = calls.filter(call => !call.text);
       assert.equal(unlocks.length, mobile ? homophones.length : 0);
       assert.ok(unlocks.every(call => call.gesture && call.volume === 0 && call.lang === 'ja-JP'));

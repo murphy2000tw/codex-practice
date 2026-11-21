@@ -3515,7 +3515,7 @@ async function loadShoSenseiVocabulary() {
   cards.setAttribute("aria-busy", "true");
   status.textContent = "正在載入單字…";
   try {
-    const response = await fetch("./shoSenseiVocabulary.json");
+    const response = await fetch("./shoSenseiVocabulary.json?v=2");
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const words = await response.json();
     const categories = new Map();
