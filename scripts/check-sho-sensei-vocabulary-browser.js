@@ -24,10 +24,13 @@ const server = http.createServer((request, response) => {
 
 function installSpeechProbe() {
   const voice = { lang: 'ja-JP', name: 'Japanese test voice' };
-  const probe = window.shoSpeechProbe = { calls: [], active: null, error: null };
+  const probe = window.shoSpeechProbe = { calls: [], cancelled: [], active: null, error: null, hasVoice: true, voiceChecks: 0 };
   const synthesis = new EventTarget();
   Object.assign(synthesis, {
-    getVoices: () => [{ lang: 'en-US' }, voice],
+    getVoices() {
+      probe.voiceChecks += 1;
+      return probe.hasVoice ? [{ lang: 'en-US' }, voice] : [{ lang: 'en-US' }];
+    },
     speak(utterance) {
       probe.calls.push({
         text: utterance.text,
@@ -47,6 +50,7 @@ function installSpeechProbe() {
     cancel() {
       const previous = probe.active;
       probe.active = null;
+      if (previous) probe.cancelled.push(previous.text);
       queueMicrotask(() => previous?.onerror({ error: 'canceled' }));
     },
   });
@@ -54,6 +58,215 @@ function installSpeechProbe() {
   window.SpeechSynthesisUtterance = class {
     constructor(text) { this.text = text; }
   };
+}
+
+async function checkPictureQuizQuestions(page) {
+  const eligibleWords = words.filter(word => word.pictureQuizEligible);
+  const wordById = new Map(words.map(word => [word.id, word]));
+  assert.equal(eligibleWords.length, 118);
+  for (const word of eligibleWords) {
+    assert.equal(new Set(word.pictureQuizDistractorIds).size, word.pictureQuizDistractorIds.length, word.id);
+    for (const id of word.pictureQuizDistractorIds) {
+      const candidate = wordById.get(id);
+      assert.ok(candidate && candidate.category !== word.category && candidate.kana !== word.kana, `${word.id}/${id}`);
+    }
+  }
+  for (const id of ['name', 'written-character', 'monday', 'number-100', 'stay-home']) {
+    assert.equal(wordById.get(id).pictureQuizEligible, false, id);
+  }
+
+  const { rounds, labels, fallback, skipped } = await page.evaluate((bank) => {
+    const makeRound = words => createShoSenseiPictureQuestions(words, shuffleJapaneseJlptArray);
+    const wordsById = new Map(bank.map(word => [word.id, { ...word, pictureQuizEligible: false }]));
+    const testRain = ids => makeRound([...wordsById.values(), {
+      ...wordsById.get('rain'), pictureQuizEligible: true, pictureQuizDistractorIds: ids,
+    }]);
+    return {
+      rounds: Array.from({ length: 20 }, () => makeRound(bank).map(({ answer, options, correctPosition }) => ({
+        answer: answer.id, options: options.map(word => word.id), correctPosition,
+      }))),
+      labels: Object.fromEntries(['rain', 'candy', 'persimmon', 'oyster', 'number-10'].map(id =>
+        [id, getShoSenseiPictureOptionLabel(wordsById.get(id))])),
+      fallback: testRain(['candy', 'dog', 'cat']).map(({ options }) => options.map(word => word.id)),
+      skipped: testRain(['candy', 'snow', 'paper', 'paper', 'missing']).length,
+    };
+  }, words);
+  assert.deepEqual(labels, { rain: '雨（あめ）', candy: '飴（あめ）', persimmon: '柿（かき）', oyster: '牡蠣（かき）', 'number-10': 'じゅう' });
+  assert.deepEqual(fallback.map(options => options.sort()), [['cat', 'dog', 'rain']]);
+  assert.equal(skipped, 0);
+  assert.ok(rounds.some(round => round[0].correctPosition !== rounds[0][0].correctPosition));
+  assert.ok(rounds.some(round => round[0].answer !== rounds[0][0].answer));
+  for (const round of rounds) {
+    assert.deepEqual(round.map(question => question.answer).sort(), eligibleWords.map(word => word.id).sort());
+    for (const [index, { answer, options, correctPosition }] of round.entries()) {
+      assert.equal(options.length, 3);
+      assert.equal(options[correctPosition], answer);
+      assert.equal(new Set(options.map(id => wordById.get(id).category)).size, 3);
+      assert.equal(new Set(options.map(id => wordById.get(id).kana)).size, 3);
+      assert.ok(options.filter(id => id !== answer).every(id => wordById.get(answer).pictureQuizDistractorIds.includes(id)));
+      if (index % 3 !== 0) continue;
+      const positions = round.slice(index, index + 3).map(question => question.correctPosition);
+      assert.equal(new Set(positions).size, positions.length);
+      if (index) assert.notEqual(correctPosition, round[index - 1].correctPosition);
+    }
+  }
+}
+
+async function checkPictureQuiz(page, activate, mobile) {
+  const entry = page.locator('[data-japanese-vocabulary-entry="picture-quiz"]');
+  const view = page.locator('#japaneseShoSenseiPictureQuizView');
+  const image = view.locator('[data-picture-quiz-question] img');
+  const answers = view.locator('.quiz-option');
+  const listens = view.getByRole('button', { name: /^聽發音/ });
+  const progress = view.locator('[data-picture-quiz-progress]');
+  const feedback = view.locator('[data-picture-quiz-feedback]');
+  const speech = view.locator('[data-picture-quiz-speech]');
+  const next = view.locator('[data-picture-quiz-next]');
+  const restart = view.getByRole('button', { name: '重新開始' });
+  const back = view.getByRole('button', { name: '返回單字選單' });
+  const calls = () => page.evaluate(() => window.shoSpeechProbe.calls.filter(call => call.text));
+  const labelFor = word => page.evaluate(word => getShoSenseiPictureOptionLabel(word), word);
+  const waitForSpeech = text => page.waitForFunction(text => window.shoSpeechProbe.active?.text === text, text);
+  const assertIdle = () => page.waitForFunction(() => window.shoSpeechProbe.active === null);
+
+  await activate(entry);
+  await answers.last().waitFor();
+  assert.match(await progress.textContent(), /^第 1 題／共 118 題$/);
+  assert.equal(await page.locator(':focus').getAttribute('id'), 'sho-sensei-picture-quiz-title');
+  assert.equal(await answers.count(), 3);
+  assert.equal(await listens.count(), 3);
+  assert.equal(await image.getAttribute('alt'), '本題插圖');
+  assert.equal(await image.evaluate(async node => { await node.decode(); return node.naturalWidth; }), 384);
+  assert.equal(await view.locator('.quiz-prompt-label').textContent(), '看圖片，選出對應的日文單字。');
+  assert.ok(await answers.evaluateAll(nodes => nodes.every(node => {
+    const button = node.getBoundingClientRect();
+    const audio = node.nextElementSibling.getBoundingClientRect();
+    return audio.left - button.right >= 10 && button.width >= 44 && audio.width >= 44 &&
+      button.height >= 44 && audio.height >= 44 && audio.right <= innerWidth;
+  })));
+  assert.equal(new Set(await listens.evaluateAll(nodes => nodes.map(node => {
+    const style = getComputedStyle(node);
+    return [style.backgroundColor, style.color, style.borderRadius, style.height, style.width].join();
+  }))).size, 1);
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+
+  const getOptionWords = async () => {
+    const bank = await page.evaluate(words => words.map(word => [getShoSenseiPictureOptionLabel(word), word]), words);
+    const byLabel = new Map(bank);
+    return (await answers.allTextContents()).map(label => byLabel.get(label));
+  };
+  let optionWords = await getOptionWords();
+  const firstImagePath = await image.getAttribute('src');
+  const firstWord = words.find(word => word.imagePath === firstImagePath);
+  assert.ok(optionWords.some(word => word.id === firstWord.id));
+  const startCalls = (await calls()).length;
+  for (const [index, word] of optionWords.entries()) {
+    assert.equal(await listens.nth(index).getAttribute('aria-label'), `聽發音：${await labelFor(word)}`);
+    await activate(listens.nth(index));
+    await waitForSpeech(word.speechText);
+    assert.equal(await speech.textContent(), '播放中…');
+    assert.equal(await feedback.textContent(), '');
+    assert.ok(await next.isHidden());
+    assert.equal(await view.locator('.quiz-option:disabled').count(), 0);
+    assert.equal(await image.getAttribute('src'), firstImagePath);
+  }
+  assert.deepEqual((await calls()).slice(startCalls).map(call => [call.text, call.lang, call.voiceLang]),
+    optionWords.map(word => [word.speechText, 'ja-JP', 'ja-JP']));
+  assert.deepEqual(await page.evaluate(() => window.shoSpeechProbe.cancelled.slice(-2)), optionWords.slice(0, 2).map(word => word.speechText));
+
+  const wrong = optionWords.findIndex(word => word.id !== firstWord.id);
+  await activate(answers.nth(wrong));
+  assert.equal(await feedback.textContent(), `答錯了。正確答案是 ${await labelFor(firstWord)}`);
+  assert.equal(await answers.nth(wrong).evaluate(node => node.classList.contains('is-wrong')), true);
+  assert.equal(await view.locator('.quiz-option:disabled').count(), 3);
+  assert.equal(await image.getAttribute('src'), firstImagePath);
+  await activate(next);
+  await assertIdle();
+  assert.match(await progress.textContent(), /^第 2 題/);
+  assert.equal(await speech.textContent(), '');
+
+  optionWords = await getOptionWords();
+  const beforeRapid = (await calls()).length;
+  await listens.evaluateAll(nodes => { nodes[0].click(); nodes[2].click(); });
+  await waitForSpeech(optionWords[2].speechText);
+  assert.deepEqual((await calls()).slice(beforeRapid).map(call => call.text), [optionWords[2].speechText]);
+  await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pagehide')));
+  await assertIdle();
+  await activate(listens.nth(2));
+  await waitForSpeech(optionWords[2].speechText);
+  await activate(back);
+  await assertIdle();
+  assert.ok(await view.isHidden());
+  assert.equal(await page.locator(':focus').getAttribute('data-japanese-vocabulary-entry'), 'picture-quiz');
+
+  await activate(entry);
+  await answers.last().waitFor();
+  assert.match(await progress.textContent(), /^第 1 題/);
+  const beforeWaiting = (await calls()).length;
+  await page.evaluate(() => { window.shoSpeechProbe.hasVoice = false; });
+  const voiceChecks = await page.evaluate(() => window.shoSpeechProbe.voiceChecks);
+  await activate(listens.first());
+  await page.waitForFunction(count => window.shoSpeechProbe.voiceChecks >= count + 2, voiceChecks);
+  await page.evaluate(() => {
+    window.dispatchEvent(new PageTransitionEvent('pagehide'));
+    window.shoSpeechProbe.hasVoice = true;
+    window.speechSynthesis.dispatchEvent(new Event('voiceschanged'));
+  });
+  await assertIdle();
+  assert.equal((await calls()).length, beforeWaiting);
+  assert.equal(await speech.textContent(), '');
+
+  await page.evaluate(() => {
+    document.querySelector('#japaneseShoSenseiPictureQuizView .sho-picture-quiz-listen').click();
+    document.querySelector('#japaneseMainContent [data-japanese-back-home]').click();
+  });
+  assert.ok(await page.locator('#japaneseHomeContent').isVisible());
+  assert.equal((await calls()).length, beforeWaiting);
+  await activate(page.locator('[data-japanese-entry="vocabulary"]'));
+  await activate(entry);
+  await answers.last().waitFor();
+  await page.evaluate(() => { window.shoSpeechProbe.error = 'language-unavailable'; });
+  await activate(listens.first());
+  await page.waitForFunction(() => document.querySelector('[data-picture-quiz-speech]').textContent.includes('無法播放日文語音'));
+  assert.equal((await calls()).length, beforeWaiting + 1);
+  await page.evaluate(() => { window.shoSpeechProbe.error = null; });
+  const currentImagePath = await image.getAttribute('src');
+  const current = words.find(word => word.imagePath === currentImagePath);
+  const currentOptions = await getOptionWords();
+  await activate(answers.nth(currentOptions.findIndex(word => word.id === current.id)));
+  assert.equal(await feedback.textContent(), `答對了！正確答案是 ${await labelFor(current)}`);
+  await activate(restart);
+  await answers.last().waitFor();
+  assert.match(await progress.textContent(), /^第 1 題/);
+  assert.equal(await feedback.textContent(), '');
+  assert.ok(await next.isHidden());
+
+  if (!mobile) {
+    // Walk this round at the actual UI entry so the fixed PR #334 reading and the final score are exercised.
+    const solveUntil = stopAt => page.evaluate(({ words, stopAt }) => {
+      const view = document.querySelector('#japaneseShoSenseiPictureQuizView');
+      const panel = view.querySelector('[data-picture-quiz-question]');
+      const image = panel.querySelector('img');
+      const next = view.querySelector('[data-picture-quiz-next]');
+      const byImage = new Map(words.map(word => [word.imagePath, word]));
+      while (!panel.hidden) {
+        const word = byImage.get(image.getAttribute('src'));
+        if (word.id === stopAt) return;
+        const right = [...panel.querySelectorAll('.quiz-option')].find(button =>
+          button.textContent === getShoSenseiPictureOptionLabel(word));
+        if (!right) throw new Error(`Missing answer for ${word.id}`);
+        right.click();
+        if (!right.classList.contains('is-correct')) throw new Error(`Incorrect answer key for ${word.id}`);
+        next.click();
+      }
+    }, { words, stopAt });
+    await solveUntil('rain');
+    await activate(view.getByRole('button', { name: '聽發音：雨（あめ）', exact: true }));
+    await waitForSpeech('あめ。');
+    await solveUntil(null);
+    await assertIdle();
+    assert.equal(await progress.textContent(), '完成練習！答對 118 題，共 118 題。');
+  }
 }
 
 (async () => {
@@ -66,7 +279,7 @@ function installSpeechProbe() {
     const url = `http://127.0.0.1:${server.address().port}/project/japanese/`;
     assert.equal(words.length, 221);
     assert.equal(new Set(words.map(word => word.imagePath)).size, words.length);
-    assert.ok(words.every(word => word.imagePath && word.pictureQuizEligible === false));
+    assert.ok(words.every(word => word.imagePath && typeof word.pictureQuizEligible === 'boolean'));
 
     for (const mobile of [false, true]) {
       const context = await browser.newContext(mobile ? devices['iPhone 13'] : {
@@ -90,8 +303,7 @@ function installSpeechProbe() {
       const menuCards = page.locator('#japaneseVocabularyMenuView button');
       assert.deepEqual(await menuCards.locator('h3').allTextContents(),
         ['勝老師單字', '看圖選字練習', '單字練習', '單字測驗']);
-      assert.ok(await menuCards.nth(1).isDisabled());
-      assert.match(await menuCards.nth(1).innerText(), /準備中/);
+      assert.ok(await menuCards.nth(1).isEnabled());
       await activate(entry);
       await cards.last().waitFor({ state: 'attached' });
       assert.ok(await view.isVisible());
@@ -189,9 +401,11 @@ function installSpeechProbe() {
       await page.waitForFunction(when => performance.now() - when >= 1100, cancelledAt);
       assert.equal(await page.evaluate(() => window.shoSpeechProbe.active), null);
       assert.equal(await page.evaluate(() => window.shoSpeechProbe.calls.filter(call => call.text).length), 7);
+      if (!mobile) await checkPictureQuizQuestions(page);
+      await checkPictureQuiz(page, activate, mobile);
       assert.deepEqual(errors, []);
       await context.close();
-      console.log(`PASS ${mobile ? 'iPhone-sized Chromium' : 'desktop Chromium'}: cards, menu, layout and speech lifecycle with a test speech provider`);
+      console.log(`PASS ${mobile ? 'iPhone-sized Chromium' : 'desktop Chromium'}: vocabulary menu, cards, picture quiz, layout and speech lifecycle (simulated speech)`);
     }
   } finally {
     await browser?.close();

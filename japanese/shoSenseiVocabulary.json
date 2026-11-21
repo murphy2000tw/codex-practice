@@ -7,7 +7,8 @@
     "category": "動物與昆蟲",
     "speechText": "犬",
     "imagePath": "images/sho-sensei/dog.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["scissors", "hand", "house", "truck", "pizza", "desk", "eye", "coffee"]
   },
   {
     "id": "cat",
@@ -17,7 +18,8 @@
     "category": "動物與昆蟲",
     "speechText": "猫",
     "imagePath": "images/sho-sensei/cat.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["desk", "umbrella", "apple", "pencil", "boat", "pineapple", "paper", "house"]
   },
   {
     "id": "deer",
@@ -27,7 +29,8 @@
     "category": "動物與昆蟲",
     "speechText": "鹿",
     "imagePath": "images/sho-sensei/deer.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["umbrella", "apple", "boat", "tree", "soccer", "candy", "persimmon", "school"]
   },
   {
     "id": "cow",
@@ -37,7 +40,8 @@
     "category": "動物與昆蟲",
     "speechText": "牛",
     "imagePath": "images/sho-sensei/cow.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["paper", "sleep", "eye", "ice-cream", "moon", "book", "apple", "candy"]
   },
   {
     "id": "pig",
@@ -47,7 +51,8 @@
     "category": "動物與昆蟲",
     "speechText": "豚",
     "imagePath": "images/sho-sensei/pig.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ice-cream", "house", "drum", "shoes", "egg", "apple", "airplane", "scissors"]
   },
   {
     "id": "bear",
@@ -57,7 +62,8 @@
     "category": "動物與昆蟲",
     "speechText": "熊",
     "imagePath": "images/sho-sensei/bear.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["umbrella", "house", "sleep", "car", "eye", "soccer", "persimmon", "shoes"]
   },
   {
     "id": "elephant",
@@ -67,7 +73,8 @@
     "category": "動物與昆蟲",
     "speechText": "ぞう。",
     "imagePath": "images/sho-sensei/elephant.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["moon", "pineapple", "shoes", "rain", "eyeglasses", "soccer", "drum", "apple"]
   },
   {
     "id": "lion",
@@ -77,7 +84,8 @@
     "category": "動物與昆蟲",
     "speechText": "ライオン",
     "imagePath": "images/sho-sensei/lion.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hat", "apple", "pineapple", "boat", "book", "ice-cream", "candy", "school"]
   },
   {
     "id": "giraffe",
@@ -87,7 +95,8 @@
     "category": "動物與昆蟲",
     "speechText": "キリン",
     "imagePath": "images/sho-sensei/giraffe.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["truck", "house", "rain", "soccer", "hamburger", "shoes", "candy", "boat"]
   },
   {
     "id": "camel",
@@ -97,7 +106,8 @@
     "category": "動物與昆蟲",
     "speechText": "ラクダ",
     "imagePath": "images/sho-sensei/camel.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["house", "lemon", "car", "soccer", "apple", "school", "shoes", "tree"]
   },
   {
     "id": "squirrel",
@@ -107,7 +117,8 @@
     "category": "動物與昆蟲",
     "speechText": "リス",
     "imagePath": "images/sho-sensei/squirrel.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hand", "moon", "school", "hat", "eyeglasses", "soccer", "boat", "house"]
   },
   {
     "id": "frog",
@@ -117,7 +128,8 @@
     "category": "動物與昆蟲",
     "speechText": "カエル",
     "imagePath": "images/sho-sensei/frog.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ice-cream", "car", "lemon", "hamburger", "apple", "candy", "airplane", "eye"]
   },
   {
     "id": "turtle",
@@ -127,7 +139,8 @@
     "category": "動物與昆蟲",
     "speechText": "亀",
     "imagePath": "images/sho-sensei/turtle.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["pineapple", "house", "umbrella", "school", "soccer", "banana", "sleep", "moon"]
   },
   {
     "id": "duck",
@@ -137,7 +150,8 @@
     "category": "動物與昆蟲",
     "speechText": "カモ",
     "imagePath": "images/sho-sensei/duck.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["coffee", "pineapple", "trumpet", "pizza", "tree", "ramen", "airplane", "sleep"]
   },
   {
     "id": "seagull",
@@ -147,7 +161,8 @@
     "category": "動物與昆蟲",
     "speechText": "カモメ",
     "imagePath": "images/sho-sensei/seagull.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ice-cream", "pineapple", "moon", "shoes", "eyeglasses", "truck", "pencil", "apple"]
   },
   {
     "id": "fish",
@@ -157,7 +172,8 @@
     "category": "動物與昆蟲",
     "speechText": "さかな。",
     "imagePath": "images/sho-sensei/fish.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["sleep", "soccer", "eye", "pizza", "hand", "shoes", "book", "umbrella"]
   },
   {
     "id": "squid",
@@ -167,7 +183,8 @@
     "category": "動物與昆蟲",
     "speechText": "イカ",
     "imagePath": "images/sho-sensei/squid.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["egg", "candy", "sleep", "lemon", "hat", "eyeglasses", "book", "paper"]
   },
   {
     "id": "octopus",
@@ -177,7 +194,8 @@
     "category": "動物與昆蟲",
     "speechText": "タコ",
     "imagePath": "images/sho-sensei/octopus.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["candy", "mountain", "ice-cream", "hamburger", "apple", "book", "house", "egg"]
   },
   {
     "id": "crab",
@@ -187,7 +205,8 @@
     "category": "動物與昆蟲",
     "speechText": "カニ",
     "imagePath": "images/sho-sensei/crab.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hat", "pencil", "paper", "desk", "soccer", "egg", "pineapple", "tree"]
   },
   {
     "id": "shellfish",
@@ -197,7 +216,8 @@
     "category": "動物與昆蟲",
     "speechText": "貝",
     "imagePath": "images/sho-sensei/shellfish.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["banana", "pineapple", "hand", "lemon", "ice-cream", "candy", "scissors", "hamburger"]
   },
   {
     "id": "oyster",
@@ -207,7 +227,8 @@
     "category": "動物與昆蟲",
     "speechText": "牡蠣",
     "imagePath": "images/sho-sensei/oyster.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["desk", "paper", "trumpet", "house", "ice-cream", "tree", "sleep", "pineapple"]
   },
   {
     "id": "insect",
@@ -227,7 +248,8 @@
     "category": "動物與昆蟲",
     "speechText": "毛虫",
     "imagePath": "images/sho-sensei/hairy-caterpillar.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["truck", "egg", "book", "ramen", "tree", "eye", "trumpet", "hamburger"]
   },
   {
     "id": "firefly",
@@ -247,7 +269,8 @@
     "category": "水果與植物",
     "speechText": "スイカ",
     "imagePath": "images/sho-sensei/watermelon.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["moon", "hat", "drum", "truck", "dog", "hand", "pizza", "eye"]
   },
   {
     "id": "melon",
@@ -257,7 +280,8 @@
     "category": "水果與植物",
     "speechText": "メロン",
     "imagePath": "images/sho-sensei/melon.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["desk", "fish", "hand", "eyeglasses", "airplane", "pencil", "ice-cream", "lion"]
   },
   {
     "id": "mandarin",
@@ -267,7 +291,8 @@
     "category": "水果與植物",
     "speechText": "みかん",
     "imagePath": "images/sho-sensei/mandarin.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["sleep", "school", "umbrella", "house", "dog", "shoes", "mountain", "paper"]
   },
   {
     "id": "lemon",
@@ -277,7 +302,8 @@
     "category": "水果與植物",
     "speechText": "レモン",
     "imagePath": "images/sho-sensei/lemon.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["desk", "rain", "shoes", "coffee", "umbrella", "ice-cream", "car", "sleep"]
   },
   {
     "id": "apple",
@@ -287,7 +313,8 @@
     "category": "水果與植物",
     "speechText": "りんご",
     "imagePath": "images/sho-sensei/apple.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["oyster", "dog", "house", "scissors", "pizza", "ice-cream", "hat", "ramen"]
   },
   {
     "id": "peach",
@@ -297,7 +324,8 @@
     "category": "水果與植物",
     "speechText": "桃",
     "imagePath": "images/sho-sensei/peach.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["rain", "scissors", "crab", "house", "pizza", "car", "book", "fish"]
   },
   {
     "id": "banana",
@@ -307,7 +335,8 @@
     "category": "水果與植物",
     "speechText": "バナナ",
     "imagePath": "images/sho-sensei/banana.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["rain", "pizza", "crab", "umbrella", "school", "soccer", "house", "hat"]
   },
   {
     "id": "pineapple",
@@ -317,7 +346,8 @@
     "category": "水果與植物",
     "speechText": "パイナップル",
     "imagePath": "images/sho-sensei/pineapple.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["sleep", "pizza", "ice-cream", "desk", "ramen", "paper", "lion", "pencil"]
   },
   {
     "id": "persimmon",
@@ -327,7 +357,8 @@
     "category": "水果與植物",
     "speechText": "柿",
     "imagePath": "images/sho-sensei/persimmon.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["crab", "ramen", "umbrella", "eyeglasses", "book", "coffee", "dog", "sleep"]
   },
   {
     "id": "cucumber",
@@ -337,7 +368,8 @@
     "category": "水果與植物",
     "speechText": "きゅうり",
     "imagePath": "images/sho-sensei/cucumber.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["egg", "truck", "boat", "turtle", "coffee", "book", "rain", "airplane"]
   },
   {
     "id": "bean",
@@ -347,7 +379,8 @@
     "category": "水果與植物",
     "speechText": "豆",
     "imagePath": "images/sho-sensei/bean.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hand", "elephant", "book", "drum", "ice-cream", "ramen", "hamburger", "airplane"]
   },
   {
     "id": "tree",
@@ -357,7 +390,8 @@
     "category": "水果與植物",
     "speechText": "木",
     "imagePath": "images/sho-sensei/tree.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["eye", "soccer", "crab", "elephant", "eyeglasses", "ramen", "book", "desk"]
   },
   {
     "id": "flower",
@@ -367,7 +401,8 @@
     "category": "水果與植物",
     "speechText": "花",
     "imagePath": "images/sho-sensei/flower.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["mountain", "turtle", "drum", "soccer", "oyster", "dog", "desk", "lion"]
   },
   {
     "id": "chrysanthemum",
@@ -407,7 +442,8 @@
     "category": "食物與飲料",
     "speechText": "飴",
     "imagePath": "images/sho-sensei/candy.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["tree", "scissors", "lion", "school", "paper", "elephant", "truck", "boat"]
   },
   {
     "id": "snacks",
@@ -427,7 +463,8 @@
     "category": "食物與飲料",
     "speechText": "すし",
     "imagePath": "images/sho-sensei/sushi.webp",
-    "pictureQuizEligible": false,
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["pineapple", "desk", "banana", "car", "rain", "eye", "hand", "elephant"],
     "variants": [
       "おすし"
     ]
@@ -460,7 +497,8 @@
     "category": "食物與飲料",
     "speechText": "たまご。",
     "imagePath": "images/sho-sensei/egg.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["school", "hand", "crab", "turtle", "drum", "book", "dog", "banana"]
   },
   {
     "id": "meat",
@@ -470,7 +508,8 @@
     "category": "食物與飲料",
     "speechText": "肉",
     "imagePath": "images/sho-sensei/meat.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["desk", "cat", "eye", "truck", "pineapple", "scissors", "turtle", "house"]
   },
   {
     "id": "cooked-rice",
@@ -480,7 +519,8 @@
     "category": "食物與飲料",
     "speechText": "ご飯",
     "imagePath": "images/sho-sensei/cooked-rice.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["elephant", "paper", "book", "crab", "tree", "apple", "persimmon", "desk"]
   },
   {
     "id": "bento",
@@ -490,7 +530,8 @@
     "category": "食物與飲料",
     "speechText": "弁当",
     "imagePath": "images/sho-sensei/bento.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hand", "tree", "turtle", "airplane", "rain", "paper", "trumpet", "hat"]
   },
   {
     "id": "noodles",
@@ -510,7 +551,8 @@
     "category": "食物與飲料",
     "speechText": "ラーメン",
     "imagePath": "images/sho-sensei/ramen.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hand", "apple", "drum", "persimmon", "book", "umbrella", "cat", "house"]
   },
   {
     "id": "pasta",
@@ -520,7 +562,8 @@
     "category": "食物與飲料",
     "speechText": "パスタ",
     "imagePath": "images/sho-sensei/pasta.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["drum", "trumpet", "dog", "cat", "turtle", "rain", "mountain", "hand"]
   },
   {
     "id": "pizza",
@@ -530,7 +573,8 @@
     "category": "食物與飲料",
     "speechText": "ピザ",
     "imagePath": "images/sho-sensei/pizza.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hat", "school", "paper", "rain", "umbrella", "cat", "eye", "pencil"]
   },
   {
     "id": "hamburger",
@@ -540,7 +584,8 @@
     "category": "食物與飲料",
     "speechText": "ハンバーガー",
     "imagePath": "images/sho-sensei/hamburger.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["trumpet", "hand", "pineapple", "hat", "elephant", "dog", "eyeglasses", "house"]
   },
   {
     "id": "curry-rice",
@@ -550,7 +595,8 @@
     "category": "食物與飲料",
     "speechText": "カレーライス",
     "imagePath": "images/sho-sensei/curry-rice.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["scissors", "umbrella", "book", "eye", "apple", "tree", "dog", "cat"]
   },
   {
     "id": "xiaolongbao",
@@ -570,7 +616,8 @@
     "category": "食物與飲料",
     "speechText": "アイスクリーム",
     "imagePath": "images/sho-sensei/ice-cream.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["truck", "eye", "oyster", "persimmon", "apple", "car", "airplane", "elephant"]
   },
   {
     "id": "cheese",
@@ -580,7 +627,8 @@
     "category": "食物與飲料",
     "speechText": "チーズ",
     "imagePath": "images/sho-sensei/cheese.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["oyster", "cat", "lemon", "soccer", "pineapple", "mountain", "airplane", "car"]
   },
   {
     "id": "chocolate-cake",
@@ -590,7 +638,8 @@
     "category": "食物與飲料",
     "speechText": "チョコレートケーキ",
     "imagePath": "images/sho-sensei/chocolate-cake.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hat", "umbrella", "pineapple", "desk", "school", "crab", "scissors", "hand"]
   },
   {
     "id": "cheesecake",
@@ -600,7 +649,8 @@
     "category": "食物與飲料",
     "speechText": "チーズケーキ",
     "imagePath": "images/sho-sensei/cheesecake.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["eye", "truck", "apple", "eyeglasses", "fish", "hat", "car", "cat"]
   },
   {
     "id": "beverage",
@@ -630,7 +680,8 @@
     "category": "食物與飲料",
     "speechText": "コーヒー",
     "imagePath": "images/sho-sensei/coffee.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["scissors", "lion", "truck", "tree", "hat", "apple", "eyeglasses", "mountain"]
   },
   {
     "id": "milk-tea",
@@ -640,7 +691,8 @@
     "category": "食物與飲料",
     "speechText": "ミルクティー",
     "imagePath": "images/sho-sensei/milk-tea.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["lemon", "boat", "dog", "shoes", "paper", "scissors", "banana", "pencil"]
   },
   {
     "id": "tomato-juice",
@@ -660,7 +712,8 @@
     "category": "食物與飲料",
     "speechText": "ビール",
     "imagePath": "images/sho-sensei/beer.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["eyeglasses", "car", "book", "truck", "umbrella", "pencil", "house", "soccer"]
   },
   {
     "id": "umbrella",
@@ -670,7 +723,8 @@
     "category": "用品與衣物",
     "speechText": "傘",
     "imagePath": "images/sho-sensei/umbrella.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["cat", "pizza", "fish", "boat", "coffee", "persimmon", "banana", "pineapple"]
   },
   {
     "id": "spinning-top",
@@ -680,7 +734,8 @@
     "category": "用品與衣物",
     "speechText": "こま",
     "imagePath": "images/sho-sensei/spinning-top.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["pineapple", "mountain", "boat", "egg", "lemon", "pizza", "banana", "turtle"]
   },
   {
     "id": "drum",
@@ -690,7 +745,8 @@
     "category": "用品與衣物",
     "speechText": "太鼓",
     "imagePath": "images/sho-sensei/drum.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hand", "soccer", "truck", "coffee", "moon", "mountain", "house", "cat"]
   },
   {
     "id": "scissors",
@@ -700,7 +756,8 @@
     "category": "用品與衣物",
     "speechText": "はさみ",
     "imagePath": "images/sho-sensei/scissors.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["airplane", "house", "soccer", "hand", "ramen", "cat", "egg", "sleep"]
   },
   {
     "id": "balloon",
@@ -710,7 +767,8 @@
     "category": "用品與衣物",
     "speechText": "風船",
     "imagePath": "images/sho-sensei/balloon.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["mountain", "hamburger", "cat", "airplane", "house", "banana", "boat", "ice-cream"]
   },
   {
     "id": "pillow",
@@ -720,7 +778,8 @@
     "category": "用品與衣物",
     "speechText": "枕",
     "imagePath": "images/sho-sensei/pillow.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["house", "tree", "truck", "persimmon", "egg", "candy", "lemon", "turtle"]
   },
   {
     "id": "chair",
@@ -730,7 +789,8 @@
     "category": "用品與衣物",
     "speechText": "椅子",
     "imagePath": "images/sho-sensei/chair.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["school", "fish", "ice-cream", "oyster", "hamburger", "sleep", "coffee", "boat"]
   },
   {
     "id": "desk",
@@ -740,7 +800,8 @@
     "category": "用品與衣物",
     "speechText": "机",
     "imagePath": "images/sho-sensei/desk.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hamburger", "rain", "sleep", "dog", "lemon", "ramen", "coffee", "ice-cream"]
   },
   {
     "id": "shoes",
@@ -750,7 +811,8 @@
     "category": "用品與衣物",
     "speechText": "靴",
     "imagePath": "images/sho-sensei/shoes.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hamburger", "crab", "car", "oyster", "apple", "boat", "airplane", "dog"]
   },
   {
     "id": "eraser",
@@ -760,7 +822,8 @@
     "category": "用品與衣物",
     "speechText": "消しゴム",
     "imagePath": "images/sho-sensei/eraser.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["airplane", "lion", "pineapple", "tree", "car", "hand", "ramen", "dog"]
   },
   {
     "id": "pencil",
@@ -770,7 +833,8 @@
     "category": "用品與衣物",
     "speechText": "鉛筆",
     "imagePath": "images/sho-sensei/pencil.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ramen", "candy", "oyster", "dog", "egg", "apple", "pineapple", "eye"]
   },
   {
     "id": "map",
@@ -780,7 +844,8 @@
     "category": "用品與衣物",
     "speechText": "地図",
     "imagePath": "images/sho-sensei/map.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["soccer", "elephant", "airplane", "ice-cream", "turtle", "moon", "crab", "ramen"]
   },
   {
     "id": "clock",
@@ -790,7 +855,8 @@
     "category": "用品與衣物",
     "speechText": "時計",
     "imagePath": "images/sho-sensei/clock.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["dog", "ice-cream", "turtle", "lemon", "pineapple", "apple", "coffee", "sleep"]
   },
   {
     "id": "cloth",
@@ -810,7 +876,8 @@
     "category": "用品與衣物",
     "speechText": "かみ。",
     "imagePath": "images/sho-sensei/paper.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["oyster", "car", "ice-cream", "house", "crab", "pineapple", "banana", "candy"]
   },
   {
     "id": "book",
@@ -820,7 +887,8 @@
     "category": "用品與衣物",
     "speechText": "本",
     "imagePath": "images/sho-sensei/book.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["elephant", "soccer", "truck", "sleep", "mountain", "oyster", "crab", "ramen"]
   },
   {
     "id": "magazine",
@@ -850,7 +918,8 @@
     "category": "用品與衣物",
     "speechText": "帽子",
     "imagePath": "images/sho-sensei/hat.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ice-cream", "house", "fish", "persimmon", "apple", "egg", "school", "hand"]
   },
   {
     "id": "eyeglasses",
@@ -860,7 +929,8 @@
     "category": "用品與衣物",
     "speechText": "メガネ",
     "imagePath": "images/sho-sensei/eyeglasses.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["cat", "car", "soccer", "ramen", "pizza", "dog", "airplane", "ice-cream"]
   },
   {
     "id": "coat",
@@ -880,7 +950,8 @@
     "category": "用品與衣物",
     "speechText": "カッター",
     "imagePath": "images/sho-sensei/utility-knife.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["banana", "lion", "house", "ramen", "airplane", "rain", "boat", "tree"]
   },
   {
     "id": "drinking-glass",
@@ -920,7 +991,8 @@
     "category": "用品與衣物",
     "speechText": "モップ",
     "imagePath": "images/sho-sensei/mop.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["candy", "moon", "turtle", "eye", "car", "persimmon", "ramen", "school"]
   },
   {
     "id": "ticket",
@@ -940,7 +1012,8 @@
     "category": "用品與衣物",
     "speechText": "ラッパ",
     "imagePath": "images/sho-sensei/trumpet.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["house", "airplane", "apple", "crab", "banana", "hand", "turtle", "dog"]
   },
   {
     "id": "origami",
@@ -960,7 +1033,8 @@
     "category": "用品與衣物",
     "speechText": "ぬいぐるみ",
     "imagePath": "images/sho-sensei/stuffed-toy.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ice-cream", "airplane", "tree", "lemon", "ramen", "moon", "soccer", "pizza"]
   },
   {
     "id": "communication-notebook",
@@ -980,7 +1054,8 @@
     "category": "用品與衣物",
     "speechText": "シーソー",
     "imagePath": "images/sho-sensei/seesaw.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["cat", "ramen", "lemon", "hand", "truck", "tree", "ice-cream", "sleep"]
   },
   {
     "id": "menu",
@@ -1000,7 +1075,8 @@
     "category": "人物、場所與交通",
     "speechText": "ひと",
     "imagePath": "images/sho-sensei/person.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["moon", "crab", "tree", "umbrella", "rain", "banana", "coffee", "soccer"]
   },
   {
     "id": "child",
@@ -1010,7 +1086,8 @@
     "category": "人物、場所與交通",
     "speechText": "子ども",
     "imagePath": "images/sho-sensei/child.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["turtle", "tree", "moon", "rain", "umbrella", "mountain", "pencil", "dog"]
   },
   {
     "id": "teacher",
@@ -1020,7 +1097,8 @@
     "category": "人物、場所與交通",
     "speechText": "先生",
     "imagePath": "images/sho-sensei/teacher.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["elephant", "dog", "crab", "apple", "trumpet", "ice-cream", "rain", "tree"]
   },
   {
     "id": "i",
@@ -1050,7 +1128,8 @@
     "category": "人物、場所與交通",
     "speechText": "クロミ",
     "imagePath": "images/sho-sensei/kuromi.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["crab", "hamburger", "candy", "lemon", "pencil", "pizza", "ramen", "sleep"]
   },
   {
     "id": "kappa",
@@ -1060,7 +1139,8 @@
     "category": "人物、場所與交通",
     "speechText": "河童",
     "imagePath": "images/sho-sensei/kappa.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["lion", "eyeglasses", "moon", "crab", "ramen", "coffee", "paper", "umbrella"]
   },
   {
     "id": "house",
@@ -1070,7 +1150,8 @@
     "category": "人物、場所與交通",
     "speechText": "いえ",
     "imagePath": "images/sho-sensei/house.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["lemon", "pencil", "hat", "eye", "persimmon", "crab", "dog", "candy"]
   },
   {
     "id": "room",
@@ -1090,7 +1171,8 @@
     "category": "人物、場所與交通",
     "speechText": "窓",
     "imagePath": "images/sho-sensei/window.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["coffee", "hat", "cat", "egg", "scissors", "fish", "crab", "hand"]
   },
   {
     "id": "school",
@@ -1100,7 +1182,8 @@
     "category": "人物、場所與交通",
     "speechText": "学校",
     "imagePath": "images/sho-sensei/school.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hamburger", "eyeglasses", "shoes", "ice-cream", "persimmon", "candy", "scissors", "umbrella"]
   },
   {
     "id": "bank",
@@ -1140,7 +1223,8 @@
     "category": "人物、場所與交通",
     "speechText": "くるま。",
     "imagePath": "images/sho-sensei/car.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["turtle", "apple", "soccer", "banana", "oyster", "lion", "mountain", "rain"]
   },
   {
     "id": "truck",
@@ -1150,7 +1234,8 @@
     "category": "人物、場所與交通",
     "speechText": "トラック",
     "imagePath": "images/sho-sensei/truck.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ice-cream", "candy", "lion", "elephant", "eye", "pineapple", "sleep", "tree"]
   },
   {
     "id": "train",
@@ -1160,7 +1245,8 @@
     "category": "人物、場所與交通",
     "speechText": "電車",
     "imagePath": "images/sho-sensei/train.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["pineapple", "pizza", "trumpet", "eyeglasses", "book", "hat", "shoes", "oyster"]
   },
   {
     "id": "boat",
@@ -1170,7 +1256,8 @@
     "category": "人物、場所與交通",
     "speechText": "ふね。",
     "imagePath": "images/sho-sensei/boat.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ramen", "tree", "desk", "mountain", "egg", "eyeglasses", "hamburger", "hand"]
   },
   {
     "id": "airplane",
@@ -1180,7 +1267,8 @@
     "category": "人物、場所與交通",
     "speechText": "飛行機",
     "imagePath": "images/sho-sensei/airplane.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["soccer", "umbrella", "scissors", "lemon", "pizza", "pineapple", "lion", "apple"]
   },
   {
     "id": "taiwan",
@@ -1190,7 +1278,8 @@
     "category": "人物、場所與交通",
     "speechText": "台湾",
     "imagePath": "images/sho-sensei/taiwan.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["dog", "banana", "lemon", "soccer", "turtle", "paper", "hat", "ramen"]
   },
   {
     "id": "italy",
@@ -1200,7 +1289,8 @@
     "category": "人物、場所與交通",
     "speechText": "イタリア",
     "imagePath": "images/sho-sensei/italy.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["lion", "umbrella", "eye", "paper", "hat", "candy", "coffee", "turtle"]
   },
   {
     "id": "united-states",
@@ -1210,7 +1300,8 @@
     "category": "人物、場所與交通",
     "speechText": "アメリカ",
     "imagePath": "images/sho-sensei/united-states.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["rain", "candy", "hand", "eye", "hamburger", "dog", "drum", "pencil"]
   },
   {
     "id": "hong-kong",
@@ -1220,7 +1311,8 @@
     "category": "人物、場所與交通",
     "speechText": "香港",
     "imagePath": "images/sho-sensei/hong-kong.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ice-cream", "egg", "eyeglasses", "apple", "turtle", "pizza", "cat", "soccer"]
   },
   {
     "id": "sea",
@@ -1250,7 +1342,8 @@
     "category": "自然、時間與顏色",
     "speechText": "山",
     "imagePath": "images/sho-sensei/mountain.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["banana", "car", "dog", "pineapple", "soccer", "ice-cream", "boat", "oyster"]
   },
   {
     "id": "moon",
@@ -1260,7 +1353,8 @@
     "category": "自然、時間與顏色",
     "speechText": "つき",
     "imagePath": "images/sho-sensei/moon.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["car", "turtle", "school", "book", "ramen", "soccer", "sleep", "desk"]
   },
   {
     "id": "star",
@@ -1270,7 +1364,8 @@
     "category": "自然、時間與顏色",
     "speechText": "星",
     "imagePath": "images/sho-sensei/star.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["desk", "car", "pencil", "ramen", "eyeglasses", "hamburger", "pizza", "drum"]
   },
   {
     "id": "rain",
@@ -1280,7 +1375,8 @@
     "category": "自然、時間與顏色",
     "speechText": "あめ。",
     "imagePath": "images/sho-sensei/rain.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hamburger", "drum", "oyster", "hand", "soccer", "truck", "hat", "dog"]
   },
   {
     "id": "snow",
@@ -1290,7 +1386,8 @@
     "category": "自然、時間與顏色",
     "speechText": "雪",
     "imagePath": "images/sho-sensei/snow.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hamburger", "fish", "house", "trumpet", "paper", "candy", "desk", "eyeglasses"]
   },
   {
     "id": "morning",
@@ -1380,7 +1477,8 @@
     "category": "自然、時間與顏色",
     "speechText": "赤",
     "imagePath": "images/sho-sensei/red.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["school", "cat", "pencil", "banana", "paper", "truck", "hand", "scissors"]
   },
   {
     "id": "blue",
@@ -1390,7 +1488,8 @@
     "category": "自然、時間與顏色",
     "speechText": "青",
     "imagePath": "images/sho-sensei/blue.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["lion", "school", "egg", "pineapple", "turtle", "coffee", "shoes", "banana"]
   },
   {
     "id": "eye",
@@ -1400,7 +1499,8 @@
     "category": "身體、動作與狀態",
     "speechText": "目",
     "imagePath": "images/sho-sensei/eye.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["crab", "drum", "elephant", "ice-cream", "mountain", "school", "car", "banana"]
   },
   {
     "id": "hand",
@@ -1410,7 +1510,8 @@
     "category": "身體、動作與狀態",
     "speechText": "手",
     "imagePath": "images/sho-sensei/hand.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["rain", "ice-cream", "car", "trumpet", "dog", "mountain", "pizza", "candy"]
   },
   {
     "id": "leg-foot",
@@ -1420,7 +1521,8 @@
     "category": "身體、動作與狀態",
     "speechText": "足",
     "imagePath": "images/sho-sensei/leg-foot.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["elephant", "school", "hamburger", "moon", "hat", "airplane", "banana", "egg"]
   },
   {
     "id": "neck",
@@ -1430,7 +1532,8 @@
     "category": "身體、動作與狀態",
     "speechText": "首",
     "imagePath": "images/sho-sensei/neck.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["paper", "ice-cream", "hamburger", "house", "scissors", "boat", "crab", "moon"]
   },
   {
     "id": "nosebleed",
@@ -1440,7 +1543,8 @@
     "category": "身體、動作與狀態",
     "speechText": "鼻血",
     "imagePath": "images/sho-sensei/nosebleed.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["candy", "drum", "boat", "scissors", "mountain", "egg", "shoes", "truck"]
   },
   {
     "id": "written-character",
@@ -1460,7 +1564,8 @@
     "category": "身體、動作與狀態",
     "speechText": "サッカー",
     "imagePath": "images/sho-sensei/soccer.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["banana", "ramen", "coffee", "apple", "lion", "pencil", "mountain", "airplane"]
   },
   {
     "id": "kick",
@@ -1550,7 +1655,8 @@
     "category": "身體、動作與狀態",
     "speechText": "書く",
     "imagePath": "images/sho-sensei/write.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hamburger", "drum", "cat", "lion", "house", "coffee", "apple", "pizza"]
   },
   {
     "id": "sleep",
@@ -1560,7 +1666,8 @@
     "category": "身體、動作與狀態",
     "speechText": "寝る",
     "imagePath": "images/sho-sensei/sleep.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["trumpet", "drum", "school", "cat", "desk", "lemon", "crab", "car"]
   },
   {
     "id": "eat",
@@ -1930,7 +2037,8 @@
     "category": "星期與數字",
     "speechText": "れい",
     "imagePath": "images/sho-sensei/number-0.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ramen", "candy", "egg", "hat", "shoes", "tree", "truck", "mountain"]
   },
   {
     "id": "number-1",
@@ -1940,7 +2048,8 @@
     "category": "星期與數字",
     "speechText": "いち",
     "imagePath": "images/sho-sensei/number-1.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hamburger", "candy", "egg", "hat", "shoes", "truck", "hand", "elephant"]
   },
   {
     "id": "number-2",
@@ -1950,7 +2059,8 @@
     "category": "星期與數字",
     "speechText": "に",
     "imagePath": "images/sho-sensei/number-2.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ice-cream", "coffee", "candy", "hat", "shoes", "tree", "mountain", "hand"]
   },
   {
     "id": "number-3",
@@ -1960,7 +2070,8 @@
     "category": "星期與數字",
     "speechText": "さん",
     "imagePath": "images/sho-sensei/number-3.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hamburger", "candy", "egg", "hat", "shoes", "truck", "tree", "house"]
   },
   {
     "id": "number-4",
@@ -1970,7 +2081,8 @@
     "category": "星期與數字",
     "speechText": "よん",
     "imagePath": "images/sho-sensei/number-4.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hamburger", "ramen", "pizza", "hat", "shoes", "hand", "mountain", "elephant"]
   },
   {
     "id": "number-5",
@@ -1980,7 +2092,8 @@
     "category": "星期與數字",
     "speechText": "ご",
     "imagePath": "images/sho-sensei/number-5.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["candy", "ice-cream", "pizza", "hat", "shoes", "tree", "mountain", "elephant"]
   },
   {
     "id": "number-6",
@@ -1990,7 +2103,8 @@
     "category": "星期與數字",
     "speechText": "ろく",
     "imagePath": "images/sho-sensei/number-6.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ice-cream", "ramen", "pizza", "hat", "shoes", "dog", "house", "tree"]
   },
   {
     "id": "number-7",
@@ -2000,7 +2114,8 @@
     "category": "星期與數字",
     "speechText": "なな",
     "imagePath": "images/sho-sensei/number-7.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["ramen", "pizza", "hamburger", "hat", "shoes", "elephant", "mountain", "house"]
   },
   {
     "id": "number-8",
@@ -2010,7 +2125,8 @@
     "category": "星期與數字",
     "speechText": "はち",
     "imagePath": "images/sho-sensei/number-8.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["egg", "hamburger", "pizza", "hat", "shoes", "house", "truck", "hand"]
   },
   {
     "id": "number-9",
@@ -2020,7 +2136,8 @@
     "category": "星期與數字",
     "speechText": "きゅう",
     "imagePath": "images/sho-sensei/number-9.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["coffee", "egg", "ice-cream", "hat", "shoes", "tree", "elephant", "hand"]
   },
   {
     "id": "number-10",
@@ -2030,7 +2147,8 @@
     "category": "星期與數字",
     "speechText": "じゅう",
     "imagePath": "images/sho-sensei/number-10.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["hamburger", "candy", "egg", "hat", "shoes", "mountain", "dog", "truck"]
   },
   {
     "id": "number-100",
