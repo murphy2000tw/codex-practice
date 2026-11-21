@@ -3504,7 +3504,7 @@ function playShoSenseiVocabularyWord(word, status) {
 
 function getShoSenseiVocabulary() {
   if (!shoSenseiVocabularyRequest) {
-    shoSenseiVocabularyRequest = fetch("./shoSenseiVocabulary.json?v=3").then((response) => {
+    shoSenseiVocabularyRequest = fetch("./shoSenseiVocabulary.json?v=4").then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
     }).catch((error) => {

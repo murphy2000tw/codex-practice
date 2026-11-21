@@ -7,6 +7,8 @@ const { chromium, devices } = require('playwright');
 
 const root = path.resolve(__dirname, '..');
 const words = require('../japanese/shoSenseiVocabulary.json');
+const wordsByQuizImage = Object.fromEntries(words.map(word => [word.pictureQuizImagePath || word.imagePath, word]));
+const numberReadings = ['れい', 'いち', 'に', 'さん', 'よん', 'ご', 'ろく', 'なな', 'はち', 'きゅう', 'じゅう'];
 const server = http.createServer((request, response) => {
   const pathname = new URL(request.url, 'http://localhost').pathname;
   const file = path.resolve(root, '.' + pathname.replace(/^\/project\//, '/'));
@@ -157,7 +159,7 @@ async function checkPictureQuiz(page, activate, mobile) {
   };
   let optionWords = await getOptionWords();
   const firstImagePath = await image.getAttribute('src');
-  const firstWord = words.find(word => word.imagePath === firstImagePath);
+  const firstWord = wordsByQuizImage[firstImagePath];
   assert.ok(optionWords.some(word => word.id === firstWord.id));
   const startCalls = (await calls()).length;
   for (const [index, word] of optionWords.entries()) {
@@ -231,7 +233,7 @@ async function checkPictureQuiz(page, activate, mobile) {
   assert.equal((await calls()).length, beforeWaiting + 1);
   await page.evaluate(() => { window.shoSpeechProbe.error = null; });
   const currentImagePath = await image.getAttribute('src');
-  const current = words.find(word => word.imagePath === currentImagePath);
+  const current = wordsByQuizImage[currentImagePath];
   const currentOptions = await getOptionWords();
   await activate(answers.nth(currentOptions.findIndex(word => word.id === current.id)));
   assert.equal(await feedback.textContent(), `答對了！正確答案是 ${await labelFor(current)}`);
@@ -243,27 +245,47 @@ async function checkPictureQuiz(page, activate, mobile) {
 
   if (!mobile) {
     // Walk this round at the actual UI entry so the fixed PR #334 reading and the final score are exercised.
-    const solveUntil = stopAt => page.evaluate(({ words, stopAt }) => {
+    const solveUntil = stopAt => page.evaluate(async ({ wordsByQuizImage, stopAt }) => {
       const view = document.querySelector('#japaneseShoSenseiPictureQuizView');
       const panel = view.querySelector('[data-picture-quiz-question]');
       const image = panel.querySelector('img');
       const next = view.querySelector('[data-picture-quiz-next]');
-      const byImage = new Map(words.map(word => [word.imagePath, word]));
+      const numberCards = [];
       while (!panel.hidden) {
-        const word = byImage.get(image.getAttribute('src'));
-        if (word.id === stopAt) return;
+        const word = wordsByQuizImage[image.getAttribute('src')];
+        if (word.id === stopAt) break;
         const right = [...panel.querySelectorAll('.quiz-option')].find(button =>
           button.textContent === getShoSenseiPictureOptionLabel(word));
         if (!right) throw new Error(`Missing answer for ${word.id}`);
+        if (word.pictureQuizImagePath) {
+          await image.decode();
+          const canvas = document.createElement('canvas');
+          canvas.width = image.naturalWidth;
+          canvas.height = image.naturalHeight;
+          const context = canvas.getContext('2d', { willReadFrequently: true });
+          context.drawImage(image, 0, 0);
+          // Sample each cell center for the solid dot color on the actual question image.
+          let dots = 0;
+          for (const y of [88, 152]) {
+            for (const x of [64, 128, 192, 256, 320]) {
+              const [red, green, blue] = context.getImageData(x, y, 1, 1).data;
+              if (red === 145 && green === 67 && blue === 34) dots += 1;
+            }
+          }
+          numberCards.push([Number(word.word), dots, right.textContent]);
+        }
         right.click();
         if (!right.classList.contains('is-correct')) throw new Error(`Incorrect answer key for ${word.id}`);
         next.click();
       }
-    }, { words, stopAt });
-    await solveUntil('rain');
+      return numberCards;
+    }, { wordsByQuizImage, stopAt });
+    const numberCards = await solveUntil('rain');
     await activate(view.getByRole('button', { name: '聽發音：雨（あめ）', exact: true }));
     await waitForSpeech('あめ。');
-    await solveUntil(null);
+    numberCards.push(...await solveUntil(null));
+    assert.deepEqual(numberCards.sort(([first], [second]) => first - second),
+      numberReadings.map((reading, number) => [number, number, reading]));
     await assertIdle();
     assert.equal(await progress.textContent(), '完成練習！答對 118 題，共 118 題。');
   }
@@ -321,6 +343,8 @@ async function checkPictureQuiz(page, activate, mobile) {
       })));
       assert.deepEqual(rendered, words.map(({ id, imagePath, kana, meaning }) =>
         ({ id, imagePath, kana, meaning })));
+      assert.deepEqual(rendered.filter(({ id }) => /^number-(?:[0-9]|10)$/.test(id)).map(({ imagePath }) => imagePath),
+        numberReadings.map((_, number) => `images/sho-sensei/number-${number}.webp`));
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       if (!mobile) {
         const images = await cards.locator('img').evaluateAll(async nodes => Promise.all(nodes.map(async image => {

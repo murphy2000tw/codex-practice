@@ -2037,6 +2037,7 @@
     "category": "星期與數字",
     "speechText": "れい",
     "imagePath": "images/sho-sensei/number-0.webp",
+    "pictureQuizImagePath": "images/sho-sensei/picture-quiz/number-0.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["ramen", "candy", "egg", "hat", "shoes", "tree", "truck", "mountain"]
   },
@@ -2048,6 +2049,7 @@
     "category": "星期與數字",
     "speechText": "いち",
     "imagePath": "images/sho-sensei/number-1.webp",
+    "pictureQuizImagePath": "images/sho-sensei/picture-quiz/number-1.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["hamburger", "candy", "egg", "hat", "shoes", "truck", "hand", "elephant"]
   },
@@ -2059,6 +2061,7 @@
     "category": "星期與數字",
     "speechText": "に",
     "imagePath": "images/sho-sensei/number-2.webp",
+    "pictureQuizImagePath": "images/sho-sensei/picture-quiz/number-2.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["ice-cream", "coffee", "candy", "hat", "shoes", "tree", "mountain", "hand"]
   },
@@ -2070,6 +2073,7 @@
     "category": "星期與數字",
     "speechText": "さん",
     "imagePath": "images/sho-sensei/number-3.webp",
+    "pictureQuizImagePath": "images/sho-sensei/picture-quiz/number-3.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["hamburger", "candy", "egg", "hat", "shoes", "truck", "tree", "house"]
   },
@@ -2081,6 +2085,7 @@
     "category": "星期與數字",
     "speechText": "よん",
     "imagePath": "images/sho-sensei/number-4.webp",
+    "pictureQuizImagePath": "images/sho-sensei/picture-quiz/number-4.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["hamburger", "ramen", "pizza", "hat", "shoes", "hand", "mountain", "elephant"]
   },
@@ -2092,6 +2097,7 @@
     "category": "星期與數字",
     "speechText": "ご",
     "imagePath": "images/sho-sensei/number-5.webp",
+    "pictureQuizImagePath": "images/sho-sensei/picture-quiz/number-5.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["candy", "ice-cream", "pizza", "hat", "shoes", "tree", "mountain", "elephant"]
   },
@@ -2103,6 +2109,7 @@
     "category": "星期與數字",
     "speechText": "ろく",
     "imagePath": "images/sho-sensei/number-6.webp",
+    "pictureQuizImagePath": "images/sho-sensei/picture-quiz/number-6.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["ice-cream", "ramen", "pizza", "hat", "shoes", "dog", "house", "tree"]
   },
@@ -2114,6 +2121,7 @@
     "category": "星期與數字",
     "speechText": "なな",
     "imagePath": "images/sho-sensei/number-7.webp",
+    "pictureQuizImagePath": "images/sho-sensei/picture-quiz/number-7.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["ramen", "pizza", "hamburger", "hat", "shoes", "elephant", "mountain", "house"]
   },
@@ -2125,6 +2133,7 @@
     "category": "星期與數字",
     "speechText": "はち",
     "imagePath": "images/sho-sensei/number-8.webp",
+    "pictureQuizImagePath": "images/sho-sensei/picture-quiz/number-8.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["egg", "hamburger", "pizza", "hat", "shoes", "house", "truck", "hand"]
   },
@@ -2136,6 +2145,7 @@
     "category": "星期與數字",
     "speechText": "きゅう",
     "imagePath": "images/sho-sensei/number-9.webp",
+    "pictureQuizImagePath": "images/sho-sensei/picture-quiz/number-9.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["coffee", "egg", "ice-cream", "hat", "shoes", "tree", "elephant", "hand"]
   },
@@ -2147,6 +2157,7 @@
     "category": "星期與數字",
     "speechText": "じゅう",
     "imagePath": "images/sho-sensei/number-10.webp",
+    "pictureQuizImagePath": "images/sho-sensei/picture-quiz/number-10.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["hamburger", "candy", "egg", "hat", "shoes", "mountain", "dog", "truck"]
   },

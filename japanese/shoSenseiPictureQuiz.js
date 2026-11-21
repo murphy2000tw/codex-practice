@@ -1,7 +1,7 @@
 const SHO_SENSEI_PICTURE_HOMOPHONES = new Set(["rain", "candy", "persimmon", "oyster"]);
 
 function getShoSenseiPictureOptionLabel(word) {
-  // The number cards show Arabic numerals. The answer is the Japanese reading.
+  // Number questions ask for the Japanese reading of the pictured quantity.
   if (/^\d+$/.test(word.word)) return word.kana;
   if (SHO_SENSEI_PICTURE_HOMOPHONES.has(word.id)) return `${word.word}（${word.kana}）`;
   return word.word;
@@ -21,7 +21,8 @@ function createShoSenseiPictureQuestions(words, shuffle) {
   const questions = [];
 
   for (const answer of words) {
-    const { imagePath, pictureQuizEligible, pictureQuizDistractorIds = [] } = answer;
+    const { pictureQuizEligible, pictureQuizDistractorIds = [] } = answer;
+    const imagePath = answer.pictureQuizImagePath || answer.imagePath;
     if (pictureQuizEligible !== true || !imagePath || !answer.speechText) continue;
 
     // Candidate IDs are reviewed against this particular image and sense in the shared word bank.
@@ -31,13 +32,13 @@ function createShoSenseiPictureQuestions(words, shuffle) {
       .filter((second) => areDistinct(first, second)).map((second) => [first, second]));
     const crossCategoryPairs = pairs.filter(([first, second]) => first.category !== second.category);
     const [distractors] = shuffle(crossCategoryPairs.length ? crossCategoryPairs : pairs);
-    if (distractors) questions.push({ answer, distractors });
+    if (distractors) questions.push({ answer, imagePath, distractors });
   }
 
   const positions = [0, 1, 2];
   let batch = [];
   let previousPosition = null;
-  return shuffle(questions).map(({ answer, distractors }) => {
+  return shuffle(questions).map(({ answer, imagePath, distractors }) => {
     if (!batch.length) {
       const [first] = shuffle(positions.filter((position) => position !== previousPosition));
       batch = [first, ...shuffle(positions.filter((position) => position !== first))];
@@ -46,7 +47,7 @@ function createShoSenseiPictureQuestions(words, shuffle) {
     const options = shuffle(distractors);
     options.splice(correctPosition, 0, answer);
     previousPosition = correctPosition;
-    return { answer, options, correctPosition };
+    return { answer, imagePath, options, correctPosition };
   });
 }
 
@@ -77,10 +78,10 @@ function createShoSenseiPictureQuiz(view, { loadWords, shuffle, playWord, stopSp
 
   function renderQuestion() {
     clearQuestion();
-    const { answer, options: words, correctPosition } = questions[index];
+    const { answer, imagePath, options: words, correctPosition } = questions[index];
     const buttons = [];
     progress.textContent = `第 ${index + 1} 題／共 ${questions.length} 題`;
-    image.src = answer.imagePath;
+    image.src = imagePath;
 
     for (const [position, word] of words.entries()) {
       const row = optionTemplate.content.firstElementChild.cloneNode(true);
