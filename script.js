@@ -545,6 +545,7 @@ const quizPanel = document.querySelector("#quizPanel");
 const japaneseVocabularyMenuView = document.querySelector("#japaneseVocabularyMenuView");
 const japaneseVocabularyStudyView = document.querySelector("#japaneseVocabularyStudyView");
 const japaneseVocabularyEntryButtons = document.querySelectorAll("[data-japanese-vocabulary-entry]");
+const japaneseShoSenseiVocabularyView = document.querySelector("#japaneseShoSenseiVocabularyView");
 const japaneseGrammarMenuView = document.querySelector("#japaneseGrammarMenuView");
 const japaneseGrammarEntryButtons = document.querySelectorAll("[data-japanese-grammar-entry]");
 const japaneseSentenceCompositionView = document.querySelector("#japaneseSentenceCompositionView");
@@ -715,6 +716,10 @@ function renderJapaneseView(view) {
   const normalizedView = normalizeJapaneseView(view);
   const nextView = getJapaneseViewElement(normalizedView) ? normalizedView : "home";
   const panelView = ["listeningMenu", "listeningPractice", "listeningQuiz"].includes(nextView) ? "listening" : (["reviewMenu", "vocabularyBook", "mistakeBook"].includes(nextView) ? "review" : nextView);
+  if (panelView !== "vocabulary" && japaneseShoSenseiVocabularyView && !japaneseShoSenseiVocabularyView.hidden) {
+    japaneseShoSenseiVocabularyView.hidden = true;
+    stopShoSenseiVocabularySpeech();
+  }
   if (currentJapaneseView === "listeningPractice" && panelView !== "listening") resetJapaneseListeningPractice();
   if (currentJapaneseView === "listeningQuiz" && panelView !== "listening") cancelJapaneseListeningSpeech("quiz");
   if (japaneseHiraganaPanel) japaneseHiraganaPanel.hidden = panelView !== "hiragana";
@@ -743,7 +748,7 @@ function renderJapaneseView(view) {
     japaneseFeatureTitle.textContent = isGrammarView ? "日文文法" : "日文單字";
     japaneseFeatureDescription.textContent = isGrammarView
       ? "文法區保留文法練習與文法測驗入口；練習模式可查看說明，測驗模式專注作答。"
-      : "選擇要進行單字練習或單字測驗。";
+      : "瀏覽勝老師單字，或進行單字練習與測驗。";
   }
   if (japaneseReadingPanel) japaneseReadingPanel.hidden = panelView !== "reading";
   if (japaneseListeningPanel) japaneseListeningPanel.hidden = panelView !== "listening";
@@ -3376,7 +3381,7 @@ function switchGrammarQuizType(type) {
 
 function normalizeJapaneseVocabularyView(view) {
   if (view === "study" || view === "cards") return "practice";
-  if (["menu", "practice", "quiz", "sentence-composition-practice", "sentence-composition-quiz"].includes(view)) return view;
+  if (["menu", "practice", "quiz", "sho-sensei", "sentence-composition-practice", "sentence-composition-quiz"].includes(view)) return view;
   return "menu";
 }
 
@@ -3385,6 +3390,12 @@ function renderJapaneseVocabularyView(view = japaneseVocabularyView) {
   const isMenuView = japaneseVocabularyView === "menu";
   const isPracticeView = japaneseVocabularyView === "practice";
   const isQuizView = japaneseVocabularyView === "quiz";
+
+  if (japaneseShoSenseiVocabularyView) {
+    const showShoSensei = japaneseVocabularyView === "sho-sensei" && currentJapaneseView === "vocabulary";
+    if (!showShoSensei && !japaneseShoSenseiVocabularyView.hidden) stopShoSenseiVocabularySpeech();
+    japaneseShoSenseiVocabularyView.hidden = !showShoSensei;
+  }
 
   if (japaneseVocabularyMenuView) {
     japaneseVocabularyMenuView.hidden = !isMenuView || currentJapaneseView !== "vocabulary";
@@ -3456,6 +3467,92 @@ function returnToJapaneseGrammarMenu() {
   activeMode = "grammar";
   resetJapaneseSentenceCompositionState();
   renderJapaneseGrammarView("menu");
+}
+
+const shoSenseiVocabularySpeechController = japaneseShoSenseiVocabularyView
+  ? createJapaneseGeneralListeningSpeechController(getJapaneseListeningSpeechProvider())
+  : null;
+let shoSenseiVocabularySpeechStatus = null;
+
+function stopShoSenseiVocabularySpeech() {
+  shoSenseiVocabularySpeechController?.cancel();
+  if (shoSenseiVocabularySpeechStatus) shoSenseiVocabularySpeechStatus.textContent = "";
+  shoSenseiVocabularySpeechStatus = null;
+}
+
+function createShoSenseiVocabularyCard(word, template) {
+  const card = template.content.firstElementChild.cloneNode(true);
+  card.dataset.wordId = word.id;
+  const image = card.querySelector("img");
+  if (word.imagePath) image.src = word.imagePath;
+  else image.hidden = true;
+  card.querySelector("h4").textContent = [word.word, ...(word.variants || [])].join("／");
+  card.querySelector(".sho-sensei-kana").textContent = word.kana;
+  card.querySelector(".sho-sensei-meaning").textContent = word.meaning;
+  const button = card.querySelector("button");
+  button.setAttribute("aria-label", `發音：${word.word}`);
+  const status = card.querySelector(".sho-sensei-speech-status");
+  button.addEventListener("click", () => {
+    stopShoSenseiVocabularySpeech();
+    shoSenseiVocabularySpeechStatus = status;
+    shoSenseiVocabularySpeechController.requestPlayback(word.id, word.speechText, (state) => {
+      if (state === "preparing" || state === "waiting-voice") status.textContent = "準備發音…";
+      else if (state === "playing") status.textContent = "播放中…";
+      else if (state === "ended") status.textContent = "";
+      else status.textContent = "無法播放日文語音，請檢查裝置語音設定或再試一次。";
+    });
+  });
+  return card;
+}
+
+async function loadShoSenseiVocabulary() {
+  const view = japaneseShoSenseiVocabularyView;
+  const cards = view.querySelector("#shoSenseiVocabularyCards");
+  if (cards.childElementCount || cards.getAttribute("aria-busy") === "true") return;
+
+  const status = view.querySelector("#shoSenseiVocabularyLoadStatus");
+  const template = view.querySelector("#shoSenseiVocabularyCardTemplate");
+  cards.setAttribute("aria-busy", "true");
+  status.textContent = "正在載入單字…";
+  try {
+    const response = await fetch("./shoSenseiVocabulary.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const words = await response.json();
+    const categories = new Map();
+    words.forEach((word) => {
+      if (!categories.has(word.category)) categories.set(word.category, []);
+      categories.get(word.category).push(word);
+    });
+    const sections = document.createDocumentFragment();
+    for (const [category, entries] of categories) {
+      const section = document.createElement("section");
+      section.className = "sho-sensei-category";
+      const heading = document.createElement("h3");
+      heading.textContent = category;
+      const grid = document.createElement("div");
+      grid.className = "cards-grid";
+      grid.append(...entries.map((word) => createShoSenseiVocabularyCard(word, template)));
+      section.append(heading, grid);
+      sections.append(section);
+    }
+    cards.append(sections);
+    status.textContent = `共 ${words.length} 個單字`;
+  } catch (_error) {
+    status.textContent = "無法載入單字，請返回單字選單後再試。";
+  } finally {
+    cards.removeAttribute("aria-busy");
+  }
+}
+
+if (japaneseShoSenseiVocabularyView) {
+  japaneseShoSenseiVocabularyView.querySelector("#backToVocabularyMenuFromShoSensei").addEventListener("click", () => {
+    returnToJapaneseVocabularyMenu();
+    japaneseVocabularyMenuView.querySelector('[data-japanese-vocabulary-entry="sho-sensei"]').focus();
+  });
+  window.addEventListener("pagehide", stopShoSenseiVocabularySpeech);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stopShoSenseiVocabularySpeech();
+  });
 }
 
 function openJapaneseVocabularyPractice() {
@@ -4486,6 +4583,12 @@ if (backToGrammarMenuFromSentenceCompositionButton) {
 japaneseVocabularyEntryButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     event.preventDefault();
+    if (button.dataset.japaneseVocabularyEntry === "sho-sensei") {
+      renderJapaneseVocabularyView("sho-sensei");
+      japaneseShoSenseiVocabularyView.querySelector("#sho-sensei-vocabulary-title").focus();
+      loadShoSenseiVocabulary();
+      return;
+    }
     if (button.dataset.japaneseVocabularyEntry === "quiz") {
       openJapaneseVocabularyQuiz();
       return;

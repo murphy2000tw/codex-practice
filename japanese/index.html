@@ -8,7 +8,7 @@
   <link rel="manifest" href="../manifest.webmanifest">
   <title>日文學習｜Marco and Vivi學習網</title>
   <meta name="japanese-layout-version" content="2.3">
-  <link rel="stylesheet" href="../style.css?v=2.13">
+  <link rel="stylesheet" href="../style.css?v=2.14">
 </head>
 <body data-japanese-layout-version="2.3">
   <main class="page-shell">
@@ -34,7 +34,7 @@
         <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="vocabulary" aria-pressed="false">
           <span class="card-number">01</span>
           <h3 class="entry-card-title">單字</h3>
-          <p class="entry-card-text">先進入單字選單，再選擇單字練習或單字測驗。</p>
+          <p class="entry-card-text">瀏覽勝老師單字，或進行單字練習與測驗。</p>
           <span class="entry-card-action">進入單字</span>
         </button>
         <button class="word-card entry-card japanese-main-entry-card" type="button" data-japanese-entry="reading" aria-pressed="false">
@@ -451,18 +451,18 @@
       <div>
         <p id="japanese-feature-eyebrow" class="eyebrow">Japanese Vocabulary</p>
         <h2 id="vocabulary-page-title">日文單字</h2>
-        <p id="japanese-feature-description" class="feature-page-description">選擇要進行單字練習或單字測驗。</p>
+        <p id="japanese-feature-description" class="feature-page-description">瀏覽勝老師單字，或進行單字練習與測驗。</p>
       </div>
       <button class="secondary-button" type="button" data-japanese-back-home>返回日文首頁</button>
     </section>
 
-    <section id="japaneseVocabularyMenuView" class="vocabulary-menu-view" data-japanese-vocabulary-view="menu" aria-labelledby="vocabulary-menu-title">
+    <section id="japaneseVocabularyMenuView" class="vocabulary-menu-view" data-japanese-vocabulary-view="menu" aria-labelledby="vocabulary-page-title">
       <div class="entry-grid vocabulary-menu-grid">
-        <button class="word-card entry-card japanese-main-entry-card vocabulary-menu-card is-coming-soon" type="button" disabled>
+        <button class="word-card entry-card japanese-main-entry-card vocabulary-menu-card" type="button" data-japanese-vocabulary-entry="sho-sensei">
           <span class="card-number">01</span>
           <h3 class="entry-card-title">勝老師單字</h3>
           <p class="entry-card-text">日文單字庫</p>
-          <span class="entry-card-action is-muted">準備中</span>
+          <span class="entry-card-action">瀏覽單字</span>
         </button>
         <button class="word-card entry-card japanese-main-entry-card vocabulary-menu-card is-coming-soon" type="button" disabled>
           <span class="card-number">02</span>
@@ -472,7 +472,7 @@
         </button>
         <button class="word-card entry-card japanese-main-entry-card vocabulary-menu-card" type="button" data-japanese-vocabulary-entry="practice">
           <span class="card-number">03</span>
-          <h3 id="vocabulary-menu-title" class="entry-card-title">單字練習</h3>
+          <h3 class="entry-card-title">單字練習</h3>
           <p class="entry-card-text">可瀏覽單字、搜尋、分類、複習例句。</p>
           <span class="entry-card-action">開始單字練習</span>
         </button>
@@ -483,6 +483,26 @@
           <span class="entry-card-action">開始單字測驗</span>
         </button>
       </div>
+    </section>
+
+    <section id="japaneseShoSenseiVocabularyView" data-japanese-vocabulary-view="sho-sensei" aria-labelledby="sho-sensei-vocabulary-title" hidden>
+      <button id="backToVocabularyMenuFromShoSensei" class="secondary-button vocabulary-back-menu-button" type="button">返回單字選單</button>
+      <h2 id="sho-sensei-vocabulary-title" tabindex="-1">勝老師單字</h2>
+      <div class="sho-sensei-overview">
+        <p id="shoSenseiVocabularyLoadStatus" class="category-count" role="status"></p>
+        <a href="images/sho-sensei/CREDITS.txt">圖片來源與授權</a>
+      </div>
+      <div id="shoSenseiVocabularyCards"></div>
+      <template id="shoSenseiVocabularyCardTemplate">
+        <article class="word-card sho-sensei-card">
+          <img alt="" width="384" height="240" loading="lazy" decoding="async">
+          <h4 lang="ja"></h4>
+          <p class="sho-sensei-kana" lang="ja"></p>
+          <p class="sho-sensei-meaning"></p>
+          <button class="secondary-button sho-sensei-play-button" type="button">發音</button>
+          <p class="sho-sensei-speech-status" role="status"></p>
+        </article>
+      </template>
     </section>
 
     <section id="japaneseGrammarMenuView" class="reading-menu-view" data-japanese-grammar-view="menu" aria-labelledby="grammar-menu-title" hidden>
@@ -656,7 +676,7 @@
     window.JAPANESE_JLPT_READING_N4_URL = "../japaneseJlptReadingQuestions.json?v=17c2";
   </script>
   <script src="../japaneseReadingQuestions.js?v=1.0"></script>
-  <script src="../script.js?v=4.17"></script>
+  <script src="../script.js?v=4.18"></script>
   <script src="hiraganaAudio.js?v=1.1"></script>
   <script src="hiraganaChartAudio.js?v=1.0"></script>
   <script src="hiragana.js?v=1.3"></script>
