@@ -1,0 +1,2215 @@
+[
+  {
+    "id": "dog",
+    "word": "犬",
+    "kana": "いぬ",
+    "meaning": "狗",
+    "category": "動物與昆蟲",
+    "speechText": "犬",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "cat",
+    "word": "猫",
+    "kana": "ねこ",
+    "meaning": "貓",
+    "category": "動物與昆蟲",
+    "speechText": "猫",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "deer",
+    "word": "鹿",
+    "kana": "しか",
+    "meaning": "鹿",
+    "category": "動物與昆蟲",
+    "speechText": "鹿",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "cow",
+    "word": "牛",
+    "kana": "うし",
+    "meaning": "牛",
+    "category": "動物與昆蟲",
+    "speechText": "牛",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "pig",
+    "word": "豚",
+    "kana": "ぶた",
+    "meaning": "豬",
+    "category": "動物與昆蟲",
+    "speechText": "豚",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "bear",
+    "word": "熊",
+    "kana": "くま",
+    "meaning": "熊",
+    "category": "動物與昆蟲",
+    "speechText": "熊",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "elephant",
+    "word": "象",
+    "kana": "ぞう",
+    "meaning": "大象",
+    "category": "動物與昆蟲",
+    "speechText": "象",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "lion",
+    "word": "ライオン",
+    "kana": "ライオン",
+    "meaning": "獅子",
+    "category": "動物與昆蟲",
+    "speechText": "ライオン",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "giraffe",
+    "word": "キリン",
+    "kana": "キリン",
+    "meaning": "長頸鹿",
+    "category": "動物與昆蟲",
+    "speechText": "キリン",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "camel",
+    "word": "ラクダ",
+    "kana": "ラクダ",
+    "meaning": "駱駝",
+    "category": "動物與昆蟲",
+    "speechText": "ラクダ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "squirrel",
+    "word": "リス",
+    "kana": "リス",
+    "meaning": "松鼠",
+    "category": "動物與昆蟲",
+    "speechText": "リス",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "frog",
+    "word": "カエル",
+    "kana": "カエル",
+    "meaning": "青蛙",
+    "category": "動物與昆蟲",
+    "speechText": "カエル",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "turtle",
+    "word": "亀",
+    "kana": "かめ",
+    "meaning": "烏龜",
+    "category": "動物與昆蟲",
+    "speechText": "亀",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "duck",
+    "word": "カモ",
+    "kana": "カモ",
+    "meaning": "鴨子",
+    "category": "動物與昆蟲",
+    "speechText": "カモ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "seagull",
+    "word": "カモメ",
+    "kana": "カモメ",
+    "meaning": "海鷗",
+    "category": "動物與昆蟲",
+    "speechText": "カモメ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "fish",
+    "word": "魚",
+    "kana": "さかな",
+    "meaning": "魚",
+    "category": "動物與昆蟲",
+    "speechText": "魚",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "squid",
+    "word": "イカ",
+    "kana": "イカ",
+    "meaning": "魷魚",
+    "category": "動物與昆蟲",
+    "speechText": "イカ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "octopus",
+    "word": "タコ",
+    "kana": "タコ",
+    "meaning": "章魚",
+    "category": "動物與昆蟲",
+    "speechText": "タコ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "crab",
+    "word": "カニ",
+    "kana": "カニ",
+    "meaning": "螃蟹",
+    "category": "動物與昆蟲",
+    "speechText": "カニ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "shellfish",
+    "word": "貝",
+    "kana": "かい",
+    "meaning": "貝類",
+    "category": "動物與昆蟲",
+    "speechText": "貝",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "oyster",
+    "word": "牡蠣",
+    "kana": "かき",
+    "meaning": "牡蠣",
+    "category": "動物與昆蟲",
+    "speechText": "牡蠣",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "insect",
+    "word": "虫",
+    "kana": "むし",
+    "meaning": "昆蟲",
+    "category": "動物與昆蟲",
+    "speechText": "虫",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "hairy-caterpillar",
+    "word": "毛虫",
+    "kana": "けむし",
+    "meaning": "毛毛蟲",
+    "category": "動物與昆蟲",
+    "speechText": "毛虫",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "firefly",
+    "word": "ホタル",
+    "kana": "ホタル",
+    "meaning": "螢火蟲",
+    "category": "動物與昆蟲",
+    "speechText": "ホタル",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "watermelon",
+    "word": "スイカ",
+    "kana": "スイカ",
+    "meaning": "西瓜",
+    "category": "水果與植物",
+    "speechText": "スイカ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "melon",
+    "word": "メロン",
+    "kana": "メロン",
+    "meaning": "哈密瓜",
+    "category": "水果與植物",
+    "speechText": "メロン",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "mandarin",
+    "word": "みかん",
+    "kana": "みかん",
+    "meaning": "橘子",
+    "category": "水果與植物",
+    "speechText": "みかん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "lemon",
+    "word": "レモン",
+    "kana": "レモン",
+    "meaning": "檸檬",
+    "category": "水果與植物",
+    "speechText": "レモン",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "apple",
+    "word": "りんご",
+    "kana": "りんご",
+    "meaning": "蘋果",
+    "category": "水果與植物",
+    "speechText": "りんご",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "peach",
+    "word": "桃",
+    "kana": "もも",
+    "meaning": "桃子",
+    "category": "水果與植物",
+    "speechText": "桃",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "banana",
+    "word": "バナナ",
+    "kana": "バナナ",
+    "meaning": "香蕉",
+    "category": "水果與植物",
+    "speechText": "バナナ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "pineapple",
+    "word": "パイナップル",
+    "kana": "パイナップル",
+    "meaning": "鳳梨",
+    "category": "水果與植物",
+    "speechText": "パイナップル",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "persimmon",
+    "word": "柿",
+    "kana": "かき",
+    "meaning": "柿子",
+    "category": "水果與植物",
+    "speechText": "柿",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "cucumber",
+    "word": "きゅうり",
+    "kana": "きゅうり",
+    "meaning": "小黃瓜",
+    "category": "水果與植物",
+    "speechText": "きゅうり",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "bean",
+    "word": "豆",
+    "kana": "まめ",
+    "meaning": "豆子",
+    "category": "水果與植物",
+    "speechText": "豆",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "tree",
+    "word": "木",
+    "kana": "き",
+    "meaning": "樹",
+    "category": "水果與植物",
+    "speechText": "木",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "flower",
+    "word": "花",
+    "kana": "はな",
+    "meaning": "花",
+    "category": "水果與植物",
+    "speechText": "花",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "chrysanthemum",
+    "word": "菊",
+    "kana": "きく",
+    "meaning": "菊花",
+    "category": "水果與植物",
+    "speechText": "菊",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "carnation",
+    "word": "カーネーション",
+    "kana": "カーネーション",
+    "meaning": "康乃馨",
+    "category": "水果與植物",
+    "speechText": "カーネーション",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "moss",
+    "word": "苔",
+    "kana": "こけ",
+    "meaning": "苔蘚",
+    "category": "水果與植物",
+    "speechText": "苔",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "candy",
+    "word": "飴",
+    "kana": "あめ",
+    "meaning": "糖果",
+    "category": "食物與飲料",
+    "speechText": "飴",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "snacks",
+    "word": "お菓子",
+    "kana": "おかし",
+    "meaning": "點心、零食",
+    "category": "食物與飲料",
+    "speechText": "お菓子",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "sushi",
+    "word": "すし",
+    "kana": "すし",
+    "meaning": "壽司",
+    "category": "食物與飲料",
+    "speechText": "すし",
+    "imagePath": null,
+    "pictureQuizEligible": false,
+    "variants": [
+      "おすし"
+    ]
+  },
+  {
+    "id": "nori",
+    "word": "海苔",
+    "kana": "のり",
+    "meaning": "海苔",
+    "category": "食物與飲料",
+    "speechText": "海苔",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "salt",
+    "word": "塩",
+    "kana": "しお",
+    "meaning": "鹽",
+    "category": "食物與飲料",
+    "speechText": "塩",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "egg",
+    "word": "卵",
+    "kana": "たまご",
+    "meaning": "蛋",
+    "category": "食物與飲料",
+    "speechText": "卵",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "meat",
+    "word": "肉",
+    "kana": "にく",
+    "meaning": "肉",
+    "category": "食物與飲料",
+    "speechText": "肉",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "cooked-rice",
+    "word": "ご飯",
+    "kana": "ごはん",
+    "meaning": "白飯",
+    "category": "食物與飲料",
+    "speechText": "ご飯",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "bento",
+    "word": "弁当",
+    "kana": "べんとう",
+    "meaning": "便當",
+    "category": "食物與飲料",
+    "speechText": "弁当",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "noodles",
+    "word": "麺",
+    "kana": "めん",
+    "meaning": "麵條",
+    "category": "食物與飲料",
+    "speechText": "麺",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "ramen",
+    "word": "ラーメン",
+    "kana": "ラーメン",
+    "meaning": "拉麵",
+    "category": "食物與飲料",
+    "speechText": "ラーメン",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "pasta",
+    "word": "パスタ",
+    "kana": "パスタ",
+    "meaning": "義大利麵",
+    "category": "食物與飲料",
+    "speechText": "パスタ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "pizza",
+    "word": "ピザ",
+    "kana": "ピザ",
+    "meaning": "披薩",
+    "category": "食物與飲料",
+    "speechText": "ピザ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "hamburger",
+    "word": "ハンバーガー",
+    "kana": "ハンバーガー",
+    "meaning": "漢堡",
+    "category": "食物與飲料",
+    "speechText": "ハンバーガー",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "curry-rice",
+    "word": "カレーライス",
+    "kana": "カレーライス",
+    "meaning": "咖哩飯",
+    "category": "食物與飲料",
+    "speechText": "カレーライス",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "xiaolongbao",
+    "word": "ショーロンポー",
+    "kana": "ショーロンポー",
+    "meaning": "小籠包",
+    "category": "食物與飲料",
+    "speechText": "ショーロンポー",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "ice-cream",
+    "word": "アイスクリーム",
+    "kana": "アイスクリーム",
+    "meaning": "冰淇淋",
+    "category": "食物與飲料",
+    "speechText": "アイスクリーム",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "cheese",
+    "word": "チーズ",
+    "kana": "チーズ",
+    "meaning": "起司",
+    "category": "食物與飲料",
+    "speechText": "チーズ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "chocolate-cake",
+    "word": "チョコレートケーキ",
+    "kana": "チョコレートケーキ",
+    "meaning": "巧克力蛋糕",
+    "category": "食物與飲料",
+    "speechText": "チョコレートケーキ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "cheesecake",
+    "word": "チーズケーキ",
+    "kana": "チーズケーキ",
+    "meaning": "起司蛋糕",
+    "category": "食物與飲料",
+    "speechText": "チーズケーキ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "beverage",
+    "word": "飲み物",
+    "kana": "のみもの",
+    "meaning": "飲料",
+    "category": "食物與飲料",
+    "speechText": "飲み物",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "water",
+    "word": "水",
+    "kana": "みず",
+    "meaning": "水",
+    "category": "食物與飲料",
+    "speechText": "水",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "coffee",
+    "word": "コーヒー",
+    "kana": "コーヒー",
+    "meaning": "咖啡",
+    "category": "食物與飲料",
+    "speechText": "コーヒー",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "milk-tea",
+    "word": "ミルクティー",
+    "kana": "ミルクティー",
+    "meaning": "奶茶",
+    "category": "食物與飲料",
+    "speechText": "ミルクティー",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "tomato-juice",
+    "word": "トマトジュース",
+    "kana": "トマトジュース",
+    "meaning": "番茄汁",
+    "category": "食物與飲料",
+    "speechText": "トマトジュース",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "beer",
+    "word": "ビール",
+    "kana": "ビール",
+    "meaning": "啤酒",
+    "category": "食物與飲料",
+    "speechText": "ビール",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "umbrella",
+    "word": "傘",
+    "kana": "かさ",
+    "meaning": "雨傘",
+    "category": "用品與衣物",
+    "speechText": "傘",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "spinning-top",
+    "word": "こま",
+    "kana": "こま",
+    "meaning": "陀螺",
+    "category": "用品與衣物",
+    "speechText": "こま",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "drum",
+    "word": "太鼓",
+    "kana": "たいこ",
+    "meaning": "鼓",
+    "category": "用品與衣物",
+    "speechText": "太鼓",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "scissors",
+    "word": "はさみ",
+    "kana": "はさみ",
+    "meaning": "剪刀",
+    "category": "用品與衣物",
+    "speechText": "はさみ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "balloon",
+    "word": "風船",
+    "kana": "ふうせん",
+    "meaning": "氣球",
+    "category": "用品與衣物",
+    "speechText": "風船",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "pillow",
+    "word": "枕",
+    "kana": "まくら",
+    "meaning": "枕頭",
+    "category": "用品與衣物",
+    "speechText": "枕",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "chair",
+    "word": "椅子",
+    "kana": "いす",
+    "meaning": "椅子",
+    "category": "用品與衣物",
+    "speechText": "椅子",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "desk",
+    "word": "机",
+    "kana": "つくえ",
+    "meaning": "書桌",
+    "category": "用品與衣物",
+    "speechText": "机",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "shoes",
+    "word": "靴",
+    "kana": "くつ",
+    "meaning": "鞋子",
+    "category": "用品與衣物",
+    "speechText": "靴",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "eraser",
+    "word": "消しゴム",
+    "kana": "けしゴム",
+    "meaning": "橡皮擦",
+    "category": "用品與衣物",
+    "speechText": "消しゴム",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "pencil",
+    "word": "鉛筆",
+    "kana": "えんぴつ",
+    "meaning": "鉛筆",
+    "category": "用品與衣物",
+    "speechText": "鉛筆",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "map",
+    "word": "地図",
+    "kana": "ちず",
+    "meaning": "地圖",
+    "category": "用品與衣物",
+    "speechText": "地図",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "clock",
+    "word": "時計",
+    "kana": "とけい",
+    "meaning": "時鐘、手錶",
+    "category": "用品與衣物",
+    "speechText": "時計",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "cloth",
+    "word": "布",
+    "kana": "ぬの",
+    "meaning": "布",
+    "category": "用品與衣物",
+    "speechText": "布",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "paper",
+    "word": "紙",
+    "kana": "かみ",
+    "meaning": "紙",
+    "category": "用品與衣物",
+    "speechText": "紙",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "book",
+    "word": "本",
+    "kana": "ほん",
+    "meaning": "書",
+    "category": "用品與衣物",
+    "speechText": "本",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "magazine",
+    "word": "雑誌",
+    "kana": "ざっし",
+    "meaning": "雜誌",
+    "category": "用品與衣物",
+    "speechText": "雑誌",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "bottle",
+    "word": "瓶",
+    "kana": "びん",
+    "meaning": "瓶子",
+    "category": "用品與衣物",
+    "speechText": "瓶",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "hat",
+    "word": "帽子",
+    "kana": "ぼうし",
+    "meaning": "帽子",
+    "category": "用品與衣物",
+    "speechText": "帽子",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "eyeglasses",
+    "word": "メガネ",
+    "kana": "メガネ",
+    "meaning": "眼鏡",
+    "category": "用品與衣物",
+    "speechText": "メガネ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "coat",
+    "word": "コート",
+    "kana": "コート",
+    "meaning": "大衣",
+    "category": "用品與衣物",
+    "speechText": "コート",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "utility-knife",
+    "word": "カッター",
+    "kana": "カッター",
+    "meaning": "美工刀",
+    "category": "用品與衣物",
+    "speechText": "カッター",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "drinking-glass",
+    "word": "コップ",
+    "kana": "コップ",
+    "meaning": "水杯",
+    "category": "用品與衣物",
+    "speechText": "コップ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "cup",
+    "word": "カップ",
+    "kana": "カップ",
+    "meaning": "杯子（如咖啡杯）",
+    "category": "用品與衣物",
+    "speechText": "カップ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "plastic-wrap",
+    "word": "ラップ",
+    "kana": "ラップ",
+    "meaning": "保鮮膜",
+    "category": "用品與衣物",
+    "speechText": "ラップ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "mop",
+    "word": "モップ",
+    "kana": "モップ",
+    "meaning": "拖把",
+    "category": "用品與衣物",
+    "speechText": "モップ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "ticket",
+    "word": "切符",
+    "kana": "きっぷ",
+    "meaning": "車票",
+    "category": "用品與衣物",
+    "speechText": "切符",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "trumpet",
+    "word": "ラッパ",
+    "kana": "ラッパ",
+    "meaning": "喇叭",
+    "category": "用品與衣物",
+    "speechText": "ラッパ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "origami",
+    "word": "折り紙",
+    "kana": "おりがみ",
+    "meaning": "摺紙用的紙",
+    "category": "用品與衣物",
+    "speechText": "折り紙",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "stuffed-toy",
+    "word": "ぬいぐるみ",
+    "kana": "ぬいぐるみ",
+    "meaning": "絨毛玩偶",
+    "category": "用品與衣物",
+    "speechText": "ぬいぐるみ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "communication-notebook",
+    "word": "連絡帳",
+    "kana": "れんらくちょう",
+    "meaning": "聯絡簿",
+    "category": "用品與衣物",
+    "speechText": "連絡帳",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "seesaw",
+    "word": "シーソー",
+    "kana": "シーソー",
+    "meaning": "翹翹板",
+    "category": "用品與衣物",
+    "speechText": "シーソー",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "menu",
+    "word": "メニュー",
+    "kana": "メニュー",
+    "meaning": "菜單",
+    "category": "用品與衣物",
+    "speechText": "メニュー",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "person",
+    "word": "人",
+    "kana": "ひと",
+    "meaning": "人",
+    "category": "人物、場所與交通",
+    "speechText": "ひと",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "child",
+    "word": "子ども",
+    "kana": "こども",
+    "meaning": "小孩",
+    "category": "人物、場所與交通",
+    "speechText": "子ども",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "teacher",
+    "word": "先生",
+    "kana": "せんせい",
+    "meaning": "老師",
+    "category": "人物、場所與交通",
+    "speechText": "先生",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "i",
+    "word": "私",
+    "kana": "わたし",
+    "meaning": "我",
+    "category": "人物、場所與交通",
+    "speechText": "わたし",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "name",
+    "word": "名前",
+    "kana": "なまえ",
+    "meaning": "名字",
+    "category": "人物、場所與交通",
+    "speechText": "名前",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "kuromi",
+    "word": "クロミ",
+    "kana": "クロミ",
+    "meaning": "酷洛米",
+    "category": "人物、場所與交通",
+    "speechText": "クロミ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "kappa",
+    "word": "河童",
+    "kana": "かっぱ",
+    "meaning": "河童",
+    "category": "人物、場所與交通",
+    "speechText": "河童",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "house",
+    "word": "家",
+    "kana": "いえ",
+    "meaning": "家、房子",
+    "category": "人物、場所與交通",
+    "speechText": "いえ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "room",
+    "word": "部屋",
+    "kana": "へや",
+    "meaning": "房間",
+    "category": "人物、場所與交通",
+    "speechText": "部屋",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "window",
+    "word": "窓",
+    "kana": "まど",
+    "meaning": "窗戶",
+    "category": "人物、場所與交通",
+    "speechText": "窓",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "school",
+    "word": "学校",
+    "kana": "がっこう",
+    "meaning": "學校",
+    "category": "人物、場所與交通",
+    "speechText": "学校",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "bank",
+    "word": "銀行",
+    "kana": "ぎんこう",
+    "meaning": "銀行",
+    "category": "人物、場所與交通",
+    "speechText": "銀行",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "place",
+    "word": "場所",
+    "kana": "ばしょ",
+    "meaning": "地方、場所",
+    "category": "人物、場所與交通",
+    "speechText": "場所",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "station",
+    "word": "駅",
+    "kana": "えき",
+    "meaning": "車站",
+    "category": "人物、場所與交通",
+    "speechText": "駅",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "car",
+    "word": "車",
+    "kana": "くるま",
+    "meaning": "汽車",
+    "category": "人物、場所與交通",
+    "speechText": "車",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "truck",
+    "word": "トラック",
+    "kana": "トラック",
+    "meaning": "卡車",
+    "category": "人物、場所與交通",
+    "speechText": "トラック",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "train",
+    "word": "電車",
+    "kana": "でんしゃ",
+    "meaning": "電車",
+    "category": "人物、場所與交通",
+    "speechText": "電車",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "boat",
+    "word": "船",
+    "kana": "ふね",
+    "meaning": "船",
+    "category": "人物、場所與交通",
+    "speechText": "船",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "airplane",
+    "word": "飛行機",
+    "kana": "ひこうき",
+    "meaning": "飛機",
+    "category": "人物、場所與交通",
+    "speechText": "飛行機",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "taiwan",
+    "word": "台湾",
+    "kana": "タイワン",
+    "meaning": "台灣",
+    "category": "人物、場所與交通",
+    "speechText": "台湾",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "italy",
+    "word": "イタリア",
+    "kana": "イタリア",
+    "meaning": "義大利",
+    "category": "人物、場所與交通",
+    "speechText": "イタリア",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "united-states",
+    "word": "アメリカ",
+    "kana": "アメリカ",
+    "meaning": "美國",
+    "category": "人物、場所與交通",
+    "speechText": "アメリカ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "hong-kong",
+    "word": "香港",
+    "kana": "ホンコン",
+    "meaning": "香港",
+    "category": "人物、場所與交通",
+    "speechText": "香港",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "sea",
+    "word": "海",
+    "kana": "うみ",
+    "meaning": "海",
+    "category": "自然、時間與顏色",
+    "speechText": "海",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "sky",
+    "word": "空",
+    "kana": "そら",
+    "meaning": "天空",
+    "category": "自然、時間與顏色",
+    "speechText": "そら",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "mountain",
+    "word": "山",
+    "kana": "やま",
+    "meaning": "山",
+    "category": "自然、時間與顏色",
+    "speechText": "山",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "moon",
+    "word": "月",
+    "kana": "つき",
+    "meaning": "月亮",
+    "category": "自然、時間與顏色",
+    "speechText": "つき",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "star",
+    "word": "星",
+    "kana": "ほし",
+    "meaning": "星星",
+    "category": "自然、時間與顏色",
+    "speechText": "星",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "rain",
+    "word": "雨",
+    "kana": "あめ",
+    "meaning": "雨",
+    "category": "自然、時間與顏色",
+    "speechText": "雨",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "snow",
+    "word": "雪",
+    "kana": "ゆき",
+    "meaning": "雪",
+    "category": "自然、時間與顏色",
+    "speechText": "雪",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "morning",
+    "word": "朝",
+    "kana": "あさ",
+    "meaning": "早晨",
+    "category": "自然、時間與顏色",
+    "speechText": "朝",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "night",
+    "word": "夜",
+    "kana": "よる",
+    "meaning": "夜晚",
+    "category": "自然、時間與顏色",
+    "speechText": "よる",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "spring",
+    "word": "春",
+    "kana": "はる",
+    "meaning": "春天",
+    "category": "自然、時間與顏色",
+    "speechText": "春",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "summer",
+    "word": "夏",
+    "kana": "なつ",
+    "meaning": "夏天",
+    "category": "自然、時間與顏色",
+    "speechText": "夏",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "autumn",
+    "word": "秋",
+    "kana": "あき",
+    "meaning": "秋天",
+    "category": "自然、時間與顏色",
+    "speechText": "秋",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "winter",
+    "word": "冬",
+    "kana": "ふゆ",
+    "meaning": "冬天",
+    "category": "自然、時間與顏色",
+    "speechText": "冬",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "next-year",
+    "word": "来年",
+    "kana": "らいねん",
+    "meaning": "明年",
+    "category": "自然、時間與顏色",
+    "speechText": "来年",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "time",
+    "word": "時間",
+    "kana": "じかん",
+    "meaning": "時間",
+    "category": "自然、時間與顏色",
+    "speechText": "時間",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "red",
+    "word": "赤",
+    "kana": "あか",
+    "meaning": "紅色",
+    "category": "自然、時間與顏色",
+    "speechText": "赤",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "blue",
+    "word": "青",
+    "kana": "あお",
+    "meaning": "藍色",
+    "category": "自然、時間與顏色",
+    "speechText": "青",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "eye",
+    "word": "目",
+    "kana": "め",
+    "meaning": "眼睛",
+    "category": "身體、動作與狀態",
+    "speechText": "目",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "hand",
+    "word": "手",
+    "kana": "て",
+    "meaning": "手",
+    "category": "身體、動作與狀態",
+    "speechText": "手",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "leg-foot",
+    "word": "足",
+    "kana": "あし",
+    "meaning": "腳",
+    "category": "身體、動作與狀態",
+    "speechText": "足",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "neck",
+    "word": "首",
+    "kana": "くび",
+    "meaning": "脖子",
+    "category": "身體、動作與狀態",
+    "speechText": "首",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "nosebleed",
+    "word": "鼻血",
+    "kana": "はなぢ",
+    "meaning": "鼻血",
+    "category": "身體、動作與狀態",
+    "speechText": "鼻血",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "written-character",
+    "word": "字",
+    "kana": "じ",
+    "meaning": "字",
+    "category": "身體、動作與狀態",
+    "speechText": "字",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "soccer",
+    "word": "サッカー",
+    "kana": "サッカー",
+    "meaning": "足球",
+    "category": "身體、動作與狀態",
+    "speechText": "サッカー",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "kick",
+    "word": "キック",
+    "kana": "キック",
+    "meaning": "踢",
+    "category": "身體、動作與狀態",
+    "speechText": "キック",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "hit",
+    "word": "叩く",
+    "kana": "たたく",
+    "meaning": "拍打、敲打",
+    "category": "身體、動作與狀態",
+    "speechText": "叩く",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "play",
+    "word": "遊ぶ",
+    "kana": "あそぶ",
+    "meaning": "玩",
+    "category": "身體、動作與狀態",
+    "speechText": "遊ぶ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "wear-glasses",
+    "word": "かける",
+    "kana": "かける",
+    "meaning": "戴（眼鏡）",
+    "category": "身體、動作與狀態",
+    "speechText": "かける",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "drink",
+    "word": "飲む",
+    "kana": "のむ",
+    "meaning": "喝",
+    "category": "身體、動作與狀態",
+    "speechText": "飲む",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "climb",
+    "word": "登る",
+    "kana": "のぼる",
+    "meaning": "攀登",
+    "category": "身體、動作與狀態",
+    "speechText": "登る",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "ride",
+    "word": "乗る",
+    "kana": "のる",
+    "meaning": "搭乘",
+    "category": "身體、動作與狀態",
+    "speechText": "乗る",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "fly",
+    "word": "飛ぶ",
+    "kana": "とぶ",
+    "meaning": "飛",
+    "category": "身體、動作與狀態",
+    "speechText": "飛ぶ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "write",
+    "word": "書く",
+    "kana": "かく",
+    "meaning": "寫",
+    "category": "身體、動作與狀態",
+    "speechText": "書く",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "sleep",
+    "word": "寝る",
+    "kana": "ねる",
+    "meaning": "睡覺",
+    "category": "身體、動作與狀態",
+    "speechText": "寝る",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "eat",
+    "word": "食べる",
+    "kana": "たべる",
+    "meaning": "吃",
+    "category": "身體、動作與狀態",
+    "speechText": "食べる",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "melt",
+    "word": "溶ける",
+    "kana": "とける",
+    "meaning": "融化",
+    "category": "身體、動作與狀態",
+    "speechText": "溶ける",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "take-off-clothing",
+    "word": "脱ぐ",
+    "kana": "ぬぐ",
+    "meaning": "脫下（衣服、鞋子等）",
+    "category": "身體、動作與狀態",
+    "speechText": "脱ぐ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "give",
+    "word": "あげる",
+    "kana": "あげる",
+    "meaning": "給、送",
+    "category": "身體、動作與狀態",
+    "speechText": "あげる",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "fold",
+    "word": "折る",
+    "kana": "おる",
+    "meaning": "折、摺",
+    "category": "身體、動作與狀態",
+    "speechText": "折る",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "hand-over",
+    "word": "渡す",
+    "kana": "わたす",
+    "meaning": "遞給、交給",
+    "category": "身體、動作與狀態",
+    "speechText": "渡す",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "continue",
+    "word": "続く",
+    "kana": "つづく",
+    "meaning": "持續",
+    "category": "身體、動作與狀態",
+    "speechText": "続く",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "away-from-home",
+    "word": "留守",
+    "kana": "るす",
+    "meaning": "不在家",
+    "category": "身體、動作與狀態",
+    "speechText": "留守",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "stay-home",
+    "word": "留守番",
+    "kana": "るすばん",
+    "meaning": "看家",
+    "category": "身體、動作與狀態",
+    "speechText": "留守番",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "painful",
+    "word": "痛い",
+    "kana": "いたい",
+    "meaning": "痛",
+    "category": "身體、動作與狀態",
+    "speechText": "痛い",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "long",
+    "word": "長い",
+    "kana": "ながい",
+    "meaning": "長",
+    "category": "身體、動作與狀態",
+    "speechText": "長い",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "soft",
+    "word": "柔らかい",
+    "kana": "やわらかい",
+    "meaning": "柔軟",
+    "category": "身體、動作與狀態",
+    "speechText": "柔らかい",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "hello",
+    "word": "こんにちは",
+    "kana": "こんにちは",
+    "meaning": "你好",
+    "category": "問候與常用語",
+    "speechText": "こんにちは",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "good-evening",
+    "word": "こんばんは",
+    "kana": "こんばんは",
+    "meaning": "晚安（晚上見面時）",
+    "category": "問候與常用語",
+    "speechText": "こんばんは",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "thank-you",
+    "word": "ありがとう",
+    "kana": "ありがとう",
+    "meaning": "謝謝",
+    "category": "問候與常用語",
+    "speechText": "ありがとう",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "excuse-me",
+    "word": "すみません",
+    "kana": "すみません",
+    "meaning": "不好意思、對不起",
+    "category": "問候與常用語",
+    "speechText": "すみません",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "please-give-me",
+    "word": "ください",
+    "kana": "ください",
+    "meaning": "請給我",
+    "category": "問候與常用語",
+    "speechText": "ください",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "like",
+    "word": "好き",
+    "kana": "すき",
+    "meaning": "喜歡",
+    "category": "問候與常用語",
+    "speechText": "好き",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "love",
+    "word": "大好き",
+    "kana": "だいすき",
+    "meaning": "很喜歡",
+    "category": "問候與常用語",
+    "speechText": "大好き",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "well",
+    "word": "元気",
+    "kana": "げんき",
+    "meaning": "有精神、健康",
+    "category": "問候與常用語",
+    "speechText": "元気",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "all-along",
+    "word": "ずっと",
+    "kana": "ずっと",
+    "meaning": "一直",
+    "category": "問候與常用語",
+    "speechText": "ずっと",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "everything",
+    "word": "全部",
+    "kana": "ぜんぶ",
+    "meaning": "全部",
+    "category": "問候與常用語",
+    "speechText": "全部",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "where",
+    "word": "どこ",
+    "kana": "どこ",
+    "meaning": "哪裡",
+    "category": "問候與常用語",
+    "speechText": "どこ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "sound-sleep",
+    "word": "ぐうぐう",
+    "kana": "ぐうぐう",
+    "meaning": "呼呼大睡",
+    "category": "問候與常用語",
+    "speechText": "ぐうぐう",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "eat-eagerly",
+    "word": "ぱくぱく",
+    "kana": "ぱくぱく",
+    "meaning": "一口接一口地吃",
+    "category": "問候與常用語",
+    "speechText": "ぱくぱく",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "sparkling",
+    "word": "ぴかぴか",
+    "kana": "ぴかぴか",
+    "meaning": "閃閃發亮",
+    "category": "問候與常用語",
+    "speechText": "ぴかぴか",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "bobbing",
+    "word": "ぷかぷか",
+    "kana": "ぷかぷか",
+    "meaning": "漂浮、浮在水面上",
+    "category": "問候與常用語",
+    "speechText": "ぷかぷか",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "famished",
+    "word": "ぺこぺこ",
+    "kana": "ぺこぺこ",
+    "meaning": "肚子餓扁了",
+    "category": "問候與常用語",
+    "speechText": "ぺこぺこ",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "pleasantly-warm",
+    "word": "ぽかぽか",
+    "kana": "ぽかぽか",
+    "meaning": "暖呼呼",
+    "category": "問候與常用語",
+    "speechText": "ぽかぽか",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "monday",
+    "word": "月曜日",
+    "kana": "げつようび",
+    "meaning": "星期一",
+    "category": "星期與數字",
+    "speechText": "月曜日",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "tuesday",
+    "word": "火曜日",
+    "kana": "かようび",
+    "meaning": "星期二",
+    "category": "星期與數字",
+    "speechText": "火曜日",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "wednesday",
+    "word": "水曜日",
+    "kana": "すいようび",
+    "meaning": "星期三",
+    "category": "星期與數字",
+    "speechText": "水曜日",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "thursday",
+    "word": "木曜日",
+    "kana": "もくようび",
+    "meaning": "星期四",
+    "category": "星期與數字",
+    "speechText": "木曜日",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "friday",
+    "word": "金曜日",
+    "kana": "きんようび",
+    "meaning": "星期五",
+    "category": "星期與數字",
+    "speechText": "金曜日",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "saturday",
+    "word": "土曜日",
+    "kana": "どようび",
+    "meaning": "星期六",
+    "category": "星期與數字",
+    "speechText": "土曜日",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "sunday",
+    "word": "日曜日",
+    "kana": "にちようび",
+    "meaning": "星期日",
+    "category": "星期與數字",
+    "speechText": "日曜日",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-0",
+    "word": "0",
+    "kana": "れい",
+    "meaning": "零",
+    "category": "星期與數字",
+    "speechText": "れい",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-1",
+    "word": "1",
+    "kana": "いち",
+    "meaning": "一",
+    "category": "星期與數字",
+    "speechText": "いち",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-2",
+    "word": "2",
+    "kana": "に",
+    "meaning": "二",
+    "category": "星期與數字",
+    "speechText": "に",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-3",
+    "word": "3",
+    "kana": "さん",
+    "meaning": "三",
+    "category": "星期與數字",
+    "speechText": "さん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-4",
+    "word": "4",
+    "kana": "よん",
+    "meaning": "四",
+    "category": "星期與數字",
+    "speechText": "よん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-5",
+    "word": "5",
+    "kana": "ご",
+    "meaning": "五",
+    "category": "星期與數字",
+    "speechText": "ご",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-6",
+    "word": "6",
+    "kana": "ろく",
+    "meaning": "六",
+    "category": "星期與數字",
+    "speechText": "ろく",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-7",
+    "word": "7",
+    "kana": "なな",
+    "meaning": "七",
+    "category": "星期與數字",
+    "speechText": "なな",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-8",
+    "word": "8",
+    "kana": "はち",
+    "meaning": "八",
+    "category": "星期與數字",
+    "speechText": "はち",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-9",
+    "word": "9",
+    "kana": "きゅう",
+    "meaning": "九",
+    "category": "星期與數字",
+    "speechText": "きゅう",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-10",
+    "word": "10",
+    "kana": "じゅう",
+    "meaning": "十",
+    "category": "星期與數字",
+    "speechText": "じゅう",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-100",
+    "word": "100",
+    "kana": "ひゃく",
+    "meaning": "一百",
+    "category": "星期與數字",
+    "speechText": "ひゃく",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-200",
+    "word": "200",
+    "kana": "にひゃく",
+    "meaning": "兩百",
+    "category": "星期與數字",
+    "speechText": "にひゃく",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-300",
+    "word": "300",
+    "kana": "さんびゃく",
+    "meaning": "三百",
+    "category": "星期與數字",
+    "speechText": "さんびゃく",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-400",
+    "word": "400",
+    "kana": "よんひゃく",
+    "meaning": "四百",
+    "category": "星期與數字",
+    "speechText": "よんひゃく",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-500",
+    "word": "500",
+    "kana": "ごひゃく",
+    "meaning": "五百",
+    "category": "星期與數字",
+    "speechText": "ごひゃく",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-600",
+    "word": "600",
+    "kana": "ろっぴゃく",
+    "meaning": "六百",
+    "category": "星期與數字",
+    "speechText": "ろっぴゃく",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-700",
+    "word": "700",
+    "kana": "ななひゃく",
+    "meaning": "七百",
+    "category": "星期與數字",
+    "speechText": "ななひゃく",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-800",
+    "word": "800",
+    "kana": "はっぴゃく",
+    "meaning": "八百",
+    "category": "星期與數字",
+    "speechText": "はっぴゃく",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-900",
+    "word": "900",
+    "kana": "きゅうひゃく",
+    "meaning": "九百",
+    "category": "星期與數字",
+    "speechText": "きゅうひゃく",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-1000",
+    "word": "1000",
+    "kana": "せん",
+    "meaning": "一千",
+    "category": "星期與數字",
+    "speechText": "せん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-2000",
+    "word": "2000",
+    "kana": "にせん",
+    "meaning": "兩千",
+    "category": "星期與數字",
+    "speechText": "にせん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-3000",
+    "word": "3000",
+    "kana": "さんぜん",
+    "meaning": "三千",
+    "category": "星期與數字",
+    "speechText": "さんぜん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-4000",
+    "word": "4000",
+    "kana": "よんせん",
+    "meaning": "四千",
+    "category": "星期與數字",
+    "speechText": "よんせん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-5000",
+    "word": "5000",
+    "kana": "ごせん",
+    "meaning": "五千",
+    "category": "星期與數字",
+    "speechText": "ごせん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-6000",
+    "word": "6000",
+    "kana": "ろくせん",
+    "meaning": "六千",
+    "category": "星期與數字",
+    "speechText": "ろくせん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-7000",
+    "word": "7000",
+    "kana": "ななせん",
+    "meaning": "七千",
+    "category": "星期與數字",
+    "speechText": "ななせん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-8000",
+    "word": "8000",
+    "kana": "はっせん",
+    "meaning": "八千",
+    "category": "星期與數字",
+    "speechText": "はっせん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "number-9000",
+    "word": "9000",
+    "kana": "きゅうせん",
+    "meaning": "九千",
+    "category": "星期與數字",
+    "speechText": "きゅうせん",
+    "imagePath": null,
+    "pictureQuizEligible": false
+  }
+]
