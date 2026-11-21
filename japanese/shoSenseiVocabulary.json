@@ -6,7 +6,7 @@
     "meaning": "狗",
     "category": "動物與昆蟲",
     "speechText": "犬",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/dog.webp",
     "pictureQuizEligible": false
   },
   {
@@ -16,7 +16,7 @@
     "meaning": "貓",
     "category": "動物與昆蟲",
     "speechText": "猫",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/cat.webp",
     "pictureQuizEligible": false
   },
   {
@@ -26,7 +26,7 @@
     "meaning": "鹿",
     "category": "動物與昆蟲",
     "speechText": "鹿",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/deer.webp",
     "pictureQuizEligible": false
   },
   {
@@ -36,7 +36,7 @@
     "meaning": "牛",
     "category": "動物與昆蟲",
     "speechText": "牛",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/cow.webp",
     "pictureQuizEligible": false
   },
   {
@@ -46,7 +46,7 @@
     "meaning": "豬",
     "category": "動物與昆蟲",
     "speechText": "豚",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/pig.webp",
     "pictureQuizEligible": false
   },
   {
@@ -56,7 +56,7 @@
     "meaning": "熊",
     "category": "動物與昆蟲",
     "speechText": "熊",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/bear.webp",
     "pictureQuizEligible": false
   },
   {
@@ -66,7 +66,7 @@
     "meaning": "大象",
     "category": "動物與昆蟲",
     "speechText": "象",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/elephant.webp",
     "pictureQuizEligible": false
   },
   {
@@ -76,7 +76,7 @@
     "meaning": "獅子",
     "category": "動物與昆蟲",
     "speechText": "ライオン",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/lion.webp",
     "pictureQuizEligible": false
   },
   {
@@ -86,7 +86,7 @@
     "meaning": "長頸鹿",
     "category": "動物與昆蟲",
     "speechText": "キリン",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/giraffe.webp",
     "pictureQuizEligible": false
   },
   {
@@ -96,7 +96,7 @@
     "meaning": "駱駝",
     "category": "動物與昆蟲",
     "speechText": "ラクダ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/camel.webp",
     "pictureQuizEligible": false
   },
   {
@@ -106,7 +106,7 @@
     "meaning": "松鼠",
     "category": "動物與昆蟲",
     "speechText": "リス",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/squirrel.webp",
     "pictureQuizEligible": false
   },
   {
@@ -116,7 +116,7 @@
     "meaning": "青蛙",
     "category": "動物與昆蟲",
     "speechText": "カエル",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/frog.webp",
     "pictureQuizEligible": false
   },
   {
@@ -126,7 +126,7 @@
     "meaning": "烏龜",
     "category": "動物與昆蟲",
     "speechText": "亀",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/turtle.webp",
     "pictureQuizEligible": false
   },
   {
@@ -136,7 +136,7 @@
     "meaning": "鴨子",
     "category": "動物與昆蟲",
     "speechText": "カモ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/duck.webp",
     "pictureQuizEligible": false
   },
   {
@@ -146,7 +146,7 @@
     "meaning": "海鷗",
     "category": "動物與昆蟲",
     "speechText": "カモメ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/seagull.webp",
     "pictureQuizEligible": false
   },
   {
@@ -156,7 +156,7 @@
     "meaning": "魚",
     "category": "動物與昆蟲",
     "speechText": "魚",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/fish.webp",
     "pictureQuizEligible": false
   },
   {
@@ -166,7 +166,7 @@
     "meaning": "魷魚",
     "category": "動物與昆蟲",
     "speechText": "イカ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/squid.webp",
     "pictureQuizEligible": false
   },
   {
@@ -176,7 +176,7 @@
     "meaning": "章魚",
     "category": "動物與昆蟲",
     "speechText": "タコ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/octopus.webp",
     "pictureQuizEligible": false
   },
   {
@@ -186,7 +186,7 @@
     "meaning": "螃蟹",
     "category": "動物與昆蟲",
     "speechText": "カニ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/crab.webp",
     "pictureQuizEligible": false
   },
   {
@@ -196,7 +196,7 @@
     "meaning": "貝類",
     "category": "動物與昆蟲",
     "speechText": "貝",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/shellfish.webp",
     "pictureQuizEligible": false
   },
   {
@@ -206,7 +206,7 @@
     "meaning": "牡蠣",
     "category": "動物與昆蟲",
     "speechText": "牡蠣",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/oyster.webp",
     "pictureQuizEligible": false
   },
   {
@@ -216,7 +216,7 @@
     "meaning": "昆蟲",
     "category": "動物與昆蟲",
     "speechText": "虫",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/insect.webp",
     "pictureQuizEligible": false
   },
   {
@@ -226,7 +226,7 @@
     "meaning": "毛毛蟲",
     "category": "動物與昆蟲",
     "speechText": "毛虫",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/hairy-caterpillar.webp",
     "pictureQuizEligible": false
   },
   {
@@ -236,7 +236,7 @@
     "meaning": "螢火蟲",
     "category": "動物與昆蟲",
     "speechText": "ホタル",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/firefly.webp",
     "pictureQuizEligible": false
   },
   {
@@ -246,7 +246,7 @@
     "meaning": "西瓜",
     "category": "水果與植物",
     "speechText": "スイカ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/watermelon.webp",
     "pictureQuizEligible": false
   },
   {
@@ -256,7 +256,7 @@
     "meaning": "哈密瓜",
     "category": "水果與植物",
     "speechText": "メロン",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/melon.webp",
     "pictureQuizEligible": false
   },
   {
@@ -266,7 +266,7 @@
     "meaning": "橘子",
     "category": "水果與植物",
     "speechText": "みかん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/mandarin.webp",
     "pictureQuizEligible": false
   },
   {
@@ -276,7 +276,7 @@
     "meaning": "檸檬",
     "category": "水果與植物",
     "speechText": "レモン",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/lemon.webp",
     "pictureQuizEligible": false
   },
   {
@@ -286,7 +286,7 @@
     "meaning": "蘋果",
     "category": "水果與植物",
     "speechText": "りんご",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/apple.webp",
     "pictureQuizEligible": false
   },
   {
@@ -296,7 +296,7 @@
     "meaning": "桃子",
     "category": "水果與植物",
     "speechText": "桃",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/peach.webp",
     "pictureQuizEligible": false
   },
   {
@@ -306,7 +306,7 @@
     "meaning": "香蕉",
     "category": "水果與植物",
     "speechText": "バナナ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/banana.webp",
     "pictureQuizEligible": false
   },
   {
@@ -316,7 +316,7 @@
     "meaning": "鳳梨",
     "category": "水果與植物",
     "speechText": "パイナップル",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/pineapple.webp",
     "pictureQuizEligible": false
   },
   {
@@ -326,7 +326,7 @@
     "meaning": "柿子",
     "category": "水果與植物",
     "speechText": "柿",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/persimmon.webp",
     "pictureQuizEligible": false
   },
   {
@@ -336,7 +336,7 @@
     "meaning": "小黃瓜",
     "category": "水果與植物",
     "speechText": "きゅうり",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/cucumber.webp",
     "pictureQuizEligible": false
   },
   {
@@ -346,7 +346,7 @@
     "meaning": "豆子",
     "category": "水果與植物",
     "speechText": "豆",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/bean.webp",
     "pictureQuizEligible": false
   },
   {
@@ -356,7 +356,7 @@
     "meaning": "樹",
     "category": "水果與植物",
     "speechText": "木",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/tree.webp",
     "pictureQuizEligible": false
   },
   {
@@ -366,7 +366,7 @@
     "meaning": "花",
     "category": "水果與植物",
     "speechText": "花",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/flower.webp",
     "pictureQuizEligible": false
   },
   {
@@ -376,7 +376,7 @@
     "meaning": "菊花",
     "category": "水果與植物",
     "speechText": "菊",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/chrysanthemum.webp",
     "pictureQuizEligible": false
   },
   {
@@ -386,7 +386,7 @@
     "meaning": "康乃馨",
     "category": "水果與植物",
     "speechText": "カーネーション",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/carnation.webp",
     "pictureQuizEligible": false
   },
   {
@@ -396,7 +396,7 @@
     "meaning": "苔蘚",
     "category": "水果與植物",
     "speechText": "苔",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/moss.webp",
     "pictureQuizEligible": false
   },
   {
@@ -406,7 +406,7 @@
     "meaning": "糖果",
     "category": "食物與飲料",
     "speechText": "飴",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/candy.webp",
     "pictureQuizEligible": false
   },
   {
@@ -416,7 +416,7 @@
     "meaning": "點心、零食",
     "category": "食物與飲料",
     "speechText": "お菓子",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/snacks.webp",
     "pictureQuizEligible": false
   },
   {
@@ -426,7 +426,7 @@
     "meaning": "壽司",
     "category": "食物與飲料",
     "speechText": "すし",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/sushi.webp",
     "pictureQuizEligible": false,
     "variants": [
       "おすし"
@@ -439,7 +439,7 @@
     "meaning": "海苔",
     "category": "食物與飲料",
     "speechText": "海苔",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/nori.webp",
     "pictureQuizEligible": false
   },
   {
@@ -449,7 +449,7 @@
     "meaning": "鹽",
     "category": "食物與飲料",
     "speechText": "塩",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/salt.webp",
     "pictureQuizEligible": false
   },
   {
@@ -459,7 +459,7 @@
     "meaning": "蛋",
     "category": "食物與飲料",
     "speechText": "卵",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/egg.webp",
     "pictureQuizEligible": false
   },
   {
@@ -469,7 +469,7 @@
     "meaning": "肉",
     "category": "食物與飲料",
     "speechText": "肉",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/meat.webp",
     "pictureQuizEligible": false
   },
   {
@@ -479,7 +479,7 @@
     "meaning": "白飯",
     "category": "食物與飲料",
     "speechText": "ご飯",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/cooked-rice.webp",
     "pictureQuizEligible": false
   },
   {
@@ -489,7 +489,7 @@
     "meaning": "便當",
     "category": "食物與飲料",
     "speechText": "弁当",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/bento.webp",
     "pictureQuizEligible": false
   },
   {
@@ -499,7 +499,7 @@
     "meaning": "麵條",
     "category": "食物與飲料",
     "speechText": "麺",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/noodles.webp",
     "pictureQuizEligible": false
   },
   {
@@ -509,7 +509,7 @@
     "meaning": "拉麵",
     "category": "食物與飲料",
     "speechText": "ラーメン",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/ramen.webp",
     "pictureQuizEligible": false
   },
   {
@@ -519,7 +519,7 @@
     "meaning": "義大利麵",
     "category": "食物與飲料",
     "speechText": "パスタ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/pasta.webp",
     "pictureQuizEligible": false
   },
   {
@@ -529,7 +529,7 @@
     "meaning": "披薩",
     "category": "食物與飲料",
     "speechText": "ピザ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/pizza.webp",
     "pictureQuizEligible": false
   },
   {
@@ -539,7 +539,7 @@
     "meaning": "漢堡",
     "category": "食物與飲料",
     "speechText": "ハンバーガー",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/hamburger.webp",
     "pictureQuizEligible": false
   },
   {
@@ -549,7 +549,7 @@
     "meaning": "咖哩飯",
     "category": "食物與飲料",
     "speechText": "カレーライス",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/curry-rice.webp",
     "pictureQuizEligible": false
   },
   {
@@ -559,7 +559,7 @@
     "meaning": "小籠包",
     "category": "食物與飲料",
     "speechText": "ショーロンポー",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/xiaolongbao.webp",
     "pictureQuizEligible": false
   },
   {
@@ -569,7 +569,7 @@
     "meaning": "冰淇淋",
     "category": "食物與飲料",
     "speechText": "アイスクリーム",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/ice-cream.webp",
     "pictureQuizEligible": false
   },
   {
@@ -579,7 +579,7 @@
     "meaning": "起司",
     "category": "食物與飲料",
     "speechText": "チーズ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/cheese.webp",
     "pictureQuizEligible": false
   },
   {
@@ -589,7 +589,7 @@
     "meaning": "巧克力蛋糕",
     "category": "食物與飲料",
     "speechText": "チョコレートケーキ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/chocolate-cake.webp",
     "pictureQuizEligible": false
   },
   {
@@ -599,7 +599,7 @@
     "meaning": "起司蛋糕",
     "category": "食物與飲料",
     "speechText": "チーズケーキ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/cheesecake.webp",
     "pictureQuizEligible": false
   },
   {
@@ -609,7 +609,7 @@
     "meaning": "飲料",
     "category": "食物與飲料",
     "speechText": "飲み物",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/beverage.webp",
     "pictureQuizEligible": false
   },
   {
@@ -619,7 +619,7 @@
     "meaning": "水",
     "category": "食物與飲料",
     "speechText": "水",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/water.webp",
     "pictureQuizEligible": false
   },
   {
@@ -629,7 +629,7 @@
     "meaning": "咖啡",
     "category": "食物與飲料",
     "speechText": "コーヒー",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/coffee.webp",
     "pictureQuizEligible": false
   },
   {
@@ -639,7 +639,7 @@
     "meaning": "奶茶",
     "category": "食物與飲料",
     "speechText": "ミルクティー",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/milk-tea.webp",
     "pictureQuizEligible": false
   },
   {
@@ -649,7 +649,7 @@
     "meaning": "番茄汁",
     "category": "食物與飲料",
     "speechText": "トマトジュース",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/tomato-juice.webp",
     "pictureQuizEligible": false
   },
   {
@@ -659,7 +659,7 @@
     "meaning": "啤酒",
     "category": "食物與飲料",
     "speechText": "ビール",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/beer.webp",
     "pictureQuizEligible": false
   },
   {
@@ -669,7 +669,7 @@
     "meaning": "雨傘",
     "category": "用品與衣物",
     "speechText": "傘",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/umbrella.webp",
     "pictureQuizEligible": false
   },
   {
@@ -679,7 +679,7 @@
     "meaning": "陀螺",
     "category": "用品與衣物",
     "speechText": "こま",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/spinning-top.webp",
     "pictureQuizEligible": false
   },
   {
@@ -689,7 +689,7 @@
     "meaning": "鼓",
     "category": "用品與衣物",
     "speechText": "太鼓",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/drum.webp",
     "pictureQuizEligible": false
   },
   {
@@ -699,7 +699,7 @@
     "meaning": "剪刀",
     "category": "用品與衣物",
     "speechText": "はさみ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/scissors.webp",
     "pictureQuizEligible": false
   },
   {
@@ -709,7 +709,7 @@
     "meaning": "氣球",
     "category": "用品與衣物",
     "speechText": "風船",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/balloon.webp",
     "pictureQuizEligible": false
   },
   {
@@ -719,7 +719,7 @@
     "meaning": "枕頭",
     "category": "用品與衣物",
     "speechText": "枕",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/pillow.webp",
     "pictureQuizEligible": false
   },
   {
@@ -729,7 +729,7 @@
     "meaning": "椅子",
     "category": "用品與衣物",
     "speechText": "椅子",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/chair.webp",
     "pictureQuizEligible": false
   },
   {
@@ -739,7 +739,7 @@
     "meaning": "書桌",
     "category": "用品與衣物",
     "speechText": "机",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/desk.webp",
     "pictureQuizEligible": false
   },
   {
@@ -749,7 +749,7 @@
     "meaning": "鞋子",
     "category": "用品與衣物",
     "speechText": "靴",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/shoes.webp",
     "pictureQuizEligible": false
   },
   {
@@ -759,7 +759,7 @@
     "meaning": "橡皮擦",
     "category": "用品與衣物",
     "speechText": "消しゴム",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/eraser.webp",
     "pictureQuizEligible": false
   },
   {
@@ -769,7 +769,7 @@
     "meaning": "鉛筆",
     "category": "用品與衣物",
     "speechText": "鉛筆",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/pencil.webp",
     "pictureQuizEligible": false
   },
   {
@@ -779,7 +779,7 @@
     "meaning": "地圖",
     "category": "用品與衣物",
     "speechText": "地図",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/map.webp",
     "pictureQuizEligible": false
   },
   {
@@ -789,7 +789,7 @@
     "meaning": "時鐘、手錶",
     "category": "用品與衣物",
     "speechText": "時計",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/clock.webp",
     "pictureQuizEligible": false
   },
   {
@@ -799,7 +799,7 @@
     "meaning": "布",
     "category": "用品與衣物",
     "speechText": "布",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/cloth.webp",
     "pictureQuizEligible": false
   },
   {
@@ -809,7 +809,7 @@
     "meaning": "紙",
     "category": "用品與衣物",
     "speechText": "紙",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/paper.webp",
     "pictureQuizEligible": false
   },
   {
@@ -819,7 +819,7 @@
     "meaning": "書",
     "category": "用品與衣物",
     "speechText": "本",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/book.webp",
     "pictureQuizEligible": false
   },
   {
@@ -829,7 +829,7 @@
     "meaning": "雜誌",
     "category": "用品與衣物",
     "speechText": "雑誌",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/magazine.webp",
     "pictureQuizEligible": false
   },
   {
@@ -839,7 +839,7 @@
     "meaning": "瓶子",
     "category": "用品與衣物",
     "speechText": "瓶",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/bottle.webp",
     "pictureQuizEligible": false
   },
   {
@@ -849,7 +849,7 @@
     "meaning": "帽子",
     "category": "用品與衣物",
     "speechText": "帽子",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/hat.webp",
     "pictureQuizEligible": false
   },
   {
@@ -859,7 +859,7 @@
     "meaning": "眼鏡",
     "category": "用品與衣物",
     "speechText": "メガネ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/eyeglasses.webp",
     "pictureQuizEligible": false
   },
   {
@@ -869,7 +869,7 @@
     "meaning": "大衣",
     "category": "用品與衣物",
     "speechText": "コート",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/coat.webp",
     "pictureQuizEligible": false
   },
   {
@@ -879,7 +879,7 @@
     "meaning": "美工刀",
     "category": "用品與衣物",
     "speechText": "カッター",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/utility-knife.webp",
     "pictureQuizEligible": false
   },
   {
@@ -889,7 +889,7 @@
     "meaning": "水杯",
     "category": "用品與衣物",
     "speechText": "コップ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/drinking-glass.webp",
     "pictureQuizEligible": false
   },
   {
@@ -899,7 +899,7 @@
     "meaning": "杯子（如咖啡杯）",
     "category": "用品與衣物",
     "speechText": "カップ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/cup.webp",
     "pictureQuizEligible": false
   },
   {
@@ -909,7 +909,7 @@
     "meaning": "保鮮膜",
     "category": "用品與衣物",
     "speechText": "ラップ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/plastic-wrap.webp",
     "pictureQuizEligible": false
   },
   {
@@ -919,7 +919,7 @@
     "meaning": "拖把",
     "category": "用品與衣物",
     "speechText": "モップ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/mop.webp",
     "pictureQuizEligible": false
   },
   {
@@ -929,7 +929,7 @@
     "meaning": "車票",
     "category": "用品與衣物",
     "speechText": "切符",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/ticket.webp",
     "pictureQuizEligible": false
   },
   {
@@ -939,7 +939,7 @@
     "meaning": "喇叭",
     "category": "用品與衣物",
     "speechText": "ラッパ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/trumpet.webp",
     "pictureQuizEligible": false
   },
   {
@@ -949,7 +949,7 @@
     "meaning": "摺紙用的紙",
     "category": "用品與衣物",
     "speechText": "折り紙",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/origami.webp",
     "pictureQuizEligible": false
   },
   {
@@ -959,7 +959,7 @@
     "meaning": "絨毛玩偶",
     "category": "用品與衣物",
     "speechText": "ぬいぐるみ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/stuffed-toy.webp",
     "pictureQuizEligible": false
   },
   {
@@ -969,7 +969,7 @@
     "meaning": "聯絡簿",
     "category": "用品與衣物",
     "speechText": "連絡帳",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/communication-notebook.webp",
     "pictureQuizEligible": false
   },
   {
@@ -979,7 +979,7 @@
     "meaning": "翹翹板",
     "category": "用品與衣物",
     "speechText": "シーソー",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/seesaw.webp",
     "pictureQuizEligible": false
   },
   {
@@ -989,7 +989,7 @@
     "meaning": "菜單",
     "category": "用品與衣物",
     "speechText": "メニュー",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/menu.webp",
     "pictureQuizEligible": false
   },
   {
@@ -999,7 +999,7 @@
     "meaning": "人",
     "category": "人物、場所與交通",
     "speechText": "ひと",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/person.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1009,7 +1009,7 @@
     "meaning": "小孩",
     "category": "人物、場所與交通",
     "speechText": "子ども",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/child.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1019,7 +1019,7 @@
     "meaning": "老師",
     "category": "人物、場所與交通",
     "speechText": "先生",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/teacher.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1029,7 +1029,7 @@
     "meaning": "我",
     "category": "人物、場所與交通",
     "speechText": "わたし",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/i.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1039,7 +1039,7 @@
     "meaning": "名字",
     "category": "人物、場所與交通",
     "speechText": "名前",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/name.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1049,7 +1049,7 @@
     "meaning": "酷洛米",
     "category": "人物、場所與交通",
     "speechText": "クロミ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/kuromi.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1059,7 +1059,7 @@
     "meaning": "河童",
     "category": "人物、場所與交通",
     "speechText": "河童",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/kappa.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1069,7 +1069,7 @@
     "meaning": "家、房子",
     "category": "人物、場所與交通",
     "speechText": "いえ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/house.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1079,7 +1079,7 @@
     "meaning": "房間",
     "category": "人物、場所與交通",
     "speechText": "部屋",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/room.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1089,7 +1089,7 @@
     "meaning": "窗戶",
     "category": "人物、場所與交通",
     "speechText": "窓",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/window.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1099,7 +1099,7 @@
     "meaning": "學校",
     "category": "人物、場所與交通",
     "speechText": "学校",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/school.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1109,7 +1109,7 @@
     "meaning": "銀行",
     "category": "人物、場所與交通",
     "speechText": "銀行",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/bank.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1119,7 +1119,7 @@
     "meaning": "地方、場所",
     "category": "人物、場所與交通",
     "speechText": "場所",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/place.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1129,7 +1129,7 @@
     "meaning": "車站",
     "category": "人物、場所與交通",
     "speechText": "駅",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/station.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1139,7 +1139,7 @@
     "meaning": "汽車",
     "category": "人物、場所與交通",
     "speechText": "車",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/car.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1149,7 +1149,7 @@
     "meaning": "卡車",
     "category": "人物、場所與交通",
     "speechText": "トラック",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/truck.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1159,7 +1159,7 @@
     "meaning": "電車",
     "category": "人物、場所與交通",
     "speechText": "電車",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/train.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1169,7 +1169,7 @@
     "meaning": "船",
     "category": "人物、場所與交通",
     "speechText": "船",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/boat.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1179,7 +1179,7 @@
     "meaning": "飛機",
     "category": "人物、場所與交通",
     "speechText": "飛行機",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/airplane.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1189,7 +1189,7 @@
     "meaning": "台灣",
     "category": "人物、場所與交通",
     "speechText": "台湾",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/taiwan.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1199,7 +1199,7 @@
     "meaning": "義大利",
     "category": "人物、場所與交通",
     "speechText": "イタリア",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/italy.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1209,7 +1209,7 @@
     "meaning": "美國",
     "category": "人物、場所與交通",
     "speechText": "アメリカ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/united-states.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1219,7 +1219,7 @@
     "meaning": "香港",
     "category": "人物、場所與交通",
     "speechText": "香港",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/hong-kong.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1229,7 +1229,7 @@
     "meaning": "海",
     "category": "自然、時間與顏色",
     "speechText": "海",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/sea.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1239,7 +1239,7 @@
     "meaning": "天空",
     "category": "自然、時間與顏色",
     "speechText": "そら",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/sky.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1249,7 +1249,7 @@
     "meaning": "山",
     "category": "自然、時間與顏色",
     "speechText": "山",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/mountain.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1259,7 +1259,7 @@
     "meaning": "月亮",
     "category": "自然、時間與顏色",
     "speechText": "つき",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/moon.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1269,7 +1269,7 @@
     "meaning": "星星",
     "category": "自然、時間與顏色",
     "speechText": "星",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/star.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1279,7 +1279,7 @@
     "meaning": "雨",
     "category": "自然、時間與顏色",
     "speechText": "雨",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/rain.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1289,7 +1289,7 @@
     "meaning": "雪",
     "category": "自然、時間與顏色",
     "speechText": "雪",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/snow.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1299,7 +1299,7 @@
     "meaning": "早晨",
     "category": "自然、時間與顏色",
     "speechText": "朝",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/morning.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1309,7 +1309,7 @@
     "meaning": "夜晚",
     "category": "自然、時間與顏色",
     "speechText": "よる",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/night.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1319,7 +1319,7 @@
     "meaning": "春天",
     "category": "自然、時間與顏色",
     "speechText": "春",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/spring.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1329,7 +1329,7 @@
     "meaning": "夏天",
     "category": "自然、時間與顏色",
     "speechText": "夏",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/summer.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1339,7 +1339,7 @@
     "meaning": "秋天",
     "category": "自然、時間與顏色",
     "speechText": "秋",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/autumn.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1349,7 +1349,7 @@
     "meaning": "冬天",
     "category": "自然、時間與顏色",
     "speechText": "冬",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/winter.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1359,7 +1359,7 @@
     "meaning": "明年",
     "category": "自然、時間與顏色",
     "speechText": "来年",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/next-year.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1369,7 +1369,7 @@
     "meaning": "時間",
     "category": "自然、時間與顏色",
     "speechText": "時間",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/time.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1379,7 +1379,7 @@
     "meaning": "紅色",
     "category": "自然、時間與顏色",
     "speechText": "赤",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/red.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1389,7 +1389,7 @@
     "meaning": "藍色",
     "category": "自然、時間與顏色",
     "speechText": "青",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/blue.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1399,7 +1399,7 @@
     "meaning": "眼睛",
     "category": "身體、動作與狀態",
     "speechText": "目",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/eye.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1409,7 +1409,7 @@
     "meaning": "手",
     "category": "身體、動作與狀態",
     "speechText": "手",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/hand.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1419,7 +1419,7 @@
     "meaning": "腳",
     "category": "身體、動作與狀態",
     "speechText": "足",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/leg-foot.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1429,7 +1429,7 @@
     "meaning": "脖子",
     "category": "身體、動作與狀態",
     "speechText": "首",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/neck.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1439,7 +1439,7 @@
     "meaning": "鼻血",
     "category": "身體、動作與狀態",
     "speechText": "鼻血",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/nosebleed.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1449,7 +1449,7 @@
     "meaning": "字",
     "category": "身體、動作與狀態",
     "speechText": "字",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/written-character.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1459,7 +1459,7 @@
     "meaning": "足球",
     "category": "身體、動作與狀態",
     "speechText": "サッカー",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/soccer.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1469,7 +1469,7 @@
     "meaning": "踢",
     "category": "身體、動作與狀態",
     "speechText": "キック",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/kick.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1479,7 +1479,7 @@
     "meaning": "拍打、敲打",
     "category": "身體、動作與狀態",
     "speechText": "叩く",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/hit.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1489,7 +1489,7 @@
     "meaning": "玩",
     "category": "身體、動作與狀態",
     "speechText": "遊ぶ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/play.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1499,7 +1499,7 @@
     "meaning": "戴（眼鏡）",
     "category": "身體、動作與狀態",
     "speechText": "かける",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/wear-glasses.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1509,7 +1509,7 @@
     "meaning": "喝",
     "category": "身體、動作與狀態",
     "speechText": "飲む",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/drink.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1519,7 +1519,7 @@
     "meaning": "攀登",
     "category": "身體、動作與狀態",
     "speechText": "登る",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/climb.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1529,7 +1529,7 @@
     "meaning": "搭乘",
     "category": "身體、動作與狀態",
     "speechText": "乗る",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/ride.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1539,7 +1539,7 @@
     "meaning": "飛",
     "category": "身體、動作與狀態",
     "speechText": "飛ぶ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/fly.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1549,7 +1549,7 @@
     "meaning": "寫",
     "category": "身體、動作與狀態",
     "speechText": "書く",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/write.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1559,7 +1559,7 @@
     "meaning": "睡覺",
     "category": "身體、動作與狀態",
     "speechText": "寝る",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/sleep.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1569,7 +1569,7 @@
     "meaning": "吃",
     "category": "身體、動作與狀態",
     "speechText": "食べる",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/eat.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1579,7 +1579,7 @@
     "meaning": "融化",
     "category": "身體、動作與狀態",
     "speechText": "溶ける",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/melt.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1589,7 +1589,7 @@
     "meaning": "脫下（衣服、鞋子等）",
     "category": "身體、動作與狀態",
     "speechText": "脱ぐ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/take-off-clothing.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1599,7 +1599,7 @@
     "meaning": "給、送",
     "category": "身體、動作與狀態",
     "speechText": "あげる",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/give.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1609,7 +1609,7 @@
     "meaning": "折、摺",
     "category": "身體、動作與狀態",
     "speechText": "折る",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/fold.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1619,7 +1619,7 @@
     "meaning": "遞給、交給",
     "category": "身體、動作與狀態",
     "speechText": "渡す",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/hand-over.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1629,7 +1629,7 @@
     "meaning": "持續",
     "category": "身體、動作與狀態",
     "speechText": "続く",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/continue.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1639,7 +1639,7 @@
     "meaning": "不在家",
     "category": "身體、動作與狀態",
     "speechText": "留守",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/away-from-home.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1649,7 +1649,7 @@
     "meaning": "看家",
     "category": "身體、動作與狀態",
     "speechText": "留守番",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/stay-home.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1659,7 +1659,7 @@
     "meaning": "痛",
     "category": "身體、動作與狀態",
     "speechText": "痛い",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/painful.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1669,7 +1669,7 @@
     "meaning": "長",
     "category": "身體、動作與狀態",
     "speechText": "長い",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/long.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1679,7 +1679,7 @@
     "meaning": "柔軟",
     "category": "身體、動作與狀態",
     "speechText": "柔らかい",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/soft.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1689,7 +1689,7 @@
     "meaning": "你好",
     "category": "問候與常用語",
     "speechText": "こんにちは",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/hello.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1699,7 +1699,7 @@
     "meaning": "晚上好（晚上見面時的招呼）",
     "category": "問候與常用語",
     "speechText": "こんばんは",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/good-evening.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1709,7 +1709,7 @@
     "meaning": "謝謝",
     "category": "問候與常用語",
     "speechText": "ありがとう",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/thank-you.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1719,7 +1719,7 @@
     "meaning": "不好意思、對不起；也可用於開口詢問，相當於『請問』",
     "category": "問候與常用語",
     "speechText": "すみません",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/excuse-me.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1729,7 +1729,7 @@
     "meaning": "請給我",
     "category": "問候與常用語",
     "speechText": "ください",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/please-give-me.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1739,7 +1739,7 @@
     "meaning": "喜歡",
     "category": "問候與常用語",
     "speechText": "好き",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/like.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1749,7 +1749,7 @@
     "meaning": "很喜歡",
     "category": "問候與常用語",
     "speechText": "大好き",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/love.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1759,7 +1759,7 @@
     "meaning": "有精神、健康",
     "category": "問候與常用語",
     "speechText": "元気",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/well.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1769,7 +1769,7 @@
     "meaning": "一直",
     "category": "問候與常用語",
     "speechText": "ずっと",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/all-along.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1779,7 +1779,7 @@
     "meaning": "全部",
     "category": "問候與常用語",
     "speechText": "全部",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/everything.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1789,7 +1789,7 @@
     "meaning": "哪裡",
     "category": "問候與常用語",
     "speechText": "どこ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/where.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1799,7 +1799,7 @@
     "meaning": "呼呼大睡",
     "category": "問候與常用語",
     "speechText": "ぐうぐう",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/sound-sleep.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1809,7 +1809,7 @@
     "meaning": "一口接一口地吃",
     "category": "問候與常用語",
     "speechText": "ぱくぱく",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/eat-eagerly.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1819,7 +1819,7 @@
     "meaning": "閃閃發亮",
     "category": "問候與常用語",
     "speechText": "ぴかぴか",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/sparkling.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1829,7 +1829,7 @@
     "meaning": "漂浮、浮在水面上",
     "category": "問候與常用語",
     "speechText": "ぷかぷか",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/bobbing.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1839,7 +1839,7 @@
     "meaning": "肚子餓扁了",
     "category": "問候與常用語",
     "speechText": "ぺこぺこ",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/famished.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1849,7 +1849,7 @@
     "meaning": "暖呼呼",
     "category": "問候與常用語",
     "speechText": "ぽかぽか",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/pleasantly-warm.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1859,7 +1859,7 @@
     "meaning": "星期一",
     "category": "星期與數字",
     "speechText": "月曜日",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/monday.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1869,7 +1869,7 @@
     "meaning": "星期二",
     "category": "星期與數字",
     "speechText": "火曜日",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/tuesday.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1879,7 +1879,7 @@
     "meaning": "星期三",
     "category": "星期與數字",
     "speechText": "水曜日",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/wednesday.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1889,7 +1889,7 @@
     "meaning": "星期四",
     "category": "星期與數字",
     "speechText": "木曜日",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/thursday.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1899,7 +1899,7 @@
     "meaning": "星期五",
     "category": "星期與數字",
     "speechText": "金曜日",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/friday.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1909,7 +1909,7 @@
     "meaning": "星期六",
     "category": "星期與數字",
     "speechText": "土曜日",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/saturday.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1919,7 +1919,7 @@
     "meaning": "星期日",
     "category": "星期與數字",
     "speechText": "日曜日",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/sunday.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1929,7 +1929,7 @@
     "meaning": "零",
     "category": "星期與數字",
     "speechText": "れい",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-0.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1939,7 +1939,7 @@
     "meaning": "一",
     "category": "星期與數字",
     "speechText": "いち",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-1.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1949,7 +1949,7 @@
     "meaning": "二",
     "category": "星期與數字",
     "speechText": "に",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-2.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1959,7 +1959,7 @@
     "meaning": "三",
     "category": "星期與數字",
     "speechText": "さん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-3.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1969,7 +1969,7 @@
     "meaning": "四",
     "category": "星期與數字",
     "speechText": "よん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-4.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1979,7 +1979,7 @@
     "meaning": "五",
     "category": "星期與數字",
     "speechText": "ご",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-5.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1989,7 +1989,7 @@
     "meaning": "六",
     "category": "星期與數字",
     "speechText": "ろく",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-6.webp",
     "pictureQuizEligible": false
   },
   {
@@ -1999,7 +1999,7 @@
     "meaning": "七",
     "category": "星期與數字",
     "speechText": "なな",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-7.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2009,7 +2009,7 @@
     "meaning": "八",
     "category": "星期與數字",
     "speechText": "はち",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-8.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2019,7 +2019,7 @@
     "meaning": "九",
     "category": "星期與數字",
     "speechText": "きゅう",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-9.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2029,7 +2029,7 @@
     "meaning": "十",
     "category": "星期與數字",
     "speechText": "じゅう",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-10.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2039,7 +2039,7 @@
     "meaning": "一百",
     "category": "星期與數字",
     "speechText": "ひゃく",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-100.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2049,7 +2049,7 @@
     "meaning": "兩百",
     "category": "星期與數字",
     "speechText": "にひゃく",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-200.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2059,7 +2059,7 @@
     "meaning": "三百",
     "category": "星期與數字",
     "speechText": "さんびゃく",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-300.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2069,7 +2069,7 @@
     "meaning": "四百",
     "category": "星期與數字",
     "speechText": "よんひゃく",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-400.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2079,7 +2079,7 @@
     "meaning": "五百",
     "category": "星期與數字",
     "speechText": "ごひゃく",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-500.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2089,7 +2089,7 @@
     "meaning": "六百",
     "category": "星期與數字",
     "speechText": "ろっぴゃく",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-600.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2099,7 +2099,7 @@
     "meaning": "七百",
     "category": "星期與數字",
     "speechText": "ななひゃく",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-700.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2109,7 +2109,7 @@
     "meaning": "八百",
     "category": "星期與數字",
     "speechText": "はっぴゃく",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-800.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2119,7 +2119,7 @@
     "meaning": "九百",
     "category": "星期與數字",
     "speechText": "きゅうひゃく",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-900.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2129,7 +2129,7 @@
     "meaning": "一千",
     "category": "星期與數字",
     "speechText": "せん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-1000.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2139,7 +2139,7 @@
     "meaning": "兩千",
     "category": "星期與數字",
     "speechText": "にせん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-2000.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2149,7 +2149,7 @@
     "meaning": "三千",
     "category": "星期與數字",
     "speechText": "さんぜん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-3000.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2159,7 +2159,7 @@
     "meaning": "四千",
     "category": "星期與數字",
     "speechText": "よんせん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-4000.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2169,7 +2169,7 @@
     "meaning": "五千",
     "category": "星期與數字",
     "speechText": "ごせん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-5000.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2179,7 +2179,7 @@
     "meaning": "六千",
     "category": "星期與數字",
     "speechText": "ろくせん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-6000.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2189,7 +2189,7 @@
     "meaning": "七千",
     "category": "星期與數字",
     "speechText": "ななせん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-7000.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2199,7 +2199,7 @@
     "meaning": "八千",
     "category": "星期與數字",
     "speechText": "はっせん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-8000.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2209,7 +2209,7 @@
     "meaning": "九千",
     "category": "星期與數字",
     "speechText": "きゅうせん",
-    "imagePath": null,
+    "imagePath": "images/sho-sensei/number-9000.webp",
     "pictureQuizEligible": false
   }
 ]

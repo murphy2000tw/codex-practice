@@ -2455,8 +2455,70 @@ h1 {
 }
 
 #japaneseVocabularyMenuView[hidden],
-#japaneseVocabularyStudyView[hidden] {
+#japaneseVocabularyStudyView[hidden],
+#japaneseShoSenseiVocabularyView[hidden] {
   display: none;
+}
+
+.sho-sensei-category {
+  margin: 28px 0 36px;
+}
+
+.sho-sensei-overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: baseline;
+}
+
+.sho-sensei-overview a {
+  color: var(--accent-dark);
+}
+
+.sho-sensei-category h3 {
+  margin: 0 0 14px;
+  font-size: 1.25rem;
+}
+
+.sho-sensei-card {
+  justify-content: flex-start;
+  gap: 8px;
+  min-height: 0;
+  padding: 16px;
+}
+
+.sho-sensei-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.sho-sensei-card h4 {
+  margin: 6px 0 0;
+  overflow-wrap: anywhere;
+  font-size: 1.35rem;
+}
+
+.sho-sensei-card p {
+  margin: 0;
+}
+
+.sho-sensei-kana,
+.sho-sensei-speech-status {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.sho-sensei-meaning {
+  flex: 1;
+  line-height: 1.6;
+}
+
+.sho-sensei-play-button {
+  align-self: flex-start;
+  min-height: 44px;
+  margin-top: 6px;
+  padding: 9px 18px;
 }
 
 @media (max-width: 640px) {

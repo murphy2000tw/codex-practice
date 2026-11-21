@@ -1,0 +1,17 @@
+勝老師單字圖像素材
+
+卡片圖為 384 × 240 的 WebP 教學插圖，均由本站本機提供。
+圖示經過縮放並與自行繪製的背景、圖形及情境組合。日曆與
+數字圖由本站繪製。
+
+Twemoji v16.0.1 圖示
+來源 https://github.com/jdecked/twemoji/tree/v16.0.1/assets/svg
+作者 Twitter, Inc. 與 Twemoji 專案貢獻者
+授權 Creative Commons Attribution 4.0 International（CC BY 4.0）
+https://creativecommons.org/licenses/by/4.0/
+完整授權條款見同資料夾的 LICENSE-TWEMOJI.txt。
+
+酷洛米詞條使用本站繪製的示意圖。Kuromi（クロミ）的角色名稱
+與設計權利屬 Sanrio。角色資料 https://www.sanrio.co.jp/characters/kuromi/
+
+插圖文字使用 DejaVu Sans 與 Noto Sans CJK JP 字型繪製。
