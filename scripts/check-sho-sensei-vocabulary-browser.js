@@ -65,6 +65,83 @@ function installSpeechProbe() {
   };
 }
 
+async function checkLessonFilters(view) {
+  const lesson = view.getByLabel('上課週次');
+  const usage = view.getByLabel('詞類／用法');
+  const cards = view.locator('.sho-sensei-card');
+  const status = view.locator('#shoSenseiVocabularyLoadStatus');
+  const ids = () => cards.evaluateAll(nodes => nodes.map(node => node.dataset.wordId));
+  assert.equal(await lesson.inputValue(), 'latest');
+  assert.equal(await usage.inputValue(), 'all');
+  assert.ok(await view.locator('.sho-sensei-filters select').evaluateAll(selects => selects.every(select => {
+    const bounds = select.getBoundingClientRect();
+    return bounds.left >= 0 && bounds.right <= innerWidth && bounds.height >= 44;
+  })));
+  assert.deepEqual(await lesson.locator('option').allTextContents(), ['最新一週', '全部週次', '2026-11-28', '初期教材']);
+  assert.equal(await status.textContent(), '共 93 張卡片');
+  const latest = await ids();
+  assert.equal(latest.length, 93);
+  assert.ok(latest.includes('name') && latest.includes('hand') && !latest.includes('dog'));
+  await lesson.selectOption('2026-11-28');
+  assert.deepEqual(await ids(), latest);
+  await usage.selectOption('動詞');
+  assert.equal(await status.textContent(), '共 7 張卡片');
+  assert.deepEqual((await ids()).sort(), ['climb', 'grill', 'pick-up', 'put-on-clothes', 'ride', 'sleep', 'wash']);
+  await lesson.selectOption('all');
+  assert.equal(await status.textContent(), '共 20 張卡片');
+  assert.ok((await ids()).includes('drink'));
+
+  await lesson.selectOption('early');
+  await usage.selectOption('all');
+  assert.equal(await status.textContent(), '共 221 張卡片');
+  assert.ok((await ids()).includes('name'));
+  await usage.selectOption('接尾詞');
+  assert.equal(await cards.count(), 0);
+  assert.equal(await status.textContent(), '共 0 張卡片，請調整篩選條件。');
+  assert.ok(await usage.isEnabled() && await lesson.isEnabled());
+  await lesson.selectOption('all');
+  assert.deepEqual(await ids(), ['honorific-san', 'nationality-suffix', 'age-suffix']);
+  await usage.selectOption('會話短句');
+  assert.ok((await ids()).includes('welcome-home'));
+  await usage.selectOption('all');
+  assert.equal(new Set(await ids()).size, words.length);
+  assert.equal(await status.textContent(), '共 295 張卡片');
+}
+
+async function checkMultipleLessonDates(browser, url) {
+  const page = await browser.newPage({ viewport: { width: 320, height: 720 } });
+  try {
+    await page.clock.setFixedTime(new Date('2026-12-19T12:00:00+08:00'));
+    const name = words.find(word => word.id === 'name');
+    await page.route('**/shoSenseiVocabulary.json?v=6', route => route.fulfill({ json: [
+      { ...name, lessonDates: ['2026-11-07', '2026-11-28'] },
+      { ...words.find(word => word.id === 'wash'), lessonDates: ['2026-11-14'] },
+    ] }));
+    await page.goto(url);
+    await page.locator('[data-japanese-entry="vocabulary"]').click();
+    await page.locator('[data-japanese-vocabulary-entry="sho-sensei"]').click();
+    const view = page.locator('#japaneseShoSenseiVocabularyView');
+    const lesson = view.getByLabel('上課週次');
+    const status = view.locator('#shoSenseiVocabularyLoadStatus');
+    const cards = view.locator('.sho-sensei-card');
+    await cards.first().waitFor();
+    assert.deepEqual(await lesson.locator('option').allTextContents(),
+      ['最新一週', '全部週次', '2026-11-28', '2026-11-14', '2026-11-07', '初期教材']);
+    for (const week of ['latest', '2026-11-28', '2026-11-07', 'early']) {
+      await lesson.selectOption(week);
+      assert.equal(await status.textContent(), '共 1 張卡片');
+      assert.equal(await cards.first().getAttribute('data-word-id'), name.id);
+    }
+    await lesson.selectOption('all');
+    assert.equal(await cards.count(), 2);
+    assert.equal(await view.locator('[data-word-id="name"]').count(), 1);
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    console.log('PASS multiple lesson dates per card, latest recorded class on a later week and 320px layout');
+  } finally {
+    await page.close();
+  }
+}
+
 async function checkPictureQuizQuestions(page) {
   const eligibleWords = words.filter(word => word.pictureQuizEligible);
   const wordById = new Map(words.map(word => [word.id, word]));
@@ -614,6 +691,7 @@ async function checkSmallPictureQuizBank(browser, url) {
       assert.ok(await view.isVisible());
       assert.ok(!(await page.locator('#japaneseVocabularyMenuView').isVisible()));
       assert.equal(await page.locator(':focus').getAttribute('id'), 'sho-sensei-vocabulary-title');
+      await checkLessonFilters(view);
       assert.equal(await view.locator('.sho-sensei-category').count(), 11);
       assert.equal(await cards.count(), words.length);
       assert.equal(await card('sushi').locator('h4').textContent(), 'すし／おすし');
@@ -702,6 +780,10 @@ async function checkSmallPictureQuizBank(browser, url) {
       assert.equal(await card('happy-birthday').locator('[role="status"]').textContent(), '');
 
       await activate(entry);
+      assert.equal(await view.getByLabel('上課週次').inputValue(), 'latest');
+      assert.equal(await view.getByLabel('詞類／用法').inputValue(), 'all');
+      assert.equal(await cards.count(), 93);
+      await view.getByLabel('上課週次').selectOption('all');
       await activate(controls('number-0'));
       await page.waitForFunction(() => window.shoSpeechProbe.active?.text === 'れい');
       await activate(page.locator('#japaneseMainContent [data-japanese-back-home]'));
@@ -710,6 +792,7 @@ async function checkSmallPictureQuizBank(browser, url) {
 
       await activate(page.locator('[data-japanese-entry="vocabulary"]'));
       await activate(entry);
+      await view.getByLabel('上課週次').selectOption('all');
       await page.evaluate(() => { window.shoSpeechProbe.error = 'language-unavailable'; });
       await activate(controls('dog'));
       await page.waitForFunction(() => document.querySelector('[data-word-id="dog"] [role="status"]')
@@ -736,12 +819,38 @@ async function checkSmallPictureQuizBank(browser, url) {
       assert.equal(await page.evaluate(() => window.shoSpeechProbe.active), null);
       assert.equal(await page.evaluate(() => window.shoSpeechProbe.calls.filter(call => call.text).length),
         7 + Object.keys(batchReadings).length);
+
+      await activate(entry);
+      const lesson = view.getByLabel('上課週次');
+      const usage = view.getByLabel('詞類／用法');
+      await activate(controls('wash'));
+      await page.waitForFunction(() => window.shoSpeechProbe.active?.text === 'あらう');
+      await usage.selectOption('動詞');
+      await lesson.selectOption('2026-11-28');
+      assert.equal(await page.evaluate(() => window.shoSpeechProbe.active?.text), 'あらう');
+      assert.equal(await card('wash').getByRole('status').textContent(), '播放中…');
+      await lesson.selectOption('early');
+      assert.equal(await card('wash').count(), 0);
+      assert.equal(await page.evaluate(() => window.shoSpeechProbe.active), null);
+      assert.equal(await page.evaluate(() => window.shoSpeechProbe.cancelled.at(-1)), 'あらう');
+      await activate(controls('sleep'));
+      await page.waitForFunction(() => window.shoSpeechProbe.active?.text === '寝る');
+      await usage.selectOption('接尾詞');
+      assert.equal(await card('sleep').count(), 0);
+      assert.equal(await page.evaluate(() => window.shoSpeechProbe.active), null);
+      await activate(back);
+      await activate(entry);
+      assert.equal(await lesson.inputValue(), 'latest');
+      assert.equal(await usage.inputValue(), 'all');
+      assert.equal(await cards.count(), 93);
+      await activate(back);
       if (!mobile) await checkPictureQuizQuestions(page);
       await checkPictureQuiz(page, activate, mobile);
       assert.deepEqual(errors, []);
       await context.close();
-      console.log(`PASS ${mobile ? 'iPhone-sized Chromium' : 'desktop Chromium'}: vocabulary menu, cards, picture quiz, layout and speech lifecycle (simulated speech)`);
+      console.log(`PASS ${mobile ? 'iPhone-sized Chromium' : 'desktop Chromium'}: vocabulary menu, filters, cards, picture quiz, layout and speech lifecycle (simulated speech)`);
     }
+    await checkMultipleLessonDates(browser, url);
     await checkPictureQuizRotation(browser, url);
     await checkPictureQuizBankUpdates(browser, url);
     await checkSmallPictureQuizBank(browser, url);
