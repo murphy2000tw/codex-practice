@@ -3504,7 +3504,7 @@ function playShoSenseiVocabularyWord(word, status) {
 
 function getShoSenseiVocabulary() {
   if (!shoSenseiVocabularyRequest) {
-    shoSenseiVocabularyRequest = fetch("./shoSenseiVocabulary.json?v=5").then((response) => {
+    shoSenseiVocabularyRequest = fetch("./shoSenseiVocabulary.json?v=6").then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
     }).catch((error) => {
@@ -3545,42 +3545,97 @@ function createShoSenseiVocabularyCard(word, template) {
   return card;
 }
 
-async function loadShoSenseiVocabulary() {
-  const view = japaneseShoSenseiVocabularyView;
+function createShoSenseiVocabularyView(view) {
   const cards = view.querySelector("#shoSenseiVocabularyCards");
-  if (cards.childElementCount || cards.getAttribute("aria-busy") === "true") return;
-
   const status = view.querySelector("#shoSenseiVocabularyLoadStatus");
   const template = view.querySelector("#shoSenseiVocabularyCardTemplate");
-  cards.setAttribute("aria-busy", "true");
-  status.textContent = "正在載入單字…";
-  try {
-    const words = await getShoSenseiVocabulary();
+  const lessonFilter = view.querySelector("#shoSenseiLessonFilter");
+  const usageFilter = view.querySelector("#shoSenseiUsageFilter");
+  let words;
+  let latestDate;
+  let visibleCards = new Map();
+
+  function renderCards() {
+    const lesson = lessonFilter.value === "latest" ? latestDate ?? "early" : lessonFilter.value;
+    const usage = usageFilter.value;
     const categories = new Map();
-    words.forEach((word) => {
+    const nextCards = new Map();
+    for (const word of words) {
+      if (usage !== "all" && word.usage !== usage) continue;
+      if (lesson === "early") {
+        if (!(word.isEarlyMaterial ?? !word.lessonDates?.length)) continue;
+      } else if (lesson !== "all" && !word.lessonDates?.includes(lesson)) {
+        continue;
+      }
+
+      const card = visibleCards.get(word.id) ?? createShoSenseiVocabularyCard(word, template);
+      nextCards.set(word.id, card);
       if (!categories.has(word.category)) categories.set(word.category, []);
-      categories.get(word.category).push(word);
-    });
+      categories.get(word.category).push(card);
+    }
+
+    const playingCard = shoSenseiVocabularySpeechStatus?.closest(".sho-sensei-card");
+    if (playingCard && !nextCards.has(playingCard.dataset.wordId)) stopShoSenseiVocabularySpeech();
+
     const sections = document.createDocumentFragment();
-    for (const [category, entries] of categories) {
+    for (const [category, matchingCards] of categories) {
       const section = document.createElement("section");
       section.className = "sho-sensei-category";
       const heading = document.createElement("h3");
       heading.textContent = category;
       const grid = document.createElement("div");
       grid.className = "cards-grid";
-      grid.append(...entries.map((word) => createShoSenseiVocabularyCard(word, template)));
+      grid.append(...matchingCards);
       section.append(heading, grid);
       sections.append(section);
     }
-    cards.append(sections);
-    status.textContent = `共 ${words.length} 個單字`;
-  } catch (_error) {
-    status.textContent = "無法載入單字，請返回單字選單後再試。";
-  } finally {
-    cards.removeAttribute("aria-busy");
+    cards.replaceChildren(sections);
+    visibleCards = nextCards;
+    status.textContent = nextCards.size ? `共 ${nextCards.size} 張卡片` : "共 0 張卡片，請調整篩選條件。";
   }
+
+  lessonFilter.addEventListener("change", renderCards);
+  usageFilter.addEventListener("change", renderCards);
+
+  return async function open() {
+    lessonFilter.value = "latest";
+    usageFilter.value = "all";
+    if (words) {
+      renderCards();
+      return;
+    }
+    if (cards.getAttribute("aria-busy") === "true") return;
+
+    cards.setAttribute("aria-busy", "true");
+    status.textContent = "正在載入單字…";
+    try {
+      words = await getShoSenseiVocabulary();
+      const dates = [...new Set(words.flatMap((word) => word.lessonDates ?? []))].sort().reverse();
+      latestDate = dates[0];
+      const earlyOption = lessonFilter.options[lessonFilter.options.length - 1];
+      for (const date of dates) lessonFilter.add(new Option(date, date), earlyOption);
+
+      const usages = new Set(words.map((word) => word.usage));
+      const usageLabels = CATEGORY_FILTERS.slice(1).map(({ label }) => label)
+        .concat("代名詞", "時間詞", "會話短句", "接尾詞");
+      for (const label of usageLabels) {
+        if (usages.has(label)) usageFilter.add(new Option(label, label));
+      }
+
+      renderCards();
+      lessonFilter.disabled = false;
+      usageFilter.disabled = false;
+    } catch (_error) {
+      status.textContent = "無法載入單字，請返回單字選單後再試。";
+    } finally {
+      cards.removeAttribute("aria-busy");
+    }
+  };
 }
+
+const openShoSenseiVocabulary = japaneseShoSenseiVocabularyView
+  ? createShoSenseiVocabularyView(japaneseShoSenseiVocabularyView)
+  : null;
 
 const shoSenseiPictureQuiz = japaneseShoSenseiPictureQuizView ? createShoSenseiPictureQuiz(japaneseShoSenseiPictureQuizView, {
   loadWords: getShoSenseiVocabulary,
@@ -4635,7 +4690,7 @@ japaneseVocabularyEntryButtons.forEach((button) => {
     if (button.dataset.japaneseVocabularyEntry === "sho-sensei") {
       renderJapaneseVocabularyView("sho-sensei");
       japaneseShoSenseiVocabularyView.querySelector("#sho-sensei-vocabulary-title").focus();
-      loadShoSenseiVocabulary();
+      openShoSenseiVocabulary();
       return;
     }
     if (button.dataset.japaneseVocabularyEntry === "picture-quiz") {

@@ -2464,6 +2464,38 @@ h1 {
   margin: 28px 0 36px;
 }
 
+.sho-sensei-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  gap: 12px;
+  max-width: 28rem;
+  margin: 0 0 16px;
+}
+
+.sho-sensei-filters label {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.sho-sensei-filters select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  background: #ffffff;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.sho-sensei-filters select:focus-visible {
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 2px;
+}
+
 .sho-sensei-overview {
   display: flex;
   flex-wrap: wrap;
