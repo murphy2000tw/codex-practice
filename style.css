@@ -2514,6 +2514,17 @@ h1 {
   line-height: 1.6;
 }
 
+.sho-sensei-examples {
+  margin: 0;
+  padding-inline-start: 1.25em;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.sho-sensei-examples li + li {
+  margin-top: 6px;
+}
+
 .sho-sensei-play-button {
   align-self: flex-start;
   min-height: 44px;

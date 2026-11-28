@@ -19,7 +19,13 @@
     "speechText": "猫",
     "imagePath": "images/sho-sensei/cat.webp",
     "pictureQuizEligible": true,
-    "pictureQuizDistractorIds": ["desk", "umbrella", "apple", "pencil", "boat", "pineapple", "paper", "house"]
+    "pictureQuizDistractorIds": ["desk", "umbrella", "apple", "pencil", "boat", "pineapple", "paper", "house"],
+    "examples": [
+      {
+        "sentence": "猫を拾います。",
+        "meaning": "撿到一隻貓。"
+      }
+    ]
   },
   {
     "id": "deer",
@@ -96,7 +102,13 @@
     "speechText": "キリン",
     "imagePath": "images/sho-sensei/giraffe.webp",
     "pictureQuizEligible": true,
-    "pictureQuizDistractorIds": ["truck", "house", "rain", "soccer", "hamburger", "shoes", "candy", "boat"]
+    "pictureQuizDistractorIds": ["truck", "house", "rain", "soccer", "hamburger", "shoes", "candy", "boat"],
+    "examples": [
+      {
+        "sentence": "キリンの首は長いです。",
+        "meaning": "長頸鹿的脖子很長。"
+      }
+    ]
   },
   {
     "id": "camel",
@@ -435,6 +447,23 @@
     "pictureQuizEligible": false
   },
   {
+    "id": "eggplant",
+    "word": "ナス",
+    "kana": "ナス",
+    "meaning": "茄子",
+    "category": "水果與植物",
+    "speechText": "ナス",
+    "imagePath": "images/sho-sensei/eggplant.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["crab", "umbrella", "pizza", "rain", "school", "drum", "cat", "shoes"],
+    "examples": [
+      {
+        "sentence": "ナスを焼きます。",
+        "meaning": "烤茄子。"
+      }
+    ]
+  },
+  {
     "id": "candy",
     "word": "飴",
     "kana": "あめ",
@@ -465,9 +494,7 @@
     "imagePath": "images/sho-sensei/sushi.webp",
     "pictureQuizEligible": true,
     "pictureQuizDistractorIds": ["pineapple", "desk", "banana", "car", "rain", "eye", "hand", "elephant"],
-    "variants": [
-      "おすし"
-    ]
+    "variants": ["おすし"]
   },
   {
     "id": "nori",
@@ -779,7 +806,13 @@
     "speechText": "枕",
     "imagePath": "images/sho-sensei/pillow.webp",
     "pictureQuizEligible": true,
-    "pictureQuizDistractorIds": ["house", "tree", "truck", "persimmon", "egg", "candy", "lemon", "turtle"]
+    "pictureQuizDistractorIds": ["house", "tree", "truck", "persimmon", "egg", "candy", "lemon", "turtle"],
+    "examples": [
+      {
+        "sentence": "柔らかい枕で寝ます。",
+        "meaning": "用柔軟的枕頭睡覺。"
+      }
+    ]
   },
   {
     "id": "chair",
@@ -1068,6 +1101,40 @@
     "pictureQuizEligible": false
   },
   {
+    "id": "shirt",
+    "word": "シャツ",
+    "kana": "シャツ",
+    "meaning": "襯衫",
+    "category": "用品與衣物",
+    "speechText": "シャツ",
+    "imagePath": "images/sho-sensei/shirt.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["dog", "rain", "train", "ramen", "turtle", "soccer", "apple", "egg"],
+    "examples": [
+      {
+        "sentence": "シャツを着ます。",
+        "meaning": "穿上襯衫。"
+      }
+    ]
+  },
+  {
+    "id": "apron",
+    "word": "エプロン",
+    "kana": "エプロン",
+    "meaning": "圍裙",
+    "category": "用品與衣物",
+    "speechText": "エプロン",
+    "imagePath": "images/sho-sensei/apron.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["cat", "lemon", "rain", "station", "eye", "turtle", "candy", "tree"],
+    "examples": [
+      {
+        "sentence": "エプロンをします。",
+        "meaning": "繫上圍裙。"
+      }
+    ]
+  },
+  {
     "id": "person",
     "word": "人",
     "kana": "ひと",
@@ -1315,6 +1382,145 @@
     "pictureQuizDistractorIds": ["ice-cream", "egg", "eyeglasses", "apple", "turtle", "pizza", "cat", "soccer"]
   },
   {
+    "id": "japan",
+    "word": "日本",
+    "kana": "にほん",
+    "meaning": "日本",
+    "category": "人物、場所與交通",
+    "speechText": "にほん",
+    "imagePath": "images/sho-sensei/japan.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["scissors", "turtle", "apple", "drum", "pencil", "rain", "dog", "watermelon"]
+  },
+  {
+    "id": "china",
+    "word": "中国",
+    "kana": "ちゅうごく",
+    "meaning": "中國大陸",
+    "category": "人物、場所與交通",
+    "speechText": "ちゅうごく",
+    "imagePath": "images/sho-sensei/china.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["elephant", "pencil", "pizza", "hat", "snow", "bear", "banana", "coffee"]
+  },
+  {
+    "id": "south-korea",
+    "word": "韓国",
+    "kana": "かんこく",
+    "meaning": "韓國",
+    "category": "人物、場所與交通",
+    "speechText": "かんこく",
+    "imagePath": "images/sho-sensei/south-korea.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["cucumber", "duck", "coffee", "umbrella", "eye", "flower", "book", "cat"]
+  },
+  {
+    "id": "france",
+    "word": "フランス",
+    "kana": "フランス",
+    "meaning": "法國",
+    "category": "人物、場所與交通",
+    "speechText": "フランス",
+    "imagePath": "images/sho-sensei/france.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["deer", "scissors", "pineapple", "egg", "rain", "drum", "coat", "candy"]
+  },
+  {
+    "id": "united-kingdom",
+    "word": "イギリス",
+    "kana": "イギリス",
+    "meaning": "英國",
+    "category": "人物、場所與交通",
+    "speechText": "イギリス",
+    "imagePath": "images/sho-sensei/united-kingdom.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["eye", "book", "banana", "cat", "rain", "hat", "cheese", "paper"]
+  },
+  {
+    "id": "taipei",
+    "word": "台北",
+    "kana": "たいぺい",
+    "meaning": "台北",
+    "category": "人物、場所與交通",
+    "speechText": "たいぺい",
+    "imagePath": "images/sho-sensei/taipei.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "taichung",
+    "word": "台中",
+    "kana": "たいちゅう",
+    "meaning": "台中",
+    "category": "人物、場所與交通",
+    "speechText": "たいちゅう",
+    "imagePath": "images/sho-sensei/taichung.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "tainan",
+    "word": "台南",
+    "kana": "たいなん",
+    "meaning": "台南",
+    "category": "人物、場所與交通",
+    "speechText": "たいなん",
+    "imagePath": "images/sho-sensei/tainan.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "hsinchu",
+    "word": "新竹",
+    "kana": "しんちく",
+    "meaning": "新竹",
+    "category": "人物、場所與交通",
+    "speechText": "しんちく",
+    "imagePath": "images/sho-sensei/hsinchu.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "kaohsiung",
+    "word": "高雄",
+    "kana": "たかお",
+    "meaning": "高雄",
+    "category": "人物、場所與交通",
+    "speechText": "たかお",
+    "imagePath": "images/sho-sensei/kaohsiung.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "yacht",
+    "word": "ヨット",
+    "kana": "ヨット",
+    "meaning": "帆船",
+    "category": "人物、場所與交通",
+    "speechText": "ヨット",
+    "imagePath": "images/sho-sensei/yacht.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["lion", "umbrella", "cat", "pencil", "apple", "rain", "hat", "coffee"],
+    "examples": [
+      {
+        "sentence": "ヨットに乗ります。",
+        "meaning": "搭帆船。"
+      }
+    ]
+  },
+  {
+    "id": "canoe",
+    "word": "カヌー",
+    "kana": "カヌー",
+    "meaning": "獨木舟",
+    "category": "人物、場所與交通",
+    "speechText": "カヌー",
+    "imagePath": "images/sho-sensei/canoe.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["drum", "apple", "cat", "hat", "pizza", "snow", "chair", "turtle"],
+    "examples": [
+      {
+        "sentence": "カヌーに乗ります。",
+        "meaning": "搭獨木舟。"
+      }
+    ]
+  },
+  {
     "id": "sea",
     "word": "海",
     "kana": "うみ",
@@ -1343,7 +1549,13 @@
     "speechText": "山",
     "imagePath": "images/sho-sensei/mountain.webp",
     "pictureQuizEligible": true,
-    "pictureQuizDistractorIds": ["banana", "car", "dog", "pineapple", "soccer", "ice-cream", "boat", "oyster"]
+    "pictureQuizDistractorIds": ["banana", "car", "dog", "pineapple", "soccer", "ice-cream", "boat", "oyster"],
+    "examples": [
+      {
+        "sentence": "山に登ります。",
+        "meaning": "爬山。"
+      }
+    ]
   },
   {
     "id": "moon",
@@ -1511,7 +1723,13 @@
     "speechText": "手",
     "imagePath": "images/sho-sensei/hand.webp",
     "pictureQuizEligible": true,
-    "pictureQuizDistractorIds": ["rain", "ice-cream", "car", "trumpet", "dog", "mountain", "pizza", "candy"]
+    "pictureQuizDistractorIds": ["rain", "ice-cream", "car", "trumpet", "dog", "mountain", "pizza", "candy"],
+    "examples": [
+      {
+        "sentence": "手を洗います。",
+        "meaning": "洗手。"
+      }
+    ]
   },
   {
     "id": "leg-foot",
@@ -1533,7 +1751,13 @@
     "speechText": "首",
     "imagePath": "images/sho-sensei/neck.webp",
     "pictureQuizEligible": true,
-    "pictureQuizDistractorIds": ["paper", "ice-cream", "hamburger", "house", "scissors", "boat", "crab", "moon"]
+    "pictureQuizDistractorIds": ["paper", "ice-cream", "hamburger", "house", "scissors", "boat", "crab", "moon"],
+    "examples": [
+      {
+        "sentence": "キリンの首は長いです。",
+        "meaning": "長頸鹿的脖子很長。"
+      }
+    ]
   },
   {
     "id": "nosebleed",
@@ -1625,7 +1849,13 @@
     "category": "身體、動作與狀態",
     "speechText": "登る",
     "imagePath": "images/sho-sensei/climb.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": false,
+    "examples": [
+      {
+        "sentence": "山に登ります。",
+        "meaning": "爬山。"
+      }
+    ]
   },
   {
     "id": "ride",
@@ -1635,7 +1865,17 @@
     "category": "身體、動作與狀態",
     "speechText": "乗る",
     "imagePath": "images/sho-sensei/ride.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": false,
+    "examples": [
+      {
+        "sentence": "ヨットに乗ります。",
+        "meaning": "搭帆船。"
+      },
+      {
+        "sentence": "カヌーに乗ります。",
+        "meaning": "搭獨木舟。"
+      }
+    ]
   },
   {
     "id": "fly",
@@ -1667,7 +1907,13 @@
     "speechText": "寝る",
     "imagePath": "images/sho-sensei/sleep.webp",
     "pictureQuizEligible": true,
-    "pictureQuizDistractorIds": ["trumpet", "drum", "school", "cat", "desk", "lemon", "crab", "car"]
+    "pictureQuizDistractorIds": ["trumpet", "drum", "school", "cat", "desk", "lemon", "crab", "car"],
+    "examples": [
+      {
+        "sentence": "柔らかい枕で寝ます。",
+        "meaning": "用柔軟的枕頭睡覺。"
+      }
+    ]
   },
   {
     "id": "eat",
@@ -1777,7 +2023,13 @@
     "category": "身體、動作與狀態",
     "speechText": "長い",
     "imagePath": "images/sho-sensei/long.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": false,
+    "examples": [
+      {
+        "sentence": "キリンの首は長いです。",
+        "meaning": "長頸鹿的脖子很長。"
+      }
+    ]
   },
   {
     "id": "soft",
@@ -1787,7 +2039,79 @@
     "category": "身體、動作與狀態",
     "speechText": "柔らかい",
     "imagePath": "images/sho-sensei/soft.webp",
-    "pictureQuizEligible": false
+    "pictureQuizEligible": false,
+    "examples": [
+      {
+        "sentence": "柔らかい枕で寝ます。",
+        "meaning": "用柔軟的枕頭睡覺。"
+      }
+    ]
+  },
+  {
+    "id": "wash",
+    "word": "洗う",
+    "kana": "あらう",
+    "meaning": "洗",
+    "category": "身體、動作與狀態",
+    "speechText": "あらう",
+    "imagePath": "images/sho-sensei/wash.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["tree", "umbrella", "train", "dog", "pineapple", "cup", "hamburger", "star"],
+    "examples": [
+      {
+        "sentence": "手を洗います。",
+        "meaning": "洗手。"
+      }
+    ]
+  },
+  {
+    "id": "put-on-clothes",
+    "word": "着る",
+    "kana": "きる",
+    "meaning": "穿（上衣等）",
+    "category": "身體、動作與狀態",
+    "speechText": "きる",
+    "imagePath": "images/sho-sensei/put-on-clothes.webp",
+    "pictureQuizEligible": false,
+    "examples": [
+      {
+        "sentence": "シャツを着ます。",
+        "meaning": "穿上襯衫。"
+      }
+    ]
+  },
+  {
+    "id": "pick-up",
+    "word": "拾う",
+    "kana": "ひろう",
+    "meaning": "撿起、撿到",
+    "category": "身體、動作與狀態",
+    "speechText": "ひろう",
+    "imagePath": "images/sho-sensei/pick-up.webp",
+    "pictureQuizEligible": false,
+    "examples": [
+      {
+        "sentence": "猫を拾います。",
+        "meaning": "撿到一隻貓。"
+      }
+    ]
+  },
+  {
+    "id": "grill",
+    "word": "焼く",
+    "kana": "やく",
+    "meaning": "烤、煎",
+    "category": "身體、動作與狀態",
+    "speechText": "やく",
+    "imagePath": "images/sho-sensei/grill.webp",
+    "pictureQuizEligible": true,
+    "pictureQuizDistractorIds": ["elephant", "pencil", "snow", "airplane", "banana", "coffee", "drum", "hat"],
+    "examples": [
+      {
+        "sentence": "ナスを焼きます。",
+        "meaning": "烤茄子。"
+      }
+    ]
   },
   {
     "id": "hello",
@@ -1795,7 +2119,7 @@
     "kana": "こんにちは",
     "meaning": "你好",
     "category": "問候與常用語",
-    "speechText": "こんにちは",
+    "speechText": "こんにちわ。",
     "imagePath": "images/sho-sensei/hello.webp",
     "pictureQuizEligible": false
   },
@@ -1805,7 +2129,7 @@
     "kana": "こんばんは",
     "meaning": "晚上好（晚上見面時的招呼）",
     "category": "問候與常用語",
-    "speechText": "こんばんは",
+    "speechText": "こんばんわ。",
     "imagePath": "images/sho-sensei/good-evening.webp",
     "pictureQuizEligible": false
   },
@@ -1825,7 +2149,7 @@
     "kana": "すみません",
     "meaning": "不好意思、對不起；也可用於開口詢問，相當於『請問』",
     "category": "問候與常用語",
-    "speechText": "すみません",
+    "speechText": "すみません。",
     "imagePath": "images/sho-sensei/excuse-me.webp",
     "pictureQuizEligible": false
   },
@@ -1957,6 +2281,236 @@
     "category": "問候與常用語",
     "speechText": "ぽかぽか",
     "imagePath": "images/sho-sensei/pleasantly-warm.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "yes",
+    "word": "はい",
+    "kana": "はい",
+    "meaning": "是的",
+    "category": "問候與常用語",
+    "speechText": "はい",
+    "imagePath": "images/sho-sensei/yes.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "good-morning",
+    "word": "おはようございます。",
+    "kana": "おはようございます",
+    "meaning": "早安。",
+    "category": "問候與常用語",
+    "speechText": "おはようございます。",
+    "imagePath": "images/sho-sensei/good-morning.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "good-night",
+    "word": "お休みなさい。",
+    "kana": "おやすみなさい",
+    "meaning": "晚安（睡前）。",
+    "category": "問候與常用語",
+    "speechText": "お休みなさい。",
+    "imagePath": "images/sho-sensei/good-night.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "goodbye",
+    "word": "さようなら。",
+    "kana": "さようなら",
+    "meaning": "再見。",
+    "category": "問候與常用語",
+    "speechText": "さようなら。",
+    "imagePath": "images/sho-sensei/goodbye.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "nice-to-meet-you",
+    "word": "初めまして。",
+    "kana": "はじめまして",
+    "meaning": "初次見面。",
+    "category": "問候與常用語",
+    "speechText": "初めまして。",
+    "imagePath": "images/sho-sensei/nice-to-meet-you.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "please-be-kind",
+    "word": "どうぞよろしくお願いします。",
+    "kana": "どうぞよろしくおねがいします",
+    "meaning": "請多多指教。",
+    "category": "問候與常用語",
+    "speechText": "どうぞよろしくお願いします。",
+    "imagePath": "images/sho-sensei/please-be-kind.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "how-are-you",
+    "word": "お元気ですか。",
+    "kana": "おげんきですか",
+    "meaning": "你好嗎？",
+    "category": "問候與常用語",
+    "speechText": "お元気ですか。",
+    "imagePath": "images/sho-sensei/how-are-you.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "i-am-well",
+    "word": "はい、元気です。",
+    "kana": "はい、げんきです",
+    "meaning": "是的，我很好。",
+    "category": "問候與常用語",
+    "speechText": "はい、元気です。",
+    "imagePath": "images/sho-sensei/i-am-well.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "thank-you-polite",
+    "word": "ありがとうございます。",
+    "kana": "ありがとうございます",
+    "meaning": "謝謝您。",
+    "category": "問候與常用語",
+    "speechText": "ありがとうございます。",
+    "imagePath": "images/sho-sensei/thank-you-polite.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "you-are-welcome",
+    "word": "どういたしまして。",
+    "kana": "どういたしまして",
+    "meaning": "不客氣。",
+    "category": "問候與常用語",
+    "speechText": "どういたしまして。",
+    "imagePath": "images/sho-sensei/you-are-welcome.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "please-asking",
+    "word": "お願いします。",
+    "kana": "おねがいします",
+    "meaning": "拜託您了。",
+    "category": "問候與常用語",
+    "speechText": "お願いします。",
+    "imagePath": "images/sho-sensei/please-asking.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "long-time-no-see",
+    "word": "お久しぶりです。",
+    "kana": "おひさしぶりです",
+    "meaning": "好久不見。",
+    "category": "問候與常用語",
+    "speechText": "お久しぶりです。",
+    "imagePath": "images/sho-sensei/long-time-no-see.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "take-care",
+    "word": "お元気で。",
+    "kana": "おげんきで",
+    "meaning": "請保重（分別時）。",
+    "category": "問候與常用語",
+    "speechText": "お元気で。",
+    "imagePath": "images/sho-sensei/take-care.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "im-home",
+    "word": "ただいま。",
+    "kana": "ただいま",
+    "meaning": "我回來了。",
+    "category": "問候與常用語",
+    "speechText": "ただいま。",
+    "imagePath": "images/sho-sensei/im-home.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "welcome-home",
+    "word": "お帰りなさい。",
+    "kana": "おかえりなさい",
+    "meaning": "你回來啦！",
+    "category": "問候與常用語",
+    "speechText": "お帰りなさい。",
+    "imagePath": "images/sho-sensei/welcome-home.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "im-heading-out",
+    "word": "行ってきます。",
+    "kana": "いってきます",
+    "meaning": "我出門囉！",
+    "category": "問候與常用語",
+    "speechText": "行ってきます。",
+    "imagePath": "images/sho-sensei/im-heading-out.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "see-you-later",
+    "word": "いってらっしゃい。",
+    "kana": "いってらっしゃい",
+    "meaning": "路上小心！",
+    "category": "問候與常用語",
+    "speechText": "いってらっしゃい。",
+    "imagePath": "images/sho-sensei/see-you-later.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "please-help",
+    "word": "助けてください。",
+    "kana": "たすけてください",
+    "meaning": "請幫幫我！",
+    "category": "問候與常用語",
+    "speechText": "助けてください。",
+    "imagePath": "images/sho-sensei/please-help.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "excuse-the-intrusion",
+    "word": "お邪魔します。",
+    "kana": "おじゃまします",
+    "meaning": "打擾了。",
+    "category": "問候與常用語",
+    "speechText": "お邪魔します。",
+    "imagePath": "images/sho-sensei/excuse-the-intrusion.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "congratulations",
+    "word": "おめでとうございます。",
+    "kana": "おめでとうございます",
+    "meaning": "恭喜！",
+    "category": "問候與常用語",
+    "speechText": "おめでとうございます。",
+    "imagePath": "images/sho-sensei/congratulations.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "happy-birthday",
+    "word": "お誕生日おめでとうございます。",
+    "kana": "おたんじょうびおめでとうございます",
+    "meaning": "生日快樂！",
+    "category": "問候與常用語",
+    "speechText": "お誕生日おめでとうございます。",
+    "imagePath": "images/sho-sensei/happy-birthday.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "leaving-first",
+    "word": "お先に失礼します。",
+    "kana": "おさきにしつれいします",
+    "meaning": "我先走一步了。",
+    "category": "問候與常用語",
+    "speechText": "お先に失礼します。",
+    "imagePath": "images/sho-sensei/leaving-first.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "thanks-for-your-work",
+    "word": "お疲れ様でした。",
+    "kana": "おつかれさまでした",
+    "meaning": "您辛苦了。",
+    "category": "問候與常用語",
+    "speechText": "お疲れ様でした。",
+    "imagePath": "images/sho-sensei/thanks-for-your-work.webp",
     "pictureQuizEligible": false
   },
   {
@@ -2339,6 +2893,327 @@
     "category": "星期與數字",
     "speechText": "きゅうせん",
     "imagePath": "images/sho-sensei/number-9000.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "you",
+    "word": "あなた",
+    "kana": "あなた",
+    "meaning": "你",
+    "category": "自我介紹與職業",
+    "speechText": "あなた",
+    "imagePath": "images/sho-sensei/you.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "he",
+    "word": "彼",
+    "kana": "かれ",
+    "meaning": "他",
+    "category": "自我介紹與職業",
+    "speechText": "かれ",
+    "imagePath": "images/sho-sensei/he.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "she",
+    "word": "彼女",
+    "kana": "かのじょ",
+    "meaning": "她",
+    "category": "自我介紹與職業",
+    "speechText": "かのじょ",
+    "imagePath": "images/sho-sensei/she.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "that-person",
+    "word": "あの人",
+    "kana": "あのひと",
+    "meaning": "那個人",
+    "category": "自我介紹與職業",
+    "speechText": "あのひと",
+    "imagePath": "images/sho-sensei/that-person.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "honorific-san",
+    "word": "～さん",
+    "kana": "さん",
+    "meaning": "接在姓名後的稱呼，如「田中さん」",
+    "category": "自我介紹與職業",
+    "speechText": "さん",
+    "imagePath": "images/sho-sensei/honorific-san.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "nationality-suffix",
+    "word": "～人",
+    "kana": "じん",
+    "meaning": "接在國名後，表示某國人，如「日本人」",
+    "category": "自我介紹與職業",
+    "speechText": "じん",
+    "imagePath": "images/sho-sensei/nationality-suffix.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "age-suffix",
+    "word": "～歳",
+    "kana": "さい",
+    "meaning": "～歲，如「五歳（ごさい）」",
+    "category": "自我介紹與職業",
+    "speechText": "さい",
+    "imagePath": "images/sho-sensei/age-suffix.webp",
+    "pictureQuizEligible": false,
+    "variants": ["～才"]
+  },
+  {
+    "id": "work",
+    "word": "仕事",
+    "kana": "しごと",
+    "meaning": "工作",
+    "category": "自我介紹與職業",
+    "speechText": "しごと",
+    "imagePath": "images/sho-sensei/work.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "country",
+    "word": "国",
+    "kana": "くに",
+    "meaning": "國家。自我介紹時也可用來問來自哪一國",
+    "category": "自我介紹與職業",
+    "speechText": "くに",
+    "imagePath": "images/sho-sensei/country.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "company-employee",
+    "word": "会社員",
+    "kana": "かいしゃいん",
+    "meaning": "公司職員",
+    "category": "自我介紹與職業",
+    "speechText": "かいしゃいん",
+    "imagePath": "images/sho-sensei/company-employee.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "civil-servant",
+    "word": "公務員",
+    "kana": "こうむいん",
+    "meaning": "公務員",
+    "category": "自我介紹與職業",
+    "speechText": "こうむいん",
+    "imagePath": "images/sho-sensei/civil-servant.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "bank-employee",
+    "word": "銀行員",
+    "kana": "ぎんこういん",
+    "meaning": "銀行行員",
+    "category": "自我介紹與職業",
+    "speechText": "ぎんこういん",
+    "imagePath": "images/sho-sensei/bank-employee.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "homemaker",
+    "word": "主婦",
+    "kana": "しゅふ",
+    "meaning": "家庭主婦",
+    "category": "自我介紹與職業",
+    "speechText": "しゅふ",
+    "imagePath": "images/sho-sensei/homemaker.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "student",
+    "word": "学生",
+    "kana": "がくせい",
+    "meaning": "學生",
+    "category": "自我介紹與職業",
+    "speechText": "がくせい",
+    "imagePath": "images/sho-sensei/student.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "university-student",
+    "word": "大学生",
+    "kana": "だいがくせい",
+    "meaning": "大學生",
+    "category": "自我介紹與職業",
+    "speechText": "だいがくせい",
+    "imagePath": "images/sho-sensei/university-student.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "high-school-student",
+    "word": "高校生",
+    "kana": "こうこうせい",
+    "meaning": "高中生",
+    "category": "自我介紹與職業",
+    "speechText": "こうこうせい",
+    "imagePath": "images/sho-sensei/high-school-student.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "schoolteacher",
+    "word": "教師",
+    "kana": "きょうし",
+    "meaning": "教師",
+    "category": "自我介紹與職業",
+    "speechText": "きょうし",
+    "imagePath": "images/sho-sensei/schoolteacher.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "friend",
+    "word": "友達",
+    "kana": "ともだち",
+    "meaning": "朋友",
+    "category": "自我介紹與職業",
+    "speechText": "ともだち",
+    "imagePath": "images/sho-sensei/friend.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "classmate",
+    "word": "クラスメート",
+    "kana": "クラスメート",
+    "meaning": "同班同學",
+    "category": "自我介紹與職業",
+    "speechText": "クラスメート",
+    "imagePath": "images/sho-sensei/classmate.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "colleague",
+    "word": "同僚",
+    "kana": "どうりょう",
+    "meaning": "同事",
+    "category": "自我介紹與職業",
+    "speechText": "どうりょう",
+    "imagePath": "images/sho-sensei/colleague.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-1",
+    "word": "1月",
+    "kana": "いちがつ",
+    "meaning": "一月",
+    "category": "月份",
+    "speechText": "いちがつ",
+    "imagePath": "images/sho-sensei/month-1.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-2",
+    "word": "2月",
+    "kana": "にがつ",
+    "meaning": "二月",
+    "category": "月份",
+    "speechText": "にがつ",
+    "imagePath": "images/sho-sensei/month-2.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-3",
+    "word": "3月",
+    "kana": "さんがつ",
+    "meaning": "三月",
+    "category": "月份",
+    "speechText": "さんがつ",
+    "imagePath": "images/sho-sensei/month-3.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-4",
+    "word": "4月",
+    "kana": "しがつ",
+    "meaning": "四月",
+    "category": "月份",
+    "speechText": "しがつ",
+    "imagePath": "images/sho-sensei/month-4.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-5",
+    "word": "5月",
+    "kana": "ごがつ",
+    "meaning": "五月",
+    "category": "月份",
+    "speechText": "ごがつ",
+    "imagePath": "images/sho-sensei/month-5.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-6",
+    "word": "6月",
+    "kana": "ろくがつ",
+    "meaning": "六月",
+    "category": "月份",
+    "speechText": "ろくがつ",
+    "imagePath": "images/sho-sensei/month-6.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-7",
+    "word": "7月",
+    "kana": "しちがつ",
+    "meaning": "七月",
+    "category": "月份",
+    "speechText": "しちがつ",
+    "imagePath": "images/sho-sensei/month-7.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-8",
+    "word": "8月",
+    "kana": "はちがつ",
+    "meaning": "八月",
+    "category": "月份",
+    "speechText": "はちがつ",
+    "imagePath": "images/sho-sensei/month-8.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-9",
+    "word": "9月",
+    "kana": "くがつ",
+    "meaning": "九月",
+    "category": "月份",
+    "speechText": "くがつ",
+    "imagePath": "images/sho-sensei/month-9.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-10",
+    "word": "10月",
+    "kana": "じゅうがつ",
+    "meaning": "十月",
+    "category": "月份",
+    "speechText": "じゅうがつ",
+    "imagePath": "images/sho-sensei/month-10.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-11",
+    "word": "11月",
+    "kana": "じゅういちがつ",
+    "meaning": "十一月",
+    "category": "月份",
+    "speechText": "じゅういちがつ",
+    "imagePath": "images/sho-sensei/month-11.webp",
+    "pictureQuizEligible": false
+  },
+  {
+    "id": "month-12",
+    "word": "12月",
+    "kana": "じゅうにがつ",
+    "meaning": "十二月",
+    "category": "月份",
+    "speechText": "じゅうにがつ",
+    "imagePath": "images/sho-sensei/month-12.webp",
     "pictureQuizEligible": false
   }
 ]
