@@ -8,7 +8,9 @@ const main = read('script.js');
 const controllerSource = main.slice(main.indexOf('function createJapaneseListeningModeSpeechController('),
   main.indexOf('function getJapaneseListeningSpeechProvider('));
 const html = read('japanese/index.html');
-assert.ok(html.indexOf('hiraganaChartAudio.js?v=1.0') < html.indexOf('hiraganaListening.js?v=1.7'));
+const chartAudioIndex = html.search(/src="hiraganaChartAudio\.js\?v=\d+\.\d+"/);
+assert.ok(chartAudioIndex >= 0);
+assert.ok(html.search(/src="hiraganaListening\.js\?v=\d+\.\d+"/) > chartAudioIndex);
 const kana = [...read('japanese/index.html').matchAll(/data-hiragana="([^"]+)"/g)].map((match) => match[1]);
 
 class Element {
@@ -71,7 +73,8 @@ function fixture({ ios = true, touchMac = false, silentDrop = false, missingEnd 
   const keys = kana.map((character) => { const key = new Element(character); key.dataset.hiragana = character; return key; });
   const chartStatus = new Element(), title = new Element();
   const chart = { querySelector: (selector) => selector === 'h2' ? title : chartStatus, querySelectorAll: () => keys };
-  const controls = Object.fromEntries(['play', 'status', 'question', 'options', 'feedback', 'next', 'stats'].map((name) => [name, new Element()]));
+  const controls = Object.fromEntries(['play', 'status', 'question', 'options', 'feedback', 'next', 'stats', 'restart', 'result']
+    .map((name) => [name, new Element()]));
   const listening = { querySelector: (selector) => controls[selector.replace('#hiragana-listening-', '')] };
   const provider = { speechSynthesis: synthesis, SpeechSynthesisUtterance: Utterance, setTimeout, clearTimeout };
   const window = { setTimeout, clearTimeout, addEventListener: (name, handler) => events.push({ name, handler }) };

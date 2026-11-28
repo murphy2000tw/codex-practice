@@ -64,7 +64,7 @@ assert.equal(kana.join(''), 'アイウエオカキクケコサシスセソタチ
 assert.match(html, /data-japanese-kana-entry="katakanaListening"/);
 assert.match(html, /data-japanese-kana-back="katakanaListeningMenu"/);
 assert.match(html, /id="japaneseKatakanaListeningPanel" hidden/);
-assert.match(html, /src="\.\.\/script.js\?v=4\.17"/);
+assert.match(html, /src="\.\.\/script\.js\?v=\d+\.\d+"/);
 for (const file of ['hiraganaChartAudio.js?v=1.0', 'katakana.js?v=1.0']) {
   assert.ok(html.indexOf(`src="${file}"`) < html.indexOf('src="katakanaListening.js?v=1.2"'));
 }

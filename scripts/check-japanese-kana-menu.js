@@ -14,6 +14,14 @@ const menus = {
   hiraganaListeningMenu: ['平假名聽音練習', 'kanaListeningMenu', ['平假名聽音練習', '平假名濁音聽音練習', '平假名半濁音聽音練習', '平假名拗音聽音練習']],
   katakanaListeningMenu: ['片假名聽音練習', 'kanaListeningMenu', ['片假名聽音練習', '片假名濁音聽音練習', '片假名半濁音聽音練習', '片假名拗音聽音練習']],
 };
+const extendedCharts = {
+  hiraganaDakuten: 'が ぎ ぐ げ ご ざ じ ず ぜ ぞ だ ぢ づ で ど ば び ぶ べ ぼ',
+  hiraganaHandakuten: 'ぱ ぴ ぷ ぺ ぽ',
+  hiraganaYoon: 'きゃ きゅ きょ しゃ しゅ しょ ちゃ ちゅ ちょ にゃ にゅ にょ ひゃ ひゅ ひょ みゃ みゅ みょ りゃ りゅ りょ ぎゃ ぎゅ ぎょ じゃ じゅ じょ びゃ びゅ びょ ぴゃ ぴゅ ぴょ',
+  katakanaDakuten: 'ガ ギ グ ゲ ゴ ザ ジ ズ ゼ ゾ ダ ヂ ヅ デ ド バ ビ ブ ベ ボ',
+  katakanaHandakuten: 'パ ピ プ ペ ポ',
+  katakanaYoon: 'キャ キュ キョ シャ シュ ショ チャ チュ チョ ニャ ニュ ニョ ヒャ ヒュ ヒョ ミャ ミュ ミョ リャ リュ リョ ギャ ギュ ギョ ジャ ジュ ジョ ビャ ビュ ビョ ピャ ピュ ピョ',
+};
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, 'http://localhost');
   const file = path.resolve(root, '.' + decodeURIComponent(url.pathname));
@@ -26,13 +34,188 @@ const server = http.createServer((req, res) => {
   });
 });
 
+function mockKanaSpeech(ios) {
+  const speech = { calls: [], unlocks: [], mode: 'normal', hasJapaneseVoice: true };
+  window.kanaTestSpeech = speech;
+  let active, inClick, unlocked;
+  window.addEventListener('click', (event) => { inClick = event.isTrusted; }, true);
+  window.addEventListener('click', () => { inClick = false; });
+  window.SpeechSynthesisUtterance = class {
+    constructor(text) { this.text = text; }
+  };
+  Object.defineProperty(window, 'speechSynthesis', {
+    value: Object.assign(new EventTarget(), {
+      getVoices() {
+        const voices = [{ lang: 'en-US' }];
+        if (speech.hasJapaneseVoice) voices.push({ lang: 'ja-JP' });
+        return voices;
+      },
+      speak(utterance) {
+        active = utterance;
+        if (!utterance.text) {
+          speech.unlocks.push({ inClick, lang: utterance.lang, volume: utterance.volume });
+          unlocked = inClick;
+          return;
+        }
+        speech.calls.push(utterance);
+        if (ios && !unlocked) throw new Error('missing user gesture unlock');
+        if (speech.mode === 'error') utterance.onerror({ error: 'synthesis-failed' });
+        if (speech.mode === 'normal') utterance.onstart();
+      },
+      cancel() { if (active) active.cancelled = true; active = null; },
+    }),
+  });
+  const nativeTimeout = window.setTimeout;
+  window.setTimeout = (callback, delay, ...args) => {
+    if (delay === 1000) delay = 40;
+    if (speech.fastFailure && delay === 5000) delay = 200;
+    return nativeTimeout(callback, delay, ...args);
+  };
+}
+
+async function exerciseExtendedChart({ page, panel, activate, target, title, parent, round, ios }) {
+  const keys = panel.locator('.hiragana-key');
+  const status = panel.getByRole('status');
+  const expected = extendedCharts[target].split(' ');
+  const columns = target.endsWith('Yoon') ? 3 : 5;
+  assert.equal(await panel.getAttribute('id'), target);
+  assert.equal(await page.locator(':focus').getAttribute('id'), `${target}-title`);
+  assert.equal(await panel.locator('h2').innerText(), title);
+  assert.deepEqual(await keys.allTextContents(), expected);
+  assert.equal(await panel.locator('.hiragana-columns > span').count(), columns + 1);
+  assert.equal(await status.innerText(), '');
+  assert.equal(await panel.locator('.is-playing').count(), 0);
+  assert.ok(await panel.locator('.hiragana-row[role="group"]').evaluateAll((rows, size) => rows.every((row) => {
+    const buttons = Array.from(row.querySelectorAll('button'));
+    return buttons.length === size && buttons.every((button) => {
+      const { left, right, height, top } = button.getBoundingClientRect();
+      const label = document.createRange();
+      label.selectNodeContents(button);
+      const text = label.getBoundingClientRect();
+      return left >= 0 && right <= innerWidth && height >= 44
+        && top === buttons[0].getBoundingClientRect().top
+        && text.left >= left && text.right <= right && label.getClientRects().length === 1;
+    });
+  }), columns), `${target} keys must align, fit their labels and remain inside the viewport`);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  await page.keyboard.press('Tab');
+  assert.equal(await page.locator(':focus').getAttribute('data-japanese-kana-back'), parent);
+  await page.keyboard.press('Tab');
+  assert.equal(await page.locator(':focus').innerText(), expected[0]);
+
+  const counts = () => page.evaluate(() => ({
+    audio: window.kanaTestAudio.length,
+    speech: window.kanaTestSpeech.calls.length,
+    unlocks: window.kanaTestSpeech.unlocks.length,
+  }));
+  const initial = await counts();
+  for (const [index, kana] of (round === 0 ? expected : expected.slice(0, 1)).entries()) {
+    const key = keys.nth(index);
+    assert.equal(await key.getAttribute('lang'), 'ja');
+    assert.equal(await key.getAttribute('aria-label'), `播放 ${kana} 的日文發音`);
+    await activate(key, index % 2 ? 'Space' : 'Enter');
+    await page.waitForFunction((count) => window.kanaTestSpeech.calls.length === count, initial.speech + index + 1);
+    const spoken = await page.evaluate(() => {
+      const { text, lang, voice } = window.kanaTestSpeech.calls.at(-1);
+      return { text, lang, voice: voice?.lang };
+    });
+    assert.deepEqual(spoken, { text: kana, lang: 'ja-JP', voice: 'ja-JP' });
+    assert.equal(await status.innerText(), `正在播放「${kana}」…`);
+    assert.equal(await panel.locator('.is-playing').count(), 1);
+    await page.evaluate(() => window.kanaTestSpeech.calls.at(-1).onend());
+    assert.match(await status.innerText(), /播放完畢/);
+    assert.equal(await panel.locator('.is-playing').count(), 0);
+  }
+
+  await activate(keys.first());
+  await page.waitForFunction((view) => document.querySelector(`#${view} [role="status"]`).textContent.includes('正在播放'), target);
+  await page.evaluate(() => { window.kanaTestSpeech.previous = window.kanaTestSpeech.calls.at(-1); });
+  await activate(keys.first(), 'Space');
+  await page.waitForFunction(() => window.kanaTestSpeech.calls.at(-1) !== window.kanaTestSpeech.previous);
+  assert.equal(await page.evaluate(() => window.kanaTestSpeech.previous.cancelled), true, 'replay cancels the previous request');
+  await page.evaluate(() => window.kanaTestSpeech.previous.onend());
+  assert.match(await status.innerText(), /正在播放/, 'stale callback leaves current playback intact');
+  await activate(panel.locator('[data-japanese-kana-back]'), 'Space');
+  assert.equal(await page.evaluate(() => window.kanaTestSpeech.calls.at(-1).cancelled), true, 'return stops speech');
+  const final = await counts();
+  assert.equal(final.audio, initial.audio, 'extended charts use speech synthesis');
+  assert.equal(final.unlocks - initial.unlocks, ios ? final.speech - initial.speech : 0);
+  if (ios) {
+    assert.ok(await page.evaluate(() => window.kanaTestSpeech.unlocks.every(
+      ({ inClick, lang, volume }) => inClick && lang === 'ja-JP' && volume === 0)));
+  }
+}
+
+async function exerciseSpeechRecovery(page, activate) {
+  const entry = page.locator('[data-japanese-kana-entry="hiraganaYoon"]');
+  const panel = page.locator('#hiraganaYoon');
+  const status = panel.getByRole('status');
+  const keys = panel.locator('.hiragana-key');
+  const back = panel.locator('[data-japanese-kana-back]');
+  const speechState = (state) => page.evaluate((props) => Object.assign(window.kanaTestSpeech, props), state);
+  const waitForStatus = (message) => page.waitForFunction((expected) =>
+    document.querySelector('#hiraganaYoon [role="status"]').textContent.includes(expected), message);
+  await activate(entry);
+
+  await speechState({ hasJapaneseVoice: false });
+  await activate(keys.first());
+  await waitForStatus('正在等待裝置載入日文語音');
+  await speechState({ hasJapaneseVoice: true });
+  await page.evaluate(() => window.speechSynthesis.dispatchEvent(new Event('voiceschanged')));
+  await waitForStatus('正在播放「きゃ」');
+  await page.evaluate(() => { window.kanaTestSpeech.previous = window.kanaTestSpeech.calls.at(-1); });
+  await activate(keys.nth(1));
+  await waitForStatus('正在播放「きゅ」');
+  await page.evaluate(() => window.kanaTestSpeech.previous.onerror({ error: 'canceled' }));
+  assert.match(await status.innerText(), /正在播放「きゅ」/);
+  assert.equal(await page.evaluate(() => window.kanaTestSpeech.previous.cancelled), true);
+  assert.deepEqual(await panel.locator('.is-playing').allTextContents(), ['きゅ']);
+
+  await speechState({ hasJapaneseVoice: false, fastFailure: true });
+  await activate(keys.first());
+  await waitForStatus('找不到日文語音');
+  assert.equal(await panel.locator('.is-playing').count(), 0);
+  await speechState({ hasJapaneseVoice: true, mode: 'error' });
+  await activate(keys.first());
+  await waitForStatus('無法播放日文語音');
+  assert.equal(await panel.locator('.is-playing').count(), 0);
+  await speechState({ mode: 'silent' });
+  await activate(keys.first());
+  await waitForStatus('無法播放日文語音');
+  assert.equal(await page.evaluate(() => window.kanaTestSpeech.calls.at(-1).cancelled), true);
+  assert.equal(await panel.locator('.is-playing').count(), 0);
+
+  await speechState({ mode: 'normal', fastFailure: false, hasJapaneseVoice: false });
+  await activate(keys.first());
+  await waitForStatus('正在等待裝置載入日文語音');
+  const calls = await page.evaluate(() => window.kanaTestSpeech.calls.length);
+  await activate(back);
+  await speechState({ hasJapaneseVoice: true });
+  await page.evaluate(() => window.speechSynthesis.dispatchEvent(new Event('voiceschanged')));
+  await activate(entry);
+  assert.equal(await status.innerText(), '');
+  assert.equal(await page.evaluate(() => window.kanaTestSpeech.calls.length), calls, 'return cancels voice wait');
+
+  await activate(keys.first());
+  await waitForStatus('正在播放「きゃ」');
+  await page.evaluate(() => window.dispatchEvent(new Event('pagehide')));
+  assert.equal(await page.evaluate(() => window.kanaTestSpeech.calls.at(-1).cancelled), true);
+  assert.equal(await panel.locator('.is-playing').count(), 0);
+  assert.equal(await status.innerText(), '');
+}
+
 (async () => {
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
   const browser = await chromium.launch({ headless: true,
     ...(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium' } : {}) });
   try {
-    for (const mobile of [false, true]) {
-      const context = await browser.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1280, height: 900 }, isMobile: mobile, hasTouch: mobile });
+    for (const width of [1280, 390, 320]) {
+      const mobile = width < 1280;
+      const ios = width === 390;
+      const context = await browser.newContext({
+        viewport: { width, height: mobile ? 844 : 900 }, isMobile: mobile, hasTouch: mobile,
+        ...(ios ? { userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1' } : {}),
+      });
       const page = await context.newPage();
       page.setDefaultTimeout(10000);
       const errors = [];
@@ -47,6 +230,7 @@ const server = http.createServer((req, res) => {
           pause() { this.paused = true; }
         };
       });
+      await page.addInitScript(mockKanaSpeech, ios);
       await page.goto(`http://127.0.0.1:${server.address().port}/japanese/`);
       await page.waitForFunction(() => typeof window.showJapaneseContentView === 'function');
       const mainEntries = await page.locator('#japaneseHomeContent [data-japanese-entry]').evaluateAll((buttons) => buttons.map((button) => button.dataset.japaneseEntry));
@@ -58,7 +242,7 @@ const server = http.createServer((req, res) => {
         else { await locator.focus(); await page.keyboard.press(key); }
       };
       const activeView = () => page.locator('#japaneseContent > :not([hidden])');
-      async function visit(view) {
+      async function visit(view, round) {
         assert.equal(await activeView().count(), 1);
         assert.equal(await activeView().getAttribute('id'), view);
         const [title, parent, labels] = menus[view];
@@ -66,7 +250,7 @@ const server = http.createServer((req, res) => {
         assert.equal(await page.locator(':focus').getAttribute('id'), `${view}-title`);
         assert.deepEqual(await activeView().locator('.entry-card-title').allTextContents(), labels);
         assert.equal(await activeView().locator('[data-japanese-kana-back]').getAttribute('data-japanese-kana-back'), parent);
-        assert.equal(await activeView().locator('button[disabled]').count(), /^(hiragana|katakana)/.test(view) ? 3 : 0);
+        assert.equal(await activeView().locator('button[disabled]').count(), /^(hiragana|katakana)ListeningMenu$/.test(view) ? 3 : 0);
         for (const disabled of await activeView().locator('button[disabled]').all()) {
           assert.match(await disabled.innerText(), /準備中/);
           assert.equal(await disabled.getAttribute('data-japanese-kana-entry'), null);
@@ -75,8 +259,15 @@ const server = http.createServer((req, res) => {
         }
         for (const entry of await activeView().locator('[data-japanese-kana-entry]').all()) {
           const target = await entry.getAttribute('data-japanese-kana-entry');
+          const title = await entry.locator('h3').innerText();
+          const speechBeforeEntry = await page.evaluate(() => window.kanaTestSpeech.calls.length + window.kanaTestSpeech.unlocks.length);
           await activate(entry);
-          if (menus[target]) await visit(target);
+          if (menus[target]) await visit(target, round);
+          else if (extendedCharts[target]) {
+            assert.equal(await page.evaluate(() => window.kanaTestSpeech.calls.length + window.kanaTestSpeech.unlocks.length),
+              speechBeforeEntry, 'entering a chart does not play speech');
+            await exerciseExtendedChart({ page, panel: activeView(), activate, target, title, parent: view, round, ios });
+          }
           else if (target === 'kanaListeningResults') {
             assert.match(await activeView().innerText(), /尚無完成紀錄/);
             await activate(activeView().locator('[data-japanese-kana-back]'));
@@ -116,22 +307,26 @@ const server = http.createServer((req, res) => {
       // Repeat sessions to exercise re-entry, clean questions and detached menu nodes.
       for (let round = 0; round < 2; round++) {
         await activate(page.locator('[data-japanese-entry="kanaMenu"]'));
-        await visit('kanaMenu');
+        await visit('kanaMenu', round);
         assert.equal(await activeView().getAttribute('id'), 'japaneseHomeContent');
         assert.equal(await page.locator(':focus').getAttribute('data-japanese-entry'), 'kanaMenu');
       }
-      // Tab order skips unavailable options and remains usable after menu replacement.
+      // Tab order includes all four pronunciation categories after menu replacement.
       await activate(page.locator('[data-japanese-entry="kanaMenu"]'));
       await activate(page.locator('[data-japanese-kana-entry="kanaPracticeMenu"]'));
       await activate(page.locator('[data-japanese-kana-entry="hiraganaPracticeMenu"]'));
       await page.keyboard.press('Tab');
       assert.equal(await page.locator(':focus').getAttribute('data-japanese-kana-back'), 'kanaPracticeMenu');
-      await page.keyboard.press('Tab');
-      assert.equal(await page.locator(':focus').getAttribute('data-japanese-kana-entry'), 'hiragana');
+      for (const entry of ['hiragana', 'hiraganaDakuten', 'hiraganaHandakuten', 'hiraganaYoon']) {
+        await page.keyboard.press('Tab');
+        assert.equal(await page.locator(':focus').getAttribute('data-japanese-kana-entry'), entry);
+      }
       await page.keyboard.press('Tab');
       assert.equal(await page.evaluate(() => Boolean(document.activeElement?.closest('#hiraganaPracticeMenu'))), false);
+      await exerciseSpeechRecovery(page, activate);
       assert.deepEqual(errors, [], 'page must have no runtime errors');
-      console.log(`PASS kana navigation: ${mobile ? 'mobile touch 390px' : 'desktop keyboard'}, all 7 menus, 12 disabled leaves, four practice pages, return focus, stop playback, re-entry and Tab order`);
+      console.log(`PASS kana navigation: ${width}px ${mobile ? 'touch' : 'keyboard'}, all 7 menus, 6 disabled listening entries, 116 extended kana with ja-JP speech, chart layout, return focus, replay, re-entry and Tab order${ios ? ', iOS gesture unlock simulation' : ''}`);
+      console.log(`PASS kana speech recovery: ${width}px, voice loading, missing voice, playback error, start timeout, rapid switch, stale callbacks, retry and cancellation on return/pagehide`);
       await context.close();
     }
     // Decode and play the existing WAVs through the real browser Audio API.

@@ -735,6 +735,7 @@ function renderJapaneseView(view) {
   window.japaneseHiraganaListeningPage?.onViewChange(panelView);
   if (japaneseKatakanaListeningPanel) japaneseKatakanaListeningPanel.hidden = panelView !== "katakanaListening";
   window.japaneseKatakanaListeningPage?.onViewChange(panelView);
+  window.japaneseKanaPracticePage?.onViewChange(panelView);
   japaneseKanaViews.forEach((panel, name) => { panel.hidden = panelView !== name; });
   currentJapaneseView = nextView;
   activeJapaneseTab = getModePanelView(panelView);
@@ -4744,7 +4745,7 @@ japaneseKanaNavigationButtons.forEach((button) => {
     const target = button.dataset.japaneseKanaEntry || button.dataset.japaneseKanaBack;
     window.showJapaneseContentView(target);
     const panel = getJapaneseViewElement(target);
-    // Returning restores the entry button; entering a menu announces its heading.
+    // Returning restores the entry button; entering a page announces its heading.
     const focusTarget = button.hasAttribute("data-japanese-kana-back")
       ? panel?.querySelector(`[data-japanese-kana-entry="${previousView}"], [data-japanese-entry="${previousView}"]`)
       : panel?.querySelector("h2");
