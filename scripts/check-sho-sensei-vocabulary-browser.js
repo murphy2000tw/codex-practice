@@ -7,6 +7,7 @@ const { chromium, devices } = require('playwright');
 
 const root = path.resolve(__dirname, '..');
 const words = require('../japanese/shoSenseiVocabulary.json');
+const pictureQuestionCount = 130;
 const wordsByQuizImage = Object.fromEntries(words.map(word => [word.pictureQuizImagePath || word.imagePath, word]));
 const numberReadings = ['れい', 'いち', 'に', 'さん', 'よん', 'ご', 'ろく', 'なな', 'はち', 'きゅう', 'じゅう'];
 const server = http.createServer((request, response) => {
@@ -65,7 +66,7 @@ function installSpeechProbe() {
 async function checkPictureQuizQuestions(page) {
   const eligibleWords = words.filter(word => word.pictureQuizEligible);
   const wordById = new Map(words.map(word => [word.id, word]));
-  assert.equal(eligibleWords.length, 118);
+  assert.equal(eligibleWords.length, pictureQuestionCount);
   for (const word of eligibleWords) {
     assert.equal(new Set(word.pictureQuizDistractorIds).size, word.pictureQuizDistractorIds.length, word.id);
     for (const id of word.pictureQuizDistractorIds) {
@@ -73,7 +74,10 @@ async function checkPictureQuizQuestions(page) {
       assert.ok(candidate && candidate.category !== word.category && candidate.kana !== word.kana, `${word.id}/${id}`);
     }
   }
-  for (const id of ['name', 'written-character', 'monday', 'number-100', 'stay-home']) {
+  for (const id of [
+    'name', 'written-character', 'monday', 'number-100', 'stay-home', 'you', 'age-suffix',
+    'bank-employee', 'taipei', 'thank-you-polite', ...words.filter(word => /^\d+月$/.test(word.word)).map(word => word.id),
+  ]) {
     assert.equal(wordById.get(id).pictureQuizEligible, false, id);
   }
 
@@ -133,7 +137,7 @@ async function checkPictureQuiz(page, activate, mobile) {
 
   await activate(entry);
   await answers.last().waitFor();
-  assert.match(await progress.textContent(), /^第 1 題／共 118 題$/);
+  assert.equal(await progress.textContent(), `第 1 題／共 ${pictureQuestionCount} 題`);
   assert.equal(await page.locator(':focus').getAttribute('id'), 'sho-sensei-picture-quiz-title');
   assert.equal(await answers.count(), 3);
   assert.equal(await listens.count(), 3);
@@ -182,6 +186,12 @@ async function checkPictureQuiz(page, activate, mobile) {
   assert.equal(await answers.nth(wrong).evaluate(node => node.classList.contains('is-wrong')), true);
   assert.equal(await view.locator('.quiz-option:disabled').count(), 3);
   assert.equal(await image.getAttribute('src'), firstImagePath);
+  const wrongFeedback = await feedback.textContent();
+  await activate(listens.nth(wrong));
+  await waitForSpeech(optionWords[wrong].speechText);
+  assert.equal(await feedback.textContent(), wrongFeedback);
+  assert.equal(await image.getAttribute('src'), firstImagePath);
+  assert.ok(await next.isVisible());
   await activate(next);
   await assertIdle();
   assert.match(await progress.textContent(), /^第 2 題/);
@@ -287,7 +297,7 @@ async function checkPictureQuiz(page, activate, mobile) {
     assert.deepEqual(numberCards.sort(([first], [second]) => first - second),
       numberReadings.map((reading, number) => [number, number, reading]));
     await assertIdle();
-    assert.equal(await progress.textContent(), '完成練習！答對 118 題，共 118 題。');
+    assert.equal(await progress.textContent(), `完成練習！答對 ${pictureQuestionCount} 題，共 ${pictureQuestionCount} 題。`);
   }
 }
 
@@ -299,7 +309,7 @@ async function checkPictureQuiz(page, activate, mobile) {
       ...(fs.existsSync('/usr/bin/chromium') ? { executablePath: '/usr/bin/chromium' } : {}),
     });
     const url = `http://127.0.0.1:${server.address().port}/project/japanese/`;
-    assert.equal(words.length, 221);
+    assert.equal(words.length, 295);
     assert.equal(new Set(words.map(word => word.imagePath)).size, words.length);
     assert.ok(words.every(word => word.imagePath && typeof word.pictureQuizEligible === 'boolean'));
 
@@ -331,9 +341,11 @@ async function checkPictureQuiz(page, activate, mobile) {
       assert.ok(await view.isVisible());
       assert.ok(!(await page.locator('#japaneseVocabularyMenuView').isVisible()));
       assert.equal(await page.locator(':focus').getAttribute('id'), 'sho-sensei-vocabulary-title');
-      assert.equal(await view.locator('.sho-sensei-category').count(), 9);
+      assert.equal(await view.locator('.sho-sensei-category').count(), 11);
       assert.equal(await cards.count(), words.length);
       assert.equal(await card('sushi').locator('h4').textContent(), 'すし／おすし');
+      assert.equal(await card('age-suffix').locator('h4').textContent(), '～歳／～才');
+      assert.match(await card('age-suffix').locator('.sho-sensei-meaning').textContent(), /五歳（ごさい）/);
 
       const rendered = await cards.evaluateAll(nodes => nodes.map(node => ({
         id: node.dataset.wordId,
@@ -345,6 +357,17 @@ async function checkPictureQuiz(page, activate, mobile) {
         ({ id, imagePath, kana, meaning })));
       assert.deepEqual(rendered.filter(({ id }) => /^number-(?:[0-9]|10)$/.test(id)).map(({ imagePath }) => imagePath),
         numberReadings.map((_, number) => `images/sho-sensei/number-${number}.webp`));
+      const renderedExamples = await cards.evaluateAll(nodes => nodes.flatMap(node =>
+        [...node.querySelectorAll('.sho-sensei-examples li')].map(item =>
+          [node.dataset.wordId, item.querySelector('[lang="ja"]').textContent, item.lastElementChild.textContent])));
+      assert.deepEqual(renderedExamples, words.flatMap(word =>
+        (word.examples || []).map(({ sentence, meaning }) => [word.id, sentence, meaning])));
+      assert.equal(new Set(renderedExamples.map(([, sentence]) => sentence)).size, 10);
+      assert.equal(new Set(renderedExamples.map(([id, sentence]) => `${id}:${sentence}`)).size, renderedExamples.length);
+      assert.deepEqual(await card('ride').locator('.sho-sensei-examples [lang="ja"]').allTextContents(),
+        ['ヨットに乗ります。', 'カヌーに乗ります。']);
+      assert.ok(await card('dog').locator('.sho-sensei-examples').isHidden());
+      assert.ok(await card('wash').locator('.sho-sensei-examples').isVisible());
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       if (!mobile) {
         const images = await cards.locator('img').evaluateAll(async nodes => Promise.all(nodes.map(async image => {
@@ -385,11 +408,25 @@ async function checkPictureQuiz(page, activate, mobile) {
       assert.ok(unlocks.every(call => call.gesture && call.volume === 0 && call.lang === 'ja-JP'));
       assert.equal(await card('persimmon').getByRole('status').textContent(), '');
 
+      const batchReadings = {
+        japan: 'にほん', taipei: 'たいぺい', taichung: 'たいちゅう', tainan: 'たいなん',
+        hsinchu: 'しんちく', kaohsiung: 'たかお',
+        'month-4': 'しがつ', 'month-7': 'しちがつ', 'month-9': 'くがつ',
+        'honorific-san': 'さん', 'nationality-suffix': 'じん', 'age-suffix': 'さい',
+        hello: 'こんにちわ。', 'good-evening': 'こんばんわ。', 'excuse-me': 'すみません。',
+        'i-am-well': 'はい、元気です。', 'thank-you-polite': 'ありがとうございます。',
+        'happy-birthday': 'お誕生日おめでとうございます。',
+      };
+      for (const [id, speechText] of Object.entries(batchReadings)) {
+        await activate(controls(id));
+        await page.waitForFunction(text => window.shoSpeechProbe.active?.text === text, speechText);
+      }
+
       await activate(back);
       assert.ok(!(await view.isVisible()));
       assert.equal(await page.locator(':focus').getAttribute('data-japanese-vocabulary-entry'), 'sho-sensei');
       assert.equal(await page.evaluate(() => window.shoSpeechProbe.active), null);
-      assert.equal(await card('oyster').locator('[role="status"]').textContent(), '');
+      assert.equal(await card('happy-birthday').locator('[role="status"]').textContent(), '');
 
       await activate(entry);
       await activate(controls('number-0'));
@@ -424,7 +461,8 @@ async function checkPictureQuiz(page, activate, mobile) {
       await activate(page.locator('#backToVocabularyStudy'));
       await page.waitForFunction(when => performance.now() - when >= 1100, cancelledAt);
       assert.equal(await page.evaluate(() => window.shoSpeechProbe.active), null);
-      assert.equal(await page.evaluate(() => window.shoSpeechProbe.calls.filter(call => call.text).length), 7);
+      assert.equal(await page.evaluate(() => window.shoSpeechProbe.calls.filter(call => call.text).length),
+        7 + Object.keys(batchReadings).length);
       if (!mobile) await checkPictureQuizQuestions(page);
       await checkPictureQuiz(page, activate, mobile);
       assert.deepEqual(errors, []);

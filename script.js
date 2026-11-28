@@ -3504,7 +3504,7 @@ function playShoSenseiVocabularyWord(word, status) {
 
 function getShoSenseiVocabulary() {
   if (!shoSenseiVocabularyRequest) {
-    shoSenseiVocabularyRequest = fetch("./shoSenseiVocabulary.json?v=4").then((response) => {
+    shoSenseiVocabularyRequest = fetch("./shoSenseiVocabulary.json?v=5").then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
     }).catch((error) => {
@@ -3524,6 +3524,20 @@ function createShoSenseiVocabularyCard(word, template) {
   card.querySelector("h4").textContent = [word.word, ...(word.variants || [])].join("／");
   card.querySelector(".sho-sensei-kana").textContent = word.kana;
   card.querySelector(".sho-sensei-meaning").textContent = word.meaning;
+  if (word.examples?.length) {
+    const examples = card.querySelector(".sho-sensei-examples");
+    for (const { sentence, meaning } of word.examples) {
+      const example = document.createElement("li");
+      const japanese = document.createElement("p");
+      japanese.lang = "ja";
+      japanese.textContent = sentence;
+      const chinese = document.createElement("p");
+      chinese.textContent = meaning;
+      example.append(japanese, chinese);
+      examples.append(example);
+    }
+    examples.hidden = false;
+  }
   const button = card.querySelector("button");
   button.setAttribute("aria-label", `發音：${word.word}`);
   const status = card.querySelector(".sho-sensei-speech-status");
