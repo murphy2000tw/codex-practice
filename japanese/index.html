@@ -8,7 +8,7 @@
   <link rel="manifest" href="../manifest.webmanifest">
   <title>日文學習｜Marco and Vivi學習網</title>
   <meta name="japanese-layout-version" content="2.3">
-  <link rel="stylesheet" href="../style.css?v=2.16">
+  <link rel="stylesheet" href="../style.css?v=2.17">
 </head>
 <body data-japanese-layout-version="2.3">
   <main class="page-shell">
@@ -506,30 +506,71 @@
       </template>
     </section>
 
-    <section id="japaneseShoSenseiPictureQuizView" data-japanese-vocabulary-view="picture-quiz" aria-labelledby="sho-sensei-picture-quiz-title" hidden>
-      <button class="secondary-button vocabulary-back-menu-button" type="button" data-picture-quiz-back>返回單字選單</button>
-      <h2 id="sho-sensei-picture-quiz-title" tabindex="-1">看圖選字練習</h2>
-      <div class="quiz-card sho-picture-quiz-card">
-        <p data-picture-quiz-progress role="status"></p>
-        <div data-picture-quiz-question hidden>
-          <p class="quiz-prompt-label" tabindex="-1">看圖片，選出對應的日文單字。</p>
-          <img alt="本題插圖" width="384" height="240">
-          <div class="sho-picture-quiz-options" data-picture-quiz-options></div>
-          <p data-picture-quiz-speech role="status"></p>
-          <p data-picture-quiz-feedback role="status"></p>
+    <div id="japaneseShoSenseiPictureQuizView" data-japanese-vocabulary-view="picture-quiz" hidden>
+      <p class="sho-picture-quiz-storage" data-picture-quiz-storage role="status"></p>
+      <section data-picture-quiz-exercise aria-labelledby="sho-sensei-picture-quiz-title">
+        <button class="secondary-button vocabulary-back-menu-button" type="button" data-picture-quiz-back>返回單字選單</button>
+        <div class="sho-picture-quiz-heading">
+          <h2 id="sho-sensei-picture-quiz-title" tabindex="-1">看圖選字練習</h2>
+          <button class="secondary-button" type="button" data-picture-quiz-open-history>歷史成績</button>
         </div>
-        <div class="sho-picture-quiz-actions">
-          <button class="answer-button" type="button" data-picture-quiz-next hidden>下一題</button>
-          <button class="secondary-button" type="button" data-picture-quiz-restart hidden>重新開始</button>
+        <div class="quiz-card sho-picture-quiz-card">
+          <p data-picture-quiz-progress role="status"></p>
+          <div data-picture-quiz-question hidden>
+            <p class="quiz-prompt-label" tabindex="-1">看圖片，選出對應的日文單字。</p>
+            <img alt="本題插圖" width="384" height="240">
+            <div class="sho-picture-quiz-options" data-picture-quiz-options></div>
+            <p data-picture-quiz-speech role="status"></p>
+            <p data-picture-quiz-feedback role="status"></p>
+          </div>
+          <div class="sho-picture-quiz-actions">
+            <button class="answer-button" type="button" data-picture-quiz-next hidden>下一題</button>
+            <button class="secondary-button" type="button" data-picture-quiz-restart hidden>重新開始</button>
+          </div>
         </div>
-      </div>
+      </section>
+      <section data-picture-quiz-result aria-labelledby="sho-sensei-picture-result-title" hidden>
+        <button class="secondary-button vocabulary-back-menu-button" type="button" data-picture-quiz-back>返回單字選單</button>
+        <div class="quiz-card sho-picture-quiz-card">
+          <h2 id="sho-sensei-picture-result-title" tabindex="-1">本回成績</h2>
+          <p class="sho-picture-quiz-score" data-picture-quiz-score></p>
+          <div class="sho-picture-quiz-actions">
+            <button class="answer-button" type="button" data-picture-quiz-again>再練一回</button>
+            <button class="secondary-button" type="button" data-picture-quiz-open-history>歷史成績</button>
+          </div>
+          <h3>錯題回顧</h3>
+          <p data-picture-quiz-perfect hidden>全部答對</p>
+          <div class="sho-picture-quiz-records" data-picture-quiz-mistakes></div>
+        </div>
+      </section>
+      <section data-picture-quiz-history aria-labelledby="sho-sensei-picture-history-title" hidden>
+        <div class="feature-page-header">
+          <div>
+            <h2 id="sho-sensei-picture-history-title" tabindex="-1">歷史成績</h2>
+            <p class="feature-page-description">保留此瀏覽器最近完成的 20 筆成績。</p>
+          </div>
+          <button class="secondary-button" type="button" data-picture-quiz-history-back>返回上一層</button>
+        </div>
+        <p data-picture-quiz-no-history>尚無完成紀錄。完成一回看圖選字練習後，成績會顯示在這裡。</p>
+        <div class="sho-picture-quiz-records" data-picture-quiz-history-list></div>
+      </section>
       <template data-picture-quiz-option>
         <div class="sho-picture-quiz-option">
           <button class="quiz-option" type="button" lang="ja"></button>
           <button class="secondary-button sho-picture-quiz-listen" type="button">聽發音</button>
         </div>
       </template>
-    </section>
+      <template data-picture-quiz-mistake>
+        <article class="sentence-composition-card sho-picture-quiz-mistake">
+          <h4></h4>
+          <img alt="本題插圖" width="384" height="240" loading="lazy">
+          <p>你選的答案：<span lang="ja"></span></p>
+          <p>正確答案：<span lang="ja"></span></p>
+          <button class="secondary-button sho-picture-quiz-listen" type="button">聽發音</button>
+          <p class="sho-picture-quiz-review-speech" role="status"></p>
+        </article>
+      </template>
+    </div>
 
     <section id="japaneseGrammarMenuView" class="reading-menu-view" data-japanese-grammar-view="menu" aria-labelledby="grammar-menu-title" hidden>
       <div class="entry-grid reading-menu-grid">
@@ -702,7 +743,7 @@
     window.JAPANESE_JLPT_READING_N4_URL = "../japaneseJlptReadingQuestions.json?v=17c2";
   </script>
   <script src="../japaneseReadingQuestions.js?v=1.0"></script>
-  <script src="shoSenseiPictureQuiz.js?v=1.1"></script>
+  <script src="shoSenseiPictureQuiz.js?v=1.2"></script>
   <script src="../script.js?v=4.22"></script>
   <script src="hiraganaAudio.js?v=1.1"></script>
   <script src="hiraganaChartAudio.js?v=1.0"></script>
