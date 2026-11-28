@@ -3292,7 +3292,7 @@ h1 {
   }
 }
 
-/* Basic hiragana pronunciation: preserve five vowel columns on small screens. */
+/* Kana pronunciation charts keep their vowel columns on small screens. */
 .hiragana-chart {
   display: grid;
   gap: 8px;
@@ -3304,6 +3304,10 @@ h1 {
   grid-template-columns: 2.5rem repeat(5, minmax(0, 1fr));
   gap: clamp(4px, 1.5vw, 12px);
   align-items: center;
+}
+
+.kana-yoon-row {
+  grid-template-columns: 2.5rem repeat(3, minmax(0, 1fr));
 }
 
 .hiragana-row-label,
